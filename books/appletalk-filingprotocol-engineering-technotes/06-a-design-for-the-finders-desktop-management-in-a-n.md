@@ -10,17 +10,6 @@ parent: "AFP Technical Notes"
 layout: default
 grand_parent: Books
 ---
-# A Design for The Finder's Desktop Management In a Network Environment
-
-| Field | Value |
-|-------|-------|
-| **Source** | 022_AppleTalkFilingProtocolEngineeringTechnicalNotes |
-| **Chapter** | 6 |
-| **Pages** | 35–38 |
-| **Converted** | 2026-04-04 |
-| **Engine** | gemini-flash |
-
----
 
 # Chapter 6 A Design for The Finder's Desktop Management In a Network Environment
 

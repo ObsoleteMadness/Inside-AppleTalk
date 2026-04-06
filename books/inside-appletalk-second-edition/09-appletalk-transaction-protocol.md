@@ -11,18 +11,6 @@ parent: "Inside AppleTalk, 2nd Edition"
 layout: default
 grand_parent: Books
 ---
-# AppleTalk Transaction Protocol
-
-| Field | Value |
-|-------|-------|
-| **Source** | [Inside AppleTalk Second Edition (1990)](https://vintageapple.org/macbooks/pdf/Inside_AppleTalk_Second_Edition_1990.pdf) |
-| **Part** | Part IV - Reliable Data Delivery |
-| **Chapter** | 9 |
-| **Pages** | 198–225 |
-| **Converted** | 2026-04-05 |
-| **Engine** | gemini-flash |
-
----
 
 # Part IV Reliable Data Delivery
 
@@ -31,8 +19,6 @@ PART IV DISCUSSES the protocols that add reliability to AppleTalk end-to-end dat
 The first group is based on a data transaction model. The key protocol of this group is the AppleTalk Transaction Protocol (ATP). ATP provides the request-response transaction paradigm on which the session-oriented services of the AppleTalk Session Protocol (ASP) and the Printer Access Protocol (PAP) are based. While ATP is concerned with independent transactions, ASP provides a sequence of transactions guaranteed to be delivered and executed in the order in which the transaction requests are sent. PAP provides a data read/write type of service built with underlying ATP transactions. PAP is the transport/session protocol used by printers of the ImageWriter and LaserWriter families working in an AppleTalk environment.
 
 The second group is based on a more conventional model of reliable data flow—the data stream. This model provides a bidirectional reliable flow of data bytes between any two sockets of the internet. The AppleTalk Data Stream Protocol (ADSP) has been designed for this purpose.
-
----
 
 # Chapter 9 AppleTalk Transaction Protocol
 

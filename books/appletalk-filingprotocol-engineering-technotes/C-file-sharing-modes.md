@@ -10,17 +10,6 @@ parent: "AFP Technical Notes"
 layout: default
 grand_parent: Books
 ---
-# File Sharing Modes
-
-| Field | Value |
-|-------|-------|
-| **Source** | 022_AppleTalkFilingProtocolEngineeringTechnicalNotes |
-| **Chapter** | C |
-| **Pages** | 117–118 |
-| **Converted** | 2026-04-04 |
-| **Engine** | gemini-flash |
-
----
 
 # Appendix C File Sharing Modes
 

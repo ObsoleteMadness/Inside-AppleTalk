@@ -10,17 +10,6 @@ parent: "AFP Technical Notes"
 layout: default
 grand_parent: Books
 ---
-# Long/Short Name Management Algorithms
-
-| Field | Value |
-|-------|-------|
-| **Source** | 022_AppleTalkFilingProtocolEngineeringTechnicalNotes |
-| **Chapter** | B |
-| **Pages** | 115–116 |
-| **Converted** | 2026-04-04 |
-| **Engine** | gemini-flash |
-
----
 
 # Appendix B Long/Short Name Management Algorithms
 

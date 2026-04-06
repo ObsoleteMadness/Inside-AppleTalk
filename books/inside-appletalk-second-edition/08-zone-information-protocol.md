@@ -11,18 +11,7 @@ parent: "Inside AppleTalk, 2nd Edition"
 layout: default
 grand_parent: Books
 ---
-# Zone Information Protocol
 
-| Field | Value |
-|-------|-------|
-| **Source** | [Inside AppleTalk Second Edition (1990)](https://vintageapple.org/macbooks/pdf/Inside_AppleTalk_Second_Edition_1990.pdf) |
-| **Part** | Part III - Named Entities |
-| **Chapter** | 8 |
-| **Pages** | 173–197 |
-| **Converted** | 2026-04-05 |
-| **Engine** | gemini-flash |
-
----
 
 # Chapter 8 Zone Information Protocol
 

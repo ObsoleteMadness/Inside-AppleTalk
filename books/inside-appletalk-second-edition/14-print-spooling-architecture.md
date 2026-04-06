@@ -11,17 +11,6 @@ parent: "Inside AppleTalk, 2nd Edition"
 layout: default
 grand_parent: Books
 ---
-# Print Spooling Architecture
-
-| Field | Value |
-|-------|-------|
-| **Source** | [Inside AppleTalk Second Edition (1990)](https://vintageapple.org/macbooks/pdf/Inside_AppleTalk_Second_Edition_1990.pdf) |
-| **Part** | Part V - End-User Services |
-| **Chapter** | 14 |
-| **Pages** | 472–515 |
-| **Converted** | 2026-04-05 |
-| **Engine** | gemini-flash |
-
 
 # Chapter 14 Print Spooling Architecture
 

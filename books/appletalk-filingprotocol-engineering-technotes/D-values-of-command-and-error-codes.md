@@ -10,17 +10,6 @@ parent: "AFP Technical Notes"
 layout: default
 grand_parent: Books
 ---
-# Values of Command and Error Codes
-
-| Field | Value |
-|-------|-------|
-| **Source** | 022_AppleTalkFilingProtocolEngineeringTechnicalNotes |
-| **Chapter** | D |
-| **Pages** | 119–121 |
-| **Converted** | 2026-04-04 |
-| **Engine** | gemini-flash |
-
----
 
 # Appendix D Values of Command and Error Codes
 

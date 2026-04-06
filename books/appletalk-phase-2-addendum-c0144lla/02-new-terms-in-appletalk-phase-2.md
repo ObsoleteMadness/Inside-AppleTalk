@@ -10,17 +10,7 @@ parent: "Phase 2 Addendum"
 layout: default
 grand_parent: Books
 ---
-# New Terms in AppleTalk Phase 2
 
-| Field | Value |
-|-------|-------|
-| **Source** | C0144LLA_AppleTalk_Phase_2_Protocol_Specification_Addendum_1989 |
-| **Chapter** | 2 |
-| **Pages** | 9–12 |
-| **Converted** | 2026-04-04 |
-| **Engine** | gemini-flash |
-
----
 
 # Chapter 2 New Terms in AppleTalk Phase 2
 

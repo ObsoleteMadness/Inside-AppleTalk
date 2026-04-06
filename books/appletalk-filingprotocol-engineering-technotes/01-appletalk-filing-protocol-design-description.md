@@ -10,17 +10,7 @@ parent: "AFP Technical Notes"
 layout: default
 grand_parent: Books
 ---
-# AppleTalk Filing Protocol Design Description
 
-| Field | Value |
-|-------|-------|
-| **Source** | 022_AppleTalkFilingProtocolEngineeringTechnicalNotes |
-| **Chapter** | 1 |
-| **Pages** | 9–13 |
-| **Converted** | 2026-04-04 |
-| **Engine** | gemini-flash |
-
----
 
 # Chapter 1 - AppleTalk Filing Protocol Design Description
 

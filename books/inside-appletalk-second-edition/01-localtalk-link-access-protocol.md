@@ -11,18 +11,6 @@ parent: "Inside AppleTalk, 2nd Edition"
 layout: default
 grand_parent: Books
 ---
-# LocalTalk Link Access Protocol
-
-| Field | Value |
-|-------|-------|
-| **Source** | [Inside AppleTalk Second Edition (1990)](https://vintageapple.org/macbooks/pdf/Inside_AppleTalk_Second_Edition_1990.pdf) |
-| **Part** | Part I - Physical and Data Links |
-| **Chapter** | 1 |
-| **Pages** | 62–77 |
-| **Converted** | 2026-04-05 |
-| **Engine** | gemini-flash |
-
----
 
 # Part I Physical and Data Links
 

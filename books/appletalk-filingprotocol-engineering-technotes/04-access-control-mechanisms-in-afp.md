@@ -10,17 +10,6 @@ parent: "AFP Technical Notes"
 layout: default
 grand_parent: Books
 ---
-# Access Control Mechanisms in AFP
-
-| Field | Value |
-|-------|-------|
-| **Source** | 022_AppleTalkFilingProtocolEngineeringTechnicalNotes |
-| **Chapter** | 4 |
-| **Pages** | 27–30 |
-| **Converted** | 2026-04-04 |
-| **Engine** | gemini-flash |
-
----
 
 # Chapter 4 Access Control Mechanisms in AFP
 

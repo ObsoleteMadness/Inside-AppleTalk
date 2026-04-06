@@ -10,17 +10,7 @@ parent: "AFP Technical Notes"
 layout: default
 grand_parent: Books
 ---
-# The AFP Login Procedure
 
-| Field | Value |
-|-------|-------|
-| **Source** | 022_AppleTalkFilingProtocolEngineeringTechnicalNotes |
-| **Chapter** | 3 |
-| **Pages** | 25–26 |
-| **Converted** | 2026-04-04 |
-| **Engine** | gemini-flash |
-
----
 
 # Chapter 3 The AFP Login Procedure
 

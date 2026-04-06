@@ -10,17 +10,7 @@ parent: "Phase 2 Addendum"
 layout: default
 grand_parent: Books
 ---
-# Protocol Details
 
-| Field | Value |
-|-------|-------|
-| **Source** | C0144LLA_AppleTalk_Phase_2_Protocol_Specification_Addendum_1989 |
-| **Chapter** | 4 |
-| **Pages** | 19–42 |
-| **Converted** | 2026-04-04 |
-| **Engine** | gemini-flash |
-
----
 
 # Chapter 4 Protocol Details
 

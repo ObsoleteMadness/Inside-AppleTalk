@@ -1,5 +1,5 @@
 ---
-title: "## List of Abbreviations"
+title: "List of Abbreviations"
 source: "022_AppleTalkFilingProtocolEngineeringTechnicalNotes"
 source_url: ""
 pages: "122–122"
@@ -9,17 +9,6 @@ nav_order: 25
 parent: "AFP Technical Notes"
 layout: default
 grand_parent: Books
----
-# ## List of Abbreviations
-
-| Field | Value |
-|-------|-------|
-| **Source** | 022_AppleTalkFilingProtocolEngineeringTechnicalNotes |
-| **Chapter** | E |
-| **Pages** | 122–122 |
-| **Converted** | 2026-04-04 |
-| **Engine** | gemini-flash |
-
 ---
 
 # Appendix E List of Abbreviations

@@ -11,18 +11,7 @@ parent: "Inside AppleTalk, 2nd Edition"
 layout: default
 grand_parent: Books
 ---
-# Character Codes
 
-| Field | Value |
-|-------|-------|
-| **Source** | [Inside AppleTalk Second Edition (1990)](https://vintageapple.org/macbooks/pdf/Inside_AppleTalk_Second_Edition_1990.pdf) |
-| **Part** | Part V - End-User Services |
-| **Chapter** | D |
-| **Pages** | 562–597 |
-| **Converted** | 2026-04-05 |
-| **Engine** | gemini-flash |
-
----
 
 # Appendix D Character Codes
 

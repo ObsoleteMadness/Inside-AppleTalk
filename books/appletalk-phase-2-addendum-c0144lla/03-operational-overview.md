@@ -10,19 +10,8 @@ parent: "Phase 2 Addendum"
 layout: default
 grand_parent: Books
 ---
-# Operational Overview
 
-| Field | Value |
-|-------|-------|
-| **Source** | C0144LLA_AppleTalk_Phase_2_Protocol_Specification_Addendum_1989 |
-| **Chapter** | 3 |
-| **Pages** | 13–18 |
-| **Converted** | 2026-04-04 |
-| **Engine** | gemini-flash |
-
----
-
-## Chapter 3 Operational Overview
+# Chapter 3 Operational Overview
 
 THE IMPLEMENTATION of extended addressing involves the following sequence of operations:
 

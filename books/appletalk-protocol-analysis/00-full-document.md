@@ -9,17 +9,7 @@ nav_order: 6
 layout: default
 parent: Books
 ---
-# Full Document
 
-| Field | Value |
-|-------|-------|
-| **Source** | lanprotocolhandb0000mill_q9i3_1 |
-| **Chapter** | 0 |
-| **Pages** | 281–332 |
-| **Converted** | 2026-04-04 |
-| **Engine** | gemini-flash |
-
----
 
 # Analyzing Apple Computer's AppleTalk
 

@@ -11,18 +11,7 @@ parent: "Inside AppleTalk, 2nd Edition"
 layout: default
 grand_parent: Books
 ---
-# AppleTalk Echo Protocol
 
-| Field | Value |
-|-------|-------|
-| **Source** | [Inside AppleTalk Second Edition (1990)](https://vintageapple.org/macbooks/pdf/Inside_AppleTalk_Second_Edition_1990.pdf) |
-| **Part** | Part II - End-to-End Data Flow |
-| **Chapter** | 6 |
-| **Pages** | 151–155 |
-| **Converted** | 2026-04-05 |
-| **Engine** | gemini-flash |
-
----
 
 # Chapter 6 AppleTalk Echo Protocol
 

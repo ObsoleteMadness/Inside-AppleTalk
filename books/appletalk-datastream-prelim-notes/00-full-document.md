@@ -9,21 +9,12 @@ nav_order: 4
 layout: default
 parent: Books
 ---
-# Full Document
 
-| Field | Value |
-|-------|-------|
-| **Source** | 011_AAPDAAppleTalkDataStreamPreliminaryNote |
-| **Chapter** | 0 |
-| **Pages** | 1–38 |
-| **Converted** | 2026-04-04 |
-| **Engine** | gemini-flash |
-
----
-
-![AAPDA logo](images/p1-aapda-logo.png)
 
 # AppleTalk Data Stream Protocol Preliminary Note
+
+
+![AAPDA logo](images/p1-aapda-logo.png)
 
 CAT NO: M028
 
@@ -47,86 +38,6 @@ Cupertino, California 95014
 
 Apple, the Apple logo, and AppleTalk are registered trademarks of Apple Computer, Inc.
 
-## Contents
-
-iii List of Figures
-
-1 **About AppleTalk Data Stream Protocol**
-1 ADSP Services
-
-2 **Connections**
-2 Connection States
-2 Half-Open Connections and the Connection Timer
-3 Connection Identifiers
-
-4 **Data Flow**
-4 Sequence Numbers
-5 Error Recovery and Acknowledgements
-5 Flow Control and Windows
-6 ADSP Messages
-6 Forward Resets
-7 Summary of Sequencing Variables
-
-9 **Packet Format**
-
-11 **Control Packets**
-
-12 **Data-Flow Examples**
-
-17 **Attention Messages**
-
-19 **Opening a Connection**
-20 Connection-Opening Dialog
-23 Open-Connection Control Packet Format
-25 Error Recovery in the Connection-Opening Dialog
-30 Connection Opening Outside of ADSP
-31 Connection-Listening Sockets and Servers
-32 Connection-Opening Filters
-
-33 **Closing a Connection**
-
-
-# List of Figures
-
-8 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Figure 1. &nbsp;&nbsp; Send and receive queues
-
-9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Figure 2. &nbsp;&nbsp; ADSP packet format
-
-13 &nbsp;&nbsp;&nbsp;&nbsp; Figure 3. &nbsp;&nbsp; ADSP data flow
-
-14 &nbsp;&nbsp;&nbsp;&nbsp; Figure 4. &nbsp;&nbsp; Recovery from a lost packet
-
-15 &nbsp;&nbsp;&nbsp;&nbsp; Figure 5. &nbsp;&nbsp; Idle connection state
-
-16 &nbsp;&nbsp;&nbsp;&nbsp; Figure 6. &nbsp;&nbsp; Connection torn down due to lost packets
-
-17 &nbsp;&nbsp;&nbsp;&nbsp; Figure 7. &nbsp;&nbsp; ADSP attention-packet format
-
-21 &nbsp;&nbsp;&nbsp;&nbsp; Figure 8. &nbsp;&nbsp; Connection-opening dialog initiated by one end
-
-22 &nbsp;&nbsp;&nbsp;&nbsp; Figure 9. &nbsp;&nbsp; Connection-opening dialog initiated by both ends
-
-22 &nbsp;&nbsp;&nbsp;&nbsp; Figure 10. Open-connection request denied
-
-24 &nbsp;&nbsp;&nbsp;&nbsp; Figure 11. Open-connection packet format
-
-26 &nbsp;&nbsp; Figure 12. Connection-opening dialog: packet lost
-
-27 &nbsp;&nbsp;&nbsp;&nbsp; Figure 13. Simultaneous connection-opening dialog: packet lost
-
-28 &nbsp;&nbsp;&nbsp;&nbsp; Figure 14. Connection-opening dialog: half-open connection
-
-29 &nbsp;&nbsp;&nbsp;&nbsp; Figure 15. Connection-opening dialog: data transmitted on half-open 
-connection
-
-30 &nbsp;&nbsp;&nbsp;&nbsp; Figure 16. Connection-opening dialog: late-arriving duplicate
-
-31 &nbsp;&nbsp;&nbsp;&nbsp; Figure 17. Open-connection request made to connection-listening socket; 
-alternate socket chosen for connection
-
-32 &nbsp;&nbsp;&nbsp;&nbsp; Figure 18. Connection-opening filters: open connection denied
-
-33 &nbsp;&nbsp;&nbsp;&nbsp; Figure 19. Connection-opening filters with a connection-listening socket
 
 ## AppleTalk Data Stream Protocol
 

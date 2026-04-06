@@ -10,20 +10,9 @@ parent: "AFP Technical Notes"
 layout: default
 grand_parent: Books
 ---
-# User Authentication Methods
 
-| Field | Value |
-|-------|-------|
-| **Source** | 022_AppleTalkFilingProtocolEngineeringTechnicalNotes |
-| **Chapter** | A |
-| **Pages** | 113–114 |
-| **Converted** | 2026-04-04 |
-| **Engine** | gemini-flash |
 
----
-
-# Appendix A
-# User Authentication Methods
+# Appendix A User Authentication Methods
 
 As noted in the main body of this document, AFP version 1.1 provides three standard user authentication methods. These correspond to UAM strings "NoUserAuthent", "Cleartxt passwd" and "Randnum exchange". [Note: these strings should be used in a case-insensitive fashion].
 

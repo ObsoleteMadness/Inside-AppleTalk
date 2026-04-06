@@ -11,18 +11,6 @@ parent: "Inside AppleTalk, 2nd Edition"
 layout: default
 grand_parent: Books
 ---
-# AppleTalk Session Protocol
-
-| Field | Value |
-|-------|-------|
-| **Source** | [Inside AppleTalk Second Edition (1990)](https://vintageapple.org/macbooks/pdf/Inside_AppleTalk_Second_Edition_1990.pdf) |
-| **Part** | Part IV - Reliable Data Delivery |
-| **Chapter** | 11 |
-| **Pages** | 247–285 |
-| **Converted** | 2026-04-05 |
-| **Engine** | gemini-flash |
-
----
 
 # Chapter 11 AppleTalk Session Protocol
 

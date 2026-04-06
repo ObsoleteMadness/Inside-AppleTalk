@@ -11,18 +11,7 @@ parent: "Inside AppleTalk, 2nd Edition"
 layout: default
 grand_parent: Books
 ---
-# EtherTalk and TokenTalk Link Access Protocols
 
-| Field | Value |
-|-------|-------|
-| **Source** | [Inside AppleTalk Second Edition (1990)](https://vintageapple.org/macbooks/pdf/Inside_AppleTalk_Second_Edition_1990.pdf) |
-| **Part** | Part I - Physical and Data Links |
-| **Chapter** | 3 |
-| **Pages** | 90–103 |
-| **Converted** | 2026-04-05 |
-| **Engine** | gemini-flash |
-
----
 
 # Chapter 3 EtherTalk and TokenTalk Link Access Protocols
 

@@ -10,17 +10,6 @@ parent: "AFP Technical Notes"
 layout: default
 grand_parent: Books
 ---
-# AFP's Use of ASP
-
-| Field | Value |
-|-------|-------|
-| **Source** | 022_AppleTalkFilingProtocolEngineeringTechnicalNotes |
-| **Chapter** | 8 |
-| **Pages** | 105–112 |
-| **Converted** | 2026-04-04 |
-| **Engine** | gemini-flash |
-
-
 
 # Chapter 8 AFP's Use of ASP
 

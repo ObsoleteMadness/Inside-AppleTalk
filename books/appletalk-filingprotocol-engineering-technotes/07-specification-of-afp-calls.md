@@ -10,17 +10,7 @@ parent: "AFP Technical Notes"
 layout: default
 grand_parent: Books
 ---
-# Specification of AFP Calls
 
-| Field | Value |
-|-------|-------|
-| **Source** | 022_AppleTalkFilingProtocolEngineeringTechnicalNotes |
-| **Chapter** | 7 |
-| **Pages** | 39–104 |
-| **Converted** | 2026-04-04 |
-| **Engine** | gemini-flash |
-
----
 
 # Chapter 7 Specification of AFP Calls
 

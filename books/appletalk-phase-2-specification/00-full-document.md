@@ -9,17 +9,7 @@ nav_order: 5
 layout: default
 parent: Books
 ---
-# AppleTalk Phase 2 Protocol Specification June 30, 1989
 
-| Field | Value |
-|-------|-------|
-| **Source** | AppleTalk_Phase_2_Protocol_Specification_19890630 |
-| **Chapter** | 0 |
-| **Pages** | 1–24 |
-| **Converted** | 2026-04-04 |
-| **Engine** | gemini-flash |
-
----
 
 # AppleTalk Phase 2 Protocol Specification June 30, 1989
 
