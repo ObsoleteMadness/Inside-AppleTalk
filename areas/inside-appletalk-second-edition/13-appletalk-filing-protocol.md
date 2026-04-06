@@ -24,108 +24,20 @@ grand_parent: Areas
 
 ---
 
+# Part V End-User Services
+
+PART V of *Inside AppleTalk* describes the protocols that provide end-user services in an AppleTalk network. This part includes a complete description of the AppleTalk Filing Protocol (AFP). It also includes the architectural specification for print spooling in an AppleTalk network. 
+
+---
+
 # Chapter 13 AppleTalk Filing Protocol
-
-## CONTENTS
-
-- **File system structure** / 13-7
-- File server / 13-8
-- Volumes / 13-9
-    - Volume types / 13-10
-    - Volume catalog / 13-12
-- **Catalog node names** / 13-13
-- **Directories and files** / 13-15
-    - Directory IDs / 13-15
-    - Directory parameters / 13-16
-    - File parameters / 13-17
-    - Date-time values / 13-21
-- **File forks** / 13-22
-
-**Designating a path to a CNode** / 13-23
-
-**AFP login** / 13-27
-
-**File server security** / 13-28
-- **User authentication methods** / 13-28
-    - No user authentication / 13-29
-    - Cleartext password / 13-29
-    - Random number exchange / 13-29
-- **Volume passwords** / 13-30
-- **Directory access control** / 13-31
-
-**File sharing modes** / 13-35
-- **Access modes and deny modes** / 13-35
-- **Synchronization rules** / 13-36
-
-**Desktop database** / 13-37
-
-## AFP's use of ASP / 13-38
-
-### An overview of AFP calls / 13-39
-* Server calls / 13-40
-* Volume calls / 13-41
-* Directory calls / 13-42
-* File calls / 13-43
-* Combined directory-file calls / 13-43
-* Fork calls / 13-44
-* Desktop database calls / 13-45
-
-### AFP calls / 13-46
-* FPCall / 13-48
-* FPAddAPPL / 13-49
-* FPAddComment / 13-51
-* FPAddIcon / 13-53
-* FPByteRangeLock / 13-55
-* FPChangePassword / 13-58
-* FPCloseDir / 13-60
-* FPCloseDT / 13-61
-* FPCloseFork / 13-62
-* FPCloseVol / 13-63
-* FPCopyFile / 13-64
-* FPCreateDir / 13-67
-* FPCreateFile / 13-69
-* FPDelete / 13-71
-* FPEnumerate / 13-73
-* FPFlush / 13-77
-* FPFlushFork / 13-78
-* FPGetAPPL / 13-79
-* FPGetComment / 13-81
-* FPGetFileDirParms / 13-83
-* FPGetForkParms / 13-89
-- FPGetIcon / 13-91
-- FPGetIconInfo / 13-93
-- FPGetSrvrInfo / 13-95
-- FPGetSrvrParms / 13-98
-- FPGetUserInfo / 13-100
-- FPGetVolParms / 13-102
-- FPLogin / 13-104
-- FPLoginCont / 13-106
-- FPLogout / 13-108
-- FPMapID / 13-109
-- FPMapName / 13-110
-- FPMoveAndRename / 13-111
-- FPOpenDir / 13-114
-- FPOpenDT / 13-116
-- FPOpenFork / 13-117
-- FPOpenVol / 13-121
-- FPRead / 13-123
-- FPRemoveAPPL / 13-126
-- FPRemoveComment / 13-128
-- FPRename / 13-130
-- FPSetDirParms / 13-132
-- FPSetFileDirParms / 13-135
-- FPSetFileParms / 13-138
-- FPSetForkParms / 13-141
-- FPSetVolParms / 13-143
-- FPWrite / 13-145
-
 
 THE PURPOSE of the AppleTalk Filing Protocol (AFP) is to allow workstation users to share files. Sharing files across a network requires that the user application know where and how to find a file. This chapter introduces the file access model used by AFP to enable file sharing and discusses the components of AFP software.
 
 The AFP file access model is shown in *Figure 13-1*, which illustrates the discussion that follows. ■
 
 
-■ **Figure 13-1** The AFP file access model
+#### **Figure 13-1** The AFP file access model
 
 ![The AFP file access model](images/p330-afp-file-access-model.png)
 

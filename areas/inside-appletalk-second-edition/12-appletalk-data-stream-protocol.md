@@ -26,46 +26,7 @@ grand_parent: Areas
 
 # Chapter 12 AppleTalk Data Stream Protocol
 
-## CONTENTS
-
-**ADSP services** / 12-4
-
-**Connections** / 12-4
-Connection states / 12-5
-Half-open connections and the connection timer / 12-5
-Connection identifiers / 12-6
-
-**Data flow** / 12-6
-Sequence numbers / 12-7
-Error recovery and acknowledgments / 12-7
-Flow control and windows / 12-8
-ADSP messages / 12-9
-Forward resets / 12-9
-Summary of sequencing variables / 12-10
-
-**Packet format** / 12-12
-
-**Control packets** / 12-14
-
-**Data-flow examples** / 12-15
-
-**Attention messages** / 12-19
-
----
-
-**Connection opening / 12-22**
-Connection-opening dialog / 12-24  
-Open-connection Control packet format / 12-27  
-Error recovery in the connection-opening dialog / 12-30  
-Connection opening outside of ADSP / 12-34  
-Connection-listening sockets and servers / 12-35  
-Connection-opening filters / 12-36  
-
-**Connection closing / 12-38**
-
----
-
-# ADSP services
+## ADSP services
 
 ADSP provides the client with a simple, powerful interface to an AppleTalk network. Using ADSP, the client can open a connection with a remote end, send data to and receive data from the remote end, and close the connection.
 
@@ -79,9 +40,7 @@ A connection is an association between two sockets that allows reliable, full-du
 
 At any time, a connection can be set up by either or both of the communicating parties. The connection is torn down when it is no longer required or if either connection end becomes unreachable. In order for the protocol to function correctly, a certain amount of control and state information must be maintained at each end of a connection. Opening a connection involves setting up this information at each end and bringing the two ends of the connection to a synchronized condition. The information at each end is referred to as the state of that connection end; the term **connection state** refers collectively to the information at both ends. **Connection end** is a general term that covers both the communicating socket and the connection information associated with it.
 
----
-
-# Connection states
+### Connection states
 
 A connection between two sockets can be either open or closed. When an association is set up between two sockets, the connection is considered an **open connection**; when the association is torn down, the connection is considered a **closed connection**. A connection end can be in one of two states: established or closed. For a connection to be open, both its ends must be established. If one end of a connection is established but the other is closed (or unreachable), the connection is said to be half-open. Data can flow only on an open connection.
 
@@ -89,15 +48,14 @@ ADSP specifies that only one connection at a time can be open between a pair of 
 
 A connection end can be closed at any time by the connection end's client. The connection end should inform the remote end that it is going to close. At this time, the connection could become temporarily half-open until the remote end also closes. Once both ends have closed, the connection is closed. See "Connection Opening" and "Connection Closing" later in this chapter for details on the mechanisms used to open and close connections.
 
-## Half-open connections and the connection timer
+### Half-open connections and the connection timer
 
 A connection is half-open when one end goes down or becomes unreachable from the other end. In a half-open connection, the end that is still established could needlessly consume network bandwidth. Even in the absence of network traffic, resources (such as timers and buffers) would be tied up at the established end. Therefore, it is important that ADSP detect half-open connections. After detecting a half-open connection, ADSP closes the established end and informs its client that the connection has been closed.
 
 To detect half-open connections, each end maintains a **connection timer** that is started when the connection opens. Whenever an end receives a packet from the remote end, the timer is reset. The timer expires if the end does not receive any packets within 30 seconds. When the timer expires, the end sends a probe and restarts the connection timer. A **probe** is a request for the remote end to acknowledge; the probe itself serves as an acknowledgment to the remote end. Failure to receive any packet from the other end before the timer has expired for the fourth time (that is, after 2 minutes) indicates that the connection is half-open. At that time, ADSP immediately closes the connection end, freeing all associated resources.
 
----
 
-# Connection identifiers
+### Connection identifiers
 
 A connection end is identified by its internet socket address, which consists of a socket number, a node ID, and a network number. In addition, when a connection is set up, each connection end generates a ConnID. A connection can be uniquely identified by using both the internet socket address and the ConnID of the two connection ends.
 
@@ -107,13 +65,11 @@ An ADSP implementation maintains a variable, LastConnID, that contains the last 
 
 The value of ConnIDMax, and therefore the range of the ConnIDs, is a function of the rate at which connections are expected to be set up and broken down (that is, how quickly the ConnID number wraps around) and of the maximum packet lifetime (MPL) for the internet. If connections are set up and broken down rapidly, then a higher value of ConnIDMax is required. Likewise, the longer the MPL, the higher the value required for ConnIDMax. ADSP uses 16-bit ConnIDs (that is, ConnIDMax equals $FFFF).
 
-# Data flow
+## Data flow
 
 Either end of an open connection accepts data from its client for delivery to the other end's client. This data is handled as a stream of bytes; the smallest unit of data that can be conveyed over a connection is 1 byte (8 bits). The flow of data between connection ends A and B can be viewed as two unidirectional streams of bytes—one stream from end A to end B and the other stream from end B to end A. Although the following discussion focuses on the data stream from end A to end B, it can be applied equally well to the stream from end B to end A by interchanging A and B in the discussion.
 
----
-
-## Sequence numbers
+### Sequence numbers
 
 ADSP associates a sequence number with each byte that flows over the connection. End B maintains a variable, RecvSeq, which is the sequence number of the next byte that end B expects to receive from end A. End A maintains a corresponding variable, SendSeq, which is the sequence number of the next new byte that end A will send to end B.
 
@@ -125,11 +81,9 @@ When end B receives a packet with a PktFirstByteSeq value that does not equal en
 
 Some ADSP implementations accept and buffer data from early-arriving, out-of-sequence packets, processing the data for client delivery when the intervening data arrives. Such an implementation may also accept packets that contain both duplicate and new data bytes; in this case, the receiving end discards duplicate data and accepts the new data. This approach, which is referred to as in-window data acceptance, can reduce data retransmission and improve throughput. However, because in-window data acceptance adds complexity to implementation, it is an option, rather than a requirement, of ADSP.
 
-## Error recovery and acknowledgments
+### Error recovery and acknowledgments
 
 The sequence-number mechanism provides the framework for acknowledging the receipt of data, recovering data packets when they are lost in the network, and filtering duplicate and out-of-sequence packets.
-
----
 
 End A maintains a send queue that holds all data sent by it to end B. A variable, FirstRtmtSeq, contains the sequence number of the oldest byte in the send queue.
 
@@ -141,13 +95,9 @@ At times, end A may determine that some data within the stream that it already s
 
 One of the advantages of using byte-oriented sequence numbers is that they offer flexibility for data retransmission. Previously sent data can be regrouped and retransmitted more efficiently. For example, if end A has sent several small data packets to end B over some period of time, and end A determines that it must retransmit all the data bytes in its send queue, it is possible that all of the data bytes in the previous small packets could fit within one ADSP packet for retransmission. It is also possible for end A to append some new data to the bytes being retransmitted in the packet.
 
----
-
-## Flow control and windows
+### Flow control and windows
 
 ADSP implements a flow-control mechanism to ensure that one end does not send data that the other end does not have enough buffer space to receive (known as choking data flow at its source). In order for this mechanism to work, end B must periodically inform end A of the amount of receive buffer space it has available. This process is referred to as informing end A of end B's **reception window size.**
-
----
 
 End B maintains a variable, RecvWdw, which is the number of bytes end B currently has space to receive. When sending a packet to end A, end B always includes the current value of its RecvWdw in a field of its ADSP header known as PktRecvWdw. End A maintains a variable, SendWdwSeq, which represents the sequence number of the last byte for which end B currently has space. End A obtains this value from any packet that it receives from end B by adding the value of PktRecvWdw–1 to the value of PktNextRecvSeq. End A does not send bytes numbered beyond SendWdwSeq because end B does not have enough buffer space to receive them. However, if end B receives a packet whose data would exceed the available buffer space, end B discards the data.
 
@@ -155,17 +105,15 @@ Since ADSP does not support the ability for a client to revoke buffer space, the
 
 Note that RecvWdw is a 16-bit field; the window size at either end is limited to 64 Kbytes ($FFFF).
 
-## ADSP messages
+### ADSP messages
 
 ADSP allows its clients to break the data stream into client-intelligible messages. A bit can be set in the ADSP packet header to indicate that the last data byte in the packet constitutes the end of a client message. The receiving end must inform its client after delivering the last byte of a message.
 
 An ADSP packet can have its end-of-message (EOM) bit set and must not contain client data. This situation would indicate that the last data byte received in the previous packet was the last in a message. In order to handle this case properly, the EOM indicator is treated as if it were a byte appended to the end of the message in the data stream. Therefore, an EOM always consumes one sequence number in the data stream, just beyond the last byte of the client message. Since no data byte actually corresponds to this EOM sequence number, it is possible that an EOM packet may contain no data.
 
-## Forward resets
+### Forward resets
 
 The forward-reset mechanism allows an ADSP client to abort the delivery of any outstanding data to the remote end’s client. A forward reset causes all bytes in the sending end’s send queue, all bytes in transit on the network, and all bytes in the remote end’s receive queue that have not yet been delivered to the client to be discarded, and it then causes the two ends to be resynchronized.
-
----
 
 When a client requests a forward reset, its ADSP connection end first removes any unsent bytes from its send queue and then resets the value of its FirstRtmtSeq to that of its SendSeq. This process effectively flushes all data that has been sent but not yet acknowledged by the remote end. The client's connection end then sends the remote connection end a Forward Reset Control packet with PktFirstByteSeq equal to SendSeq.
 
@@ -175,9 +123,7 @@ When sending a Forward Reset Control packet, the connection end starts a timer. 
 
 The forward-reset mechanism is nondeterministic from the client's perspective because any or all of the outstanding data could have already been delivered to the remote client. However, the forward-reset mechanism does provide a means for resetting the connection.
 
----
-
-## Summary of sequencing variables
+### Summary of sequencing variables
 
 To summarize, the ADSP header of all ADSP packets includes the following three sequencing variables:
 
@@ -187,7 +133,6 @@ To summarize, the ADSP header of all ADSP packets includes the following three s
 | PktNextRecvSeq | the sequence number of the next byte that the packet's sender expects to receive |
 | PktRecvWdw | the number of bytes that the packet's sender currently has buffer space to receive |
 
----
 
 Each connection end must maintain the following variables as part of its connection-state descriptor:
 
@@ -199,13 +144,11 @@ Each connection end must maintain the following variables as part of its connect
 
 Figure 12-1 illustrates how these variables would relate to a connection end's send and receive queues and sequence-number space.
 
-### ■ Figure 12-1 Send and receive queues
+#### ■ Figure 12-1 Send and receive queues
 
 ![Send and receive queues](images/p296-send-receive-queues.png)
 
----
-
-# Packet format
+## Packet format
 
 Figure 12-2 illustrates an ADSP packet. The packet consists of the data-link and Datagram Delivery Protocol (DDP) headers, followed by a 13-byte ADSP header and up to 572 bytes of ADSP data. To identify an ADSP packet, the DDP type field must equal 7.
 
@@ -225,9 +168,7 @@ Setting the Attention bit in the ADSP descriptor field designates the packet as 
 
 Setting the EOM bit in the ADSP descriptor field indicates a logical end of message in the data stream. This bit applies only to client Data packets, and so neither the Control bit nor the Attention bit can be set in a packet whose EOM bit is set.
 
----
-
-## Figure 12-2 ADSP packet format
+#### Figure 12-2 ADSP packet format
 
 ![ADSP packet format](images/p298-adsp-packet-format.png)
 
@@ -262,9 +203,7 @@ DDP header (variable length, includes DDP type = 7)
 ADSP header (13 bytes)
 ADSP data (0 to 572 bytes)
 
----
-
-# Control packets
+## Control packets
 
 ADSP packets are of two broad classes: Data packets and Control packets. Control packets can be distinguished from Data packets by examining the Control bit in the packet’s ADSP Descriptor field; when set, this bit identifies a Control packet. Such packets are sent for ADSP’s internal operation and do not contain any client-deliverable data.
 
@@ -288,13 +227,9 @@ A Control code of 0 can have two different meanings, depending on the state of t
 
 Open-connection Control codes are sent as part of the open-connection dialog. This dialog is explained in detail in “Connection Opening” later in this chapter. Before being closed by ADSP, a connection end sends a Close Connection Advice Control packet. This packet is purely advisory and requires no reply. Upon receiving such a packet, ADSP closes the connection. For additional details, see “Connection Closing” later in this chapter.
 
----
-
 The Forward Reset Control packet provides a mechanism for a client to abort the delivery of all outstanding data that it has sent to the remote client. Upon receiving this packet, the remote end synchronizes its RecvSeq to the value of PktFirstByteSeq in the packet and removes all undelivered bytes from its receive queue. The remote end then returns a Forward Reset Acknowledgment Control packet to the other end and informs its client that it has received and processed a forward reset request.
 
 A connection end may send the Retransmit Advice Control packet in response to receiving several consecutive out-of-sequence Data packets from the remote end. The packet is sent to inform the remote end that it should retransmit the bytes in its send queue beginning with the byte whose sequence number is PktNextRecvSeq.
-
----
 
 ## Data-flow examples
 
@@ -304,9 +239,7 @@ In the figures, the packets are indicated by arrows that run diagonally between 
 
 Figure 12-3 illustrates how the ADSP variables relate to the flow of data. In this example, end A sends an acknowledgment request when it exhausts its known send window. Acknowledgments are implicit in all packets sent from end B, regardless of whether they are Data packets or Control packets.
 
----
-
-### Figure 12-3 ADSP data flow
+#### Figure 12-3 ADSP data flow
 
 ![ADSP data flow](images/p301-adsp-data-flow.png)
 
@@ -345,9 +278,7 @@ sequenceDiagram
 
 Figure 12-4 shows an example of recovery from a lost packet. In this example, the first packet sent by end A is lost. The receiver discards subsequent packets because they are out of sequence. Some event (a retransmit timer goes off or perhaps the send window is exhausted) causes end A to send an acknowledgment request. End B acknowledges, and end A retransmits all of the lost data.
 
----
-
-## Figure 12-4 Recovery from a lost packet
+#### Figure 12-4 Recovery from a lost packet
 
 ![Recovery from a lost packet diagram showing message exchanges and state variable updates between Connection end A and Connection end B.](images/p302-recovery-lost-packet.png)
 
@@ -379,13 +310,11 @@ sequenceDiagram
     Note left of A: FirstRtmtSeq = 25<br/>SendWdwSeq = 49<br/>RecvSeq = 0
 ```
 
----
-
 Figure 12-5 gives an example of an idle connection state. Neither client is sending data, so both connection ends periodically send a probe to determine whether the connection is still open.
 
 In Figure 12-6, packets from end B are lost, so ADSP eventually tears down the connection.
 
-### ■ Figure 12-5 Idle connection state
+#### Figure 12-5 Idle connection state
 
 ![Idle connection state diagram showing probe packets between connection end A and connection end B.](images/p303-idle-connection-state.png)
 
@@ -420,9 +349,7 @@ sequenceDiagram
     B->>A: Ctl
 ```
 
----
-
-■ **Figure 12-6** Connection torn down due to lost packets
+#### **Figure 12-6** Connection torn down due to lost packets
 
 ![Connection torn down due to lost packets](images/p304-connection-teardown.png)
 
@@ -449,9 +376,7 @@ sequenceDiagram
     Note left of A: Probe timer expires#59;<br/>connection is closed.
 ```
 
----
-
-# Attention messages
+## Attention messages
 
 Attention messages provide a method for the clients of the two connection ends to signal each other outside the normal flow of data across the connection. ADSP attention messages are delivered reliably, in order, and free of duplicates.
 
@@ -459,9 +384,7 @@ ADSP Attention packets are used for delivering and acknowledging attention messa
 
 The 16-bit attention-code field accommodates a range of values from $0000 through $FFFF. Values in the range $0000 through $EFFF are for the client's use. Values in the range $F000 through $FFFF are reserved for potential future expansion of ADSP.
 
----
-
-### Figure 12-7 ADSP Attention packet format
+#### Figure 12-7 ADSP Attention packet format
 
 ![ADSP Attention packet format](images/p305-adsp-attention-packet.png)
 
@@ -490,8 +413,6 @@ packet-beta
 | AttnCode | 112 | 16 | Attention code for the message |
 | AttnData | 128 | 0-4560 | Attention message data (0 to 570 bytes) |
 
----
-
 Attention messages use a packet-oriented sequence-number space that is independent of data-stream sequence numbers. The first Attention packet is assigned a sequence number of 0, the second packet is assigned 1, the third packet 2, and so on. Attention sequence numbers are treated as 32-bit unsigned integers that wrap around to 0 when increased by 1 beyond the maximum value $FFFFFFFF.
 
 End B maintains a variable, AttnRecvSeq, which contains the sequence number of the next attention message that end B expects to receive from end A. AttnRecvSeq is initially set to 0 and is increased by 1 with each attention message that end B accepts from end A.
@@ -506,13 +427,11 @@ When sending an attention message, the end starts a timer. If the timer expires,
 
 When end A sends an attention message to end B, end A's PktAttnSendSeq field is set to the value of end A's AttnSendSeq. When end B receives the Attention packet, it compares the value of PktAttnSendSeq with its own AttnRecvSeq. If the values are not equal, end B discards the attention message. If the values are equal and buffer space is available, end B accepts the data and increases AttnRecvSeq by 1. Then end B sends end A an attention acknowledgment with the PktAttnRecvSeq field set to the current value of end B's AttnRecvSeq.
 
----
 
 An acknowledgment is implicit in any Attention packet sent; that is, acknowledgments are piggybacked on attention messages. The attention acknowledgment itself may be an attention message that end B's client has just asked end B to send, or the acknowledgment may be an ADSP Control packet whose sole purpose is to acknowledge the attention message.
 
----
 
-# Connection opening
+## Connection opening
 
 This section describes how connections are opened and explains some of the facilities that ADSP provides for opening connections.
 
@@ -531,8 +450,6 @@ A connection is open when both ends of the connection are established. A connect
 | RecvWdw | the number of bytes that the local end currently has buffer space to receive from the remote end (Initially, the local end's entire receive buffer is available.) |
 | AttnSendSeq | the sequence number to be assigned to the next Attention packet that the local end will transmit over the connection |
 | AttnRecvSeq | the sequence number of the next Attention packet that the local end expects to receive from the remote end (Initially, this number is set to 0.) |
-
----
 
 When attempting to become established, the local end knows the values of LocAddr, LocConnID, RecvSeq, RecvWdw, and AttnRecvSeq. (When a connection is first opened, the values of RecvSeq and AttnRecvSeq will be 0.) The local end must somehow discover the values of RemAddr, RemConnID, SendSeq, SendWdwSeq, and AttnSendSeq. The objective of the connection-opening dialog is for each end to discover these values.
 
@@ -554,13 +471,11 @@ Once the remote end has set these parameters (based on the information in the Op
 
 In order for a connection to become open, both ends of the connection must be established. Therefore, in the connection-opening dialog, each end must send an Open Connection Request Control packet to the other end (as well as receive an Open Connection Request Control packet from the other end).
 
----
-
 Since these packets can be lost during transmission, ADSP provides a mechanism for ensuring that the packets are delivered. When a connection end receives an Open Connection Request Control packet, the receiving end returns an Open Connection Acknowledgment Control packet to the sending end. Upon receiving an Open Connection Acknowledgment Control packet, the receiving end is assured that the other end has become established.
 
 After the two connection ends have exchanged both open-connection requests and acknowledgments, the connection is open and data can safely be sent on it.
 
-## Connection-opening dialog
+### Connection-opening dialog
 
 The connection-opening mechanism provided by ADSP requires that a connection end must know the internet socket address of the destination socket to which the end is making a connection request. The client must provide this address to ADSP for the purpose of initiating the connection-opening dialog. How this address is determined is up to the client; generally, the AppleTalk Name Binding Protocol (NBP) is used.
 
@@ -572,13 +487,11 @@ Upon receiving the Open Connection Request Control packet, end B extracts the se
 
 At this point, end A is not established and does not know the state of connection end B. End B responds to end A's Open Connection Request Control packet by sending back an Open Connection Request and Acknowledgment Control packet. End A determines the values of its RemAddr, RemConnID, SendSeq, and SendWdwSeq from the open-connection request, as previously described; then, end A becomes established. The open-connection acknowledgment informs end A that end B has accepted end A's Open Connection Request Control packet and has become established. End A assumes the connection is now open.
 
----
-
 End A informs end B of its state by sending an Open Connection Acknowledgment control packet. Upon receiving the acknowledgment, end B assumes the connection is open (see Figure 12-8).
 
 Both ends can attempt to open the connection simultaneously. In this case, each ADSP socket receives an Open Connection Request Control packet from the socket to which it has sent an Open Connection Request Control packet. The ADSP implementation identifies end A by matching its RemAddr to the source address of the Open Connection Request Control packet received from end B. End A extracts the required information from the packet and becomes established. End A then sends back an Open Connection Acknowledgment Control packet to inform the remote end that it has become established. This ensures that ADSP establishes only one connection between the two sockets (see Figure 12-9).
 
-■ **Figure 12-8** Connection-opening dialog initiated by one end
+#### **Figure 12-8** Connection-opening dialog initiated by one end
 
 ![Connection-opening dialog initiated by one end](images/p310-connection-opening-dialog.png)
 
@@ -596,9 +509,8 @@ sequenceDiagram
     Note over B: This end assumes connection is open.
 ```
 
----
 
-■ Figure 12-9 Connection-opening dialog initiated by both ends
+#### Figure 12-9 Connection-opening dialog initiated by both ends
 
 ![Connection-opening dialog initiated by both ends](images/p311-connection-opening.png)
 
@@ -620,9 +532,8 @@ sequenceDiagram
 
 If for any reason an ADSP implementation is unable to fulfill the open-connection request, an open-connection denial is sent back to the requester. In this case, the source ConnID field of the ADSP packet header is 0, while the destination ConnID field of the connection-opening parameters is set to the requester's ConnID (see Figure 12-10).
 
----
 
-■ Figure 12-10 Open-connection request denied
+#### Figure 12-10 Open-connection request denied
 
 ![Open-connection request denied sequence diagram](images/p312-figure-12-10.png)
 
@@ -637,13 +548,11 @@ sequenceDiagram
     Note over A: This end returns status to client.
 ```
 
-## Open-connection Control packet format
+### Open-connection Control packet format
 
 An open-connection request is sent as an ADSP Control packet. As such, the request contains all the information required to establish the receiving end. ADSP is a client of the network layer, DDP, which contains the internet address of the sender. (Note that the packet must be sent through the socket on which the connection is to be established.) The ADSP header contains the source ConnID, RecvSeq, and RecvWdw, which are used to determine the receiving end's RemConnID, SendSeq, and SendWdwSeq, respectively. The AttnRecvSeq field of the open-connection parameters following the header is used to set the value of the receiving end's AttnSendSeq.
 
 An ADSP Open Connection Acknowledgment, which is also a Control packet, serves to acknowledge the receipt of an Open Connection Request Control packet. An end can send both an Open Connection Request Control packet and an Open Connection Acknowledgment Control packet at the same time by combining them into one ADSP Control packet. ADSP also provides an Open Connection Denial Control packet for use when a connection request cannot be honored. In the Open Connection Denial Control packet, the source ConnID should be set to 0 in the packet header.
-
----
 
 Figure 12-11 shows the format of ADSP packets that are used in the connection-opening dialog. Note the special open-connection parameters that follow the ADSP packet header. These parameters are described in detail after the figure.
 
@@ -662,9 +571,8 @@ The following table summarizes the packet-descriptor values and ConnIDs that sho
 | Open Connection Request+Ack | $83 | LocConnID | RemConnID |
 | Open Connection Denial | $84 | 0 | RemConnID |
 
----
 
-## Figure 12-11 Open-connection packet format
+#### Figure 12-11 Open-connection packet format
 
 ![Open-connection packet format](images/p314-open-connection-packet-format.png)
 
@@ -695,9 +603,7 @@ packet-beta
 | Destination ConnID | 136 | 16 | Destination connection identifier |
 | PktAtnRecvSeq | 152 | 32 | Sequence number of the next attention byte expected to be received |
 
----
-
-## Error recovery in the connection-opening dialog
+### Error recovery in the connection-opening dialog
 
 Since delivery of packets sent by the network layer is not guaranteed, connection-opening packets can be lost or delayed. Therefore, ADSP open-connection requests should be retransmitted at intervals specified by the client (for a maximum number of retries also specified by the client). An end receiving an open-connection request must ensure that it is not a duplicate by comparing the request's source ConnID and address with that of all open or opening connections for the receiving socket. If the request is a duplicate, the appropriate acknowledgment is still sent back. See Figure 12-12 and Figure 12-13, where *X* indicates lost or delayed packets.
 
