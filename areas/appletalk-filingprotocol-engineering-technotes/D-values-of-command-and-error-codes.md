@@ -1,5 +1,5 @@
 ---
-title: "# Values of Command and Error Codes"
+title: "Values of Command and Error Codes"
 source: "022_AppleTalkFilingProtocolEngineeringTechnicalNotes"
 source_url: ""
 pages: "119–121"
@@ -10,7 +10,7 @@ parent: "AFP Technical Notes"
 layout: default
 grand_parent: Areas
 ---
-# # Values of Command and Error Codes
+# Values of Command and Error Codes
 
 | Field | Value |
 |-------|-------|

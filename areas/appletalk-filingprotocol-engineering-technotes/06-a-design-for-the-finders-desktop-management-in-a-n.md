@@ -1,5 +1,5 @@
 ---
-title: "# A Design for The Finder's Desktop Management In a Network Environment"
+title: "A Design for The Finder's Desktop Management In a Network Environment"
 source: "022_AppleTalkFilingProtocolEngineeringTechnicalNotes"
 source_url: ""
 pages: "35–38"
@@ -10,7 +10,7 @@ parent: "AFP Technical Notes"
 layout: default
 grand_parent: Areas
 ---
-# # A Design for The Finder's Desktop Management In a Network Environment
+# A Design for The Finder's Desktop Management In a Network Environment
 
 | Field | Value |
 |-------|-------|

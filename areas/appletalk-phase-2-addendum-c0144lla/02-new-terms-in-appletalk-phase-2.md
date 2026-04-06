@@ -61,8 +61,6 @@ The dynamic process by which a node selects its node ID is now extended to inclu
 
 This is done in two steps. In order to pick a network number within the range of numbers assigned to its network, the node must collaborate with the routers connected to the network. However, this communication itself requires that the node select an address, known as a **provisional address**, including a provisional network number. It is essential that this provisional network number value not conflict with any other network numbers already in use on an internet. The selection of the provisional address involves the use of a specially reserved range of network numbers known as the startup range.
 
----
-
 ### Network number startup range
 
 As in AppleTalk Phase 1, a node saves its most recently used address in parameter RAM (pRAM) and attempts to use this address as a *provisional address* when restarted. However, if no address is found in pRAM, the node selects its provisional network number from a **startup range**, which is specified as $FF00–$FFFE. *This is a reserved range of network numbers that should never be assigned to any AppleTalk network in an internet environment.*

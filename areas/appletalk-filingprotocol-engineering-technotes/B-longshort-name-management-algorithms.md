@@ -1,5 +1,5 @@
 ---
-title: "# Long/Short Name Management Algorithms"
+title: "Long/Short Name Management Algorithms"
 source: "022_AppleTalkFilingProtocolEngineeringTechnicalNotes"
 source_url: ""
 pages: "115–116"
@@ -10,7 +10,7 @@ parent: "AFP Technical Notes"
 layout: default
 grand_parent: Areas
 ---
-# # Long/Short Name Management Algorithms
+# Long/Short Name Management Algorithms
 
 | Field | Value |
 |-------|-------|

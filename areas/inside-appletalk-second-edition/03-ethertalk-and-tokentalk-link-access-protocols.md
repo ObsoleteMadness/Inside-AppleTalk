@@ -24,22 +24,7 @@ grand_parent: Areas
 
 ---
 
-![Header banner](images/p90-header-banner.png)
-
 # Chapter 3 EtherTalk and TokenTalk Link Access Protocols
-
-## CONTENTS
-
-* 802.2 / 3-3
-* ELAP packet format / 3-5
-* TLAP packet format / 3-6
-* **Address mapping in ELAP and TLAP / 3-7**
-* Use of AARP by ELAP and TLAP / 3-8
-* AARP specifics for ELAP and TLAP / 3-9
-* Zone multicast addresses used by ELAP and TLAP / 3-10
-* **AppleTalk AARP packet formats on Ethernet and token ring / 3-11**
-
-![Small blue square icon](images/p90-blue-square.png)
 
 WHEN AN APPLETALK PROTOCOL STACK asks the data link to transmit an AppleTalk packet, its objective is to send the packet to the destination node's AppleTalk protocol stack. Consequently, it will provide the data link with the destination's AppleTalk protocol address, a 16-bit network number and an 8-bit node ID. On LocalTalk, which supports no more than 254 nodes, the lower 8 bits of this address can be used directly as the data-link address. Except when AppleTalk uses the LocalTalk data link, the data link will be unable to understand and use the destination's protocol address directly.
 
@@ -50,7 +35,7 @@ EtherTalk and TokenTalk were developed by Apple as extensions of these industry-
 ELAP and TLAP use the AppleTalk Address Resolution Protocol (AARP) to map AppleTalk protocol addresses into 48-bit data-link addresses. They then encapsulate the AppleTalk datagram before using the data-link to send the packet. When the AppleTalk protocol stack is initialized, ELAP and TLAP, in combination with DDP, use AARP to acquire the stack's AppleTalk protocol address (node address). ■
 
 
-# 802.2
+## 802.2
 
 The Institute of Electrical and Electronics Engineers (IEEE) has specified a standard for Logical Link Control (LLC) for use on Ethernet, token ring, and other data links. This standard, 802.2, involves a set of interfaces, packet formats, and procedures for use on these data links. 802.2 Type 1 specifies a connectionless or datagram service; 802.2 Type 2 is connection-based. ELAP and TLAP use 802.2 Type 1 packet formats. Details of the interfaces and procedures for 802.2 Type 1 are beyond the scope of this book, however it is necessary to understand 802.2 Type 1 packet formats to be able to understand packets as sent by AppleTalk on Ethernet and token ring.
 
@@ -59,7 +44,6 @@ The Institute of Electrical and Electronics Engineers (IEEE) has specified a sta
 Figure 3-1 shows the packet format for an 802.2 Type 1 SNAP packet. The packet consists of four parts. First is the data-link header for the data link on which the packet is sent. Second is the 3-byte 802.2 Type 1 header. This header consists of the destination and source SAPs (both $AA for SNAP) and a control byte indicating that Type 1 service is being used. The 802.2 header is followed by the five-byte SNAP protocol discriminator. Finally, the SNAP protocol discriminator is followed by the data part of the packet.
 
 SNAP protocol discriminators used by AppleTalk include $080007809B for AppleTalk data packets and $00000080F3 for AARP packets.
-
 
 ■ Figure 3-1 SNAP packet format
 
@@ -86,6 +70,30 @@ packet-beta
 
 
 The SNAP protocol discriminator used by AppleTalk is $080007809B. The AppleTalk packet continues, following the ELAP header, with the start of the DDP header.
+
+## ELAP packet format
+
+*Figure 3-2* shows the data packet format for AppleTalk packets on Ethernet. The ELAP header consists of the 14-byte 802.3 header followed by the 802.2 and SNAP headers. 802.3 is an IEEE standard which specifies the format of the data-link header bytes on Ethernet. This header consists of the packet's 48-bit destination and source hardware (Ethernet) addresses and a 2-byte length field indicating the length of the data that follows. 802.3 also specifies that if the total length of the packet is less than 60 bytes (the minimum for Ethernet), pad bytes must be added after the data to bring the packet size up to 60 bytes. Pad bytes are not counted in the 802.3 length field.
+
+### Figure 3-2 ELAP packet format
+![Figure 3·2 ELAP packet format](images/elap-packet-format.png)
+
+```mermaid
+packet-beta
+title ELAP Packet Format
+0-47: "Ethernet destination"
+48-95: "Ethernet source"
+96-111: "Length field"
+112-119: "Destination SAP ($AA)"
+120-127: "Source SAP ($AA)"
+128-135: "Control byte ($03)"
+136-175: "SNAP protocol discriminator ($080007809B)"
+176-215: "AppleTalk packet"
+216-255: "Pad (if needed)"
+```
+
+The SNAP protocol discriminator used by AppleTalk is `$080007809B`. The AppleTalk packet continues, following the ELAP header, with the start of the DDP header.
+
 
 ## TLAP packet format
 
@@ -126,7 +134,7 @@ packet-beta
 | SNAP protocol discriminator | 136 + SR | 40 | The SNAP protocol discriminator, set to $080007809B for AppleTalk. |
 | AppleTalk packet | 176 + SR | Variable | The encapsulated AppleTalk packet. |
 
-# Address mapping in ELAP and TLAP
+## Address mapping in ELAP and TLAP
 
 Ethernet and token ring provide addressing schemes structurally similar to that of LLAP. Nodes on Ethernet and token ring links are identified by unique addresses, and a broadcast capability is provided. These links also provide a multicasting capability, which is used by ELAP and TLAP to minimize the interference of AppleTalk broadcast packets on non-AppleTalk nodes.
 
@@ -134,7 +142,7 @@ However, Ethernet and token ring addresses are different from those expected by 
 
 There are conditions under which the AppleTalk protocol family will ask ELAP or TLAP to send a packet directly to a hardware address. If this is the case, no address mapping is performed and the packet is sent directly to the desired address.
 
-## Use of AARP by ELAP and TLAP
+### Use of AARP by ELAP and TLAP
 
 When the AppleTalk stack is initialized, ELAP or TLAP use AARP’s dynamic protocol address assignment to pick an AppleTalk node address unique to the data link on which the node is operating. The network number part of this node address is chosen from within the network number range assigned to the network. The actual use of AARP to choose this address is described in Chapter 4, “Datagram Delivery Protocol.”
 
@@ -149,7 +157,7 @@ Once an AppleTalk node address has been obtained, AppleTalk operation proceeds i
 
 The multicast address used by ELAP for AppleTalk broadcasts is $090007FFFFFF. The multicast hardware address used by TLAP for AppleTalk broadcasts is $C00040000000. ELAP and TLAP also use these multicast addresses for AARP broadcasts.
 
-## AARP specifics for ELAP and TLAP
+### AARP specifics for ELAP and TLAP
 
 ELAP and TLAP impose restrictions on the tentative AppleTalk node address that AARP picks when attempting to dynamically choose a unique AppleTalk node address. These node IDs must not be chosen by AARP: Node ID 0 (invalid as an AppleTalk node ID), $FF (AppleTalk broadcast node ID), and $FE (reserved as an AppleTalk node ID on Ethernet and token ring).
 
@@ -160,7 +168,7 @@ Incoming data packets contain the source data-link address and the source AppleT
 The AARP probe-retransmission interval and count for ELAP and TLAP is specified as 1/5 second and 10 retransmissions, respectively. For AARP requests, the corresponding parameters are left to the discretion of the specific implementer. AARP request and probe packets are sent to the same multicast hardware address used for AppleTalk broadcasts and thus interrupt only AppleTalk nodes. This address is $090007FFFFFF for ELAP and $C00040000000 for TLAP.
 
 
-# Zone multicast addresses used by ELAP and TLAP
+### Zone multicast addresses used by ELAP and TLAP
 
 AppleTalk data links should allocate a number of multicast addresses for use in the name lookup process, as indicated in Chapter 8, "Zone Information Protocol." ZIP and NBP use these addresses to minimize the effect of the name lookup process on nodes not in the desired zone. The specific zone multicast addresses defined for use by ELAP and TLAP are illustrated in Figure 3-4.
 
@@ -173,7 +181,7 @@ AppleTalk data links should allocate a number of multicast addresses for use in 
 | *AppleTalk broadcast address* | $090007FFFFFF | $C00040000000 |
 | *Zone multicast addresses*<br>When used with the address assignment algorithm described in Chapter 8, the first address in each list represents a[0]. | $090007000000<br>⋮<br>*253 addresses*<br>⋮<br>$0900070000FC | $C00000000800<br>$C00000001000<br>$C00000002000<br>$C00000004000<br>$C00000008000<br>$C00000010000<br>$C00000020000<br>$C00000040000<br>$C00000080000<br>$C00000100000<br>$C00000200000<br>$C00000400000<br>$C00000800000<br>$C00001000000<br>$C00002000000<br>$C00004000000<br>$C00008000000<br>$C00010000000<br>$C00020000000 |
 
-# AppleTalk AARP packet formats on Ethernet and token ring
+## AppleTalk AARP packet formats on Ethernet and token ring
 
 Each AARP packet on Ethernet and token ring begins with the same set of headers used by ELAP or TLAP. The SNAP protocol discriminator defined for AARP is $00000080F3. Following these headers, 6 bytes of AARP information identify the packet as requesting an AppleTalk-to-Ethernet or AppleTalk-to-token-ring address mapping:
 
@@ -184,7 +192,7 @@ Each AARP packet on Ethernet and token ring begins with the same set of headers 
 
 The rest of the AARP packet contains the source and destination hardware and AppleTalk addresses, the latter always in 4-byte fields with the upper byte set to 0. Figure 3-5 shows the AARP packet formats for Ethernet or token ring.
 
-## Figure 3-5 AppleTalk-Ethernet or AppleTalk-token ring AARP packet formats
+#### Figure 3-5 AppleTalk-Ethernet or AppleTalk-token ring AARP packet formats
 
 ![AppleTalk-Ethernet or AppleTalk-token ring AARP packet formats](images/p101-aarp-packet-formats.png)
 
@@ -274,30 +282,4 @@ packet-beta
 | Source AppleTalk address | 152 | 32 | AppleTalk address of the sender (4 bytes) |
 | 0 | 184 | 48 | Reserved field, set to 0 (6 bytes) |
 | Destination AppleTalk address | 232 | 32 | The AppleTalk address being probed (4 bytes) |
-
-
-# Part II End-to-End Data Flow
-
-PART I of *Inside AppleTalk* specifies the LocalTalk, EtherTalk, and TokenTalk link access protocols. These protocols govern the operation of local-area data links that can be used to connect network nodes in a geographically restricted area.
-
-In particular, LocalTalk can be used to connect up to 32 network nodes with a maximum cumulative link span of 300 meters. EtherTalk and TokenTalk use standard networking technology to build a local area network (LAN) with a large number of nodes and a cable length of up to several kilometers.
-
-Larger networks than those permitted by these local-area data links can also be set up. This extension can be achieved in two ways:
-
-*   by using bridges to extend a single LAN or data link
-*   by interconnecting several LANs through routers to build an internet
-
-Bridges and routers are intelligent devices that extend network systems by storing and forwarding packets on a path from the packet's source node to its destination node.
-
-A *bridge* operates at the data-link layer (level 2 of the ISO-OSI reference model in *Figure I-9*). It examines the data-link level destination addressing information of packets received by it on the link segments to which the bridge is connected. It then retransmits each packet on the appropriate segment toward the packet's destination node. In effect, bridges extend the effective length and maximum number of nodes limit of a single data link or local area network (LAN). Bridges are widely used in Ethernet-based systems such as DECnet™, and source-routing bridges are widely used in token ring based systems. Since bridges simply extend a particular LAN, their use is transparent to the various protocols of the network system.
-
-Routers are used to interconnect several different LANs or data links situated over a widely distributed geographical area. Routers forward packets by using an address extension defined at the network layer (level 3 of the ISO-OSI reference model).
-
-This address extension, known as a network number, is provided by the Datagram Delivery Protocol (DDP), which is described in Chapter 4, "Datagram Delivery Protocol."
-
-While bridges allow extension of a single data link or LAN, routers can be used to interconnect dissimilar data links into a single internet. In particular, as shown in Figure 4-1, routers can be used to enable communication between nodes on LocalTalk, EtherTalk, and TokenTalk data links, thus forming an AppleTalk internet incorporating dissimilar link technologies.
-
-Routers forward packets by consulting routing tables. The Routing Table Maintenance Protocol (RTMP), specified in Chapter 5, governs this table maintenance operation in all AppleTalk routers.
-
-The AppleTalk Echo Protocol (AEP) of Chapter 6 provides the ability to measure round-trip travel times between any two nodes of an AppleTalk internet. This information is useful in a variety of network management functions and for setting retry timers in various transport-level and session-level protocols. ■
 

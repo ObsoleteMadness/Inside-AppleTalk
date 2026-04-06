@@ -26,49 +26,15 @@ grand_parent: Areas
 
 # Chapter 10 Printer Access Protocol
 
-### CONTENTS
-
-PAP services / 10-4
-
-**The protocol / 10-5**
-- Connection establishment phase / 10-7
-- Data transfer phase / 10-9
-- Duplicate filtration / 10-11
-- Connection termination phase / 10-11
-- Status gathering / 10-12
-
-**PAP packet formats / 10-12**
-
-**PAP function and result values / 10-16**
-
-**PAP client interface / 10-16**
-- PAPOpen call / 10-17
-- PAPClose call / 10-17
-- PAPRead call / 10-18
-- PAPWrite call / 10-18
-- PAPStatus call / 10-19
-- SLInit call / 10-19
-- GetNextJob call / 10-20
-- SLClose call / 10-20
-- PAPRegName call / 10-20
-- PAPRemName call / 10-21
-- HeresStatus call / 10-21
-
-**PAP specifications for the Apple LaserWriter printer / 10-21**
-
----
-
 The use of the word *printer* in the name of this protocol is purely historical. The protocol was originally designed for the specific purpose of communication with print **servers**, such as the Apple LaserWriter and ImageWriter printers. However, the protocol has no special features for printing and can be used by a wide variety of other kinds of servers. Figure 10-1 illustrates the protocol architecture used for communication between a user's computer (workstation) and a print server in an AppleTalk network. PAP is a client of the AppleTalk Transaction Protocol (ATP) and the Name Binding Protocol (NBP). Both of these protocols use the Datagram Delivery Protocol (DDP). PAP is an asymmetric protocol; the PAP code in the workstation is different from the PAP code in the printer.
 
 The commands and data sent through the PAP connection are printer-dependent. For the LaserWriter printer, the dialog is in PostScript.
 
-■ **Figure 10-1** Printing architecture
+■ #### **Figure 10-1** Printing architecture
 
 ![Printing architecture showing workstation and printer protocol stacks](images/p228-printing-architecture.png)
 
----
-
-# PAP services
+## PAP services
 
 In order to establish a connection with a server, a PAP client in a workstation issues a PAPOpen call that results in the initiation of a connection establishment dialog with a server. The client specifies the server by its complete name; in order to initiate a dialog with the server, PAP calls NBP to obtain the address of the server's **session listening socket** (SLS). PAP also allows implementations in which the workstation's PAP client performs the NBP lookup directly (or obtains the server's address through other means) and then makes the PAPOpen call with the address of the server's SLS.
 
@@ -86,8 +52,6 @@ A server client can issue an SLClose call in order to close the SLS and to shut 
 
 A PAP client in the server node can use two calls, PAPRegName and PAPRemName, to register and remove (deregister), respectively, a server name for a specified SLS. For instance, PAPRegName can be used to assign more than one name to the server on a particular SLS. These calls could also be used at server setup time to change the name associated with a particular SLS.
 
----
-
 PAP must be able to handle cases of **half-open connections**, which occur when one of the connection ends goes down or otherwise terminates the connection without informing the other end. Half-open connections must be detected by PAP and torn down. For this purpose, PAP maintains a connection timer at each end. In addition, each end of an open connection must send *tickling packets* to the other end on a periodic basis (determined by the tickle timer). The purpose of these packets is to inform the other end that the sender's end is open and "alive." The receipt of any packet on a connection resets the connection timer at the receiving end. If the connection timer expires without a packet having been received, then PAP determines that the other end is unreachable, and the connection end is torn down.
 
 ## The protocol
@@ -100,9 +64,7 @@ After the *SLInit* call is completed, the server process issues a series of *Get
 
 As previously stated, PAP can support multiple servers within one node. Each of these servers is made available on a unique SLS, which is set up through a corresponding *SLInit* call.
 
----
-
-■ Figure 10-2 Server states
+#### **Figure 10-2** Server states
 
 ![State diagram showing server transitions between Start, Blocked, Waiting, Arbitration (ARB), and Unblocked states.](images/p231-server-states.png)
 
@@ -165,9 +127,8 @@ stateDiagram-v2
 
 PAP uses NBP to name (in a server) and find (from a workstation) a server's SLS. Apart from these operations, all packets exchanged by PAP are sent through ATP. Each such PAP packet contains a 1-byte quantity in the ATP user bytes that indicates the packet's PAP function.
 
----
 
-## Connection establishment phase
+### Connection establishment phase
 
 A **connection** is a logical relationship between two PAP entities, one in the workstation node and the other in the server node. Data can be exchanged by two PAP clients only after a connection has been established (opened). Since PAP uses ATP to transfer data, the two communicating PAPs must accomplish the following during the connection establishment phase:
 
@@ -188,13 +149,10 @@ At the end of the ARB interval, if no GetNextJobs are pending, then the server e
 
 Note that if the server is in the unblocked state, it has just been through the ARB state and has already opened connections to all workstations that have been waiting for a connection. Therefore, when the server is in the unblocked state and receives an OpenConn request, it need not enter the ARB state; the server accepts incoming OpenConn requests and sets up connections immediately. As soon as the server runs out of pending GetNextJob calls, it enters the blocked state. Then when a GetNextJob call is issued, the server again enters the waiting state.
 
----
 
 If the workstation's PAP receives an OpenConnReply indicating that the server is busy (that is, in the blocked state), then PAP waits a specified time period (approximately 2 seconds) and issues another connection-opening transaction. Each time the workstation end repeats this process, it updates its WaitTime value. The current value of this WaitTime is sent with each OpenConn packet. Each of these OpenConn ATP transaction requests is issued with a retry count of 5 and a retry interval of 2 seconds. The workstation's PAP should provide some way for its client to abort a PAPOpen call but should otherwise keep trying until the connection is opened.
 
----
-
-## Data transfer phase
+### Data transfer phase
 
 The opening of a connection initiates PAP's data transfer phase. In this phase, PAP performs the following two functions:
 
@@ -205,8 +163,6 @@ PAP maintains a connection timer (of 2-minute duration) at each end of a connect
 
 For the timer mechanism to work properly, it is important that, although no client data is being transferred on the connection, PAP exchange control packets to signal that the connection ends are alive. This process is referred to as tickling, and the control packets are called tickling packets. For this purpose, as soon as a connection is established, each end starts an ATP transaction with PAP function Tickle. This transaction, known as a Tickle transaction, has a retry count of infinite and a retry time interval equal to half the connection timeout period. Tickle transactions must be at-least-once (ALO) ATP transactions. Tickle packets are sent to the other end's ATP responding socket (that is, the R_S or R_W socket). The receiver of such a TReq packet must reset its connection timer but must not send a transaction response. Tickle transactions are canceled by each end when the connection is closed.
 
----
-
 The data transfer model used by PAP is read-driven. When the PAP client at either end of the connection wants to read data from the other end, it issues a PAPRead call. This call provides PAP with a read buffer into which the data is read; the size of the read buffer must be equal to the end's flow quantum. In response to the PAPRead call, PAP calls ATP to send an ATP transaction request with PAP function SendData and with an ATP bitmap that reflects the size of the call's read buffer. This transaction is issued with a retry count of infinite and a retry time interval of 15 seconds. The call is sent to the other end's ATP responding socket. To prevent duplicate delivery of data to PAP's clients, all ATP data transfer transactions use ATP's exactly-once (XO) mode and a sequence number. This technique of preventing duplicate delivery is described in detail in the following section, "Duplicate Filtration."
 
 The receipt of an ATP TReq packet with PAP function SendData implies that a pending PAPRead is at the other end. This send credit can be remembered by the PAP code and used to service any pending or future PAPWrite calls issued by its client.
@@ -215,25 +171,21 @@ When a PAP client (at either end) issues a PAPWrite call, PAP examines its inter
 
 When a PAP client issues the last PAPWrite call for a particular job, it should ask PAP to send an end-of-file (EOF) indication with that call's data. The EOF indication is delivered to the PAP client at the other end as part of the received information for a PAPRead call; this indication notifies the client that the other end is finished sending data on this connection. In order to specify the end of data, the client can issue a PAPWrite call with no data to be sent; in this case, just an EOF indication is sent to the client at the other end.
 
----
-
-## Duplicate filtration
+### Duplicate filtration
 
 As described in Chapter 9, “AppleTalk Transaction Protocol,” in the case of internets, ATP XO mode does not guarantee XO delivery of requests—it guarantees only that if a duplicate request is delivered to an ATP client, the request can be ignored because all responses to it have been successfully received by the other side. PAP uses a sequence number in SendData requests to enable it to detect these duplicates and to ignore them. Furthermore, since PAP maintains only one outstanding read request at a time, duplicate filtration can be accomplished in a fairly simple manner.
 
 All SendData requests contain a sequence number in the last 2 ATP user bytes. The sequence number starts at 1 with the first such request and takes on successive values up to 65,535 before wrapping around to 1 again. The value 0 is reserved to mean unsequenced. Any SendData request received with a sequence number of 0 should be accepted by PAP without checking for duplication. This use of 0 is for compatibility with previous versions of PAP. If the sequence number is not 0, PAP should verify that the sequence number is equal to the highest sequence number of the last SendData request received. If this is not the case, the packet should be ignored as a duplicate of a previous, already-completed request. Each side of the PAP connection must maintain independently both a sequence number for its SendData requests and a sequence number for the last SendData request accepted from the other end.
 
-## Connection termination phase
+### Connection termination phase
 
 When the PAP client at either end issues a PAPClose call, PAP closes the connection. Typically, after the workstation’s PAP client has completed sending all data to the server and has received an EOF in return, the client will issue the PAPClose call. An ATP transaction request is sent to the other end with PAP function CloseConn. An end receiving a CloseConn request should immediately send back, as a courtesy, an ATP transaction response of PAP function CloseConnReply. To close a connection’s end, it is important to cancel any pending ATP transactions issued by that end, including Tickle transactions. An end receiving a CloseConn packet must cancel its pending ATP transactions for that connection as soon as it is able to do so.
-
----
 
 At the server end, the receipt of the CloseConn causes the connection to be torn down, but the server may continue to process data for the ongoing job. When this data has been processed, the PAP client in the server can then issue a GetNextJob call in order to accept another job. In fact, the server can issue a GetNextJob call at any time in order to signal to its PAP code that it is willing to accept another job. These GetNextJob calls are queued up by PAP and used to accept incoming OpenConn requests as discussed in “Connection Establishment Phase” earlier in this chapter.
 
 A server can also close all open connections by issuing an SLClose call, which deregisters all names and closes the server’s SLS.
 
-## Status gathering
+### Status gathering
 
 PAP supports status querying of the server through the PAPStatus call. A workstation client need not open a connection with the server in order to issue this call; this call can be issued at any time. The PAPStatus call results in a SendStatus request packet being sent to the server specified in the call (the server can be specified by name, in which case, PAP calls NBP to determine the server’s address). The request is sent to the server’s SLS. The server’s PAP responds with a Status reply packet that contains a Pascal-format string (length byte first) specifying the server’s status. This response is made without delivering the request to the PAP client in the server. The PAP client in the server must have previously provided the status string to PAP through an SLInit or HeresStatus call. The HeresStatus call, details of which are implementation-dependent, should be made by the PAP server client whenever the server’s status changes. This status string is also returned by PAP in OpenConnReply packets.
 
@@ -243,17 +195,15 @@ As previously stated, PAP uses both NBP and ATP. NBP is used by the server’s P
 
 Packets sent by ATP in response to PAP calls include a PAP header. The header is built by using the user bytes of the ATP header and, in some cases, by sending 4 or more bytes of the PAP header in the data part of the ATP packet.
 
----
-
 The first ATP user byte of the PAP header is the ConnID (except in SendStatus requests and Status replies, whose first byte must be 0). The second ATP user byte is the PAP function of the packet (see the following section for a list of the PAP function values). For packets of PAP function equal to Data, the third ATP user byte is the EOF indication (a number other than 0 indicates EOF). For packets of function SendData, the third and fourth bytes are the sequence number (high byte first). OpenConn and OpenConnReply packets contain, as part of the ATP data, the ATP responding socket numbers and the flow quantum to be used for the connection. The OpenConn request additionally contains the WaitTime; the OpenConn reply contains the open result and the status string. Status replies contain just the status string.
 
 Figures 10-3 through 10-6 illustrate the PAP headers for the various types of PAP packets. For simplicity, the DDP and data-link headers are not included.
 
-### ■ Figure 10-3 PAP OpenConn and OpenConnReply packet formats
+#### **Figure 10-3** PAP OpenConn and OpenConnReply packet formats
 
 ![PAP OpenConn and OpenConnReply packet formats](images/p238-pap-openconn-formats.png)
 
-#### OpenConn (TReq)
+##### OpenConn (TReq)
 
 ```mermaid
 packet-beta
@@ -276,7 +226,7 @@ packet-beta
 | Flow quantum | 40 | 8 | Second byte of ATP data: Flow quantum. |
 | WaitTime | 48 | 16 | Remaining ATP data: Connection wait time. |
 
-#### OpenConnReply (TResp)
+##### OpenConnReply (TResp)
 
 ```mermaid
 packet-beta
@@ -303,11 +253,11 @@ packet-beta
 
 ---
 
-## Figure 10-4 PAP SendData, Data, and Tickle packet formats
+#### **Figure 10-4** PAP SendData, Data, and Tickle packet formats
 
 ![PAP SendData, Data, and Tickle packet formats](images/p239-pap-senddata-data-tickle-formats.png)
 
-### SendData (TReq)
+##### SendData (TReq)
 
 ```mermaid
 packet-beta
@@ -322,7 +272,7 @@ packet-beta
 | Function | 8 | 8 | PAP function (SendData) |
 | PAP sequence number | 16 | 16 | PAP sequence number |
 
-### Data (TResp)
+##### Data (TResp)
 
 ```mermaid
 packet-beta
@@ -341,7 +291,7 @@ packet-beta
 | 0 | 24 | 8 | Reserved (set to 0) |
 | Data | 32 | variable | ATP data payload (0 to 512 bytes) |
 
-### Tickle (TReq)
+##### Tickle (TReq)
 
 ```mermaid
 packet-beta
@@ -358,11 +308,11 @@ packet-beta
 | 0 | 16 | 8 | Reserved (set to 0) |
 | 0 | 24 | 8 | Reserved (set to 0) |
 
-## Figure 10-5 PAP CloseConn and CloseConnReply packet formats
+#### **Figure 10-5** PAP CloseConn and CloseConnReply packet formats
 
 ![PAP CloseConn and CloseConnReply packet formats](images/p239-pap-closeconn-formats.png)
 
-### CloseConn (TReq)
+##### CloseConn (TReq)
 
 ```mermaid
 packet-beta
@@ -379,7 +329,7 @@ packet-beta
 | 0 | 16 | 8 | Reserved (set to 0) |
 | 0 | 24 | 8 | Reserved (set to 0) |
 
-### CloseConnReply (TResp)
+##### CloseConnReply (TResp)
 
 ```mermaid
 packet-beta
@@ -396,13 +346,12 @@ packet-beta
 | 0 | 16 | 8 | Reserved (set to 0) |
 | 0 | 24 | 8 | Reserved (set to 0) |
 
----
 
-## ■ Figure 10-6 PAP SendStatus and Status packet formats
+#### **Figure 10-6** PAP SendStatus and Status packet formats
 
 ![PAP SendStatus and Status packet formats](images/p240-pap-sendstatus-status-packet-formats.png)
 
-#### SendStatus (TReq)
+##### SendStatus (TReq)
 
 ```mermaid
 packet-beta
@@ -419,7 +368,7 @@ packet-beta
 | ATP User Byte 2 | 16 | 8 | Reserved, set to 0. |
 | ATP User Byte 3 | 24 | 8 | Reserved, set to 0. |
 
-#### Status (TResp)
+##### Status (TResp)
 
 ```mermaid
 packet-beta
@@ -446,9 +395,7 @@ packet-beta
 | ATP Data Byte 3 | 56 | 8 | Unused. |
 | Status string | 64 | Variable | The status information string. |
 
----
-
-# PAP function and result values
+## PAP function and result values
 
 The permissible PAP function field values are as follows:
 
@@ -471,11 +418,9 @@ The values that can be returned in the result code field of a OpenConnReply are 
 | NoError | 0 | No error—connection opened |
 | PrinterBusy | $FFFF | Printer busy |
 
-# PAP client interface
+## PAP client interface
 
 This section describes the PAP calls. It lists the parameters that the client must include and provides the significant interface-level aspects of each call. Some of these calls are available only in workstations, others only in servers, and others in both workstations and servers. The call definitions specify which devices can use the calls.
-
----
 
 ### PAPOpen call
 
@@ -491,7 +436,6 @@ A PAP client in a workstation issues the PAPOpen call in order to initiate a con
 
 The open status string should be returned by PAP each time it is received in an OpenConnReply and not just upon call completion. The client must use the connection reference number (refnum) in order to refer to this connection in subsequent calls in the workstation.
 
----
 
 ### PAPClose call
 
@@ -502,9 +446,8 @@ A PAP client in a workstation or a server must issue the PAPClose call in order 
 | **Call parameter** | connection refnum |
 | **Returned parameter** | result code |
 
----
 
-## PAPRead call
+### PAPRead call
 
 The PAP client at either end issues a PAPRead call in order to read data from the other end over the connection specified by the connection refnum.
 
@@ -519,9 +462,7 @@ The PAP client at either end issues a PAPRead call in order to read data from th
 
 > ◆ **Note:** PAP assumes that the buffer into which the reply data is to be read is no smaller than the flow quantum specified in the PAPOpen or the SLInit call.
 
----
-
-## PAPWrite call
+### PAPWrite call
 
 The PAP client at either end issues a PAPWrite call in order to write data to the other end over the connection specified by the connection refnum.
 
@@ -536,9 +477,7 @@ The PAP client at either end issues a PAPWrite call in order to write data to th
 
 If the data size is larger than the flow quantum of the other end, the call returns with an error.
 
----
-
-## PAPStatus call
+### PAPStatus call
 
 A PAP client in the workstation issues a PAPStatus call in order to determine the current status of the server. This call can be used at any time, regardless of whether a connection has been opened by the PAP client to the server. Upon completion, this call returns a string that contains the status message sent by the server.
 
@@ -549,9 +488,7 @@ A PAP client in the workstation issues a PAPStatus call in order to determine th
 **Returned parameter**
 * result code
 
----
-
-## SLInit call
+### SLInit call
 
 The PAP client in the server issues an SLInit call in order to open an SLS and to register the server's name on this socket. The client can also include an initial status string in this call.
 
@@ -566,9 +503,8 @@ The PAP client in the server issues an SLInit call in order to open an SLS and t
 
 The server refnum must be used by the server when issuing subsequent GetNextJob calls in order to identify the SLS for which the GetNextJob call is being made. The PAP code in the server node must return a unique server refnum for each SLInit call.
 
----
 
-## GetNextJob call
+### GetNextJob call
 
 The PAP client in the server issues a GetNextJob call whenever it is ready to accept a new job through the SLS specified by a server refnum.
 
@@ -578,9 +514,8 @@ The PAP client in the server issues a GetNextJob call whenever it is ready to ac
 | **Returned parameters** | result code |
 | | connection refnum (a number assigned by PAP to uniquely identify the connection) |
 
----
 
-## SLClose call
+### SLClose call
 
 The PAP client in the server issues an SLClose call in order to close down a server process.
 
@@ -589,9 +524,7 @@ The PAP client in the server issues an SLClose call in order to close down a ser
 | **Call parameter** | server refnum |
 | **Returned parameter** | result code |
 
----
-
-## PAPRegName call
+### PAPRegName call
 
 The PAPRegName call is used only in server nodes. This call registers a name (as an NBP entity name for the server) on the SLS corresponding to the specified server refnum.
 
@@ -601,7 +534,6 @@ The PAPRegName call is used only in server nodes. This call registers a name (as
 | | server name to register |
 | **Returned parameter** | result code |
 
----
 
 ### PAPRemName call
 
@@ -614,7 +546,6 @@ The PAPRemName call is used only in server nodes. This call deregisters a name f
 **Returned parameter**
 - result code
 
----
 
 ### HeresStatus call
 
@@ -627,8 +558,6 @@ The PAP client in the server issues a HeresStatus call in order to provide PAP w
 **Returned parameter**
 - result code
 
----
-
 ## PAP specifications for the Apple LaserWriter printer
 
 The following specifications detail the PAP-client implementation on the Apple LaserWriter printer.
@@ -636,4 +565,4 @@ The following specifications detail the PAP-client implementation on the Apple L
 * The flow quantum used by the LaserWriter is 8.
 * The LaserWriter printer can handle only one job at a time, so it never has more than one GetNextJob outstanding. Essentially, the unblocked state does not exist on the LaserWriter; the LaserWriter printer can be in only a waiting, arbitration, or blocked state.
 
----
+

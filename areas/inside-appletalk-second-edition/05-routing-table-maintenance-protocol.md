@@ -26,56 +26,8 @@ grand_parent: Areas
 
 # Chapter 5 Routing Table Maintenance Protocol
 
-CONTENTS
 
-**Internet routers / 5-4**
-Local routers / 5-4
-Half routers / 5-4
-Backbone routers / 5-4
-
-**Router model / 5-6**
-
-**Internet topologies / 5-7**
-
-**Routing tables / 5-8**
-
-**Routing table maintenance / 5-10**
-Reducing RTMP packet size / 5-11
-Aging of routing table entries / 5-12
-Validity and send-RTMP timers / 5-13
-
-**RTMP Data packet format / 5-13**
-Sender's network number / 5-15
-Sender's node ID / 5-15
-Version number indicator / 5-15
-Routing tuples / 5-16
-
-**Assignment of network number ranges / 5-16**
-
-**RTMP and nonrouter nodes / 5-17**
-Nodes on nonextended networks / 5-17
-Nodes on extended networks / 5-19
-
-**RTMP Route Data Requests / 5-20**
-
----
-
-## RTMP table initialization and maintenance algorithms / 5-21
-- Initialization / 5-21
-- Maintenance / 5-21
-  - RTMP Data packet received through port P / 5-22
-  - RTMP Request packet received through port P / 5-23
-  - Validity timer expires / 5-23
-  - Send-RTMP packet timer expires / 5-24
-- Tuple matching definitions / 5-25
-
-## RTMP routing algorithm / 5-25
-
-■
-
----
-
-# THE ROUTING TABLE MAINTENANCE PROTOCOL
+## THE ROUTING TABLE MAINTENANCE PROTOCOL
 
 (RTMP) is used by internet routers (IRs) to establish and maintain the **routing tables** that are central to the process of forwarding datagrams from any source socket to any destination socket on an internet. Chapter 4, "Datagram Delivery Protocol," introduced the concept of IRs as the devices by which datagrams are forwarded/routed from any source socket to any destination socket on the internet.
 
@@ -85,40 +37,38 @@ This chapter describes RTMP and includes information about
 *   RTMP packets
 *   RTMP algorithms
 
----
-
-# Internet routers
+## Internet routers
 
 IRs are the key components in extending the datagram delivery mechanism to an internet setting. *Figure 5-1* shows three basic ways that routers can be used to build an internet. Note that a single router can incorporate all three configurations.
 
 
-## Local routers
+### Local routers
 
 A router used to interconnect AppleTalk networks in close proximity is referred to as a **local router** and is shown in Configuration A of *Figure 5-1*. Local routers are connected directly to each of the AppleTalk networks they serve. Local routers are useful in allowing the construction of an AppleTalk internet with a large number of nodes within the same building.
 
 
-## Half routers
+### Half routers
 
 Configuration B of *Figure 5-1* shows the use of two routers interconnected by a long-distance communication link. Each router is directly connected to an AppleTalk network. The combination of the two routers and the intervening link serves as a routing unit between the AppleTalk networks. Each router in this unit is referred to as a **half router**. The primary use of half routers is to interconnect remote AppleTalk systems. The intervening link can be made up of several devices (such as modems) and other networks (such as public data networks). Note that the *throughput* of half routers is generally lower than that of local routers, due to the generally slower communication link. Also, these communication links are often less reliable than the local networks of the internet.
 
 
-## Backbone routers
+### Backbone routers
 
 Backbone routers are used to interconnect several AppleTalk networks through a **backbone network** (a non-AppleTalk network). Although these routers might be placed in the local or half router category, they present an important set of properties. Each router could be a local router connected on one side to an AppleTalk network and on the other side to the backbone network. Backbone routers are shown in Configuration C of *Figure 5-1*. Another way of connecting a backbone router to the backbone network might be through a long-distance communication link. Typically, the backbone network either has a much higher capacity than the networks it helps interconnect or is a wide-area network such as a public packet-switched datagram network.
 
 
-# Figure 5-1 Router configurations
+#### Figure 5-1 Router configurations
 
 ![Diagram showing three different router configurations. Configuration A illustrates a local router connecting two local networks. Configuration B shows two half routers connected via a long-distance communication link. Configuration C depicts three local networks connected to a central backbone network via backbone routers.](images/p129-router-configurations.png)
 
-### Configuration A
+##### Configuration A
 TODO: add image
-### Configuration B
+##### Configuration B
 TODO add image
-### Configuration C
+##### Configuration C
 TODO add image
 
-# Router model
+## Router model
 
 Figure 5-2 models a router as a device with several hardware ports, referred to as router ports. A router can be connected in any of the three ways previously described (local router to an AppleTalk network, half router to a communication link, or backbone router to a backbone network) or as a combination of all three. In this model, a router can have any number of ports, starting with number 1.
 
@@ -129,25 +79,24 @@ Each router port has associated with it a port descriptor. A port descriptor con
 * the port node address (the router's network number and node ID corresponding to the port)
 * the port network number range (the network number range for the network to which the port is connected)
 
-■ **Figure 5-2 Router model**
+### Figure 5-2 Router model**
 
 ![Router model diagram showing internal components like RTMP, Routing table, ZIP, DDP routing process, NBP routing process, and multiple ports from Port 1 to Port n.](images/p130-router-model.png)
 
-
 The values of these four fields are self-evident for a port that is directly connected to an AppleTalk network. When a port is connected to one end of a communication link (half router case), the port node address and port network number range are meaningless. When a port is connected to a non-AppleTalk backbone network, the port network number range is meaningless, and the port node address becomes the appropriate address of the router on the backbone network. In this latter case, a provision must be made in the design of the port description for this field to be of any size (possibly variable length) depending on the nature of the backbone network.
 
-* Note: The AppleTalk node address of a local router is different for each of the router's ports. In other words, for each AppleTalk network to which the local router is directly connected, the router acquires a different network number and node ID.
+> * *Note:* The AppleTalk node address of a local router is different for each of the router's ports. In other words, for each AppleTalk network to which the local router is directly connected, the router acquires a different network number and node ID.
 
 The router internals include an associated data-link process for each port, a Datagram Delivery Protocol (DDP) routing process, the routing table, and the RTMP process implemented on a statically assigned socket (SAS) known as the RTMP socket (socket number equal to 1). The IR accepts incoming datagrams from the data links and then reroutes them through the appropriate port depending on their destination network number. (The IR makes the routing decision by consulting the routing table.) The RTMP process receives RTMP packets from other routers through the RTMP socket and uses these packets to maintain/update the routing table.
 Routers additionally include a Name Binding Protocol (NBP) routing process and a Zone Information Protocol (ZIP) process; the roles of these protocols are discussed in Chapters 7 and 8.
 
 
-# Internet topologies
+## Internet topologies
 
 RTMP allows internets to consist of AppleTalk networks interconnected through routers in any arbitrary topology. A limitation imposed on an AppleTalk internet is that for each router no two of its ports can be on the same network. In addition, nodes on a network that is more than 16 hops away (by way of the shortest path) from another network will not be able to communicate with nodes on the second network.
 
 
-# Routing tables
+## Routing tables
 
 All routers maintain complete routing tables that allow them to determine how to forward a datagram on the basis of its destination network number. RTMP allows routers to exchange their routing tables periodically. In this process, a router receiving the routing table of another router compares and updates its own table to record the shortest path for each destination network. This exchange process allows the routers to respond to changes in the connectivity of the internet (for example, when a router goes down or when a new router is installed).
 
@@ -162,7 +111,7 @@ Each routing table entry has an entry state associated with it. An **entry state
 Figure 5-3 shows a typical routing table for a router with three ports in an internet consisting of seven networks. The figure also shows the corresponding port descriptors.
 
 
-### Figure 5-3 Example of a routing table
+#### Figure 5-3 Example of a routing table
 
 ![Example of a network topology with various local area networks connected through routers and a backbone network, accompanied by its corresponding routing table.](images/p133-routing-table-example.png)
 
@@ -177,7 +126,7 @@ Figure 5-3 shows a typical routing table for a router with three ports in an int
 | 231 | 2 | 2 | 0 | Good |
 
 
-# Routing table maintenance
+## Routing table maintenance
 
 Routers have no record of the topology or connectivity of the internet. Consequently, RTMP must provide the mechanism for constructing routing tables and for maintaining these tables in the face of routers appearing or disappearing in the internet.
 
@@ -190,7 +139,7 @@ The basic idea is that if an RTMP Data packet received by a router contains a ro
 Similarly, if an RTMP Data packet indicates a shorter path to a particular network than the one currently in the router's routing table (if the packet's tuple distance plus 1 is less than the table entry's current distance), then the corresponding entry must be modified to indicate that the RTMP packet's sender is the next IR for that network. Even if the paths are of equal length, the entry is modified and routing information remains as up to date as possible. This process allows for the growth and adaptation of routing tables due to the addition of new routes and routers.
 
 
-## Reducing RTMP packet size
+### Reducing RTMP packet size
 
 The periodic broadcasting of the routing table on each of a router's directly connected data links is fundamental to the routing table maintenance process. Although this broadcasting ensures consistency of the internet's routing tables, it poses some practical problems. In the case of slow data links, such as those used between half routers, the traffic generated by this process can consume a major portion of the available channel bandwidth. This problem is also observed on networks, such as backbones, to which a large number of routers are connected. The overhead is even more notable when the internet has a large number of networks and hence large routing tables.
 
@@ -200,12 +149,12 @@ To implement split horizon, routers do not send the entire routing table out eac
 
 In addition to split horizon, a more economical extension to RTMP could be designed to communicate just the changes to a routing table. Such changes to RTMP have not yet been formulated by Apple Computer.
 
-■ **Figure 5-4** Split horizon example
+### **Figure 5-4** Split horizon example
 
 ![Network diagram illustrating the split horizon technique with routers A, B, C, and D connected via a backbone network.](images/p135-split-horizon-example.png)
 
 
-## Aging of routing table entries
+### Aging of routing table entries
 
 If routers go down or are switched off, the corresponding changes in status will not be discovered through the previously mentioned process. To respond to such changes, the entries in the routing tables must be aged. *Aging* is the process by which unconfirmed routing table entries are eventually removed from the routing table. In the absence of confirmation through reception of RTMP Data packets, entries are declared suspect and, later, bad. Bad entries are eventually purged from the routing tables.
 
@@ -219,7 +168,7 @@ Routing table entries whose state is bad are eliminated from the routing table f
 
 For a detailed specification of the aging process, see "RTMP Table Initialization and Maintenance Algorithms" later in this chapter.
 
-## Validity and send-RTMP timers
+### Validity and send-RTMP timers
 
 Each router has a timer known as the send-RTMP timer. Every time this timer expires, the router broadcasts, through each of its ports, its routing table in the form of RTMP Data packets.
 
@@ -232,11 +181,11 @@ RTMP uses four kinds of packets: RTMP Data, Request, Route Data Request, and Res
 The format of an RTMP Data packet is shown in *Figure 5-5*. The DDP type field is set to 1 to indicate that the datagram is an RTMP Data packet. The DDP data part of the packet consists of four parts: the sender's network number, the sender's node ID, a version number indicator, and the routing tuples.
 
 
-## Figure 5-5 RTMP Data packet formats
+#### Figure 5-5 RTMP Data packet formats
 
 ![Diagram showing RTMP packet formats for nonextended and extended networks, including details for nonextended and extended network tuples.](images/p138-rtmp-packet-formats.png)
 
-### RTMP packet (nonextended network)
+##### RTMP packet (nonextended network)
 
 *   **Data-link header**
 *   **DDP header**
@@ -247,7 +196,7 @@ The format of an RTMP Data packet is shown in *Figure 5-5*. The DDP type field i
 *   **$82**
 *   **First tuple**
 
-### RTMP packet (extended network)
+##### RTMP packet (extended network)
 
 *   **Data-link header**
 *   **DDP header**
@@ -257,7 +206,7 @@ The format of an RTMP Data packet is shown in *Figure 5-5*. The DDP type field i
 *   **First tuple** (network range and version number)
 *   **Second tuple**
 
-### Nonextended network tuple
+##### Nonextended network tuple
 
 ```mermaid
 packet-beta
@@ -272,7 +221,7 @@ packet-beta
 | Range flag | 16 | 1 | Set to 0 to indicate a nonextended network tuple. |
 | Distance | 17 | 7 | The hop count to the destination network. |
 
-### Extended network tuple
+##### Extended network tuple
 
 ```mermaid
 packet-beta
@@ -292,20 +241,20 @@ packet-beta
 | $82 | 40 | 8 | The RTMP version number ($82 for AppleTalk Phase 2). |
 
 
-## Sender's network number
+### Sender's network number
 
 The first 2 bytes of the RTMP Data packet's DDP data is the router's network number part of the node address of the port through which the packet is sent by the router. On a nonextended network, this field allows the receiver of the packet to determine the network number of the network through which the packet was received. (This is the network to which the corresponding port of the receiver is attached.) RTMP Data packets sent through ports that are not on AppleTalk networks (for example, over serial lines or a backbone network) should have this field set to 0.
 
-## Sender's node ID
+### Sender's node ID
 
 The bytes following the sender's network number indicate the node ID of the sender (for the port through which the packet was sent). To allow for ports connected to networks other than AppleTalk networks, this field must be of variable size. The first byte of the field contains the length (in bits) of the sender node's address, with the address itself in subsequent bytes. If the length of the node address in bits is not an exact multiple of 8, the address is prefixed with enough 0s to make a complete number of bytes. The bytes of this modified address are then packed into the sender's ID field of the packet, starting with the most-significant bits. It is from this field that the receiver of the packet determines the ID of the router sending the packet.) On an AppleTalk network this ID is combined with the sender's network number to specify the sender's complete node address.
 
-## Version number indicator
+### Version number indicator
 
 Following the sender's node ID, in RTMP Data packets sent on non-extended networks, is a three byte field indicating the version number of the RTMP Data packet. The value of this field is currently $000082. The version number of an RTMP Data packet sent on an extended network is specified in the first tuple, as detailed in the next section.
 
 
-## Routing tuples
+### Routing tuples
 
 The last part of the RTMP Data packet consists of the routing tuples from the sending router's routing table.
 
@@ -315,7 +264,7 @@ The first tuple in RTMP Data packets sent on extended networks serves three purp
 
 For internets with a large number of networks, the entire routing table may not fit in a single datagram. In that case, the tuples are distributed over as many RTMP Data packets as necessary. Tuples are never split across packets. In any event, every time the send-RTMP timer expires, these multiple RTMP Data packets must be transmitted through each router port.
 
-## Assignment of network number ranges
+### Assignment of network number ranges
 
 Network number ranges are set into the port descriptors of the router ports and are then transmitted through RTMP to the other nodes of each network.
 
@@ -337,11 +286,11 @@ The first method is to listen for RTMP Data packets that are being sent out by t
 
 A second, more active approach relies on the use of RTMP Request and Response packets, as shown in Figure 5-6. The node makes a request for the network number and any router's node ID by broadcasting an RTMP Request packet. This packet is a datagram with DDP type equal to 5; it can be sent by the node through any socket. The datagram is addressed to destination socket number 1 (the RTMP listening socket). When an RTMP Request packet is received by a router's RTMP process, this process responds by sending an RTMP Response packet to the source socket of the Request packet. This Response packet is identical to a normal RTMP Data packet except that it contains no routing tuples and it is sent as a directed (not a broadcast) packet to the requesting node. The requesting node thus acquires the values of THIS-NET and A-ROUTER from the sender's network number and sender's node ID fields of the Response packet.
 
-### Figure 5-6 RTMP Request and Response packet formats
+#### Figure 5-6 RTMP Request and Response packet formats
 
 ![RTMP Request and Response packet formats](images/p142-rtmp-packet-formats.png)
 
-#### RTMP Request
+##### RTMP Request
 
 ```mermaid
 packet-beta
@@ -354,7 +303,7 @@ packet-beta
 | DDP type | 0 | 8 | DDP protocol type, set to 5 for RTMP Request. |
 | RTMP function | 8 | 8 | Set to 1 for RTMP Request. |
 
-#### RTMP Response
+##### RTMP Response
 
 ```mermaid
 packet-beta
@@ -379,7 +328,7 @@ packet-beta
 | Network range end | 64 | 16 | End of the network range (on extended networks only). |
 | $82 | 80 | 8 | Constant value $82 (on extended networks only). |
 
-#### RTPM Route Data Request (RDR)
+##### RTPM Route Data Request (RDR)
 
 ```mermaid
 packet-beta
@@ -398,7 +347,7 @@ Additionally, nonrouter nodes must maintain a background timer for the purpose o
 
 ◆ Note: The RTMP Stub should differentiate between RTMP Data or Response packets (sent by routers) and RTMP Requests (broadcast by nonrouter nodes). The RTMP Stub should ignore RTMP Requests. RTMP Requests can be differentiated from RTMP Data or Response packets because RTMP Requests have a DDP type of 5, whereas RTMP Data and Response packets have a DDP type of 1.
 
-## Nodes on extended networks
+### Nodes on extended networks
 
 When a node is initialized on an extended network, THIS-NET-RANGE is set to 0-$FFFE and the network number and node ID of A-ROUTER are both set to 0. The node discovers the correct values of these two quantities and its zone name during the startup process through a ZIP GetNetInfo request, described in Chapter 8, "Zone Information Protocol."
 
@@ -417,15 +366,15 @@ RTMP Data packets are generally broadcast once every 10 seconds. A node wishing 
 A router receiving an RDR packet should send the requested information, in as many RTMP Data packets as required, back to the source internet socket address of the RDR packet. RDRs can be used by a node wishing to have routing information sent to it on a socket other than socket 1 or to obtain routing information from a router that is not on a network to which the node is directly connected.
 
 
-# RTMP table initialization and maintenance algorithms
+## RTMP table initialization and maintenance algorithms
 
 The following algorithms provide a detailed specification of the initialization and maintenance process of an active router.
 
-## Initialization
+### Initialization
 
 When switched on, a router performs the following table initialization algorithm:
 
-```
+```pascal
 FOR each port P connected to an AppleTalk network
     IF the port network number range <> 0
     THEN create a routing table entry for that network number range with
@@ -440,7 +389,7 @@ This algorithm creates a routing table entry for each directly connected AppleTa
 
 Additionally, for each port with a nonzero network number range, the router should attempt to verify that the port's network number range does not conflict with that from another router on the same network. This can be done, for instance, by broadcasting an RTMP Request or ZIP GetNetInfo packet. If a conflict is discovered, the routing seed information should not be used.
 
-## Maintenance
+### Maintenance
 
 The router is assumed to have two timers running continuously: the validity timer and the send-RTMP timer. The router's RTMP process responds to the following events:
 
@@ -452,9 +401,9 @@ The router is assumed to have two timers running continuously: the validity time
 The following algorithms correspond to these events.
 
 
-# RTMP Data packet received through port P
+### RTMP Data packet received through port P
 
-```
+```pascal
 IF P is connected to an AppleTalk network AND P's network number range = 0
 THEN BEGIN
     P's network number range := packet's sender network number range;
@@ -480,7 +429,7 @@ FOR each routing tuple in the RTMP Data packet DO
 
 The following three general-purpose routines (Update-the-Entry, Create-New-Entry, and Replace-Entry) are used by this algorithm.
 
-## Update-the-Entry
+#### Update-the-Entry
 
 ```
 IF (Entry's state = Bad) AND (tuple distance < 15)
@@ -502,22 +451,25 @@ ELSE
 ```
 
 
-### Create-New-Entry
+#### Create-New-Entry
 
+```pascal
 Entry's network number range := tuple's network number range;
 Replace-Entry;
 IF tuple's distance = 31 THEN Entry's state := Bad;
+```
 
-### Replace-Entry
-
+#### Replace-Entry
+```pascal
 Entry's distance := tuple's distance + 1;
 Entry's next IR := RTMP Data packet's node address { network number and node ID
                                                      on an AppleTalk network }
 Entry's port number := P;
 Entry's state := Good;
+```
 
-### RTMP Request packet received through port P
-
+#### RTMP Request packet received through port P
+```pascal
 IF P is connected to an AppleTalk network and P's network number range <> 0
 THEN BEGIN { Prepare an RTMP Response packet }
     Response packet's sender network number := P's port network number;
@@ -527,9 +479,10 @@ THEN BEGIN { Prepare an RTMP Response packet }
     Call DDP to send the Response packet through port P to the
         Request's source;
 END;
+```
 
-### Validity timer expires
-
+#### Validity timer expires
+```pascal
 FOR each entry in the routing table DO
     CASE Entry's state OF
         Good: IF entry's distance <> 0
@@ -538,11 +491,11 @@ FOR each entry in the routing table DO
         Bad₀: Entry's state:= Bad₁;
         Bad₁: Delete the entry
     END;
+```
 
+#### Send-RTMP packet timer expires
 
-## Send-RTMP packet timer expires
-
-```text
+```pascal
 IF routing table is not empty
 THEN FOR each router port P DO
     IF the port is connected to an AppleTalk network AND its network number
@@ -564,9 +517,9 @@ THEN FOR each router port P DO
     END;
 ```
 
-### *Copy-in-tuples*
+#### *Copy-in-tuples*
 
-```text
+```pascal
 For each entry in the routing table
     IF the entry's port <> P   {split horizon}
     THEN IF the entry's state <> Bad
@@ -577,18 +530,18 @@ For each entry in the routing table
 ```
 
 
-# Tuple matching definitions
+### Tuple matching definitions
 
 For purposes of routing table maintenence, it is important to define when an incoming RTMP tuple corresponds to and overlaps with an entry in the routing table. An incoming tuple corresponds to an entry in the routing table if the range start and range end of that tuple are the same as the range start and range end of the routing table entry. When comparing ranges where one of the ranges is for a nonextended network (in other words, indicated by just a single network number, like 3), that range should be considered a range of one (that is 3-3).
 
 An incoming tuple overlaps with an entry in the routing table if any network number in either range is in both ranges. A correctly maintained routing table will contain no overlapping entries.
 
-# RTMP routing algorithm
+## RTMP routing algorithm
 
 The routing algorithm used by the DDP router in an internet router to forward internet datagrams is shown in *Figure 5-7*. This algorithm applies only to the forwarding of packets received by the router through one of its ports and does not hold for packets generated within the router. The algorithm assumes that when a packet is received through one of the router ports, it is tagged with the number of the port and placed in a queue. The IR removes packets from this queue and then executes the algorithm of *Figure 5-7*. Remember when comparing network numbers that a destination network number of 0 will always match whatever it is being compared to.
 
 
-### Figure 5-7 Datagram routing algorithm for a router
+#### **Figure 5-7** Datagram routing algorithm for a router
 
 ![Datagram routing algorithm for a router](images/p150-datagram-routing-algorithm.png)
 

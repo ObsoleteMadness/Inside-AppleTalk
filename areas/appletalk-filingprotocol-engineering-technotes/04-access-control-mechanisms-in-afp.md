@@ -1,5 +1,5 @@
 ---
-title: "# Access Control Mechanisms in AFP"
+title: "Access Control Mechanisms in AFP"
 source: "022_AppleTalkFilingProtocolEngineeringTechnicalNotes"
 source_url: ""
 pages: "27–30"
@@ -10,7 +10,7 @@ parent: "AFP Technical Notes"
 layout: default
 grand_parent: Areas
 ---
-# # Access Control Mechanisms in AFP
+# Access Control Mechanisms in AFP
 
 | Field | Value |
 |-------|-------|

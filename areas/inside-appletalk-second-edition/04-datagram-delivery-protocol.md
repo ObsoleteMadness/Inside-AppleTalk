@@ -24,52 +24,34 @@ grand_parent: Areas
 
 ---
 
+# Part II End-to-End Data Flow
+
+PART I of *Inside AppleTalk* specifies the LocalTalk, EtherTalk, and TokenTalk link access protocols. These protocols govern the operation of local-area data links that can be used to connect network nodes in a geographically restricted area.
+
+In particular, LocalTalk can be used to connect up to 32 network nodes with a maximum cumulative link span of 300 meters. EtherTalk and TokenTalk use standard networking technology to build a local area network (LAN) with a large number of nodes and a cable length of up to several kilometers.
+
+Larger networks than those permitted by these local-area data links can also be set up. This extension can be achieved in two ways:
+
+*   by using bridges to extend a single LAN or data link
+*   by interconnecting several LANs through routers to build an internet
+
+Bridges and routers are intelligent devices that extend network systems by storing and forwarding packets on a path from the packet's source node to its destination node.
+
+A *bridge* operates at the data-link layer (level 2 of the ISO-OSI reference model in *Figure I-9*). It examines the data-link level destination addressing information of packets received by it on the link segments to which the bridge is connected. It then retransmits each packet on the appropriate segment toward the packet's destination node. In effect, bridges extend the effective length and maximum number of nodes limit of a single data link or local area network (LAN). Bridges are widely used in Ethernet-based systems such as DECnet™, and source-routing bridges are widely used in token ring based systems. Since bridges simply extend a particular LAN, their use is transparent to the various protocols of the network system.
+
+Routers are used to interconnect several different LANs or data links situated over a widely distributed geographical area. Routers forward packets by using an address extension defined at the network layer (level 3 of the ISO-OSI reference model).
+
+This address extension, known as a network number, is provided by the Datagram Delivery Protocol (DDP), which is described in Chapter 4, "Datagram Delivery Protocol."
+
+While bridges allow extension of a single data link or LAN, routers can be used to interconnect dissimilar data links into a single internet. In particular, as shown in Figure 4-1, routers can be used to enable communication between nodes on LocalTalk, EtherTalk, and TokenTalk data links, thus forming an AppleTalk internet incorporating dissimilar link technologies.
+
+Routers forward packets by consulting routing tables. The Routing Table Maintenance Protocol (RTMP), specified in Chapter 5, governs this table maintenance operation in all AppleTalk routers.
+
+The AppleTalk Echo Protocol (AEP) of Chapter 6 provides the ability to measure round-trip travel times between any two nodes of an AppleTalk internet. This information is useful in a variety of network management functions and for setting retry timers in various transport-level and session-level protocols. ■
+
+---
+
 # Chapter 4 Datagram Delivery Protocol
-
-## CONTENTS
-
-Internet routers / 4-5
-
-Sockets and socket identification / 4-5
-
-Network numbers and a node's AppleTalk address / 4-6
-
-Special DDP node IDs / 4-6
-
-AppleTalk node address acquisition / 4-7
-* Node address acquisition on nonextended networks / 4-8
-* Node address acquisition on extended networks / 4-8
-
-DDP type field / 4-9
-
-Socket listeners / 4-10
-
-DDP interface / 4-10
-* Opening a statically assigned socket / 4-11
-* Opening a dynamically assigned socket / 4-12
-* Closing a socket / 4-12
-* Sending a datagram / 4-12
-* Datagram reception by the socket listener / 4-13
-
-DDP internal algorithm / 4-13
-
-DDP packet format / 4-13
-* Short and extended headers / 4-14
-* DDP checksum computation / 4-17
-* Hop counts / 4-17
-
-
-![Header Graphic](images/p105-header.png)
-
-DDP routing algorithm / 4-18
-Optional "best router" forwarding algorithm / 4-20
-
-Sockets and use of name binding / 4-21
-
-Network number equivalence / 4-21
-
-![Section marker](images/p105-marker.png)
-
 
 THE LOCALTALK LINK ACCESS PROTOCOL (LLAP) and other AppleTalk data links provide a best-effort, node-to-node delivery of packets on a single AppleTalk network. The Datagram Delivery Protocol (DDP) is designed to extend this mechanism to the socket-to-socket delivery of datagrams over an AppleTalk internet. Datagrams are packets of data carried by DDP between the sockets of an internet. An AppleTalk internet consists of one or more AppleTalk networks connected by intelligent nodes referred to as **internet routers** (IRs), as shown in *Figure 4-1*.
 
@@ -88,7 +70,7 @@ This chapter specifies DDP. In particular it describes:
 ![AppleTalk internet and internet routers (IRs)](images/p107-appletalk-internet.png)
 
 
-# Internet routers
+## Internet routers
 
 IRs are packet-forwarding agents. Packets can be sent between any two nodes of an internet by using a store-and-forward process through a series of IRs. An IR often consists of a single node connected to two or more AppleTalk networks; it might also consist of two nodes connected to each other through a communication channel. In the latter case, the channel between the two halves of the IR could take any of the following forms:
 
@@ -96,7 +78,7 @@ IRs are packet-forwarding agents. Packets can be sent between any two nodes of a
 * another network (for example, a wide-area packet-switched or circuit-switched public network)
 * a higher-speed broadband or baseband local area network (LAN) used as a backbone
 
-# Sockets and socket identification
+## Sockets and socket identification
 
 Sockets are logical entities within the nodes connected to an AppleTalk internet. Sockets are owned by socket clients. **Socket clients** are typically processes (or functions in processes) implemented in software in the node. A socket client can send and receive datagrams only through sockets that it owns.
 
@@ -107,13 +89,13 @@ Sockets are classified into two groups: statically assigned and dynamically assi
 Socket numbers 128–254 are assigned dynamically by DDP upon request from clients in that node; sockets of this type are known as **dynamically assigned sockets (DASs)**.
 
 
-# Network numbers and a node's AppleTalk address
+## Network numbers and a node's AppleTalk address
 
 Each AppleTalk network in an internet is assigned a range of 16-bit network numbers. These ranges are specified in such a way that no two ranges in an internet have any network numbers in common. An AppleTalk device is identified by a 16-bit network number, chosen from within the range assigned for the node's network, combined with its 8-bit, dynamically assigned **AppleTalk node ID**. The details of choosing this unique network number/node ID combination are discussed in the next section. Combining the socket number with the node's network number and node ID enables any socket on the internet to be uniquely identified. The **internet socket address** of a socket consists of its socket number and the node ID and network number of the node in which the socket is located. As a result, the source and destination sockets of a datagram can be fully specified by their internet socket addresses.
 
 The network number 0 is reserved to mean unknown; by default it specifies the local network to which the node is connected. Packets whose destination network number is 0 are addressed to a node on the local network. This address allows systems consisting of a single AppleTalk network to operate without network numbers. Network numbers $FF00 through $FFFE are reserved for nodes to use during the startup process and at times when an internet router is unavailable. Their use is described in the following sections.
 
-# Special DDP node IDs
+## Special DDP node IDs
 
 Certain node IDs are reserved and have special meaning to DDP. These node IDs should never be chosen as a part of an AppleTalk node address. Node ID $FF indicates a broadcast to all nodes with a network number equal to that indicated by the specified network number. As long as this network number is nonzero, the packet is refered to as a **network-specific broadcast**. Although it will be received by all AppleTalk nodes on the data link, it should only be accepted by those with the indicated network number.
 
@@ -123,7 +105,7 @@ Node ID 0 indicates any router on the network specified by the network number pa
 
 Node ID $FE is reserved on EtherTalk and TokenTalk networks and should not be used as a node ID. This address is a valid node ID on LocalTalk networks.
 
-# AppleTalk node address acquisition
+## AppleTalk node address acquisition
 
 DDP is responsible for acquiring a node's AppleTalk address at startup time. This address must be unique throughout the AppleTalk internet. DDP combines with the underlying data link being used by the node, and with internet routers on that data link, to acquire this address. The details of DDP's AppleTalk node address acquisition process depend on the type of network to which the node is connected.
 
@@ -135,13 +117,13 @@ The range of network numbers on an extended network determines the maximum numbe
 
 An extended network can be thought of as a number of nonextended networks, each residing on the same physical data link, and each capable of supporting up to 253 nodes. EtherTalk and TokenTalk are examples of extended networks.
 
-## Node address acquisition on nonextended networks
+### Node address acquisition on nonextended networks
 
 The acquisition of an AppleTalk node address on a nonextended network is greatly simplified by the fact that all nodes on the data link have a unique 8-bit AppleTalk node ID. This being the case, the network needs only one network number to guarantee all nodes on it have addresses that are unique in the internet. The underlying data link (LLAP for LocalTalk) is used to dynamically assign this unique node ID. The node’s network number is then obtained from a router using an RTMP Request packet. Details of this exchange are specified in Chapter 5, “Routing Table Maintenance Protocol.”
 
 If a nonextended network is operating without a router, no reply will be received from the RTMP Request. In this case, the network number is set to zero. If a router later becomes available, the network number is then set to the one specified by the router.
 
-## Node address acquisition on extended networks
+### Node address acquisition on extended networks
 
 The acquisition of an AppleTalk network number and node ID on an extended network takes place in two steps. First a **provisional node address** is obtained through the data link for purposes of talking to a router and thereby discovering the network number range that is valid for the network to which the node is connected. Following this, the node’s actual network number and node ID are obtained through the underlying data link.
 
@@ -162,13 +144,13 @@ During the startup process, the node also acquires information about its zone. D
 The AppleTalk architecture allows the implementation of a large number (up to 255) of parallel protocols that are clients of DDP. Note that socket numbers are not associated with a particular protocol type and should not be used to demultiplex among parallel protocols at the transport level. Instead, a 1-byte DDP type field is provided in the DDP header for this purpose. See Appendix C for a summary of the use of the DDP type field.
 
 
-# Socket listeners
+## Socket listeners
 
 Socket clients provide code, referred to as the **socket listener**, that receives datagrams addressed to that socket. The specific implementation of a socket listener is node-dependent. For efficiency, the socket listener should be able to receive datagrams asynchronously through either an interrupt mechanism or an input/output request completion routine.
 
 The code that implements DDP in the node must contain a data structure called a **sockets table** to maintain an appropriate descriptor of each open socket's listener.
 
-# DDP interface
+## DDP interface
 
 As shown in Figure 4-2, the DDP interface is the boundary at which the socket client can issue calls to and obtain responses from the DDP implementation module in the node. The DDP implementation module supports the following four calls:
 
@@ -179,12 +161,11 @@ As shown in Figure 4-2, the DDP interface is the boundary at which the socket cl
 
 These calls are described in the following sections.
 
-
-### Figure 4-2 Socket terminology
+#### Figure 4-2 Socket terminology
 
 ![Diagram showing the relationship between a Socket client, Socket listener, DDP interface, and DDP implementation module.](images/p114-socket-terminology.png)
 
-## Opening a statically assigned socket
+### Opening a statically assigned socket
 
 This call specifies the socket number (in the range 1–127) and the socket listener for that socket. The call returns with a result code, which has the following possible values:
 
@@ -194,7 +175,7 @@ This call specifies the socket number (in the range 1–127) and the socket list
 | error | various cases such as socket already open, not a statically assigned socket (outside the permissible range), or sockets table full |
 
 
-## Datagram reception by the socket listener
+### Datagram reception by the socket listener
 
 In addition to the four calls just described, a socket listener mechanism must be provided for the reception of datagrams. Although details of the socket listener are not specified (since these are implementation-dependent), some mechanism is needed to deliver datagrams within the node to the destination client. The DDP module should attempt this delivery only if the destination socket is currently open. DDP must discard datagrams if they are addressed to a closed socket or if the datagram is received with an invalid DDP checksum.
 
@@ -214,9 +195,7 @@ The DDP header also contains the source and destination socket addresses and the
 
 A datagram with a short header is shown in *Figure 4-3*. The short DDP header is 5 bytes long. The first 2 bytes of the header contain the datagram length, with the most-significant bits in the first byte. The upper 6 bits of this byte are not significant and should be set to 0. The datagram length field is followed by a 1-byte destination socket number, a 1-byte source socket number, and a 1-byte DDP type field. Datagrams with short headers can be sent only if the source and destination sockets have the same network number. Short headers are used solely for efficiency reasons; in fact, an implementation of DDP is permitted to send datagrams with extended headers even when source and destination sockets are on the same network. Extended headers are required on extended networks; datagrams with short headers should never be used on extended networks.
 
-
-
-### Figure 4-3 DDP packet format (short header)
+#### Figure 4-3 DDP packet format (short header)
 
 ![DDP packet format (short header)](images/p118-ddp-packet-short-header.png)
 
@@ -240,7 +219,7 @@ packet-beta
 A datagram with an extended header is shown in *Figure 4-4*. The extended DDP header is 13 bytes long. It contains the full internet socket addresses of the source and destination sockets as well as the datagram length and DDP type fields. For such packets, there is a 6-bit hop count field in the most-significant bits of the first byte of the DDP header. See "Hop Counts" later in this chapter. In addition, the extended header may include an optional 2-byte (16-bit) DDP checksum field. See "Checksum Computation" later in this chapter. All 2-byte fields are specified with the high byte first. Datagrams exchanged between sockets on different AppleTalk networks and on any extended network must use an extended header.
 
 
-## Figure 4-4 DDP packet format (extended header)
+#### Figure 4-4 DDP packet format (extended header)
 
 ![DDP packet format (extended header) diagram showing LLAP header, DDP header, and datagram data.](images/p119-ddp-packet-format.png)
 
@@ -275,7 +254,7 @@ packet-beta
 
 
 
-# DDP checksum computation
+### DDP checksum computation
 
 The DDP checksum is provided to detect errors caused by faulty operation (such as memory and data bus errors) within routers on the internet. Implementers of DDP should treat generation of the checksum as an optional feature. The 16-bit DDP checksum is computed as follows:
 
@@ -296,7 +275,7 @@ IF, at the end, CkSum = 0 THEN
 
 Reception of a datagram with CkSum equal to 0 implies that a checksum is not performed.
 
-# Hop counts
+### Hop counts
 
 For datagrams that are exchanged between sockets on two different AppleTalk networks in an internet, a provision is made to limit the maximum number of IRs the datagram can traverse. Limiting this number is done by including in such internet datagrams a **hop count field**.
 
@@ -304,7 +283,7 @@ The source node of the datagram sets this field to 0 before sending the datagram
 
 The upper 2 bits of the hop count currently are not used by DDP but are reserved for future use (such as the extension of the maximum value of the hop count beyond the currently allowed value of 15).
 
-# DDP routing algorithm
+## DDP routing algorithm
 
 A datagram is conveyed from its source to its destination socket over the internet through IRs. The DDP implementation in the source node examines the destination network number of the datagram and determines whether or not the destination is on the local network. If the destination node is on the local network, the data-link layer is called to send the packet to the destination node. (The short DDP header can be used if the nodes are on a nonextended network.) However, if the destination is not on the local network, DDP builds the extended header and calls the data link to send the packet to an IR on the local network. (If there is more than one such IR, any one will do.) IRs examine the destination network number of the datagram and use routing tables to forward the datagram to subsequent IRs until an IR is reached that is connected to the destination network. (Routers forward datagrams through the data links of intervening local networks.) At the destination network, the datagram is sent to its destination node through the local network's data-link protocol.
 
@@ -363,7 +342,7 @@ For packets received by nonrouter nodes, the routing function simply delivers th
 In IRs, the routing algorithm is somewhat more complex (see Chapter 5, “Routing Table Maintenance Protocol”).
 
 
-## Optional “best router” forwarding algorithm
+### Optional “best router” forwarding algorithm
 
 The routing algorithm given earlier, combined with the operation of the internet routers, is sufficient to deliver a packet to its destination socket. However this algorithm may result in an extra hop in getting to that destination. This will be the case if the initial router chosen by DDP is not on the shortest path to the destination network (remember DDP picked any router to send the packet to for forwarding). This section details an optional “best router” implementation for eliminating this extra hop under most conditions. “Best router” is highly recommended on extended networks, which often consist of many network segments interconnected by bridges.
 

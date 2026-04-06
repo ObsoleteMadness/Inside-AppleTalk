@@ -30,7 +30,7 @@ Apart from the changes in AppleTalk protocols described in this document, all ot
 
 Since many of the changes found in AppleTalk Phase 2 involve routing and related protocols, much of this document is concerned with the role of AppleTalk routers and the issues encountered by developers of such routers. Readers who are not developing routers may not require all of this information. ■
 
-# Goals of AppleTalk Phase 2
+## Goals of AppleTalk Phase 2
 
 AppleTalk Phase 2 was designed to meet four key design goals:
 

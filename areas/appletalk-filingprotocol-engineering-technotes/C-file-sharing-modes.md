@@ -1,5 +1,5 @@
 ---
-title: "# File Sharing Modes"
+title: "File Sharing Modes"
 source: "022_AppleTalkFilingProtocolEngineeringTechnicalNotes"
 source_url: ""
 pages: "117–118"
@@ -10,7 +10,7 @@ parent: "AFP Technical Notes"
 layout: default
 grand_parent: Areas
 ---
-# # File Sharing Modes
+# File Sharing Modes
 
 | Field | Value |
 |-------|-------|

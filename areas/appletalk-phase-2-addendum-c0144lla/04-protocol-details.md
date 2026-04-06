@@ -26,7 +26,7 @@ grand_parent: Areas
 
 THE FOLLOWING SECTIONS DESCRIBE new aspects of AppleTalk protocols and changes in protocol packet formats brought about by the architectural changes of AppleTalk Phase 2. ■
 
-# AppleTalk data links
+## AppleTalk data links
 
 AppleTalk data links must support some form of broadcast mechanism, a method of sending packets to *all* nodes connected to the data link.
 
@@ -86,7 +86,7 @@ Table 4-1 specifies the AppleTalk broadcast and zone multicast addresses used by
 | *Zone multicast addresses*<br>When used with the address assignment algorithm described in this chapter, the first address in each list represents a<sub>0</sub>. | $090007000000<br>\|<br>\|<br>253 addresses<br>\|<br>\|<br>V<br>$0900070000FC | $C00000000800<br>$C00000001000<br>$C00000002000<br>$C00000004000<br>$C00000008000<br>$C00000010000<br>$C00000020000<br>$C00000040000<br>$C00000080000<br>$C00000100000<br>$C00000200000<br>$C00000400000<br>$C00000800000<br>$C00001000000<br>$C00002000000<br>$C00004000000<br>$C00008000000<br>$C00010000000<br>$C00020000000 |
 
 
-# AARP
+## AARP
 
 AARP packets are also encapsulated in the IEEE 802.2 format on data links that support this standard. The SNAP protocol discriminator for AARP packets is $00000080F3. The AARP packet format is shown in Figure 4-2.
 
@@ -140,7 +140,7 @@ DDP in a routing node must provide the node's router with the ability to send a 
 DDP in nonrouting nodes on extended networks should always accept datagrams addressed to destination network number zero, node ID $FF (these are network-wide or zone-specific broadcasts). However, DDP on extended networks should *not* accept datagrams destined for network zero and any node ID other than $FF (even the node's own). DDP on nonextended networks should accept both. The DDPRead algorithm shown in *Figure 4-3* illustrates this process.
 
 
-## Figure 4-3 The DDPRead algorithm
+### Figure 4-3 The DDPRead algorithm
 
 ![Flowchart of the DDPRead algorithm](images/p25-ddpread-algorithm.png)
 
@@ -221,15 +221,15 @@ When a packet arrives from an off-network node, DDP reads the data-link-level so
 
 Note that a node's best-router cache entries need to be aged fairly quickly so that when a router goes down, an alternate route can be adopted (if one is available) before connections are broken.
 
-# The RTMP stub
+## The RTMP stub
 
 The following changes are specified for the RTMP stub in nodes on an extended network.
 
-## Aging router information
+### Aging router information
 
 The router aging time is reduced to 50 seconds. When a router is aged out, the RTMP stub must expand THIS-NETWORK-RANGE back to 1-$FFFE and set the node's zone name back to "*". It should also delete the node's zone multicast address, if one has been set.
 
-## Processing incoming RTMP packets
+### Processing incoming RTMP packets
 
 If the node's A-ROUTER parameter is nonzero (that is, the node knows about a router), the RTMP stub should accept an RTMP packet only if the network range indicated by the packet exactly matches the node's values for THIS-NETWORK-RANGE. Thus, if a node's network range were 3-4, it would not process a packet indicating a network range of 3-6.
 
@@ -237,11 +237,11 @@ If, however, A-ROUTER is zero (the node is *not* aware of any router), the RTMP 
 
 Note that this scheme allows a network range to be expanded without restarting all the nodes on that network. If a range is originally 3-4, but the routers are reconfigured to set it to 3-6, nodes will first age out the 3-4 value of THIS-NETWORK-RANGE (since none of the routers would be sending it) and then replace it with the range 3-6 obtained from subsequent RTMP packets.
 
-# RTMP
+## RTMP
 
 The following changes are specified for implementing RTMP.
 
-## Packet formats
+### Packet formats
 
 RTMP data packets on both extended and nonextended AppleTalk networks can now contain tuples in two forms: a network number or a network range. The first tuple in a packet sent on an *extended* network is the range for that network, allowing nodes that receive this packet to determine their network range. This tuple may be repeated later in the packet. Figure 4-5 illustrates RTMP packet formats for extended and nonextended networks.
 
@@ -333,7 +333,7 @@ packet-beta
 
 RTMP request packets remain the same as in AppleTalk Phase 1 (however, they can now be used to request three types of responses, as described later in this chapter). RTMP responses on extended networks should include the initial network range tuple.
 
-## Maintaining routing tables
+### Maintaining routing tables
 
 Routers must maintain their routing table on a range-by-range basis for extended networks. Each range has a list of zone names associated with it (the order of zone names in this list is unspecified). Entries for nonextended networks should contain only a single network number, so that 3-byte tuples can be sent out for these entries.
 
@@ -341,7 +341,7 @@ The routing table update process must be extended to handle network range mismat
 
 In order to minimize the effect on the internet of a misconfigured router being brought on-line, the following is specified: If an incoming RTMP packet contains a tuple for which there is no exact match in the routing table (that is, if there is no entry with the same starting and ending network numbers), but that tuple does overlap with part of some entry's range, that tuple should be disregarded. (In evaluating network range matches, a nonextended network number should be considered as a range of one, for example, 3-3.)
 
-## Split horizon
+### Split horizon
 
 AppleTalk Phase 2 specifies a technique known as **split horizon** for use in sending routing tables on both extended and nonextended networks. This technique significantly reduces internet traffic caused by large numbers of routers exchanging their routing tables.
 
@@ -357,7 +357,7 @@ To implement split horizon, a simple modification is made to the RTMP routing ta
 ![A scenario for split-horizon processing](images/p31-split-horizon-scenario.png)
 
 
-## Notify neighbor
+### Notify neighbor
 
 RTMP now includes a new aging procedure called **notify neighbor**. Under notify neighbor, whenever a routing table's entry state is "Bad," instead of omitting that entry from the broadcasted routing table, the entry is sent *with a distance of 31*. This entry indicates to receiving routers that the entry's network is no longer reachable through the sending router, and that an alternate route, if available, should be adopted. This entry is sent only if it would not otherwise be eliminated by split-horizon processing.
 
@@ -365,7 +365,7 @@ Upon receiving a tuple with an entry of distance 31, *if the router sending that
 
 Routers that are knowingly going down or deactivating a port should, as a courtesy, use "notify neighbor" to inform other routers of this fact.
 
-## RTMP requests
+### RTMP requests
 
 The RTMP request has been extended to allow for a variation called the **RTMP Route Data Request** or **RDR**. The RDR is useful for routing and network management purposes to obtain routing information from any router *on demand*.
 
@@ -378,17 +378,17 @@ The different types of RTMP request packets are distinguished by the value of th
 Upon receiving an RDR, a router responds by sending its routing data *directly to the source socket* of the requesting node. (Normally, broadcasted RTMP data packets are sent to the well-known RTMP socket, 1—not to the requester's source socket.) An interested node can therefore obtain routing information by opening a socket and sending an RDR to a router through this socket. Note that a full response can consist of a number of packets, and that a tuple can never span two packets.
 
 
-# NBP
+## NBP
 
 NBP packet formats remain unchanged from AppleTalk Phase 1. However, several protocol changes are specified. NBP in a routing node must change *even if the router is connected only to nonextended networks*.
 
 
-## The THIS-ZONE variable
+### The THIS-ZONE variable
 
 NBP in nodes on extended networks must maintain a variable known as THIS-ZONE. In nonrouting nodes on extended AppleTalk networks, NBP must now verify that a LkUp packet is intended either for the zone to which the node belongs or for zone "*"; that is, NBP must match object, type, and zone. This is because more than one zone may correspond to the same zone multicast address (in fact, if the data link does not support multicast, all zones will correspond to the same zone multicast address, the AppleTalk broadcast address).
 
 
-## Broadcast requests and forward requests
+### Broadcast requests and forward requests
 
 NBP on an *extended* network should never send out a BrRq for zone "*" (the router has no way of determining the node's zone, since there is no correspondence between network number and zone name). However, in the absence of a router, NBP should always broadcast LkUps to zone "*".
 
@@ -407,7 +407,7 @@ A router on *nonextended* networks that receives a BrRq for zone "*" and has not
 ◆ *Note: A router receiving a BrRq for a zone that is in the zone list for one or more of the networks to which the router is directly connected should not send out FwdReq's for these networks. It should instead send out LkUp's to the appropriate zone multicast addresses.*
 
 
-## Special characters
+### Special characters
 
 AppleTalk Phase 2 disallows the use of a character with value $FF as the first byte in an NBP object, type, or zone string. This value is reserved for future flexibility.
 
@@ -517,13 +517,13 @@ packet-beta
 | Default zone name | Variable | Variable | Included only if zone-invalid flag set: name of default zone |
 
 
-# Assignment of zone multicast addresses
+### Assignment of zone multicast addresses
 
 Upon receiving a ZIP GetNetInfo request, the ZIP process in a router verifies that the specified zone name is valid for the network. If it is, ZIP obtains the associated multicast address and returns it in the reply.
 
 To obtain the zone multicast address, ZIP first converts the zone name to uppercase (since zone names are case-insensitive). This conversion function is specified in *Inside Macintosh* and also *Inside AppleTalk* (Appendix D). The router then obtains a number, *h*, in the range 1–$FFFF, associated with this zone name by performing the DDP checksum algorithm (as documented in *Inside AppleTalk*) on each byte of the zone name (excluding the length byte). This number *h* is passed to the data link, which is assumed to provide *n* multicast addresses: a₀ through aₙ₋₁. (Addresses for EtherTalk and TokenTalk are specified in Table 4-1.) The multicast address for that zone, returned by the data link, is a_{(h mod n)}.
 
-# ZIP Query and Reply
+### ZIP Query and Reply
 
 ZIP Query packets remain unchanged from AppleTalk Phase 1. The Network Number field for an extended network is set to the first network number in that network’s range. Multiple networks can still be included in one packet (both extended and nonextended networks can be mixed).
 
@@ -569,13 +569,13 @@ packet-beta
 | Zone list entry 2 | Variable | Variable | The second zone name string. |
 
 
-## ZIP ATP requests
+### ZIP ATP requests
 
 ZIP GetZoneList, which uses ATP, remains unchanged from AppleTalk Phase 1, but must be sent to the full 24-bit A-ROUTER address on extended networks. (GetZoneList requests that require multiple ATP transmissions should all be sent to the same A-ROUTER address.)
 
 ZIP GetMyZone should not be sent on an extended network, since the node already knows its zone name (and the router could not determine it from the node's address). ZIP GetLocalZones is used by nodes on an extended network to acquire the network's zone list. The ZIP GetLocalZones packet is nearly identical to ZIP GetZoneList; however, this packet contains a command byte of 9 in the ATP header. The same algorithms used in GetZoneList apply for obtaining the network zone list. A router on a nonextended network will respond with a single-zone reply.
 
-## Changing zone names
+### Changing zone names
 
 On an extended network, nodes must be made aware of changes to the name of the zone in which they reside. Nodes may also need to be given a new zone multicast address.
 
@@ -627,7 +627,7 @@ packet-beta
 
 Changing a zone name for a given network involves not only informing the routers (and other nodes) connected to that network, but also informing every router on the internet of that change. AppleTalk Phase 2 removes this function from ZIP and delegates it to network management protocols, to be documented elsewhere. (This process can also be performed by shutting down all routers connected to a network, reconfiguring the seed routers, and then restarting all routers.)
 
-# Appendix Changes in LocalTalk Nodes
+## Appendix Changes in LocalTalk Nodes
 
 THIS APPENDIX LISTS changes that can be made to nonrouting implementations on LocalTalk to fully conform to AppleTalk Phase 2. While they are not currently required in LocalTalk nodes, future products may require these changes to provide full functionality to LocalTalk nodes.
 
@@ -639,7 +639,7 @@ Each of these changes is described in prior sections of this document.
 - "Best router" address cache in nodes ■
 
 
-### The Apple Publishing System
+## The Apple Publishing System
 
 This Apple® manual was written, edited, and composed on a desktop publishing system using Apple Macintosh® computers and Microsoft® Word. Proof pages were created on the Apple LaserWriter® printers; final pages were printed on a Varityper® VT600™. Line art was created using Adobe Illustrator™. PostScript®, the LaserWriter page-description language, was developed by Adobe Systems Incorporated.
 

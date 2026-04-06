@@ -22,7 +22,7 @@ grand_parent: Areas
 
 ---
 
-# Chapter 3 Operational Overview
+## Chapter 3 Operational Overview
 
 THE IMPLEMENTATION of extended addressing involves the following sequence of operations:
 
@@ -34,21 +34,21 @@ THE IMPLEMENTATION of extended addressing involves the following sequence of ope
 These operations are summarized below, and they are further described in the next chapter, "Protocol Details." ■
 
 
-# Obtaining a provisional address
+## Obtaining a provisional address
 
 Obtaining a provisional address upon startup is accomplished in two different ways depending on whether the node has previously saved an address in parameter RAM. An address saved in pRAM consists of two parts: the 16-bit network number, denoted $nnnn, and the 8-bit node ID, denoted $yy. The concatenated 24-bit address value of [network number, node ID] is denoted $nnnnyy.
 
-## If no address was previously saved in pRAM
+### If no address was previously saved in pRAM
 
 Upon starting up when no information is saved in parameter RAM, a node will randomly select a provisional network number $FFnn in the startup range. This range is specified to be $FF00 to $FFFE inclusive (most significant byte first). The node then also randomly selects a node ID $yy (yy cannot be $00, $FE, or $FF). As in AppleTalk Phase 1, the node must use AARP to ensure that $FFnnyy is not in use by any other node on the network. If another node is already using this address, the node should try all other possibilities for $FFnnyy until a valid provisional address is obtained.
 
-## If an address was saved in pRAM
+### If an address was saved in pRAM
 
 If there is a saved 24-bit address of the form $nnnnyy in pRAM, the node can use it as the provisional address. The node must use AARP to ensure that this address is not in use by any other node. If another node is already using this address, the node should try all other possibilities for yy (yy cannot be $00, $FE, or $FF) keeping nnnn the same until all possibilities are exhausted (nnnn is probably a valid network number for this network unless the node has been moved from another network).
 
 If all possibilities are exhausted, the node must select a new address as if none was previously saved in pRAM (as described in the previous section).
 
-# Obtaining network information
+## Obtaining network information
 
 Once a node has obtained a provisional address, if a router is running on the network, the node can acquire information about its network from the router. The node learns the range of valid network numbers and confirms that its saved zone name is valid for that network. If it does not currently have a saved zone name, it can obtain the list of available ones from a router and pick one in an implementation-dependent manner.
 
@@ -63,7 +63,7 @@ The response will provide the following information:
 
 Upon receiving the response, a node registers with its data-link layer (in a data-link-dependent manner) to receive packets sent to the zone multicast address; routers will send NBP broadcasts (for the node's zone) to this link-level address.
 
-# Obtaining a valid address and zone
+## Obtaining a valid address and zone
 
 After obtaining the desired network information, if a node's provisional network number is not in THIS-NETWORK-RANGE, the node can proceed to select an address in this range, and then ensure through the use of AARP that the address is not in use by another node on the network. This new address then becomes the node's final address, and is saved in pRAM. Note that, except when a node is first started on a network, its provisional address will typically be in the correct range, and it should not have to repeat the address acquisition process.
 
@@ -71,7 +71,7 @@ If the zone to which a node wishes to belong is not valid for its network, or if
 
 Note that in a network with just one zone name in its zones list, a user need not be made aware of the node's zone name at all. Such a network will require no user intervention to select the node's zone name, and should appear no different from a nonextended network.
 
-# Operating without a router
+## Operating without a router
 
 Most extended networks are likely to be connected by routers into internets. However, extended addressing is implemented in a way that also permits operation on a network where no router is present. Such extended networks will in particular be used when more than 254 nodes are to be connected to a single AppleTalk network.
 

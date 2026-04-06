@@ -26,49 +26,25 @@ grand_parent: Areas
 
 # Chapter 2 AppleTalk Address Resolution Protocol
 
-## CONTENTS
 
-**Protocol families and stacks / 2-3**
-
-**Protocol and hardware addresses / 2-3**
-Address resolution / 2-3
-
-**AARP services / 2-5**
-
-**AARP operation / 2-6**
-Address mapping / 2-7
-  Request packets / 2-7
-  Response packets / 2-7
-Dynamic protocol address assignment / 2-8
-
-**Retransmission of AARP packets / 2-9**
-Filtering incoming packets / 2-9
-  Verifying packet addresses / 2-10
-  Gleaning address information / 2-10
-
-**AMT entry aging / 2-10**
-
-**AARP packet formats / 2-11**
-
-
-# THE APPLETALK ADDRESS RESOLUTION PROTOCOL
+## THE APPLETALK ADDRESS RESOLUTION PROTOCOL
 
 (AARP) maps between any two sets of addresses at any level of one or more protocol stacks. Specifically, in the AppleTalk protocol architecture, AARP is used to map between AppleTalk node addresses, used by the Datagram Delivery Protocol (DDP) as well as higher-level AppleTalk protocols, and the addresses of the underlying data link that is providing AppleTalk connectivity. AARP makes it possible for AppleTalk systems to run on any data link. ■
 
 
-# Protocol families and stacks
+## Protocol families and stacks
 
 The collection of all the protocols, corresponding to the upper five layers of the ISO-OSI reference model, used in a particular protocol architecture is referred to as a **protocol family**. An instance of a protocol family in a given node is known as a **protocol stack**. This terminology allows us to distinguish between the protocol architecture itself and an instance of that architecture implemented in a particular node.
 
-# Protocol and hardware addresses
+## Protocol and hardware addresses
 
-*Figure 2-1 shows a node in which several protocol stacks (for instance, AppleTalk, TCP/IP, XNS) are in simultaneous use. The node is connected to a single data link, and the packets of the different protocol families running in the node are all sent through this same data link. Each of the node's protocol stacks must use its own addressing scheme to specify the address of the node. The node address used by one protocol family will usually not be intelligible to any of the other families. In addition, the data-link layer has its own scheme for assigning an address to the node. Thus, a node can have multiple addresses, each of which is intelligible to one particular protocol family or data link.*
+*Figure 2-1* shows a node in which several protocol stacks (for instance, AppleTalk, TCP/IP, XNS) are in simultaneous use. The node is connected to a single data link, and the packets of the different protocol families running in the node are all sent through this same data link. Each of the node's protocol stacks must use its own addressing scheme to specify the address of the node. The node address used by one protocol family will usually not be intelligible to any of the other families. In addition, the data-link layer has its own scheme for assigning an address to the node. Thus, a node can have multiple addresses, each of which is intelligible to one particular protocol family or data link.*
 
 The node address used by a protocol stack is said to be the node's **protocol address** corresponding to the particular protocol family. This address identifies the particular stack among its peers on the same network and is used to communicate with these peer entities.
 
 The node address used by a data link is the node's **hardware address**.
 
-# Address resolution
+### Address resolution
 
 A protocol stack can send a packet through the node's data link to another node in which the same protocol family is resident. For this purpose, when the protocol stack calls the data link to send a packet to its peer stack in another node, it will specify the destination node by using the latter's protocol address. Since this address is not intelligible to the data link, it must first be translated to the equivalent data-link or hardware address of the destination node. This translation of addresses is known as **address resolution**.
 
@@ -147,11 +123,11 @@ In the description below, various AARP operations require the broadcasting of AA
 In each node, AARP maintains a cache of known protocol-to-hardware address mappings, known as an **Address Mapping Table (AMT)**. Such an AMT must be maintained for each protocol stack that wishes to use AARP services. Whenever AARP discovers a new address mapping, it creates a corresponding AMT entry to reflect the new mapping. If no more space is available in the AMT for the new mapping, AARP purges one of the existing AMT mappings by using some type of least-recently-used algorithm. Likewise, AARP modifies existing AMT entries to reflect changes in address mappings.
 
 
-## Address mapping
+### Address mapping
 
 AARP queries for address mappings are made by using two types of AARP packets: AARP Request and AARP Response packets.
 
-### Request packets
+#### Request packets
 
 When asked by a client to determine the hardware address corresponding to a given protocol address, AARP first scans the associated AMT for that protocol address. If the protocol address is found in the AMT, AARP reads the corresponding hardware address and immediately delivers it to the client.
 
@@ -159,7 +135,7 @@ If the hardware address is *not* found in the AMT, then AARP attempts to determi
 
 The AARP Request packet carries in it an identifier of the protocol family and the value of the protocol address to be mapped.
 
-### Response packets
+#### Response packets
 
 When a node receives an AARP Request packet, its AARP implementation compares the protocol address from the packet with the node's protocol address for the indicated protocol family. If the addresses match, then the node's AARP returns an AARP Response packet to the requester. This packet contains the hardware address requested by the sender of the AARP Request packet.
 
@@ -169,7 +145,7 @@ Upon receiving this Response packet, the requesting node's AARP inserts the newl
 If a Response packet is not received within a specified time interval, then AARP retransmits the Request packet. This process is repeated a specified maximum number of times. If after these retries a Response packet is not received, then AARP returns an error to its client. This error implies that the protocol address is not in use and that no corresponding node exists on the link.
 
 
-## Dynamic protocol address assignment
+### Dynamic protocol address assignment
 
 Each protocol stack in a given node must have a protocol address. This address is usually assigned when the stack is initialized. AARP provides one way of making this assignment. However, a protocol stack may choose to assign its protocol address using a different method and then inform AARP of this address. The only requirement is that the protocol address be unique across all nodes of a given protocol family.
 
@@ -189,7 +165,7 @@ In general, the retransmission interval and count for probes are determined base
 
 The retransmission interval and count for requests may be optionally provided by AARP's clients.
 
-## Filtering incoming packets
+### Filtering incoming packets
 
 For two reasons, it is desirable that AARP examine all incoming packets before they are delivered to the node's protocol stacks. First, AARP can help verify that an incoming packet is actually intended for the corresponding protocol stack. Second, AARP can gather address-resolution information from every incoming packet. This information will help maintain AMTs in the node and may result in fewer AARP packets being sent.
 

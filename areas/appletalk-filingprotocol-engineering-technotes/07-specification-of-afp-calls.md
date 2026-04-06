@@ -1,5 +1,5 @@
 ---
-title: "# Specification of AFP Calls"
+title: "Specification of AFP Calls"
 source: "022_AppleTalkFilingProtocolEngineeringTechnicalNotes"
 source_url: ""
 pages: "39–104"
@@ -10,7 +10,7 @@ parent: "AFP Technical Notes"
 layout: default
 grand_parent: Areas
 ---
-# # Specification of AFP Calls
+# Specification of AFP Calls
 
 | Field | Value |
 |-------|-------|

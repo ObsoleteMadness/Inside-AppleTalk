@@ -24,32 +24,38 @@ grand_parent: Areas
 
 ---
 
+# Part I Physical and Data Links
+
+PART I of *Inside AppleTalk* discusses the protocols used to communicate between the nodes of a single AppleTalk network. These protocols comprise the two lowest layers of the AppleTalk protocol architecture (as shown in Figure I-9 of the Introduction).
+
+In particular, Part I specifies:
+
+* the LocalTalk Link Access Protocol (LLAP)
+* the AppleTalk Address Resolution Protocol (AARP)
+* the EtherTalk Link Access Protocol (ELAP)
+* the TokenTalk Link Access Protocol (TLAP)
+
+AppleTalk's node-to-node packet transmission is the responsibility of the Datagram Delivery Protocol (DDP). DDP was designed to be data-link independent. This means that DDP can send its packets through any data-link and physical technology.
+
+The Macintosh and Apple IIGS computers, and most LaserWriter printers, have built-in hardware for LocalTalk network connectivity, which is based on LLAP, as specified in Chapter 1, "LocalTalk Link Access Protocol." An important feature of the design of LLAP and DDP is that the node-addressing mechanisms used by these two protocols are identical. Hence, DDP can directly call and use the services provided by LLAP.
+
+For LocalTalk hardware specifications, see Appendix A. Various alternative hardware implementations are available that provide exactly the same service as LocalTalk. These alternative data links directly use LLAP but substitute different hardware for LocalTalk cabling. The use of these links requires no additional protocol.
+
+When using an arbitrary data link below DDP, a fundamental problem of address mismatch can arise. This problem results from the different forms of the node addresses used by DDP and the particular data link. AppleTalk provides an address-resolution capability for mapping between these addresses. This service is provided by AARP and is specified in Chapter 2, "AppleTalk Address Resolution Protocol."
+
+The first use of AARP was made by Apple in the EtherTalk connectivity product, which sends DDP packets over an industry-standard Ethernet local area network. In this situation, the node addresses of DDP are converted, through the use of AARP, into 48-bit Ethernet node addresses. DDP packets are wrapped in appropriate headers and sent through the standard Ethernet data-link services. Furthermore, a node's AppleTalk address is dynamically assigned despite Ethernet's use of statically assigned addresses. These various services, together with the mechanisms used by the Ethernet data link, are referred to as ELAP and are specified in Chapter 3, "EtherTalk and TokenTalk Link Access Protocols."
+
+Apple's TokenTalk product provides many of the same services as EtherTalk. AARP is used to map node addresses used by DDP into the 48-bit addresses used by token ring. DDP packets are wrapped in token ring headers and sent through the standard token ring data-link services. A node's AppleTalk address is dynamically assigned. These services are referred to as TLAP and are specified in Chapter 3, "EtherTalk and TokenTalk Link Access Protocols."
+
+The discussion in Part I is restricted to mechanisms for node-to-node delivery of AppleTalk packets on a single network. Routing extensions in the case of multiple, interconnected AppleTalk networks are discussed in Part II.
+
+In Part I, the term *AppleTalk node address* (or simply **AppleTalk address**) refers to the node address used by DDP and higher levels of the AppleTalk protocol architecture. Likewise, *hardware node address* (or simply **hardware address**) refers to the address used by a particular data-link layer.
+
+
 # Chapter 1 LocalTalk Link Access Protocol
 
-### CONTENTS
 
-**Link access control / 1-3**
-
-**Node addressing / 1-3**
-Node IDs / 1-4
-Dynamic node ID assignment / 1-4
-
-**Data transmission and reception / 1-6**
-LLAP packet / 1-6
-LLAP frame / 1-9
-
-**Data packet transmission / 1-10**
-Carrier sensing and synchronization / 1-10
-Transmission dialogs / 1-11
-Directed data packet transmission / 1-14
-Broadcast data packet transmission / 1-15
-
-**Packet reception / 1-15**
-
-![Section marker](images/p62-section-marker.png)
-
-
-# THE LOCALTALK LINK ACCESS PROTOCOL (LLAP)
+## THE LOCALTALK LINK ACCESS PROTOCOL (LLAP)
 
 corresponds to the data-link layer of the ISO-OSI reference model and allows network devices to share the communication medium. This protocol provides the basic service of packet transmission between the nodes of a single LocalTalk or compatible network.
 
@@ -66,7 +72,7 @@ The main responsibilities of LLAP are to
 * perform data transmission and reception
 
 
-# Link access control
+## Link access control
 
 The nodes on a given link compete for access to the link. Without a way of controlling their access, data could not be transferred reliably over the link. The different nodes would in a sense "stumble" over each other's transmissions. LLAP provides appropriate link-access management to ensure fair access to all nodes.
 
@@ -82,18 +88,18 @@ The use of random wait periods has the effect of spreading the data transmission
 
 It is important to note that LLAP does not require suitable hardware to detect the occurrence of collisions. Instead it has to infer that a collision might have occurred. LLAP uses a "handshake" mechanism to allow it to make this inference. Furthermore, the handshake mechanism reduces the loss of channel bandwidth when a collision occurs because the collision normally occurs in the handshake phase. Since the handshake messages are short in length, only a small amount of the link's time is wasted by a collision.
 
-# Node addressing
+## Node addressing
 
 Node addressing provides a means of uniquely identifying each node connected to the link. LLAP uses a technique called **dynamic node ID assignment**, a method that eliminates a configuration step and also allows easy movement of nodes between networks.
 
 
-# Node IDs
+### Node IDs
 
 LLAP's node-addressing mechanism consists of assigning an identification number to each node and including that number in all packets destined for that node.
 LLAP uses an 8-bit **node identifier number (node ID)** to identify each node on a link. A node's ID is its data-link address.
 Each LLAP packet includes the node IDs of its sender and its intended destination. These addresses are used by the network hardware to ensure that the packet is delivered only to the correct destination node.
 
-# Dynamic node ID assignment
+### Dynamic node ID assignment
 
 Unlike other network data links, LLAP uses a dynamic node-ID-assignment scheme. With dynamic node ID assignment, a node does not have a fixed, unique address. Instead, a node assigns itself a node ID upon activation.
 A key goal of dynamic node ID assignment is to prevent a conflict that otherwise might occur when a node is moved between networks and when the old node ID of the device is already in use on the new network. Other solutions to this problem have relied on building universally unique node addresses into each device when it is manufactured.
@@ -102,7 +108,7 @@ When a node is activated on the network, the node makes a "guess" at its own nod
 The node verifies the uniqueness of its node ID number by sending out an LLAP **Enquiry control packet**, as shown in *Figure 1-1*, to the guessed node address and by waiting for acknowledgment. If the guessed node ID is in use, then the node using it will receive the LLAP Enquiry control packet and will respond with an LLAP **Acknowledge control packet**. The reception of the Acknowledge control packet notifies the new node that its guessed node ID is already in use. The node must then repeat the process with a different guess. Each Enquiry control packet is transmitted repeatedly to account for cases in which a packet is lost or a node already using the guessed node ID is busy and therefore might miss an Enquiry packet.
 
 
-### Figure 1-1 Under dynamic node ID assignment, a new node tests its randomly assigned ID
+#### Figure 1-1 Under dynamic node ID assignment, a new node tests its randomly assigned ID
 
 ![Under dynamic node ID assignment, a new node tests its randomly assigned ID](images/p66-node-id-assignment.png)
 
@@ -149,15 +155,15 @@ Excluding user (nonserver) node IDs from the server node ID range eliminates the
 
 Within the user node ID range, verification can be performed quickly (that is, with fewer retransmissions of the Enquiry control packet), thus decreasing the LLAP initialization time for user nodes. A more thorough node ID verification is performed by servers (in other words, additional time is taken to ensure that they acquire unique node IDs on the link). This scheme increases the initialization time for server nodes but is not detrimental to the server's operation since such nodes are rarely switched on and off.
 
-# Data transmission and reception
+## Data transmission and reception
 
 LLAP uses two kinds of packets: control packets, which are used for internal protocol control purposes, and data packets, which include data provided by LLAP's client.
 
-## LLAP packet
+### LLAP packet
 
 An LLAP packet consists of a 3-byte LLAP header followed by a variable-length data field (0-600 bytes). (See *Figure 1-2*.) The LLAP header contains the packet's destination node ID, the source node ID, and a 1-byte LLAP type field. The **LLAP type field** specifies the type of packet. Values in the range 128–255 ($80–$FF) are reserved to identify **LLAP control packets**. LLAP control packets do not contain a data field.
 
-## Figure 1-2 LLAP frame and packet format
+#### Figure 1-2 LLAP frame and packet format
 
 ![Diagram showing the detailed structure of an LLAP frame, including the preamble, packet (header and data field), and trailer.](images/p68-llap-frame-format.png)
 
@@ -212,7 +218,7 @@ The low-order 10 bits of the first 2 bytes of the data field must contain the le
 
 The LLAP header is 3 bytes long, and the data field can contain from 2 to 600 bytes. Therefore, the smallest valid LLAP data packet is 5 bytes long; the largest is 603 bytes.
 
-# LLAP frame
+### LLAP frame
 
 An LLAP frame encapsulates an LLAP packet with a frame preamble and a frame trailer, as shown in *Figure 1-2*.
 
@@ -226,11 +232,11 @@ The 16-bit FCS is computed as a function of the contents of the packet itself (t
 
 Prior to transmitting a packet, LLAP sends out a synchronization pulse, a transition period on the link that is followed by an idle period (see "Carrier Sensing and Synchronization" later in this chapter). A frame preamble, consisting of 2 or more flag bytes, follows the synchronization pulse. The frame terminates with a frame trailer, which consists of the FCS, 1 flag byte, and the abort sequence. The abort sequence indicates the end of the frame.
 
-# Data packet transmission
+## Data packet transmission
 
 The transmission of a data packet by LLAP involves a special dialog consisting of one or more LLAP control frames followed by the data frame. This dialog is based on a CSMA/CA access protocol, some aspects of which were outlined in "Link Access Control" earlier in this chapter.
 
-## Carrier sensing and synchronization
+### Carrier sensing and synchronization
 
 LLAP packet transmission dialogs require each node to sense the use of the transmission medium. Two techniques are used by LLAP for this purpose.
 
@@ -245,7 +251,7 @@ The missing clock allows transmitters to synchronize their access to the line (t
 Further details of carrier-sensing aspects of LocalTalk hardware are discussed in [Appendix A](A-localtalk-hardware-specifications.md).
 
 
-# Transmission dialogs
+### Transmission dialogs
 
 For the purpose of transmitting information, LLAP distinguishes between two kinds of data packets and, consequently, two kinds of transmission dialogs. A **directed packet** is sent to a single node and hence is transmitted via a **directed transmission dialog**. Similarly, a **broadcast packet** (destination node ID equals 255 ($FF)) goes to all nodes on the link via a **broadcast transmission dialog**.
 
@@ -258,13 +264,13 @@ The transmission dialog is described separately for directed and broadcast packe
 The transmitting node uses the ability of the physical layer to sense if the line is in use. If the line is busy, the node waits until the line becomes idle. While the node is waiting, it is said to *defer*. Upon sensing an idle line, the transmitter waits for a time equal to the minimum IDG (400 microseconds) plus a randomly generated period. During this wait, the transmitter continues to monitor the line. If the line becomes busy at any time during this wait period, the node must again defer. If the line remains idle throughout this wait period, then the node sends an RTS packet to the intended receiver of the data packet. The receiver must return a clear-to-send (CTS) packet to the transmitting node within the maximum IFG (200 microseconds). Upon receiving this packet, the transmitter must start sending the data packet within the maximum IFG.
 
 
-## Figure 1-3 LLAP transmission dialogs
+#### Figure 1-3 LLAP transmission dialogs
 
 End of previous frame. Line becomes idle.
 
 ![LLAP transmission dialogs](images/p73-llap-transmission-dialogs.png)
 
-### (a) Directed transmission dialog
+#### (a) Directed transmission dialog
 
 ```mermaid
 sequenceDiagram
@@ -345,7 +351,7 @@ The random wait time is generated as a **pseudorandom number**. These numbers (p
 The exact use of the history bytes for determining random wait periods is described in "Algorithms" in Appendix B.
 
 
-# Directed data packet transmission
+### Directed data packet transmission
 
 Directed packets are sent according to the following procedure, as shown in Figure 1-4:
 
@@ -357,7 +363,7 @@ Directed packets are sent according to the following procedure, as shown in Figu
 
 The destination node must start sending the CTS frame within the maximum IFG of 200 microseconds. Otherwise, the transmitter will assume that a collision has occurred and will return to step 1. For each attempt, a new random number must be generated in step 2. If the transmitter is unable to send the data packet after 32 attempts, it reports failure to its client.
 
-### Figure 1-4 RTS-CTS handshake during a directed data transmission
+#### Figure 1-4 RTS-CTS handshake during a directed data transmission
 
 ![RTS-CTS handshake during a directed data transmission showing the sequence of RTS packet, CTS packet, and Data packet between source and destination nodes over time.](images/p75-rts-cts-handshake.png)
 
@@ -371,7 +377,7 @@ sequenceDiagram
 ```
 
 
-# Broadcast data packet transmission
+### Broadcast data packet transmission
 
 Broadcast packets, which go to all nodes on the link, have a destination node ID of 255 ($FF). Broadcast packets are sent without collision except if another transmitter attempts to broadcast at the same time.
 
@@ -387,7 +393,7 @@ Although it does not expect to receive a response, the transmitting node sends a
 
 If the transmitter detects link activity during step 4, it returns to step 1 to try again. The node will make 32 attempts, beginning with step 1, before reporting failure to its client.
 
-# Packet reception
+### Packet reception
 
 A node will accept an incoming packet if
 

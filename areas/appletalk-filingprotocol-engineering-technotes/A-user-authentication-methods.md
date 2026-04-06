@@ -1,5 +1,5 @@
 ---
-title: "# User Authentication Methods"
+title: "User Authentication Methods"
 source: "022_AppleTalkFilingProtocolEngineeringTechnicalNotes"
 source_url: ""
 pages: "113–114"
@@ -10,7 +10,7 @@ parent: "AFP Technical Notes"
 layout: default
 grand_parent: Areas
 ---
-# # User Authentication Methods
+# User Authentication Methods
 
 | Field | Value |
 |-------|-------|

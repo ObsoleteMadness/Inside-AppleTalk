@@ -1,5 +1,5 @@
 ---
-title: "# The AFP Login Procedure"
+title: "The AFP Login Procedure"
 source: "022_AppleTalkFilingProtocolEngineeringTechnicalNotes"
 source_url: ""
 pages: "25–26"
@@ -10,7 +10,7 @@ parent: "AFP Technical Notes"
 layout: default
 grand_parent: Areas
 ---
-# # The AFP Login Procedure
+# The AFP Login Procedure
 
 | Field | Value |
 |-------|-------|

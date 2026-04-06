@@ -1,5 +1,5 @@
 ---
-title: "# AppleTalk Filing Protocol Design Description"
+title: "AppleTalk Filing Protocol Design Description"
 source: "022_AppleTalkFilingProtocolEngineeringTechnicalNotes"
 source_url: ""
 pages: "9–13"
@@ -10,7 +10,7 @@ parent: "AFP Technical Notes"
 layout: default
 grand_parent: Areas
 ---
-# # AppleTalk Filing Protocol Design Description
+# AppleTalk Filing Protocol Design Description
 
 | Field | Value |
 |-------|-------|

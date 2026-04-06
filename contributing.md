@@ -36,18 +36,17 @@ cd inside-appletalk
 
 #### Local development setup
 
-You need [Hugo extended](https://gohugo.io/installation/) (v0.128.0 or newer).
+You need Jekyll installed. See https://jekyllrb.com/docs/installation/ for instructions.
 
 ```bash
-# Install the theme (one-time setup)
-git clone https://github.com/alex-shpak/hugo-book.git themes/hugo-book --depth 1
+# Install dependencies
+bundle install
 
 # Start the live-reload development server
-hugo server --buildDrafts
+bundle exec jekyll serve --livereload
 ```
 
-Open <http://localhost:1313/appletalk-docs/> in your browser. Changes to any content
-file are reflected instantly without restarting the server.
+Open http://localhost:4000/ in your browser. Changes to any content file are reflected instantly while the server is running.
 
 #### Making your changes
 

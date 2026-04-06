@@ -24,16 +24,13 @@ parent: Areas
 
 ![Apple Logo](images/p1-apple-logo.png)
 
-# AppleTalk® Phase 2
-# Protocol Specification
+# AppleTalk® Phase 2 Protocol Specification
 
-*An Addendum to Inside AppleTalk*
+## *An Addendum to Inside AppleTalk*
 
 APDA™ # C0144LL/A
 
 ![Cover illustration featuring geometric shapes (cylinder, sphere, cone, and cube) with golden spiral overlay against a blue gradient background](images/p1-cover-illustration.png)
-
----
 
 **Apple Computer, Inc.**
 20525 Mariani Avenue
@@ -44,18 +41,6 @@ TLX 171-576
 To reorder products, please call:
 Apple Programmers and Developers Association
 1-800-282-APDA
-
----
-
-![Apple Logo](images/p3-apple-logo.png)
-
-# AppleTalk® Phase 2 Protocol Specification
-
-An addendum to *Inside AppleTalk*
-
----
-
-# APPLE COMPUTER, INC.
 
 Copyright © 1989 by Apple Computer, Inc.
 Inc.
@@ -121,8 +106,6 @@ Simultaneously published in the United States and Canada.
 * When the last router goes down / 11
 * Extended addressing in operation / 11
 
----
-
 # 4 Protocol Details / 13
 
 * AppleTalk data links / 14
@@ -156,5 +139,3 @@ Simultaneously published in the United States and Canada.
   * Changing zone names / 33
 
 # Appendix Changes in LocalTalk Nodes / 35
-
----
