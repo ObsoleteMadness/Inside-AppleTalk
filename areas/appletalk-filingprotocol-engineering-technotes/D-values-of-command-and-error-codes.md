@@ -22,9 +22,7 @@ grand_parent: Areas
 
 ---
 
-# Appendix D
-
-# Values of Command and Error Codes
+# Appendix D Values of Command and Error Codes
 
 ## Command Codes
 
@@ -68,11 +66,6 @@ The command codes used in the command packets are listed below. Each command cod
 | OpenDT | 48 |
 | CloseDT | 49 |
 | GetIcon | 51 |
-
----
-
-| | |
-|---|---|
 | GetIconInfo | 52 |
 | AddAPPL | 53 |
 | RmvAPPL | 54 |
@@ -82,9 +75,8 @@ The command codes used in the command packets are listed below. Each command cod
 | GetComment | 58 |
 | AddIcon | 192 |
 
----
 
-# Error Codes
+## Error Codes
 
 Each call returns an Error code which is a 4-byte integer. The various error values are listed below together with their mnemonic names (these are the names used in Chapter 7). The values given below are in hexadecimal and decimal (base-10) form.
 

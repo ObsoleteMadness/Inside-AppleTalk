@@ -23,13 +23,9 @@ parent: Areas
 
 ![AAPDA logo](images/p1-aapda-logo.png)
 
-# AppleTalk Data Stream Protocol  Preliminary Note
+# AppleTalk Data Stream Protocol Preliminary Note
 
 CAT NO: M028
-
-# AppleTalk® Data Stream Protocol
-
-## Preliminary Note
 
 Final Draft: 10/9/87
 
@@ -40,9 +36,7 @@ Alan B. Oppenheimer
 Communications & Networking
 Apple Technical Publications
 
----
-
-![Apple logo](images/p4-apple-logo.png) **APPLE COMPUTER, INC.**
+Copyright © 1987 Apple Computer, INc. All rights Reservered.
 
 This manual is copyrighted, with all rights reserved. Under the copyright laws, this manual may not be copied, in whole or part, without written consent of Apple. Under the law, copying includes translating into another language or format.
 
@@ -53,9 +47,7 @@ Cupertino, California 95014
 
 Apple, the Apple logo, and AppleTalk are registered trademarks of Apple Computer, Inc.
 
----
-
-# Contents
+## Contents
 
 iii List of Figures
 
@@ -97,27 +89,64 @@ iii List of Figures
 # List of Figures
 
 8 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Figure 1. &nbsp;&nbsp; Send and receive queues
+
 9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Figure 2. &nbsp;&nbsp; ADSP packet format
+
 13 &nbsp;&nbsp;&nbsp;&nbsp; Figure 3. &nbsp;&nbsp; ADSP data flow
+
 14 &nbsp;&nbsp;&nbsp;&nbsp; Figure 4. &nbsp;&nbsp; Recovery from a lost packet
+
 15 &nbsp;&nbsp;&nbsp;&nbsp; Figure 5. &nbsp;&nbsp; Idle connection state
+
 16 &nbsp;&nbsp;&nbsp;&nbsp; Figure 6. &nbsp;&nbsp; Connection torn down due to lost packets
+
 17 &nbsp;&nbsp;&nbsp;&nbsp; Figure 7. &nbsp;&nbsp; ADSP attention-packet format
+
 21 &nbsp;&nbsp;&nbsp;&nbsp; Figure 8. &nbsp;&nbsp; Connection-opening dialog initiated by one end
+
 22 &nbsp;&nbsp;&nbsp;&nbsp; Figure 9. &nbsp;&nbsp; Connection-opening dialog initiated by both ends
+
 22 &nbsp;&nbsp;&nbsp;&nbsp; Figure 10. Open-connection request denied
+
 24 &nbsp;&nbsp;&nbsp;&nbsp; Figure 11. Open-connection packet format
-26.. &nbsp;&nbsp; Figure 12. Connection-opening dialog: packet lost
+
+26 &nbsp;&nbsp; Figure 12. Connection-opening dialog: packet lost
+
 27 &nbsp;&nbsp;&nbsp;&nbsp; Figure 13. Simultaneous connection-opening dialog: packet lost
+
 28 &nbsp;&nbsp;&nbsp;&nbsp; Figure 14. Connection-opening dialog: half-open connection
-29 &nbsp;&nbsp;&nbsp;&nbsp; Figure 15. Connection-opening dialog: data transmitted on half-open connection
+
+29 &nbsp;&nbsp;&nbsp;&nbsp; Figure 15. Connection-opening dialog: data transmitted on half-open 
+connection
+
 30 &nbsp;&nbsp;&nbsp;&nbsp; Figure 16. Connection-opening dialog: late-arriving duplicate
-31 &nbsp;&nbsp;&nbsp;&nbsp; Figure 17. Open-connection request made to connection-listening socket; alternate socket chosen for connection
+
+31 &nbsp;&nbsp;&nbsp;&nbsp; Figure 17. Open-connection request made to connection-listening socket; 
+alternate socket chosen for connection
+
 32 &nbsp;&nbsp;&nbsp;&nbsp; Figure 18. Connection-opening filters: open connection denied
+
 33 &nbsp;&nbsp;&nbsp;&nbsp; Figure 19. Connection-opening filters with a connection-listening socket
 
+## AppleTalk Data Stream Protocol
 
-# Connections
+This document provides the specification for the AppleTalk® Data Stream Protocol (ADSP), which is currently being implemented and verified by Apple Computer, Inc. Since this document is a preliminary note, the information that it contains is subject to change. You can use this document to learn about ADSP and the services it provides to the client.
+
+### About AppleTalk Data Stream Protocol
+
+ADSP is a symmetric, connection-oriented protocol that makes possible the establishment and maintenance of full-duplex streams of data bytes between two sockets in an AppleTalk internet. Data flow on an ADSP connection is reliable; ADSP guarantees that data bytes are delivered in the same order as they are sent and free of duplicates. In addition, ADSP includes a flow-control mechanism that uses information supplied by the intended destination socket. These features are implemented by using sequence numbers logically associated with the data bytes.
+
+### ADSP Services
+
+ADSP provides the client with a simple, powerful interface to an AppleTalk network. Using ADSP, the client can accomplish the following:
+
+* open a connection with a remote end
+* send data to and receive data from the remote end
+* close the connection
+
+The client can either send a continuous stream of data or logically break the data into client-intelligible messages. Additionally, ADSP provides an attention-message mechanism that the client can use for its own internal control. A forward reset mechanism allows the client to abort the delivery of an outstanding stream of bytes to the remote client.
+
+## Connections
 
 This section defines connections, connection ends, and Connection Identifiers (CIDs) and
 explains the roles that they play in ADSP.
@@ -138,7 +167,7 @@ each end is referred to as the state of that connection end; the term *connectio
 collectively to the information at both ends. *Connection end* is a general term that covers
 both the communicating socket and the connection information associated with it.
 
-## Connection States
+### Connection States
 
 A connection between two sockets can either be open or closed. When an association is set
 up between two sockets, the connection is considered *open*; when the association is torn
@@ -159,7 +188,7 @@ ends have closed, the connection is closed. Refer to the sections titled "Openin
 Connection" and "Closing a Connection" for details on the mechanisms used to open and
 close connections.
 
-## Half-Open Connections and the Connection Timer
+### Half-Open Connections and the Connection Timer
 
 A connection is half-open when one of its ends dies or becomes unreachable from the
 other. In a half-open connection, the end that is still established could needlessly consume
@@ -170,7 +199,7 @@ and informs its client that the connection has been closed.
 
 To detect half-open connections, each end maintains a *connection timer*, which is started when the connection opens. Whenever an end receives a packet from the remote end, the timer is reset. The timer expires if the end does not receive any packets within a period of 30 seconds. At that time, the end sends a probe and restarts the connection timer. A *probe* is a request for the remote end to acknowledge; the probe itself serves as an acknowledgement to the remote end. Failure to receive any packet from the other end before the timer has expired for the fourth time (that is, after 2 minutes) indicates that the connection is half-open. At that time, ADSP immediately closes the connection end, freeing up all associated resources.
 
-## Connection Identifiers
+### Connection Identifiers
 
 A connection end is identified by its internet socket address, which consists of a socket number, node ID, and network number. In addition, when a connection is set up, each connection end generates a connection identifier, known as a *CID*. A connection can be uniquely identified by using both the socket address and the CID of the two connection ends.
 
@@ -181,11 +210,11 @@ An ADSP implementation maintains a variable, *LastCID*, that contains the last C
 The value of *CIDMax*, and therefore the range of the CIDs, is a function of the rate at which connections are expected to be set up and broken down (that is, on how quickly the CID number wraps around) and of the Maximum Packet Lifetime (MPL) for the internet. If connections are set up and broken down more rapidly, then a higher value of *CIDMax* is required. Likewise, the longer the MPL, the higher the value required for *CIDMax*. ADSP uses 16-bit CIDs (that is, *CIDMax* equals $FFFF).
 
 
-# Data Flow
+## Data Flow
 
 Either end of an open connection accepts data from its client for delivery to the other end's client. This data is handled as a stream of bytes; the smallest unit of data that can be conveyed over a connection is 1 byte (8 bits). You can view the flow of data between connection ends A and B as two unidirectional streams of bytes—one stream from end A to end B and the other stream from end B to end A. Although the following discussion focuses on the data stream from end A to end B, you can apply it equally well to the stream from end B to end A by interchanging A and B in the discussion.
 
-## Sequence Numbers
+### Sequence Numbers
 
 ADSP associates a sequence number with each byte that flows over a stream. End B maintains a variable, *RecvSeq*, which is the sequence number of the next byte that end B expects to receive from end A. End A maintains a corresponding variable, *SendSeq*, which is the sequence number of the next new byte that end A will send to end B.
 
@@ -198,7 +227,7 @@ When end B receives a packet with a *PktFirstByteSeq* value that does not equal 
 Some ADSP implementations accept and buffer data from early-arriving, out-of-sequence packets, processing the data for client delivery when the intervening data arrives. Such an implementation may also accept packets that contain both duplicate and new data bytes; in this case, the receiving end discards duplicate data and accepts the new data. This approach, which is referred to as *in-window data acceptance*, can reduce data retransmission and improve throughput. However, because in-window data acceptance adds complexity to implementation, it is an option, rather than a requirement, of ADSP.
 
 
-# Error Recovery and Acknowledgements
+## Error Recovery and Acknowledgements
 
 The sequence-number mechanism provides the framework for
 
@@ -216,7 +245,7 @@ At times, end A may determine that some data within the stream that it already s
 
 One of the advantages of using byte-oriented sequence numbers is that it offers flexibility to data retransmission. Previously sent data can be regrouped and retransmitted more efficiently. For example, if end A has sent several small data packets to end B over some period of time, and end A determines that it must retransmit all the data bytes in its send queue, it is possible that all of the data bytes in the previous small packets could fit within one ADSP packet for retransmission. It is also possible for end A to append some new data to the bytes being retransmitted in the packet.
 
-# Flow Control and Windows
+## Flow Control and Windows
 
 ADSP implements flow control to ensure that one end does not send data that the other end does not have enough buffer space to receive. This can be called *choking data flow at its source*. In order for this mechanism to work, end B must periodically inform end A of the amount of receive buffer space it has available. This process is referred to as informing end A of end B's reception window size.
 
@@ -278,9 +307,7 @@ Figure 1 illustrates how these variables would relate to a connection end's send
 
 **Figure 1. Send and receive queues**
 
-Apple Talk Data Stream Protocol
-
-# Packet Format
+## Packet Format
 
 Figure 2 illustrates an ADSP packet. The packet consists of the Link Access Protocol (LAP) and Datagram Delivery Protocol (DDP) headers, followed by a 13-byte ADSP header and up to 572 bytes of ADSP data. To identify an ADSP packet, the DDP header's protocol-type field must equal 7.
 
@@ -327,7 +354,7 @@ Setting the *Attention* bit in the descriptor field designates the packet as an 
 
 Setting the *Logical EOM* bit in the descriptor field indicates a logical end-of-message in the data stream. This bit applies only to client data packets, and so neither the *Control* bit nor *Attention* bit can be set in a packet whose *Logical EOM* bit is set.
 
-# Control Packets
+## Control Packets
 
 There are two broad classes of ADSP packets: *data packets* and *control packets*. Control packets can be distinguished from data packets by examining the *Control bit* in the packet's descriptor field; when set, this bit identifies a control packet. Such packets are sent for ADSP's internal operation and do not contain any client-deliverable data.
 
@@ -636,7 +663,7 @@ An ADSP Open Connection Acknowledgement, which is also a control packet, serves 
 Figure 11 shows the format of ADSP packets used in the connection-opening dialog. Note the special open-connection parameters that follow the ADSP packet header. These parameters are described in detail after the figure.
 
 
-# AppleTalk Data Stream Protocol
+## AppleTalk Data Stream Protocol
 
 ![Open-connection packet format](images/p24-open-connection-packet.png)
 
@@ -694,9 +721,6 @@ The following table summarizes the packet-descriptor values and CIDs that should
 
 Since delivery of packets sent by the network layer is not guaranteed, connection-opening packets can be lost or delayed. Therefore, ADSP open-connection requests should be retransmitted at client-specified intervals (for a client-specified maximum number of retries). An end receiving an open-connection request must ensure that it is not a duplicate by comparing the request's source CID and address with that of all open or opening connections for the receiving socket. If the request is a duplicate, the appropriate acknowledgement is still sent back. See Figures 12 and 13.
 
-
-# AppleTalk Data Stream Protocol
-
 ![Connection-opening dialog: packet lost](images/p32-connection-opening-dialog.png)
 
 ```mermaid
@@ -722,7 +746,7 @@ sequenceDiagram
     Note right of B: This end established
 ```
 
-Figure 12. Connection-opening dialog: packet lost
+**Figure 12. Connection-opening dialog: packet lost**
 
 
 
@@ -744,7 +768,7 @@ sequenceDiagram
     Note left of A: This end established
 ```
 
-Figure 13. Simultaneous connection-opening dialog: packet lost
+**Figure 13. Simultaneous connection-opening dialog: packet lost**
 
 If either end dies or becomes unreachable during the connection-opening dialog, one end can become established while the other end does not. This results in a half-open connection. When this situation occurs, the open end is closed down through normal ADSP mechanisms, as shown in Figure 14.
 
@@ -775,7 +799,7 @@ sequenceDiagram
     A-x B: [close advice]
 ```
 
-Figure 14. Connection-opening dialog: half-open connection
+**Figure 14. Connection-opening dialog: half-open connection**
 
 Figure 15 shows that it is possible for one end to become established, while the other is still opening. In this case, the connection is half-open: End A can begin to send data packets, but End B will discard the packets because the connection is not yet open (end B has not yet received acknowledgement that end A has become established).
 
@@ -811,7 +835,7 @@ sequenceDiagram
 
 Figure 15. Connection-opening dialog: data transmitted on half-open connection
 
-# ADSP Development Kit Version 1.0
+## ADSP Development Kit Version 1.0
 
 In order to ship the AppleTalk Data Stream Protocol with your products, you must first obtain a license from:
 

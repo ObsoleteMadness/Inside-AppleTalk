@@ -22,9 +22,7 @@ grand_parent: Areas
 
 ---
 
-# Chapter 4
-
-# Access Control Mechanisms in AFP
+# Chapter 4 Access Control Mechanisms in AFP
 
 Access controls are built into AFP in three ways: user authentication at server login, an optional volume level password when first accessing ("opening") a volume, and directory-level access controls based on user authentication at login.
 

@@ -22,9 +22,7 @@ grand_parent: Areas
 
 ---
 
-# Chapter 5
-
-# A Discussion of AFP Calls
+# Chapter 5 A Discussion of AFP Calls
 
 Now we provide an overall discussion of the various calls provided by AFP and how they can be used to access a file server. A completely detailed specification of each call is available in Chapter 7. For the purpose of this discussion we classify the calls into various groups.
 
@@ -130,7 +128,7 @@ The next two calls can be used to respectively rename or delete files and direct
 
 The *FPMove* call can be used to move a file or a directory from one parent directory to another on the same volume.  At the same time the object moved can be renamed.
 
-# Fork-Level Calls
+## Fork-Level Calls
 
 There are eight fork-level calls:
 

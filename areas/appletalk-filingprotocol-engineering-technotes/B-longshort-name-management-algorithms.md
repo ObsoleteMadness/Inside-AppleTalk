@@ -22,9 +22,7 @@ grand_parent: Areas
 
 ---
 
-# Appendix B
-
-# Long/Short Name Management Algorithms
+# Appendix B Long/Short Name Management Algorithms
 
 Files and directories in AFP possess two names, a Long Name and a Short Name, because of differences in Macintosh and MS-DOS naming rules. Macintosh permits file and directory names to be made up of at most 32 characters, where valid characters may be any printable ASCII code except colon ($3A). MS-DOS is more restrictive; names may be up to eight alphanumeric (plus other) characters, optionally followed by period ($2E) and a one-to-three alphanumeric (plus other) character extension. The dual naming convention was devised to allow file servers to present to Macintosh and MS-DOS users a name space that is compatible with each of their respective file systems. Yet in order to ensure that an object can be uniquely specified by either name, some rules must be adhered to.
 
@@ -51,10 +49,7 @@ ELSE { name type is Long OR name is in Long format }
 
 This algorithm is to be used for renaming as well (FPRename). When an object is renamed, both names will be changed using the above rules.
 
----
 
 Note that this algorithm mandates that whenever an object is named with a Short Name format name, the Long Name will always match. This is done so that servers need only check one list, Long Names or Short Names, for each creation or renaming operation.
 
 An interesting problem can arise. Consider the case in which a server contains a Macintosh file with a Long Name _MacFileWithLongName_ and a Short Name _MacFile_ which the server derived from the Long Name. This Short Name is not normally visible to Macintosh workstations. Now suppose that a user at a Macintosh decides to create a new file in the same directory with the Long Name _MacFile_. The call must fail, because by the above algorithm the new file's Short Name and Long Name must both be set to _MacFile_ since it is in Short format. Hence the user is returned an _ObjectExists_ error even though the directory does not appear to contain a file by that Long Name.
-
----

@@ -22,8 +22,7 @@ grand_parent: Areas
 
 ---
 
-# Appendix C
-# File Sharing Modes
+# Appendix C File Sharing Modes
 
 AFP provides much functionality to control the sharing of files, primarily at the Creator/Group/World Access Rights level but also at the time of file fork open. To perform the latter function, the server must enforce the synchronization rules presented below.
 
@@ -65,5 +64,3 @@ The rules for allowing or denying multiple opens of a fork depend on the Current
 ![Rules for Allowing or Denying Multiple Opens](images/p118-rules-multiple-opens.png)
 
 Figure C-1: Rules for Allowing or Denying Multiple Opens
-
----

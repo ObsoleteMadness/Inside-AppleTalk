@@ -22,9 +22,7 @@ grand_parent: Areas
 
 ---
 
-# Chapter 3
-
-# The AFP Login Procedure
+# Chapter 3 The AFP Login Procedure
 
 This chapter discusses the process of discovering a file server and logging in to it.
 

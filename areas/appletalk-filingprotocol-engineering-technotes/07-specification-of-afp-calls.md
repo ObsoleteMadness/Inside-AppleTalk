@@ -38,7 +38,7 @@ Many of the calls require a bitmap to be passed, along with a block of parameter
 
 All numerical fields represent signed numbers unless otherwise indicated.
 
-# FPAddAPPL
+## FPAddAPPL
 
 This call adds an APPL mapping to the Desktop Database.
 
@@ -103,7 +103,7 @@ packet-beta
 
 This call adds a comment for a file or directory to the Desktop Database.
 
-**INPUTS:**
+### INPUTS:
 
 - **SRefNum (INT)**: session refnum
 - **DTRefNum (INT)**: Desktop Database refnum
@@ -115,25 +115,25 @@ This call adds a comment for a file or directory to the Desktop Database.
 - **CmtLength (BYTE)**: length of comment data
 - **CmtText (BYTES)**: comment data to be associated with file or folder specified (limited to 199 bytes)
 
-**OUTPUTS:**
+### OUTPUTS:
 
 - **FPError (LONG)**
 
-**ERRORS:**
+### ERRORS:
 
 - **ParamErr**: unknown session refnum or Desktop Database refnum; bad pathname
 - **ObjectNotFound**: input parameters do not point to an existing file or dir
 - **AccessDenied**: user does not have the rights listed below
 
-**ALGORITHM:**
+### ALGORITHM:
 
 The comment type and comment data are associated with the specified file or directory and stored in the Desktop Database. If the comment length is greater than 199 bytes, the comment will be truncated to 199 bytes and no error will be returned.
 
-**RIGHTS:**
+### RIGHTS:
 
 The user must have previously called FPOpenDT for the corresponding volume. In addition, the object must be present in the specified directory before this call is issued, and the user must have Search or Write access rights to all ancestors except the object's Parent, as well as Write access to the Parent.
 
-**PACKET FORMAT:**
+### PACKET FORMAT:
 
 ![FPAddComment packet format diagram](images/p41-fpaddcomment-packet.png)
 
@@ -161,7 +161,7 @@ packet-beta
 | Comment Text | Variable | Variable | The actual comment data |
 
 
-# FPAddIcon
+## FPAddIcon
 
 This call is used to add an icon bitmap to the Desktop Database.
 
@@ -197,9 +197,6 @@ The command packet includes all input parameters except for the actual bitmap. T
 
 ### PACKET FORMAT:
 
-
-### Command
-
 ![FPAddIcon command format](images/p43-fpaddicon-command.png)
 
 ```mermaid
@@ -228,7 +225,7 @@ packet-beta
 | IconSize | 144 | 16 | Icon size in bytes |
 
 
-# FPByteRangeLock
+## FPByteRangeLock
 
 This call is used to lock a range of an open fork to ensure exclusive access. Locks prevent all other users from reading or writing any bytes within the range.
 
@@ -272,8 +269,6 @@ No special access rights are needed to make this call.
 
 ### PACKET FORMAT:
 
-### Command
-
 ![Packet format for ByteRangeLock Command and Reply](images/p45-byte-range-lock-packet-format.png)
 
 ```mermaid
@@ -308,29 +303,29 @@ packet-beta
 |---|---|---|---|
 | RangeStart | 0 | 32 | The actual starting offset of the range that was locked or unlocked. |
 
-# FPCloseDir
+## FPCloseDir
 
 This call is used to close a directory.
 
-**INPUTS:**
+### INPUTS:
 - **SRefNum (INT)**: session refnum
 - **VolumeID (INT)**: volume identifier
 - **DirID (LONG)**: ancestor directory identifier
 
-**OUTPUTS:**
+### OUTPUTS:
 - **FPError (LONG)**
 
-**ERRORS:**
+### ERRORS:
 - **ParamErr**: unknown session refnum or volume identifier
 - **ObjectNotFound**: unknown directory identifier
 
-**ALGORITHM:**
+### ALGORITHM:
 The directory identifier is invalidated, and may not be used again.
 
-**RIGHTS:**
+### RIGHTS:
 The user must have previously called FPOpenVol for this volume and FPOpenDir for this directory.
 
-**PACKET FORMAT:**
+### PACKET FORMAT:
 
 ### Command
 
@@ -355,20 +350,20 @@ packet-beta
 
 This call is used to disassociate a user from the volume's Desktop Database.
 
-**INPUTS:**
+### INPUTS:
 * **SRefNum (INT):** session refnum
 * **DTRefNum (INT):** Desktop Database refNum, as returned from FPOpenDT
 
-**OUTPUTS:**
+### OUTPUTS:
 * **FPError (LONG)**
 
-**ERRORS:**
+### ERRORS:
 * **ParamErr:** unknown session refnum or Desktop Database refnum
 
-**RIGHTS:**
+### RIGHTS:
 * The user must have made a successful FPOpenDT call before this call can be made.
 
-**PACKET FORMAT:**
+### PACKET FORMAT:
 
 ![FPCloseDT packet format](images/p47-fpclosedt-packet-format.png)
 
@@ -389,32 +384,32 @@ packet-beta
 
 This call is used to close a fork which was opened by FPOpenFork.
 
-**INPUTS:**
+### INPUTS:
 
 | | |
 |---|---|
 | SRefNum (INT) | session refnum |
 | OForkRefnum (INT) | open fork refnum |
 
-**OUTPUTS:**
+### OUTPUTS:
 
 FPError (LONG)
 
-**ERRORS:**
+### ERRORS:
 
 | | |
 |---|---|
 | ParamErr | unknown session refnum or open fork refnum |
 
-**ALGORITHM:**
+### ALGORITHM:
 
 The server flushes and then closes the open fork, invalidating the OForkRefnum. If the fork had been written to, the file's Mod Date will be set to the server's clock at this time.
 
-**RIGHTS:**
+### RIGHTS:
 
 No special access rights are needed to make this call.
 
-**PACKET FORMAT:**
+### PACKET FORMAT:
 
 ![FPCloseFork Command packet format](images/p48-fpclosefork-packet.png)
 
@@ -437,18 +432,18 @@ This call is used to "unmount" a volume.
 
 | | | |
 |---|---|---|
-| **INPUTS:** | SRefNum (INT) | session refnum |
+| ### INPUTS: | SRefNum (INT) | session refnum |
 | | VolumeID (INT) | volume identifier |
 | | | |
-| **OUTPUTS:** | FPError (LONG) | |
+| ### OUTPUTS: | FPError (LONG) | |
 | | | |
-| **ERRORS:** | ParamErr | unknown session refnum or volume identifier |
+| ### ERRORS: | ParamErr | unknown session refnum or volume identifier |
 | | | |
-| **ALGORITHM:** | The Volume ID is invalidated. No further calls may be made to access objects on this volume unless another FPOpenVol call is made. | |
+| ### ALGORITHM: | The Volume ID is invalidated. No further calls may be made to access objects on this volume unless another FPOpenVol call is made. | |
 | | | |
-| **RIGHTS:** | The user must have previously called FPOpenVol for this volume. | |
+| ### RIGHTS: | The user must have previously called FPOpenVol for this volume. | |
 
-**PACKET FORMAT:**
+### PACKET FORMAT:
 
 ![FPCloseVol packet format diagram](images/p49-fpclosevol-packet-format.png)
 
@@ -465,7 +460,9 @@ packet-beta
 | 0 | 8 | 8 | Reserved, must be 0. |
 | Volume ID | 16 | 16 | The identifier of the volume to be closed. |
 
-# FPCopyFile (optional; may not be supported by all servers)
+## FPCopyFile 
+
+> (optional; may not be supported by all servers)
 
 This call is used to copy a file residing on one of the server's volumes to another location on one of the server's volumes. The destination of the copy is specified by providing a VolID, DirID, and Pathname that indicate the copy's new Parent Directory.
 
@@ -516,10 +513,6 @@ The user must have previously called FPOpenVol for both source and destination v
 
 ### PACKET FORMAT:
 
----
-
-# Command
-
 ![CopyFile command structure](images/p51-copyfile-command-structure.png)
 
 ```mermaid
@@ -553,9 +546,7 @@ packet-beta
 | NewType | variable | 8 | Type of the new name pathname. |
 | NewName | variable | variable | The new name string. |
 
----
-
-# FPCreateDir
+## FPCreateDir
 
 This call is used to create a new directory.
 
@@ -633,7 +624,7 @@ packet-beta
 
 ---
 
-# FPCreateFile
+## FPCreateFile
 
 This call is used to create a file.
 
@@ -676,9 +667,7 @@ In a hard create, if the file already exists, it is essentially deleted and then
 
 The user must have previously called FPOpenVol for this volume. For a soft create, the user must have Search or Write access rights to all ancestors except this file's Parent Directory, as well as Write access right to the Parent Directory. For a hard create, the user must have Search access to all ancestors except the Parent, as well as Read and Write access to the Parent.
 
----
-
-PACKET FORMAT:
+### PACKET FORMAT:
 
 ![FPCreateFile command packet format](images/p54-createfile-packet.png)
 
@@ -703,7 +692,7 @@ packet-beta
 
 ---
 
-# FPDelete
+## FPDelete
 
 This call is used to delete either a directory or file.
 
@@ -766,7 +755,7 @@ packet-beta
 
 ---
 
-# FPEnumerate
+## FPEnumerate
 
 This call is used to enumerate the contents of a directory. The reply is composed of a number of file and/or directory parameter structures.
 
@@ -809,8 +798,6 @@ This call is used to enumerate the contents of a directory. The reply is compose
 
 The server does an enumeration of the directory as specified with the input parameters: if the FileBitmap is empty, only directory offspring will be enumerated, and the StartIndex may range from 1 to the total number of directory offspring. Likewise, if the DirBitmap is empty, only file offspring will be enumerated, and the StartIndex may range from 1 to the total number of file offspring. If both Bitmaps are non-empty, the StartIndex may range from 1 to the total number of offspring, and structures for both files and directories will be returned. These structures are not returned in any particular order.
 
----
-
 This call will complete when ReqCount structures have been inserted into the Reply packet (no partial structures will be returned), or when the Reply packet is full, or when there are no more offspring to enumerate.
 
 The server retrieves the specified parameters for each enumerated offspring and packs them, in Bitmap order, in structures in the reply packet along with copies of the input Bitmaps inserted before the structures. In order to keep all variable-length parameters at the end of each structure (even if more parameters are later added), all such parameters like the Long Name and Short Name fields will be represented in the Bitmap order as fixed-length offsets (INTs) from the start of the parameters in each structure (not the start of the bitmap and not the start of the 'header' bytes) to the start of the variable-length fields. Each structure may be null-padded to make its length even.
@@ -819,19 +806,19 @@ A BitmapErr will be returned if an attempt is made to retrieve the DirectoryID p
 
 If NoErr is returned, then all the structures returned in the Reply packet will be valid. If any error occurs, there will be no valid structures in the Reply packet.
 
-**RIGHTS:** The user must have previously called FPOpenVol for this volume. In addition, the user must have Search access rights to all ancestors except this directory; Search access right to this directory is needed to be able to enumerate directory offspring. Read access right is needed to this Directory in order to be able to enumerate file offspring.
+### RIGHTS: 
+The user must have previously called FPOpenVol for this volume. In addition, the user must have Search access rights to all ancestors except this directory; Search access right to this directory is needed to be able to enumerate directory offspring. Read access right is needed to this Directory in order to be able to enumerate file offspring.
 
-**NOTES:** Since enumerating a large directory may take several calls, it is possible (since other users may be adding to or deleting from the directory) for the enumeration to miss offspring or return duplicate offspring. To be safe, keep enumerating until an ObjectNotFound error is returned, and filter out duplicate entries.
+### NOTES:
+Since enumerating a large directory may take several calls, it is possible (since other users may be adding to or deleting from the directory) for the enumeration to miss offspring or return duplicate offspring. To be safe, keep enumerating until an ObjectNotFound error is returned, and filter out duplicate entries.
 
 A given offspring is not guaranteed to occupy the same index number in the Parent Directory from one enumeration to the next.
 
----
-
-# PACKET FORMAT:
+### PACKET FORMAT:
 
 ![Diagram showing the Enumerate command and reply packet formats.](images/p58-enumerate-packet-format.png)
 
-### Command Packet Format
+#### Command Packet Format
 
 ```mermaid
 packet-beta
@@ -862,7 +849,7 @@ packet-beta
 | PathType | 144 | 8 | The type of pathname provided. |
 | Pathname | 152 | variable | The pathname of the directory to enumerate. |
 
-### Reply Packet Format
+#### Reply Packet Format
 
 ```mermaid
 packet-beta
@@ -887,31 +874,30 @@ packet-beta
 
 *Note: The fields from **Struct Length** to the **Ø** (null byte) are repeated **ActCount** times.*
 
----
 
-# FPFlush
+## FPFlush
 
 This call is used to flush to disk any data relating to the specified volume that has been modified by the user.
 
-**INPUTS:**
+### INPUTS:
 SRefNum (INT) session refnum
 VolumeID (INT) volume identifier
 
-**OUTPUTS:**
+### OUTPUTS:
 FPError (LONG)
 
-**ERRORS:**
+### ERRORS:
 ParamErr unknown session refnum or volume identifier
 
-**ALGORITHM:**
+### ALGORITHM:
 The server attempts to flush to disk as much changed information as possible. This includes (a) flushing all forks opened by the user, (b) flushing catalog information changed by the user, and (c) flushing any updated volume-level information. Since it may be difficult or impossible for all servers to guarantee that this can all be done, the above list is meant as a suggestion. Users should not rely on any or all of the above actions to actually be done.
 
 The volume's Mod Date may change as a result of this call, but users should not rely on it since updating of the date is implementation-dependent. If no volume information was changed since the last FPFlush call, the date may or may not change.
 
-**RIGHTS:**
+### RIGHTS:
 The user must have previously called FPOpenVol for this volume.
 
-**PACKET FORMAT:**
+### PACKET FORMAT:
 
 ![FPFlush command packet format](images/p59-fpflush-packet-format.png)
 
@@ -930,29 +916,27 @@ packet-beta
 
 ---
 
-# FPFlushFork
+## FPFlushFork
 
 Any FPWrites made to a particular file fork may be buffered by the server in order to optimize disk accesses. Within the constraints of performance, the server will try to flush (commit to disk) each file as soon as possible, yet clients can force the server to write to the disk any data buffered from previous FPWrites by issuing this call.
 
-**INPUTS:**
+### INPUTS:
 - **SRefNum (INT)**: session refnum
 - **OForkRefnum (INT)**: open fork refnum
 
-**OUTPUTS:**
+### OUTPUTS:
 - **FPError (LONG)**
 
-**ERRORS:**
+### ERRORS:
 - **ParamErr**: unknown session refnum or open fork refnum
 
-**ALGORITHM:**
+### ALGORITHM:
 The server will commit to disk all cached writes to the fork, and set the file's Mod Date to the server's clock if the fork was written to.
 
-**RIGHTS:**
+### RIGHTS:
 No special access rights are needed to make this call.
 
-**PACKET FORMAT:**
-
-### Command
+### PACKET FORMAT:
 
 ![FPFlushFork Command Packet Format](images/p60-flushfork-packet.png)
 
@@ -969,13 +953,11 @@ packet-beta
 | 0 | 8 | 8 | Reserved/unused byte, set to 0. |
 | OForkRefnum | 16 | 16 | The open fork reference number. |
 
----
-
-# FPGetAPPL
+### FPGetAPPL
 
 This call is used to retrieve information about a particular application from the Desktop Database.
 
-**INPUTS::**
+### INPUTS:
 
 * **SRefNum (INT)**: session refnum
 * **DTRefnum (INT)**: Desktop Database refnum
@@ -983,30 +965,28 @@ This call is used to retrieve information about a particular application from th
 * **APPL Index (INT)**: index of the APPL entry to be retrieved
 * **Bitmap (INT)**: bitmap indicating the parameters of the application file to be returned. This field is the same as the FileBitmap in the FPGetFileDirParms call.
 
-**OUTPUTS:**
+### OUTPUTS:
 
 * **FPError (LONG)**
 * **APPLTag (LONG)**: tag information associated with the APPL entry
 
-**ERRORS:**
+### ERRORS:
 
 * **ParamErr**: unknown session refnum or Desktop Database refnum
 * **ObjectNotFound**: no files in the Desktop Database match input parameters
 * **AccessDenied**: user does not have the rights listed below
 
-**ALGORITHM:**
+### ALGORITHM:
 
 The entries under the specified FileCreator are examined, and the n<sup>th</sup> entry, as indicated by the APPL index, is returned. Entries for applications which are not accessible by the user are <u>not</u> returned.
 
-**RIGHTS:**
+### RIGHTS:
 
 The user must have previously called FPOpenDT for the corresponding volume, and must have Search access to all ancestors except the Parent and Read access to the Parent of the application whose information will be returned.
 
-**PACKET FORMAT:**
+### PACKET FORMAT:
 
 ![Command and Reply packet formats for FPGetAPPL](images/p61-packet-format.png)
-
-### Command
 
 ```mermaid
 packet-beta
@@ -1027,7 +1007,7 @@ packet-beta
 | APPL Index | 64 | 16 | Index of the APPL entry to be retrieved |
 | Bitmap | 80 | 16 | Indicates parameters of the application file to be returned |
 
-### Reply
+#### Reply
 
 ```mermaid
 packet-beta
@@ -1044,7 +1024,7 @@ packet-beta
 
 ---
 
-# FPGetComment
+## FPGetComment
 
 This call is used to retrieve a comment associated with a specified file or directory from the Desktop Database.
 
@@ -1123,7 +1103,7 @@ packet-beta
 
 ---
 
-# FPGetFileDirParms
+## FPGetFileDirParms
 
 This call is used to retrieve parameters for an object that may be a file or a directory.
 
@@ -1177,11 +1157,9 @@ This call is used to retrieve parameters for an object that may be a file or a d
 *   **DirBitmap (INT)**: copy of input parameter
 *   **ObjectFlag (BIT)**: one-bit flag that indicates whether object is a file or a directory: 0 = file; 1 = directory. All other bits should be zero.
 
----
+### Parameters:
 
-Parameters
-
-**ERRORS:**
+### ERRORS:
 
 | | |
 | :--- | :--- |
@@ -1190,21 +1168,21 @@ Parameters
 | BitmapErr | an attempt was made to retrieve a parameter which cannot be obtained with this call |
 | AccessDenied | user does not have the rights listed below |
 
-**ALGORITHM:** The server retrieves the specified parameters for the object and packs them, in the order specified by the appropriate Bitmap, in the reply packet along with a flag indicating the type of object and a copy of the Bitmaps inserted before the parameters. In order to keep all variable-length parameters at the end of the packet (even if more parameters are later added), all such parameters like the Long Name and Short Name fields will be represented in the Bitmap order as fixed-length offsets (INTs) from the start of the parameters (not the start of the bitmap) to the variable-length fields. The actual variable-length fields are then packed after all fixed-length fields.
+### ALGORITHM: 
+The server retrieves the specified parameters for the object and packs them, in the order specified by the appropriate Bitmap, in the reply packet along with a flag indicating the type of object and a copy of the Bitmaps inserted before the parameters. In order to keep all variable-length parameters at the end of the packet (even if more parameters are later added), all such parameters like the Long Name and Short Name fields will be represented in the Bitmap order as fixed-length offsets (INTs) from the start of the parameters (not the start of the bitmap) to the variable-length fields. The actual variable-length fields are then packed after all fixed-length fields.
 
 If the object exists but both bitmaps are null, no error will be returned. The File Bitmap, Dir Bitmap, and File/Dir Flag will be returned with no other parameters.
 
 If the Access Rights for a directory are requested, the server will return a LONG containing the Read, Write, and Search access privileges corresponding to Owner, Group, and World. In addition, the upper byte of the Access Rights LONG is the User Rights Summary byte, indicating what privileges the user has to this directory, and whether or not the user is the owner of the directory. This Owner Bit is also set if the directory is owned by <any user>.
 
-**RIGHTS:** The user must have previously called FPOpenVol for this volume. In addition, the user must have Search access rights to all ancestors except this object's Parent Directory. If the object is a directory, the user also needs Search access to the Parent Directory; else if the object is a file, the user needs Read access to the Parent Directory.
+### RIGHTS: 
+The user must have previously called FPOpenVol for this volume. In addition, the user must have Search access rights to all ancestors except this object's Parent Directory. If the object is a directory, the user also needs Search access to the Parent Directory; else if the object is a file, the user needs Read access to the Parent Directory.
 
-**NOTES:** Most Attributes are actually stored in corresponding flags within the FinderInfo field.
+### NOTES:
+Most Attributes are actually stored in corresponding flags within the FinderInfo field.
 
----
+### PACKET FORMAT:
 
-PACKET FORMAT:
-
-### Command
 ![GetFileDirParms command packet structure](images/p65-command-packet.png)
 
 ```mermaid
@@ -1230,7 +1208,7 @@ packet-beta
 | PathType | 96 | 8 | Type of the following pathname |
 | Pathname | 104 | Variable | The pathname string |
 
-### Reply
+#### Reply
 ![GetFileDirParms reply packet structure](images/p65-reply-packet.png)
 
 ```mermaid
@@ -1250,7 +1228,7 @@ packet-beta
 | 0 | 40 | 8 | Reserved |
 | Parameters | 48 | Variable | The requested parameters |
 
-### FileBitmap
+#### FileBitmap
 ![FileBitmap bit mapping](images/p65-file-bitmap.png)
 
 ```mermaid
@@ -1284,7 +1262,7 @@ packet-beta
 | Rsrc Fork Length | 10 | 1 | Length of the resource fork |
 | 0 | 11 | 5 | Reserved (zeros) |
 
-### DirBitmap
+#### DirBitmap
 ![DirBitmap bit mapping](images/p65-dir-bitmap.png)
 
 ```mermaid
@@ -1320,7 +1298,7 @@ packet-beta
 | Access Rights | 11 | 1 | Directory access rights |
 | 0 | 12 | 4 | Reserved (zeros) |
 
-### File Attributes
+#### File Attributes
 ![File Attributes bit mapping](images/p65-file-attributes.png)
 
 ```mermaid
@@ -1348,7 +1326,7 @@ packet-beta
 | 0 | 13 | 2 | Reserved |
 | Set/Clear | 15 | 1 | Set/Clear flag for attribute modification |
 
-### Dir Attributes
+#### Dir Attributes
 ![Dir Attributes bit mapping](images/p65-dir-attributes.png)
 
 ```mermaid
@@ -1364,7 +1342,7 @@ packet-beta
 | 0 | 1 | 14 | Reserved |
 | Set/Clear | 15 | 1 | Set/Clear flag for attribute modification |
 
-### Access Rights
+#### Access Rights
 ![Access Rights bit mapping](images/p65-access-rights.png)
 
 ```mermaid
@@ -1402,9 +1380,8 @@ packet-beta
 | Read (User) | 25 | 1 | User read permission |
 | Write (User) | 26 | 1 | User write permission |
 
----
 
-# FPGetForkParms
+## FPGetForkParms
 
 This call is used to retrieve parameters for a file associated with a particular open fork.
 
@@ -1476,13 +1453,11 @@ packet-beta
 | Bitmap | 0 | 16 | Copy of input parameter bitmap |
 | File Parameters | 16 | variable | Requested file parameters |
 
----
-
-# FPGetIcon
+## FPGetIcon
 
 This call is used to retrieve an icon from the Desktop database from a FileCreator/FileType specification.
 
-**INPUTS:**
+### INPUTS:
 
 *   **SRefNum (INT)**: session refnum
 *   **DTRefnum (INT)**: Desktop Database refnum
@@ -1491,27 +1466,27 @@ This call is used to retrieve an icon from the Desktop database from a FileCreat
 *   **IconType (BYTE)**: Preferred icon type
 *   **Length (INT)**: the number of bytes reserved for icon bitmap
 
-**OUTPUTS:**
+### OUTPUTS:
 
 *   **FPError (LONG)**
 *   **Icon Bitmap (BYTES)**: The actual bitmap for the icon
 
-**ERRORS:**
+### ERRORS:
 
 *   **ParamErr**: unknown session refnum or Desktop Database refnum
 *   **ItemNotFound**: no icon corresponding to the input specification was found in the Desktop Database
 
-**ALGORITHM:**
+### ALGORITHM:
 
 The bitmap for the specified icon is looked up in the Desktop Database given its FileCreator, FileType, and IconType and returned to the caller if found. If no matching icon is found, an ItemNotFound error will be returned.
 
 Note that an input length argument of zero is acceptable to test for the presence or absence of a particular icon. The size of the bitmap returned is the minimum of the requested length and the actual size of the icon.
 
-**RIGHTS:**
+### RIGHTS:
 
 The user must have previously called FPOpenDT for the corresponding volume.
 
-**PACKET FORMAT:**
+### PACKET FORMAT:
 
 ![FPGetIcon packet format](images/p67-fpgeticon-packet-format.png)
 
@@ -1540,36 +1515,36 @@ packet-beta
 
 ---
 
-# FPGetIconInfo
+## FPGetIconInfo
 
-**INPUTS:**
+### INPUTS:
 * **SRefNum (INT)** session refnum
 * **DTRefnum (INT)** Desktop Database refnum
 * **FileCreator (RESTYPE)** File's Creator type
 * **IconIndex (INT)** Index of requested icon
 
-**OUTPUTS:**
+### OUTPUTS:
 * **FPError (LONG)**
 * **IconTag (LONG)** Tag information associated with the requested icon
 * **FileType (RESTYPE)** The file type of the requested icon
 * **IconType (BYTE)** The type of the requested icon
 * **Size (INT)** The size of the icon bitmap
 
-**ERRORS:**
+### ERRORS:
 * **ParamErr** unknown session refnum or Desktop Database refnum
 * **ItemNotFound** no icon corresponding to the input specification was found in the Desktop Database
 
-**ALGORITHM:**
+### ALGORITHM:
 The Icon Index argument is used to determine the nth icon for the given Creator type to be returned. If the icon index is greater than the number of icons in the Desktop Database for the specified Creator type, ItemNotFound is returned.
 
-**RIGHTS:**
+### RIGHTS:
 The user must have previously called FPOpenDT for the corresponding volume.
 
-**PACKET FORMAT:**
+### PACKET FORMAT:
 
 ![FPGetIconInfo packet format showing command and reply structures](images/p68-packet-format.png)
 
-### Command
+#### Command
 
 ```mermaid
 packet-beta
@@ -1588,7 +1563,7 @@ packet-beta
 | FileCreator | 32 | 32 | File's Creator type |
 | IconIndex | 64 | 16 | Index of requested icon |
 
-### Reply
+#### Reply
 
 ```mermaid
 packet-beta
@@ -1607,17 +1582,16 @@ packet-beta
 | Padding | 72 | 8 | 0 |
 | Size | 80 | 16 | The size of the icon bitmap |
 
----
 
-# FPGetSrvrInfo
+## FPGetSrvrInfo
 
 This call is used to obtain a block of descriptive information from the server, without requiring a session to be opened.
 
-**INPUTS:**
+### INPUTS:
 
 * **SAddr** (EntityAddr): network-dependent internet address of the file server
 
-**OUTPUTS:**
+### OUTPUTS:
 
 * **FPError** (LONG)
 * **Flags** (INT): Flags, consisting of:
@@ -1628,27 +1602,24 @@ This call is used to obtain a block of descriptive information from the server, 
 * **UAM strings** (STRs): User Authentication Methods supported by the server
 * **Volume Icon and Mask** (256 BYTES)
 
-**ERRORS:**
+### ERRORS:
 
 * **NoServer**: server not responding
 
-**ALGORITHM:**
+### ALGORITHM:
 
 The info block is returned from the server. The AFP Versions and UAM strings are formatted as a one-BYTE count followed by that number of strings packed back-to-back without padding. To facilitate access to all the fields of the reply packet, the packet is formatted as shown below: the packet data begins with INT offsets to the Machine Type, AFP Versions, UAM strings, and Volume Icon and Mask. These offsets are measured relative to the start of the reply packet data. The Volume Icon and Mask field is optional; if it is not included, the Offset to Volume Icon and Mask will be zero.
 
-**RIGHTS:**
+### RIGHTS:
 
 No special access rights are needed to make this call.
 
-**NOTES:**
+### Notes:
 
 The server may pack fields in the Reply block in any order; each field should be accessed only via the offsets (make no assumptions about how the fields are packed relative to one another). The exception to this is that the Server Name string (for which there is no offset) begins immediately after the Flags field.
 
----
-
 ## PACKET FORMAT:
 
-### GetSrvrInfo
 
 ![GetSrvrInfo command and reply packet format](images/p70-getsrvrinfo-format.png)
 
@@ -1704,19 +1675,17 @@ packet-beta
 | Supports FPCopyFile | 0 | 1 | If set, the server supports the FPCopyFile command. |
 | Reserved | 1 | 15 | Reserved; must be zero. |
 
----
-
-# FPGetSrvrParms
+## FPGetSrvrParms
 
 This call is used to retrieve server-level parameters.
 
-**INPUTS:**
+### INPUTS:
 
 | Field | Type | Description |
 |---|---|---|
 | SRefNum | (INT) | session refnum |
 
-**OUTPUTS:**
+### OUTPUTS:
 
 | Field | Type | Description |
 |---|---|---|
@@ -1726,25 +1695,25 @@ This call is used to retrieve server-level parameters.
 | HasPassword | (BIT) | flag indicating whether or not this volume is password-protected: 0 = not protected; 1 = has password (all other bits must be zero) |
 | VolNames | (STRs) | character string names of each volume (maximum 27 bytes) |
 
-**ERRORS:**
+### ERRORS:
 
 | Error | Description |
 |---|---|
 | ParamErr | unknown session refnum |
 
-**ALGORITHM:**
+### ALGORITHM:
 
 The volume name strings and password flags are packed together without padding in the reply.
 
-**RIGHTS:**
+### RIGHTS:
 
 No special access rights are needed to make this call.
 
-**NOTES:**
+### Notes:
 
 This call should be implemented on a server using the ASP GetStatus mechanism.
 
-**PACKET FORMAT:**
+### PACKET FORMAT:
 
 ![Packet format for FPGetSrvrParms command and reply](images/p71-packet-format.png)
 
@@ -1769,13 +1738,11 @@ packet-beta
 | password flag | 40 | 1 | Flag indicating if the volume is password-protected (repeated for each volume). |
 | volume name string | 41 | variable | Character string name of the volume (maximum 27 bytes, repeated for each volume). |
 
----
-
 ## FPGetVolParms
 
 This call is used to retrieve parameters for a particular volume. The volume is specified by its Volume ID as returned from the FPOpenVol call.
 
-**INPUTS:**
+### INPUTS:
 
 - **SRefNum (INT)**: session refnum
 - **VolumeID (INT)**: volume identifier
@@ -1791,26 +1758,26 @@ This call is used to retrieve parameters for a particular volume. The volume is 
     - 7 Bytes Total (LONG) unsigned
     - 8 Volume Name (INT)
 
-**OUTPUTS:**
+### OUTPUTS:
 
 - **FPError (LONG)**
 - **Bitmap (INT)**: copy of input parameter
 - **Volume Parameters**
 
-**ERRORS:**
+### ERRORS:
 
 - **ParamErr**: unknown session refnum or volume identifier
 - **BitmapErr**: an attempt was made to retrieve a parameter which cannot be obtained with this call; null bitmap
 
-**ALGORITHM:**
+### ALGORITHM:
 
 The server retrieves the specified parameters for the volume and packs them, in Bitmap order, in the reply packet along with a copy of the Bitmap inserted before the parameters. In order to keep all variable-length parameters at the end of the packet (even if more parameters are later added), all such parameters like the Volume Name field will be represented in the Bitmap order by fixed-length offsets (INTs) from the start of the parameters (not the start of the bitmap) to the start of the variable-length fields. The actual variable-length fields are then packed after all fixed-length fields.
 
-**RIGHTS:**
+### RIGHTS:
 
 The user must have previously called FPOpenVol for this volume.
 
-**NOTES:**
+### Notes:
 
 The ReadOnly attribute is intended to be set via some administrative function, not through this protocol.
 
@@ -1890,9 +1857,7 @@ packet-beta
 | ReadOnly | 0 | 1 | If set, the volume is read-only |
 | Reserved | 1 | 15 | Always 0 |
 
----
-
-# FPLogin
+## FPLogin
 
 This call is used to establish a session with a server. A protocol version is agreed upon and the user is authenticated.
 
@@ -1941,9 +1906,7 @@ If any error (other than AuthContinue) is returned, the session will not be open
 
 No special access rights are needed to make this call.
 
----
-
-PACKET FORMAT:
+### PACKET FORMAT:
 
 ![Login command and reply packet formats](images/p74-packet-format.png)
 
@@ -1977,13 +1940,11 @@ packet-beta
 | ID number | 0 | Variable | User identifier (included for certain UAMs) |
 | User Auth Info | Variable | Variable | User authentication information (included for certain UAMs) |
 
----
-
-# FPLoginCont
+## FPLoginCont
 
 This call is used to continue the Login and authentication process with a server.
 
-**INPUTS:**
+### INPUTS:
 
 | Field | Description |
 |---|---|
@@ -1991,7 +1952,7 @@ This call is used to continue the Login and authentication process with a server
 | **IDNumber (INT)** | number returned from the previous FPLogin or FPLoginCont call |
 | **UserAuthInfo (BUF)** | information required to authenticate the user, dependent on the method used |
 
-**OUTPUTS:**
+### OUTPUTS:
 
 | Field | Description |
 |---|---|
@@ -1999,7 +1960,7 @@ This call is used to continue the Login and authentication process with a server
 | **IDNumber (INT)** | returned in certain UserAuthenticationMethods to be presented in the next FPLoginCont call (only valid if AuthContinue error returned) |
 | **UserAuthInfo (BUF)** | returned in certain UserAuthenticationMethods (only valid if AuthContinue error returned) |
 
-**ERRORS:**
+### ERRORS:
 
 | Error | Description |
 |---|---|
@@ -2007,15 +1968,15 @@ This call is used to continue the Login and authentication process with a server
 | **UserNotAuth** | UserAuthenticationMethod failed |
 | **AuthContinue** | authorization not yet complete |
 
-**ALGORITHM:**
+### ALGORITHM:
 
 The ID number and UserAuthInfo are sent to the server, which uses them to execute the next step in the authentication method. If an additional exchange of packets is required, an AuthContinue error will be returned. Otherwise, either NoErr (meaning the user has been authenticated) or UserNotAuth (meaning the authentication method has failed) will be returned. If NoErr, a valid SRefNum will be returned for use in subsequent calls. If UserNotAuth, the session is closed by the server and the SRefnum is invalidated.
 
-**RIGHTS:**
+### RIGHTS:
 
 No special access rights are needed to make this call.
 
-**PACKET FORMAT:**
+### PACKET FORMAT:
 
 ![FPLoginCont command and reply packet format](images/p75-fplogincont-packet-format.png)
 
@@ -2049,23 +2010,21 @@ packet-beta
 | ID number | 0 | 16 | ID number returned in certain UAMs to be used in the next FPLoginCont call. |
 | User Auth Info | 16 | Variable | Authentication information returned in certain UAMs. |
 
----
-
-# FPLogout
+## FPLogout
 
 This call is used to terminate a session with a server
 
-**INPUTS:** SRefNum (INT) session refnum
+### INPUTS: SRefNum (INT) session refnum
 
-**OUTPUTS:** FPError (LONG)
+### OUTPUTS: FPError (LONG)
 
-**ERRORS:** ParamErr unknown session refnum
+### ERRORS: ParamErr unknown session refnum
 
-**ALGORITHM:** The server flushes and closes any forks opened by this session, frees up all session-related resources and invalidates the session refnum.
+### ALGORITHM: The server flushes and closes any forks opened by this session, frees up all session-related resources and invalidates the session refnum.
 
-**RIGHTS:** No special access rights are needed to make this call.
+### RIGHTS: No special access rights are needed to make this call.
 
-**PACKET FORMAT:**
+### PACKET FORMAT:
 
 ![FPLogout packet format](images/p76-fplogout-packet.png)
 
@@ -2078,9 +2037,7 @@ packet-beta
 | :--- | :--- | :--- | :--- |
 | Logout command | 0 | 8 | Command code for FPLogout |
 
----
-
-# FPMapID
+## FPMapID
 
 This call is used to map a User ID to a User Name, or a Group ID to a Group Name.
 
@@ -2148,37 +2105,35 @@ packet-beta
 |---|---|---|---|
 | Name | 0 | variable | name corresponding to input ID |
 
----
-
-# FPMapName
+## FPMapName
 
 This call is used to map a User Name to a User ID, or a Group Name to a Group ID.
 
-**INPUTS:**
+### INPUTS:
 * **SRefNum (INT)**: session refnum
 * **Function (BYTE)**: function code:
     * 3 = map User Name to User ID
     * 4 = map Group Name to Group ID
 * **Name (STR)**: item to be mapped, either User Name or Group Name
 
-**OUTPUTS:**
+### OUTPUTS:
 * **FPError (LONG)**
 * **ID (LONG)**: ID corresponding to input Name
 
-**ERRORS:**
+### ERRORS:
 * **ParamErr**: unknown session refnum or function code
 * **ItemNotFound**: name not recognized
 
-**ALGORITHM:**
+### ALGORITHM:
 The server attempts to find the User ID or Group ID corresponding to the specified User Name or Group Name. An ItemNotFound error is returned if the name does not exist in the server's list of valid User or Group names.
 
-**RIGHTS:**
+### RIGHTS:
 No special access rights are needed to make this call.
 
-**NOTES:**
+### Notes:
 A null User or Group Name will map to an ID of zero.
 
-**PACKET FORMAT:**
+### PACKET FORMAT:
 
 ![FPMapName Command and Reply Packet Structure](images/p78-fpmapname-packet-format.png)
 
@@ -2203,13 +2158,11 @@ packet-beta
 | Name | 16 | Variable | Pascal string containing the User Name or Group Name. |
 | ID | 0 | 32 | The resulting User ID or Group ID. |
 
----
-
-# FPMove
+## FPMove
 
 This call is used to move (not just copy) a directory or file to another location on a single volume (source and destination must be on the same volume). An object cannot be moved from one volume to another with this call, even though both volumes may be managed by the server. The destination of the move is specified by providing a DirID and Pathname that indicate the object's new Parent Directory.
 
-**INPUTS:**
+### INPUTS:
 
 | | |
 |---|---|
@@ -2224,13 +2177,13 @@ This call is used to move (not just copy) a directory or file to another locatio
 | NewType (BYTE) | indicates whether NewName is a long name or a short name (same values as SPathType) |
 | NewName (STR) | new name of file or directory (may be null) |
 
-**OUTPUTS:**
+### OUTPUTS:
 
 | | |
 |---|---|
 | FPError (LONG) | |
 
-**ERRORS:**
+### ERRORS:
 
 | | |
 |---|---|
@@ -2240,11 +2193,11 @@ This call is used to move (not just copy) a directory or file to another locatio
 | CantMove | an attempt was made to move a directory into one of its descendent directories |
 | AccessDenied | user does not have the right to move the file/directory |
 
-**ALGORITHM:**
+### ALGORITHM:
 
 If the object to be moved is a directory, the directory and all its descendents will be moved. The file or directory is moved (deleted from its original Parent Directory) and renamed to its new name. The creation of Long and Short names is performed as described in Appendix B. The object's Mod Date, and the Mod Date of the object's Parent Directory are set to the server's clock. If NewName is null, the object will not be renamed. Its Parent Directory ID will be set to the destination Parent DirID, but all other parameters remain unchanged. The parameters of all descendent directories and files remain unchanged.
 
-**RIGHTS:**
+### RIGHTS:
 
 The user must have previously called FPOpenVol for the volume. To move a directory, the user must have Search access rights to all ancestors down to and including the source and destination Parents, as well as Write access right to those directories. To move a file, Search access rights are needed for all ancestors except the source and destination Parents, as well as Read and Write access rights to the source Parent and Write access right to the destination Parent.
 
@@ -2283,9 +2236,7 @@ packet-beta
 | NewType | Variable | 8 | New name type |
 | NewName | Variable | Variable | New name |
 
----
-
-# FPOpenDir
+## FPOpenDir
 
 This call is used to open a directory on a Variable-DirID volume and obtain its directory identifier.
 
@@ -2363,20 +2314,18 @@ packet-beta
 | :--- | :--- | :--- | :--- |
 | Directory ID | 0 | 32 | Identifier of specified directory |
 
----
-
-# FPOpenDT
+## FPOpenDT
 
 This call is used to retrieve an icon from the Desktop database from a FileCreator/FileType specification.
 
 | | | |
 | :--- | :--- | :--- |
-| **INPUTS:** | DTRefNum (INT) | Desktop Database RefNum |
-| **OUTPUTS:** | FPError (LONG) | |
+| ### INPUTS: | DTRefNum (INT) | Desktop Database RefNum |
+| ### OUTPUTS: | FPError (LONG) | |
 | | DTRefNum (INT) | Refnum for use on future Desktop Manager calls |
-| **ERRORS:** | ParamErr | unknown session refnum or volume identifier |
-| **ALGORITHM:** | | The desktop Database on the selected volume is opened, and a refnum (unique among all volumes on the server) is returned for use in subsequent calls. |
-| **RIGHTS:** | | No special rights are needed to make this call. |
+| ### ERRORS: | ParamErr | unknown session refnum or volume identifier |
+| ### ALGORITHM: | | The desktop Database on the selected volume is opened, and a refnum (unique among all volumes on the server) is returned for use in subsequent calls. |
+| ### RIGHTS: | | No special rights are needed to make this call. |
 
 PACKET FORMAT:
 
@@ -2408,9 +2357,7 @@ packet-beta
 | :--- | :--- | :--- | :--- |
 | DTRefNum | 0 | 16 | Desktop Database Reference Number |
 
----
-
-# FPOpenFork
+## FPOpenFork
 
 This call is used to open the data or resource fork of an existing file for the purpose of reading from it or writing to it. Each fork must be opened separately; a unique OpenForkRefnum will be returned for each.
 
@@ -2467,7 +2414,7 @@ must be represented in the Bitmap order as fixed-length offsets (INTs) from the 
 parameters (not the start of the bitmap) to the variable-length fields. The actual variable-
 length fields are then packed after all fixed-length fields.
 
-**RIGHTS:** The user must have previously called FPOpenVol for this volume. To open a fork for
+### RIGHTS: The user must have previously called FPOpenVol for this volume. To open a fork for
 Read, or in the special case in which neither Read nor Write access is requested, the user
 must have Search access to all ancestors except the Parent, as well as Read access to the
 Parent.
@@ -2478,10 +2425,10 @@ Parent, as well as Write access to the Parent. If either fork is non-empty and o
 is being opened for Write, the user must have Search access to all ancestors except the
 Parent, as well as Read and Write access to the Parent.
 
-**NOTES:** If the fork was successfully opened and the user requested the file's Attributes in the
+### Notes: If the fork was successfully opened and the user requested the file's Attributes in the
 Bitmap, the appropriate DAlreadyOpen or RAlreadyOpen bits will be set.
 
-**PACKET FORMAT:**
+### PACKET FORMAT:
 
 ![Packet Format for OpenFork command, reply, and access mode bitmask](images/p76-packet-format.png)
 
@@ -2546,13 +2493,11 @@ packet-beta
 | DenyWrite | 5 | 1 | Deny write access to others. |
 | Reserved | 6 | 10 | Set to 0. |
 
----
-
-# FPOpenVol
+## FPOpenVol
 
 This call is used to "mount" a volume. It must be called once before any other call can be made to access objects on the volume.
 
-**INPUTS:**
+### INPUTS:
 
 | | |
 | :--- | :--- |
@@ -2561,7 +2506,7 @@ This call is used to "mount" a volume. It must be called once before any other c
 | VolumeName (STR) | name of the volume as returned by the FPGetSrvrParms call (maximum 27 bytes) |
 | Password (8 BYTES) | optional password |
 
-**OUTPUTS:**
+### OUTPUTS:
 
 | | |
 | :--- | :--- |
@@ -2569,7 +2514,7 @@ This call is used to "mount" a volume. It must be called once before any other c
 | Bitmap (INT) | copy of input parameter |
 | Volume Parameters | |
 
-**ERRORS:**
+### ERRORS:
 
 | | |
 | :--- | :--- |
@@ -2577,7 +2522,7 @@ This call is used to "mount" a volume. It must be called once before any other c
 | BitmapErr | an attempt was made to retrieve a parameter which cannot be obtained with this call; null bitmap |
 | AccessDenied | Password not supplied or does not match |
 
-**ALGORITHM:**
+### ALGORITHM:
 
 The password is sent in the command packet in clear text, padded (suffixed) with null bytes to its full 8-byte length. Password comparison is case sensitive.
 
@@ -2585,19 +2530,17 @@ If the volume is password-protected, the server will check that the Password sup
 
 If the Passwords match, or if the volume is not password-protected, the server will retrieve the requested parameters and pack them into the reply packet. The server will mark the volume as "mounted", meaning that this user has permission to make calls relating to objects on this volume.
 
-**RIGHTS:**
+### RIGHTS:
 
 No special access rights are needed to make this call.
 
-**NOTES:**
+### Notes:
 
 This call cannot be made with a null Bitmap; the Bitmap should at least request the Volume ID to be returned as there is no other way to retrieve this parameter and it is needed for most subsequent calls.
 
 FPOpenVol can be called multiple times without an intervening FPCloseVol call; however, a single FPCloseVol call will invalidate the VolID.
 
----
-
-# PACKET FORMAT:
+## PACKET FORMAT:
 
 ![Diagram showing the packet formats for the OpenVol command and reply.](images/p86-openvol-packet-format.png)
 
@@ -2635,13 +2578,11 @@ packet-beta
 | Bitmap | 0 | 16 | The volume bitmap returned by the server. |
 | Volume parameters | 16 | Variable | The requested volume parameters, packed in the order they appear in the bitmap. |
 
----
-
-# FPRead
+## FPRead
 
 This call is used to read a block of data from an open fork.
 
-## INPUTS:
+### INPUTS:
 
 | | |
 |---|---|
@@ -2652,7 +2593,7 @@ This call is used to read a block of data from an open fork.
 | NewlineMask (BYTE) | mask which is ANDed with each character and compared with the NewlineChar to test for the end of the block. In AFP Version 1.1, only two masks are valid.<br>$0= ignore NewlineChar<br>$FF= a NewlineChar is specified |
 | NewlineChar (BYTE) | any ASCII character from $00 to $FF inclusive which, when encountered in reading the fork (after masking), causes the read operation to terminate |
 
-## OUTPUTS:
+### OUTPUTS:
 
 | | |
 |---|---|
@@ -2660,7 +2601,7 @@ This call is used to read a block of data from an open fork.
 | ActCount (LONG) | number of bytes actually read from the fork |
 | Fork data | |
 
-## ERRORS:
+### ERRORS:
 
 | | |
 |---|---|
@@ -2669,13 +2610,13 @@ This call is used to read a block of data from an open fork.
 | EOFErr | end-of-fork was reached |
 | LockErr | some or all of requested range is locked by another user |
 
-## ALGORITHM:
+### ALGORITHM:
 
 The fork is read starting Offset bytes from the beginning of the fork and terminating at the first NewlineChar encountered (if NewlineMask is set to $FF), the end-of-fork, the start of a locked range, or when ReqCount bytes have been read. If the end-of-fork (or the start of a locked range) was reached, all data read up to the fork end (the start of the locked range) will be returned, and an EOFErr (LockErr) will be returned.
 
 Reading a byte that was never written to the fork will return an undefined value.
 
-## RIGHTS:
+### RIGHTS:
 
 The fork must have been opened for Read.
 
@@ -2724,7 +2665,7 @@ packet-beta
 
 This call is used to remove an APPL mapping from the Desktop Database.
 
-**INPUTS:**
+### INPUTS:
 
 | | |
 |---|---|
@@ -2735,13 +2676,13 @@ This call is used to remove an APPL mapping from the Desktop Database.
 | PathType (BYTE) | indicates whether Pathname is composed of long names or short names<br>1 = all pathname elements are short names<br>2 = all pathname elements are long names |
 | PathName (STRING) | pathname to the application being removed |
 
-**OUTPUTS:**
+### OUTPUTS:
 
 | | |
 |---|---|
 | FPError (LONG) | |
 
-**ERRORS:**
+### ERRORS:
 
 | | |
 |---|---|
@@ -2750,15 +2691,15 @@ This call is used to remove an APPL mapping from the Desktop Database.
 | AccessDenied | user does not have the rights listed below |
 | ItemNotFound | no APPL entry corresponding to the input parameters was found in the Desktop Database |
 
-**ALGORITHM:**
+### ALGORITHM:
 
 The entry for the application specified is located in the Desktop /Database using the FileCreator information. If an entry is found for the specified Directory ID/File name, the entry is removed.
 
-**RIGHTS:**
+### RIGHTS:
 
 The user must have previously called FPOpenDT for the corresponding volume. In addition, the file must be present in the specified directory before this call is issued. The user must have Search access to all ancestors except the Parent, as well as Read and Write access to the Parent.
 
-**PACKET FORMAT:**
+### PACKET FORMAT:
 
 ![FPRemoveAPPL packet structure diagram](images/p89-fpremoveappl-packet.png)
 
@@ -2783,13 +2724,11 @@ packet-beta
 | PathType | 96 | 8 | Indicates long or short names (1 or 2) |
 | PathName | 104 | Variable | Pathname to the application being removed |
 
----
-
-# FPRemoveComment
+## FPRemoveComment
 
 This call is used to remove a comment from the Desktop Database
 
-**INPUTS:**
+### INPUTS:
 
 - **SRefNum (INT)**: session refnum
 - **DTRefnum (INT)**: Desktop Database refnum
@@ -2799,26 +2738,26 @@ This call is used to remove a comment from the Desktop Database
   - 2 = all pathname elements are long names
 - **PathName (STRING)**: the pathname for the file or folder associated with the comment
 
-**OUTPUTS:**
+### OUTPUTS:
 
 - **FPError (LONG)**
 
-**ERRORS:**
+### ERRORS:
 
 - **ParamErr**: unknown session refnum, volume identifier, or pathname type; bad pathname
 - **ItemNotFound**: no comment found in Desktop Database
 - **AccessDenied**: user does not have the rights listed below
 - **ObjectNotFound**: input parameters do not point to an existing object
 
-**ALGORITHM:**
+### ALGORITHM:
 
 The comment associated with the file or folder specified is removed from the Desktop Database.
 
-**RIGHTS:**
+### RIGHTS:
 
 The user must have previously called FPOpen DT for the corresponding volume. If the comment is associated with a non-empty directory, the user must have Search access to all ancestors including the Parent Directory, plus Write access to the Parent. If the comment is associated with an empty directory, the user must have Search or Write access to all ancestors including the Parent Directory, plus Write access to the Parent. If the comment is associated with a non-empty file, the user must have Search access to all ancestors except the Parent Directory, plus Read and Write access to the Parent. If the comment is associated with an empty file, the user must have Search or Write access to all ancestors except the Parent Directory, plus Write access to the Parent.
 
-**PACKET FORMAT:**
+### PACKET FORMAT:
 
 ![FPRemoveComment command packet format](images/p90-packet-format.png)
 
@@ -2841,13 +2780,11 @@ packet-beta
 | PathType | 64 | 8 | Indicates if names are short (1) or long (2) |
 | PathName | 72 | Variable | Pathname for the file or folder |
 
----
-
-# FPRename
+## FPRename
 
 This call is used to rename either a directory or a file.
 
-**INPUTS:**
+### INPUTS:
 
 | | |
 | :--- | :--- |
@@ -2859,13 +2796,13 @@ This call is used to rename either a directory or a file.
 | NewType (BYTE) | indicates whether NewName is a long name or short name. (same values as PathType) |
 | NewName (STR) | new name of file or directory (cannot be null) |
 
-**OUTPUTS:**
+### OUTPUTS:
 
 | | |
 | :--- | :--- |
 | FPError (LONG) | |
 
-**ERRORS:**
+### ERRORS:
 
 | | |
 | :--- | :--- |
@@ -2875,11 +2812,13 @@ This call is used to rename either a directory or a file.
 | AccessDenied | user does not have the right to rename the file/directory |
 | CantRename | an attempt was made to rename a volume |
 
-**ALGORITHM:** The object is renamed to its new name. The creation of Long and Short names is performed as described in Appendix B. The Mod Date of the Parent Directory is set to the server's clock.
+### ALGORITHM: 
+The object is renamed to its new name. The creation of Long and Short names is performed as described in Appendix B. The Mod Date of the Parent Directory is set to the server's clock.
 
-**RIGHTS:** The user must have previously called FPOpenVol for the volume. In addition, the user must have Search access rights to all ancestors except the object's Parent Directory, as well as Write access right to the Parent Directory. To rename a directory, the user must also have Search access to the Parent; else to rename a file, the user must also have Read access to the Parent.
+### RIGHTS: 
+The user must have previously called FPOpenVol for the volume. In addition, the user must have Search access rights to all ancestors except the object's Parent Directory, as well as Write access right to the Parent Directory. To rename a directory, the user must also have Search access to the Parent; else to rename a file, the user must also have Read access to the Parent.
 
-PACKET FORMAT:
+### PACKET FORMAT:
 
 ![Rename command packet format](images/p92-rename-packet-format.png)
 
@@ -2907,11 +2846,11 @@ packet-beta
 | NewName | Variable | Variable | The new name for the file or directory. |
 
 
-# FPSetDirParms
+## FPSetDirParms
 
 This call is used to set parameters for a particular directory.
 
-**INPUTS:**
+### INPUTS:
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
@@ -2923,13 +2862,13 @@ This call is used to set parameters for a particular directory.
 | Pathname | (STR) | pathname to desired directory |
 | Directory Parameters | | |
 
-**OUTPUTS:**
+### OUTPUTS:
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
 | FPError | (LONG) | |
 
-**ERRORS:**
+### ERRORS:
 
 | Error | Description |
 | :--- | :--- |
@@ -2939,7 +2878,7 @@ This call is used to set parameters for a particular directory.
 | AccessDenied | user does not have the rights listed below |
 | ObjectTypeErr | input parameters point to a file |
 
-**ALGORITHM:**
+### ALGORITHM:
 
 The server sets the specified parameters for the directory which must be packed, in Bitmap order, in the command packet. In order to keep all variable-length parameters at the end of the packet (even if more parameters are later added), all such parameters like the Long Name and Short Name fields must be represented in the Bitmap order as fixed-length offsets (INTs) from the start of the parameters to the start of the variable-length fields. The actual variable-length fields are then packed after all fixed-length fields.
 
@@ -2947,13 +2886,13 @@ Changing a directory's AccessRights will immediately affect other currently open
 
 If the Access Controls or Owner ID or Group ID are set in this call, and the Mod Date is not set, the Mod Date will be set to the the server's clock.
 
-**RIGHTS:**
+### RIGHTS:
 
 The user must have previously called FPOpenVol for this volume. To set a directory's Access Controls, Owner ID, or Group ID, the user must have Search or Write access rights to all ancestors including this directory's Parent Directory, and must be the owner of the directory. To set any other parameter for an empty directory, the user must have Search or Write access to all ancestors except the Parent, as well as Write access to the Parent. To set any other parameter for a non-empty directory, the user must have Search access to all ancestors including the Parent, as well as Write access to the Parent.
 
 If the user lacks the access rights to set any one of a number of parameters, an Access Denied error will be returned and no parameters will be set.
 
-**NOTES:**
+### Notes:
 
 This call cannot be used to set a directory's name (use FPRename), Parent Directory (use FPMove), Directory ID, or number of offspring.
 
@@ -2962,7 +2901,7 @@ The user needs to be the owner of the directory to set the directory's Access Co
 A null byte may be added between the Pathname and the Directory Parameters so that the Parameters begin on an even boundary in the Command Buffer.
 
 
-PACKET FORMAT:
+### PACKET FORMAT:
 
 ![SetDirParms command packet structure](images/p95-setdirparms-packet-format.png)
 
@@ -2992,11 +2931,11 @@ packet-beta
 | directory parameters | Variable | Variable | The directory parameters to be set, packed in order. |
 
 
-# FPSetFileParms
+## FPSetFileParms
 
 This call is used to set parameters for a particular file.
 
-**INPUTS:**
+### INPUTS:
 
 | | | |
 | :--- | :--- | :--- |
@@ -3008,13 +2947,13 @@ This call is used to set parameters for a particular file.
 | Pathname | (STR) | pathname to desired file |
 | File Parameters | | |
 
-**OUTPUTS:**
+### OUTPUTS:
 
 | | | |
 | :--- | :--- | :--- |
 | FPError | (LONG) | |
 
-**ERRORS:**
+### ERRORS:
 
 | | |
 | :--- | :--- |
@@ -3024,7 +2963,7 @@ This call is used to set parameters for a particular file.
 | BitmapErr | an attempt was made to set a parameter which cannot be set with this call; null bitmap |
 | ObjectTypeErr | input parameters point to a directory |
 
-**ALGORITHM:**
+### ALGORITHM:
 
 The server sets the specified parameters for the file which must be packed, in Bitmap order, in the command packet. In order to keep all variable-length parameters at the end of the packet (even if more parameters are later added), all such parameters must be represented in the Bitmap order as fixed-length offsets (INTs) from the start of the parameters to the start of the variable-length fields. The actual variable-length fields are then packed after all fixed-length fields.
 
@@ -3032,11 +2971,11 @@ In AFP Version 1.1, only the following parameters may be set or cleared: Attribu
 
 If the Attributes field is included, the Set/Clear bit is used to indicate that the specified Attributes (whose corresponding bits are set) are to be either set or cleared (0 = clear specified Attributes, 1 = set specified Attributes). Hence it is not possible to set some Attributes and clear others in the same call.
 
-**RIGHTS:**
+### RIGHTS:
 
 The user must have previously called FPOpenVol for this volume. If the file is empty (both forks are of zero length), the user must have Search or Write access rights to all ancestors except this file's Parent Directory, as well as Write access right to the Parent Directory. If either fork is non-empty, the user must have Search access to all ancestors except the Parent, as well as Read and Write access to the Parent.
 
-**NOTES:**
+### Notes:
 
 This call cannot be used to set a file's name (use FPRename), Parent Directory (use FPMove), File Number, or fork lengths.
 
@@ -3075,7 +3014,7 @@ packet-beta
 | File Parameters | Variable | Variable | The parameter values to be set, as specified in the Bitmap. |
 
 
-# FPSetFileDirParms
+## FPSetFileDirParms
 
 This call is used to set parameters for a particular object, either a file or a directory.
 
@@ -3127,7 +3066,7 @@ A null byte may be added between the Pathname and the Parameters so that the Par
 
 ### PACKET FORMAT:
 
-**Command**
+#### Command
 
 ![SetFileDirParms packet format diagram](images/p100-setfiledirparms-packet.png)
 
@@ -3157,22 +3096,22 @@ packet-beta
 | Parameters | Variable | Variable | Parameters corresponding to the set bits in Bitmap |
 
 
-# FPSetForkParms
+## FPSetForkParms
 
 This call is used to set parameters for a file associated with a particular open fork.
 
-**INPUTS:**
+### INPUTS:
 
 * **SRefNum (INT)** session refnum
 * **OForkRefnum (INT)** open fork refnum
 * **Bitmap (INT)** bitmap describing which parameters are to be set (the corresponding bit should be set). This field is the same as that in the FPGetFileDirParms call; however, in AFP Version 1.1, only the fork length may be set.
 * **Fork Length**
 
-**OUTPUTS:**
+### OUTPUTS:
 
 * **FPError (LONG)**
 
-**ERRORS:**
+### ERRORS:
 
 * **ParamErr** unknown session refnum or open fork refnum
 * **BitmapErr** an attempt was made to set a parameter which cannot be set with this call; null bitmap
@@ -3180,21 +3119,21 @@ This call is used to set parameters for a file associated with a particular open
 * **LockErr** locked range conflict
 * **AccessDenied** fork was not opened for Write
 
-**ALGORITHM:**
+### ALGORITHM:
 
 The Bitmap and fork length are passed to the server, which changes the length of the fork specified by OForkRefnum. A BitmapErr will be returned if an attempt is made to set the length of the other fork comprising the file, or any other file parameter.
 
 A LockErr will be returned if one of the following conditions occurs: a) the user attempts to set the end-of-fork into a range locked by another user, b) the file is truncated so as to eliminate a range locked by another user, c) the range between the old end-of-fork and the new end-of-fork intersects any lock owned by another user.
 
-**RIGHTS:**
+### RIGHTS:
 
 The fork must have been opened for Write.
 
-**NOTES:**
+### Notes:
 
 This call cannot be used to set a file's name (use FPRename), Parent Directory (use FPMove), or File Number.
 
-**PACKET FORMAT:**
+### PACKET FORMAT:
 
 ### Command
 
@@ -3217,11 +3156,11 @@ packet-beta
 | Bitmap | 32 | 16 | Bitmap describing which parameters are being set. |
 | Fork Length | 48 | 32 | The new length for the fork. |
 
-# FPSetVolParms
+## FPSetVolParms
 
 This call is used to set the parameters for a particular volume. The volume is specified by its VolumeID as returned from the FPOpenVol call.
 
-**INPUTS:**
+### INPUTS:
 
 | Field | Description |
 | :--- | :--- |
@@ -3230,24 +3169,26 @@ This call is used to set the parameters for a particular volume. The volume is s
 | Bitmap (INT) | bitmap describing which parameters are to be set (the corresponding bit should be set). This field is the same as that in the FPGetVolParms call; however, in AFP Version 1.1, only the Backup Date field may be set. |
 | Backup Date (LONG) | new Backup Date |
 
-**OUTPUTS:**
+### OUTPUTS:
 
 | Field | Description |
 | :--- | :--- |
 | FPError (LONG) | |
 
-**ERRORS:**
+### ERRORS:
 
 | Error | Description |
 | :--- | :--- |
 | ParamErr | unknown session refnum or volume identifier |
 | BitmapErr | an attempt was made to set a parameter which cannot be set with this call; null bitmap |
 
-**ALGORITHM:** The Bitmap and Backup Date are passed to the server, which changes the date of the specified volume.
+### ALGORITHM: 
+The Bitmap and Backup Date are passed to the server, which changes the date of the specified volume.
 
-**RIGHTS:** The user must have previously called FPOpenVol for this volume.
+### RIGHTS: 
+The user must have previously called FPOpenVol for this volume.
 
-**PACKET FORMAT:**
+### PACKET FORMAT:
 
 ![Packet format diagram for FPSetVolParms](images/p102-fpsetvolparms-packet.png)
 
@@ -3269,7 +3210,7 @@ packet-beta
 | Backup Date | 48 | 32 | The new backup date for the volume. |
 
 
-# FPWrite
+## FPWrite
 
 This call is used to write a block of data to an open fork.
 
@@ -3319,11 +3260,11 @@ The fork must have been opened for Write.
 
 Locking the range before writing to it is highly recommended, since the underlying transport mechanism may force the request to be broken up into multiple small requests. Although the range may not be locked when the call begins execution, it is possible for another session to lock some or all of the range before this call completes, causing the write to succeed partially.
 
-# PACKET FORMAT:
+### PACKET FORMAT:
 
 ![Command and Reply packet formats for the Write command](images/p104-write-packet-format.png)
 
-### Command Packet
+#### Command Packet
 
 ```mermaid
 packet-beta
@@ -3342,7 +3283,7 @@ packet-beta
 | Offset | 32 | 32 | The byte offset within the file at which the write operation should begin. |
 | ReqCount | 64 | 32 | The number of bytes to be written. |
 
-### Reply Packet
+#### Reply Packet
 
 ```mermaid
 packet-beta

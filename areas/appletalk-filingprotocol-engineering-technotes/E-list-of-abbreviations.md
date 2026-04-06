@@ -22,9 +22,7 @@ grand_parent: Areas
 
 ---
 
-# Appendix E
-
-## List of Abbreviations
+# Appendix E List of Abbreviations
 
 | Abbreviation | Description |
 |:---|:---|

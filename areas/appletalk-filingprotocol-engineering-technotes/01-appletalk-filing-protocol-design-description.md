@@ -71,7 +71,7 @@ It is interesting to consider the relationship between the native file system an
 This document does not examine in detail the mechanism of translation in the Translator; the focus here is on the AFI and the AFP itself.
 
 
-# Goals of AFP
+## Goals of AFP
 
 We have paid special attention in the design of AFP to allow its extension in a very general fashion. This is essential if, in the future, additional types of workstations are to be supported by the protocol.
 
@@ -83,7 +83,7 @@ Although in the model of Figure AFP1 we have distinguished between workstations 
 
 It should also be mentioned that AFP does not include any services or calls needed for administration of file servers. These will depend on the nature of a particular file server and are hence outside the scope of AFP.
 
-# AFP in the AppleTalk Architecture
+## AFP in the AppleTalk Architecture
 
 As illustrated in Figure AFP2, AFP is a client of the AppleTalk Session Protocol (ASP) described in a separate document.
 
@@ -109,7 +109,7 @@ Once this session has been opened the AFP protocol entity in the workstation mus
 
 After the workstation has successfully logged in on the file server, the various AFP commands can be conveyed on the session thus established. When the workstation has finished using the services of the file server, it can logout. At this point all resources related to this filing session are freed up in the file server, and the underlying ASP session is closed.
 
-# Notation
+## Notation
 
 Throughout this document hexadecimal (base 16) values are written with a leading $ sign (for example, $3A), while decimal integers are written with no leading special character (for example, 18).
 

@@ -22,20 +22,10 @@ parent: Areas
 
 ---
 
-# 030-M098
+# AppleTalk Filing Protocol Engineering Technical Notes
 
-# AppleTalk Filing Protocol
-# Engineering Technical Notes
-
-## AAPDA
-### Australasian Apple Programmers and Developers Association
-
----
-
-
----
-
-# AppleTalk Filing Protocol (AFP) Engineering Technical Notes
+030-M098
+Australasian Apple Programmers and Developers Association
 
 Apple Computer Inc.
 
@@ -44,9 +34,7 @@ February 17, 1987
 
 This protocol is proprietary and based on AFP Version 1.0 which was developed in joint work by Apple Computer Inc. and Centram Systems West.
 
-# Table of Contents
-
-## Contents
+## Table of Contents
 
 ### 1 Chapter 1: AppleTalk Filing Protocol Design Description
 
@@ -97,18 +85,15 @@ This protocol is proprietary and based on AFP Version 1.0 which was developed in
 
 ## 31  Chapter 7: Specification of AFP Calls
 
-32  FPAddAPPL
-33  FPAddComment
-34  FPAddIcon
-36  FPByteRangeLock
-38  FPCloseDir
-39  FPCloseDT
-40  FPCloseFork
-
----
-
 | | |
 |:---|:---|
+| 32 | FPAddAPPL |
+| 33 | FPAddComment |
+| 34 | FPAddIcon |
+| 36 | FPByteRangeLock |
+| 38 | FPCloseDir |
+| 39 | FPCloseDT |
+| 40 | FPCloseFork |
 | 41 | FPCloseVol |
 | 42 | FPCopyFile |
 | 44 | FPCreateDir |

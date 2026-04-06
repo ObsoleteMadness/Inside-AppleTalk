@@ -1,4 +1,4 @@
-# appletalk-docs
+# Inside-AppleTalk
 
 AppleTalk documentation OCR'd and converted to Markdown, published as a
 [GitHub Pages site](https://obsoletemadness.github.io/appletalk-docs/) built with
@@ -7,29 +7,11 @@ AppleTalk documentation OCR'd and converted to Markdown, published as a
 ## Contributing
 
 Contributions are warmly welcomed — especially OCR corrections, formatting fixes, and
-missing content. See the [Contributing page](https://obsoletemadness.github.io/appletalk-docs/contributing/)
+missing content. See the [Contributing page](https://obsoletemadness.github.io/inside-appletalk/contributing/)
 on the site for full instructions, or read `content/contributing.md` directly.
 
 Every page on the site has an **"Edit this page"** link that opens the source file in
 GitHub's editor so you can submit a fix without any local setup.
-
-## Local Development
-
-You need [Hugo extended](https://gohugo.io/installation/) v0.128.0 or newer.
-
-```bash
-# Clone the repository
-git clone https://github.com/ObsoleteMadness/appletalk-docs.git
-cd appletalk-docs
-
-# Install the theme (one-time)
-git clone https://github.com/alex-shpak/hugo-book.git themes/hugo-book --depth 1
-
-# Start the live-reload dev server
-hugo server --buildDrafts
-```
-
-Then open <http://localhost:1313/appletalk-docs/> in your browser.
 
 ## ASCII Diagrams
 

@@ -22,9 +22,7 @@ grand_parent: Areas
 
 ---
 
-# Chapter 2
-
-# AppleTalk Filing Protocol System Description
+# Chapter 2 AppleTalk Filing Protocol System Description
 
 This chapter contains a fairly detailed discussion of all the major concepts involved in AFP: the AFP file system structure, the login process, access control mechanisms provided by AFP, and a global discussion of the AFP calls.
 
@@ -38,7 +36,7 @@ Once the workstation client of AFP has logged into the server, it can issue any 
 
 The entities comprising the AFP file system structure are: [file] servers, volumes, directories, files, and forks. We now examine each of these and the relationship among them.
 
-## File Servers
+### File Servers
 
 The most global entity encompassed by the AFP file system structure and visible through the AFI is a *file server* (server for short). File servers possess names and can be discovered by a workstation as discussed below in connection with the login process. Servers manage one or more volumes which can be accessed through the AFP. (See Figure AFP3.)
 
@@ -66,7 +64,7 @@ The *server machine-type identification* is provided through a string of at most
 
 The *AFP version strings* and the *UAM strings* will be discussed below in connection with the login process.
 
-# Volumes
+### Volumes
 
 As noted a server manages one or more *volumes* that are visible to workstations through the AFI. For each volume the server must maintain and make visible through the AFI the following parameters:
 
@@ -93,7 +91,7 @@ The *volume creation, modification, and backup date-time* quantities are maintai
 
 Directories and files are stored in volumes and constitute the next level of entities visible through the AFI.
 
-# The Volume Catalog: Directories, Files and Forks
+### The Volume Catalog: Directories, Files and Forks
 
 A volume consists of directories and files arranged in a hierarchical structure known as the *volume catalog* (see Figure AFP4).
 
@@ -120,7 +118,7 @@ Note that the root of the catalog is special in that it has no parent. For a giv
 
 *Figure AFP4: Volume Catalog*
 
-## Catalog Node (CNode) Names: Long and Short Names
+### Catalog Node (CNode) Names: Long and Short Names
 
 Every CNode (including the root) has two names: a *long name* and a *short name*.
 
@@ -134,7 +132,7 @@ The rules of uniqueness of long and short names are quite simple. No two offspri
 
 The root of the catalog is in fact a "container" representation of the volume. The root's long name is exactly the same as the volume name, so is therefore restricted to a maximum size of 27 bytes. The root of a volume can neither be deleted nor renamed through AFP. Hence a volume cannot be renamed through AFP.
 
-## Directory IDs
+### Directory IDs
 
 Each directory in the catalog has in addition to its names a numerical (4-byte) identifier known as its *directory ID* (*DirID* for short). The DirID of the root is always equal to 2.
 
@@ -142,7 +140,7 @@ Two directories on a given volume cannot have the same DirID. Thus the DirID uni
 
 The DirID of a given CNode's parent is said to be the CNode's *ParentID*. This is a special case of the more general term *AncestorID*, which is the DirID of a CNode's ancestor. Although a given CNode has a unique ParentID (there is only one parent), it may have several AncestorIDs (one for each ancestor). The root's Parent DirID is always equal to 1. Zero is not a valid DirID.
 
-## Volume Signature
+### Volume Signature
 
 AFP allows three types of volumes. To determine what type a particular volume is, we associate a volume signature with each volume. This is a 2-byte quantity that can, for AFP version 1.1, take one of three permissible values:
 
@@ -164,7 +162,7 @@ Clearly, MS-DOS machines can access any of the three types of server volumes sin
 
 It should be noted that particular directories of a *variable DirID volume* can be mounted as flat MFS "volumes" and used by a Macintosh workstation. In this case, the corresponding "virtual" volume will be seen as flat in structure and any directories contained in that "volume"/directory will not be accessible through AFP. This is not a recommended way of implementing file servers for the Macintosh and its use is discouraged. In fact *variable DirID volumes* are included in our definition of AFP only to allow non-Macintosh machines (whose file systems are unable to implement, in an easy way, the *fixed DirID* feature) to function as simple servers offering files within particular directories for access over AppleTalk.
 
-## Directory and File Parameters
+### Directory and File Parameters
 
 A server must maintain the following parameters for each directory:
 
@@ -215,7 +213,7 @@ The *modification date-time* of a file is changed by the server every time eithe
 
 The *modification date-time* of a directory is changed by the server every time the directory's contents are modified: this includes renaming the directory, creating or deleting a CNode in the directory, moving the directory, or changing its access privileges. Furthermore, an AFP client with the appropriate access rights can set this date-time to any desired value.
 
-## Date-Time Values
+### Date-Time Values
 
 All date-time quantities used by AFP are Greenwich Mean Time (GMT) values. They are 32-bit signed integers corresponding to the number of seconds measured from 12:00 am on January 1, 2000 (the start of the next century corresponds to date-time=0).
 
@@ -223,7 +221,7 @@ The use of GMT makes these AFP date-time quantities independent of the geographi
 
 Simple implementations of AFP workstations may wish to just obtain the server's time at login (using the FPGetSrvrParms call), calculate the offset between it and the workstation's clock, and then add or subtract this offset to all date-times sent to or received from the server.
 
-## Pathnames
+### Pathnames
 
 As noted above, CNodes (files and directories) have long and short names, either of which can be used to uniquely identify a CNode within the context of its parent directory.
 
@@ -251,7 +249,7 @@ AFP does *not* allow the inclusion of the root directory in pathnames, i.e., in 
 
 Pathnames sent in AFP packets are formatted as Pascal strings starting with a length byte followed by up to 255 characters of the pathname (each pathname element does not include a length byte). In addition the pathname type must be provided. A single null byte is used to indicate that no pathname is supplied; note that even in this case, a valid pathname type must be provided.
 
-## Access Paths and Open File Forks
+### Access Paths and Open File Forks
 
 To read or write the contents of the data or resource fork of a particular file, the AFP client in the workstation must issue a special call to open the particular fork of the specified file. This leads to the creation of an access path to that file fork, and subsequent read and write calls will be processed by reference to that access path. To allow for this the server must generate an access path identifier known as the *Open Fork Refnum*, unique among all open forks on a given session. Also associated with a particular access path is an *Access Mode Descriptor*, which indicates whether this access path (open file fork) was opened for (and allows) reading and/or writing through that path.
 
@@ -265,7 +263,6 @@ In addition, the server must provide a way of accessing the file parameters of t
 
 The *Access Mode Descriptor* is maintained by the server and is inaccessible to workstation clients of AFP. It is used by the server to indicate the access mode with which that access path is open.
 
-## Complete Specification of a Catalog Node (CNode)
-
+##
 In AFP a particular CNode (file or directory) can be unambiguously specified to the server by providing the following: VolID, AncestorID, pathname. This specification subsumes special cases such as the specification of a particular directory just by VolID, AncestorID = DirID of the directory, and a null pathname (length byte of the pathname string equal to 0).
 
