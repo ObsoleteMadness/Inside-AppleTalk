@@ -8,7 +8,7 @@ engine: "gemini-flash"
 nav_order: 2
 layout: default
 has_children: true
-parent: Areas
+parent: Books
 ---
 # Front Matter
 

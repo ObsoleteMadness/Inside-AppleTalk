@@ -8,7 +8,7 @@ engine: "gemini-flash"
 nav_order: 1
 layout: default
 has_children: true
-parent: Areas
+parent: Books
 ---
 
 # Inside AppleTalk, Second Edition

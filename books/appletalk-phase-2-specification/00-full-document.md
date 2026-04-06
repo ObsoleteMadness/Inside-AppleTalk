@@ -7,7 +7,7 @@ converted: "2026-04-04"
 engine: "gemini-flash"
 nav_order: 5
 layout: default
-parent: Areas
+parent: Books
 ---
 # AppleTalk Phase 2 Protocol Specification June 30, 1989
 
