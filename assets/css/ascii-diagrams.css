@@ -16,3 +16,32 @@
 .ascii-diagram-rendered svg text {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+
+.mermaid-lazy {
+  margin: 1rem 0;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--code-background-color);
+}
+
+.mermaid-lazy-details {
+  padding: 0.5rem 0.75rem 0.75rem;
+}
+
+.mermaid-lazy-summary {
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.mermaid-lazy-panel {
+  margin-top: 0.5rem;
+}
+
+.mermaid-lazy-button {
+  margin-bottom: 0.75rem;
+}
+
+.mermaid-lazy-target {
+  overflow-x: auto;
+}

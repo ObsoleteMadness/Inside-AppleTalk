@@ -20,6 +20,7 @@ kramdown:
 # Just the Docs settings
 search_enabled: true
 heading_anchors: true
+toc_enabled: true
 
 aux_links:
   "GitHub":
@@ -42,8 +43,13 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
-mermaid:
-  version: "11.13.0"
+defaults:
+  - scope:
+      path: "books"
+      type: "pages"
+    values:
+      has_toc: true
+      toc_levels: "1,2,3,4"
 
 math:
   engine: katex
