@@ -13,6 +13,9 @@ grand_parent: Books
 ---
 
 # Part IV Reliable Data Delivery
+1. TOC
+{:toc}
+
 
 PART IV DISCUSSES the protocols that add reliability to AppleTalk end-to-end data delivery. Part II described the protocols used to provide end-to-end data flow across an AppleTalk internet. Those protocols do not guarantee the delivery of the data; they merely provide a best-effort service. Two groups of protocols, corresponding to two different models of end-to-end interaction, are discussed in this part.
 

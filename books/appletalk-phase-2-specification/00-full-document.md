@@ -13,6 +13,9 @@ parent: Books
 
 # AppleTalk Phase 2 Protocol Specification June 30, 1989
 
+1. TOC
+{:toc}
+
 ## Scope
 This document details changes to the AppleTalk protocol suite necessary for AppleTalk Phase 2. AppleTalk Phase 2 is enhancements to the routing and naming services of AppleTalk so as to make possible AppleTalk networks on which more than 254 nodes can reside. Additionally, such networks can, in the presence of a router, be divided into multiple zones. For specifics of the original AppleTalk protocols ("Phase 1") see *Inside AppleTalk*, published by Addison-Wesley.
 

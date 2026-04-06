@@ -15,6 +15,10 @@ grand_parent: Books
 
 Access controls are built into AFP in three ways: user authentication at server login, an optional volume level password when first accessing ("opening") a volume, and directory-level access controls based on user authentication at login.
 
+1. TOC
+{:toc}
+
+
 ## User Authentication at Server Login
 
 User authentication at server login time has already been discussed above. This is the first "line of defense" as far as access controls are concerned. A file server can be set up to turn away an unauthorized user at this level and thus maintain the privacy and security of the file server's volumes and their contents. It is important to note that the user authentication step is vital to the directory-level access controls discussed below.

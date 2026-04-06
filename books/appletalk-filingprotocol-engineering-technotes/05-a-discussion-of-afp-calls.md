@@ -15,6 +15,10 @@ grand_parent: Books
 
 Now we provide an overall discussion of the various calls provided by AFP and how they can be used to access a file server. A completely detailed specification of each call is available in Chapter 7. For the purpose of this discussion we classify the calls into various groups.
 
+1. TOC
+{:toc}
+
+
 ## Server-Level Calls
 
 A workstation client can use the following server-level AFP calls:

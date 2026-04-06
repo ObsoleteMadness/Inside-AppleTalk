@@ -13,6 +13,9 @@ grand_parent: Books
 ---
 
 # Chapter 11 AppleTalk Session Protocol
+1. TOC
+{:toc}
+
 
 A WIDE VARIETY of higher-level network services are built using the model of a workstation issuing a sequence of commands to a server. The server then carries out these commands and reports the results to the workstation. For example, in a filing service, file system commands are transported to a file server and are executed there; the results are then returned to the workstation.
 

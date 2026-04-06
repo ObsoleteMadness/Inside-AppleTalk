@@ -14,6 +14,8 @@ grand_parent: Books
 
 
 # Appendix D Character Codes
+1. TOC
+{:toc}
 
 
 Several AppleTalk protocols utilize character string entity names, which can be composed of any 8-bit characters. Their representations are exactly the same as those used by the Macintosh and are shown in *Table D-1* below.

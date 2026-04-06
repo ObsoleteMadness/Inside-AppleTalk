@@ -14,11 +14,11 @@ grand_parent: Books
 
 
 # Chapter 5 Routing Table Maintenance Protocol
+1. TOC
+{:toc}
 
 
-## THE ROUTING TABLE MAINTENANCE PROTOCOL
-
-(RTMP) is used by internet routers (IRs) to establish and maintain the **routing tables** that are central to the process of forwarding datagrams from any source socket to any destination socket on an internet. Chapter 4, "Datagram Delivery Protocol," introduced the concept of IRs as the devices by which datagrams are forwarded/routed from any source socket to any destination socket on the internet.
+THE ROUTING TABLE MAINTENANCE PROTOCOL (RTMP) is used by internet routers (IRs) to establish and maintain the **routing tables** that are central to the process of forwarding datagrams from any source socket to any destination socket on an internet. Chapter 4, "Datagram Delivery Protocol," introduced the concept of IRs as the devices by which datagrams are forwarded/routed from any source socket to any destination socket on the internet.
 
 This chapter describes RTMP and includes information about
 

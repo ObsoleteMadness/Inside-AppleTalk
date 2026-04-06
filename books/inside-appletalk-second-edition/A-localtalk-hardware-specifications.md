@@ -14,6 +14,8 @@ grand_parent: Books
 
 
 # Appendix A LocalTalk Hardware Specifications
+1. TOC
+{:toc}
 
 
 ## LocalTalk electrical characteristics

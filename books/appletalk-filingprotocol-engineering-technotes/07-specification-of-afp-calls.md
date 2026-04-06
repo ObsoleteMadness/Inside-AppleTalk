@@ -16,6 +16,10 @@ grand_parent: Books
 
 This section provides a specification of the various AFP calls.
 
+1. TOC
+{:toc}
+
+
 For each call a brief description of the call is provided. This is followed by a list of the input and output parameters of the call. For each call, the underlying transport mechanism is assumed to return an *FPError* whose relevant values for the particular call are listed and explained. For all calls, if the call completes successfully, then the error code value *NoErr* is returned. This particular value of *FPError* is not included in the descriptions of the calls. Likewise, a *UserNotAuth* error can be returned from almost every call, but is not included in the call descriptions. This error indicates that the user has not yet been properly logged in. In addition, a *MiscErr* can be returned from almost every call. *MiscErr* is used by the server to map other errors that don't have an equivalent AFP Error (like error in reading a disk sector).
 
 A description of the relevant algorithm pertaining to the call is also included with the discussion. The access rights required by each call are also specified.

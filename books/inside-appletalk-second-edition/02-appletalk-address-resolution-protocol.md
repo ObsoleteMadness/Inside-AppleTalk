@@ -15,6 +15,9 @@ grand_parent: Books
 
 # Chapter 2 AppleTalk Address Resolution Protocol
 
+1. TOC
+{:toc}
+
 
 ## THE APPLETALK ADDRESS RESOLUTION PROTOCOL
 

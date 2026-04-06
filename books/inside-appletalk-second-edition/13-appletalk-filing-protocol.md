@@ -13,6 +13,8 @@ grand_parent: Books
 ---
 
 # Part V End-User Services
+1. TOC
+{:toc}
 
 PART V of *Inside AppleTalk* describes the protocols that provide end-user services in an AppleTalk network. This part includes a complete description of the AppleTalk Filing Protocol (AFP). It also includes the architectural specification for print spooling in an AppleTalk network. 
 

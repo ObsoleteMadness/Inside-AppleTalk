@@ -14,6 +14,9 @@ grand_parent: Books
 
 # Part I Physical and Data Links
 
+1. TOC
+{:toc}
+
 PART I of *Inside AppleTalk* discusses the protocols used to communicate between the nodes of a single AppleTalk network. These protocols comprise the two lowest layers of the AppleTalk protocol architecture (as shown in Figure I-9 of the Introduction).
 
 In particular, Part I specifies:

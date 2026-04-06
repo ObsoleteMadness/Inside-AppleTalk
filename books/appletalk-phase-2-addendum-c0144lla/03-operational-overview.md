@@ -12,6 +12,9 @@ grand_parent: Books
 ---
 
 # Chapter 3 Operational Overview
+1. TOC
+{:toc}
+
 
 THE IMPLEMENTATION of extended addressing involves the following sequence of operations:
 

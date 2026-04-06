@@ -14,6 +14,8 @@ grand_parent: Books
 
 
 # Chapter 6 AppleTalk Echo Protocol
+1. TOC
+{:toc}
 
 
 THE APPLETALK ECHO PROTOCOL (AEP) is implemented in each node as a process on a statically assigned socket (socket number 4, known as the Echoer socket). The Echoer listens for packets received through this socket. Whenever a packet is received, the Echoer examines its Datagram Delivery Protocol (DDP) type and the DDP data length in the packet to determine if the packet is an AEP packet. If it is, then a copy of the packet is returned to the sender.

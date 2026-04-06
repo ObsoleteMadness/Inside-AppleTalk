@@ -14,9 +14,12 @@ grand_parent: Books
 
 # Chapter 2 New Terms in AppleTalk Phase 2
 
-A NUMBER of new terms are introduced in AppleTalk Phase 2. These terms are described briefly in this chapter and are dealt with in more detail in later sections of this document. ■
+1. TOC
+{:toc}
 
----
+
+A NUMBER of new terms are introduced in AppleTalk Phase 2. These terms are described briefly in this chapter and are dealt with in more detail in later sections of this document.
+
 
 ## Extended AppleTalk network
 

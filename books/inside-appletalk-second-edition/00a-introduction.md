@@ -12,7 +12,11 @@ parent: "Inside AppleTalk, 2nd Edition"
 grand_parent: Books
 ---
 
+
 # Introduction
+
+1. TOC
+{:toc}
 
 THIS BOOK PROVIDES the internal design details of the AppleTalk® network system. As such, it is intended for those who are not content merely with being users of the system but who would like to go behind the scenes. *Inside AppleTalk* is designed to meet the needs of those interested in understanding AppleTalk network technology. Distinguished among this group are developers wishing to connect devices to this network system or to write computer programs that use its services.
 

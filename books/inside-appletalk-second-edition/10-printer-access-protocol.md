@@ -15,6 +15,9 @@ grand_parent: Books
 
 # Chapter 10 Printer Access Protocol
 
+1. TOC
+{:toc}
+
 The use of the word *printer* in the name of this protocol is purely historical. The protocol was originally designed for the specific purpose of communication with print **servers**, such as the Apple LaserWriter and ImageWriter printers. However, the protocol has no special features for printing and can be used by a wide variety of other kinds of servers. Figure 10-1 illustrates the protocol architecture used for communication between a user's computer (workstation) and a print server in an AppleTalk network. PAP is a client of the AppleTalk Transaction Protocol (ATP) and the Name Binding Protocol (NBP). Both of these protocols use the Datagram Delivery Protocol (DDP). PAP is an asymmetric protocol; the PAP code in the workstation is different from the PAP code in the printer.
 
 The commands and data sent through the PAP connection are printer-dependent. For the LaserWriter printer, the dialog is in PostScript.

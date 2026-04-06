@@ -13,6 +13,9 @@ grand_parent: Books
 
 # Chapter 6 A Design for The Finder's Desktop Management In a Network Environment
 
+1. TOC
+{:toc}
+
 The Finder presents Macintosh user with a unique user interface centered around the use of icons to represent objects on a disk volume. To present this interface to the user the Finder makes use of a number of data structures separate from the File System's volume catalog, all of which are maintained as resources of various types in an invisible resource file called 'Desktop'.
 
 The Desktop file is currently used to perform three separate functions:

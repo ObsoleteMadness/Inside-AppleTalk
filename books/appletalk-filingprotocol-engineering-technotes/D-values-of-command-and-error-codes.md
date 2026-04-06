@@ -13,6 +13,10 @@ grand_parent: Books
 
 # Appendix D Values of Command and Error Codes
 
+1. TOC
+{:toc}
+
+
 ## Command Codes
 
 The command codes used in the command packets are listed below. Each command code is a 16 bit integer sent in the packet high byte first. The values are given here in decimal (base 10) form.

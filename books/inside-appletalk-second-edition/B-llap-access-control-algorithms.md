@@ -14,6 +14,8 @@ grand_parent: Books
 
 
 # Appendix B LLAP Access Control Algorithms
+1. TOC
+{:toc}
 
 
 The following procedural model is written in a Pascal-like language (pseudo-code) and provided as a specification of the LocalTalk Link Access Protocol (LLAP). Any particular implementation of LLAP must follow this specification.

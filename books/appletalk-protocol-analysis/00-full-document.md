@@ -13,6 +13,9 @@ parent: Books
 
 # Analyzing Apple Computer's AppleTalk
 
+1. TOC
+{:toc}
+
 Apple Computer's AppleTalk is an operating system with an architecture designed using the same philosophy behind developing the Apple Macintosh: to provide an easy-to-use user interface with "plug-and-play" networking capabilities. The concept of "plug-and-play" was designed into the Macintosh itself, since there is a LocalTalk network interface built into the computer. For example, a Mac connected to a LaserWriter printer could be easily configured with only a twisted-pair cable between them. This type of twisted-pair connection has come to be called LocalTalk, where the network architecture itself is referred to as AppleTalk.
 
 There are many companies supporting AppleTalk networks. For example, Farallon Computing Inc., duPont Electronics, and Dayna Communications offer twisted-pair and fiber-optic cabling alternatives. Many firms, including Apple, Adaptec Inc., Everex, Racal-Interlan, Standard Microsystems Corporation, and Thomas-Conrad Corporation, supply network interface cards (NICs) for Ethernet/IEEE 802.3, token ring (IEEE 802.5), and ARCNET networks. Repeaters are available from such firms as TOPS Division, Sun Microsystems Inc., and Hayes Microcomputer Products Inc. Routers for internetworking are available from Apple and Kinetics Inc. Gateways for using TCP/IP within AppleTalk protocols can be obtained from Kinetics and Cayman Systems Inc. In addition, other operating systems vendors support the Macintosh and AppleTalk protocols within their networks, including TOPS, 3Com, and Novell. Apple provides AppleTalk protocol stacks for MS-DOS and DEC VMS environments as well. In summary, AppleTalk is a well-respected architecture with more than 2 million nodes installed on more than 250,000 networks.

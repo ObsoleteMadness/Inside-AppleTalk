@@ -14,6 +14,8 @@ grand_parent: Books
 
 
 # Part III Named Entities
+1. TOC
+{:toc}
 
 PART III DISCUSSES in detail the Name Binding Protocol (NBP) and the Zone Information Protocol (ZIP).
 

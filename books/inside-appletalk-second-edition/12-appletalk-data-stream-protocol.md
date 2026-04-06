@@ -14,6 +14,8 @@ grand_parent: Books
 
 
 # Chapter 12 AppleTalk Data Stream Protocol
+1. TOC
+{:toc}
 
 ## ADSP services
 

@@ -13,6 +13,9 @@ grand_parent: Books
 ---
 
 # Part II End-to-End Data Flow
+1. TOC
+{:toc}
+
 
 PART I of *Inside AppleTalk* specifies the LocalTalk, EtherTalk, and TokenTalk link access protocols. These protocols govern the operation of local-area data links that can be used to connect network nodes in a geographically restricted area.
 

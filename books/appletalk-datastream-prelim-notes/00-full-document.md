@@ -13,6 +13,9 @@ parent: Books
 
 # AppleTalk Data Stream Protocol Preliminary Note
 
+1. TOC
+{:toc}
+
 
 ![AAPDA logo](images/p1-aapda-logo.png)
 

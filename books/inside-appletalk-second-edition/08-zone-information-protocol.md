@@ -15,6 +15,9 @@ grand_parent: Books
 
 # Chapter 8 Zone Information Protocol
 
+1. TOC
+{:toc}
+
 ONE OF THE FUNCTIONS of routers is to maintain a mapping between networks and zone names, as mentioned in Chapter 7, "Name Binding Protocol." This network-to-zone-name mapping is maintained by the Zone Information Protocol (ZIP).
 
 This chapter describes ZIP and provides information about

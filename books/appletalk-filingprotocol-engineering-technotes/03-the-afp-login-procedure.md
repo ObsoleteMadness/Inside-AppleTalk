@@ -18,6 +18,10 @@ This chapter discusses the process of discovering a file server and logging in t
 
 This process consists of three steps: (i) discovering the file server, (ii) obtaining file server information, (iii) the actual log on step. Before discussing these three steps we need to establish two relevant concepts: AFP versions and user authentication methods.
 
+1. TOC
+{:toc}
+
+
 ## AFP Versions
 
 As noted in the introduction, the AFP has been designed to be extensible. One of the techniques used towards this end is to associate one or more version descriptors, known as the AFPVersion with the protocol. These are strings of up to 16 characters which uniquely identify a particular version of the protocol. For instance for the version defined in the present document the AFPVersion string is "AFPVersion 1.1".

@@ -14,6 +14,9 @@ grand_parent: Books
 
 # Chapter 1 Introduction
 
+1. TOC
+{:toc}
+
 THIS DOCUMENT DESCRIBES the changes to AppleTalk® protocols that are defined by AppleTalk Phase 2. AppleTalk Phase 2 provides extensions to AppleTalk addressing and enhancements to AppleTalk routing and naming services. These changes are designed to support larger AppleTalk networks while remaining compatible with current AppleTalk network hardware and software. (AppleTalk routers, however, must be upgraded to support AppleTalk Phase 2.)
 
 Apart from the changes in AppleTalk protocols described in this document, all other aspects of the AppleTalk protocol suite remain as defined in *Inside AppleTalk*, published by Addison-Wesley. The original AppleTalk protocol suite will hereafter be referred to as *AppleTalk Phase 1*.

@@ -14,6 +14,9 @@ grand_parent: Books
 
 # Appendix A User Authentication Methods
 
+1. TOC
+{:toc}
+
 As noted in the main body of this document, AFP version 1.1 provides three standard user authentication methods. These correspond to UAM strings "NoUserAuthent", "Cleartxt passwd" and "Randnum exchange". [Note: these strings should be used in a case-insensitive fashion].
 
 ## No User Authentication

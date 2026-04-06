@@ -13,6 +13,9 @@ grand_parent: Books
 
 
 # Chapter 4 Protocol Details
+1. TOC
+{:toc}
+
 
 THE FOLLOWING SECTIONS DESCRIBE new aspects of AppleTalk protocols and changes in protocol packet formats brought about by the architectural changes of AppleTalk Phase 2. ■
 

@@ -15,6 +15,9 @@ grand_parent: Books
 
 # Appendix C AppleTalk Parameters
 
+1. TOC
+{:toc}
+
 This appendix summarizes various numerical quantities used in the AppleTalk protocols. This information is organized into subsections, one for each relevant protocol. A $ symbol is used to denote hexadecimal; a % symbol represents binary numbers. All other numerals are decimal.
 
 ## LLAP parameters

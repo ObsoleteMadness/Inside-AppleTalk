@@ -17,6 +17,10 @@ The AppleTalk Filing Protocol uses the transport services of the AppleTalk Sessi
 
 In the case of all these calls, the AFP level variable *FPError* is returned as the ASP-level *CmdResult*. Also, the AFP-level Command packet is conveyed as an ASP-level *Command block*, while the AFP-level Reply packet is returned as the ASP-level *Command Reply block*.
 
+1. TOC
+{:toc}
+
+
 ## Finding a Server
 
 To find an AFP server, an NBP request must be issued for objects of type "AFPServer".
