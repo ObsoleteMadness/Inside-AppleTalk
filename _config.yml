@@ -2,7 +2,7 @@ title: AppleTalk Documentation
 description: >-
   Community-maintained AppleTalk protocol documentation, converted from
   original Apple technical documents.
-baseurl: "/appletalk-docs"
+baseurl: "/Inside-AppleTalk"
 url: "https://obsoletemadness.github.io"
 
 theme: just-the-docs
@@ -23,12 +23,24 @@ heading_anchors: true
 
 aux_links:
   "GitHub":
-    - "https://github.com/ObsoleteMadness/appletalk-docs"
+    - "https://github.com/ObsoleteMadness/Inside-AppleTalk"
 aux_links_new_tab: true
+
+# Edit on GitHub (via jekyll-github-metadata)
+gh_edit_link: true
+gh_edit_link_text: "Edit this page on GitHub"
+gh_edit_repository: "https://github.com/ObsoleteMadness/Inside-AppleTalk"
+gh_edit_branch: "main"
+gh_edit_view_mode: "tree"
 
 nav_external_links:
   - title: Contributing
-    url: /appletalk-docs/contributing/
+    url: /Inside-AppleTalk/contributing/
+
+plugins:
+  - jekyll-github-metadata
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
 mermaid:
   version: "11.13.0"
