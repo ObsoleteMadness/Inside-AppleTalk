@@ -43,9 +43,7 @@ In Part I, the term *AppleTalk node address* (or simply **AppleTalk address**) r
 # Chapter 1 LocalTalk Link Access Protocol
 
 
-## THE LOCALTALK LINK ACCESS PROTOCOL (LLAP)
-
-corresponds to the data-link layer of the ISO-OSI reference model and allows network devices to share the communication medium. This protocol provides the basic service of packet transmission between the nodes of a single LocalTalk or compatible network.
+THE LOCALTALK LINK ACCESS PROTOCOL (LLAP) corresponds to the data-link layer of the ISO-OSI reference model and allows network devices to share the communication medium. This protocol provides the basic service of packet transmission between the nodes of a single LocalTalk or compatible network.
 
 The physical hardware offers the connected nodes a shared data transmission medium, referred to as the **link**. LLAP is responsible for regulating the access to this shared link by the nodes of the network.
 
