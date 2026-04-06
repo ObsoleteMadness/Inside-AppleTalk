@@ -9,7 +9,7 @@ nav_order: 1
 layout: default
 has_children: false
 parent: "Inside AppleTalk, 2nd Edition"
-grand_parent: Areas
+grand_parent: Books
 ---
 
 # Introduction

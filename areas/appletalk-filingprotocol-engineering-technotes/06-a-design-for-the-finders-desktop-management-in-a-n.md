@@ -8,7 +8,7 @@ engine: "gemini-flash"
 nav_order: 6
 parent: "AFP Technical Notes"
 layout: default
-grand_parent: Areas
+grand_parent: Books
 ---
 # A Design for The Finder's Desktop Management In a Network Environment
 

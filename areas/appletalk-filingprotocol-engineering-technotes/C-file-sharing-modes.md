@@ -8,7 +8,7 @@ engine: "gemini-flash"
 nav_order: 23
 parent: "AFP Technical Notes"
 layout: default
-grand_parent: Areas
+grand_parent: Books
 ---
 # File Sharing Modes
 

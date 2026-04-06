@@ -1,11 +1,11 @@
 ---
-title: "Areas"
+title: "Books"
 nav_order: 10
 layout: default
 has_children: true
 ---
 
-# Areas
+# Books
 
 This section contains the AppleTalk reference documents that have been OCR'd and
 converted to Markdown. Select a document from the sidebar or the table below.

@@ -9,7 +9,7 @@ engine: "gemini-flash"
 nav_order: 8
 parent: "Inside AppleTalk, 2nd Edition"
 layout: default
-grand_parent: Areas
+grand_parent: Books
 ---
 # Zone Information Protocol
 

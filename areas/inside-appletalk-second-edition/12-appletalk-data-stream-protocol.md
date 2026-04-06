@@ -9,7 +9,7 @@ engine: "gemini-flash"
 nav_order: 12
 parent: "Inside AppleTalk, 2nd Edition"
 layout: default
-grand_parent: Areas
+grand_parent: Books
 ---
 # AppleTalk Data Stream Protocol
 
@@ -607,7 +607,7 @@ packet-beta
 
 Since delivery of packets sent by the network layer is not guaranteed, connection-opening packets can be lost or delayed. Therefore, ADSP open-connection requests should be retransmitted at intervals specified by the client (for a maximum number of retries also specified by the client). An end receiving an open-connection request must ensure that it is not a duplicate by comparing the request's source ConnID and address with that of all open or opening connections for the receiving socket. If the request is a duplicate, the appropriate acknowledgment is still sent back. See Figure 12-12 and Figure 12-13, where *X* indicates lost or delayed packets.
 
-■ **Figure 12-12** Connection-opening dialog: packet lost
+#### **Figure 12-12** Connection-opening dialog: packet lost
 
 ![Diagram illustrating the connection-opening dialog between two ends (A and B) where some packets are lost and retransmissions occur due to timer expirations.](images/p315-connection-opening-dialog.png)
 
@@ -633,9 +633,7 @@ sequenceDiagram
     Note over B: This end assumes connection is open.
 ```
 
----
-
-■ Figure 12-13 Simultaneous connection-opening dialog: packet lost
+#### Figure 12-13 Simultaneous connection-opening dialog: packet lost
 
 ![Simultaneous connection-opening dialog: packet lost](images/p316-simultaneous-connection-dialog.png)
 
@@ -658,9 +656,7 @@ sequenceDiagram
 
 If either end goes down or becomes unreachable during the connection-opening dialog, one end can become established while the other end does not. This results in a half-open connection. When this situation occurs, the open end is closed through normal ADSP mechanisms, as shown in Figure 12-14.
 
----
-
-### Figure 12-14 Connection-opening dialog: half-open connection
+#### Figure 12-14 Connection-opening dialog: half-open connection
 
 ![Connection-opening dialog: half-open connection diagram](images/p317-figure-12-14.png)
 
@@ -695,9 +691,7 @@ Figure 12-15 shows that it is possible for one end to become established while t
 
 End B will retransmit its open-connection request and, upon receiving the request, end A will compare the value of PktFirstByteSeq to its own RecvSeq. If the values are equal, end A has not yet received any data from end B; end A assumes the connection is not yet open, sends back an open-connection acknowledgment with PktFirstByteSeq equal to its FirstRtmtSeq, and then retransmits the data (see Figure 12-15).
 
----
-
-## Figure 12-15 Connection-opening dialog: data transmitted on half-open connection
+#### Figure 12-15 Connection-opening dialog: data transmitted on half-open connection
 
 ![Connection-opening dialog: data transmitted on half-open connection](images/p318-connection-opening-dialog.png)
 
@@ -728,9 +722,7 @@ sequenceDiagram
 
 If PktFirstByteSeq does not equal RecvSeq, end A can assume that the connection is open because end A has received data from end B; therefore, the open-connection request must be a late-arriving duplicate and is discarded (see Figure 12-16).
 
----
-
-### Figure 12-16 Connection-opening dialog: late-arriving duplicate
+#### Figure 12-16 Connection-opening dialog: late-arriving duplicate
 
 ![Connection-opening dialog: late-arriving duplicate](images/p319-connection-opening-dialog.png)
 
@@ -756,7 +748,7 @@ sequenceDiagram
     Note over A: Packet is discarded.
 ```
 
-## Connection opening outside of ADSP
+### Connection opening outside of ADSP
 
 The preceding discussion focused on one typical connection-opening situation: the opening of a connection between two specific peer sockets. Although this example illustrates and defines the connection-opening concepts and facilities in ADSP, a connection can be opened in other ways. For example, each of the two clients of ADSP may know the connection-opening information of the other end based on an established convention between these clients. In this situation, each client makes a call to its local ADSP to set up the connection, providing the necessary connection-opening parameters. At each end, the ADSP implementation assumes the connection is open.
 
@@ -764,7 +756,7 @@ In a variation of this situation, the two ADSP clients exchange the required con
 
 In both of these cases, ADSP makes no attempt to send any connection-opening packets to the other end; the underlying assumption is that the cooperating clients have adequately synchronized the parameters before calling their respective ADSP implementations.
 
-## Connection-listening sockets and servers
+### Connection-listening sockets and servers
 
 A common situation involves one or more clients opening connections to a server. The server sets up a connection-listening socket to which the server's clients send their ADSP open-connection requests.
 
@@ -772,7 +764,7 @@ A **connection-listening socket** is a socket that accepts open-connection reque
 
 No restriction defines the socket that the server process picks for the connection end; the socket could be the connection-listening socket itself, another socket on the same node, a socket on another node in the same network, or a socket on a node in another network. If the socket is on a node different from the connection-listening socket, then the server must use its own process (outside of ADSP) to convey the call to the target node's ADSP implementation. The client must be aware of the possibility of duplicate open-connection requests and should forward such requests to ADSP, specifying the same connection end (see *Figure 12-17*).
 
-■ **Figure 12-17** Open-connection request made to connection-listening socket; alternate socket chosen for connection
+#### **Figure 12-17** Open-connection request made to connection-listening socket; alternate socket chosen for connection
 
 ![Open-connection request made to connection-listening socket; alternate socket chosen for connection](images/p321-connection-request.png)
 
@@ -796,7 +788,7 @@ The ADSP client may need to be selective about establishing connections with rem
 
 ---
 
-■ **Figure 12-18** Connection-opening filters: open connection denied
+#### **Figure 12-18** Connection-opening filters: open connection denied
 
 ![Connection-opening filters: open connection denied](images/p322-connection-opening-denied.png)
 
@@ -814,7 +806,7 @@ sequenceDiagram
 In the case of a connection-listening socket, the end could conceivably become established with a different network address than the one to which the original open request was sent. The new address may not be acceptable to the original requester. In this case, the original requester can provide ADSP with a filter of network addresses with which it is willing to establish a connection (see Figure 12-19).
 
 
-### Figure 12-19 Connection-opening filters with a connection-listening socket
+#### Figure 12-19 Connection-opening filters with a connection-listening socket
 
 ![Connection-opening filters with a connection-listening socket](images/p323-connection-opening-filters.png)
 
@@ -846,8 +838,4 @@ Upon receiving a Close Connection Advice Control packet, an ADSP connection end 
 
 Occasionally, clients need to inform each other reliably that they have completed their conversation and are ready to close the connection. This process can be accomplished if each end sends an attention message to the other end indicating that it has sent and received acknowledgment of all of its data. Upon completing this handshake, each end can safely issue a call to its local ADSP to close the connection.
 
-
-# Part V End-User Services
-
-PART V of *Inside AppleTalk* describes the protocols that provide end-user services in an AppleTalk network. This part includes a complete description of the AppleTalk Filing Protocol (AFP). It also includes the architectural specification for print spooling in an AppleTalk network. ■
 

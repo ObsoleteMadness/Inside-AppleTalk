@@ -9,7 +9,7 @@ engine: "gemini-flash"
 nav_order: 3
 parent: "Inside AppleTalk, 2nd Edition"
 layout: default
-grand_parent: Areas
+grand_parent: Books
 ---
 # EtherTalk and TokenTalk Link Access Protocols
 

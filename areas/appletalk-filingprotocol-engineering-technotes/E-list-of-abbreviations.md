@@ -8,7 +8,7 @@ engine: "gemini-flash"
 nav_order: 25
 parent: "AFP Technical Notes"
 layout: default
-grand_parent: Areas
+grand_parent: Books
 ---
 # ## List of Abbreviations
 

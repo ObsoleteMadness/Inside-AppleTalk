@@ -9,7 +9,7 @@ engine: "gemini-flash"
 nav_order: 23
 parent: "Inside AppleTalk, 2nd Edition"
 layout: default
-grand_parent: Areas
+grand_parent: Books
 ---
 # AppleTalk Parameters
 
@@ -25,24 +25,6 @@ grand_parent: Areas
 ---
 
 # Appendix C AppleTalk Parameters
-
-### CONTENTS
-
-- LLAP parameters / C-2
-- AARP parameters / C-4
-- EtherTalk and TokenTalk parameters / C-4
-- DDP parameters / C-6
-- RTMP parameters / C-8
-- AEP parameters / C-9
-- NBP parameters / C-9
-- ZIP parameters / C-10
-- ATP parameters / C-10
-- PAP parameters / C-11
-- ASP parameters / C-12
-- ADSP parameters / C-13
-- AFP parameters / C-13
-
----
 
 This appendix summarizes various numerical quantities used in the AppleTalk protocols. This information is organized into subsections, one for each relevant protocol. A $ symbol is used to denote hexadecimal; a % symbol represents binary numbers. All other numerals are decimal.
 
@@ -64,9 +46,8 @@ This section provides values for the LLAP type field, timing constants used by L
 | &nbsp;&nbsp;&nbsp;&nbsp;$84 | lapRTS packet |
 | &nbsp;&nbsp;&nbsp;&nbsp;$85 | lapCTS packet |
 
----
 
-### Figure C-1 LLAP type field values
+#### Figure C-1 LLAP type field values
 
 ![Diagram showing the allocation of values for the LLAP type field, with specific ranges for valid LLAP types and reserved LLAP frames.](images/p548-llap-type-field-values.png)
 
@@ -104,7 +85,7 @@ packet-beta
 
 ---
 
-# AARP parameters
+## AARP parameters
 
 | AARP packet parameter | Description |
 |---|---|
@@ -118,14 +99,13 @@ packet-beta
 | AARP Response | 2 |
 | AARP Probe | 3 |
 
-# EtherTalk and TokenTalk parameters
+## EtherTalk and TokenTalk parameters
 
 | Packet parameter | Description |
 |---|---|
 | SNAP protocol discriminator for AppleTalk packets | $080007809B |
 | broadcast destination address for AppleTalk packets on Ethernet | $090007FFFFFF (EtherTalk) |
 | broadcast destination address for AppleTalk packets on token ring | $C00040000000 (TokenTalk) |
-
 | AARP values as used for EtherTalk | Description |
 |---|---|
 | hardware type indicating Ethernet | 1 |
@@ -136,9 +116,8 @@ packet-beta
 | AARP probe retransmission interval | 1/5 of a second |
 | AARP probe retry count | 10 |
 
----
 
-### ■ Figure C-2 Zone multicast addresses
+#### **Figure C-2** Zone multicast addresses
 
 ![Zone multicast addresses](images/p550-zone-multicast-addresses.png)
 
@@ -147,9 +126,8 @@ packet-beta
 | AppleTalk broadcast address | $090007FFFFFF | $C00040000000 |
 | **Zone multicast addresses**<br>When used with the address assignment algorithm described in Chapter 8, the first address in each list represents a[0]. | $090007000000<br>⋮<br>*253 addresses*<br>⋮<br>$0900070000FC | $C00000000800<br>$C00000001000<br>$C00000002000<br>$C00000004000<br>$C00000008000<br>$C00000010000<br>$C00000020000<br>$C00000040000<br>$C00000080000<br>$C00000100000<br>$C00000200000<br>$C00000400000<br>$C00000800000<br>$C00001000000<br>$C00002000000<br>$C00004000000<br>$C00008000000<br>$C00010000000<br>$C00020000000 |
 
----
 
-# DDP parameters
+## DDP parameters
 
 This section provides values for DDP packet parameters, protocol type fields, and socket numbers.
 
@@ -172,9 +150,7 @@ This section provides values for DDP packet parameters, protocol type fields, an
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$06 | ZIP packet |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$07 | ADSP packet |
 
----
-
-### Figure C-3 DDP type field values
+#### **Figure C-3** DDP type field values
 
 ![DDP type field values](images/p552-ddp-type-values.png)
 
@@ -204,9 +180,7 @@ This section provides values for DDP packet parameters, protocol type fields, an
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$06 | zone information socket (ZIS) |
 | &nbsp;&nbsp;$40 through $7F | experimental use only (do not use in released products) |
 
----
-
-### Figure C-4 DDP socket numbers
+#### **Figure C-4** DDP socket numbers
 
 ![DDP socket numbers diagram showing statically and dynamically assigned socket ranges.](images/p553-ddp-socket-numbers.png)
 
@@ -230,9 +204,8 @@ This section provides values for DDP packet parameters, protocol type fields, an
 | RTMP listening socket | socket 1 |
 | maximum number of hops supported | 16 hops |
 
----
 
-# AEP parameters
+## AEP parameters
 
 | AEP socket parameter | Number |
 |---|---|
@@ -244,7 +217,7 @@ This section provides values for DDP packet parameters, protocol type fields, an
 | Echo function values | 1 = Echo Request<br>2 = Echo Reply |
 | maximum data size | 585 bytes |
 
-# NBP parameters
+## NBP parameters
 
 | NBP socket parameter | Description |
 |---|---|
@@ -262,9 +235,7 @@ This section provides values for DDP packet parameters, protocol type fields, an
 | DDP type value for NBP packets | 2 |
 | NBP control field value | 1 = BrRq<br>2 = LkUp<br>3 = LkUp-Reply<br>4 = FwdReq |
 
----
-
-# ZIP parameters
+## ZIP parameters
 
 | ZIP socket parameter | Number |
 |---|---|
@@ -287,9 +258,7 @@ This section provides values for DDP packet parameters, protocol type fields, an
 | Query retransmission time | 10 seconds |
 | ZIP bringback time | 10 minutes |
 
----
-
-# ATP parameters
+## ATP parameters
 
 | ATP packet parameter | Description |
 |---|---|
@@ -303,9 +272,7 @@ This section provides values for DDP packet parameters, protocol type fields, an
 | 001 | 1 minute |
 | 100 | 8 minutes |
 
----
-
-# PAP parameters
+## PAP parameters
 
 | PAP type | Value |
 |---|---|
@@ -339,9 +306,7 @@ This section provides values for DDP packet parameters, protocol type fields, an
 |---|---|
 | PrinterBusy | $FFFF |
 
----
-
-# ASP parameters
+## ASP parameters
 
 | SPFunction | Value |
 |---|---|
@@ -379,11 +344,9 @@ This section provides values for DDP packet parameters, protocol type fields, an
 
 The ASP version number described in Chapter 11, "AppleTalk Session Protocol," is version $0100.
 
----
-
 The values -1060 to 1065 are reserved for implementation-dependent errors. All other values are invalid in this field. The following error codes are the only ones actually transmitted through ATP (on the OpenSession call): NoError, BadVersNum, and ServerBusy.
 
-# ADSP parameters
+## ADSP parameters
 
 | ADSP control code | Value |
 |---|---|
@@ -402,7 +365,7 @@ The values -1060 to 1065 are reserved for implementation-dependent errors. All o
 | DDP type value for ZIP packets | 7 |
 | maximum data size | 572 bytes |
 
-# AFP parameters
+## AFP parameters
 
 Each function code is a 16-bit integer sent in the packet high-byte first.
 
@@ -412,13 +375,6 @@ Each function code is a 16-bit integer sent in the packet high-byte first.
 | 2 | $02 | CloseVol |
 | 3 | $03 | CloseDir |
 | 4 | $04 | CloseFork |
-
-(continued) ➡
-
----
-
-| Decimal value | Hex value | AFP function (continued) |
-| :--- | :--- | :--- |
 | 5 | $05 | CopyFile |
 | 6 | $06 | CreateDir |
 | 7 | $07 | CreateFile |
@@ -455,11 +411,6 @@ Each function code is a 16-bit integer sent in the packet high-byte first.
 | 51 | $33 | GetIcon |
 | 52 | $34 | GetIconInfo |
 | 53 | $35 | AddAPPL |
-
----
-
-| Decimal value | Hex value | AFP function (continued) |
-|---|---|---|
 | 54 | $36 | RmvAPPL |
 | 55 | $37 | GetAPPL |
 | 56 | $38 | AddComment |
@@ -496,11 +447,6 @@ Each call returns a result code, which is a 4-byte integer.
 | -5021 | $FFFFEC63 | RangeOverlap |
 | -5022 | $FFFFEC62 | SessClosed |
 | -5023 | $FFFFEC61 | UserNotAuth |
-
----
-
-| Decimal value | Hex value | FPError (continued) |
-|---|---|---|
 | -5024 | $FFFFEC60 | CallNotSupported |
 | -5025 | $FFFFEC5F | ObjectTypeErr |
 | -5026 | $FFFFEC5E | TooManyFilesOpen |
@@ -511,4 +457,3 @@ Each call returns a result code, which is a 4-byte integer.
 | -5031 | $FFFFEC59 | VolLocked |
 | -5032 | $FFFFEC58 | ObjectLocked |
 
----

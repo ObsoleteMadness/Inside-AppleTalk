@@ -8,7 +8,7 @@ engine: "gemini-flash"
 nav_order: 22
 parent: "AFP Technical Notes"
 layout: default
-grand_parent: Areas
+grand_parent: Books
 ---
 # Long/Short Name Management Algorithms
 

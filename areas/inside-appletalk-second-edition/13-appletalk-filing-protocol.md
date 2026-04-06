@@ -9,7 +9,7 @@ engine: "gemini-flash"
 nav_order: 13
 parent: "Inside AppleTalk, 2nd Edition"
 layout: default
-grand_parent: Areas
+grand_parent: Books
 ---
 # AppleTalk Filing Protocol
 
@@ -108,7 +108,7 @@ AFP Version 1.0, which was never released, was developed as a joint effort betwe
 
 Figure 13-2 shows AFP within the AppleTalk protocol architecture.
 
-■ Figure 13-2 AFP and the AppleTalk protocol architecture
+#### **Figure 13-2** AFP and the AppleTalk protocol architecture
 
 ![AFP and the AppleTalk protocol architecture](images/p332-appletalk-architecture.png)
 
@@ -137,7 +137,7 @@ By submitting AFP calls, the workstation client can
 The following sections describe the file system structure's AFP-file-system-visible entities.
 
 
-## File server
+### File server
 
 A **file server** is a computer with at least one large-capacity disk that allows other computers on the network to share the information stored in it. The maximum number of disks is not limited by AFP. Each disk attached to a file server usually contains one volume, although the disk may be subdivided into multiple volumes. Each volume appears as a separate entity to the workstation client.
 
@@ -165,7 +165,7 @@ The server icon is optional and is used to customize the appearance of server vo
 
 Figure 13-1 illustrates a file server with two attached volumes.
 
-## Volumes
+### Volumes
 
 A file server can have one or more volumes that are visible to workstations through the AFP. Each volume has identifying parameters associated with it, as listed below. To provide security at the level of each volume, the server can also maintain an optional password parameter.
 
@@ -201,7 +201,7 @@ workstation client. However, the backup date-time can be set by a backup program
 volume's contents are backed up. When a volume is created, its backup date-time is set to $80000000
 (the earliest representable date-time value).
 
-## Volume types
+#### Volume types
 
 An AFP volume is structured in one of two ways: flat or hierarchical. The latter organizes
 information into containers (**directories**), which in turn contain files. Flat volumes contain only
@@ -211,7 +211,7 @@ directories and their identifiers, **Directory IDs**, as they relate to the stru
 An application can be written that allows a workstation with a flat local file system to use parts of a variable Directory ID volume. Such an application would mount selected directories of a variable Directory ID volume as flat volumes. (To **mount** a volume is to make it available to a workstation. The volume is not physically mounted on a local disk drive; it only appears that way.) Each corresponding “virtual” volume would appear flat, because only one directory and its offspring files would be visible through the AFI. However, writing such applications is not recommended. This view of the volume is very limited; if the directory contained other directories, they would not be available to the workstation.
 Variable Directory ID volumes are included in this definition of AFP to accommodate non-Macintosh machines with file systems that are unable to implement the fixed Directory ID feature. Variable Directory ID volumes allow such machines to function as file servers and to make their files and directories accessible through AFP.
 
-### Volume catalog
+#### Volume catalog
 
 The volume catalog is the structure that describes the branching tree arrangement of files and directories on a hierarchical volume (fixed and variable Directory ID volumes). The catalog does not span multiple volumes; the workstation client sees a separate volume catalog for each server volume that is visible through the AFI. *Figure 13-3* shows an example of a volume catalog and illustrates its elements.
 The volume catalog contains directories and files branching from a base directory known as the root. These directories and files are referred to as **catalog nodes** or **CNodes** (not to be confused with devices on a network, which are also called nodes). Within the tree structure, CNodes can be positioned in two ways; either at the end of a limb, in which case it is called a leaf, or connected from above and below to other CNodes, in which case it is called internal. Internal CNodes are always directories; leaf CNodes can be either files or empty directories.
@@ -219,11 +219,11 @@ CNodes have a parent/offspring relationship: A given CNode is the **offspring** 
 When an AFP call makes its way through the volume catalog, it can take only one shortest path from the root to a specific CNode. The CNodes along that path are said to be **ancestors** of the destination node, which in turn is called the **descendent** of each of its ancestors.
 
 
-■ Figure 13-3 The volume catalog
+#### **Figure 13-3** The volume catalog
 
 ![Diagram showing the hierarchical structure of a volume catalog with root, internal, file, and directory CNodes.](images/p338-volume-catalog.png)
 
-## Catalog node names
+### Catalog node names
 
 CNode names identify every file and directory in a volume catalog, and each file or directory has both a long name and a short name. The root directory of a volume catalog represents the volume, and the root's long name is the same as the volume name. The volume essentially has a short name, which is the short name of the root directory, although AFP does not allow its use. Neither the root nor the volume can be deleted or renamed through AFP.
 
@@ -245,7 +245,7 @@ AFP naming rules are such that any MS-DOS name can be used directly as a CNode s
 When a CNode is created, the caller supplies the node's name and a name type that indicates whether the name is in short or long format. The server then checks the name to verify that it conforms to the accepted format. The algorithm that follows describes how servers assign short and long names to a CNode (referred to as an object in this algorithm).
 
 
-```text
+```pascal
 IF name type is short OR name is in short format
 THEN check for new name in list of short names
     IF name already exists
@@ -266,11 +266,11 @@ One limitation of this algorithm is that it does not prevent a user from specify
 
 For example, for a Macintosh file created with the long name `MacFileLongName`, a file server can generate a short name of `MacFile`. When the user tries to create a new file with the long name `MacFile` in the same directory, the call fails, since the above algorithm stipulates that the long name and short name would both have to be set to `MacFile`.
 
-## Directories and files
+### Directories and files
 
 Directories and files are stored in volumes and constitute the next level of the file system structure visible through the AFI. As was shown in *Figure 13-3*, directories branch to files and other directories. Each directory has an identifier through which it and its offspring can be addressed. Therefore, directories can be thought of as logically containing their offspring directories and files with the parameters described below.
 
-### Directory IDs
+#### Directory IDs
 
 Each directory in the volume catalog is identified by a 4-byte long integer known as its Directory ID. Because two directories on the same volume cannot have the same Directory ID, the Directory ID uniquely identifies a directory within a volume.
 
@@ -280,7 +280,7 @@ A CNode can have only one parent, so a given CNode has a unique Parent ID. Howev
 
 The Directory ID of the root is always 2. The root's Parent ID is always 1. (The root does not really have a parent; this value is returned only if a call asks for the root's Parent ID.) Zero (0) is not a valid Directory ID.
 
-### Directory parameters
+#### Directory parameters
 
 In AFP Versions 1.1 and 2.0, a server must maintain the following parameters for each directory:
 
@@ -329,7 +329,7 @@ The following directory attributes are defined in AFP Version 2.0:
 * The BackupNeeded bit is set whenever the directory's modification date-time changes.
 * No specific bit exists to inhibit moving a directory, but directory movement is constrained by the RenameInhibit bit when a directory is moved or moved and renamed. This is true whether the workstation is using AFP Version 1.1 or 2.0.
 
-## File parameters
+#### File parameters
 
 In Versions 1.1 and 2.0, a server must maintain the following parameters for each file:
 
@@ -360,7 +360,7 @@ The ProDOS information parameter contains a 2-byte File Type and a 4-byte Aux Ty
 
 For directories, the ProDOS File Type is always set to $0F. The server will return an afpAccessDenied error if the user attempts to set the ProDOS File Type of a directory to anything other than $0F. No restriction is made on the value of the directory's Aux Type, although it is initially set to $0200 when the directory is created.
 
-### ■ Figure 13-4 ProDOS information format
+#### **Figure 13-4** ProDOS information format
 
 ![ProDOS information format](images/p343-prodos-info-format.png)
 
@@ -460,7 +460,7 @@ The Macintosh Finder will not copy a file whose CopyProtect bit is set. An attem
 * The data fork length and resource fork length are equal to the number of bytes in the corresponding fork.
 * The creation, backup, and modification date-time parameters are described next.
 
-## Date-time values
+#### Date-time values
 
 All date-time quantities used by AFP specify values of the server's clock. These values correspond to the number of seconds measured from 12:00 A.M. on January 1, 2000. In other words, the start of the next century corresponds to a date-time of 0. AFP represents date-time values with 4-byte signed integers.
 
@@ -474,7 +474,7 @@ The server changes the modification date-time of a directory each time the direc
 
 An AFP client with the appropriate access rights can set the creation and modification date-time parameters to any value.
 
-## File forks
+### File forks
 
 As in the Macintosh file system, a file consists of two **forks**: a data fork and a resource fork. The bytes in a file fork are sequentially numbered starting with 0. The data fork is an unstructured finite sequence of bytes. The resource fork is used to hold Macintosh operating system resources, such as icons and drivers, and a data structure for mapping them within the fork. AFP is designed to consider both forks as finite-length byte sequences; however, AFP contains no rules relating to the structure of the resource fork. For more information about resource forks, refer to *Inside Macintosh*.
 
@@ -502,7 +502,7 @@ In addition to the above parameters, the server must provide a way to gain acces
 
 In order to perform any action on a CNode, the workstation must designate a path to the CNode. AFP provides rules for specifying a path to any CNode in the volume catalog. A CNode (file or directory) can be unambiguously specified to the server by the identifiers shown in Figure 13-5.
 
-■ **Figure 13-5** CNode specification
+#### **Figure 13-5** CNode specification
 
 ![CNode specification](images/p348-cnode-specification.png)
 
@@ -551,7 +551,7 @@ A complete path specification can take a number of forms. The table that follows
 
 The descriptions and examples that follow refer to this table and the corresponding volume catalog illustrated in *Figure 13-6*. To simplify these examples, the CNodes in this catalog are named *a* through *j*, except the root, which is named *x*. The path type will be ignored in this example. The letter *v* represents the volume's 2-byte Volume ID. Lines connect the CNodes; the unconnected lines indicate that other CNodes in this volume are not shown here.
 
-■ **Figure 13-6** Example 1 of a volume catalog
+#### **Figure 13-6** Example 1 of a volume catalog
 
 ![Example 1 of a volume catalog showing a tree structure of CNodes.](images/p350-figure-13-6.png)
 
@@ -605,7 +605,7 @@ The *seventh* example shows an ascending pathname that starts at directory *c* (
 
 The *eighth* example is a special case in which the starting point of the path is Directory ID 1, the parent of the root. The first name of the pathname must be the volume name or root directory name corresponding to Volume ID *v*; beyond that, pathname traversal is performed as in the other examples.
 
-# AFP login
+## AFP login
 
 In order to make use of any resource managed by a file server, the workstation must first log in to the server. This section provides an overview of the AFP login process. (AFP login is described in relation to specific calls in "An Overview of AFP Calls" later in this chapter.)
 
@@ -642,7 +642,7 @@ After the workstation picks a server, it uses the FPGetSrvInfo call to request i
 about that server. The server returns information that includes which AFP versions and UAMs the
 server recognizes. Each AFP version is uniquely described by a string of up to 16 characters called the
 AFPVersion string. The AFPVersion strings for the two protocol versions described in this chapter
-are 'AFPVersion 1.1' and 'AFPVersion 2.0'. Each UAM is described by a UAM string.
+are `'AFPVersion 1.1'` and `'AFPVersion 2.0'`. Each UAM is described by a UAM string.
 (See "User Authentication Methods" later in this chapter for information about this string.)
 
 From the list returned by the server, the workstation chooses which AFP versions and UAM
@@ -658,7 +658,7 @@ described in the next section.
 If the user authentication method succeeds, an AFP session between the workstation and the
 server will begin.
 
-# File server security
+## File server security
 
 Information stored in a shared resource sometimes needs protection from unauthorized users. The
 role of file server security is to provide varying amounts and kinds of protection, depending on
@@ -671,7 +671,7 @@ AFP provides security in three ways:
 * directory access control
 
 
-# User authentication methods
+### User authentication methods
 
 AFP provides the capability for servers and workstations to use a variety of methods to
 authenticate users. Three user authentication methods are already defined: no user authentication,
@@ -681,13 +681,13 @@ The workstation indicates its choice of UAM by giving the server a UAM string. T
 
 Some of these methods require additional user authentication information to be passed to the server in the FPLogin call. The following paragraphs describe the three user authentication methods and the kinds of information they require as User Auth Info (user authentication information).
 
-## No user authentication
+#### No user authentication
 
 The first of these methods, no user authentication, needs no specification. No user name or password information is required in the FPLogin call. The call, therefore, has no User Auth Info field. The corresponding UAM string is `'No User Authent'`.
 
 In order to implement the directory access control described later in this section, the server must assign a user ID and group ID to the user for that session. In this UAM, the server assigns to the user world access rights for every directory in every server volume. World access rights are described in “Directory Access Control” later in this chapter.
 
-## Cleartext password
+#### Cleartext password
 
 The second method, cleartext password, uses the corresponding UAM string of `'Cleartxt Passwrd'`. This method transmits the password as clear, rather than encoded, text along with the user name. The User Auth Info part of the FPLogin call consists of the user name (a string of up to 31 characters) followed by the user’s password. In order to ensure that the user’s password is aligned on an even byte boundary in the packet, the workstation may have to insert a null byte ($00) between the user name and the password. The user’s password is an 8-byte quantity. If the user provides a shorter password, it must be padded on the end with null bytes to make it 8 bytes long. The permissible set of characters in passwords consists of all 7-bit ASCII characters.
 
@@ -695,7 +695,7 @@ User name comparison must be case-insensitive, but password comparison is intend
 
 The cleartext password method should be used by workstations only if the intervening network is secure against eavesdropping. Otherwise, the password information can be read from FPLogin call packets by anyone listening to the network.
 
-## Random number exchange
+#### Random number exchange
 
 In environments in which the network is not secure against eavesdropping, random number exchange is a more secure user authentication method. This method corresponds to the UAM string `'Randnum Exchange'`. With random number exchange, the user’s password is never sent over the network and cannot be picked up by eavesdropping. Deriving the password from the information sent over the network is essentially impossible.
 
@@ -710,7 +710,7 @@ The random number exchange UAM consists of the following steps:
 5. The workstation sends the encrypted value back to the server in the User Auth Info field of the FPLoginCont call, along with the ID number it received from the server. The server uses this ID number to associate the two calls, FPLogin and FPLoginCont.
 6. The server compares the workstation's encrypted value with the encrypted value obtained using the password from its user database. If the two encrypted values match, the authentication process is complete and the login succeeds. The server returns a NoErr result code to the workstation. If the two encrypted values do not match, the server returns the UserNotAuth result code.
 
-## Volume passwords
+### Volume passwords
 
 AFP provides an optional second level of access control through volume passwords. A server can associate a fixed-length 8-character password with each volume it makes visible through the AFP.
 
@@ -720,7 +720,7 @@ To make AFP calls that refer to a server volume, the workstation uses a volume i
 
 Volume passwords constitute a simple protection mechanism for servers that do not need to implement the directory access control described in the next section. However, volume passwords are not as secure as directory access control.
 
-## Directory access control
+### Directory access control
 
 The directory access control method provides the greatest degree of network security in AFP. This method assigns access rights to users. Once the user has logged in to the file server, access rights allow users varying degrees of freedom for performing actions within the directory structure.
 
@@ -761,7 +761,7 @@ The server must be able to derive what access rights a particular user has to a 
 The following algorithm is used by the server to extract the user access rights. The OR in this algorithm indicates inclusive OR operations.
 
 
-```
+```pasca;
 UARights := world's access rights;
 clear UARights owner flag
 If (owner ID = 0) then
@@ -833,11 +833,11 @@ Deny modes are cumulative in that each successful opening of a fork combines its
 
 Similarly, access modes are cumulative; if the first user opening a file has Read access and the second has Write access, the current access mode (CAM) is Read-Write.
 
-## Synchronization rules
+### Synchronization rules
 
 Synchronization rules, as previously discussed, allow or deny simultaneous access to a file fork. They are based on the CDM and the CAM of the fork and on the new deny and access modes being requested in a new FPOpenFork call. Synchronization rules are summarized in *Table 13-1*. A dot indicates that a new open call has succeeded; otherwise, it has failed.
 
-## Table 13-1 Synchronization rules
+#### **Table 13-1** Synchronization rules
 
 ![Matrix of synchronization rules showing compatible deny and access modes](images/p362-synchronization-rules.png)
 
@@ -861,7 +861,7 @@ Synchronization rules, as previously discussed, allow or deny simultaneous acces
 | | RW | | | | | | | | | | | | | ● | ● | ● | ● |
 | | W | | | | | | | | | ● | ● | ● | ● | ● | ● | ● | ● |
 
-# Desktop database
+## Desktop database
 
 For file server volumes, AFP provides an interface that replaces the Macintosh Finder's direct use of the **Desktop file**. This interface is necessary because the Desktop file was designed for a stand-alone environment and could not be shared by multiple users. The AFP interface to the **Desktop database** replaces the Desktop file and can be used transparently for both local and remote volumes.
 
@@ -879,7 +879,7 @@ The Desktop database is also a repository for the text of comments associated wi
 
 For more information about the Macintosh Finder and the use of the Desktop file, refer to *Inside Macintosh*.
 
-# AFP's use of ASP
+## AFP's use of ASP
 
 The AppleTalk Filing Protocol requires a basic level of transport services for conveying its request and reply blocks between workstation and server. This section describes how AFP can be built on the AppleTalk Session Protocol (ASP). However, it should not be inferred that AFP must be built on ASP. This section is meant to be a reference for those developers who are implementing AFP on ASP.
 
@@ -1117,44 +1117,44 @@ All numerical fields represent signed numbers unless otherwise indicated.
 The next page describes the format of the rest of the chapter.
 
 
-# FPCall
+## FPCall
 
 A one-sentence, concise description of the call is given here.
 
-## Inputs
+### Inputs
 
 All input parameters are listed here, with a description of each. Numbers next to a list of parameters indicate the bit number of a corresponding bit in a multibyte field.
 
-## Outputs
+### Outputs
 
 All output parameters are listed here, with a description of each. Numbers next to a list of parameters indicate the bit number of a corresponding bit in a multibyte field.
 
-## Result codes
+### Result codes
 
 The values of FPError that might be returned are listed here, with an explanation of each. For brevity, some values of FPError (those that are common to most or all calls) are not shown here.
 
-## Algorithm
+### Algorithm
 
 A detailed description of the algorithm used to service this request is given here.
 
-**Rights**
+### Rights
 
 The access privileges required to make this request are listed here. The absence of this section signifies that no special access privileges are required.
 
-**Notes**
+### Notes
 
 This section provides additional notes about what is required to make this request, certain actions that the call does not do, or side effects. It is a catch-all for any information that does not belong in any other section. Not all call descriptions include this section.
 
-## Block format
+### Block format
 
 A pictorial description of the Command block and Reply block is displayed here. If the call returns only an FPError parameter, no Reply block will be shown. In some cases, this section will also include pictorial descriptions of some of the fields or parameters relevant to this call.
 
 
-# FPAddAPPL
+## FPAddAPPL
 
 This request adds an APPL mapping to the Desktop database.
 
-## Inputs
+### Inputs
 
 | Field | Description |
 | :--- | :--- |
@@ -1224,11 +1224,11 @@ packet-beta
 | PathType | 128 | 8 | Type of pathname. |
 | Pathname | 136 | Variable | The pathname of the application. |
 
-# FPAddComment
+## FPAddComment
 
 This request adds a comment for a file or directory to the volume's Desktop database.
 
-## Inputs
+### Inputs
 
 | Field | Description |
 | :--- | :--- |
@@ -1298,11 +1298,11 @@ packet-beta
 
 A null byte will be added if necessary to make comment begin on an even boundary.
 
-# FPAddIcon
+## FPAddIcon
 
 This request adds an icon bitmap to the volume's Desktop database.
 
-## Inputs
+### Inputs
 
 * `SRefNum (int)`: session refnum
 * `DTRefNum (int)`: Desktop database refnum
@@ -1330,9 +1330,9 @@ A new icon is added to the Desktop database for the specified FileCreator and Fi
 The user must have previously called `FPOpenDT` for the corresponding volume. The command block includes all input parameters except for the icon bitmap, which is sent to the server in an intermediate exchange of ASP packets.
 
 
-## Block format
+### Block format
 
-### Request
+#### Request
 
 ![FPAddIcon Request Block format](images/p379-fpaddicon-request-block.png)
 
@@ -1361,11 +1361,11 @@ packet-beta
 | IconTag | 112 | 32 | Icon tag. |
 | BitmapSize | 144 | 16 | Size of the icon bitmap. |
 
-# FPByteRangeLock
+## FPByteRangeLock
 
 This request locks or unlocks a specified range of bytes within an open fork.
 
-## Inputs
+### Inputs
 
 | Field | Description |
 | :--- | :--- |
@@ -1376,14 +1376,14 @@ This request locks or unlocks a specified range of bytes within an open fork.
 | UnlockFlag (*bit*) | flag to indicate whether to lock or unlock range:<br>0 = lock<br>1 = unlock |
 | Start/EndFlag (*bit*) | flag indicating whether the Offset field is relative to the beginning or end of the fork (this flag is valid only when locking a range):<br>0 = Start (relative to beginning of fork)<br>1 = End (relative to end of fork) |
 
-## Outputs
+### Outputs
 
 | Field | Description |
 | :--- | :--- |
 | FPError (*long*) | |
 | RangeStart (*long*) | number of the first byte of the range just locked; this number is valid only when returned from a successful lock command |
 
-## Result codes
+### Result codes
 
 | Code | Description |
 | :--- | :--- |
@@ -1394,15 +1394,11 @@ This request locks or unlocks a specified range of bytes within an open fork.
 | RangeNotLocked | User tried to unlock a range that was locked by another user or not locked at all. |
 
 
-## Block format
-
-**Request** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Reply**
-
-1 byte (8 bits) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 byte (8 bits)
+### Block format
 
 ![Block format diagram showing Request and Reply structures for FPByteRangeLock](images/p382-fpbyterangelock-format.png)
 
-### Request Block
+#### Request Block
 
 ```mermaid
 packet-beta
@@ -1425,7 +1421,7 @@ packet-beta
 | Offset | 32 | 32 | The offset at which the byte range starts. |
 | Length | 64 | 32 | The length of the byte range. |
 
-### Reply Block
+#### Reply Block
 
 ```mermaid
 packet-beta
@@ -1437,24 +1433,24 @@ packet-beta
 | RangeStart | 0 | 32 | The starting offset of the range that was locked. |
 
 
-# FPChangePassword
+## FPChangePassword
 
 This request allows users to change their passwords. It is new in AFP Version 2.0, and it is optional and may not be supported by all servers.
 
-## Inputs
+### Inputs
 
 | Input | Description |
 | :--- | :--- |
 | SRefNum (int) | session refnum |
 | UAM (string) | a string indicating which user authentication method to use |
 
-## Outputs
+### Outputs
 
 | Output | Description |
 | :--- | :--- |
 | FPError (long) | |
 
-## Result codes
+### Result codes
 
 | Code | Description |
 | :--- | :--- |
@@ -1464,7 +1460,7 @@ This request allows users to change their passwords. It is new in AFP Version 2.
 | AccessDenied | FPChangePassword is not enabled for this user. |
 | ParamErr | User name is null, is greater than 31 characters, or does not exist. |
 
-## Algorithm
+### Algorithm
 
 If the UAM specified is 'Cleartxt  Passwrd', the workstation sends the server its user name plus its old and new passwords in cleartext. The server looks up the password for that user; if it matches the old password sent in the packet, the new password will be saved for that user.
 
@@ -1472,7 +1468,7 @@ If the UAM specified is 'Randnum  Exchange', the workstation sends the server it
 
 Any password less than 8 bytes long will be padded (suffixed) with null bytes to its full 8-byte length.
 
-## Rights
+### Rights
 
 The server need not support this call (see the FPGetSrvrInfo call). In addition, the user may not have been given the ability to change a password.
 
@@ -1542,7 +1538,7 @@ packet-beta
 
 This request closes a directory and invalidates its directory identifier.
 
-## Inputs
+### Inputs
 
 | | |
 | :--- | :--- |
@@ -1596,23 +1592,23 @@ packet-beta
 
 This request informs the server that the workstation no longer needs the volume's Desktop database.
 
-## Inputs
+### Inputs
 *SRefNum (int)* session refnum
 *DTRefNum (int)* Desktop database refnum
 
-## Outputs
+### Outputs
 *FPError (long)*
 
-## Result codes
+### Result codes
 *ParamErr* Session refnum or Desktop database refnum is unknown.
 
-## Algorithm
+### Algorithm
 The server invalidates the `DTRefNum`.
 
-## Notes
+### Notes
 The user must first have made a successful FPOpenDT call.
 
-## Block format
+### Block format
 Request
 
 ![FPCloseDT request block format](images/p386-fpclosedt-request.png)
@@ -1635,7 +1631,7 @@ packet-beta
 
 This request closes a fork that was opened by FPOpenFork.
 
-## Inputs
+### Inputs
 
 | | |
 | :--- | :--- |
@@ -1682,7 +1678,7 @@ packet-beta
 
 This request informs the server that the workstation no longer needs the volume.
 
-## Inputs
+### Inputs
 
 | | |
 |---|---|
@@ -1733,7 +1729,7 @@ packet-beta
 
 This request copies a file from one location to another on the same file server. It is optional and may not be supported by all servers. Text in **boldface** applies to **AFP Version 2.0 only**.
 
-## Inputs
+### Inputs
 
 * SRefNum (int) session refnum
 * Source Volume ID (int) source volume identifier
@@ -1754,7 +1750,7 @@ This request copies a file from one location to another on the same file server.
 * FPError (long)
 
 
-## Result codes
+### Result codes
 
 | | |
 |---|---|
@@ -1768,7 +1764,7 @@ This request copies a file from one location to another on the same file server.
 | *DiskFull* | No more space exists on the destination volume. |
 | *ObjectTypeErr* | Source parameters point to a directory. |
 
-## Algorithm
+### Algorithm
 
 FPCopyFile copies a file to a new location on the server. The source and destination can be on the same or on different volumes.
 
@@ -1776,11 +1772,11 @@ The server tries to open the source file for Read, DenyWrite access. If this fai
 
 The copy is given the name specified by the NewName parameter. If NewName is null, the server gives the copy the same name as the original. The file's other name (long or short) is generated as described in "Catalog Node Names" earlier in this chapter. A unique file number is assigned to the file. The server also sets the file's Parent ID to the Directory ID of the destination parent directory. All other file parameters remain the same as the source file's parameters. The modification date of the destination parent directory is set to the server's clock.
 
-## Rights
+### Rights
 
 The user must have search access to all ancestors of the source file, except the source parent directory, and read access to the source parent directory. Further, the user must have search or write access to all ancestors of the destination file, except the destination parent directory, and write access to the destination parent directory.
 
-## Notes
+### Notes
 
 The user must have previously issued the FPOpenVol request for both the source and destination volumes.
 
@@ -1822,11 +1818,11 @@ packet-beta
 | NewName | variable | variable | The new name for the file. |
 
 
-# FPCreateDir
+## FPCreateDir
 
 This request creates a new directory. Text in **boldface** applies to **AFP Version 2.0 only**.
 
-## Inputs
+### Inputs
 
 | | |
 | :--- | :--- |
@@ -1909,11 +1905,11 @@ packet-beta
 
 ---
 
-# FPCreateFile
+## FPCreateFile
 
 This request creates a file. Text in **boldface** applies to **AFP Version 2.0 only**.
 
-## Inputs
+### Inputs
 
 - **SRefNum (int)**: session refnum
 - **Volume ID (int)**: volume identifier
@@ -1981,11 +1977,11 @@ packet-beta
 | Pathname | 72 | Variable | The name of the file to be created. |
 
 
-# FPDelete
+## FPDelete
 
 This request deletes a file or directory. Text in **boldface** applies to **AFP Version 2.0 only**.
 
-## Inputs
+### Inputs
 
 | | |
 |---|---|
@@ -2051,11 +2047,11 @@ packet-beta
 | Pathname | 72 | Variable | The name of the file or directory to be deleted. |
 
 
-# FPEnumerate
+## FPEnumerate
 
 This request lists the contents of a directory.
 
-## Inputs
+### Inputs
 
 | Field | Description |
 | :--- | :--- |
@@ -2077,19 +2073,13 @@ This request lists the contents of a directory.
 | **FPError (long)** | |
 | **File Bitmap (int)** | copy of input parameter |
 | **Directory Bitmap (int)** | copy of input parameter |
-
-
-**ActCount (int)**
-actual number of structures returned
-
-**ActCount structures**
-containing a 2-byte header and parameters in the form:
-
+| **ActCount (int)** | actual number of structures returned |
+| **ActCount structures** | containing a 2-byte header and parameters in the form:
 - **Struct Length (byte)**: unsigned length of this structure, including these two header bytes, and rounded up to the nearest even number
 - **File/DirFlag (bit)**: flag indicating whether offspring is a file or directory:
   - 0 = file
   - 1 = directory
-- **Offspring parameters**: packed in bitmap order, with a trailing null byte if necessary to make the length of the entire structure even
+- **Offspring parameters**: packed in bitmap order, with a trailing null byte if necessary to make the length of the entire structure even |
 
 ### Result codes
 
@@ -2102,7 +2092,7 @@ containing a 2-byte header and parameters in the form:
 | **ObjectNotFound** | No more offspring exist to be enumerated. |
 | **ObjectTypeErr** | Input parameters pointed to a file. |
 
-## Algorithm
+### Algorithm
 
 The FPEnumerate call enumerates a directory as specified by the input parameters. If the File Bitmap is empty, only directory offspring are enumerated, and the Start Index can range from 1 to the total number of directory offspring. Similarly, if the Directory Bitmap is empty, only file offspring are enumerated, and the Start Index can range from 1 to the total number of file offspring. If both bitmaps have bits set, the Start Index can range from 1 to the total number of offspring. In this case, offspring structures for both files and directories are returned. These structures are not returned in any particular order.
 
@@ -2129,11 +2119,11 @@ Because enumerating a large directory can take several calls and other users may
 A given offspring is not guaranteed to occupy the same index number in the parent directory from one enumeration to the next.
 
 
-# Block format
+#### Block format
 
 ![Diagram showing the Request and Reply block formats for FPEnumerate.](images/p401-block-format.png)
 
-### Request
+#### Request
 
 1 byte (8 bits) wide
 
@@ -2166,7 +2156,7 @@ packet-beta
 | PathType | 144 | 8 | Type of the pathname provided. |
 | Pathname | 152 | variable | The pathname string. |
 
-### Reply
+#### Reply
 
 1 byte (8 bits) wide
 
@@ -2194,28 +2184,38 @@ packet-beta
 Note: The fields from "Struct Length" through the padding byte are repeated "ActCount" times. A null byte will be added to each structure if necessary to make the length of the structure even.
 
 
-# FPFlush
+## FPFlush
 
 This request writes to a disk any volume data that has been modified.
 
-## Inputs          SRefNum (int)           session refnum
-                    Volume ID (int)         volume identifier
+### Inputs
+| Field                  | Description       |
+| :---                   | :---              |
+| SRefNum (int)          | session refnum    |
+| Volume ID (int)        | volume identifier |
 
-## Outputs         FPError (long)
+### Outputs     
+| Field                  | Description       |
+| :---                   | :---              |    
+| FPError (long)         |                   |
 
-## Result codes    ParamErr                Session refnum or volume identifier is unknown.
+## Result codes
+| Field                  | Description       |
+| :---                   | :---              | 
+| ParamErr               | Session refnum or volume identifier is unknown. |
 
-## Algorithm       The FPFlush call flushes (writes to disk) as much changed information as possible. This may include flushing
+### Algorithm       
+The FPFlush call flushes (writes to disk) as much changed information as possible. This may include flushing
 
 *   all forks opened by the user
 *   volume catalog information changed by the user
 *   any updated volume data structures
 
-    AFP does not specify that the server must perform all of these functions. Therefore, users should not rely on the server to perform any particular function.
+AFP does not specify that the server must perform all of these functions. Therefore, users should not rely on the server to perform any particular function.
 
-    The volume's modification date may change as a result of this call, but users should not rely on it; updating of the date is implementation-dependent. If no volume information was changed since the last FPFlush call, the date may or may not change.
+The volume's modification date may change as a result of this call, but users should not rely on it; updating of the date is implementation-dependent. If no volume information was changed since the last FPFlush call, the date may or may not change.
 
-## Notes
+### Notes
 The user must have previously called FPOpenVol for this volume.
 
 ### Block format**    
@@ -2237,40 +2237,40 @@ packet-beta
 | Volume ID | 16 | 16 | The identifier for the volume to be flushed. |
 
 
-# FPFlushFork
+## FPFlushFork
 
 This request writes to a disk any data buffered from previous FPWrite calls.
 
-## Inputs
+### Inputs
 
 | | |
 |---|---|
 | SRefNum (int) | session refnum |
 | OForkRefNum (int) | open fork refnum |
 
-## Outputs
+### Outputs
 
 | | |
 |---|---|
 | FPError (long) | |
 
-## Result codes
+### Result codes
 
 | | |
 |---|---|
 | ParamErr | Session refnum or open fork refnum is unknown. |
 
-## Algorithm
+### Algorithm
 
 The FPFlushFork call writes to a disk any data buffered by the server from previous FPWrite calls. If the fork has been modified, the server sets the file's modification date to the server's clock.
 
-## Notes
+### Notes
 
 In order to optimize disk access, the server may buffer FPWrite calls made to a particular file fork. Within the constraints of performance, the server flushes each fork as soon as possible. The workstation client can force the server to flush any buffered data issuing this call.
 
-## Block format
+### Block format
 
-### Request
+#### Request
 
 ![FPFlushFork Request packet structure](images/p403-fpflushfork-request.png)
 
@@ -2288,11 +2288,11 @@ packet-beta
 | OForkRefNum | 16 | 16 | The open fork reference number. |
 
 
-# FPGetAPPL
+## FPGetAPPL
 
 This request retrieves an APPL mapping from the volume's Desktop database.
 
-## Inputs
+### Inputs
 
 - **SRefNum (int)**: session refnum
 - **DTRefNum (int)**: Desktop database refnum
@@ -2369,11 +2369,11 @@ packet-beta
 | APPL Tag | 16 | 32 | The application tag. |
 | File parameters | 48 | variable | Parameters of the file specified by the bitmap. |
 
-# FPGetComment
+## FPGetComment
 
 This request retrieves a comment associated with a specified file or directory from the volume's Desktop database.
 
-## Inputs
+### Inputs
 
 * *SRefNum (int)*: session refnum
 * *DTRefNum (int)*: Desktop database refnum
@@ -2406,8 +2406,6 @@ If the comment is associated with a directory, the user must have search access 
 ### Notes
 
 The user must previously have called FPOpenDT for the corresponding volume. In addition, the file or directory must exist before this call is issued.
-
----
 
 ### Block format
 
@@ -2446,79 +2444,23 @@ packet-beta
 | Comment | 0 | variable | The retrieved comment from the desktop database. |
 
 
-# FPGetFileDirParms
+## FPGetFileDirParms
 
 This request retrieves parameters for a CNode (either a file or a directory). Text in **boldface** applies to AFP Version 2.0 only.
 
-## Inputs
+### Inputs
 
-| Field | Description |
+| Field Name | Description |
 | :--- | :--- |
-| *SRefNum (int)* | session refnum |
-| *Volume ID (int)* | volume identifier |
-| *Directory ID (long)* | ancestor directory identifier |
-| *File Bitmap (int)* | bitmap describing which parameters are to be returned if the CNode is a file (the bit corresponding to each desired parameter should be set) |
+| **SRefNum** *(int)* | session refnum |
+| **Volume ID** *(int)* | volume identifier |
+| **Directory ID** *(long)* | ancestor directory identifier |
+| **File Bitmap** *(int)* | bitmap describing which parameters are to be returned if the CNode is a file (the bit corresponding to each desired parameter should be set)<br><br>**0 Attributes (int)**, consisting of the following flags:<br>• 0: *Invisible*<br>• 1: *MultiUser*<br>• 2: **System**<br>• 3: *DAlreadyOpen*<br>• 4: *RAlreadyOpen*<br>• 5: *ReadOnly* (called **WriteInhibit** in AFP 2.0)<br>• 6: **BackupNeeded**<br>• 7: **RenameInhibit**<br>• 8: **DeleteInhibit**<br>• 10: **CopyProtect**<br>• 15: *Set/Clear* (used in FPSetFileDirParms)<br>**1 Parent Directory ID** *(long)*<br>**2 Creation Date** *(long)*<br>**3 Modification Date** *(long)*<br>**4 Backup Date** *(long)*<br>**5 Finder Info** *(32 bytes)*<br>**6 Long Name** *(int)*<br>**7 Short Name** *(int)*<br>**8 File Number** *(long)*<br>**9 Data Fork Length** *(long)*<br>**10 Resource Fork Length** *(long)*<br>**13 ProDOS Info** *(6 bytes)* |
+| **Directory Bitmap** *(int)* | bitmap describing which parameters are to be returned if the CNode is a directory (the bit corresponding to each desired parameter should be set)<br><br>**0 Attributes (int)**, consisting of the following flags:<br>• 0: *Invisible*<br>• 2: **System**<br>• 6: **BackupNeeded**<br>• 7: **RenameInhibit**<br>• 8: **DeleteInhibit**<br>**1 Parent Directory ID** *(long)*<br>**2 Creation Date** *(long)*<br>**3 Modification Date** *(long)*<br>**4 Backup Date** *(long)*<br>**5 Finder Info** *(32 bytes)*<br>**6 Long Name** *(int)*<br>**7 Short Name** *(int)*<br>**8 Directory ID** *(long)*<br>**9 Offspring Count** *(int)*<br>**10 Owner ID** *(long)*<br>**11 Group ID** *(long)*<br>**12 Access Rights** *(long)*, composed of the access rights for owner, group, and world, and a User Access Rights Summary byte (UARights)<br>**13 ProDOS Info** *(6 bytes)* |
+| **PathType** *(byte)* | indicates whether Pathname is composed of long names or short names:<br>1 = short names<br>2 = long names |
+| **Pathname** *(string)* | pathname to desired file or directory |
 
-**File Bitmap Bits:**
-
-*   0 *Attributes (int)*, consisting of the following flags:
-    *   0 *Invisible*
-    *   1 *MultiUser*
-    *   **2 System**
-    *   3 *DAlreadyOpen*
-    *   4 *RAlreadyOpen*
-    *   5 *ReadOnly* (called **WriteInhibit in AFP 2.0**)
-    *   **6 BackupNeeded**
-    *   **7 RenameInhibit**
-    *   **8 DeleteInhibit**
-    *   **10 CopyProtect**
-    *   15 *Set/Clear* (used in *FPSetFileDirParms*)
-*   1 *Parent Directory ID (long)*
-*   2 *Creation Date (long)*
-*   3 *Modification Date (long)*
-*   4 *Backup Date (long)*
-*   5 *Finder Info (32 bytes)*
-*   6 *Long Name (int)*
-*   7 *Short Name (int)*
-*   8 *File Number (long)*
-*   9 *Data Fork Length (long)*
-*   10 *Resource Fork Length (long)*
-*   **13 ProDOS Info (6 bytes)**
-
-
-**Directory Bitmap (_int_)**
-bitmap describing which parameters are to be returned if the CNode is a directory (the bit corresponding to each desired parameter should be set)
-
-* **0** &nbsp;&nbsp;&nbsp; **Attributes (_int_)**, consisting of the following flags:
-    * **0** &nbsp;&nbsp;&nbsp; **Invisible**
-    * **2** &nbsp;&nbsp;&nbsp; **System**
-    * **6** &nbsp;&nbsp;&nbsp; **BackupNeeded**
-    * **7** &nbsp;&nbsp;&nbsp; **RenameInhibit**
-    * **8** &nbsp;&nbsp;&nbsp; **DeleteInhibit**
-* **1** &nbsp;&nbsp;&nbsp; **Parent Directory ID (_long_)**
-* **2** &nbsp;&nbsp;&nbsp; **Creation Date (_long_)**
-* **3** &nbsp;&nbsp;&nbsp; **Modification Date (_long_)**
-* **4** &nbsp;&nbsp;&nbsp; **Backup Date (_long_)**
-* **5** &nbsp;&nbsp;&nbsp; **Finder Info (_32 bytes_)**
-* **6** &nbsp;&nbsp;&nbsp; **Long Name (_int_)**
-* **7** &nbsp;&nbsp;&nbsp; **Short Name (_int_)**
-* **8** &nbsp;&nbsp;&nbsp; **Directory ID (_long_)**
-* **9** &nbsp;&nbsp;&nbsp; **Offspring Count (_int_)**
-* **10** &nbsp;&nbsp; **Owner ID (_long_)**
-* **11** &nbsp;&nbsp; **Group ID (_long_)**
-* **12** &nbsp;&nbsp; **Access Rights (_long_)**, composed of the access rights for owner, group, and world, and a User Access Rights Summary byte (UARights)
-* **13** &nbsp;&nbsp; **ProDOS Info (_6 bytes_)**
-
-**PathType (_byte_)**
-indicates whether Pathname is composed of long names or short names:
-* 1 = short names
-* 2 = long names
-
-**Pathname (_string_)**
-pathname to desired file or directory
-
-
-## Outputs
+### Outputs
 
 | Field | Description |
 | :--- | :--- |
@@ -2528,7 +2470,7 @@ pathname to desired file or directory
 | **File/DirFlag** (*bit*) | flag that indicates whether CNode is a file or a directory:<br>0 = file<br>1 = directory |
 | **Parameters requested** | |
 
-## Result codes
+### Result codes
 
 | Code | Description |
 | :--- | :--- |
@@ -2537,7 +2479,7 @@ pathname to desired file or directory
 | **BitmapErr** | An attempt was made to retrieve a parameter that cannot be obtained with this call. |
 | **AccessDenied** | User does not have the rights listed below. |
 
-## Algorithm
+### Algorithm
 
 The server packs the requested parameters in the reply block in the order specified by the appropriate bitmap and includes a File/DirFlag indicating whether the CNode was a file or a directory. A copy of the input bitmaps is inserted before the parameters.
 
@@ -2560,9 +2502,9 @@ The user must have previously called FPOpenVol for this volume.
 Most of the Attributes requested by this call are stored in corresponding flags within the CNode's Finder Info record.
 
 
-## Block format
+### Block format
 
-### Request
+#### Request
 
 ![Request block format for GetFileDirParms](images/p412-request-block.png)
 
@@ -2589,7 +2531,7 @@ packet-beta
 | PathType | 96 | 8 | The format of the pathname (e.g., long or short name). |
 | Pathname | 104 | variable | The pathname of the target file or directory. |
 
-### Reply
+#### Reply
 
 ![Reply block format for GetFileDirParms](images/p412-reply-block.png)
 
@@ -2610,7 +2552,7 @@ packet-beta
 | 0 | 40 | 8 | Reserved byte, must be 0. |
 | Parameters | 48 | variable | The requested parameter data, formatted according to the bitmaps. |
 
-### File Bitmap
+#### File Bitmap
 
 ![File Bitmap diagram showing 16 bits of information for a file](images/p413-file-bitmap.png)
 
@@ -2650,7 +2592,7 @@ packet-beta
 | Long Name | 1 | 1 | |
 | Short Name | 0 | 1 | |
 
-### Directory Bitmap
+#### Directory Bitmap
 
 ![Directory Bitmap diagram showing 16 bits of information for a directory](images/p413-directory-bitmap.png)
 
@@ -2692,7 +2634,7 @@ packet-beta
 | Long Name | 1 | 1 | |
 | Short Name | 0 | 1 | |
 
-### File Attributes
+#### File Attributes
 
 ![File Attributes diagram showing 16-bit field for file attributes](images/p413-file-attributes.png)
 
@@ -2731,7 +2673,7 @@ packet-beta
 | MultiUser | 1 | 1 | |
 | Invisible | 0 | 1 | |
 
-### Directory Attributes
+#### Directory Attributes
 
 ![Directory Attributes diagram showing 16-bit field for directory attributes](images/p413-directory-attributes.png)
 
@@ -2767,7 +2709,7 @@ packet-beta
 | Invisible | 4 | 1 | |
 | Reserved | 0-3 | 4 | Set to 0 |
 
-### Access Rights
+#### Access Rights
 
 ![Access Rights diagram showing 4-byte grid for UARights, World, Group, and Owner](images/p413-access-rights.png)
 
@@ -2797,11 +2739,11 @@ Each Access Rights byte has the following format:
 
 
 
-# FPGetForkParms
+## FPGetForkParms
 
 This request retrieves parameters for a file associated with a particular open fork. Text in boldface **applies to AFP Version 2.0 only.**
 
-## Inputs
+### Inputs
 
 *   *SRefNum (int)*: session refnum
 *   *OForkRefNum (int)*: open fork refnum
@@ -2813,13 +2755,13 @@ c
 *   *Bitmap (int)*: copy of the input parameter
 *   *File parameters requested*
 
-## Result codes
+### Result codes
 
 *   *ParamErr*: Session refnum or open fork refnum is unknown.
 *   *BitmapErr*: An attempt was made to retrieve a parameter that cannot be obtained with this call; bitmap is null.
 *   *AccessDenied*: Fork was not opened for read (**this code is never returned in AFP Version 2.0**).
 
-## Algorithm
+### Algorithm
 
 The FPGetForkParms call retrieves the specified parameters for the file. The server packs the parameters, in bitmap order, in the reply block.
 
@@ -2827,15 +2769,14 @@ Variable-length parameters are kept at the end of the block. In order to do this
 
 This call retrieves the length of the fork indicated by OForkRefNum; a BitmapErr result code is returned if an attempt is made to retrieve the length of the file's other fork.
 
-**Rights**
+### Rights
 
 In AFP Version 1.1, the fork must be open for read by the user. **In AFP Version 2.0, the fork need not be open for read to retrieve a file's parameters.**
 
----
 
-## Block format
+### Block format
 
-### Request
+#### Request
 
 ![Request block format](images/p415-request-format.png)
 
@@ -2854,7 +2795,7 @@ packet-beta
 | OForkRefNum | 16 | 16 | The open fork reference number. |
 | Bitmap | 32 | 16 | A bitmap specifying which fork parameters to retrieve. |
 
-### Reply
+#### Reply
 
 ![Reply block format](images/p415-reply-format.png)
 
@@ -2869,13 +2810,12 @@ packet-beta
 | Bitmap | 0 | 16 | A bitmap specifying which fork parameters are being returned. |
 | File parameters | 16 | variable | The fork parameters requested in the Request Bitmap, returned in the order of the bitmap bits. |
 
----
 
-# FPGetIcon
+## FPGetIcon
 
 This request retrieves an icon from the volume's Desktop database.
 
-## Inputs
+### Inputs
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
@@ -2886,37 +2826,33 @@ This request retrieves an icon from the volume's Desktop database.
 | IconType | (byte) | preferred icon type |
 | Length | (int) | the number of bytes reserved for icon bitmap |
 
-## Outputs
+### Outputs
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
 | FPError | (long) | |
 | Icon Bitmap | (bytes) | the actual bitmap for the icon |
 
-## Result codes
+### Result codes
 
 | Code | Description |
 | :--- | :--- |
 | ParamErr | Session refnum or Desktop database refnum is unknown. |
 | ItemNotFound | No icon corresponding to the input specification was found in the Desktop database. |
 
-## Algorithm
+### Algorithm
 
 The server retrieves an icon bitmap from the Desktop database, as specified by its FileCreator, FileType, and IconType. If the server does not find a matching icon, it returns an ItemNotFound result code.
 
 An input Length value of 0 is acceptable to test for the presence or absence of a particular icon. If Length is less than the actual size of the icon bitmap, only Length bytes will be returned.
 
-## Notes
+### Notes
 
 The user must have previously called FPOpenDT for the corresponding volume.
 
-(continued)
+### Block format
 
----
-
-# Block format
-
-### Request
+#### Request
 
 ![Request and Reply block formats for FPGetIcon](images/p417-fpgeticon-block-format.png)
 
@@ -2956,20 +2892,19 @@ packet-beta
 |---|---|---|---|
 | Icon Bitmap | 0 | Variable | The bitmap data for the requested icon. |
 
----
 
-# FPGetIconInfo
+## FPGetIconInfo
 
 This request retrieves icon information from the volume's Desktop database.
 
-## Inputs
+### Inputs
 
 *   *SRefNum* (int) session refnum
 *   *DTRefNum* (int) Desktop database refnum
 *   *FileCreator* (ResType) file creator of files with which the icon is associated
 *   *IconIndex* (int) index of requested icon
 
-## Outputs
+### Outputs
 
 *   *FPError* (long)
 *   *IconTag* (long) tag information associated with the requested icon
@@ -2977,28 +2912,26 @@ This request retrieves icon information from the volume's Desktop database.
 *   *IconType* (byte) the type of the requested icon
 *   *Size* (int) the size of the icon bitmap
 
-## Result codes
+### Result codes
 
 *   *ParamErr* Session refnum or Desktop database refnum is unknown.
 *   *ItemNotFound* No icon corresponding to the input specification was found in the Desktop database.
 
-## Algorithm
+### Algorithm
 
 The server retrieves information about an icon in the volume's Desktop database, as specified by its *FileCreator* and *IconIndex*.
 
 For each *FileCreator*, the Desktop database contains a list of icons. Information about each icon can be obtained by making successive FPGetIconInfo calls with *IconIndex* varying from 1 to the total number of icons stored in the Desktop database for that *FileCreator*. If *IconIndex* is greater than the number of icons in the Desktop database for the specified *FileCreator*, an *ItemNotFound* result code is returned.
 
-## Notes
+### Notes
 
 The user must have previously called *FPOpenDT* for the corresponding volume.
 
----
-
-# Block format
+### Block format
 
 ![Request and Reply block formats for FPGetIconInfo](images/p419-block-format.png)
 
-### Request
+#### Request
 
 ```mermaid
 packet-beta
@@ -3017,7 +2950,7 @@ packet-beta
 | FileCreator | 32 | 32 | File creator code |
 | IconIndex | 64 | 16 | Index of the icon |
 
-### Reply
+#### Reply
 
 ```mermaid
 packet-beta
@@ -3036,13 +2969,11 @@ packet-beta
 | 0 | 72 | 8 | Reserved; must be 0 |
 | Size | 80 | 16 | Size of the icon data |
 
----
-
-# FPGetSrvrInfo
+## FPGetSrvrInfo
 
 This request obtains a block of descriptive information from the server, without requiring a session to be opened. Text in **boldface** applies to **AFP Version 2.0 only**.
 
-## Inputs
+### Inputs
 
 | | |
 | :--- | :--- |
@@ -3074,9 +3005,7 @@ To facilitate access to all the fields of the information block, the block begin
 
 The AFP versions and the UAMs are formatted as a 1-byte count followed by that number of strings packed back-to-back without padding.
 
----
-
-# Notes
+### Notes
 
 This is the only AFP call that can be made without first setting up a session between the workstation and server.
 
@@ -3084,11 +3013,9 @@ The server can pack fields in the reply block in any order, and each field shoul
 
 This call should be implemented using the ASP GetStatus mechanism.
 
----
+### Block format
 
-# Block format
-
-### Request
+#### Request
 
 ![Request block format](images/p422-request-format.png)
 
@@ -3101,7 +3028,7 @@ packet-beta
 | :--- | :--- | :--- | :--- |
 | GetSrvrInfo function | 0 | 8 | The function code for the GetSrvrInfo call. |
 
-### Reply
+#### Reply
 
 ![Reply block format](images/p422-reply-format.png)
 
@@ -3146,13 +3073,11 @@ packet-beta
 | SupportsChgPwd | 14 | 1 | Bit 1: If set, the server supports changing passwords. |
 | SupportsCopyFile | 15 | 1 | Bit 0: If set, the server supports the FPCCopyFile call. |
 
----
-
-# FPGetSrvrParms
+## FPGetSrvrParms
 
 This request retrieves server parameters. Text in **boldface** applies to **AFP Version 2.0 only**.
 
-## Inputs
+### Inputs
 
 | Field | Description |
 |---|---|
@@ -3184,13 +3109,11 @@ This request retrieves server parameters. Text in **boldface** applies to **AFP 
 
 The *VolNames* strings and *HasPassword* (**and HasConfigInfo**) flag are packed together without padding in the reply block. **In AFP 2.0, the HasConfigInfo flag will be set for one of the volumes to indicate which volume contains Apple II configuration information.**
 
----
-
-# Block format
+### Block format
 
 ![Diagram showing the Request and Reply block formats for the GetSrvrParms function.](images/p424-block-format.png)
 
-### Request
+#### Request
 
 ```mermaid
 packet-beta
@@ -3201,7 +3124,7 @@ packet-beta
 | :--- | :--- | :--- | :--- |
 | GetSrvrParms function | 0 | 8 | The function identifier for GetSrvrParms. |
 
-### Reply
+#### Reply
 
 ```mermaid
 packet-beta
@@ -3219,13 +3142,11 @@ packet-beta
 | HasPassword | 40 | - | A bit within the configuration flags byte indicating if the volume requires a password. |
 | VolName | 48 | Variable | The name of the volume. |
 
----
-
-# FPGetUserInfo
+## FPGetUserInfo
 
 This request is used to retrieve information about a user. **It is new in AFP Version 2.0.**
 
-## Inputs
+### Inputs
 
 | Field | Description |
 | :--- | :--- |
@@ -3260,11 +3181,9 @@ The server retrieves the specified parameters for the specified user and packs t
 
 This call can be used only to retrieve the User ID and Primary Group ID of the user who is the client of this session, thus requiring that the ThisUser bit be set. The User ID parameter is intended for future expansion.
 
----
+### Block format
 
-## Block format
-
-### Request
+#### Request
 
 ![Request block format](images/p426-request-block-format.png)
 
@@ -3285,7 +3204,7 @@ packet-beta
 | User ID | 16 | 32 | The unique identifier of the user. |
 | Bitmap | 48 | 8 | A bitmap specifying which fields to return. |
 
-### Reply
+#### Reply
 
 ![Reply block format](images/p426-reply-block-format.png)
 
@@ -3300,7 +3219,7 @@ packet-beta
 | Bitmap | 0 | 8 | A bitmap specifying which fields are present in the reply. |
 | User Info parameters | 8 | Variable | The requested user information fields, returned in the order of the bits in the bitmap. |
 
-### Bitmap
+#### Bitmap
 
 ![Bitmap layout detail](images/p426-bitmap-format.png)
 
@@ -3317,13 +3236,12 @@ packet-beta
 | Primary Group ID | 1 | 1 | If set (bit 1), the Primary Group ID field is present. |
 | Reserved | 2 | 14 | Bits 2 through 15 are reserved and should be set to 0. |
 
----
 
-# FPGetVolParms
+## FPGetVolParms
 
 This request retrieves parameters for a particular volume.
 
-## Inputs
+### Inputs
 
 | | |
 |---|---|
@@ -3359,8 +3277,6 @@ This request retrieves parameters for a particular volume.
 ### Algorithm
 
 The FPGetVolParms call retrieves parameters that describe a specified volume. The volume is specified by its Volume ID as returned from the FPOpenVol call. In response to this call, the server packs the volume parameters in bitmap order in the reply block, along with a copy of the Bitmap inserted before the parameters.
-
----
 
 The server needs to keep all variable-length parameters, such as the Volume Name field, at the end of the block. In order to do this, the server represents variable-length parameters in bitmap order as fixed-length offsets (integers). These offsets are measured from the start of the parameters (not from the start of the Bitmap) to the start of the variable-length fields. The variable-length fields are then packed after all fixed-length fields.
 
@@ -3454,13 +3370,11 @@ packet-beta
 | Reserved | 0 | 15 | Reserved bits. |
 | ReadOnly | 15 | 1 | Bit 15: 1 = volume is read-only. |
 
----
-
-# FPLogin
+## FPLogin
 
 This request establishes an AFP session with a server.
 
-## Inputs
+### Inputs
 
 | Field | Description |
 |---|---|
@@ -3496,8 +3410,6 @@ This request establishes an AFP session with a server.
 The workstation sends the server an AFP Version string, which indicates the AFP version to use, and a UAM string, which indicates the user authentication method to use. These strings are packed into the request block with no padding. User Auth Info, if used, follows the UAM string without padding.
 
 If the server cannot use the requested AFP Version, a BadVersNum result code will be returned. Otherwise, that version will be used for the duration of the session.
-
----
 
 In the 'Cleartxt Passwrd' UAM, the user's name and password are sent in the User Auth Info field. The password is transmitted in cleartext and must be padded (suffixed) with null bytes if necessary to make its length 8 bytes. If necessary, a null byte will be inserted after the user name to make the password begin on an even boundary. The server looks up the password for that user and compares it to the password in the request block. If the two passwords match, then the user has been authenticated and the login succeeds. If they do not match, a UserNotAuth result code is returned.
 
@@ -3547,13 +3459,11 @@ packet-beta
 | ID Number (used only in some UAMs) | 0 | Variable | Session identifier used by some UAMs. |
 | User Auth Info (used only in some UAMs) | 8 | Variable | Authentication information returned by the server. |
 
----
-
-# FPLoginCont
+## FPLoginCont
 
 This request continues the login and user authentication process started by the FPLogin call.
 
-## Inputs
+### Inputs
 
 | | |
 |---|---|
@@ -3561,7 +3471,7 @@ This request continues the login and user authentication process started by the 
 | *ID Number (int)* | number returned from the previous FPLogin or FPLoginCont call |
 | *User Auth Info* | information required to authenticate the user, depending on the UAM |
 
-## Outputs
+### Outputs
 
 | | |
 |---|---|
@@ -3569,7 +3479,7 @@ This request continues the login and user authentication process started by the 
 | *ID Number (int)* | an ID returned for certain UAMs; used by the subsequent FPLoginCont call (valid only if AuthContinue result code is returned) |
 | *User Auth Info* | a buffer returned for certain UAMs (valid only if AuthContinue result code is returned) |
 
-## Result codes
+### Result codes
 
 | | |
 |---|---|
@@ -3577,11 +3487,9 @@ This request continues the login and user authentication process started by the 
 | *UserNotAuth* | UAM failed. |
 | *AuthContinue* | User authentication not yet complete. |
 
-## Algorithm
+### Algorithm
 
 The FPLoginCont call sends the ID Number and User Auth Info parameters to the server, which uses them to execute the next step in the UAM. If an additional exchange of packets is required, the server returns an AuthContinue result code. Otherwise, it returns either no error, meaning the user has been authenticated, or UserNotAuth, meaning the authentication method has failed. If the server returns no error, the SRefNum is validated for use in subsequent calls. If the server returns UserNotAuth, it also closes the session and invalidates the SRefNum.
-
----
 
 ### Block format
 
@@ -3619,27 +3527,25 @@ packet-beta
 | ID Number | 0 | Variable | The identification number (used only in some UAMs). |
 | User Auth Info | Variable | Variable | User authentication information (used only in some UAMs). |
 
----
-
-# FPLogout
+## FPLogout
 
 This request terminates a session with a server.
 
-## Inputs
+### Inputs
 SRefNum (int) session refnum
 
-## Outputs
+### Outputs
 FPError (long)
 
-## Result codes
+### Result codes
 ParamErr Session refnum is unknown.
 
-## Algorithm
+### Algorithm
 The server flushes and closes any forks opened by this session, frees all session-related resources, and invalidates the session refnum.
 
-## Block format
+### Block format
 
-### Request
+#### Request
 
 ![FPLogout request block format](images/p433-fplogout-request-block.png)
 
@@ -3652,13 +3558,11 @@ packet-beta
 | :--- | :--- | :--- | :--- |
 | Logout function | 0 | 8 | The command code for FPLogout. |
 
-
-
-# FPMapID
+## FPMapID
 
 This request maps a user ID to a user name, or a group ID to a group name.
 
-## Inputs
+### Inputs
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
@@ -3718,13 +3622,11 @@ packet-beta
 | :--- | :--- | :--- | :--- |
 | Name | 0 | Variable | The name corresponding to the ID. |
 
----
-
-# FPMapName
+## FPMapName
 
 This request maps a user name to a user ID, or a group name to a group ID.
 
-## Inputs
+### Inputs
 
 | Field | Description |
 | :--- | :--- |
@@ -3784,15 +3686,13 @@ packet-beta
 |---|---|---|---|
 | ID | 0 | 32 | ID corresponding to input name |
 
----
-
-# FPMoveAndRename
+## FPMoveAndRename
 
 This request moves a directory or file to another location on the same volume. It can also be used to rename the directory or file. Text in **boldface** applies to **AFP Version 2.0 only**.
 
 | | | |
 | :--- | :--- | :--- |
-| ## Inputs | *SRefNum (int)* | session refnum |
+| ### Inputs | *SRefNum (int)* | session refnum |
 | | *Volume ID (int)* | volume identifier |
 | | *Source Directory ID (long)* | source ancestor directory identifier |
 | | *Source PathType (byte)* | indicates whether Source Pathname is composed of long names or short names:<br>1 = short names<br>2 = long names |
@@ -3804,9 +3704,6 @@ This request moves a directory or file to another location on the same volume. I
 | | ***NewName (string)*** | new name of file or directory (may be null) |
 | ## Outputs | *FPError (long)* | |
 
-(continued) ➡
-
----
 
 ### Result codes
 
@@ -3838,11 +3735,9 @@ The user must have previously called FPOpenVol for this volume.
 
 A CNode cannot be moved from one volume to another with this call, even if both volumes are managed by the same server.
 
----
+### Block format
 
-## Block format
-
-### Request
+#### Request
 
 ![FPMoveAndRename Request block format diagram](images/p438-moveandrename-request.png)
 
@@ -3875,13 +3770,11 @@ packet-beta
 | NewType | Variable | 8 | The format indicator for the NewName. |
 | NewName | Variable | Variable | The new name for the file or directory. |
 
----
-
-# FPOpenDir
+## FPOpenDir
 
 This request opens a directory on a variable Directory ID volume and returns its Directory ID.
 
-## Inputs
+### Inputs
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
@@ -3891,14 +3784,14 @@ This request opens a directory on a variable Directory ID volume and returns its
 | *PathType* | (byte) | indicates whether Pathname is composed of long names or short names:<br>1 = short names<br>2 = long names |
 | *Pathname* | (string) | pathname to desired directory (cannot be null) |
 
-## Outputs
+### Outputs
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
 | *FPError* | (long) | |
 | *Directory ID* | (long) | identifier of specified directory |
 
-## Result codes
+### Result codes
 
 | Result code | Description |
 | :--- | :--- |
@@ -3907,21 +3800,19 @@ This request opens a directory on a variable Directory ID volume and returns its
 | *AccessDenied* | User does not have the rights listed below. |
 | *ObjectTypeErr* | Input parameters point to a file. |
 
-## Algorithm
+### Algorithm
 
 If the Volume ID parameter specifies a variable Directory ID volume, the server generates a Directory ID for the specified directory. If the Volume ID parameter specifies a fixed Directory ID type, the server returns the fixed Directory ID belonging to this directory.
 
 Although this call can obtain a Directory ID for a directory on a fixed Directory ID volume, it is not the recommended way to obtain the parameter; use the FPGetFileDirParms or FPEnumerate call instead.
 
-## Rights
+### Rights
 
 The user must have search access to all ancestors down to and including this directory's parent directory.
 
-## Notes
+### Notes
 
 The user must have previously called FPOpenVol for this volume.
-
----
 
 ### Block format
 
@@ -3961,40 +3852,38 @@ packet-beta
 | :--- | :--- | :--- | :--- |
 | Directory ID | 0 | 32 | The unique identifier assigned to the opened directory. |
 
----
-
-# FPOpenDT
+## FPOpenDT
 
 This request opens the Desktop database on a particular volume.
 
-## Inputs
+### Inputs
 
 | | |
 |---|---|
 | Volume ID (int) | volume identifier |
 
-## Outputs
+### Outputs
 
 | | |
 |---|---|
 | FPError (long) | |
 | DTRefNum (int) | Desktop database refnum |
 
-## Result codes
+### Result codes
 
 | | |
 |---|---|
 | ParamErr | Session refnum or volume identifier is unknown. |
 
-## Algorithm
+### Algorithm
 
 The server opens the Desktop database on the selected volume and returns a Desktop database refnum, which is unique among such refnums. The DTRefNum is to be used in all subsequent Desktop database calls relating to this volume.
 
-## Block format
+### Block format
 
 ![FPOpenDT Request and Reply block formats](images/p441-fpopendt-block-format.png)
 
-### Request
+#### Request
 
 ```mermaid
 packet-beta
@@ -4009,7 +3898,7 @@ packet-beta
 | 0 | 8 | 8 | Reserved byte; must be 0. |
 | Volume ID | 16 | 16 | The volume identifier. |
 
-### Reply
+#### Reply
 
 ```mermaid
 packet-beta
@@ -4020,13 +3909,11 @@ packet-beta
 |---|---|---|---|
 | DTRefNum | 0 | 16 | Desktop database reference number. |
 
----
-
-# FPOpenFork
+## FPOpenFork
 
 This request opens the data or resource fork of an existing file to read from it or write to it. Text in **boldface** applies to **AFP Version 2.0 only.**
 
-## Inputs
+### Inputs
 
 | Parameter | Description |
 | :--- | :--- |
@@ -4047,8 +3934,6 @@ This request opens the data or resource fork of an existing file to read from it
 | *Bitmap (int)* | copy of input parameter |
 | *OForkRefNum (int)* | refnum used to refer to this fork in subsequent calls |
 | *File parameters requested* | |
-
----
 
 ### Result codes
 
@@ -4088,9 +3973,9 @@ To open the fork for write, the volume must not be designated for read-only acce
 
 The user must have previously called FPOpenVol for this volume. Each fork must be opened separately; a unique OForkRefNum is returned for each.
 
-# Block format
+### Block format
 
-## Request
+#### Request
 
 ![Request block format diagram](images/p445-request-block.png)
 
@@ -4117,7 +4002,7 @@ packet-beta
 | PathType | 96 | 8 | The format of the pathname (e.g., short or long). |
 | Pathname | 104 | variable | The pathname of the file to be opened. |
 
-## Reply
+#### Reply
 
 ![Reply block format diagram](images/p445-reply-block.png)
 
@@ -4134,7 +4019,7 @@ packet-beta
 | OForkRefNum | 16 | 16 | The reference number assigned to the open fork. |
 | File parameters | 32 | variable | The requested file parameters, in the order specified by the bitmap. |
 
-## AccessMode
+#### AccessMode
 
 ![AccessMode bit layout diagram](images/p445-access-mode.png)
 
@@ -4159,11 +4044,11 @@ packet-beta
 | Read | 15 | 1 | Request read access to the fork. |
 
 
-# FPOpenVol
+## FPOpenVol
 
 This call makes a volume available to the workstation.
 
-## Inputs
+### Inputs
 
 | | |
 |---|---|
@@ -4172,7 +4057,7 @@ This call makes a volume available to the workstation.
 | *Volume Name (string)* | name of the volume as returned by the FPGetSrvrParms call |
 | *Password (8 bytes)* | optional password |
 
-## Outputs
+### Outputs
 
 | | |
 |---|---|
@@ -4180,7 +4065,7 @@ This call makes a volume available to the workstation.
 | *Bitmap (int)* | copy of input parameter |
 | *Volume parameters requested* | |
 
-## Result codes
+### Result codes
 
 | | |
 |---|---|
@@ -4188,15 +4073,13 @@ This call makes a volume available to the workstation.
 | *BitmapErr* | An attempt was made to retrieve a parameter that cannot be obtained with this call; bitmap is null. |
 | *AccessDenied* | Password is not supplied or does not match. |
 
-## Algorithm
+### Algorithm
 
 The FPOpenVol call indicates that the user of a workstation wants to work with a volume. This call must be submitted before any other call can be made to obtain access to the CNodes on the volume.
 
 If a password is required to gain access to the volume, it is sent as the Password parameter in cleartext, padded (suffixed) with null bytes to its full 8-byte length. Password comparison is case-sensitive. The server checks that the password supplied by the user matches the one kept with the volume. If they do not match, or if no Password parameter was supplied, an AccessDenied result code is returned.
 
 If the passwords match, or if the volume is not password-protected, the server retrieves the requested parameters and packs them into the reply block. The user now has permission to make calls relating to files and directories on the volume.
-
-
 
 ### Notes
 
@@ -4243,11 +4126,11 @@ packet-beta
 | Volume parameters | 8 | Variable | The requested volume parameters. |
 
 
-# FPRead
+## FPRead
 
 This request reads a block of data from an open fork. Text in boldface applies to AFP Version 2.0 only.
 
-## Inputs
+### Inputs
 
 | | |
 |---|---|
@@ -4284,11 +4167,11 @@ The FPRead request retrieves a range of bytes from a specified fork. The server 
 * It encounters the start of a range locked by another user.
 * It finishes reading the number of bytes specified by the ReqCount parameter.
 
-# Block format
+### Block format
 
 ![Request and Reply block formats for FPRead](images/p450-block-format.png)
 
-### Request
+#### Request
 
 ```mermaid
 packet-beta
@@ -4311,7 +4194,7 @@ packet-beta
 | Newline Mask | 96 | 8 | The mask used to determine which bits of a character are used to match the Newline Char. |
 | Newline Char | 104 | 8 | The character that marks the end of a line during the read. |
 
-### Reply
+#### Reply
 
 ```mermaid
 packet-beta
@@ -4322,11 +4205,11 @@ packet-beta
 |---|---|---|---|
 | Fork data | 0 | Variable | The actual data read from the fork. |
 
-# FPRemoveAPPL
+## FPRemoveAPPL
 
 This request removes an APPL mapping from the volume's Desktop database.
 
-## Inputs
+### Inputs
 
 | | |
 | :--- | :--- |
@@ -4364,9 +4247,9 @@ The user must have search access to all ancestors, except the parent directory, 
 
 The user must have previously called FPOpenDT for the corresponding volume. In addition, the file must exist in the specified directory before this call is issued.
 
-# Block format
+### Block format
 
-### Reply
+#### Reply
 
 ![Reply block format for FPRemoveAPPL](images/p452-reply-block-format.png)
 
@@ -4391,11 +4274,11 @@ packet-beta
 | PathType | 96 | 8 | Path type (long or short). |
 | Pathname | 104 | variable | Pathname of the application's parent directory. |
 
-# FPRemoveComment
+## FPRemoveComment
 
 This request removes a comment from the volume's Desktop database.
 
-## Inputs
+### Inputs
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
@@ -4461,11 +4344,11 @@ packet-beta
 | Pathname | 72 | Variable | The pathname of the file or directory. |
 
 
-# FPRename
+## FPRename
 
 This request renames a directory or file. Text in **boldface** applies to **AFP Version 2.0 only**.
 
-## Inputs
+### Inputs
 
 | Field | Description |
 |---|---|
@@ -4536,11 +4419,11 @@ packet-beta
 | NewName | Variable | Variable | The new name for the object. |
 
 
-# FPSetDirParms
+## FPSetDirParms
 
 This request sets parameters for a specified directory. Text in **boldface** applies to **AFP Version 2.0 only**.
 
-## Inputs
+### Inputs
 
 * *SRefNum (int)*: session refnum
 * *Volume ID (int)*: volume identifier
@@ -4587,9 +4470,9 @@ The user must have previously called FPOpenVol for this volume.
 
 This call cannot be used to set a directory's name (use FPRename), parent Directory ID (use FPMoveAndRename), Directory ID, or Offspring Count.
 
-# Block format
+### Block format
 
-### Request
+#### Request
 
 ![Request block format for FPSetDirParms](images/p459-fpsetdirparms-request.png)
 
@@ -4618,11 +4501,11 @@ packet-beta
 | 0 | Variable | 0 or 8 | A null padding byte, added if necessary to make the following directory parameters begin on an even boundary. |
 | Directory parameters | Variable | Variable | The set of directory parameters being set, as indicated by the Bitmap field. |
 
-# FPSetFileDirParms
+## FPSetFileDirParms
 
 This request sets parameters for a file or directory. Text in **boldface** applies to **AFP Version 2.0 only.**
 
-## Inputs
+### Inputs
 
 | Field | Description |
 | :--- | :--- |
@@ -4634,13 +4517,13 @@ This request sets parameters for a file or directory. Text in **boldface** appli
 | *Pathname (string)* | pathname to desired file or directory |
 | *Parameters to be set* | |
 
-## Outputs
+### Outputs
 
 | Field | Description |
 | :--- | :--- |
 | *FPError (long)* | |
 
-## Result codes
+### Result codes
 
 | Code | Description |
 | :--- | :--- |
@@ -4678,9 +4561,9 @@ The user must have previously called FPOpenVol for this volume.
 If it is known whether the CNode is a file or directory, the user can submit the FPSetFileParms or FPSetDirParms calls to set the Creation Date, Modification Date, Backup Date, and Finder Info parameters. To set a directory's Access Rights, Owner ID, or Group ID, use the FPSetDirParms call. To set a file's attributes other than Invisible and System, use the FPSetFileParms call.
 
 
-# Block format
+### Block format
 
-## Request
+#### Request
 
 ![Block format diagram for FPSetFileDirParms request](images/p462-block-format.png)
 
@@ -4710,11 +4593,11 @@ packet-beta
 | File parameters | variable | variable | The parameters to be set as specified by the bitmap. |
 
 
-# FPSetFileParms
+## FPSetFileParms
 
 This request sets parameters for a specified file. Text in **boldface** applies to **AFP Version 2.0 only.**
 
-## Inputs
+### Inputs
 
 | | |
 |---|---|
@@ -4726,13 +4609,13 @@ This request sets parameters for a specified file. Text in **boldface** applies 
 | *Pathname (string)* | pathname to desired file |
 | *File parameters to be set* | |
 
-## Outputs
+### Outputs
 
 | | |
 |---|---|
 | *FPError (long)* | |
 
-## Result codes
+### Result codes
 
 | | |
 |---|---|
@@ -4800,11 +4683,11 @@ packet-beta
 | Padding | Variable | 0 or 8 | A null byte will be added if necessary to make parameters begin on an even boundary. |
 | Parameters | Variable | Variable | The parameter values to be set, as specified by the bitmap. |
 
-# FPSetForkParms
+## FPSetForkParms
 
 This request sets the fork length for a specified open fork. Text in **boldface** applies to **AFP Version 2.0 only**.
 
-## Inputs
+### Inputs
 
 | Field | Description |
 |---|---|
@@ -4844,9 +4727,9 @@ The fork must be open for write by the user.
 
 This call cannot be used to set a file's name (use FPRename), parent directory (use FPMoveAndRename), or file number.
 
-# Block format
+### Block format
 
-Request
+#### Request
 
 ![SetForkParms Request block format](images/p467-setforkparms-request.png)
 
@@ -4868,11 +4751,11 @@ packet-beta
 | Fork Length | 48 | 32 | The new length for the fork. |
 
 
-# FPSetVolParms
+## FPSetVolParms
 
 This request sets the backup date for a specified volume. Text in **boldface** applies to AFP Version 2.0 only.
 
-## Inputs
+### Inputs
 
 | | |
 | :--- | :--- |
@@ -4881,13 +4764,13 @@ This request sets the backup date for a specified volume. Text in **boldface** a
 | *Bitmap (int)* | bitmap describing which parameters are to be set; this field is the same as that in the FPGetVolParms call; however, only the Backup Date bit can be set |
 | *Backup Date (long)* | new backup date |
 
-## Outputs
+### Outputs
 
 | | |
 | :--- | :--- |
 | *FPError (long)* | |
 
-## Result codes
+### Result codes
 
 | | |
 | :--- | :--- |
@@ -4896,18 +4779,18 @@ This request sets the backup date for a specified volume. Text in **boldface** a
 | *AccessDenied* | In AFP 1.1, the volume is ReadOnly. |
 | **VolLocked** | **In AFP 2.0, the volume is ReadOnly.** |
 
-## Algorithm
+### Algorithm
 
 The server changes the backup date for the specified volume.
 
-## Notes
+### Notes
 
 The user must have previously called FPOpenVol for this volume.
 
 
-# Block format
+### Block format
 
-### Request
+#### Request
 
 ![FPSetVolParms request block format](images/p469-fpsetvolparms-request.png)
 
@@ -4929,11 +4812,11 @@ packet-beta
 | Backup Date | 48 | 32 | The backup date and time to be set for the volume. |
 
 
-# FPWrite
+## FPWrite
 
 This request writes a block of data to an open fork.
 
-## Inputs
+### Inputs
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
@@ -4968,8 +4851,6 @@ The Start/EndFlag allows a block of data to be written at an offset relative to 
 The server writes data to the open fork, starting at Offset number of bytes from the beginning or end of the fork. If the block of data to be written extends beyond the end of fork, the fork is extended. If part of the range is locked by another user, the server returns a LockErr result code and does not write any data to the fork.
 
 The file's Modification Date is not changed until the fork is closed.
-
-
 
 ### Rights
 

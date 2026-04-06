@@ -8,7 +8,7 @@ engine: "gemini-flash"
 nav_order: 3
 parent: "Phase 2 Addendum"
 layout: default
-grand_parent: Areas
+grand_parent: Books
 ---
 # Operational Overview
 

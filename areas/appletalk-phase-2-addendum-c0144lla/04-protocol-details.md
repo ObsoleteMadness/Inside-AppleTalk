@@ -8,7 +8,7 @@ engine: "gemini-flash"
 nav_order: 4
 parent: "Phase 2 Addendum"
 layout: default
-grand_parent: Areas
+grand_parent: Books
 ---
 # Protocol Details
 

@@ -9,7 +9,7 @@ engine: "gemini-flash"
 nav_order: 14
 parent: "Inside AppleTalk, 2nd Edition"
 layout: default
-grand_parent: Areas
+grand_parent: Books
 ---
 # Print Spooling Architecture
 
@@ -24,68 +24,6 @@ grand_parent: Areas
 
 
 # Chapter 14 Print Spooling Architecture
-
-### CONTENTS
-
-- Printing without a spooler / 14-4
-- Benefits of printing with a spooler / 14-5
-- Background spoolers versus spooler/servers / 14-6
-- Impact of the Macintosh on printing / 14-6
-- Printing without a spooler / 14-7
-- Printing with a spooler/server / 14-9
-- Controlling printer access / 14-10
-- User authentication dialog / 14-12
-- Direct passthrough / 14-14
-- Spooler/server queue management / 14-15
-- **About document structuring conventions / 14-18**
-  - About PostScript document files / 14-18
-- **About PostScript print jobs / 14-19**
-  - Comment format / 14-20
-  - Syntax conventions / 14-21
-- **Comments in documents / 14-22**
-  - Prologue and script / 14-22
-  - Pages / 14-23
-  - Line length / 14-23
-
-
-
-### **Structure comments / 14-23**
-
-*   Header comments / 14-25
-    *   Creation Date comment / 14-26
-    *   Creator comment / 14-26
-    *   For comment / 14-27
-    *   Job Identification comment / 14-27
-    *   Title comment / 14-28
-*   Body comments / 14-28
-    *   Exit Server comments / 14-29
-    *   Page Marker comment / 14-30
-    *   Procedure Set comments / 14-30
-*   Trailer comment / 14-31
-
-### **Resource comments / 14-32**
-
-*   Conventions for using resource comments / 14-32
-*   Definitions / 14-33
-    *   End Of File comment / 14-33
-    *   Include Procedure Set comment / 14-33
-
-### **Query comments / 14-34**
-
-*   Conventions for using query comments / 14-35
-*   Spooler responsibilities / 14-35
-*   Definitions / 14-36
-    *   Feature Query comments / 14-37
-    *   File Query comments / 14-37
-    *   Font List Query comments / 14-38
-    *   Font Query comments / 14-38
-    *   Global Query comments / 14-39
-    *   Printer Query comments / 14-39
-    *   Procedure Set Query comments / 14-40
-    *   Virtual Memory Status Query comments / 14-40
-
-### **Sample print streams / 14-41**
-
 
 THE WORD *SPOOL* is an acronym for Simultaneous Peripheral Operations On Line, and a print spooler is a hardware application or a software application (or both) that is used to store data on a disk temporarily until the printer is ready to process it. Since the print spooler handles the interaction required with the printer in order to accomplish the printing process, use of a spooler frees the originating computer, such as an Apple Macintosh computer, to perform other activities during the printing process. This chapter describes AppleTalk print spooling in general and compares printing with a spooler to printing without a spooler. In addition, since print spooling can be accomplished either by a spooler/server or as a background process on the originating computer, this chapter also compares these two options.
 
@@ -104,7 +42,7 @@ In an AppleTalk network, when the document-composition application calls the Pri
 1. Using the Name Binding Protocol (NBP) name-lookup operation, look for the currently selected printer and find its AppleTalk address.
 2. Using the Printer Access Protocol (PAP), attempt to open a connection with the printer.
 
-■ **Figure 14-1** Configuration for printing without a spooler
+#### **Figure 14-1** Configuration for printing without a spooler
 
 ![Configuration for printing without a spooler](images/p475-printing-config-no-spooler.png)
 
@@ -145,20 +83,20 @@ After receiving the print file, the spooler/server can terminate its connection 
 The Macintosh computer's printing architecture tightly binds a document's print file to the printer on which it is to be printed. When a print job is sent from a Macintosh to a LaserWriter or similar printer, the Printing Manager in the Macintosh queries the printer for various parameters throughout the printing process. Therefore, two-way communication is maintained between the Macintosh and the printer for the duration of the job. The spooler/server must emulate a printer during communication with a workstation by responding to queries in the print stream as it receives the print job.
 
 
-■ Figure 14-2 Configuration for printing with a spooler/server
+#### **Figure 14-2** Configuration for printing with a spooler/server
 
 ![Configuration for printing with a spooler/server](images/p478-printing-spooler-config.png)
 
 The print stream that a Macintosh sends to a LaserWriter is in PostScript. However, document-structuring conventions have been developed to provide guidelines for embedding comments in PostScript code in order to communicate with document managers (such as print spoolers). These comments allow spoolers to respond to queries without having to interpret actual PostScript code.
 
-# Printing without a spooler
+## Printing without a spooler
 
 Figure 14-3 illustrates the protocol architecture used for printing without a spooler on a LaserWriter (or an ImageWriter) printer from AppleTalk workstations. You can also apply this model to other printers connected to an AppleTalk network.
 
 The Macintosh workstation uses NBP to obtain the AppleTalk address of the printer's listening socket. The Macintosh identifies the printer for NBP by the printer's complete NBP name (if the printer is a LaserWriter, the type field of the entity name is "LaserWriter").
 
 
-### Figure 14-3 Protocol architecture for printing without a spooler
+#### **Figure 14-3** Protocol architecture for printing without a spooler
 
 ![Protocol architecture for printing without a spooler showing workstation and printer protocol stacks connected by a network.](images/p479-protocol-architecture.png)
 
@@ -174,7 +112,7 @@ Figure 14-4 illustrates the printing architecture when a spooler/server is intro
 
 The spooler/server responds to a PAP connection request from the workstation exactly the way a PAP-based printer would. Once the connection is established, the spooler process emulates all of the relevant aspects of a workstation's interaction with a printer, while storing the print files in its internal storage (typically, a hard disk).
 
-■ Figure 14-4 Protocol architecture for printing with a spooler/server
+#### **Figure 14-4** Protocol architecture for printing with a spooler/server
 
 ![Protocol architecture for printing with a spooler/server](images/p480-printing-architecture.png)
 
@@ -197,7 +135,7 @@ In this case, the spooler/server provides an intermediary location for
 *   gathering and storing global statistics about printer use (for accounting or planning purposes)
 
 
-## ■ Figure 14-5 Protocol architecture for alternate spooling environments
+#### **Figure 14-5** Protocol architecture for alternate spooling environments
 
 ![Protocol architecture for alternate spooling environments showing Workstation, Print spooler/server, and Printer layers connected via a network and a direct connection.](images/p482-protocol-architecture.png)
 
@@ -302,7 +240,7 @@ You can design a spooler/server application to offer spool-management functions,
 Since the design of a mechanism that provides queue management depends on the specific characteristics and functional design of the spooler/server, Apple has not established a standard design for the queue-management functions.
 
 
-### Figure 14-6 Protocol architecture for spooler/server queue management
+#### **Figure 14-6** Protocol architecture for spooler/server queue management
 
 ![Protocol architecture for spooler/server queue management](images/p488-protocol-architecture.png)
 
@@ -359,7 +297,7 @@ The PostScript comments:
 * surround PostScript code that requires a response from the printer and define the minimum valid response
 
 
-# About document structuring conventions
+## About document structuring conventions
 
 Adobe Systems has developed general document structuring conventions for PostScript comments so that they can be used universally with a variety of document managers. These conventions include three general classes of comments:
 
@@ -373,7 +311,7 @@ If a PostScript document file obeys a proper subset of these structuring convent
 
 The use of comments is designed to facilitate communication between document-composition systems and document managers. Therefore, the comments that make up the subset to which the document file must conform depend on the installation. For example, the document-composition system can include the resource requirements in the comment subset to ensure that these requirements are handled properly. However, if a document-composition system relies on the printing environment (the spooler and printer) to handle resource requirements appropriately, resource comments need not be included in the comment subset.
 
-## About PostScript document files
+### About PostScript document files
 
 A conforming PostScript document file includes the following structural features:
 
@@ -391,7 +329,7 @@ The *pages* in a PostScript script are functionally independent of each other, b
 A document file can contain another document file description as part of its script. An illustration embedded in a document is an example of this structure. One benefit of PostScript document descriptions is that they allow documents from different sources to be merged for final printing.
 
 
-# About PostScript print jobs
+## About PostScript print jobs
 
 In understanding PostScript document files, you must understand the difference between a document file and a print job. A document file is a data representation that may be transmitted, edited, stored, spooled, or otherwise processed. A document is transmitted to a printer in a series of print jobs, each of which contains a certain type of code. There are three types of PostScript print jobs with which you should be familiar:
 
@@ -408,7 +346,7 @@ Exit server jobs bypass the normal server-loop save/restore context. They contai
 The job type is specified by the Job Identification comment, which is the first line of every print job. Comments consist of a percent sign (%) followed by text and terminated by a newline character. The PostScript interpreter completely ignores the comments. However, comments conforming to the file-structuring conventions can query or convey structural information to document managers. Comments that contain structural information start with %! or %%. Query comments begin with %%?. Comments that do not start with one of these three notations are ignored by document managers (as well as by the PostScript interpreters).
 
 
-## Comment format
+### Comment format
 
 The format of a PostScript comment depends on its function. Comments interpreted by document managers must be in one of the following forms. In these examples, angle brackets (< >) designate required portions of the comment, and square brackets ([ ]) indicate optional portions.
 
@@ -440,8 +378,7 @@ This form is used for queries requiring a response from the printer:
 %%?End <keyword> <response> [<response> ...]
 ```
 
-
-# Syntax conventions
+### Syntax conventions
 
 PostScript comments must adhere to the following syntax conventions:
 
@@ -511,16 +448,16 @@ All conforming document files must end with %%EOF, which indicates that an End O
 
 The following general constraints apply to all document files that conform to version 2.0 of the Adobe PostScript Document Structuring Conventions. If document files do not adhere to these constraints, they are considered nonconforming and may not be handled reliably by document managers.
 
-## Prologue and script
+### Prologue and script
 
 A conforming PostScript document should be divided into a prologue and a script. Nothing can be executed in the prologue and no definitions can be included in the script. The prologue should always be designed so that it can be removed from a document file and downloaded permanently into the printer; then, when subsequent document files containing only the script are downloaded, they can depend on the preloaded prologue for definitions. See "About PostScript Document Files" earlier in this chapter for a more detailed discussion of prologues and scripts.
 
 
-## Pages
+### Pages
 
 When the Page Marker comment is used within the body of a document, the pages in the document do not depend on each other. Each page can rely on definitions in the prologue, but a page should not depend on a state set in another page of the document. Keeping pages independent allows document managers to rearrange the document pages without affecting the execution of the document. For more information, see "About PostScript Document Files" earlier in this chapter.
 
-## Line length
+### Line length
 
 A PostScript comment can contain a maximum of 255 characters. There are no constraints on the placement of line breaks. When a comment is continued on the next line, the new line should begin with the notation %%+ to indicate that the comment line is continuing. This convention is used most frequently for comments that contain a list of font names, as shown in the following example:
 
@@ -589,7 +526,7 @@ After the Job Identification comment, the header comments can be listed in any o
 
 Some header comments can be deferred to the trailer at the end of the document file. This practice is common for comments containing information that is not available until the end of the document, such as page counts. In this case, a comment with the same keyword and the value `(atend)` must appear in the header-comments section.
 
-## Creation Date comment
+#### Creation Date comment
 
 The Creation Date comment indicates the date, the time, or both the date and time assigned to the document. The text string for this comment can be in any format because the date and time are used only for informational purposes (for example, on banner pages).
 
@@ -597,7 +534,7 @@ The Creation Date comment indicates the date, the time, or both the date and tim
 
 *Example:* `%%CreationDate: Tuesday, July 13, 1987`
 
-## Creator comment
+#### Creator comment
 
 The Creator comment identifies the creator of the document file. The creator is usually the document-composition application that was used to generate the document. However, the text string may optionally (or additionally) include the name of the person creating the document.
 
@@ -606,7 +543,7 @@ The Creator comment identifies the creator of the document file. The creator is 
 *Example:* `%%Creator: Write`
 
 
-### For comment
+#### For comment
 
 The For comment specifies for whom the document is being printed. This specification is usually the user name of the person who composed the document. This information can be included in the banner page and can be used for routing the document to the person printing it.
 
@@ -614,7 +551,7 @@ The For comment specifies for whom the document is being printed. This specifica
 
 *Example:* `%%For: Smith, John`
 
-### Job Identification comment
+#### Job Identification comment
 
 The Job Identification comment identifies the PostScript job as a document file that conforms to version 2.0 of the Adobe PostScript Document Structuring Conventions. The Job Identification comment must be the first line of the document file. (To avoid confusion, the file should not contain any lines, other than the Job Identification comment, that begin with %!.)
 
@@ -634,7 +571,7 @@ If the ExitServer keyword is included in the comment, the job will execute PostS
 %!PS-Adobe-2.0 ExitServer
 ```
 
-### Title comment
+#### Title comment
 
 The Title comment contains a text title for the document. This title can be used to identify the document on the spooler queue, or it may appear on banner pages to help route the documents. The text string used for the title may be derived from an application-level document name or from a filename.
 
@@ -652,7 +589,7 @@ Body comments can appear anywhere in a document file. Since body comments freque
 A print spooler need only interpret those PostScript comments that have a direct effect on document spooling. Therefore, the LaserShare spooler interprets only a subset of the available PostScript body comments. LaserShare ignores any comments that it does not recognize. PostScript document files generated with the Macintosh computer's LaserWriter driver include body comments that do not affect spooling and are therefore ignored by the LaserShare spooler. These comments are not documented here; the following comment descriptions are for those body comments that LaserShare interprets. Refer to the *Adobe Document Structuring Conventions, Version 2.0*, for descriptions of other body comments.
 
 
-# Exit Server comments
+#### Exit Server comments
 
 The Exit Server comments surround PostScript exit server code. The PostScript exit server code introduces a segment of PostScript code, known as a procedure set, that is to be registered outside of the normal server-loop save/restore context. The Exit Server comments immediately precede the Begin Procedure Set comment, which marks the beginning of the text block that bypasses the server loop. Rather than being an actual printing job, the procedure set introduced by Exit Server comments contains resources for the printer, such as fonts that are being downloaded. See "Procedure Set Comments" later in this chapter for further explanation.
 
@@ -678,7 +615,7 @@ Usually, the Exit Server comments are included only in an exit server job. An ex
 ```
 
 
-## Page Marker comment
+#### Page Marker comment
 
 The Page Marker comment marks PostScript page boundaries. This comment usually occurs once for each page and provides information about the page's requirements and structure. Page Marker comments are used to preserve the page order in PostScript documents; they act as counters to track the number of pages in the document file.
 
@@ -697,7 +634,7 @@ The Page Marker comment is used frequently. It is required so that pages do not 
 
 *Example:* `%%Page: ? 1`
 
-## Procedure Set comments
+#### Procedure Set comments
 
 The Procedure Set comments surround a procedure set within the body of a PostScript document file. The procedure set typically represents a subset of the document prologue; the prologue can be broken into several subpackages known as procedure sets. Procedure sets can be used to define groups of routines for different imaging requirements. For example, a procedure set may include the code for generating specialized fonts.
 
@@ -719,7 +656,7 @@ Resource comments can appear anywhere in a document. They indicate that the name
 
 The number and types of resource comments included in a document file depend partially on the degree to which the document-composition application relies on the printing environment to provide the required resources. If the document-composition application relies on the printing environment to supply resources, few resource comments are used in the document file; however, if the document-composition application chooses to ensure that resources are available by providing them itself, more resource comments appear in the document file. (Documents with extensive resource requirements are common in large distributed networks that take print spooling for granted and that have centralized resource management.)
 
-## Definitions
+### Definitions
 
 AppleTalk print spoolers should be able to interpret and respond to the two resource comments summarized below. The *Adobe Document Structuring Conventions, Version 2.0*, describes additional resource comments that can be used for communicating with spoolers.
 
@@ -728,7 +665,7 @@ AppleTalk print spoolers should be able to interpret and respond to the two reso
 | `%%EOF` | indication of the end of the file |
 | `%%IncludeProcSet: name version revision` | instruction to include the specified procedure set |
 
-## End Of File comment
+#### End Of File comment
 
 The End Of File comment indicates that an end-of-file message is being inserted into the print stream. Every PostScript job must begin with the Job Identification comment and end with an End Of File comment.
 
@@ -736,7 +673,7 @@ The End Of File comment indicates that an end-of-file message is being inserted 
 
 **Example:** `%%EOF`
 
-## Include Procedure Set comment
+#### Include Procedure Set comment
 
 The Include Procedure Set comment directs the spooler to insert the specified procedure set into the header of the document file. The procedure set typically represents a subset of the document prologue; the prologue can be broken into several subpackages known as procedure sets. The procedure sets can be used to define groups of routines for different imaging requirements. For example, a procedure set may include the code for generating specialized fonts.
 
@@ -766,7 +703,7 @@ In general, queries are used to determine the current state or characteristics o
 - virtual memory
 - printer-specific features and enhancements
 
-## Conventions for using query comments
+### Conventions for using query comments
 
 Any print file that embeds PostScript queries should follow the query conventions in order to be spooled successfully. "Structure Comments," earlier in this chapter, describes general guidelines for using PostScript comment conventions. This section summarizes some guidelines that apply specifically to using query comments that conform to version 2.0 of the Adobe PostScript Document Structuring Conventions.
 
@@ -778,7 +715,7 @@ All End Query comments must include a field for a default value. The print spool
 
 A PostScript query should be sent as a separate print job in order to guarantee that it will be fully spoolable; that is, query comments are not valid if they are embedded in either a standard print job or an exit server job. Query jobs must begin with the Job Identification comment `%!PS-Adobe-2.0 Query` and end with `%%EOF`. A query job contains only query comments and need not contain any other standard structuring conventions. A query job can include more than one query. However, if query comments are embedded within the body of a standard print job, there is no guarantee that the spooler will handle the print job properly.
 
-## Spooler responsibilities
+### Spooler responsibilities
 
 A print spooler should be able to extract query information from any print file that begins with `%!PS-Adobe-2.0 Query`. The spooler should fully parse a query job file until it reaches the EOF indicator.
 
@@ -793,7 +730,7 @@ If a spooler cannot interpret a query, the spooler should return the value provi
 Apple's LaserShare print spooler responds to all query comments. In some cases, however, LaserShare simply returns the default, indicating that it cannot provide the information requested. These cases are noted in the comment definitions that follow.
 
 
-## Definitions
+### Definitions
 
 This section contains the query comments defined by version 2.0 of the Adobe PostScript Document Structuring Conventions. The query comments are listed alphabetically in pairs of beginning and ending comments. The descriptions include syntax and an example. Query comments are summarized as follows:
 
@@ -809,7 +746,7 @@ This section contains the query comments defined by version 2.0 of the Adobe Pos
 | `%%?BeginVMStatusQuery`<br>`%%?EndVMStatusQuery: default` | state of PostScript memory |
 
 
-## Feature Query comments
+#### Feature Query comments
 
 The Feature Query comments obtain information about the state of a printer-specific feature, as defined by the printer's Adobe Printer Description (APD) file. LaserShare does not specifically support this query and responds to it with the default.
 
@@ -833,7 +770,7 @@ The Feature Query comments obtain information about the state of a printer-speci
 %%?EndFeatureQuery: unknown
 ```
 
-## File Query comments
+#### File Query comments
 
 The File Query comments are used to determine whether the specified file is available to the printer. The standard response consists of a line that contains either 0 or 1, where 0 indicates that the file is not present and 1 indicates that it is present.
 
@@ -855,7 +792,7 @@ When a file system is not available to the spooler, the File Query comments are 
 ```
 
 
-## Font List Query comments
+#### Font List Query comments
 
 The Font List Query comments return a list of all fonts available to the printer. The standard response consists of a sequence of lines, each of which contains the name of a font. A newline character should terminate each line; an asterisk (*) should terminate the list itself.
 
@@ -877,7 +814,7 @@ LaserShare responds to this query with a list of the fonts available to the prin
 %%?EndFontListQuery
 ```
 
-## Font Query comments
+#### Font Query comments
 
 The Font Query comments are used to determine whether the specified font is available to the printer. The font name used with these comments should be an appropriate PostScript name. The standard response consists of a line that contains either 0 or 1, where 0 indicates that the font is not present and 1 indicates that it is present. LaserShare responds to this query with either 0 or 1, indicating whether the font is available to the printer.
 
@@ -904,7 +841,7 @@ The Font Query comments are used to determine whether the specified font is avai
 %%?EndFontQuery: unknown
 ```
 
-## Global Query comments
+#### Global Query comments
 
 The Global Query comments provide a general-purpose query that can serve any function not provided by one of the other query comments. For example, this query can be used to determine whether the remote device is a spooler or a printer.
 
@@ -923,7 +860,7 @@ Examples:
 %%?EndQuery: true
 ```
 
-## Printer Query comments
+#### Printer Query comments
 
 The Printer Query comments request status information about the printer, such as the printer's product name, version number, and revision number. The standard response consists of the printer's product name string, version string, and revision string, each of which should be followed by a newline character. The strings should match the information in the printer's APD file. LaserShare responds to this query with information about the printer that it serves.
 
@@ -948,7 +885,7 @@ Examples:
 ```
 
 
-## Procedure Set Query comments
+#### Procedure Set Query comments
 
 The Procedure Set comments check whether the specified procedure set is available to the printer. Each procedure set is identified by the following three arguments:
 
@@ -988,7 +925,7 @@ LaserShare responds to the Procedure Set Query comments with one of the standard
 %%?EndProcSetQuery: unknown
 ```
 
-## Virtual Memory Status Query comments
+#### Virtual Memory Status Query comments
 
 The Virtual Memory Status Query comments check the state of the PostScript printer’s virtual memory. The standard response consists of a line that contains the results of the PostScript vmstatus operator (refer to the Adobe PostScript Language Reference Manual, Version 2.0, for a detailed description of this operator).
 
@@ -1055,7 +992,7 @@ end
 
 The following code is an example of the way that comments appear in a print stream for a PostScript query job.
 
-```
+```postscript
 %!PS-Adobe-2.0 Query
 %%Title: Query job to determine font status
 %%?BeginFontQuery: Palatino-Roman Palatino-Bold
@@ -1076,7 +1013,7 @@ mark
 
 The following code is an example of the way that comments appear in a print stream for a PostScript exit server job. Exit server jobs are registered outside of the normal server loop.
 
-```
+```postscript
 %!PS-Adobe-2.0 Exitserver
 %%Title: ps test write
 %%Creator: Write

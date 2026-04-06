@@ -9,7 +9,7 @@ engine: "gemini-flash"
 nav_order: 22
 parent: "Inside AppleTalk, 2nd Edition"
 layout: default
-grand_parent: Areas
+grand_parent: Books
 ---
 # LLAP Access Control Algorithms
 
@@ -26,41 +26,6 @@ grand_parent: Areas
 
 # Appendix B LLAP Access Control Algorithms
 
-### CONTENTS
-
-Assumptions / B-2
-
-Global constants, types, and variables / B-2
-
-Hardware interface declarations / B-4
-
-Interface procedures and functions / B-5
-
-InitializeLLAP procedure / B-6
-
-AcquireAddress procedure / B-7
-
-TransmitPacket function / B-8
-
-TransmitLinkMgmt function / B-8
-
-TransmitFrame procedure / B-14
-
-ReceivePacket procedure / B-15
-
-ReceiveLinkMgmt function / B-15
-
-ReceiveFrame function / B-17
-
-Miscellaneous functions / B-19
-
-SCC implementation / B-20
-
-CRC-CCITT calculation / B-22
-
-■
-
----
 
 The following procedural model is written in a Pascal-like language (pseudo-code) and provided as a specification of the LocalTalk Link Access Protocol (LLAP). Any particular implementation of LLAP must follow this specification.
 
@@ -106,20 +71,15 @@ lapRTS = $84;               {         ... RequestToSend frame }
 lapCTS = $85;               {         ... ClearToSend frame }
 hdlcFLAG = $7E;             { value of an HDLC FLAG }
 wksTries = 20;              { Number of ENQ sets for a workstation to try }
-```
 
-# TYPE
-
-```pascal
+TYPE
 { global result types from LAP functions }
 TransmitStatus = (transmitOK, excessDefers, excessCollsns, dupAddress);
 ReceiveStatus = (receiveOK, Receiving, nullReceive, frameError);
 FrameStatus = (noFrame, lapDATAframe, lapENQframe, lapACKframe,
                lapRTSframe, lapCTSframe, badframeCRC, badframeSize,
                badframeType, overrunError, underrunError);
-```
 
-```pascal
 { Data link types and structures }
 
 bit = 0..1;
@@ -128,9 +88,7 @@ octet = $00..$FF;
 anAddress = octet;
 aLAPtype = octet;
 aDataField = PACKED ARRAY [1..maxDataSize] of octet;
-```
 
-```pascal
 { Basic structure of an LLAP frame, not including FLAGs, FCS }
 frameInterpretation = (raw, structured);
 aFrame = PACKED RECORD
@@ -234,7 +192,7 @@ Procedure ReceivePacket (var dstParam : anAddress;
 This call is provided to receive a packet. The internal function `ReceiveLinkMgmt` implements the reception link-access algorithms.
 
 
-# InitializeLLAP procedure
+## InitializeLLAP procedure
 
 The `InitializeLLAP` procedure is called to reset LLAP's global variables to known states; it calls `AcquireAddress` to initialize `MyAddress`. The following is a procedural model for the `InitializeLLAP` procedure:
 
@@ -257,7 +215,7 @@ END;    { InitializeLAP }
 ```
 
 
-# AcquireAddress procedure
+## AcquireAddress procedure
 
 The AcquireAddress procedure specifies the dynamic node ID assignment algorithm. AcquireAddress creates and sends a control packet (of type lapENQ). When no node responds after repeated attempts, the current value of MyAddress is assumed to be safe for use by this node; the state of fAdrValid reflects this fact. If the global fAdrInUse ever becomes true after a call to AcquireAddress, another node that is using the same MyAddress has been detected. The following is a procedural model for the AcquireAddress procedure:
 
@@ -303,7 +261,7 @@ END;    { AcquireAddress }
 ```
 
 
-# TransmitPacket function
+## TransmitPacket function
 
 The TransmitPacket function is called by the LLAP client to send a data packet. After constructing (encapsulating) the caller's dataParam, the function calls upon TransmitLinkMgmt to perform the actual link access. A procedural model for the TransmitPacket function follows:
 
@@ -330,7 +288,7 @@ BEGIN
 END; { TransmitPacket }
 ```
 
-# TransmitLinkMgmt function
+## TransmitLinkMgmt function
 
 The TransmitLinkMgmt function implements the Carrier Sense Multiple Access with Collision Avoidance (CSMA/CA) algorithm. LLAP attempts to minimize collisions by requiring transmitters to wait for the duration of the interdialog gap (IDG) plus a random period of time before sending their request-to-send (RTS) packets. Any transmitter that detects that another transmission is in progress while it is waiting must defer.
 
@@ -518,7 +476,7 @@ END;   { TransmitLinkMgmt }
 ```
 
 
-# TransmitFrame procedure
+## TransmitFrame procedure
 
 The TransmitFrame procedure is responsible for putting data on the link. Certain details, such as how a flag is sent and a packet terminated, which includes sending the frame check sequence (FCS), are not explicitly stated here since they are hardware-dependent.
 
@@ -810,7 +768,7 @@ BEGIN
 END;
 ```
 
-# SCC implementation
+## SCC implementation
 
 One of the integrated circuits used in the implementation of LocalTalk is the Zilog 8530 Serial Communications Controller (SCC). This section explains how the hardware interface routines declared in the foregoing sections could be implemented with that device. This explanation does not imply that the SCC must be used in the implementation of LLAP. Many other devices can be employed effectively to implement LLAP. All of the following registers and bit names are used by Zilog in its SCC documentation.
 

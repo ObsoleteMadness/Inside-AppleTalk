@@ -8,7 +8,7 @@ engine: "gemini-flash"
 nav_order: 7
 parent: "AFP Technical Notes"
 layout: default
-grand_parent: Areas
+grand_parent: Books
 ---
 # Specification of AFP Calls
 
