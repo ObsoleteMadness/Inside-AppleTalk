@@ -1,5 +1,5 @@
 ---
-title: "## AFP's Use of ASP"
+title: "AFP's Use of ASP"
 source: "022_AppleTalkFilingProtocolEngineeringTechnicalNotes"
 source_url: ""
 pages: "105–112"
@@ -9,8 +9,8 @@ nav_order: 8
 parent: "AFP Technical Notes"
 layout: default
 grand_parent: Books
-
-# ## AFP's Use of ASP
+---
+# AFP's Use of ASP
 
 | Field | Value |
 |-------|-------|
