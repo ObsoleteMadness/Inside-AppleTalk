@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="# AppleTalk Filing Protocol Design Description#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 1 Pages 9–13 Converted 2026-04-01 Engine gemini-flash Chapter 1#AppleTalk Filing Protocol Design Description#This document specifies version 1.1 of the AppleTalk Filing Protocol (AFP). We start by discussing, in general terms, the scope of this protocol and some strategic decisions that have had a fundamental impact on its design. The relationship of this protocol to other parts of the AppleTalk protocol architecture are then spelled out. The detailed specification of the protocol is presented in three main parts: the AFP system model, AFP calls, and AFP packet formats.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/01-appletalk-filing-protocol-design-description/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="# AppleTalk Filing Protocol Design Description">
+  <meta property="og:description" content="# AppleTalk Filing Protocol Design Description#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 1 Pages 9–13 Converted 2026-04-01 Engine gemini-flash Chapter 1#AppleTalk Filing Protocol Design Description#This document specifies version 1.1 of the AppleTalk Filing Protocol (AFP). We start by discussing, in general terms, the scope of this protocol and some strategic decisions that have had a fundamental impact on its design. The relationship of this protocol to other parts of the AppleTalk protocol architecture are then spelled out. The detailed specification of the protocol is presented in three main parts: the AFP system model, AFP calls, and AFP packet formats.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="# AppleTalk Filing Protocol Design Description">
+  <meta itemprop="description" content="# AppleTalk Filing Protocol Design Description#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 1 Pages 9–13 Converted 2026-04-01 Engine gemini-flash Chapter 1#AppleTalk Filing Protocol Design Description#This document specifies version 1.1 of the AppleTalk Filing Protocol (AFP). We start by discussing, in general terms, the scope of this protocol and some strategic decisions that have had a fundamental impact on its design. The relationship of this protocol to other parts of the AppleTalk protocol architecture are then spelled out. The detailed specification of the protocol is presented in three main parts: the AFP system model, AFP calls, and AFP packet formats.">
+  <meta itemprop="wordCount" content="1402">
+
+<title># AppleTalk Filing Protocol Design Description | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/01-appletalk-filing-protocol-design-description/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3># AppleTalk Filing Protocol Design Description</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-basic-file-access-model">The Basic File Access Model</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="-appletalk-filing-protocol-design-description"># AppleTalk Filing Protocol Design Description<a class="anchor" href="#-appletalk-filing-protocol-design-description">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td>022_AppleTalkFilingProtocolEngineeringTechnicalNotes</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>9–13</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-04-01</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="chapter-1">Chapter 1<a class="anchor" href="#chapter-1">#</a></h1>
+<h1 id="appletalk-filing-protocol-design-description">AppleTalk Filing Protocol Design Description<a class="anchor" href="#appletalk-filing-protocol-design-description">#</a></h1>
+<p>This document specifies version 1.1 of the <em>AppleTalk Filing Protocol</em> (AFP). We start by discussing, in general terms, the scope of this protocol and some strategic decisions that have had a fundamental impact on its design. The relationship of this protocol to other parts of the AppleTalk protocol architecture are then spelled out. The detailed specification of the protocol is presented in three main parts: the AFP system model, AFP calls, and AFP packet formats.</p>
+<h2 id="the-basic-file-access-model">The Basic File Access Model<a class="anchor" href="#the-basic-file-access-model">#</a></h2>
+<p>The overall objective is to allow workstations on AppleTalk to access files on file servers connected to the network. This access occurs at the level of calls to the workstation&rsquo;s native file system. Figure AFP1 illustrates the basic file access model which can be used to make these general notions more precise.</p>
+<p>As illustrated, a program running in a workstation issues <em>native file system commands</em>. If these commands refer to files on the workstation&rsquo;s local storage, then they are processed by the workstation&rsquo;s local/native file system. If however the commands refer to files on a file server, they are routed inside the workstation to a <em>Translator</em>. It is the Translator&rsquo;s responsibility to deliver the desired file system service to the requesting program. This is done by converting the native file system command into one or more AFP requests sent over the network to the appropriate file server. We can isolate two important file service interfaces in Figure AFP1.</p>
+<p>The first, labeled <em>Native Filing Interface</em> (NFI), is the one through which programs on the workstation issue native file system commands and obtain the relevant file system services. A program &ldquo;looking through&rdquo; this interface sees the structures and capabilities of the workstation&rsquo;s native file system.</p>
+<p>The second interface, labelled <em>AppleTalk Filing Interface</em> (AFI), is the one through which the Translator issues AFP requests to the file server and obtains AFP services. Looking through this interface, the Translator sees what we will call the AFP file system. It is the Translator&rsquo;s responsibility to map requests made through NFI into the requests that must be made through the AFI to the AFP file system in order to satisfy the original NFI request.</p>
+<hr>
+<p><img src="images/p10-basic-file-access-model.png" alt="The Basic File Access Model" /></p>
+<pre class="mermaid">graph LR
+    subgraph WS [Workstation]
+        Program([Program]) -- &#34;Native File\nSystem Calls&#34; --&gt; Translator([Translator])
+    end
+    
+    Translator -- &#34;AFP Calls&#34; --&gt; Network([Network])
+    
+    subgraph FS [File Server]
+        Network
+    end
+
+    style WS fill:none,stroke:black
+    style FS fill:none,stroke:black</pre><script src="/appletalk-docs/mermaid.min.js"></script><script>mermaid.initialize({"flowchart":{"useMaxWidth":true},"theme":"default"})</script><p>Figure AFP1. The Basic File Access Model</p>
+<p>Note that in some cases it may be necessary to provide another path from the Program directly to the AppleTalk Filing Interface to allow the Program to make AFP calls which have no equivalent in the Native Filing Interface.</p>
+<p>The filing protocol specification in effect is the same as a complete specification of the AFI. This consists of three parts:</p>
+<ul>
+<li>the AFP file system structure;</li>
+<li>the AFP calls;</li>
+<li>the algorithms associated with these calls.</li>
+</ul>
+<p>By the AFP file system structure is meant a complete description of entities such as servers, volumes, directories, files, forks, etc., that are &ldquo;visible&rdquo; through the AFI, their interrelationship and associated parameters. The client of the AFI (the Translator) sends calls/commands/requests through the AFI to manipulate this AFP file system structure, and the details of what each call does to this structure constitute the algorithms associated with AFP.</p>
+<p>It is interesting to consider the relationship between the native file system and the AFP file system. Clearly, the latter must be functionally as powerful as the former. In fact, when the AFP is designed to allow various different types of workstations to use the model of Figure AFP1 at the same time, then the services provided by the AFP file system must, in a sense, be the functional union of the services provided by the various native file systems of these workstations.</p>
+<p>This document does not examine in detail the mechanism of translation in the Translator; the focus here is on the AFI and the AFP itself.</p>
+<hr>
+<h1 id="goals-of-afp">Goals of AFP<a class="anchor" href="#goals-of-afp">#</a></h1>
+<p>We have paid special attention in the design of AFP to allow its extension in a very general fashion. This is essential if, in the future, additional types of workstations are to be supported by the protocol.</p>
+<p>AFP version 1.1 is designed to work with Macintoshes (using the hierarchical file system) and MS-DOS workstations. Thus, the protocol is sufficient to successfully support translators on these two workstations under the indicated operating environment. We expect <em>future</em> extensions of the protocol to support the Apple-][ (under ProDOS) and Unix workstations (but these are not part of the goals of version 1.1).</p>
+<p>Access control mechanisms are an important part of filing protocols. AFP supports user authentication in a flexible fashion allowing the use of two standard password-based schemes but permitting future extension to other more sophisticated methods based, for instance, on public key encryption. AFP does not force the use of a fixed user-authentication method. AFP includes a directory-level access control mechanism based on user authentication at server login time. This scheme is similar to that used by Unix and therefore should be especially easy to implement on Unix-based server machines.</p>
+<p>Although in the model of Figure AFP1 we have distinguished between workstations and file servers, AFP does not rule out the possibility of a particular network node being both a workstation and a file server. At the same time, AFP does not attempt to solve various concurrency problems and potential deadlock situations that can arise in such combined workstation/server nodes. This must be done by careful design of the software implemented on such &ldquo;combined&rdquo; nodes.</p>
+<p>It should also be mentioned that AFP does not include any services or calls needed for administration of file servers. These will depend on the nature of a particular file server and are hence outside the scope of AFP.</p>
+<h1 id="afp-in-the-appletalk-architecture">AFP in the AppleTalk Architecture<a class="anchor" href="#afp-in-the-appletalk-architecture">#</a></h1>
+<p>As illustrated in Figure AFP2, AFP is a client of the AppleTalk Session Protocol (ASP) described in a separate document.</p>
+<p>As should be clear from the ASP specification, a file server must call the AppleTalk Transaction Protocol (ATP) to open up a Session Listening Socket (SLS) and then use the Name Binding Protocol (NBP) to register the file service&rsquo;s name on this socket. Workstations wishing to use the file server must use NBP and the file service&rsquo;s name to discover the SLS&rsquo;s network address. With this information the workstation opens an ASP session with the server.</p>
+<hr>
+<p><img src="images/p12-afp-architecture.png" alt="AFP and the AppleTalk Protocol Architecture" /></p>
+<pre class="mermaid">graph TD
+    AFP[&#34;AppleTalk Filing Protocol\n(AFP)&#34;] --- ASP[&#34;AppleTalk Session\nProtocol (ASP)&#34;]
+    ASP --- ATP[&#34;AppleTalk Transaction\nProtocol (ATP)&#34;]
+    ATP --- DDP[&#34;Datagram Delivery\nProtocol (DDP)&#34;]
+    NBP[&#34;Name Binding\nProtocol (NBP)&#34;] --- DDP
+    DDP --- ALAP[&#34;AppleTalk Link Access\nProtocol (ALAP)&#34;]</pre><p>Figure AFP2. AFP and the AppleTalk Protocol Architecture</p>
+<p>Once this session has been opened the AFP protocol entity in the workstation must log itself in on the file server as a bonafide user. The login step provides an opportunity to:</p>
+<ul>
+<li>authenticate the file server&rsquo;s user (i.e., the workstation);</li>
+<li>negotiate the version of the AFP protocol to be used during that session.</li>
+</ul>
+<hr>
+<p>After the workstation has successfully logged in on the file server, the various AFP commands can be conveyed on the session thus established. When the workstation has finished using the services of the file server, it can logout. At this point all resources related to this filing session are freed up in the file server, and the underlying ASP session is closed.</p>
+<h1 id="notation">Notation<a class="anchor" href="#notation">#</a></h1>
+<p>Throughout this document hexadecimal (base 16) values are written with a leading $ sign (for example, $3A), while decimal integers are written with no leading special character (for example, 18).</p>
+<p>Acronyms are widely used in this document (a list is provided in Appendix E).</p>
+<p>The following abbreviations are used to describe the input and output parameters of AFP calls:</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>BIT</td>
+          <td>a single binary digit</td>
+      </tr>
+      <tr>
+          <td>BUF</td>
+          <td>a buffer; exact method of specifying location and length are dependent on the AFP implementation</td>
+      </tr>
+      <tr>
+          <td>BYTE</td>
+          <td>an 8-bit quantity</td>
+      </tr>
+      <tr>
+          <td>EntityAddr</td>
+          <td>a network-visible entity&rsquo;s internet address; exact size and format are dependent on the underlying network</td>
+      </tr>
+      <tr>
+          <td>INT</td>
+          <td>a 2-byte (16-bit) integer quantity</td>
+      </tr>
+      <tr>
+          <td>LONG</td>
+          <td>a 4-byte (32-bit) quantity</td>
+      </tr>
+      <tr>
+          <td>STR</td>
+          <td>a string consisting of a one-byte string length value (not including the length byte) followed by the string&rsquo;s characters (one character per byte). Strings cannot have more than 255 characters.</td>
+      </tr>
+      <tr>
+          <td>ResType</td>
+          <td>a 4-byte signature used in Finder info fields</td>
+      </tr>
+  </tbody>
+</table>
+<p>Note that all string comparisons in AFP are case insensitive unless otherwise noted.</p>
+<p>All numerical quantities are signed numbers unless otherwise noted.</p>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cappletalk-filingprotocol-engineering-technotes%5C01-appletalk-filing-protocol-design-description.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-basic-file-access-model">The Basic File Access Model</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

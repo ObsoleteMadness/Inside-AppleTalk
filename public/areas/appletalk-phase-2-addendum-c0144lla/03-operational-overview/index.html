@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Operational Overview#Field Value Source C0144LLA_AppleTalk_Phase_2_Protocol_Specification_Addendum_1989 Chapter 3 Pages 13–18 Converted 2026-04-01 Engine gemini-flash Chapter 3 Operational Overview#THE IMPLEMENTATION of extended addressing involves the following sequence of operations:
+obtaining a provisional address obtaining network information checking the validity of the provisional address and zone distinguishing between packets intended for delivery on the local network and those to be sent to a router for internet delivery These operations are summarized below, and they are further described in the next chapter, “Protocol Details.” ■
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/appletalk-phase-2-addendum-c0144lla/03-operational-overview/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="Operational Overview">
+  <meta property="og:description" content="Operational Overview#Field Value Source C0144LLA_AppleTalk_Phase_2_Protocol_Specification_Addendum_1989 Chapter 3 Pages 13–18 Converted 2026-04-01 Engine gemini-flash Chapter 3 Operational Overview#THE IMPLEMENTATION of extended addressing involves the following sequence of operations:
+obtaining a provisional address obtaining network information checking the validity of the provisional address and zone distinguishing between packets intended for delivery on the local network and those to be sent to a router for internet delivery These operations are summarized below, and they are further described in the next chapter, “Protocol Details.” ■">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="Operational Overview">
+  <meta itemprop="description" content="Operational Overview#Field Value Source C0144LLA_AppleTalk_Phase_2_Protocol_Specification_Addendum_1989 Chapter 3 Pages 13–18 Converted 2026-04-01 Engine gemini-flash Chapter 3 Operational Overview#THE IMPLEMENTATION of extended addressing involves the following sequence of operations:
+obtaining a provisional address obtaining network information checking the validity of the provisional address and zone distinguishing between packets intended for delivery on the local network and those to be sent to a router for internet delivery These operations are summarized below, and they are further described in the next chapter, “Protocol Details.” ■">
+  <meta itemprop="wordCount" content="2042">
+
+<title>Operational Overview | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/appletalk-phase-2-addendum-c0144lla/03-operational-overview/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Operational Overview</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#if-no-address-was-previously-saved-in-pram">If no address was previously saved in pRAM</a></li>
+    <li><a href="#if-an-address-was-saved-in-pram">If an address was saved in pRAM</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#if-no-router-is-present">If no router is present</a></li>
+        <li><a href="#when-a-router-first-comes-up">When a router first comes up</a></li>
+        <li><a href="#if-the-nodes-network-number-is-in-the-correct-range">If the node&rsquo;s network number is in the correct range</a></li>
+        <li><a href="#if-the-nodes-network-number-is-in-neither-the-startup-range-nor-the-correct-range">If the node&rsquo;s network number is in neither the startup range nor the correct range</a></li>
+        <li><a href="#when-the-last-router-goes-down">When the last router goes down</a></li>
+      </ul>
+    </li>
+    <li><a href="#extended-addressing-in-operation">Extended addressing in operation</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="operational-overview">Operational Overview<a class="anchor" href="#operational-overview">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td>C0144LLA_AppleTalk_Phase_2_Protocol_Specification_Addendum_1989</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>13–18</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-04-01</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="chapter-3-operational-overview">Chapter 3 Operational Overview<a class="anchor" href="#chapter-3-operational-overview">#</a></h1>
+<p>THE IMPLEMENTATION of extended addressing involves the following sequence of operations:</p>
+<ul>
+<li>obtaining a provisional address</li>
+<li>obtaining network information</li>
+<li>checking the validity of the provisional address and zone</li>
+<li>distinguishing between packets intended for delivery on the local network and those to be sent to a router for internet delivery</li>
+</ul>
+<p>These operations are summarized below, and they are further described in the next chapter, &ldquo;Protocol Details.&rdquo; ■</p>
+<hr>
+<h1 id="obtaining-a-provisional-address">Obtaining a provisional address<a class="anchor" href="#obtaining-a-provisional-address">#</a></h1>
+<p>Obtaining a provisional address upon startup is accomplished in two different ways depending on whether the node has previously saved an address in parameter RAM. An address saved in pRAM consists of two parts: the 16-bit network number, denoted $nnnn, and the 8-bit node ID, denoted $yy. The concatenated 24-bit address value of [network number, node ID] is denoted $nnnnyy.</p>
+<h2 id="if-no-address-was-previously-saved-in-pram">If no address was previously saved in pRAM<a class="anchor" href="#if-no-address-was-previously-saved-in-pram">#</a></h2>
+<p>Upon starting up when no information is saved in parameter RAM, a node will randomly select a provisional network number $FFnn in the startup range. This range is specified to be $FF00 to $FFFE inclusive (most significant byte first). The node then also randomly selects a node ID $yy (yy cannot be $00, $FE, or $FF). As in AppleTalk Phase 1, the node must use AARP to ensure that $FFnnyy is not in use by any other node on the network. If another node is already using this address, the node should try all other possibilities for $FFnnyy until a valid provisional address is obtained.</p>
+<h2 id="if-an-address-was-saved-in-pram">If an address was saved in pRAM<a class="anchor" href="#if-an-address-was-saved-in-pram">#</a></h2>
+<p>If there is a saved 24-bit address of the form $nnnnyy in pRAM, the node can use it as the provisional address. The node must use AARP to ensure that this address is not in use by any other node. If another node is already using this address, the node should try all other possibilities for yy (yy cannot be $00, $FE, or $FF) keeping nnnn the same until all possibilities are exhausted (nnnn is probably a valid network number for this network unless the node has been moved from another network).</p>
+<p>If all possibilities are exhausted, the node must select a new address as if none was previously saved in pRAM (as described in the previous section).</p>
+<h1 id="obtaining-network-information">Obtaining network information<a class="anchor" href="#obtaining-network-information">#</a></h1>
+<p>Once a node has obtained a provisional address, if a router is running on the network, the node can acquire information about its network from the router. The node learns the range of valid network numbers and confirms that its saved zone name is valid for that network. If it does not currently have a saved zone name, it can obtain the list of available ones from a router and pick one in an implementation-dependent manner.</p>
+<p>Network information is obtained by using a new request packet, ZIPGetNetInfo. If the node has a saved zone name for the zone to which it wishes to belong, this name is also included in the request. The request is retransmitted until a router responds or the retry count is exceeded. If no response is received, this is taken to imply that <em>no</em> router is currently running on the network.</p>
+<hr>
+<p>The response will provide the following information:</p>
+<ul>
+<li>the address of the responding router (to be saved as the node&rsquo;s initial A-ROUTER parameter)</li>
+<li>the range of valid network numbers for this network (to be saved as the node&rsquo;s THIS-NETWORK-RANGE parameters)</li>
+<li>the zone multicast address to use for the desired zone name (if this zone name was valid)</li>
+<li>the default zone name (and multicast address) to use if the requested zone name is not valid</li>
+</ul>
+<p>Upon receiving the response, a node registers with its data-link layer (in a data-link-dependent manner) to receive packets sent to the zone multicast address; routers will send NBP broadcasts (for the node&rsquo;s zone) to this link-level address.</p>
+<h1 id="obtaining-a-valid-address-and-zone">Obtaining a valid address and zone<a class="anchor" href="#obtaining-a-valid-address-and-zone">#</a></h1>
+<p>After obtaining the desired network information, if a node&rsquo;s provisional network number is not in THIS-NETWORK-RANGE, the node can proceed to select an address in this range, and then ensure through the use of AARP that the address is not in use by another node on the network. This new address then becomes the node&rsquo;s final address, and is saved in pRAM. Note that, except when a node is first started on a network, its provisional address will typically be in the correct range, and it should not have to repeat the address acquisition process.</p>
+<p>If the zone to which a node wishes to belong is not valid for its network, or if the node has no saved initial zone name, it is possible for the node to obtain the zones list for the network. This is obtained from a router by using the new ZIP GetLocalZones request, and then selecting a zone from that list in an implementation-dependent manner (on the Macintosh, a dialog box is displayed asking the user to choose a zone). The node can then issue the ZIP GetNetInfo request to obtain the node&rsquo;s zone multicast address, and to register that address with its data-link layer.</p>
+<p>Note that in a network with just one zone name in its zones list, a user need not be made aware of the node&rsquo;s zone name at all. Such a network will require no user intervention to select the node&rsquo;s zone name, and should appear no different from a nonextended network.</p>
+<h1 id="operating-without-a-router">Operating without a router<a class="anchor" href="#operating-without-a-router">#</a></h1>
+<p>Most extended networks are likely to be connected by routers into internets. However, extended addressing is implemented in a way that also permits operation on a network where no router is present. Such extended networks will in particular be used when more than 254 nodes are to be connected to a single AppleTalk network.</p>
+<p>Furthermore, an extended network may operate without a router as a transitional state between operating with and without routers.</p>
+<hr>
+<h3 id="if-no-router-is-present">If no router is present<a class="anchor" href="#if-no-router-is-present">#</a></h3>
+<p>If no router responds to a ZIP GetNetInfo request, the node uses the provisional address as its final address. Any previously saved zone name is ignored; the node is, for now, in zone &ldquo;*&rdquo; and has no zone multicast address. If a router comes up later, the node will be able to communicate with the internet as long as its final address is still within the network number range for the network (this will typically be the case if the provisional address was obtained from pRAM and the node has not been moved to another network).</p>
+<hr>
+<h3 id="when-a-router-first-comes-up">When a router first comes up<a class="anchor" href="#when-a-router-first-comes-up">#</a></h3>
+<p>When a router first comes up on a network, the address of a node already operating on the network might now not be valid for the network (its network number may be outside the range entered in the router). This condition must be corrected before the node can continue to communicate on the internet. The following is the procedure a node should use when first detecting a router (via RTMP packets).</p>
+<h4 id="if-the-nodes-network-number-is-in-the-startup-range">If the node&rsquo;s network number is in the startup range<a class="anchor" href="#if-the-nodes-network-number-is-in-the-startup-range">#</a></h4>
+<p>If a node&rsquo;s address is of the form $FFnnyy, that is, in the startup range, the router must be ignored until the node&rsquo;s AppleTalk implementation is reinitialized to allow the node to acquire a valid internet address. The node should not send any packets for forwarding on the internet, nor name lookup requests to A-ROUTER. It can, however, continue to access nodes on the local network in the normal fashion. The node remains in zone &ldquo;*&rdquo;, but will continue to see all nodes on the local network regardless of their zone (since it will still send NBP lookups as AppleTalk broadcasts).</p>
+<p>If possible, the node should alert its user that the node&rsquo;s AppleTalk implementation must be reinitialized in order to continue to access the internet. Nodes using network numbers not in the startup range will not be able to see those nodes using network numbers in the startup range. This is true regardless of the zone, since the network number startup range has no zone multicast address. Likewise, nodes outside this network also will not see its nodes that are using network numbers in the startup range.</p>
+<h4 id="if-the-nodes-network-number-is-not-in-the-startup-range">If the node&rsquo;s network number is not in the startup range<a class="anchor" href="#if-the-nodes-network-number-is-not-in-the-startup-range">#</a></h4>
+<p>If the node&rsquo;s network number is <em>not</em> in the startup range, upon detecting the first router, the node needs to determine whether its own address is in the correct network number range for the network. This correct network number range is determined from the header of the RTMP packet that alerted the node of the router&rsquo;s existence.</p>
+<hr>
+<h3 id="if-the-nodes-network-number-is-in-the-correct-range">If the node&rsquo;s network number is in the correct range<a class="anchor" href="#if-the-nodes-network-number-is-in-the-correct-range">#</a></h3>
+<p>If the node&rsquo;s network number is in the correct network number range, it can proceed to verify that its desired zone name is valid for the network, obtain its zone multicast address through a ZIP GetNetInfo request, and set its data-link layer to listen on that address. If its desired zone name is not valid for the network, the node can either issue a ZIP GetLocalZones request and ask the user to select a zone or decide to belong to the default zone for that network. A valid zone name should be saved in long-term storage upon receipt.</p>
+<h3 id="if-the-nodes-network-number-is-in-neither-the-startup-range-nor-the-correct-range">If the node&rsquo;s network number is in neither the startup range nor the correct range<a class="anchor" href="#if-the-nodes-network-number-is-in-neither-the-startup-range-nor-the-correct-range">#</a></h3>
+<p>If the node determines that its network number is neither in the startup range nor in the correct network number range, it should behave exactly as if its address was in the startup range. However, nodes in the valid network number range that had been communicating with this node until the router came up will now lose access to the node. The node&rsquo;s AppleTalk implementation should be restarted as soon as possible.</p>
+<h3 id="when-the-last-router-goes-down">When the last router goes down<a class="anchor" href="#when-the-last-router-goes-down">#</a></h3>
+<p>When a network on which one or more routers have been running loses all routers, the normal mechanism for aging the A-ROUTER entry in nodes should prevail. In addition, the node should also expand THIS-NETWORK-RANGE to $0001–$FFFE, making all network numbers valid. The node will continue to operate with the address that it was using. Therefore, the network condition reverts back to one where no routers are available at startup. A node&rsquo;s zone name should revert to &ldquo;*&rdquo;, and the node&rsquo;s zone multicast address should be deleted (if one has been set).</p>
+<h2 id="extended-addressing-in-operation">Extended addressing in operation<a class="anchor" href="#extended-addressing-in-operation">#</a></h2>
+<p>Sending a packet remains much the same as on a nonextended network. A node determines whether the desired destination is on the local network, and if so, obtains the destination node&rsquo;s hardware address using AARP and sends the packet out. If the destination node is not on the local network, AARP can be used to obtain the hardware address of a router and the packet can be sent to that router.</p>
+<p>This is much like the AppleTalk Phase 1 DDP algorithm of comparing the destination network number to THIS-NET and sending the packet to A-ROUTER if it does not match. Instead, the node now compares the destination network number to THIS-NETWORK-RANGE and sends it to A-ROUTER if it is not in this or the startup range. (This scheme can, however, result in an extra hop for off-network traffic; a more efficient scheme to choose the &ldquo;best&rdquo; router is described in the section &ldquo;DDP&rdquo; in the next chapter.)</p>
+<hr>
+<p>Note that, on an extended network, DDP broadcasts can now occur in three forms:</p>
+<ul>
+<li>A <strong>network-wide DDP broadcast</strong> is addressed to destination network $0000, node ID $FF, and received and accepted by every node on the network.</li>
+<li>A <strong>network-specific DDP broadcast</strong> is intended for all nodes on the network whose DDP address includes the specified network number. Such a datagram is addressed to a specific network <em>number</em> (not the entire network number range), and node ID $FF. All nodes on the network will receive this as a data-link broadcast and must discard it if not intended for them (that is, if it does not match their network number).</li>
+<li>A <strong>zone-specific DDP broadcast</strong> is intended for all nodes on the network that belong to the specified zone. Such a broadcast is sent at the data-link level to a zone multicast address with DDP destination network $0000, node ID $FF. Only routers transmit zone-specific broadcasts.</li>
+</ul>
+<p>The operational aspects of extended addressing are further specified in the next chapter, &ldquo;Protocol Details.&rdquo;</p>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cappletalk-phase-2-addendum-c0144lla%5C03-operational-overview.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#if-no-address-was-previously-saved-in-pram">If no address was previously saved in pRAM</a></li>
+    <li><a href="#if-an-address-was-saved-in-pram">If an address was saved in pRAM</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#if-no-router-is-present">If no router is present</a></li>
+        <li><a href="#when-a-router-first-comes-up">When a router first comes up</a></li>
+        <li><a href="#if-the-nodes-network-number-is-in-the-correct-range">If the node&rsquo;s network number is in the correct range</a></li>
+        <li><a href="#if-the-nodes-network-number-is-in-neither-the-startup-range-nor-the-correct-range">If the node&rsquo;s network number is in neither the startup range nor the correct range</a></li>
+        <li><a href="#when-the-last-router-goes-down">When the last router goes down</a></li>
+      </ul>
+    </li>
+    <li><a href="#extended-addressing-in-operation">Extended addressing in operation</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

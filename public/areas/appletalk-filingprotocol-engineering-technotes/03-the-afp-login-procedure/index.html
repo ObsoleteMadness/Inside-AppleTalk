@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="# The AFP Login Procedure#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 3 Pages 25–26 Converted 2026-04-01 Engine gemini-flash Chapter 3#The AFP Login Procedure#This chapter discusses the process of discovering a file server and logging in to it.
+This process consists of three steps: (i) discovering the file server, (ii) obtaining file server information, (iii) the actual log on step. Before discussing these three steps we need to establish two relevant concepts: AFP versions and user authentication methods.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/03-the-afp-login-procedure/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="# The AFP Login Procedure">
+  <meta property="og:description" content="# The AFP Login Procedure#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 3 Pages 25–26 Converted 2026-04-01 Engine gemini-flash Chapter 3#The AFP Login Procedure#This chapter discusses the process of discovering a file server and logging in to it.
+This process consists of three steps: (i) discovering the file server, (ii) obtaining file server information, (iii) the actual log on step. Before discussing these three steps we need to establish two relevant concepts: AFP versions and user authentication methods.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="# The AFP Login Procedure">
+  <meta itemprop="description" content="# The AFP Login Procedure#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 3 Pages 25–26 Converted 2026-04-01 Engine gemini-flash Chapter 3#The AFP Login Procedure#This chapter discusses the process of discovering a file server and logging in to it.
+This process consists of three steps: (i) discovering the file server, (ii) obtaining file server information, (iii) the actual log on step. Before discussing these three steps we need to establish two relevant concepts: AFP versions and user authentication methods.">
+  <meta itemprop="wordCount" content="941">
+
+<title># The AFP Login Procedure | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/03-the-afp-login-procedure/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3># The AFP Login Procedure</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#afp-versions">AFP Versions</a></li>
+    <li><a href="#user-authentication-methods">User Authentication Methods</a></li>
+    <li><a href="#discovering-a-file-server">Discovering a File Server</a></li>
+    <li><a href="#obtaining-file-server-information">Obtaining File Server Information</a></li>
+    <li><a href="#the-login-step">The Login Step</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="-the-afp-login-procedure"># The AFP Login Procedure<a class="anchor" href="#-the-afp-login-procedure">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td>022_AppleTalkFilingProtocolEngineeringTechnicalNotes</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>25–26</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-04-01</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="chapter-3">Chapter 3<a class="anchor" href="#chapter-3">#</a></h1>
+<h1 id="the-afp-login-procedure">The AFP Login Procedure<a class="anchor" href="#the-afp-login-procedure">#</a></h1>
+<p>This chapter discusses the process of discovering a file server and logging in to it.</p>
+<p>This process consists of three steps: (i) discovering the file server, (ii) obtaining file server information, (iii) the actual log on step. Before discussing these three steps we need to establish two relevant concepts: AFP versions and user authentication methods.</p>
+<h2 id="afp-versions">AFP Versions<a class="anchor" href="#afp-versions">#</a></h2>
+<p>As noted in the introduction, the AFP has been designed to be extensible. One of the techniques used towards this end is to associate one or more version descriptors, known as the AFPVersion with the protocol. These are strings of up to 16 characters which uniquely identify a particular version of the protocol. For instance for the version defined in the present document the AFPVersion string is &ldquo;AFPVersion 1.1&rdquo;.</p>
+<p>When logging in to a server the workstation must first find out which versions of AFP the server can handle. Then the workstation client of AFP selects the version it wants used on the session and indicates this in the session opening request.</p>
+<h2 id="user-authentication-methods">User Authentication Methods<a class="anchor" href="#user-authentication-methods">#</a></h2>
+<p>As part of the login process, AFP optionally provides for user authentication by the server. This involves conveying to the server some information identifying and validating the user. This can be done in many different ways depending on the level of security desired.</p>
+<p>The basic problem is to identify the user to the server (this can be done with a user name) and then verify that this is a valid user. This user verification/authentication step can be based for instance on establishing in some way that this user has a secret piece of information (we will call this a password).</p>
+<p>For instance, the user can send the user name and the password in clear text to the server which compares them against its list of valid information. The problem with this method is that anyone listening on the network with a &ldquo;peek&rdquo; utility can pirate this user/password information and use it for accessing the server.</p>
+<p>A more secure method would be to send the server just the user&rsquo;s name. The server then consults its data base of user authentication information and extracts from it the user password. Then it uses a scheme based on a random number modification/encoding by the password to verify if the user in fact knows this password. The password is never sent over the network; in fact the encoding is done in such a way that the password cannot be extracted from the information transmitted over the wire.</p>
+<p>In the future we expect many other methods to be developed for authenticating users over a network. To make AFP extensible in this respect and to allow different servers to choose</p>
+<hr>
+<p>to implement any or all of these user authentication methods AFP expects the workstation client to obtain a list of all the user authentication methods the server handles, and then select one of these methods for the login step. The identification of user authentication methods is done by a string of up to 16 characters known as UAM. For AFP version 1.1 we describe three standard methods identified by UAM = &ldquo;No User Authent&rdquo;, &ldquo;Cleartxt passwrd&rdquo;, and &ldquo;Randnum exchange&rdquo;. Details of these three methods are discussed in Appendix A.</p>
+<h2 id="discovering-a-file-server">Discovering a File Server<a class="anchor" href="#discovering-a-file-server">#</a></h2>
+<p>As noted above, a file server implementing AFP must, upon being started up, open a session listening socket (SLS) and register its name on this socket. The name registered must have as its type part the string &ldquo;AFPServer&rdquo;. [Note that server name string comparison is case insensitive].</p>
+<p>Now a workstation trying to discover this or all file servers in the AppleTalk zone of interest must use NBP to lookup on the name =:AFPServer@&lt;zone&rsquo;s name&gt;. As a result of this call, the workstation client will receive, from NBP, a list of all active AFPServers in the zone together with the full internet address of the corresponding SLSs.</p>
+<p>With this, the workstation has completed the discovery step of the login procedure. Note that so far there has been no need to open a session with any file server.</p>
+<h2 id="obtaining-file-server-information">Obtaining File Server Information<a class="anchor" href="#obtaining-file-server-information">#</a></h2>
+<p>After the SLS address has been obtained in the previous step, the AFP client in the workstation issues an FPGetSrvrInfo call to obtain a variety of server information including the list of AFPVersion strings and list of UAM strings for the versions and user access methods that the server can handle.</p>
+<h2 id="the-login-step">The Login Step<a class="anchor" href="#the-login-step">#</a></h2>
+<p>From the AFPVersion strings and UAM strings obtained in the previous step, the AFP client at this stage selects one AFPVersion string and one UAM string. These correspond to the AFP version and user authentication method the user wants the server to use. Then the user makes an FPLogin call to AFP to initiate the login step. The caller must provide the selected AFPVersion string and UAM string, and of course the internet address of the SLS of the desired file server. Further information may have to be provided depending on the user authentication method selected.</p>
+<p>The FPLogin call causes the opening of an ASP session with the server and then an authentication of the user. If this proceeds to successful completion, then an AFP session is open with the server and futher AFP calls can be sent to the server over this session.</p>
+<p>The server associates with the user a 32-bit User ID and one or more 32-bit Group IDs, indicating the user&rsquo;s membership in those groups. In addition, one Group ID may be specially marked as the user&rsquo;s Primary Group, to be described below.</p>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cappletalk-filingprotocol-engineering-technotes%5C03-the-afp-login-procedure.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#afp-versions">AFP Versions</a></li>
+    <li><a href="#user-authentication-methods">User Authentication Methods</a></li>
+    <li><a href="#discovering-a-file-server">Discovering a File Server</a></li>
+    <li><a href="#obtaining-file-server-information">Obtaining File Server Information</a></li>
+    <li><a href="#the-login-step">The Login Step</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

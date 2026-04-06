@@ -1,0 +1,7 @@
+{
+  "batch_job_name": "batches/4t4odpggpn03i27kin85zlw90tkjqeohldwx",
+  "model": "gemini-3-flash-preview",
+  "updated_at": "2026-03-31T03:48:52.656812+00:00",
+  "state": "JobState.JOB_STATE_SUCCEEDED",
+  "destination_gcs_uri": "gs://md-uploads/gemini-batch-output/inside-appletalk-second-edition/gemini-3-flash-preview/"
+}

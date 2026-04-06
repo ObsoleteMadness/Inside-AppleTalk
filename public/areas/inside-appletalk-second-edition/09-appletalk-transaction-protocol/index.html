@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AppleTalk Transaction Protocol#Field Value Source Inside AppleTalk Second Edition (1990) Part Part IV - Reliable Data Delivery Chapter 9 Pages 198–225 Converted 2026-03-31 Engine gemini-flash Chapter 9 AppleTalk Transaction Protocol#CONTENTS
+Transactions / 9-3
+At-least-once (ALO) transactions / 9-5 Exactly-once (XO) transactions / 9-6 Multipacket responses / 9-9
+Transaction identifiers / 9-9
+ATP bitmap/sequence number / 9-10
+Responders with limited buffer space / 9-12
+ATP packet format / 9-13
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/inside-appletalk-second-edition/09-appletalk-transaction-protocol/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="AppleTalk Transaction Protocol">
+  <meta property="og:description" content="AppleTalk Transaction Protocol#Field Value Source Inside AppleTalk Second Edition (1990) Part Part IV - Reliable Data Delivery Chapter 9 Pages 198–225 Converted 2026-03-31 Engine gemini-flash Chapter 9 AppleTalk Transaction Protocol#CONTENTS
+Transactions / 9-3
+At-least-once (ALO) transactions / 9-5 Exactly-once (XO) transactions / 9-6 Multipacket responses / 9-9
+Transaction identifiers / 9-9
+ATP bitmap/sequence number / 9-10
+Responders with limited buffer space / 9-12
+ATP packet format / 9-13">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="AppleTalk Transaction Protocol">
+  <meta itemprop="description" content="AppleTalk Transaction Protocol#Field Value Source Inside AppleTalk Second Edition (1990) Part Part IV - Reliable Data Delivery Chapter 9 Pages 198–225 Converted 2026-03-31 Engine gemini-flash Chapter 9 AppleTalk Transaction Protocol#CONTENTS
+Transactions / 9-3
+At-least-once (ALO) transactions / 9-5 Exactly-once (XO) transactions / 9-6 Multipacket responses / 9-9
+Transaction identifiers / 9-9
+ATP bitmap/sequence number / 9-10
+Responders with limited buffer space / 9-12
+ATP packet format / 9-13">
+  <meta itemprop="wordCount" content="6721">
+
+<title>AppleTalk Transaction Protocol | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/inside-appletalk-second-edition/09-appletalk-transaction-protocol/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>AppleTalk Transaction Protocol</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#figure-9-1-transaction-terminology">Figure 9-1 Transaction terminology</a></li>
+      </ul>
+    </li>
+    <li><a href="#at-least-once-alo-transactions">At-least-once (ALO) transactions</a></li>
+    <li><a href="#exactly-once-xo-transactions">Exactly-once (XO) transactions</a>
+      <ul>
+        <li><a href="#-figure-9-3-exactly-once-xo-transactions">■ Figure 9-3 Exactly-once (XO) transactions</a></li>
+        <li><a href="#figure-9-4-duplicate-delivery-of-exactly-once-xo-mode">Figure 9-4 Duplicate delivery of exactly-once (XO) mode</a></li>
+      </ul>
+    </li>
+    <li><a href="#multipacket-responses">Multipacket responses</a></li>
+    <li><a href="#transaction-identifiers">Transaction identifiers</a></li>
+    <li><a href="#atp-bitmapsequence-number">ATP bitmap/sequence number</a>
+      <ul>
+        <li><a href="#figure-9-6-use-of-sts">Figure 9-6 Use of STS</a></li>
+      </ul>
+    </li>
+    <li><a href="#atp-packet-format">ATP packet format</a></li>
+    <li><a href="#figure-9-7-atp-packet-format">Figure 9-7 ATP packet format</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#sending-a-request">Sending a request</a></li>
+    <li><a href="#closing-a-responding-socket">Closing a responding socket</a></li>
+    <li><a href="#receiving-a-request">Receiving a request</a></li>
+    <li><a href="#sending-a-response">Sending a response</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#event-tresp-packet-received-from-ddp">Event: TResp packet received from DDP</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#event-release-timer-expires-only-if-xo-mode-is-implemented"><em>Event: Release timer expires, only if XO mode is implemented</em></a></li>
+        <li><a href="#event-treq-packet-received-from-ddp"><em>Event: TReq packet received from DDP</em></a></li>
+        <li><a href="#event-trel-packet-received-from-ddp-only-if-xo-mode-is-implemented"><em>Event: TRel packet received from DDP, only if XO mode is implemented</em></a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#releasing-a-rspcb">Releasing a RspCB</a></li>
+    <li><a href="#releasing-a-tcb">Releasing a TCB</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="appletalk-transaction-protocol">AppleTalk Transaction Protocol<a class="anchor" href="#appletalk-transaction-protocol">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td><a href="https://vintageapple.org/macbooks/pdf/Inside_AppleTalk_Second_Edition_1990.pdf">Inside AppleTalk Second Edition (1990)</a></td>
+      </tr>
+      <tr>
+          <td><strong>Part</strong></td>
+          <td>Part IV - Reliable Data Delivery</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>9</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>198–225</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-03-31</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="chapter-9-appletalk-transaction-protocol">Chapter 9 AppleTalk Transaction Protocol<a class="anchor" href="#chapter-9-appletalk-transaction-protocol">#</a></h1>
+<p>CONTENTS</p>
+<p><strong>Transactions</strong> / 9-3</p>
+<ul>
+<li>At-least-once (ALO) transactions / 9-5</li>
+<li>Exactly-once (XO) transactions / 9-6</li>
+</ul>
+<p><strong>Multipacket responses</strong> / 9-9</p>
+<p><strong>Transaction identifiers</strong> / 9-9</p>
+<p><strong>ATP bitmap/sequence number</strong> / 9-10</p>
+<p><strong>Responders with limited buffer space</strong> / 9-12</p>
+<p><strong>ATP packet format</strong> / 9-13</p>
+<p><strong>ATP interface</strong> / 9-16</p>
+<ul>
+<li>Sending a request / 9-17</li>
+<li>Opening a responding socket / 9-18</li>
+<li>Closing a responding socket / 9-19</li>
+<li>Receiving a request / 9-19</li>
+<li>Sending a response / 9-20</li>
+</ul>
+<p><strong>ATP state model</strong> / 9-21</p>
+<ul>
+<li>ATP requester / 9-22</li>
+<li>ATP responder / 9-24</li>
+</ul>
+<p><strong>Optional ATP interface calls</strong> / 9-26</p>
+<ul>
+<li>Releasing a RspCB / 9-26</li>
+<li>Releasing a TCB / 9-26</li>
+</ul>
+<p><strong>Wraparound and generation of TIDs</strong> / 9-27</p>
+<hr>
+<h1 id="the-appletalk-transaction-protocol-atp">THE APPLETALK TRANSACTION PROTOCOL (ATP)<a class="anchor" href="#the-appletalk-transaction-protocol-atp">#</a></h1>
+<p>THE APPLETALK TRANSACTION PROTOCOL (ATP) satisfies the transport needs of a large variety of peripheral devices and the transaction needs for more general networking in an AppleTalk network system. ATP has been designed to be easy to implement so that maximum performance can be achieved. Furthermore, nodes with tight memory space restrictions will be able to support a sufficient subset of ATP.</p>
+<p>The fundamental purpose of reliable transport protocols is to provide a loss-free delivery of client packets from a <em>source socket</em> to a <em>destination socket</em>. Various features can be added to this basic service in order to obtain characteristics appropriate for specific needs.</p>
+<p>This chapter describes ATP and provides information about</p>
+<ul>
+<li>transactions and multipacket responses</li>
+<li>transaction bitmaps and sequence numbers</li>
+<li>ATP packet format and service interface</li>
+</ul>
+<hr>
+<h1 id="transactions">Transactions<a class="anchor" href="#transactions">#</a></h1>
+<p>Often, a socket client must request the client of another socket to perform a particular higher-level function and then to report the outcome. This interaction between a requester and a responder is called a <strong>transaction</strong>.</p>
+<p>The basic structure of a transaction in the context of a network is shown in <em>Figure 9-1</em>. The requester initiates the transaction by sending a <strong>Transaction Request</strong> (TReq) packet from the requester&rsquo;s socket to the responder&rsquo;s socket. The responder executes the request and returns a <strong>Transaction Response</strong> (TResp) packet reporting the transaction&rsquo;s outcome.</p>
+<p>ATP is based on the model that a transaction request is issued by a client in a requesting node to a client in a responding node. The client in the responding node is expected to service the request and generate a response. The clients are assumed to have some method of specifically identifying the data or the operation sought in the request (for example, a disk block or a request to reset a clock).</p>
+<p>The basic transaction process must be performed in the face of various error situations inherent in the loosely coupled nature of networks; these error situations include:</p>
+<ul>
+<li>The TReq is lost in the network.</li>
+<li>The TResp is lost or delayed in transit.</li>
+<li>The responder becomes unreachable from the requester.</li>
+</ul>
+<p>Several different TReqs could be outstanding, and the requester must be able to distinguish between the responses received over the network. The ability to distinguish between these responses can be built by sending a <strong>transaction identifier</strong> (TID) with each request. A response must contain the same TID as the corresponding request. The TID, in a sense, unambiguously <em>binds</em> the request and response portions of a transaction, provided each transaction&rsquo;s TID value is unique.</p>
+<hr>
+<h3 id="figure-9-1-transaction-terminology">Figure 9-1 Transaction terminology<a class="anchor" href="#figure-9-1-transaction-terminology">#</a></h3>
+<p><img src="images/p201-transaction-terminology-entities.png" alt="Transaction terminology entities" /></p>
+<p><img src="images/p201-transaction-timeline.png" alt="Transaction timeline diagram" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant Requesting as Requesting end
+    participant Responding as Responding end
+
+    Note over Requesting: Sends transaction request
+    Requesting-&gt;&gt;Responding: TReq(TID)
+    Note over Responding: Executes the request
+    Note over Responding: Sends transaction response
+    Responding-&gt;&gt;Requesting: TResp(TID)</pre><hr>
+<h2 id="at-least-once-alo-transactions">At-least-once (ALO) transactions<a class="anchor" href="#at-least-once-alo-transactions">#</a></h2>
+<p>In any of the three error situations previously listed, the requester will not receive the TResp and must conclude that the transaction was not completed. The requester must then activate a recovery procedure consisting of a timer and an automatic retry mechanism. If the timer expires in the requester and the response has not been received, the requester retransmits the TReq, as shown in <em>Figure 9-2</em>. This process is repeated until a response is received by the requester or until a maximum retry count is reached. If the retry count hits its maximum value, the transaction requester (the ATP client at the requester end) is notified that the responder is unreachable.</p>
+<p>This recovery mechanism is designed to ensure that the TReq is executed at least once; the transaction is called an <strong>at-least-once (ALO) transaction</strong>. Such a recovery mechanism is adequate if the request is <em>idempotent</em> (that is, if repeated execution of the request is the same as executing it once). An example of an idempotent transaction is asking a destination node to identify itself.</p>
+<p>If the ALO service is used, then ATP handles timeouts and retransmission of requests but does not automatically retransmit responses. In this case, it is up to the responding client to handle retransmission of responses to duplicate requests.</p>
+<p>■ <strong>Figure 9-2</strong> Automatic retry mechanism</p>
+<p><img src="images/p202-automatic-retry-mechanism.png" alt="Automatic retry mechanism diagram showing a TReq, a lost TResp, a retry timeout, and a subsequent successful TReq/TResp cycle." /></p>
+<pre class="mermaid">sequenceDiagram
+    participant Requester as Requesting end
+    participant Responder as Responding end
+    
+    Requester-&gt;&gt;Responder: TReq(TID)
+    Responder--xRequester: TResp(TID) (Lost)
+    Note over Requester: Retry timeout
+    Requester-&gt;&gt;Responder: TReq(TID)
+    Responder--&gt;&gt;Requester: TResp(TID)</pre><hr>
+<h2 id="exactly-once-xo-transactions">Exactly-once (XO) transactions<a class="anchor" href="#exactly-once-xo-transactions">#</a></h2>
+<p>When, as previously described, an ATP request is retransmitted, the transaction could be executed more than once. If the request is not idempotent, serious damage could result from the execution of the duplicate transaction request. For nonidempotent requests, a transaction service that ensures the request&rsquo;s execution once and exactly once is essential; the transaction is called an <strong>exactly-once (XO) transaction</strong>. (Whether the ALO or the XO level of service is appropriate can be determined only by the transaction requester.)</p>
+<p><em>Figure 9-3</em> illustrates ATP&rsquo;s implementation of an XO transaction protocol. In order to implement an XO transaction protocol, the responder maintains a <strong>transactions list</strong> of all recently received transaction requests. Upon receiving a TReq, the responder searches through this list to determine whether the request has already been received (this is known as <strong>duplicate transaction-request filtering</strong>). A newly received request is inserted into the list and then executed; after which the corresponding response is generated by the responder and is sent to the transaction requester. At the same time, a copy of the response is attached to the transaction&rsquo;s entry in the transactions list. Upon receiving a duplicate request for which a response has already been sent, the responder retransmits the response without the intervention of the ATP client. If a duplicate request is received and a response has not been sent out yet (because the request is still being executed), then ATP ignores the duplicate request.</p>
+<p>Upon receiving a TResp, the requester should return a <strong>Transaction Release (TRel)</strong> packet to release the request from the responding ATP&rsquo;s transactions list. If this TRel gets lost, then the request would stay in the list permanently. To prevent this situation, the responder <em>time stamps</em> a request before inserting it in its list. The list is checked periodically by the responder, and those requests that have been in the list longer than the time specified by the <em>release timer</em> are eliminated.</p>
+<hr>
+<h3 id="-figure-9-3-exactly-once-xo-transactions">■ Figure 9-3 Exactly-once (XO) transactions<a class="anchor" href="#-figure-9-3-exactly-once-xo-transactions">#</a></h3>
+<p><img src="images/p204-exactly-once-transactions.png" alt="Diagram showing the sequence of an exactly-once (XO) transaction where a response is lost and subsequently retransmitted upon a retry request." /></p>
+<pre class="mermaid">sequenceDiagram
+    participant Req as Requesting end
+    participant Res as Responding end
+    
+    Req-&gt;&gt;Res: TReq(TID)
+    Note over Res: Transaction is inserted by ATP into the&lt;br/&gt;transactions list and is delivered to the&lt;br/&gt;responding socket&#39;s client.
+    
+    Note over Res: The client executes the request and&lt;br/&gt;then sends the transaction response.&lt;br/&gt;ATP saves this response in the&lt;br/&gt;transactions list.
+    Res--xReq: TResp(TID)
+    Note over Req,Res: Lost
+    
+    Note over Req,Res: Retry timeout
+    
+    Req-&gt;&gt;Res: TReq(TID)
+    Note over Res: Transaction request is not&lt;br/&gt;delivered to responder; instead,&lt;br/&gt;the response is retransmitted out of&lt;br/&gt;transactions list by ATP.
+    Res-&gt;&gt;Req: TResp(TID)
+    
+    Req-&gt;&gt;Res: TRel(TID)</pre><p>This method of filtering duplicate requests by consulting a list of recently received transactions is quite effective in ensuring XO service in most environments. However, it does not guarantee XO service in all environments. If packets are guaranteed to arrive in the order in which they were sent (for example, on a single AppleTalk network), then this technique of filtering duplicate requests is completely effective. However, in an internet environment, packets may arrive at their destination in a different order from the one in which they were sent. This out-of-order delivery can occur because of the existence of multiple paths from source to destination and the various transmission delays on these paths. As a result, unusual situations can take place, such as the one shown in Figure 9-4, in which the original TResp was delayed long enough in the internet to provoke a retransmission of the request.</p>
+<hr>
+<h3 id="figure-9-4-duplicate-delivery-of-exactly-once-xo-mode">Figure 9-4 Duplicate delivery of exactly-once (XO) mode<a class="anchor" href="#figure-9-4-duplicate-delivery-of-exactly-once-xo-mode">#</a></h3>
+<p><img src="images/p205-duplicate-delivery-xo.png" alt="Diagram showing a sequence of events leading to a duplicate delivery in exactly-once mode where a release packet arrives before a retransmitted request." /></p>
+<pre class="mermaid">sequenceDiagram
+    participant Rqr as Requesting end
+    participant Rsp as Responding end
+
+    Note over Rqr: TReq starts
+    Rqr-&gt;&gt;Rsp: TReq
+    Note over Rqr: Retry timeout
+
+    Note over Rqr: Request is retransmitted
+    Rqr-&gt;&gt;Rsp: TReq (retransmitted)
+
+    Rsp--&gt;&gt;Rqr: TResp (delayed)
+    Note over Rqr: Response arrives. Request completed. TRel sent.
+    Rqr-&gt;&gt;Rsp: TRel
+
+    Note over Rsp: TRel arrives before retransmitted request; releases the transaction from transactions list.
+    Note over Rsp: Retransmitted request arrives. Cannot be filtered as duplicate. Passed on to client.</pre><p>Furthermore, if the TRel sent by the requester (upon receiving the delayed response) arrives before the retransmitted request, the responder (upon receiving the TRel) releases the request from the responder&rsquo;s transactions list. As a result, when the retransmitted request arrives at the responder, it cannot be filtered out as a duplicate. It should be noted that the probability of the occurrence of the situation of Figure 9-4 is quite low. Furthermore, ATP XO does ensure that if a duplicate request is somehow delivered by ATP to the responder (as in the above example), then the transaction has already been completed and the request can be ignored by the responder. Thus, clients requiring a higher level of guaranteed XO service can obtain it by augmenting the ATP mechanism with some form of simple sequence number checking, which allows a responder to detect delayed duplicate requests. An example of such a sequence number check is detailed in Chapter 10, &ldquo;Printer Access Protocol.&rdquo;</p>
+<hr>
+<p>◆ <em>Note: ATP XO should be considered an optional part of ATP. Nodes that do not require XO service need not implement it. Developers should keep in mind, however, that higher-level protocols, such as the Printer Access Protocol (PAP) and the AppleTalk Session Protocol (ASP), may require ATP XO service.</em></p>
+<h2 id="multipacket-responses">Multipacket responses<a class="anchor" href="#multipacket-responses">#</a></h2>
+<p>This basic ATP model is adequate for most interactions. However, since the underlying network restricts the size of packets that can be exchanged, the TResp may not fit in a single packet. For this reason, the TReq and TResp are looked upon as <em>messages</em> (not packets). Although ATP restricts its TReqs to single packets, it allows the TResp message to be made up of several sequentially arranged packets. When the requesting node receives all the response packets (that is, the complete response message), the transaction is considered complete and the response is delivered as a single entity to the ATP client (the transaction requester).</p>
+<p>The maximum size (number of packets) of a TResp message is limited to eight packets. The maximum amount of data in an ATP packet (request or response) is 578 bytes. This limit is derived from the Datagram Delivery Protocol (DDP) maximum packet size of 586 bytes minus ATP&rsquo;s header size of 8 bytes.</p>
+<h2 id="transaction-identifiers">Transaction identifiers<a class="anchor" href="#transaction-identifiers">#</a></h2>
+<p>A transaction identifier (TID) is generated by the ATP requesting end and sent along with the TReq packet. An important design issue is the size of these IDs (16 bits for ATP). Their size is a function of the rate at which transactions are generated and of the <strong>maximum packet lifetime</strong> (MPL) of the complete network system. A basic problem exists because of the finite size of the TID, which will eventually wrap around. Once a TID value is reused, the danger exists that an old packet, with a previous instance of that TID, will arrive and be accepted as valid. Thus, the longer the MPL, the larger the TID must be. Similarly, if transactions are generated rapidly, then the TIDs must again be larger.</p>
+<p>For a single AppleTalk network, the time taken for exchanging a TReq and a TResp will generally be on the order of 1 millisecond or greater. Therefore, at most, 1000 transactions can take place per second. From this point of view, a 1-byte TID would ensure a TID wraparound time of about one-quarter of a second.</p>
+<hr>
+<p>With network interconnection through store-and-forward internet routers (IRs), however, the impact of an MPL on the order of 30 seconds makes a 1-byte TID inadequate. A 16-bit TID would increase the wraparound time to 1 minute and eliminate concerns about old retransmitted requests and responses being received as a result of TID wraparound.</p>
+<p>In &ldquo;Wraparound and Generation of TIDs&rdquo; later in this chapter, the issue of generating TIDs is reviewed to account for another subtle but important characteristic of ATP—namely, transactions with infinite retries.</p>
+<h2 id="atp-bitmapsequence-number">ATP bitmap/sequence number<a class="anchor" href="#atp-bitmapsequence-number">#</a></h2>
+<p>Every ATP packet includes a bitmap/sequence field in its header. This field is 8 bits wide. ATP handles lost or out-of-sequence response packets by using this field. The significance of this field depends on the type of ATP packet (TReq, TResp, or TRel).</p>
+<p>In TReq packets, this field is known as the <strong>transaction bitmap</strong>. The requester indicates to the responder the number of buffers reserved for the TResp by setting a bit in the TReq packet&rsquo;s bitmap for each reserved buffer. The responder can examine the TReq packet&rsquo;s bitmap and determine the number of packets the requester is expecting to receive in the TResp message.</p>
+<p>In TResp packets, this field is known as the ATP sequence number. The value of this field in the TResp packet is an integer (in the range 0-7), indicating the sequential position of that response packet in the TResp message. The requester ATP can use this value to put the received response packet in the appropriate response buffer (even if the response packet is received out of sequence) for delivery to the transaction requester (the ATP client). In addition, the requester ATP clears a bit in its copy of the transaction bitmap to indicate that the corresponding response packet has been received.</p>
+<p>The actual TResp message may turn out to be smaller than was expected by the requester. Therefore, a provision is made in the response packet&rsquo;s header to signal an <strong>end of message (EOM)</strong>. This EOM is set by the responder&rsquo;s ATP in the last response packet of the message. Upon receiving a response packet with the EOM indication, the requester must clear all bits corresponding to higher sequential positions in its copy of the transaction bitmap.</p>
+<p>◆ <em>Note:</em> This EOM signal is internal to ATP; the responding client tells ATP to set it, but it is not delivered to the requesting client and should not be used for higher-level communications (for example, as an end-of-file indicator).</p>
+<hr>
+<p>If the requester&rsquo;s retry timeout expires and the complete TResp has not yet been received (indicated by one or more bits still set to 1 in the requester&rsquo;s transaction bitmap), then a TReq is sent out again with the current value of the transaction bitmap and the same TID as the original request. As a result, only the missing TResp packets need to be sent again by the responder.</p>
+<p>The mechanism for requesting only the missing TResp packets is shown in Figure 9-5. In Figure 9-5, a requester issues a TReq indicating that it has reserved six buffers for the response; the request might be for six blocks of information from a disk device. The TReq packet would have in its ATP data part the pertinent information, such as what file and which six blocks of information are being requested. ATP builds the request packet and sets the least-significant 6 bits in the bitmap. When the responder receives this request packet, it examines the request&rsquo;s ATP data and bitmap and then determines the type and range of the request to be serviced. The six blocks are retrieved from the disk and passed to the ATP layer in the responding node. They are then sent back to the requesting node; each block is in a separate packet with its sequence number indicating the packet&rsquo;s sequential position in the response.</p>
+<p>■ Figure 9-5 Multipacket response example</p>
+<p><img src="images/p208-multipacket-response.png" alt="Multipacket response example showing a TReq with a 6-bit bitmap, several TResp packets with one lost, and a subsequent TReq retry asking for only the missing packet." /></p>
+<pre class="mermaid">sequenceDiagram
+    participant Requesting as Requesting end
+    participant Responding as Responding end
+
+    Requesting-&gt;&gt;Responding: TReq (bitmap = 00111111)
+    Responding-&gt;&gt;Requesting: TResp(0)
+    Responding-&gt;&gt;Requesting: TResp(1)
+    Responding--xRequesting: TResp(2) (Lost)
+    Note over Requesting, Responding: ...
+    Responding-&gt;&gt;Requesting: TResp(5)
+    Note over Requesting: Retry timeout expires
+    Requesting-&gt;&gt;Responding: TReq (bitmap = 00000100)
+    Responding-&gt;&gt;Requesting: TResp(2)</pre><hr>
+<h3 id="figure-9-6-use-of-sts">Figure 9-6 Use of STS<a class="anchor" href="#figure-9-6-use-of-sts">#</a></h3>
+<p><img src="images/p210-figure-9-6.png" alt="Diagram showing the communication sequence between a Responding end and a Requesting end using the STS bit." /></p>
+<pre class="mermaid">sequenceDiagram
+    participant R as Responding end (has only two buffers)
+    participant Q as Requesting end
+
+    Note over R: in buffer A
+    Note over R: in buffer B
+    Q-&gt;&gt;R: TReq (bitmap = 01111111)
+    R--xQ: TResp(0) (Lost)
+    Note over R: frees buffer B
+    Note over R: in buffer A
+    R-&gt;&gt;Q: TResp(1) + STS
+    Note over R: in buffer B
+    Q-&gt;&gt;R: TReq (bitmap = 01111101)
+    R-&gt;&gt;Q: TResp(0)
+    R-&gt;&gt;Q: TResp(2) + STS
+    Note over R: frees buffers A and B
+    Note over R: in buffer A
+    Note over R: in buffer B
+    Q-&gt;&gt;R: TReq (bitmap = 01111000)
+    R-&gt;&gt;Q: TResp(3)
+    R-&gt;&gt;Q: TResp(4) + STS</pre><h2 id="atp-packet-format">ATP packet format<a class="anchor" href="#atp-packet-format">#</a></h2>
+<p>The format of an ATP packet is shown in <em>Figure 9-7</em>. An ATP packet consists of an 8-byte ATP header plus up to 578 ATP data bytes. The first byte of the ATP header is used for <strong>control information</strong> (CI). The 2 high-order bits of the CI contain the packet&rsquo;s function code. These bits are encoded in the following way:</p>
+<ul>
+<li>01 = TReq</li>
+<li>10 = TResp</li>
+<li>11 = TRel</li>
+</ul>
+<p>The XO bit must be set in all TReq packets that pertain to the XO mode of operation of the protocol. The EOM bit is set in a TResp packet to signal that this packet is the last packet in the transaction&rsquo;s response message. The STS bit is set in TResp packets to force the requester to retransmit a TReq immediately.</p>
+<hr>
+<h2 id="figure-9-7-atp-packet-format">Figure 9-7 ATP packet format<a class="anchor" href="#figure-9-7-atp-packet-format">#</a></h2>
+<p><img src="images/p211-atp-packet-format.png" alt="ATP packet format diagram showing headers and data fields." /></p>
+<pre class="mermaid">packet-beta
+0-1: &#34;Function code&#34;
+2: &#34;XO bit&#34;
+3: &#34;EOM bit&#34;
+4: &#34;STS bit&#34;
+5-7: &#34;TRel timeout indicator&#34;
+8-15: &#34;Bitmap / sequence number&#34;
+16-31: &#34;TID&#34;
+32-63: &#34;User bytes&#34;
+64-4687: &#34;ATP data (0 to 578 bytes)&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Function code</td>
+          <td>0</td>
+          <td>2</td>
+          <td>Identifies the ATP packet type.</td>
+      </tr>
+      <tr>
+          <td>XO bit</td>
+          <td>2</td>
+          <td>1</td>
+          <td>Exactly-once bit.</td>
+      </tr>
+      <tr>
+          <td>EOM bit</td>
+          <td>3</td>
+          <td>1</td>
+          <td>End-of-message bit.</td>
+      </tr>
+      <tr>
+          <td>STS bit</td>
+          <td>4</td>
+          <td>1</td>
+          <td>Send-transaction-status bit.</td>
+      </tr>
+      <tr>
+          <td>TRel timeout indicator</td>
+          <td>5</td>
+          <td>3</td>
+          <td>Transaction release timeout indicator (used for XO TReq&rsquo;s only).</td>
+      </tr>
+      <tr>
+          <td>Bitmap / sequence number</td>
+          <td>8</td>
+          <td>8</td>
+          <td>Bitmap (for TReq and TResp) or sequence number (for TResp).</td>
+      </tr>
+      <tr>
+          <td>TID</td>
+          <td>16</td>
+          <td>16</td>
+          <td>Transaction Identifier.</td>
+      </tr>
+      <tr>
+          <td>User bytes</td>
+          <td>32</td>
+          <td>32</td>
+          <td>Four bytes for use by the transaction-based protocol.</td>
+      </tr>
+      <tr>
+          <td>ATP data</td>
+          <td>64</td>
+          <td>0–4624</td>
+          <td>Transaction data (0 to 578 bytes).</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p>The remaining 3 bits of the CI should always be set to zero, except in the case of an XO TReq packet. In this case, these three bits are an indicator as to the value of the release timer to use for the transaction. These bits are encoded in the following way:</p>
+<ul>
+<li>000 = 30 second TRel timer</li>
+<li>001 = 1 minute TRel timer</li>
+<li>010 = 2 minute TRel timer</li>
+<li>011 = 4 minute TRel timer</li>
+<li>100 = 8 minute TRel timer</li>
+</ul>
+<p>Other values are reserved and should not be used.</p>
+<p>◆ <em>Note</em>: AppleTalk Phase 1 nodes will not honor the TRel timer indicator field in XO TReq packets and will always use a TRel timer value of 30 seconds.</p>
+<p>The 8 bits immediately following the control field comprise the ATP bitmap or sequence number field. The packets comprising the TResp message are assigned sequence numbers 0–7. The sequence number (encoded as an integer) is sent in the ATP sequence number field of the corresponding response packet.</p>
+<p>In the case of a TReq packet, a bit of the bitmap is set to 1 for each expected response packet. The least-significant bit corresponds to the response packet with sequence number 0, up through the most-significant bit that corresponds to the response packet with sequence number 7.</p>
+<p>The third and fourth bytes of the ATP header contain the 16-bit TID. TIDs are generated by the ATP requester and are incremented from transaction to transaction as unsigned 16-bit integers (a 0 value is permitted).</p>
+<p>The last 4 bytes of the ATP header are not examined by ATP and are used to send client data. Strictly speaking, they should not be considered part of the ATP header. However, they can be used by an ATP client to build a simple header for a higher-level protocol. These bytes have been separated out to allow an implementation of ATP that handles an ATP request or response message’s data in an assembled, contiguous form, without interposed higher-level headers. ATP client interfaces should build appropriate mechanisms for exchanging these 4 user bytes independent of the data.</p>
+<p>◆ <em>Note</em>: The ATP user bytes contained in a TRel packet are not significant, and clients should not use them.</p>
+<hr>
+<h1 id="atp-interface">ATP interface<a class="anchor" href="#atp-interface">#</a></h1>
+<p>The ATP interface, shown in Figure 9-1, is made up of five calls described later in this chapter.</p>
+<p>Developers can visualize the ATP package (an implementation of ATP) as consisting of two parts, one each at the requester and the responder ends. The calls to the ATP interface are discussed in the context of both the ATP requesting end and the ATP responding end of Figure 9-1.</p>
+<p>In the following description of the protocol, various details of the interface are not specified because they are implementation-dependent. The description is adequate for defining the characteristics of the ATP service provided to the next higher layer.</p>
+<p>The availability of multiprocessing in the network node is not required. Descriptions of the various interface calls have been written in a generic form indicating parameters passed by the caller to the ATP implementation as well as results returned by the ATP implementation to the caller. The result codes and their interpretation depend on the specifics of the implementation of a call. If the call is issued synchronously, the caller is blocked until the call&rsquo;s operation has been completed or aborted. The returned parameters then become available when the caller is unblocked. In the case of asynchronous calls, a call completion mechanism is activated when the operation completes or aborts. Then the returned parameters become available through the completion routine mechanism.</p>
+<p>At least two kinds of interfaces are anticipated:</p>
+<ul>
+<li>a packet-by-packet passing of response buffers to and from ATP</li>
+<li>a response message (in other words, the message is in a contiguous buffer)</li>
+</ul>
+<p>The two kinds of interfaces are analogous to the familiar packet stream and byte stream interfaces available for data stream protocols. However, implementers are completely free to provide any type of interface they consider appropriate.</p>
+<hr>
+<h2 id="sending-a-request">Sending a request<a class="anchor" href="#sending-a-request">#</a></h2>
+<p>The transaction requester (ATP client) issues a call to send a TReq. The transaction requester must supply several parameters with the call. These parameters include the address of the destination socket, the ATP data part, user bytes of the request packet, buffer space for the expected response packets, and information as to whether the XO mode of service is required. In addition, the transaction requester specifies the duration of the retry timeout to be used and the maximum number of retries. A provision must be made in the interface for the transaction requester to indicate infinite retries—in other words, retransmitting the request until a response is obtained. The transaction requester may be provided with the ability to specify the socket through which the request should be sent. (Alternatively, ATP could pick the socket for the requester.) In addition, if the request is XO, the caller should pass an indicator as to the value to be used for the transaction release timer.</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Call parameters</strong></td>
+          <td>transaction mode (XO or ALO)</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>transaction responder&rsquo;s address (network number, node ID, and socket number)</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>ATP request packet&rsquo;s data part and its length</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>ATP user bytes</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>expected number of response packets</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>buffer space for the TResp message</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>retry timeout</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>maximum number of retries</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>TRel timeout indicator (XO requests only)</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>socket through which to send the request (optional)</td>
+      </tr>
+      <tr>
+          <td><strong>Returned parameters</strong></td>
+          <td>result code: success; failure</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>number of response packets received</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>user bytes from responses</td>
+      </tr>
+  </tbody>
+</table>
+<p>A result code of failure is returned if ATP has exhausted all retries and a complete response has not been received.</p>
+<p>◆ Note: No error is returned if the caller requests XO service and the responder does not support it; in this case, the request will be executed at least once.</p>
+<hr>
+<h2 id="closing-a-responding-socket">Closing a responding socket<a class="anchor" href="#closing-a-responding-socket">#</a></h2>
+<p>This call is used to close a previously opened responding socket.</p>
+<p><strong>Call parameter</strong></p>
+<ul>
+<li>transaction listening socket number</li>
+</ul>
+<p><strong>Returned parameter</strong></p>
+<ul>
+<li>result code: success; failure</li>
+</ul>
+<hr>
+<h2 id="receiving-a-request">Receiving a request<a class="anchor" href="#receiving-a-request">#</a></h2>
+<p>A transaction responder issues this call to set up the mechanism for reception of a TReq through an already-opened transaction responding socket.</p>
+<p><strong>Call parameters</strong></p>
+<ul>
+<li>local socket number on which to listen</li>
+<li>buffer for receiving the request</li>
+</ul>
+<p><strong>Returned parameters</strong></p>
+<ul>
+<li>result code: success; failure (buffer overflow)</li>
+<li>the received request&rsquo;s ATP data</li>
+<li>received request&rsquo;s user bytes</li>
+<li>TID</li>
+<li>transaction requester&rsquo;s address (network number, node ID, and socket number)</li>
+<li>bitmap</li>
+<li>XO indication</li>
+</ul>
+<hr>
+<h2 id="sending-a-response">Sending a response<a class="anchor" href="#sending-a-response">#</a></h2>
+<p>When a transaction responder has finished servicing a transaction request, it issues this call in order to send out one or more response packets. ATP will send out each response buffer with the indicated TID and a sequence number indicating the position of the particular response packet in the response message.</p>
+<p><strong>Call parameters</strong></p>
+<ul>
+<li>local socket number (the responding socket)</li>
+<li>TID</li>
+<li>transaction requester&rsquo;s address (network number, node ID, and socket number)</li>
+<li>TResp message packets (ATP data part)</li>
+<li>transaction user bytes (up to eight sets of 4 bytes each)</li>
+<li>descriptors to determine the sequence numbers of the response packets</li>
+<li>EOM and STS control</li>
+</ul>
+<p><strong>Returned parameter</strong></p>
+<ul>
+<li>result code: success; failure</li>
+</ul>
+<hr>
+<h1 id="atp-state-model">ATP state model<a class="anchor" href="#atp-state-model">#</a></h1>
+<p>The following description is not a formal specification but an aid for protocol implementers. The appropriate actions to respond to all possible events are presented in this model.</p>
+<p>The ATP requester must maintain all information necessary for retransmitting an ATP request and for receiving its responses. This information is referred to as the <strong>transaction control block</strong> (TCB). More specifically, the TCB should contain all the information provided by the transaction requester in a call for sending a request, plus the TID, the request&rsquo;s bitmap, and a response-packets-received counter. A retry timer is associated with each transaction request and TCB. The retry timer is used to retransmit the request packet in order to recover from the loss of request or response packets.</p>
+<p>The ATP responder must maintain for each call a <strong>request control block</strong> (RqCB) for receiving a request issued by a client in that node. This block contains the information provided by that call, including all data pertinent to the buffers and to the implementation-dependent client delivery mechanism.</p>
+<p>The <strong>response control block</strong> (RspCB) is needed only in nodes implementing the XO mode of operation. It holds the information required to filter duplicate requests and to retransmit packets in response to these duplicates. A release timer is associated with each RspCB. This timer is used to release the RspCB if the release packet sent by the requester is lost. The transactions list mentioned in &ldquo;Exactly-Once (XO) Transactions&rdquo; earlier in this chapter consists of these RspCBs. The release timer is set to the value indicated in the TReq packet.</p>
+<ul>
+<li>Note: The release timer is started as soon as a RspCB is set up (in other words, when the responder&rsquo;s socket receives the TReq). The timer is reset every time a TResp is sent by the responder. This implies that the responding client must send the first TResp within one TRel timer interval of the TReq&rsquo;s arrival and then send subsequent TResps at a maximum separation of one TRel timer from each other. Failure to do so can result in the RspCB being destroyed, making it possible for a duplicate request to be delivered to the responding client.</li>
+</ul>
+<hr>
+<h1 id="atp-requester">ATP requester<a class="anchor" href="#atp-requester">#</a></h1>
+<p>The ATP requester maintains all information for retransmitting an ATP request and for receiving its responses. A list of events specific to the ATP requester follows and includes step-by-step actions for responding to the events.</p>
+<p><em>Event: Call to send a request issued by a transaction requester in the node</em></p>
+<ol>
+<li>Validate the following call parameters:
+<ul>
+<li>The number of response packets should be a maximum of eight.</li>
+<li>The ATP request&rsquo;s data should be a maximum of 578 bytes long.
+If either parameter is invalid, then reject the call.</li>
+</ul>
+</li>
+<li>Create a TCB:
+<ul>
+<li>Insert the call parameters into the TCB.</li>
+<li>Clear the response-packets-received counter.</li>
+<li>Insert the retry count into the TCB.</li>
+</ul>
+</li>
+<li>Generate a TID:
+<ul>
+<li>This TID must be generated so that the packets of the new transaction will be correctly distinguished from those of other transactions (details of TID generation are discussed at the end of this chapter).</li>
+<li>Save the TID in the TCB.</li>
+</ul>
+</li>
+<li>Generate the bitmap for the TReq packet and save a copy of it in the TCB.</li>
+<li>Prepare the ATP header:
+<ul>
+<li>Insert the TID and the bitmap.</li>
+<li>Set the function code bits to binary 01.</li>
+<li><em>Only if XO mode is implemented:</em> If the caller requested XO mode, then set the XO bit and the indicated value of the TRel timer bits.</li>
+</ul>
+</li>
+<li>Call DDP to send the TReq packet (ignore any error returned by DDP).</li>
+<li>Start the request&rsquo;s retry timer.</li>
+</ol>
+<p><em>Event: Retry timer expires</em></p>
+<ol>
+<li>If retry count = 0, then:
+<ul>
+<li>Set the result code to failure.</li>
+<li>Notify the transaction requester (the client in the node) of the outcome.</li>
+<li>Remove the TCB.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<ol start="2">
+<li>If retry count &lt;&gt; 0, then:
+<ul>
+<li>Decrement the retry count (if not infinite).</li>
+<li>Change the bitmap in the ATP request&rsquo;s header to the current value in the TCB.</li>
+<li>Call DDP to retransmit the request packet (ignore any errors returned by DDP).</li>
+<li>Start the retry timer.</li>
+</ul>
+</li>
+</ol>
+<h3 id="event-tresp-packet-received-from-ddp">Event: TResp packet received from DDP<a class="anchor" href="#event-tresp-packet-received-from-ddp">#</a></h3>
+<ol>
+<li>Use the packet&rsquo;s TID and source address to search for the TCB.</li>
+<li>If a matching TCB is not found, then ignore the packet and exit.</li>
+<li>If a matching TCB is found, then check the packet&rsquo;s sequence number against the TCB&rsquo;s bitmap to determine whether this response packet is expected. The packet is expected if the bit corresponding to the response packet&rsquo;s sequence number is set in the TCB&rsquo;s bitmap. If the packet is not expected, then ignore it and exit.</li>
+<li>If the response packet is expected, then:
+<ul>
+<li>Clear the corresponding bit in the TCB bitmap.</li>
+<li>Set up the response packet&rsquo;s ATP data and user bytes for delivery to the transaction requester.</li>
+<li>Increment the response packet&rsquo;s counter in the TCB.</li>
+</ul>
+</li>
+<li>If the packet&rsquo;s EOM bit is set, then clear all higher bits in the TCB bitmap.</li>
+<li>If the packet&rsquo;s STS bit is set, then:
+<ul>
+<li>Call DDP to send the TReq with the current TCB information.</li>
+<li>Reset the retry timer for the request.</li>
+</ul>
+</li>
+<li>If the TCB bitmap = 0 (a complete response has been received), then:
+<ul>
+<li>Cancel the retry timer.</li>
+<li>Set the result code to success.</li>
+<li><em>Only if XO mode is implemented</em>: If the transaction is of XO mode (determined by examining the TCB), then call DDP to send a TRel packet to the responder.</li>
+<li>Notify the transaction requester.</li>
+<li>Remove the TCB.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="atp-responder">ATP responder<a class="anchor" href="#atp-responder">#</a></h1>
+<p>The ATP responder must maintain a RqCB for each call to recieve a request issued by a client in that node. A list of events specific to the ATP responder follows and includes specific step-by-step actions for responding to the events.</p>
+<p><em>Event: Call to open a responding socket issued by a client</em></p>
+<ol>
+<li>If the caller specifies a statically assigned socket, then call DDP to open that socket; otherwise, call DDP to open a dynamically assigned socket.</li>
+<li>If DDP returns with an error, then set the result code to equal the error.</li>
+<li>If DDP returns without an error, then:
+<ul>
+<li>Set the result code to success.</li>
+<li>Save the socket number and the acceptable transaction requester address in an ATP responding sockets table.</li>
+</ul>
+</li>
+</ol>
+<p><em>Event: Call issued to close a responding socket in the node</em></p>
+<ol>
+<li>Call DDP to close the socket.</li>
+<li>Release all RqCBs for that socket; for systems supporting the XO mode, release all RspCBs (and cancel all release timers), if any, associated with the socket.</li>
+<li>Delete the socket from the ATP responding sockets table.</li>
+</ol>
+<p><em>Event: Call to receive a request issued by a transaction responder</em></p>
+<ol>
+<li>If the specified local socket is not open, then return to the caller with an error.</li>
+<li>Create a RqCB and attach it to the socket.</li>
+<li>Save the call&rsquo;s parameters in the RqCB.</li>
+</ol>
+<p><em>Event: Call to send a response issued by a transaction responder</em></p>
+<ol>
+<li>If the local socket is invalid or if the response data length is invalid, then return to the caller with an error.</li>
+<li><em>Only if XO mode is implemented:</em> Search for a RspCB matching the call&rsquo;s local socket number, TID, and transaction requester address. If a match is found, attach a copy of the response to the RspCB (for potential retransmission in response to duplicate TReqs received subsequently), and restart the release timer.</li>
+</ol>
+<hr>
+<ol start="3">
+<li>Send the response packets through DDP, setting the ATP header of each with the function code binary 10, the caller-supplied TID, the correct sequence number for the packet&rsquo;s sequential position in the response message, the EOM flag set in the last response packet, and the STS flag, if requested. Ignore any error returned by DDP.</li>
+</ol>
+<h3 id="event-release-timer-expires-only-if-xo-mode-is-implemented"><em>Event: Release timer expires, only if XO mode is implemented</em><a class="anchor" href="#event-release-timer-expires-only-if-xo-mode-is-implemented">#</a></h3>
+<ol>
+<li>Remove the RspCB and release all associated data structures.</li>
+</ol>
+<h3 id="event-treq-packet-received-from-ddp"><em>Event: TReq packet received from DDP</em><a class="anchor" href="#event-treq-packet-received-from-ddp">#</a></h3>
+<ol>
+<li><em>Only if XO mode is implemented:</em> If the packet&rsquo;s XO bit is set and a matching RspCB exists (the packet&rsquo;s source, destination addresses, and TID are the same as those saved in the RspCB), then:
+<ul>
+<li>Retransmit all response packets requested in the transaction bitmap.</li>
+<li>Restart the release timer.</li>
+<li>Return the bitmap to the client if the STS bit was set during a previous response.</li>
+<li>Exit.</li>
+</ul>
+</li>
+<li>If a RqCB does not exist for the local socket or if the packet&rsquo;s source address does not match the admissible requester address in the RqCB, then ignore the packet and exit.</li>
+<li><em>Only if XO mode is implemented:</em> If the packet&rsquo;s XO bit is set, then create a RspCB, save the request&rsquo;s source and destination addresses, TID, and TRel timer indicator, and start its release timer.</li>
+<li>Notify the client about the arrival of the request and remove the corresponding RqCB.</li>
+</ol>
+<h3 id="event-trel-packet-received-from-ddp-only-if-xo-mode-is-implemented"><em>Event: TRel packet received from DDP, only if XO mode is implemented</em><a class="anchor" href="#event-trel-packet-received-from-ddp-only-if-xo-mode-is-implemented">#</a></h3>
+<ol>
+<li>Search for a RspCB that matches the packet&rsquo;s TID, source address, and destination address; if not found, then ignore the release packet and exit.</li>
+<li>If a matching RspCB is found, then:
+<ul>
+<li>Remove the RspCB and release all associated data structures.</li>
+<li>Cancel the RspCB&rsquo;s release timer.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="optional-atp-interface-calls">Optional ATP interface calls<a class="anchor" href="#optional-atp-interface-calls">#</a></h1>
+<p>In certain cases, the clients of ATP might use contextual information to enhance their use of ATP through additional interface calls. Examples are calls to release a RspCB and to release a TCB. These calls are useful in implementing certain higher-level protocols but are optional in an ATP implementation.</p>
+<h2 id="releasing-a-rspcb">Releasing a RspCB<a class="anchor" href="#releasing-a-rspcb">#</a></h2>
+<p>The RspCB is used to hold information required to filter duplicate requests and to retransmit response packets for these duplicates. If the ATP client is aware that such filtering is no longer necessary, the client can indicate this to ATP through a call to release the RspCB.</p>
+<p>For example, two clients of ATP communicate with each other using the XO mode, and they decide to have, at most, one outstanding transaction at a time. Client A calls ATP to send a TReq packet to client B. Client B sends back the response. Client A, upon receiving the response, sends out a second request (but no release packet). The second request packet, upon being received by B, signals that the response to the previous request has been received by A. Now B could simply call its ATP responder and ask it to release the previous transaction&rsquo;s RspCB. Arguments to this call include the requester&rsquo;s address and the TID of the associated transaction.</p>
+<p>Another case in which the call would be useful is when the ATP client decides that it does not want to process the request at the current time but would rather receive a duplicate of that request at a later time.</p>
+<h2 id="releasing-a-tcb">Releasing a TCB<a class="anchor" href="#releasing-a-tcb">#</a></h2>
+<p>The TCB contains information for retransmitting an ATP request and for receiving its responses, including an associated timer. If the ATP client is aware that such retransmission is no longer necessary, it can indicate this through a call to release the TCB.</p>
+<hr>
+<p>For example, if client A needs to send data to client B, client A must first inform B of its intention and allow B to request the data. Client A can then send a TReq to B to signal &ldquo;I want to write <em>n</em> bytes of data to you; please ask me for it on my socket number <em>s</em>.&rdquo; Instead of sending a TResp to this packet, B could just send a TReq to A&rsquo;s socket <em>s</em> asking for the data. The reception by A, on socket <em>s</em>, of B&rsquo;s request implies that A&rsquo;s original request has been received by B. Client A could call its ATP requester and ask it to eliminate the previous transaction&rsquo;s TCB. This call could also be used by the requesting-end client to cancel an outstanding ATP request at any time (for example, to abort an infinite retry request).</p>
+<h1 id="wraparound-and-generation-of-tids">Wraparound and generation of TIDs<a class="anchor" href="#wraparound-and-generation-of-tids">#</a></h1>
+<p>In &ldquo;Transaction Identifiers&rdquo; earlier in this chapter, TIDs were described as being of finite size. Since TIDs can wrap around, an old packet stored in some internet router may arrive late and be accepted as a valid packet in a later transaction using the same identifier value. Based on an MPL estimate of 30 seconds, this problem can be avoided if the TIDs are 16 bits long (in which case, wraparound takes an estimated 1 minute or more).</p>
+<p>A related problem occurs when completion of a particular transaction takes more than 1 minute. For example, a request that searches through an encyclopedia for all references to a particular piece of information might take several minutes. In this case, in the presence of other requests, the transaction ID could wrap around and another transaction could then be issued with the same TID, leading to an equivalent problem as described earlier. ATP does not prohibit operations of this sort. In fact, it is precisely because such transactions are possible that specification of the length of the ATP retry timer and maximum retry count is left up to ATP&rsquo;s transaction requesting client.</p>
+<p>Similarly, ATP allows the requester to issue an ATP transaction with maximum retry count set to infinite. In this case, ATP continues to retransmit the TReq until a reply is received. If a reply is not sent, then the transaction will be continually retransmitted. This retransmission leads to the same TID wraparound problem.</p>
+<p>A properly implemented ATP will function correctly in the face of these wraparound scenarios. Two key aspects of proper implementation are the use of TIDs to distinguish between transactions and the generation of TIDs.</p>
+<hr>
+<p>When asked by a client to send a TReq, the ATP requesting end generates the TID for the request. At the same time, the ATP requesting end creates a TCB, and several pieces of information are saved in the TCB. These pieces of information include the number of the local socket through which the transaction is being sent, the complete internet address of the responding socket to which the transaction is being sent, and the TID. This information is saved to ensure a correct match of the response packets with the transaction. When the ATP requesting end receives a TResp, the requesting end identifies the corresponding request by looking for a TCB whose saved information matches the response packet&rsquo;s TID and the packet&rsquo;s source and destination socket addresses.</p>
+<p>Therefore, TID wraparound by itself does not pose a problem unless it causes the simultaneous existence of two or more transactions (TCBs) with the same TID <em>and</em> the same requesting and responding socket addresses. This observation allows the specification of the following algorithm for generating TIDs:</p>
+<pre tabindex="0"><code>{ Algorithm used by ATP Requesting end to generate TID for a new transaction }
+new_TID := last_used_TID;
+Not_In_Use := TRUE;
+REPEAT
+    new_TID := (new_TID + 1) modulo 2^16;
+    Search all TCBs on the local requesting socket, and if any one of these
+        has (new_TID = TCB&#39;s TID) then set Not_In_Use := FALSE;
+UNTIL Not_In_Use;
+{ At this point new_TID has the newly generated TID }
+last_used_TID := new_TID;</code></pre><p>◆ <strong>Note:</strong> This algorithm ignores the TCB&rsquo;s destination socket address (that is, the algorithm does not further distinguish on the basis of the destination address for the request). This simplification of the algorithm does not reduce its effectiveness in preventing the wraparound problem.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cinside-appletalk-second-edition%5C09-appletalk-transaction-protocol.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#figure-9-1-transaction-terminology">Figure 9-1 Transaction terminology</a></li>
+      </ul>
+    </li>
+    <li><a href="#at-least-once-alo-transactions">At-least-once (ALO) transactions</a></li>
+    <li><a href="#exactly-once-xo-transactions">Exactly-once (XO) transactions</a>
+      <ul>
+        <li><a href="#-figure-9-3-exactly-once-xo-transactions">■ Figure 9-3 Exactly-once (XO) transactions</a></li>
+        <li><a href="#figure-9-4-duplicate-delivery-of-exactly-once-xo-mode">Figure 9-4 Duplicate delivery of exactly-once (XO) mode</a></li>
+      </ul>
+    </li>
+    <li><a href="#multipacket-responses">Multipacket responses</a></li>
+    <li><a href="#transaction-identifiers">Transaction identifiers</a></li>
+    <li><a href="#atp-bitmapsequence-number">ATP bitmap/sequence number</a>
+      <ul>
+        <li><a href="#figure-9-6-use-of-sts">Figure 9-6 Use of STS</a></li>
+      </ul>
+    </li>
+    <li><a href="#atp-packet-format">ATP packet format</a></li>
+    <li><a href="#figure-9-7-atp-packet-format">Figure 9-7 ATP packet format</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#sending-a-request">Sending a request</a></li>
+    <li><a href="#closing-a-responding-socket">Closing a responding socket</a></li>
+    <li><a href="#receiving-a-request">Receiving a request</a></li>
+    <li><a href="#sending-a-response">Sending a response</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#event-tresp-packet-received-from-ddp">Event: TResp packet received from DDP</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#event-release-timer-expires-only-if-xo-mode-is-implemented"><em>Event: Release timer expires, only if XO mode is implemented</em></a></li>
+        <li><a href="#event-treq-packet-received-from-ddp"><em>Event: TReq packet received from DDP</em></a></li>
+        <li><a href="#event-trel-packet-received-from-ddp-only-if-xo-mode-is-implemented"><em>Event: TRel packet received from DDP, only if XO mode is implemented</em></a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#releasing-a-rspcb">Releasing a RspCB</a></li>
+    <li><a href="#releasing-a-tcb">Releasing a TCB</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

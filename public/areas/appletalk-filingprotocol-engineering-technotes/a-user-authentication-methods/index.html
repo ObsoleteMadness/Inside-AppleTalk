@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="# User Authentication Methods#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter A Pages 113–114 Converted 2026-04-01 Engine gemini-flash Appendix A#User Authentication Methods#As noted in the main body of this document, AFP version 1.1 provides three standard user authentication methods. These correspond to UAM strings “NoUserAuthent”, “Cleartxt passwd” and “Randnum exchange”. [Note: these strings should be used in a case-insensitive fashion].
+No User Authentication#The first of these in fact corresponds to no user authentication (UAM = “No User Authent”) and as such needs no specification. Thus, no user name or password information is required in the FPLogin command, which therefore has no UserAuthInfo field.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/a-user-authentication-methods/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="# User Authentication Methods">
+  <meta property="og:description" content="# User Authentication Methods#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter A Pages 113–114 Converted 2026-04-01 Engine gemini-flash Appendix A#User Authentication Methods#As noted in the main body of this document, AFP version 1.1 provides three standard user authentication methods. These correspond to UAM strings “NoUserAuthent”, “Cleartxt passwd” and “Randnum exchange”. [Note: these strings should be used in a case-insensitive fashion].
+No User Authentication#The first of these in fact corresponds to no user authentication (UAM = “No User Authent”) and as such needs no specification. Thus, no user name or password information is required in the FPLogin command, which therefore has no UserAuthInfo field.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="# User Authentication Methods">
+  <meta itemprop="description" content="# User Authentication Methods#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter A Pages 113–114 Converted 2026-04-01 Engine gemini-flash Appendix A#User Authentication Methods#As noted in the main body of this document, AFP version 1.1 provides three standard user authentication methods. These correspond to UAM strings “NoUserAuthent”, “Cleartxt passwd” and “Randnum exchange”. [Note: these strings should be used in a case-insensitive fashion].
+No User Authentication#The first of these in fact corresponds to no user authentication (UAM = “No User Authent”) and as such needs no specification. Thus, no user name or password information is required in the FPLogin command, which therefore has no UserAuthInfo field.">
+  <meta itemprop="wordCount" content="784">
+
+<title># User Authentication Methods | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/a-user-authentication-methods/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3># User Authentication Methods</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#no-user-authentication">No User Authentication</a></li>
+    <li><a href="#user-authentication-with-clear-text-password-transmission">User Authentication with Clear Text Password Transmission</a></li>
+    <li><a href="#user-authentication-based-on-random-number-exchange">User Authentication Based on Random Number Exchange</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="-user-authentication-methods"># User Authentication Methods<a class="anchor" href="#-user-authentication-methods">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td>022_AppleTalkFilingProtocolEngineeringTechnicalNotes</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>A</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>113–114</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-04-01</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="appendix-a">Appendix A<a class="anchor" href="#appendix-a">#</a></h1>
+<h1 id="user-authentication-methods">User Authentication Methods<a class="anchor" href="#user-authentication-methods">#</a></h1>
+<p>As noted in the main body of this document, AFP version 1.1 provides three standard user authentication methods. These correspond to UAM strings &ldquo;NoUserAuthent&rdquo;, &ldquo;Cleartxt passwd&rdquo; and &ldquo;Randnum exchange&rdquo;. [Note: these strings should be used in a case-insensitive fashion].</p>
+<h2 id="no-user-authentication">No User Authentication<a class="anchor" href="#no-user-authentication">#</a></h2>
+<p>The first of these in fact corresponds to no user authentication (UAM = &ldquo;No User Authent&rdquo;) and as such needs no specification. Thus, no user name or password information is required in the <em>FPLogin</em> command, which therefore has no <em>UserAuthInfo</em> field.</p>
+<p>Any server can accept a user login using this method. If the server handles the user-authentication-based directory-level access control mechanism, then it must assign the user a special User ID and Group ID for that session, such that the user only obtains world&rsquo;s access rights for every directory in every server volume.</p>
+<h2 id="user-authentication-with-clear-text-password-transmission">User Authentication with Clear Text Password Transmission<a class="anchor" href="#user-authentication-with-clear-text-password-transmission">#</a></h2>
+<p>The second standard method employs the transmission of the user&rsquo;s password in clear text (in addition to the user&rsquo;s name) in the <em>FPLogin</em> command packet. The <em>UserAuthInfo</em> part of the <em>FPLogin</em> command consists of the user&rsquo;s name (a string of up to 31 characters which follows the UAM field in the packet without padding) followed by a possible null byte and then the user&rsquo;s password. The user&rsquo;s password is an 8-byte quantity. If the user provides a shorter password then it must be padded (suffixed) with null ($00) bytes to make its length equal to 8 bytes. The permissible set of characters in passwords consists of all 8-bit characters with the most significant bit equal to 0.</p>
+<p>User name comparison in servers must be case insensitive, but password comparison is to be case sensitive in this UserAuthenticationMethod. Of course, one could create a new UserAuthenticationMethod that performed case-insensitive password comparison.</p>
+<p>It should be noted that this method should be used by workstations only if it is known that the intervening network is secure against &ldquo;wire tapping&rdquo;, otherwise the password information can be picked up out of <em>FPLogin</em> command packets by anyone tapping the network.</p>
+<h2 id="user-authentication-based-on-random-number-exchange">User Authentication Based on Random Number Exchange<a class="anchor" href="#user-authentication-based-on-random-number-exchange">#</a></h2>
+<hr>
+<p>In environments where the network is not secure against tapping, a more secure method based on a random number exchange between the server and the workstation can be used. In this method, the user&rsquo;s password is never sent over the network and hence cannot be picked up by tapping. In fact, it is essentially impossible (as secure as the basic encryption method) to derive the password from the information that is sent over the network.</p>
+<p>The underlying idea of the method is that the server knows the user&rsquo;s password and it wants to find out if the user trying to log in knows this password as well. In a sense, the method tries to determine if the user and the server &ldquo;share the same secret&rdquo;, the password, without sending the secret information over the network.</p>
+<p>First, the user sends the FPLogin command packet with UAM corresponding to &ldquo;Randnum exchange&rdquo; and the UserAuthInfo containing the user&rsquo;s name string, which follows the UAM in the packet without padding.</p>
+<p>Upon receiving this packet, the server examines its user data base to determine if this is a valid user name. If the user name is not found in the user data base, then an error is sent to the workstation indicating this result and login is denied. If the name is found in the user data base, then the server generates a random number (64 bits in length) and sends it back to the workstation. This is returned as the reply to the FPLogin call, along with an ID number and an AuthContinue error. Although not really an &ldquo;error&rdquo;, this value is returned to indicate that all is well so far but the user is not yet authenticated.</p>
+<p>The workstation uses the NBS data encryption standard (DES) algorithm to encrypt the random number, using the user&rsquo;s password (case-sensitive, same format as in the clear text UAM) as the encryption key. It sends the encrypted value (64 bits) back to the server in the UserAuthInfo parameter of the FPLoginCont call along with the ID number returned from the FPLogin call. This ID number merely helps the server associate the two calls and is not used again. The server compares the workstation&rsquo;s encrypted value with the encrypted value obtained using the password from its user data base. If the two encrypted values match, then the user is considered to have been authenticated and the login is successful. The FPLoginCont call will return NoErr if so, UserNotAuth if not. In either case, no reply data is returned.</p>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cappletalk-filingprotocol-engineering-technotes%5CA-user-authentication-methods.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#no-user-authentication">No User Authentication</a></li>
+    <li><a href="#user-authentication-with-clear-text-password-transmission">User Authentication with Clear Text Password Transmission</a></li>
+    <li><a href="#user-authentication-based-on-random-number-exchange">User Authentication Based on Random Number Exchange</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

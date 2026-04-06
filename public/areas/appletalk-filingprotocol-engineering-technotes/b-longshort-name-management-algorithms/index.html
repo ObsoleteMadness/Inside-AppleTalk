@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="# Long/Short Name Management Algorithms#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter B Pages 115–116 Converted 2026-04-01 Engine gemini-flash Appendix B#Long/Short Name Management Algorithms#Files and directories in AFP possess two names, a Long Name and a Short Name, because of differences in Macintosh and MS-DOS naming rules. Macintosh permits file and directory names to be made up of at most 32 characters, where valid characters may be any printable ASCII code except colon ($3A). MS-DOS is more restrictive; names may be up to eight alphanumeric (plus other) characters, optionally followed by period ($2E) and a one-to-three alphanumeric (plus other) character extension. The dual naming convention was devised to allow file servers to present to Macintosh and MS-DOS users a name space that is compatible with each of their respective file systems. Yet in order to ensure that an object can be uniquely specified by either name, some rules must be adhered to.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/b-longshort-name-management-algorithms/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="# Long/Short Name Management Algorithms">
+  <meta property="og:description" content="# Long/Short Name Management Algorithms#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter B Pages 115–116 Converted 2026-04-01 Engine gemini-flash Appendix B#Long/Short Name Management Algorithms#Files and directories in AFP possess two names, a Long Name and a Short Name, because of differences in Macintosh and MS-DOS naming rules. Macintosh permits file and directory names to be made up of at most 32 characters, where valid characters may be any printable ASCII code except colon ($3A). MS-DOS is more restrictive; names may be up to eight alphanumeric (plus other) characters, optionally followed by period ($2E) and a one-to-three alphanumeric (plus other) character extension. The dual naming convention was devised to allow file servers to present to Macintosh and MS-DOS users a name space that is compatible with each of their respective file systems. Yet in order to ensure that an object can be uniquely specified by either name, some rules must be adhered to.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="# Long/Short Name Management Algorithms">
+  <meta itemprop="description" content="# Long/Short Name Management Algorithms#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter B Pages 115–116 Converted 2026-04-01 Engine gemini-flash Appendix B#Long/Short Name Management Algorithms#Files and directories in AFP possess two names, a Long Name and a Short Name, because of differences in Macintosh and MS-DOS naming rules. Macintosh permits file and directory names to be made up of at most 32 characters, where valid characters may be any printable ASCII code except colon ($3A). MS-DOS is more restrictive; names may be up to eight alphanumeric (plus other) characters, optionally followed by period ($2E) and a one-to-three alphanumeric (plus other) character extension. The dual naming convention was devised to allow file servers to present to Macintosh and MS-DOS users a name space that is compatible with each of their respective file systems. Yet in order to ensure that an object can be uniquely specified by either name, some rules must be adhered to.">
+  <meta itemprop="wordCount" content="677">
+
+<title># Long/Short Name Management Algorithms | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/b-longshort-name-management-algorithms/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3># Long/Short Name Management Algorithms</h3>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="-longshort-name-management-algorithms"># Long/Short Name Management Algorithms<a class="anchor" href="#-longshort-name-management-algorithms">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td>022_AppleTalkFilingProtocolEngineeringTechnicalNotes</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>B</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>115–116</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-04-01</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="appendix-b">Appendix B<a class="anchor" href="#appendix-b">#</a></h1>
+<h1 id="longshort-name-management-algorithms">Long/Short Name Management Algorithms<a class="anchor" href="#longshort-name-management-algorithms">#</a></h1>
+<p>Files and directories in AFP possess two names, a Long Name and a Short Name, because of differences in Macintosh and MS-DOS naming rules. Macintosh permits file and directory names to be made up of at most 32 characters, where valid characters may be any printable ASCII code except colon ($3A). MS-DOS is more restrictive; names may be up to eight alphanumeric (plus other) characters, optionally followed by period ($2E) and a one-to-three alphanumeric (plus other) character extension. The dual naming convention was devised to allow file servers to present to Macintosh and MS-DOS users a name space that is compatible with each of their respective file systems. Yet in order to ensure that an object can be uniquely specified by either name, some rules must be adhered to.</p>
+<p>AFP naming rules are such that any MS-DOS name can be used directly as an object&rsquo;s Short Name, and any Macintosh name can be used directly as a Long Name. It is up to the file server to generate the &ldquo;other&rdquo; name for each object, deriving it from the first and making the name as &ldquo;close&rdquo; as possible to minimize semantic loss. Since Long Name format is a superset of Short Name format, some cases are easily handled. For example, if an MS-DOS machine generates a Short Name for an object, the object&rsquo;s Long Name can be made the same as the Short Name. Deriving a Short Name from a Long Name is not as simple, and AFP does not stipulate an exact algorithm for doing this, so that different servers may perform it differently. However, it is crucial that no two objects in a given directory have the same Short Name or the same Long Name. This ensures that any object can be uniquely specified by either name.</p>
+<p>Below are the algorithms intended for use by file servers for creating and maintaining a consistent dual name space.</p>
+<p>When an object is created (either by FPCreateFile or FPCreateDir), the caller supplies the object&rsquo;s name and a name type that indicates whether the name is of Short format or Long format. The server must of course first check the name itself to verify that it conforms to the specified format. The algorithm below describes how servers are to assign Short and Long names to objects:</p>
+<pre tabindex="0"><code>IF name type is Short OR name is in Short format
+THEN    check for new name in list of short names
+        IF name already exists
+        THEN    return ObjectExists error
+        ELSE set object&#39;s Short and Long names to new name
+
+ELSE { name type is Long OR name is in Long format }
+        check for new name in list of long names
+        IF name already exists
+        THEN    return ObjectExists error
+        ELSE set object&#39;s Long Name to new name
+             derive Short Name from Long Name</code></pre><p>This algorithm is to be used for renaming as well (FPRename). When an object is renamed, both names will be changed using the above rules.</p>
+<hr>
+<p>Note that this algorithm mandates that whenever an object is named with a Short Name format name, the Long Name will always match. This is done so that servers need only check one list, Long Names or Short Names, for each creation or renaming operation.</p>
+<p>An interesting problem can arise. Consider the case in which a server contains a Macintosh file with a Long Name <em>MacFileWithLongName</em> and a Short Name <em>MacFile</em> which the server derived from the Long Name. This Short Name is not normally visible to Macintosh workstations. Now suppose that a user at a Macintosh decides to create a new file in the same directory with the Long Name <em>MacFile</em>. The call must fail, because by the above algorithm the new file&rsquo;s Short Name and Long Name must both be set to <em>MacFile</em> since it is in Short format. Hence the user is returned an <em>ObjectExists</em> error even though the directory does not appear to contain a file by that Long Name.</p>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cappletalk-filingprotocol-engineering-technotes%5CB-longshort-name-management-algorithms.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

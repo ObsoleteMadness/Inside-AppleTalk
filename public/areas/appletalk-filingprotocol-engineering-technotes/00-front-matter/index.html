@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Front Matter#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 0 Pages 1–8 Converted 2026-04-01 Engine gemini-flash 030-M098#AppleTalk Filing Protocol#Engineering Technical Notes#AAPDA#Australasian Apple Programmers and Developers Association#AppleTalk Filing Protocol (AFP) Engineering Technical Notes#Apple Computer Inc.
+Protocol Version 1.1 February 17, 1987
+This protocol is proprietary and based on AFP Version 1.0 which was developed in joint work by Apple Computer Inc. and Centram Systems West
+Table of Contents#Contents#1 Chapter 1: AppleTalk Filing Protocol Design Description#1 The Basic File Access Model 3 Goals of AFP 3 AFP in the AppleTalk Architecture 5 Notation
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/00-front-matter/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="Front Matter">
+  <meta property="og:description" content="Front Matter#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 0 Pages 1–8 Converted 2026-04-01 Engine gemini-flash 030-M098#AppleTalk Filing Protocol#Engineering Technical Notes#AAPDA#Australasian Apple Programmers and Developers Association#AppleTalk Filing Protocol (AFP) Engineering Technical Notes#Apple Computer Inc.
+Protocol Version 1.1 February 17, 1987
+This protocol is proprietary and based on AFP Version 1.0 which was developed in joint work by Apple Computer Inc. and Centram Systems West
+Table of Contents#Contents#1 Chapter 1: AppleTalk Filing Protocol Design Description#1 The Basic File Access Model 3 Goals of AFP 3 AFP in the AppleTalk Architecture 5 Notation">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="Front Matter">
+  <meta itemprop="description" content="Front Matter#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 0 Pages 1–8 Converted 2026-04-01 Engine gemini-flash 030-M098#AppleTalk Filing Protocol#Engineering Technical Notes#AAPDA#Australasian Apple Programmers and Developers Association#AppleTalk Filing Protocol (AFP) Engineering Technical Notes#Apple Computer Inc.
+Protocol Version 1.1 February 17, 1987
+This protocol is proprietary and based on AFP Version 1.0 which was developed in joint work by Apple Computer Inc. and Centram Systems West
+Table of Contents#Contents#1 Chapter 1: AppleTalk Filing Protocol Design Description#1 The Basic File Access Model 3 Goals of AFP 3 AFP in the AppleTalk Architecture 5 Notation">
+  <meta itemprop="wordCount" content="411">
+
+<title>Front Matter | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/00-front-matter/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Front Matter</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#aapda">AAPDA</a>
+      <ul>
+        <li><a href="#australasian-apple-programmers-and-developers-association">Australasian Apple Programmers and Developers Association</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#contents">Contents</a>
+      <ul>
+        <li><a href="#1-chapter-1-appletalk-filing-protocol-design-description">1 Chapter 1: AppleTalk Filing Protocol Design Description</a></li>
+        <li><a href="#6-chapter-2-appletalk-filing-protocol-system-description">6 Chapter 2: AppleTalk Filing Protocol System Description</a></li>
+        <li><a href="#17-chapter-3-the-afp-login-procedure">17 Chapter 3: The AFP Login Procedure</a></li>
+      </ul>
+    </li>
+    <li><a href="#19--chapter-4-access-control-mechanisms-in-afp">19  Chapter 4: Access Control Mechanisms in AFP</a></li>
+    <li><a href="#23--chapter-5-a-discussion-of-afp-calls">23  Chapter 5: A Discussion of AFP Calls</a></li>
+    <li><a href="#27--chapter-6-a-design-for-the-finders-desktop-management-in-a-network-environment">27  Chapter 6: A Design for the Finder&rsquo;s Desktop Management in a Network Environment</a></li>
+    <li><a href="#31--chapter-7-specification-of-afp-calls">31  Chapter 7: Specification of AFP Calls</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="front-matter">Front Matter<a class="anchor" href="#front-matter">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td>022_AppleTalkFilingProtocolEngineeringTechnicalNotes</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>1–8</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-04-01</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="030-m098">030-M098<a class="anchor" href="#030-m098">#</a></h1>
+<h1 id="appletalk-filing-protocol">AppleTalk Filing Protocol<a class="anchor" href="#appletalk-filing-protocol">#</a></h1>
+<h1 id="engineering-technical-notes">Engineering Technical Notes<a class="anchor" href="#engineering-technical-notes">#</a></h1>
+<h2 id="aapda">AAPDA<a class="anchor" href="#aapda">#</a></h2>
+<h3 id="australasian-apple-programmers-and-developers-association">Australasian Apple Programmers and Developers Association<a class="anchor" href="#australasian-apple-programmers-and-developers-association">#</a></h3>
+<hr>
+<hr>
+<h1 id="appletalk-filing-protocol-afp-engineering-technical-notes">AppleTalk Filing Protocol (AFP) Engineering Technical Notes<a class="anchor" href="#appletalk-filing-protocol-afp-engineering-technical-notes">#</a></h1>
+<p>Apple Computer Inc.</p>
+<p>Protocol Version 1.1
+February 17, 1987</p>
+<p>This protocol is proprietary and based on AFP Version 1.0 which was developed in joint work by Apple Computer Inc. and Centram Systems West</p>
+<hr>
+<hr>
+<h1 id="table-of-contents">Table of Contents<a class="anchor" href="#table-of-contents">#</a></h1>
+<h2 id="contents">Contents<a class="anchor" href="#contents">#</a></h2>
+<h3 id="1-chapter-1-appletalk-filing-protocol-design-description">1 Chapter 1: AppleTalk Filing Protocol Design Description<a class="anchor" href="#1-chapter-1-appletalk-filing-protocol-design-description">#</a></h3>
+<p>1 The Basic File Access Model
+3 Goals of AFP
+3 AFP in the AppleTalk Architecture
+5 Notation</p>
+<h3 id="6-chapter-2-appletalk-filing-protocol-system-description">6 Chapter 2: AppleTalk Filing Protocol System Description<a class="anchor" href="#6-chapter-2-appletalk-filing-protocol-system-description">#</a></h3>
+<p>6 AFP File System Structure
+6 File Servers
+8 Volumes
+8 The Volume Catalog: Directories, Files, and Forks
+10 CNode Names: Long and Short Names
+11 Directory IDs
+11 Volume Signatures
+12 Directory and File Parameters
+14 Date-Time Values
+14 Pathnames
+15 Access Paths and Open File Forks
+15 Complete Specification of a Catalog Node (CNode)</p>
+<h3 id="17-chapter-3-the-afp-login-procedure">17 Chapter 3: The AFP Login Procedure<a class="anchor" href="#17-chapter-3-the-afp-login-procedure">#</a></h3>
+<p>17 AFP Versions
+17 User Authentication Methods</p>
+<hr>
+<p>18  Discovering a File Server:
+18  Obtaining File Server Information:
+18  The Login Step:</p>
+<h2 id="19--chapter-4-access-control-mechanisms-in-afp">19  Chapter 4: Access Control Mechanisms in AFP<a class="anchor" href="#19--chapter-4-access-control-mechanisms-in-afp">#</a></h2>
+<p>19  User Authentication at Server Login
+19  Volume Passwords
+19  Directory-Level Access Controls</p>
+<h2 id="23--chapter-5-a-discussion-of-afp-calls">23  Chapter 5: A Discussion of AFP Calls<a class="anchor" href="#23--chapter-5-a-discussion-of-afp-calls">#</a></h2>
+<p>23  Server-Level Calls
+24  Volume-Level Calls
+24  Directory-Level Calls
+25  File-Level Calls
+25  Combined Directory-File-Level Calls
+26  Fork-Level Calls</p>
+<h2 id="27--chapter-6-a-design-for-the-finders-desktop-management-in-a-network-environment">27  Chapter 6: A Design for the Finder&rsquo;s Desktop Management in a Network Environment<a class="anchor" href="#27--chapter-6-a-design-for-the-finders-desktop-management-in-a-network-environment">#</a></h2>
+<h2 id="31--chapter-7-specification-of-afp-calls">31  Chapter 7: Specification of AFP Calls<a class="anchor" href="#31--chapter-7-specification-of-afp-calls">#</a></h2>
+<p>32  FPAddAPPL
+33  FPAddComment
+34  FPAddIcon
+36  FPByteRangeLock
+38  FPCloseDir
+39  FPCloseDT
+40  FPCloseFork</p>
+<hr>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">41</td>
+          <td style="text-align: left">FPCloseVol</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">42</td>
+          <td style="text-align: left">FPCopyFile</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">44</td>
+          <td style="text-align: left">FPCreateDir</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">45</td>
+          <td style="text-align: left">FPCreateFile</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">47</td>
+          <td style="text-align: left">FPDelete</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">48</td>
+          <td style="text-align: left">FPEnumerate</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">51</td>
+          <td style="text-align: left">FPFlush</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">52</td>
+          <td style="text-align: left">FPFlushFork</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">53</td>
+          <td style="text-align: left">FPGetAPPL</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">54</td>
+          <td style="text-align: left">FPGet Comment</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">55</td>
+          <td style="text-align: left">FPGetFileDirParms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">58</td>
+          <td style="text-align: left">FPGetForkParms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">59</td>
+          <td style="text-align: left">FPGetIcon</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">60</td>
+          <td style="text-align: left">FPGetIconInfo</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">61</td>
+          <td style="text-align: left">FPGetSrvrInfo</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">63</td>
+          <td style="text-align: left">FPGetSrvrParms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">64</td>
+          <td style="text-align: left">FPGetVolParms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">65</td>
+          <td style="text-align: left">FPLogin</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">67</td>
+          <td style="text-align: left">FPLoginCont</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">68</td>
+          <td style="text-align: left">FPLogout</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">69</td>
+          <td style="text-align: left">FPMapID</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">70</td>
+          <td style="text-align: left">FPMapName</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">71</td>
+          <td style="text-align: left">FPMove</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">73</td>
+          <td style="text-align: left">FPOpenDir</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">74</td>
+          <td style="text-align: left">FPOpenDT</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">75</td>
+          <td style="text-align: left">FPOpenFork</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">77</td>
+          <td style="text-align: left">FPOpenVol</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">79</td>
+          <td style="text-align: left">FPRead</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">81</td>
+          <td style="text-align: left">FPRemoveAPPL</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">82</td>
+          <td style="text-align: left">FPRemoveComment</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">83</td>
+          <td style="text-align: left">FPRename</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">85</td>
+          <td style="text-align: left">FPSetDirParms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">88</td>
+          <td style="text-align: left">FPSetFileParms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">90</td>
+          <td style="text-align: left">FPSetFileDirParms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">93</td>
+          <td style="text-align: left">FPSetForkParms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">94</td>
+          <td style="text-align: left">FPSetVolParms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">95</td>
+          <td style="text-align: left">FPWrite</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="97-chapter-8-afps-use-of-asp">97 Chapter 8: AFP&rsquo;s Use of ASP<a class="anchor" href="#97-chapter-8-afps-use-of-asp">#</a></h1>
+<h1 id="99-appendix-a-user-authentication-methods">99 Appendix A: User Authentication Methods<a class="anchor" href="#99-appendix-a-user-authentication-methods">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">99</td>
+          <td style="text-align: left">No User Authentication</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">99</td>
+          <td style="text-align: left">User Authentication With Cleartext Password Transmission</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">99</td>
+          <td style="text-align: left">User Authentication Based on Random Number Exchange</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p>101  <strong>Appendix B: Long/Short Name Management Algorithms</strong></p>
+<p>103  <strong>Appendix C: File Sharing Modes</strong></p>
+<p>105  <strong>Appendix D: Values of Command and Error Codes</strong></p>
+<p>107  Error Codes</p>
+<p>108  <strong>Appendix E: List of Abbreviations</strong></p>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cappletalk-filingprotocol-engineering-technotes%5C00-front-matter.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#aapda">AAPDA</a>
+      <ul>
+        <li><a href="#australasian-apple-programmers-and-developers-association">Australasian Apple Programmers and Developers Association</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#contents">Contents</a>
+      <ul>
+        <li><a href="#1-chapter-1-appletalk-filing-protocol-design-description">1 Chapter 1: AppleTalk Filing Protocol Design Description</a></li>
+        <li><a href="#6-chapter-2-appletalk-filing-protocol-system-description">6 Chapter 2: AppleTalk Filing Protocol System Description</a></li>
+        <li><a href="#17-chapter-3-the-afp-login-procedure">17 Chapter 3: The AFP Login Procedure</a></li>
+      </ul>
+    </li>
+    <li><a href="#19--chapter-4-access-control-mechanisms-in-afp">19  Chapter 4: Access Control Mechanisms in AFP</a></li>
+    <li><a href="#23--chapter-5-a-discussion-of-afp-calls">23  Chapter 5: A Discussion of AFP Calls</a></li>
+    <li><a href="#27--chapter-6-a-design-for-the-finders-desktop-management-in-a-network-environment">27  Chapter 6: A Design for the Finder&rsquo;s Desktop Management in a Network Environment</a></li>
+    <li><a href="#31--chapter-7-specification-of-afp-calls">31  Chapter 7: Specification of AFP Calls</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

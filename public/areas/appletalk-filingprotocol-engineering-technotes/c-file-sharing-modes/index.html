@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="# File Sharing Modes#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter C Pages 117–118 Converted 2026-04-01 Engine gemini-flash Appendix C#File Sharing Modes#AFP provides much functionality to control the sharing of files, primarily at the Creator/Group/World Access Rights level but also at the time of file fork open. To perform the latter function, the server must enforce the synchronization rules presented below.
+When a fork of a file is opened, the user indicates what kind of Access Mode is needed: Read, Write, Read/Write, or None (the latter allows no further access to the fork except to close it, yet it is included since it may be useful as a synchronization primitive). In addition, the user indicates to the server a Deny Mode: just what rights should be denied to others trying to open the fork while the current users have it open. Users that subsequently try to open the fork could be denied None, Read, Write, or Read/Write access.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/c-file-sharing-modes/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="# File Sharing Modes">
+  <meta property="og:description" content="# File Sharing Modes#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter C Pages 117–118 Converted 2026-04-01 Engine gemini-flash Appendix C#File Sharing Modes#AFP provides much functionality to control the sharing of files, primarily at the Creator/Group/World Access Rights level but also at the time of file fork open. To perform the latter function, the server must enforce the synchronization rules presented below.
+When a fork of a file is opened, the user indicates what kind of Access Mode is needed: Read, Write, Read/Write, or None (the latter allows no further access to the fork except to close it, yet it is included since it may be useful as a synchronization primitive). In addition, the user indicates to the server a Deny Mode: just what rights should be denied to others trying to open the fork while the current users have it open. Users that subsequently try to open the fork could be denied None, Read, Write, or Read/Write access.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="# File Sharing Modes">
+  <meta itemprop="description" content="# File Sharing Modes#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter C Pages 117–118 Converted 2026-04-01 Engine gemini-flash Appendix C#File Sharing Modes#AFP provides much functionality to control the sharing of files, primarily at the Creator/Group/World Access Rights level but also at the time of file fork open. To perform the latter function, the server must enforce the synchronization rules presented below.
+When a fork of a file is opened, the user indicates what kind of Access Mode is needed: Read, Write, Read/Write, or None (the latter allows no further access to the fork except to close it, yet it is included since it may be useful as a synchronization primitive). In addition, the user indicates to the server a Deny Mode: just what rights should be denied to others trying to open the fork while the current users have it open. Users that subsequently try to open the fork could be denied None, Read, Write, or Read/Write access.">
+  <meta itemprop="wordCount" content="612">
+
+<title># File Sharing Modes | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/c-file-sharing-modes/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3># File Sharing Modes</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#new-open-attempt-deny-mode-and-access-mode">New Open Attempt Deny Mode and Access Mode</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="-file-sharing-modes"># File Sharing Modes<a class="anchor" href="#-file-sharing-modes">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td>022_AppleTalkFilingProtocolEngineeringTechnicalNotes</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>C</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>117–118</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-04-01</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="appendix-c">Appendix C<a class="anchor" href="#appendix-c">#</a></h1>
+<h1 id="file-sharing-modes">File Sharing Modes<a class="anchor" href="#file-sharing-modes">#</a></h1>
+<p>AFP provides much functionality to control the sharing of files, primarily at the Creator/Group/World Access Rights level but also at the time of file fork open. To perform the latter function, the server must enforce the synchronization rules presented below.</p>
+<p>When a fork of a file is opened, the user indicates what kind of Access Mode is needed: <em>Read</em>, <em>Write</em>, <em>Read/Write</em>, or <em>None</em> (the latter allows no further access to the fork except to close it, yet it is included since it may be useful as a synchronization primitive). In addition, the user indicates to the server a Deny Mode: just what rights should be denied to others trying to open the fork while the current users have it open. Users that subsequently try to open the fork could be denied <em>None</em>, <em>Read</em>, <em>Write</em>, or <em>Read/Write</em> access.</p>
+<p>An FPOpenFork call could fail for several reasons:</p>
+<ol>
+<li>The user may not possess the correct rights as Owner/Group/World to allow the desired access. An <em>AccessDenied</em> error is returned to the second user.</li>
+<li>The fork may already be open with a Deny Mode that prohibits the second user&rsquo;s desired access. For example, the first user opened the fork with Deny Mode indicating <em>Deny Write</em>, and a second user tries to open the fork for <em>Write</em>. A <em>DenyConflict</em> error is returned to the second user.</li>
+<li>The fork may already be open with a Deny Mode that conflicts with the second user&rsquo;s desired Deny Mode. For example, the first user opened the fork for <em>Write</em> and <em>Deny None</em>. The second user tries to open the fork with Deny Mode indicating <em>Deny Write</em>. This request cannot be granted since the fork is already open for <em>Write</em>. A <em>DenyConflict</em> error is returned to the second user.</li>
+</ol>
+<p>Deny Modes are cumulative in that each successful open of a fork &ldquo;combines&rdquo; its Deny Mode with previous Deny Modes. That is, if the first open sets a Deny Mode of <em>Deny Read</em> and the second sets a Deny Mode of <em>Deny Write</em>, the fork&rsquo;s Current Deny Mode (CDM) will be <em>Deny Read/Write</em>. <em>Deny None</em> and <em>Deny Read</em> combine to form a Current Deny Mode of <em>Deny Read</em>. Likewise, Access Modes are cumulative: if the first open gets <em>Read</em> access and the second gets <em>Write</em> access, the Current Access Mode (CAM) is <em>Read/Write</em>.</p>
+<p>The rules for allowing or denying multiple opens of a fork depend on the Current Deny Mode, the Current Access Mode, and the Deny and Access Modes being requested in a new FPOpenFork call, and are summarized in the table below. A check mark indicates that the new open is allowed, otherwise it is denied.</p>
+<hr>
+<h3 id="new-open-attempt-deny-mode-and-access-mode">New Open Attempt Deny Mode and Access Mode<a class="anchor" href="#new-open-attempt-deny-mode-and-access-mode">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Current Deny Mode and Current Access Mode</th>
+          <th></th>
+          <th style="text-align: center">Deny R/W</th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center">Deny Write</th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center">Deny Read</th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center">Deny None</th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td></td>
+          <td></td>
+          <td style="text-align: center"><strong>-</strong></td>
+          <td style="text-align: center"><strong>R</strong></td>
+          <td style="text-align: center"><strong>RW</strong></td>
+          <td style="text-align: center"><strong>W</strong></td>
+          <td style="text-align: center"><strong>-</strong></td>
+          <td style="text-align: center"><strong>R</strong></td>
+          <td style="text-align: center"><strong>RW</strong></td>
+          <td style="text-align: center"><strong>W</strong></td>
+          <td style="text-align: center"><strong>-</strong></td>
+          <td style="text-align: center"><strong>R</strong></td>
+          <td style="text-align: center"><strong>RW</strong></td>
+          <td style="text-align: center"><strong>W</strong></td>
+          <td style="text-align: center"><strong>-</strong></td>
+          <td style="text-align: center"><strong>R</strong></td>
+          <td style="text-align: center"><strong>RW</strong></td>
+          <td style="text-align: center"><strong>W</strong></td>
+      </tr>
+      <tr>
+          <td><strong>Deny R/W</strong></td>
+          <td><strong>-</strong></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>R</strong></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>RW</strong></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>W</strong></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td><strong>Deny Write</strong></td>
+          <td><strong>-</strong></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>R</strong></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>RW</strong></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>W</strong></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td><strong>Deny Read</strong></td>
+          <td><strong>-</strong></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>R</strong></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>RW</strong></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>W</strong></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+      </tr>
+      <tr>
+          <td><strong>Deny None</strong></td>
+          <td><strong>-</strong></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>R</strong></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>RW</strong></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>W</strong></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center">√</td>
+      </tr>
+  </tbody>
+</table>
+<p><img src="images/p118-rules-multiple-opens.png" alt="Rules for Allowing or Denying Multiple Opens" /></p>
+<p>Figure C-1: Rules for Allowing or Denying Multiple Opens</p>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cappletalk-filingprotocol-engineering-technotes%5CC-file-sharing-modes.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#new-open-attempt-deny-mode-and-access-mode">New Open Attempt Deny Mode and Access Mode</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

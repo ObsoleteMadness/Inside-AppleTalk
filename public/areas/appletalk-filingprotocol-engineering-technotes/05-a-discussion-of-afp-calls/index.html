@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="# A Discussion of AFP Calls#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 5 Pages 31–34 Converted 2026-04-01 Engine gemini-flash Chapter 5#A Discussion of AFP Calls#Now we provide an overall discussion of the various calls provided by AFP and how they can be used to access a file server. A completely detailed specification of each call is available in Chapter 7. For the purpose of this discussion we classify the calls into various groups.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/05-a-discussion-of-afp-calls/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="# A Discussion of AFP Calls">
+  <meta property="og:description" content="# A Discussion of AFP Calls#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 5 Pages 31–34 Converted 2026-04-01 Engine gemini-flash Chapter 5#A Discussion of AFP Calls#Now we provide an overall discussion of the various calls provided by AFP and how they can be used to access a file server. A completely detailed specification of each call is available in Chapter 7. For the purpose of this discussion we classify the calls into various groups.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="# A Discussion of AFP Calls">
+  <meta itemprop="description" content="# A Discussion of AFP Calls#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 5 Pages 31–34 Converted 2026-04-01 Engine gemini-flash Chapter 5#A Discussion of AFP Calls#Now we provide an overall discussion of the various calls provided by AFP and how they can be used to access a file server. A completely detailed specification of each call is available in Chapter 7. For the purpose of this discussion we classify the calls into various groups.">
+  <meta itemprop="wordCount" content="1318">
+
+<title># A Discussion of AFP Calls | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/05-a-discussion-of-afp-calls/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3># A Discussion of AFP Calls</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#server-level-calls">Server-Level Calls</a></li>
+    <li><a href="#volume-level-calls">Volume-Level Calls</a></li>
+    <li><a href="#directory-level-calls">Directory-Level Calls</a></li>
+    <li><a href="#file-level-calls">File-Level Calls</a></li>
+    <li><a href="#combined-directory-file-level-calls">Combined Directory-File-Level Calls</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="-a-discussion-of-afp-calls"># A Discussion of AFP Calls<a class="anchor" href="#-a-discussion-of-afp-calls">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td>022_AppleTalkFilingProtocolEngineeringTechnicalNotes</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>5</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>31–34</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-04-01</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="chapter-5">Chapter 5<a class="anchor" href="#chapter-5">#</a></h1>
+<h1 id="a-discussion-of-afp-calls">A Discussion of AFP Calls<a class="anchor" href="#a-discussion-of-afp-calls">#</a></h1>
+<p>Now we provide an overall discussion of the various calls provided by AFP and how they can be used to access a file server. A completely detailed specification of each call is available in Chapter 7. For the purpose of this discussion we classify the calls into various groups.</p>
+<h2 id="server-level-calls">Server-Level Calls<a class="anchor" href="#server-level-calls">#</a></h2>
+<p>A workstation client can use the following server-level AFP calls:</p>
+<ul>
+<li>FPGetSrvrInfo</li>
+<li>FPLogin</li>
+<li>FPLoginCont</li>
+<li>FPGetSrvrParms</li>
+<li>FPLogout</li>
+<li>FPMapID</li>
+<li>FPMapName.</li>
+</ul>
+<p>To begin, a workstation uses the Name Binding Protocol to discover the server&rsquo;s session listening socket&rsquo;s network address (we call this the <em>SAddr</em>).</p>
+<p>Next, the workstation must obtain server information by using the <em>FPGetSrvrInfo</em> call. This is done without opening a session to the server and it returns a block of server information containing the following server parameters:</p>
+<ul>
+<li>the server&rsquo;s name</li>
+<li>a string identifying the server&rsquo;s machine type</li>
+<li>a list of the AFP versions the file server can handle</li>
+<li>a list of the various user authentication methods the server can handle</li>
+<li>an icon to be used for displaying server volumes on the Macintosh.</li>
+<li>a bitmap of flags.</li>
+</ul>
+<p>After making this call the workstation&rsquo;s AFP client selects one AFP version and one user authentication method. Using this selection it makes the <em>FPLogin</em> call to establish a session with the file server. A session is needed before any of the other calls can be made to the server. This login step involves authentication of the user; it returns an <em>SRefNum</em>, a session reference number to be used in all calls made over this session. Depending on the chosen authentication method, the entire authentication process may involve additional <em>FPLoginCont</em> (Login continue) calls to provide more information to the server.</p>
+<p>After a session has been established with the server, the workstation must obtain a list of the volumes on the server. This is done by making the <em>FPGetSrvrParms</em> call, which returns a count of the number of such volumes, the names of these volumes, and an indication of whether or not these volumes are password-protected.</p>
+<p>When a workstation no longer needs to communicate with a server it issues an <em>FPLogout</em> call to terminate the session.</p>
+<hr>
+<p>The <em>FPMapID</em> and <em>FPMapName</em> calls relate to access controls issues. The <em>FPMapID</em> call is used to obtain the User or Group Name corresponding to a given User or Group ID. The <em>FPMapName</em> call provides the inverse functionality, mapping a User or Group Name into the corresponding User or Group ID.</p>
+<h2 id="volume-level-calls">Volume-Level Calls<a class="anchor" href="#volume-level-calls">#</a></h2>
+<p>There are five volume-level AFP calls:</p>
+<ul>
+<li><em>FPOpenVol</em></li>
+<li><em>FPCloseVol</em></li>
+<li><em>FPGetVolParms</em></li>
+<li><em>FPSetVolParms</em></li>
+<li><em>FPFlush.</em></li>
+</ul>
+<p>After obtaining the volume names through the <em>FPGetSrvrParms</em> call, the workstation client must make an <em>FPOpenVol</em> call for each volume it wishes to have access to. If the volume has a password attached to it, it must be supplied at this time. The call returns the volume parameters asked for in the call, the key one being the <em>VolID</em>. This <em>VolID</em> is used in all subsequent calls to identify the volume to which those calls apply.</p>
+<p>The <em>VolID</em> remains a valid identifier either until the session is terminated or until an explicit <em>FPCloseVol</em> call is made. This call invalidates the <em>VolID</em>.</p>
+<p>After obtaining a volume&rsquo;s <em>VolID</em> the workstation client can, at any time, obtain the volume&rsquo;s parameters by making an <em>FPGetVolParms</em> call. Likewise, the volume&rsquo;s parameters may be changed through an <em>FPSetVolParms</em> call.</p>
+<p>A request may be made to the server to write out to its disk any data and control structures pertinent to a particular volume. This is done by making an <em>FPFlush</em> call.</p>
+<h2 id="directory-level-calls">Directory-Level Calls<a class="anchor" href="#directory-level-calls">#</a></h2>
+<p>There are five directory-level AFP calls:</p>
+<ul>
+<li><em>FPSetDirParms</em></li>
+<li><em>FPOpenDir</em></li>
+<li><em>FPCloseDir</em></li>
+<li><em>FPEnumerate</em></li>
+<li><em>FPCreateDir.</em></li>
+</ul>
+<p>The <em>FPSetDirParms</em> call allows the workstation client to modify a directory&rsquo;s parameters. The <em>FPGetFileDirParms</em> call (discussed below) is used to obtain a directory&rsquo;s parameters from the file server.</p>
+<p>The <em>FPOpenDir</em> call is used to &ldquo;open&rdquo; a directory on a Variable-DirID volume and retrieve its <em>DirID</em>, which can then be used in subsequent calls to enumerate the directory or access its offspring. For Variable-DirID volumes, this is the only way to retrieve the <em>DirID</em> (using a <em>FPGetFileDirParms</em> or <em>FPEnumerate</em> call to retrieve the <em>DirID</em> on such volumes will return an error).</p>
+<hr>
+<p>Note that it is not considered an error to make this call for directories on Fixed-DirID volumes (the fixed DirID will be returned), but this is not the preferred method. Use <em>FPGetFileDirParms</em> or <em>FPEnumerate</em> instead. Directories on variable DirID volumes can be &ldquo;closed&rdquo; by making an <em>FPCloseDir</em> call, which invalidates the corresponding DirID.</p>
+<p>The <em>FPEnumerate</em> call is one of the most important AFP calls. It is used to enumerate (i.e., list) the objects (files and directories) contained within a specified directory. In reply to this call the server returns a list of directory and/or file parameters corresponding to these objects.</p>
+<p>Directories are created through the <em>FPCreateDir</em> call.</p>
+<p>Each of these calls requires the specification of the directory to which the call applies. This specification, in general, consists of the VolID, a DirID (of the directory or of an ancestor), and (if this DirID is of an ancestor, then) a pathname down to the specified directory. Remember that the DirID of the root of a volume is always equal to 2.</p>
+<h2 id="file-level-calls">File-Level Calls<a class="anchor" href="#file-level-calls">#</a></h2>
+<p>There are three file-level calls:</p>
+<ul>
+<li><em>FPSetFileParms</em></li>
+<li><em>FPCreateFile</em></li>
+<li><em>FPCopyFile</em>.</li>
+</ul>
+<p>The <em>FPSetFileParms</em> call is used to modify a specified file&rsquo;s parameters. The <em>FPGetFileDirParms</em> call (discussed below) is used to obtain a specified file&rsquo;s parameters.</p>
+<p>A file can be created through the <em>FPCreateFile</em> call.</p>
+<p>A file that exists on a volume managed by a server can be copied to any other volume managed by that server with the <em>FPCopyFile</em> call.</p>
+<h2 id="combined-directory-file-level-calls">Combined Directory-File-Level Calls<a class="anchor" href="#combined-directory-file-level-calls">#</a></h2>
+<p>AFP includes five calls that apply to files and directories:</p>
+<ul>
+<li><em>FPGetFileDirParms</em></li>
+<li><em>FPSetFileDirParms</em></li>
+<li><em>FPRename</em></li>
+<li><em>FPDelete</em></li>
+<li><em>FPMove</em>.</li>
+</ul>
+<p>The <em>FPGetFileDirParms</em> call is used to retrieve the parameters associated with a given object. Using this call, one need not know in advance whether the object is a file or a directory; indication of its type is returned from the call. Likewise, the <em>FPSetFileDirParms</em> call is used to set certain parameters associated with a given object, even if one does not know in advance whether the object is a file or directory. This call only allows the setting of those parameters that are common to both types of object.</p>
+<hr>
+<p>The next two calls can be used to respectively rename or delete files and directories.  A file can be deleted only if it is not open; a directory can be deleted only if it is empty.</p>
+<p>The <em>FPMove</em> call can be used to move a file or a directory from one parent directory to another on the same volume.  At the same time the object moved can be renamed.</p>
+<h1 id="fork-level-calls">Fork-Level Calls<a class="anchor" href="#fork-level-calls">#</a></h1>
+<p>There are eight fork-level calls:</p>
+<ul>
+<li><em>FPGetForkParms</em></li>
+<li><em>FPSetForkParms</em></li>
+<li><em>FPOpenFork</em></li>
+<li><em>FPCloseFork</em></li>
+<li><em>FPRead</em></li>
+<li><em>FPWrite</em></li>
+<li><em>FPFlushFork</em></li>
+<li><em>FPByteRangeLock</em>.</li>
+</ul>
+<p>A fork&rsquo;s parameters can be read or modified by using the <em>FPGetForkParms</em> and <em>FPSetForkParms</em> calls.</p>
+<p>The <em>FPOpenFork</em> call is used to open an existing file&rsquo;s fork (either one).  This call returns an OForkRefNum which is used in all calls that refer to this open fork.  This reference number stays valid until the fork is closed through the <em>FPCloseFork</em> call.</p>
+<p>The four remaining calls can be used to manipulate a fork opened through a previously issued <em>FPOpenFork</em> call.  The contents of the fork can be read by making <em>FPRead</em> calls.  The client can write to a fork by using <em>FPWrite</em> calls.  The <em>FPFlushFork</em> call makes the server flush (write out to its disk) any of that fork&rsquo;s data that is in the server&rsquo;s internal buffers.</p>
+<p>To allow for shared use of a file&rsquo;s open fork, a client can lock ranges of bytes in that fork.  If a client locks a particular byte range (through the <em>FPByteRangeLock</em> call) then that range of bytes is reserved for exclusive manipulation by the client placing the lock; other clients can neither read nor write within the locked range.</p>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cappletalk-filingprotocol-engineering-technotes%5C05-a-discussion-of-afp-calls.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#server-level-calls">Server-Level Calls</a></li>
+    <li><a href="#volume-level-calls">Volume-Level Calls</a></li>
+    <li><a href="#directory-level-calls">Directory-Level Calls</a></li>
+    <li><a href="#file-level-calls">File-Level Calls</a></li>
+    <li><a href="#combined-directory-file-level-calls">Combined Directory-File-Level Calls</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

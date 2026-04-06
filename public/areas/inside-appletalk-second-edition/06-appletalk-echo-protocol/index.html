@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AppleTalk Echo Protocol#Field Value Source Inside AppleTalk Second Edition (1990) Part Part II - End-to-End Data Flow Chapter 6 Pages 151–155 Converted 2026-03-31 Engine gemini-flash Chapter 6 AppleTalk Echo Protocol#THE APPLETALK ECHO PROTOCOL (AEP) is implemented in each node as a process on a statically assigned socket (socket number 4, known as the Echoer socket). The Echoer listens for packets received through this socket. Whenever a packet is received, the Echoer examines its Datagram Delivery Protocol (DDP) type and the DDP data length in the packet to determine if the packet is an AEP packet. If it is, then a copy of the packet is returned to the sender.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/inside-appletalk-second-edition/06-appletalk-echo-protocol/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="AppleTalk Echo Protocol">
+  <meta property="og:description" content="AppleTalk Echo Protocol#Field Value Source Inside AppleTalk Second Edition (1990) Part Part II - End-to-End Data Flow Chapter 6 Pages 151–155 Converted 2026-03-31 Engine gemini-flash Chapter 6 AppleTalk Echo Protocol#THE APPLETALK ECHO PROTOCOL (AEP) is implemented in each node as a process on a statically assigned socket (socket number 4, known as the Echoer socket). The Echoer listens for packets received through this socket. Whenever a packet is received, the Echoer examines its Datagram Delivery Protocol (DDP) type and the DDP data length in the packet to determine if the packet is an AEP packet. If it is, then a copy of the packet is returned to the sender.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="AppleTalk Echo Protocol">
+  <meta itemprop="description" content="AppleTalk Echo Protocol#Field Value Source Inside AppleTalk Second Edition (1990) Part Part II - End-to-End Data Flow Chapter 6 Pages 151–155 Converted 2026-03-31 Engine gemini-flash Chapter 6 AppleTalk Echo Protocol#THE APPLETALK ECHO PROTOCOL (AEP) is implemented in each node as a process on a statically assigned socket (socket number 4, known as the Echoer socket). The Echoer listens for packets received through this socket. Whenever a packet is received, the Echoer examines its Datagram Delivery Protocol (DDP) type and the DDP data length in the packet to determine if the packet is an AEP packet. If it is, then a copy of the packet is returned to the sender.">
+  <meta itemprop="wordCount" content="802">
+
+<title>AppleTalk Echo Protocol | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/inside-appletalk-second-edition/06-appletalk-echo-protocol/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>AppleTalk Echo Protocol</h3>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="appletalk-echo-protocol">AppleTalk Echo Protocol<a class="anchor" href="#appletalk-echo-protocol">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td><a href="https://vintageapple.org/macbooks/pdf/Inside_AppleTalk_Second_Edition_1990.pdf">Inside AppleTalk Second Edition (1990)</a></td>
+      </tr>
+      <tr>
+          <td><strong>Part</strong></td>
+          <td>Part II - End-to-End Data Flow</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>6</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>151–155</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-03-31</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="chapter-6-appletalk-echo-protocol">Chapter 6 AppleTalk Echo Protocol<a class="anchor" href="#chapter-6-appletalk-echo-protocol">#</a></h1>
+<hr>
+<p>THE APPLETALK ECHO PROTOCOL (AEP) is implemented in each node as a process on a statically assigned socket (socket number 4, known as the Echoer socket). The Echoer listens for packets received through this socket. Whenever a packet is received, the Echoer examines its Datagram Delivery Protocol (DDP) type and the DDP data length in the packet to determine if the packet is an AEP packet. If it is, then a copy of the packet is returned to the sender.</p>
+<hr>
+<p>Figure 6-1 shows the format of an AEP packet. If the DDP type field in a packet is not equal to 4 (the DDP type for AEP) or if the DDP data length is 0, then the Echoer discards the packet and ignores it. However, if the packet has a DDP type equal to 4 and the DDP data length is not 0, then the Echoer examines the AEP header (the first byte of the DDP data). If the first byte, known as the Echo function field, is equal to 1, then the packet is an Echo Request packet. In this case, the Echoer changes the function field to 2, which indicates that the packet is an Echo Reply packet, and the Echoer calls DDP to send the packet back to the sender of the Echo Request packet.</p>
+<p>■ <strong>Figure 6-1</strong> AEP packet format</p>
+<p><img src="images/p153-aep-packet-format.png" alt="AEP packet format diagram" /></p>
+<pre class="mermaid">packet-beta
+0-7: &#34;Data-link header&#34;
+8-15: &#34;DDP header (prefix)&#34;
+16-23: &#34;Destination socket = 4&#34;
+24-31: &#34;DDP header (suffix)&#34;
+32-39: &#34;DDP type = 4&#34;
+40-47: &#34;Echo function&#34;
+48-55: &#34;AEP data (0 to 585 bytes)&#34;</pre><script src="/appletalk-docs/mermaid.min.js"></script><script>mermaid.initialize({"flowchart":{"useMaxWidth":true},"theme":"default"})</script><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Data-link header</td>
+          <td>0</td>
+          <td>Variable</td>
+          <td>Underlying network layer header.</td>
+      </tr>
+      <tr>
+          <td>DDP header</td>
+          <td>Variable</td>
+          <td>Variable</td>
+          <td>Datagram Delivery Protocol header.</td>
+      </tr>
+      <tr>
+          <td>Destination socket</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>Must be set to 4 for AppleTalk Echo Protocol (AEP).</td>
+      </tr>
+      <tr>
+          <td>DDP type</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>Must be set to 4 for AEP.</td>
+      </tr>
+      <tr>
+          <td>Echo function (AEP header)</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>Specifies the AEP operation: 1 = Echo Request, 2 = Echo Reply.</td>
+      </tr>
+      <tr>
+          <td>AEP data</td>
+          <td>Variable</td>
+          <td>0-4680</td>
+          <td>Data to be echoed, between 0 and 585 bytes in length.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p>When using AEP services, the client must first determine the internet address of the node from which an echo is being sought (the client process usually uses the Name Binding Protocol (NBP) for this purpose). The client then calls DDP to send an Echo Request packet to the Echoer socket (socket number 4) in that node. The client can send the Echo Request datagram through any socket the client has open, and the Echo Reply will come back to this socket. The client then waits for the receipt of the Echo Reply packet.</p>
+<ul>
+<li><strong>Note:</strong> The client can set the AEP data part of the Echo Request packet to any pattern and then examine the data in the Echo Reply packet (which will be the data sent in the Request packet). The client can use the data in the Reply packet to distinguish between the replies to various Echo Request packets the client has sent.</li>
+</ul>
+<p>The client may fail to receive an Echo Reply under the following conditions:</p>
+<ul>
+<li>The AEP packets are lost in the network system.</li>
+<li>The target node does not have an Echoer.</li>
+<li>The target node is currently unreachable or has gone down.</li>
+</ul>
+<p>The client should determine how long to wait for the Echo Reply packet before concluding that one of these conditions exists. The client could retransmit the Echo Request packet several times before concluding that the remote node will not respond.</p>
+<p>AEP can be used</p>
+<ul>
+<li>by any DDP client to determine whether a particular node, known to have an Echoer, is accessible over an internet</li>
+<li>to obtain an estimate of the round-trip time for a typical packet to reach a particular remote node, usually a server (This time estimate is extremely useful in developing certain heuristic methods, for example those used for estimating the timeouts to be specified by clients of the AppleTalk Transaction Protocol (ATP), the AppleTalk Session Protocol (ASP), and other higher-level protocols.)</li>
+</ul>
+<hr>
+<h1 id="part-iii-named-entities">Part III Named Entities<a class="anchor" href="#part-iii-named-entities">#</a></h1>
+<p>PART III DISCUSSES in detail the Name Binding Protocol (NBP) and the Zone Information Protocol (ZIP).</p>
+<p>Part I and Part II described protocols by which AppleTalk conveys packets from one network entity to any other entity on that network or an AppleTalk internet. These protocols use numerical addresses to identify a packet&rsquo;s source and destination entity. From these addresses AppleTalk determines the route the packet uses on its path through the internet.</p>
+<p>Although addresses are efficient for internal use, network users prefer names. Names are character strings that can more naturally convey semantic and contextual information to the user. Part III describes the protocols by which names can be converted to addresses. ■</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cinside-appletalk-second-edition%5C06-appletalk-echo-protocol.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

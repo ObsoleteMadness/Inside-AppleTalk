@@ -1,0 +1,1916 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AppleTalk Parameters#Field Value Source Inside AppleTalk Second Edition (1990) Part Part V - End-User Services Chapter C Pages 546–561 Converted 2026-03-31 Engine gemini-flash Appendix C AppleTalk Parameters#CONTENTS#LLAP parameters / C-2 AARP parameters / C-4 EtherTalk and TokenTalk parameters / C-4 DDP parameters / C-6 RTMP parameters / C-8 AEP parameters / C-9 NBP parameters / C-9 ZIP parameters / C-10 ATP parameters / C-10 PAP parameters / C-11 ASP parameters / C-12 ADSP parameters / C-13 AFP parameters / C-13 This appendix summarizes various numerical quantities used in the AppleTalk protocols. This information is organized into subsections, one for each relevant protocol. A $ symbol is used to denote hexadecimal; a % symbol represents binary numbers. All other numerals are decimal.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/inside-appletalk-second-edition/c-appletalk-parameters/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="AppleTalk Parameters">
+  <meta property="og:description" content="AppleTalk Parameters#Field Value Source Inside AppleTalk Second Edition (1990) Part Part V - End-User Services Chapter C Pages 546–561 Converted 2026-03-31 Engine gemini-flash Appendix C AppleTalk Parameters#CONTENTS#LLAP parameters / C-2 AARP parameters / C-4 EtherTalk and TokenTalk parameters / C-4 DDP parameters / C-6 RTMP parameters / C-8 AEP parameters / C-9 NBP parameters / C-9 ZIP parameters / C-10 ATP parameters / C-10 PAP parameters / C-11 ASP parameters / C-12 ADSP parameters / C-13 AFP parameters / C-13 This appendix summarizes various numerical quantities used in the AppleTalk protocols. This information is organized into subsections, one for each relevant protocol. A $ symbol is used to denote hexadecimal; a % symbol represents binary numbers. All other numerals are decimal.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="AppleTalk Parameters">
+  <meta itemprop="description" content="AppleTalk Parameters#Field Value Source Inside AppleTalk Second Edition (1990) Part Part V - End-User Services Chapter C Pages 546–561 Converted 2026-03-31 Engine gemini-flash Appendix C AppleTalk Parameters#CONTENTS#LLAP parameters / C-2 AARP parameters / C-4 EtherTalk and TokenTalk parameters / C-4 DDP parameters / C-6 RTMP parameters / C-8 AEP parameters / C-9 NBP parameters / C-9 ZIP parameters / C-10 ATP parameters / C-10 PAP parameters / C-11 ASP parameters / C-12 ADSP parameters / C-13 AFP parameters / C-13 This appendix summarizes various numerical quantities used in the AppleTalk protocols. This information is organized into subsections, one for each relevant protocol. A $ symbol is used to denote hexadecimal; a % symbol represents binary numbers. All other numerals are decimal.">
+  <meta itemprop="wordCount" content="1734">
+
+<title>AppleTalk Parameters | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/inside-appletalk-second-edition/c-appletalk-parameters/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>AppleTalk Parameters</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#contents">CONTENTS</a></li>
+      </ul>
+    </li>
+    <li><a href="#llap-parameters">LLAP parameters</a>
+      <ul>
+        <li><a href="#figure-c-1-llap-type-field-values">Figure C-1 LLAP type field values</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-figure-c-2-zone-multicast-addresses">■ Figure C-2 Zone multicast addresses</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#figure-c-3-ddp-type-field-values">Figure C-3 DDP type field values</a></li>
+        <li><a href="#figure-c-4-ddp-socket-numbers">Figure C-4 DDP socket numbers</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="appletalk-parameters">AppleTalk Parameters<a class="anchor" href="#appletalk-parameters">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td><a href="https://vintageapple.org/macbooks/pdf/Inside_AppleTalk_Second_Edition_1990.pdf">Inside AppleTalk Second Edition (1990)</a></td>
+      </tr>
+      <tr>
+          <td><strong>Part</strong></td>
+          <td>Part V - End-User Services</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>C</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>546–561</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-03-31</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="appendix-c-appletalk-parameters">Appendix C AppleTalk Parameters<a class="anchor" href="#appendix-c-appletalk-parameters">#</a></h1>
+<h3 id="contents">CONTENTS<a class="anchor" href="#contents">#</a></h3>
+<ul>
+<li>LLAP parameters / C-2</li>
+<li>AARP parameters / C-4</li>
+<li>EtherTalk and TokenTalk parameters / C-4</li>
+<li>DDP parameters / C-6</li>
+<li>RTMP parameters / C-8</li>
+<li>AEP parameters / C-9</li>
+<li>NBP parameters / C-9</li>
+<li>ZIP parameters / C-10</li>
+<li>ATP parameters / C-10</li>
+<li>PAP parameters / C-11</li>
+<li>ASP parameters / C-12</li>
+<li>ADSP parameters / C-13</li>
+<li>AFP parameters / C-13</li>
+</ul>
+<hr>
+<p>This appendix summarizes various numerical quantities used in the AppleTalk protocols. This information is organized into subsections, one for each relevant protocol. A $ symbol is used to denote hexadecimal; a % symbol represents binary numbers. All other numerals are decimal.</p>
+<h2 id="llap-parameters">LLAP parameters<a class="anchor" href="#llap-parameters">#</a></h2>
+<p>This section provides values for the LLAP type field, timing constants used by LLAP, and LLAP frame parameters.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">LLAP type field values</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">$00</td>
+          <td style="text-align: left">invalid LLAP type value (do not use)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$01 through $7F</td>
+          <td style="text-align: left">valid LLAP type values for use in LLAP client packets</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">    $01 through $0F</td>
+          <td style="text-align: left">reserved for Apple Computer&rsquo;s use only</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">        $01</td>
+          <td style="text-align: left">DDP short-form header packet</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">        $02</td>
+          <td style="text-align: left">DDP extended-form header packet</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">        $0F</td>
+          <td style="text-align: left">experimental LLAP packet (reserved for Apple Computer&rsquo;s use only)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$80 through $FF</td>
+          <td style="text-align: left">reserved for LLAP control frames</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">    $81</td>
+          <td style="text-align: left">lapENQ packet</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">    $82</td>
+          <td style="text-align: left">lapACK packet</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">    $84</td>
+          <td style="text-align: left">lapRTS packet</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">    $85</td>
+          <td style="text-align: left">lapCTS packet</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="figure-c-1-llap-type-field-values">Figure C-1 LLAP type field values<a class="anchor" href="#figure-c-1-llap-type-field-values">#</a></h3>
+<p><img src="images/p548-llap-type-field-values.png" alt="Diagram showing the allocation of values for the LLAP type field, with specific ranges for valid LLAP types and reserved LLAP frames." /></p>
+<pre class="mermaid">packet-beta
+0-7: &#34;LLAP Type Field&#34;</pre><script src="/appletalk-docs/mermaid.min.js"></script><script>mermaid.initialize({"flowchart":{"useMaxWidth":true},"theme":"default"})</script><table>
+  <thead>
+      <tr>
+          <th>Value (Hex)</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>$00</td>
+          <td>0</td>
+          <td>8</td>
+          <td>Invalid</td>
+      </tr>
+      <tr>
+          <td>$01</td>
+          <td>0</td>
+          <td>8</td>
+          <td>DDP short</td>
+      </tr>
+      <tr>
+          <td>$02</td>
+          <td>0</td>
+          <td>8</td>
+          <td>DDP long</td>
+      </tr>
+      <tr>
+          <td>$03–$0E</td>
+          <td>0</td>
+          <td>8</td>
+          <td>Reserved for Apple</td>
+      </tr>
+      <tr>
+          <td>$0F</td>
+          <td>0</td>
+          <td>8</td>
+          <td>Experimental</td>
+      </tr>
+      <tr>
+          <td>$10–$7F</td>
+          <td>0</td>
+          <td>8</td>
+          <td>Valid LLAP types</td>
+      </tr>
+      <tr>
+          <td>$81</td>
+          <td>0</td>
+          <td>8</td>
+          <td>ENQ (Control frame)</td>
+      </tr>
+      <tr>
+          <td>$82</td>
+          <td>0</td>
+          <td>8</td>
+          <td>ACK (Control frame)</td>
+      </tr>
+      <tr>
+          <td>$84</td>
+          <td>0</td>
+          <td>8</td>
+          <td>RTS (Control frame)</td>
+      </tr>
+      <tr>
+          <td>$85</td>
+          <td>0</td>
+          <td>8</td>
+          <td>CTS (Control frame)</td>
+      </tr>
+      <tr>
+          <td>$80, $83, $86–$FF</td>
+          <td>0</td>
+          <td>8</td>
+          <td>Reserved for LLAP frames</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>LLAP timing constant</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>interframe gap (IFG)</td>
+          <td>less than 200 microseconds</td>
+      </tr>
+      <tr>
+          <td>interdialogue gap (IDG)</td>
+          <td>at least 400 microseconds</td>
+      </tr>
+      <tr>
+          <td>IDG slot time</td>
+          <td>100 microseconds</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>LLAP frame parameter</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>flag byte used for framing an LLAP packet</td>
+          <td>%01111110</td>
+      </tr>
+      <tr>
+          <td>number of flag bytes needed at the start of a frame</td>
+          <td>2 or more flag bytes</td>
+      </tr>
+      <tr>
+          <td>number of bits in abort sequence</td>
+          <td>12–18 bits</td>
+      </tr>
+      <tr>
+          <td>maximum number of data bytes in LLAP packet (not including LLAP header, frame preamble, and frame trailer)</td>
+          <td>600 bytes</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="aarp-parameters">AARP parameters<a class="anchor" href="#aarp-parameters">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>AARP packet parameter</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>SNAP protocol discriminator for AARP packets</td>
+          <td>$00000080F3</td>
+      </tr>
+      <tr>
+          <td>broadcast destination address for AARP packets on Ethernet</td>
+          <td>$090007FFFFFF</td>
+      </tr>
+      <tr>
+          <td>broadcast destination address for AARP packets on token ring</td>
+          <td>$C00040000000</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>AARP command</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>AARP Request</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>AARP Response</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>AARP Probe</td>
+          <td>3</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="ethertalk-and-tokentalk-parameters">EtherTalk and TokenTalk parameters<a class="anchor" href="#ethertalk-and-tokentalk-parameters">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Packet parameter</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>SNAP protocol discriminator for AppleTalk packets</td>
+          <td>$080007809B</td>
+      </tr>
+      <tr>
+          <td>broadcast destination address for AppleTalk packets on Ethernet</td>
+          <td>$090007FFFFFF (EtherTalk)</td>
+      </tr>
+      <tr>
+          <td>broadcast destination address for AppleTalk packets on token ring</td>
+          <td>$C00040000000 (TokenTalk)</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>AARP values as used for EtherTalk</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>hardware type indicating Ethernet</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>hardware type indicating token ring</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>protocol type indicating AppleTalk</td>
+          <td>$809B</td>
+      </tr>
+      <tr>
+          <td>Ethernet hardware address length</td>
+          <td>6 bytes</td>
+      </tr>
+      <tr>
+          <td>AppleTalk protocol address length</td>
+          <td>4 bytes (high byte must be 0)</td>
+      </tr>
+      <tr>
+          <td>AARP probe retransmission interval</td>
+          <td>1/5 of a second</td>
+      </tr>
+      <tr>
+          <td>AARP probe retry count</td>
+          <td>10</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="-figure-c-2-zone-multicast-addresses">■ Figure C-2 Zone multicast addresses<a class="anchor" href="#-figure-c-2-zone-multicast-addresses">#</a></h3>
+<p><img src="images/p550-zone-multicast-addresses.png" alt="Zone multicast addresses" /></p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>ELAP</th>
+          <th>TLAP</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>AppleTalk broadcast address</td>
+          <td>$090007FFFFFF</td>
+          <td>$C00040000000</td>
+      </tr>
+      <tr>
+          <td><strong>Zone multicast addresses</strong><br>When used with the address assignment algorithm described in Chapter 8, the first address in each list represents a[0].</td>
+          <td>$090007000000<br>⋮<br><em>253 addresses</em><br>⋮<br>$0900070000FC</td>
+          <td>$C00000000800<br>$C00000001000<br>$C00000002000<br>$C00000004000<br>$C00000008000<br>$C00000010000<br>$C00000020000<br>$C00000040000<br>$C00000080000<br>$C00000100000<br>$C00000200000<br>$C00000400000<br>$C00000800000<br>$C00001000000<br>$C00002000000<br>$C00004000000<br>$C00008000000<br>$C00010000000<br>$C00020000000</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="ddp-parameters">DDP parameters<a class="anchor" href="#ddp-parameters">#</a></h1>
+<p>This section provides values for DDP packet parameters, protocol type fields, and socket numbers.</p>
+<table>
+  <thead>
+      <tr>
+          <th>DDP packet parameter</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>LLAP type value for short-form header DDP packet</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>LLAP type value for extended-form header DDP packet</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>maximum number of data bytes in a DDP packet</td>
+          <td>586 bytes</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>DDP type field value</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>$00</td>
+          <td>invalid DDP type value (do not use)</td>
+      </tr>
+      <tr>
+          <td>$01 through $FF</td>
+          <td>valid DDP type values for use in DDP client packets</td>
+      </tr>
+      <tr>
+          <td>    $01 through $0F</td>
+          <td>reserved for Apple Computer&rsquo;s use only</td>
+      </tr>
+      <tr>
+          <td>        $01</td>
+          <td>RTMP Response or Data packet</td>
+      </tr>
+      <tr>
+          <td>        $02</td>
+          <td>NBP packet</td>
+      </tr>
+      <tr>
+          <td>        $03</td>
+          <td>ATP packet</td>
+      </tr>
+      <tr>
+          <td>        $04</td>
+          <td>AEP packet</td>
+      </tr>
+      <tr>
+          <td>        $05</td>
+          <td>RTMP Request packet</td>
+      </tr>
+      <tr>
+          <td>        $06</td>
+          <td>ZIP packet</td>
+      </tr>
+      <tr>
+          <td>        $07</td>
+          <td>ADSP packet</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="figure-c-3-ddp-type-field-values">Figure C-3 DDP type field values<a class="anchor" href="#figure-c-3-ddp-type-field-values">#</a></h3>
+<p><img src="images/p552-ddp-type-values.png" alt="DDP type field values" /></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Hex Value</th>
+          <th style="text-align: left">Assigned Value/Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">$00</td>
+          <td style="text-align: left">Invalid</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$01</td>
+          <td style="text-align: left">RTMP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$02</td>
+          <td style="text-align: left">NBP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$03</td>
+          <td style="text-align: left">ATP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$04</td>
+          <td style="text-align: left">AEP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$05</td>
+          <td style="text-align: left">RTMP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$06</td>
+          <td style="text-align: left">ZIP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$07</td>
+          <td style="text-align: left">ADSP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$08–$0F</td>
+          <td style="text-align: left">Reserved for Apple</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$10–$FF</td>
+          <td style="text-align: left">DDP types</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">DDP socket value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">$00</td>
+          <td style="text-align: left">invalid (do not use)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$FF</td>
+          <td style="text-align: left">invalid (do not use)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$01 through $FE</td>
+          <td style="text-align: left">valid DDP sockets</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">  $01 through $7F</td>
+          <td style="text-align: left">statically assigned sockets</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">    $01 through $3F</td>
+          <td style="text-align: left">reserved for Apple Computer&rsquo;s use only</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">      $01</td>
+          <td style="text-align: left">RTMP socket</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">      $02</td>
+          <td style="text-align: left">names information socket (NIS)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">      $04</td>
+          <td style="text-align: left">Echoer socket</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">      $06</td>
+          <td style="text-align: left">zone information socket (ZIS)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">  $40 through $7F</td>
+          <td style="text-align: left">experimental use only (do not use in released products)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="figure-c-4-ddp-socket-numbers">Figure C-4 DDP socket numbers<a class="anchor" href="#figure-c-4-ddp-socket-numbers">#</a></h3>
+<p><img src="images/p553-ddp-socket-numbers.png" alt="DDP socket numbers diagram showing statically and dynamically assigned socket ranges." /></p>
+<h1 id="rtmp-parameters">RTMP parameters<a class="anchor" href="#rtmp-parameters">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">RTMP packet parameter</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">DDP type value for RTMP Response and Data packets</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">DDP type value for RTMP Request packets</td>
+          <td style="text-align: left">5</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">RTMP Request packet function field value</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">RTMP Route Data Request packet function value</td>
+          <td style="text-align: left">2 (split horizon processed)<br>3 (no split horizon processing)</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">RTMP timer value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">send-RTMP timer</td>
+          <td style="text-align: left">10 seconds</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">validity timer</td>
+          <td style="text-align: left">20 seconds</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">timer for aging A-ROUTER in a nonrouter node</td>
+          <td style="text-align: left">50 seconds</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Miscellaneous value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">RTMP listening socket</td>
+          <td style="text-align: left">socket 1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">maximum number of hops supported</td>
+          <td style="text-align: left">16 hops</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="aep-parameters">AEP parameters<a class="anchor" href="#aep-parameters">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>AEP socket parameter</th>
+          <th>Number</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>AEP socket</td>
+          <td>socket 4</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>AEP packet parameter</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>DDP type value for AEP packets</td>
+          <td>4</td>
+      </tr>
+      <tr>
+          <td>Echo function values</td>
+          <td>1 = Echo Request<br>2 = Echo Reply</td>
+      </tr>
+      <tr>
+          <td>maximum data size</td>
+          <td>585 bytes</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="nbp-parameters">NBP parameters<a class="anchor" href="#nbp-parameters">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>NBP socket parameter</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>names information socket (NIS)</td>
+          <td>socket 2</td>
+      </tr>
+      <tr>
+          <td>maximum number of characters in object, type, or zone fields</td>
+          <td>32 characters</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>Wildcard symbol</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>*</td>
+          <td>used only in the zone field of an entity name to mean the zone of the packet&rsquo;s sender</td>
+      </tr>
+      <tr>
+          <td>=</td>
+          <td>used as the object and/or type field of an entity name to mean all objects and/or all types (cannot be used as the zone field)</td>
+      </tr>
+      <tr>
+          <td>≈</td>
+          <td>characters within object and/or type field used to match zero or more characters. Maximum of one per field.</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>NBP packet parameter</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>DDP type value for NBP packets</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>NBP control field value</td>
+          <td>1 = BrRq<br>2 = LkUp<br>3 = LkUp-Reply<br>4 = FwdReq</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="zip-parameters">ZIP parameters<a class="anchor" href="#zip-parameters">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>ZIP socket parameter</th>
+          <th>Number</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>zone information socket</td>
+          <td>socket 6</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>ZIP function</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ZIP Query</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>ZIP Reply</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>ZIP GetNetInfo</td>
+          <td>5</td>
+      </tr>
+      <tr>
+          <td>ZIP GetNetInfoReply</td>
+          <td>6</td>
+      </tr>
+      <tr>
+          <td>ZIP Extended Reply</td>
+          <td>8</td>
+      </tr>
+      <tr>
+          <td>ZIP Notify</td>
+          <td>7</td>
+      </tr>
+      <tr>
+          <td>ZIP GetMyZone</td>
+          <td>7 (in ATP user bytes)</td>
+      </tr>
+      <tr>
+          <td>ZIP GetZoneList</td>
+          <td>8 (in ATP user bytes)</td>
+      </tr>
+      <tr>
+          <td>ZIP GetLocalZones</td>
+          <td>9 (in ATP user bytes)</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>ZIP timer value</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Query retransmission time</td>
+          <td>10 seconds</td>
+      </tr>
+      <tr>
+          <td>ZIP bringback time</td>
+          <td>10 minutes</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="atp-parameters">ATP parameters<a class="anchor" href="#atp-parameters">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>ATP packet parameter</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>DDP type value for ATP packets</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>function code values</td>
+          <td>%01 = TReq<br>%10 = TResp<br>%11 = TRel</td>
+      </tr>
+      <tr>
+          <td>maximum size of data in ATP packet</td>
+          <td>578 bytes</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>ATP TRel timer indicator</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>000</td>
+          <td>30 seconds</td>
+      </tr>
+      <tr>
+          <td>001</td>
+          <td>1 minute</td>
+      </tr>
+      <tr>
+          <td>100</td>
+          <td>8 minutes</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="pap-parameters">PAP parameters<a class="anchor" href="#pap-parameters">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>PAP type</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>OpenConn</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>OpenConnReply</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>SendData</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>Data</td>
+          <td>4</td>
+      </tr>
+      <tr>
+          <td>Tickle</td>
+          <td>5</td>
+      </tr>
+      <tr>
+          <td>CloseConn</td>
+          <td>6</td>
+      </tr>
+      <tr>
+          <td>CloseConnReply</td>
+          <td>7</td>
+      </tr>
+      <tr>
+          <td>SendStatus</td>
+          <td>8</td>
+      </tr>
+      <tr>
+          <td>StatusReply</td>
+          <td>9</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>PAP packet parameter</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>maximum data size</td>
+          <td>512 bytes</td>
+      </tr>
+      <tr>
+          <td>maximum length of status string</td>
+          <td>255 bytes (not including the length byte)</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>PAP timer value</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>OpenConn request ATP retry timer</td>
+          <td>2 seconds</td>
+      </tr>
+      <tr>
+          <td>tickle timer</td>
+          <td>60 seconds</td>
+      </tr>
+      <tr>
+          <td>connection timer</td>
+          <td>2 minutes</td>
+      </tr>
+      <tr>
+          <td>SendData request retry timer</td>
+          <td>15 seconds</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>PAP retry count value</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>OpenConn request retry count</td>
+          <td>5</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>PAP result code</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>PrinterBusy</td>
+          <td>$FFFF</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="asp-parameters">ASP parameters<a class="anchor" href="#asp-parameters">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>SPFunction</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>CloseSession</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>Command</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>GetStatus</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>OpenSess</td>
+          <td>4</td>
+      </tr>
+      <tr>
+          <td>Tickle</td>
+          <td>5</td>
+      </tr>
+      <tr>
+          <td>Write</td>
+          <td>6</td>
+      </tr>
+      <tr>
+          <td>WriteContinue</td>
+          <td>7</td>
+      </tr>
+      <tr>
+          <td>Attention</td>
+          <td>8</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>ASP timer value</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>tickle timer</td>
+          <td>30 seconds</td>
+      </tr>
+      <tr>
+          <td>session maintenance timer</td>
+          <td>2 minutes</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>Decimal value</th>
+          <th>Hex value</th>
+          <th>SPError</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>0</td>
+          <td>($00)</td>
+          <td>NoError*</td>
+      </tr>
+      <tr>
+          <td>-1066</td>
+          <td>$FBD6</td>
+          <td>BadVersNum†</td>
+      </tr>
+      <tr>
+          <td>-1067</td>
+          <td>$FBD5</td>
+          <td>BufTooSmall†</td>
+      </tr>
+      <tr>
+          <td>-1068</td>
+          <td>$FBD4</td>
+          <td>NoMoreSessions*</td>
+      </tr>
+      <tr>
+          <td>-1069</td>
+          <td>$FBD3</td>
+          <td>NoServers†</td>
+      </tr>
+      <tr>
+          <td>-1070</td>
+          <td>$FBD2</td>
+          <td>ParamErr*</td>
+      </tr>
+      <tr>
+          <td>-1071</td>
+          <td>$FBD1</td>
+          <td>ServerBusy†</td>
+      </tr>
+      <tr>
+          <td>-1072</td>
+          <td>$FBD0</td>
+          <td>SessClosed*</td>
+      </tr>
+      <tr>
+          <td>-1073</td>
+          <td>$FBCF</td>
+          <td>SizeErr*</td>
+      </tr>
+      <tr>
+          <td>-1074</td>
+          <td>$FBCE</td>
+          <td>TooManyClients‡</td>
+      </tr>
+      <tr>
+          <td>-1075</td>
+          <td>$FBCD</td>
+          <td>NoAck‡</td>
+      </tr>
+  </tbody>
+</table>
+<ul>
+<li>This error can be returned on both workstation and server ends.
+† This error can be returned on the workstation end only.
+‡ This error can be returned on the server end only.</li>
+</ul>
+<p>The ASP version number described in Chapter 11, &ldquo;AppleTalk Session Protocol,&rdquo; is version $0100.</p>
+<hr>
+<p>The values -1060 to 1065 are reserved for implementation-dependent errors. All other values are invalid in this field. The following error codes are the only ones actually transmitted through ATP (on the OpenSession call): NoError, BadVersNum, and ServerBusy.</p>
+<h1 id="adsp-parameters">ADSP parameters<a class="anchor" href="#adsp-parameters">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>ADSP control code</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Probe or Acknowledgment</td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td>Open Connection Request</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>Open Connection Acknowledgment</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>Open Connection Request and Acknowledgment</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>Open Connection Denial</td>
+          <td>4</td>
+      </tr>
+      <tr>
+          <td>Close Connection Advice</td>
+          <td>5</td>
+      </tr>
+      <tr>
+          <td>Forward Reset</td>
+          <td>6</td>
+      </tr>
+      <tr>
+          <td>Forward Reset Acknowledgment</td>
+          <td>7</td>
+      </tr>
+      <tr>
+          <td>Retransmit Advice</td>
+          <td>8</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>ADSP packet parameter</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>DDP type value for ZIP packets</td>
+          <td>7</td>
+      </tr>
+      <tr>
+          <td>maximum data size</td>
+          <td>572 bytes</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="afp-parameters">AFP parameters<a class="anchor" href="#afp-parameters">#</a></h1>
+<p>Each function code is a 16-bit integer sent in the packet high-byte first.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Decimal value</th>
+          <th>Hex value</th>
+          <th>AFP function</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>$01</td>
+          <td>ByteRangeLock</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>$02</td>
+          <td>CloseVol</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>$03</td>
+          <td>CloseDir</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>$04</td>
+          <td>CloseFork</td>
+      </tr>
+  </tbody>
+</table>
+<p>(continued) ➡</p>
+<hr>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Decimal value</th>
+          <th style="text-align: left">Hex value</th>
+          <th style="text-align: left">AFP function (continued)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">5</td>
+          <td style="text-align: left">$05</td>
+          <td style="text-align: left">CopyFile</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">6</td>
+          <td style="text-align: left">$06</td>
+          <td style="text-align: left">CreateDir</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">7</td>
+          <td style="text-align: left">$07</td>
+          <td style="text-align: left">CreateFile</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">$08</td>
+          <td style="text-align: left">Delete</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">9</td>
+          <td style="text-align: left">$09</td>
+          <td style="text-align: left">Enumerate</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">10</td>
+          <td style="text-align: left">$0A</td>
+          <td style="text-align: left">Flush</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">11</td>
+          <td style="text-align: left">$0B</td>
+          <td style="text-align: left">FlushFork</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">14</td>
+          <td style="text-align: left">$0E</td>
+          <td style="text-align: left">GetForkParms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">15</td>
+          <td style="text-align: left">$0F</td>
+          <td style="text-align: left">GetSrvrInfo</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left">$10</td>
+          <td style="text-align: left">GetSrvrParms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">17</td>
+          <td style="text-align: left">$11</td>
+          <td style="text-align: left">GetVolParms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">18</td>
+          <td style="text-align: left">$12</td>
+          <td style="text-align: left">Login</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">19</td>
+          <td style="text-align: left">$13</td>
+          <td style="text-align: left">LoginCont</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">20</td>
+          <td style="text-align: left">$14</td>
+          <td style="text-align: left">Logout</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">21</td>
+          <td style="text-align: left">$15</td>
+          <td style="text-align: left">MapID</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">22</td>
+          <td style="text-align: left">$16</td>
+          <td style="text-align: left">MapName</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">23</td>
+          <td style="text-align: left">$17</td>
+          <td style="text-align: left">MoveAndRename</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">24</td>
+          <td style="text-align: left">$18</td>
+          <td style="text-align: left">OpenVol</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">25</td>
+          <td style="text-align: left">$19</td>
+          <td style="text-align: left">OpenDir</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">26</td>
+          <td style="text-align: left">$1A</td>
+          <td style="text-align: left">OpenFork</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">27</td>
+          <td style="text-align: left">$1B</td>
+          <td style="text-align: left">Read</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">28</td>
+          <td style="text-align: left">$1C</td>
+          <td style="text-align: left">Rename</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">29</td>
+          <td style="text-align: left">$1D</td>
+          <td style="text-align: left">SetDirParms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">30</td>
+          <td style="text-align: left">$1E</td>
+          <td style="text-align: left">SetFileParms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">31</td>
+          <td style="text-align: left">$1F</td>
+          <td style="text-align: left">SetForkParms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">32</td>
+          <td style="text-align: left">$20</td>
+          <td style="text-align: left">SetVolParms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">33</td>
+          <td style="text-align: left">$21</td>
+          <td style="text-align: left">Write</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">34</td>
+          <td style="text-align: left">$22</td>
+          <td style="text-align: left">GetFileDirParms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">35</td>
+          <td style="text-align: left">$23</td>
+          <td style="text-align: left">SetFileDirParms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">36</td>
+          <td style="text-align: left">$24</td>
+          <td style="text-align: left">ChangePassword</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">37</td>
+          <td style="text-align: left">$25</td>
+          <td style="text-align: left">GetUserInfo</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">48</td>
+          <td style="text-align: left">$30</td>
+          <td style="text-align: left">OpenDT</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">49</td>
+          <td style="text-align: left">$31</td>
+          <td style="text-align: left">CloseDT</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">51</td>
+          <td style="text-align: left">$33</td>
+          <td style="text-align: left">GetIcon</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">52</td>
+          <td style="text-align: left">$34</td>
+          <td style="text-align: left">GetIconInfo</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">53</td>
+          <td style="text-align: left">$35</td>
+          <td style="text-align: left">AddAPPL</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<table>
+  <thead>
+      <tr>
+          <th>Decimal value</th>
+          <th>Hex value</th>
+          <th>AFP function (continued)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>54</td>
+          <td>$36</td>
+          <td>RmvAPPL</td>
+      </tr>
+      <tr>
+          <td>55</td>
+          <td>$37</td>
+          <td>GetAPPL</td>
+      </tr>
+      <tr>
+          <td>56</td>
+          <td>$38</td>
+          <td>AddComment</td>
+      </tr>
+      <tr>
+          <td>57</td>
+          <td>$39</td>
+          <td>RmvComment</td>
+      </tr>
+      <tr>
+          <td>58</td>
+          <td>$3A</td>
+          <td>GetComment</td>
+      </tr>
+      <tr>
+          <td>192</td>
+          <td>$C0</td>
+          <td>AddIcon</td>
+      </tr>
+  </tbody>
+</table>
+<p>Each call returns a result code, which is a 4-byte integer.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Decimal value</th>
+          <th>Hex value</th>
+          <th>FPError</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>0</td>
+          <td>$0</td>
+          <td>NoErr</td>
+      </tr>
+      <tr>
+          <td>-5000</td>
+          <td>$FFFFEC78</td>
+          <td>AccessDenied</td>
+      </tr>
+      <tr>
+          <td>-5001</td>
+          <td>$FFFFEC77</td>
+          <td>AuthContinue</td>
+      </tr>
+      <tr>
+          <td>-5002</td>
+          <td>$FFFFEC76</td>
+          <td>BadUAM</td>
+      </tr>
+      <tr>
+          <td>-5003</td>
+          <td>$FFFFEC75</td>
+          <td>BadVersNum</td>
+      </tr>
+      <tr>
+          <td>-5004</td>
+          <td>$FFFFEC74</td>
+          <td>BitmapErr</td>
+      </tr>
+      <tr>
+          <td>-5005</td>
+          <td>$FFFFEC73</td>
+          <td>CantMove</td>
+      </tr>
+      <tr>
+          <td>-5006</td>
+          <td>$FFFFEC72</td>
+          <td>DenyConflict</td>
+      </tr>
+      <tr>
+          <td>-5007</td>
+          <td>$FFFFEC71</td>
+          <td>DirNotEmpty</td>
+      </tr>
+      <tr>
+          <td>-5008</td>
+          <td>$FFFFEC70</td>
+          <td>DiskFull</td>
+      </tr>
+      <tr>
+          <td>-5009</td>
+          <td>$FFFFEC6F</td>
+          <td>EOFErr</td>
+      </tr>
+      <tr>
+          <td>-5010</td>
+          <td>$FFFFEC6E</td>
+          <td>FileBusy</td>
+      </tr>
+      <tr>
+          <td>-5011</td>
+          <td>$FFFFEC6D</td>
+          <td>FlatVol</td>
+      </tr>
+      <tr>
+          <td>-5012</td>
+          <td>$FFFFEC6C</td>
+          <td>ItemNotFound</td>
+      </tr>
+      <tr>
+          <td>-5013</td>
+          <td>$FFFFEC6B</td>
+          <td>LockErr</td>
+      </tr>
+      <tr>
+          <td>-5014</td>
+          <td>$FFFFEC6A</td>
+          <td>MiscErr</td>
+      </tr>
+      <tr>
+          <td>-5015</td>
+          <td>$FFFFEC69</td>
+          <td>NoMoreLocks</td>
+      </tr>
+      <tr>
+          <td>-5016</td>
+          <td>$FFFFEC68</td>
+          <td>NoServer</td>
+      </tr>
+      <tr>
+          <td>-5017</td>
+          <td>$FFFFEC67</td>
+          <td>ObjectExists</td>
+      </tr>
+      <tr>
+          <td>-5018</td>
+          <td>$FFFFEC66</td>
+          <td>ObjectNotFound</td>
+      </tr>
+      <tr>
+          <td>-5019</td>
+          <td>$FFFFEC65</td>
+          <td>ParamErr</td>
+      </tr>
+      <tr>
+          <td>-5020</td>
+          <td>$FFFFEC64</td>
+          <td>RangeNotLocked</td>
+      </tr>
+      <tr>
+          <td>-5021</td>
+          <td>$FFFFEC63</td>
+          <td>RangeOverlap</td>
+      </tr>
+      <tr>
+          <td>-5022</td>
+          <td>$FFFFEC62</td>
+          <td>SessClosed</td>
+      </tr>
+      <tr>
+          <td>-5023</td>
+          <td>$FFFFEC61</td>
+          <td>UserNotAuth</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<table>
+  <thead>
+      <tr>
+          <th>Decimal value</th>
+          <th>Hex value</th>
+          <th>FPError (continued)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>-5024</td>
+          <td>$FFFFEC60</td>
+          <td>CallNotSupported</td>
+      </tr>
+      <tr>
+          <td>-5025</td>
+          <td>$FFFFEC5F</td>
+          <td>ObjectTypeErr</td>
+      </tr>
+      <tr>
+          <td>-5026</td>
+          <td>$FFFFEC5E</td>
+          <td>TooManyFilesOpen</td>
+      </tr>
+      <tr>
+          <td>-5027</td>
+          <td>$FFFFEC5D</td>
+          <td>ServerGoingDown</td>
+      </tr>
+      <tr>
+          <td>-5028</td>
+          <td>$FFFFEC5C</td>
+          <td>CantRename</td>
+      </tr>
+      <tr>
+          <td>-5029</td>
+          <td>$FFFFEC5B</td>
+          <td>DirNotFound</td>
+      </tr>
+      <tr>
+          <td>-5030</td>
+          <td>$FFFFEC5A</td>
+          <td>IconTypeError</td>
+      </tr>
+      <tr>
+          <td>-5031</td>
+          <td>$FFFFEC59</td>
+          <td>VolLocked</td>
+      </tr>
+      <tr>
+          <td>-5032</td>
+          <td>$FFFFEC58</td>
+          <td>ObjectLocked</td>
+      </tr>
+  </tbody>
+</table>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cinside-appletalk-second-edition%5CC-appletalk-parameters.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#contents">CONTENTS</a></li>
+      </ul>
+    </li>
+    <li><a href="#llap-parameters">LLAP parameters</a>
+      <ul>
+        <li><a href="#figure-c-1-llap-type-field-values">Figure C-1 LLAP type field values</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-figure-c-2-zone-multicast-addresses">■ Figure C-2 Zone multicast addresses</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#figure-c-3-ddp-type-field-values">Figure C-3 DDP type field values</a></li>
+        <li><a href="#figure-c-4-ddp-socket-numbers">Figure C-4 DDP socket numbers</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

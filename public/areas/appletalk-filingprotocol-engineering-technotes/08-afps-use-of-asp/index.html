@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="## AFP’s Use of ASP#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 8 Pages 105–112 Converted 2026-04-01 Engine gemini-flash Chapter 8#AFP’s Use of ASP#The AppleTalk Filing Protocol uses the transport services of the AppleTalk Session Protocol (ASP). This chapter discusses the manner in which the AFP calls are conveyed via ASP. For this purpose we refer to various terms defined in the ASP specification document. For these definitions, the reader must turn to that document.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/08-afps-use-of-asp/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="## AFP&#39;s Use of ASP">
+  <meta property="og:description" content="## AFP’s Use of ASP#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 8 Pages 105–112 Converted 2026-04-01 Engine gemini-flash Chapter 8#AFP’s Use of ASP#The AppleTalk Filing Protocol uses the transport services of the AppleTalk Session Protocol (ASP). This chapter discusses the manner in which the AFP calls are conveyed via ASP. For this purpose we refer to various terms defined in the ASP specification document. For these definitions, the reader must turn to that document.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="## AFP&#39;s Use of ASP">
+  <meta itemprop="description" content="## AFP’s Use of ASP#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 8 Pages 105–112 Converted 2026-04-01 Engine gemini-flash Chapter 8#AFP’s Use of ASP#The AppleTalk Filing Protocol uses the transport services of the AppleTalk Session Protocol (ASP). This chapter discusses the manner in which the AFP calls are conveyed via ASP. For this purpose we refer to various terms defined in the ASP specification document. For these definitions, the reader must turn to that document.">
+  <meta itemprop="wordCount" content="1818">
+
+<title>## AFP&#39;s Use of ASP | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/08-afps-use-of-asp/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>## AFP&#39;s Use of ASP</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#afps-use-of-asp">AFP&rsquo;s Use of ASP</a>
+      <ul>
+        <li><a href="#finding-a-server">Finding a Server</a></li>
+        <li><a href="#getting-server-information">Getting Server Information</a></li>
+        <li><a href="#login-on-the-file-server">Login On the File Server</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#other-afp-calls">Other AFP Calls</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#no-user-authentication">No User Authentication</a></li>
+    <li><a href="#user-authentication-with-clear-text-password-transmission">User Authentication with Clear Text Password Transmission</a></li>
+    <li><a href="#user-authentication-based-on-random-number-exchange">User Authentication Based on Random Number Exchange</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#user-authentication-methods-1">User Authentication Methods</a>
+      <ul>
+        <li><a href="#no-user-authentication-1">No User Authentication</a></li>
+        <li><a href="#user-authentication-with-clear-text-password-transmission-1">User Authentication with Clear Text Password Transmission</a></li>
+        <li><a href="#user-authentication-based-on-random-number-exchange-1">User Authentication Based on Random Number Exchange</a></li>
+        <li><a href="#new-open-attempt-deny-mode-and-access-mode">New Open Attempt Deny Mode and Access Mode</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="-afps-use-of-asp">## AFP&rsquo;s Use of ASP<a class="anchor" href="#-afps-use-of-asp">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td>022_AppleTalkFilingProtocolEngineeringTechnicalNotes</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>8</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>105–112</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-04-01</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="chapter-8">Chapter 8<a class="anchor" href="#chapter-8">#</a></h1>
+<h2 id="afps-use-of-asp">AFP&rsquo;s Use of ASP<a class="anchor" href="#afps-use-of-asp">#</a></h2>
+<p>The AppleTalk Filing Protocol uses the transport services of the AppleTalk Session Protocol (ASP). This chapter discusses the manner in which the AFP calls are conveyed via ASP. For this purpose we refer to various terms defined in the ASP specification document. For these definitions, the reader must turn to that document.</p>
+<p>In the case of all these calls, the AFP level variable <em>FPError</em> is returned as the ASP-level <em>CmdResult</em>. Also, the AFP-level Command packet is conveyed as an ASP-level <em>Command block</em>, while the AFP-level Reply packet is returned as the ASP-level <em>Command Reply block</em>.</p>
+<h3 id="finding-a-server">Finding a Server<a class="anchor" href="#finding-a-server">#</a></h3>
+<p>To find an AFP server, an NBP request must be issued for objects of type &ldquo;AFPServer&rdquo;.</p>
+<h3 id="getting-server-information">Getting Server Information<a class="anchor" href="#getting-server-information">#</a></h3>
+<p>A workstation AFP client makes an <em>FPGetSrvrInfo</em> call to obtain server information needed before an AFP level login can be attempted. The <em>FPGetSrvrInfo</em> call is converted by the workstation&rsquo;s AFP into an ASP level <em>SPGetStatus</em> call. The server information is returned by ASP as the <em>SPGetStatus</em> call&rsquo;s <em>Command reply block</em>. Note that the <em>SAddr</em> (internet address of the file server&rsquo;s SLS) supplied with the <em>FPGetSrvrInfo</em> call is used as the <em>SLSEntityIdentifier</em> required by the <em>SPGetStatus</em> call.</p>
+<h3 id="login-on-the-file-server">Login On the File Server<a class="anchor" href="#login-on-the-file-server">#</a></h3>
+<p>Having obtained the server information, the AFP client initiates the process for logging in on the file server. This is achieved by AFP in a two step fashion.</p>
+<p>First, AFP issues an <em>SPOpenSession</em> call to establish an ASP-level session. If for some reason this ASP session can not be established, then an error is returned to the workstation&rsquo;s AFP client and login is abandoned.</p>
+<p>Once the ASP session has been opened, then the workstation&rsquo;s AFP issues an <em>SPCommand</em> call to send the FPLogin&rsquo;s <em>Command</em> to the file server&rsquo;s AFP. This FPLogin Command is sent as the <em>Command block</em> of the <em>SPCommand</em>. Beyond this point a series of <em>SPCommand</em>&rsquo;s may be necessary to complete the login process (this depends on the User Authentication Method being employed in the login).</p>
+<p>If at any point, in this process the server returns an error indicating that the login can not be completed successfully, then the workstation&rsquo;s AFP must make an <em>SPCloseSession</em> call to close the ASP session. This is vital, otherwise the session will remain open for no purpose. After closing the session, the workstation&rsquo;s AFP returns an appropriate error message to its client.</p>
+<hr>
+<h1 id="logout-of-the-file-server">Logout of the File Server<a class="anchor" href="#logout-of-the-file-server">#</a></h1>
+<p>When the workstation client wishes to terminate its conversation with the file server, it issues an <em>FPLogout</em> call to its AFP. The workstation&rsquo;s AFP again uses a two step process to carry out this logout.</p>
+<p>First, it issues an <em>SPCommand</em> to convey the <em>FPLogout</em> command to the server. Having done so, it then terminates the corresponding ASP session by making an <em>SPCloseSession</em> call.</p>
+<h2 id="other-afp-calls">Other AFP Calls<a class="anchor" href="#other-afp-calls">#</a></h2>
+<p>Every other AFP calls (with the exception of <em>FPWrite</em>) is conveyed by AFP via an <em>SPCommand</em> call.</p>
+<p>An <em>FPWrite</em> call is sent by the workstation&rsquo;s AFP by making an <em>SPWrite</em> call.</p>
+<p>It should be noted that in the case of the <em>FPRead</em>, <em>FPWrite</em>, and <em>FPEnumerate</em> calls, a partial completion of the call is possible. By this we mean that less than the desired length is read (or written). There are two reasons for this.</p>
+<p>First, in the case of an <em>FPRead</em> call, the end-of-file may be reached before the requested number of bytes have been read. In the case of an <em>FPRead</em> or <em>FPWrite</em> call, a locked byte range may be reached before all the requested bytes have been read or written.</p>
+<p>A second reason is related to the <em>QuantumSize</em> related to the session protocol. In the case of AppleTalk, the largest data block that may be written or read through ASP is equal to 4624 bytes, the <em>QuantumSize</em> size. Thus the underlying <em>SPCommand</em> (in the case of an <em>FPRead</em> or <em>FPEnumerate</em>) or <em>SPWrite</em> (in the case of an <em>FPWrite</em>) will complete with an actual received or written reply size smaller than the requested value. Therefore, if no error was returned, the AFP must issue an additional <em>SPCommand</em> or <em>SPWrite</em> call to complete the AFP request.</p>
+<p>Although AFP may have to issue several ASP calls to complete a single AFP command, the first ASP command should convey the actual sizes requested by the user to allow the server a chance to optimize. Subsequent ASP calls should convey sizes that have been adjusted to reflect how much of the original command has already been completed.</p>
+<hr>
+<h1 id="appendix-a">Appendix A<a class="anchor" href="#appendix-a">#</a></h1>
+<h1 id="user-authentication-methods">User Authentication Methods<a class="anchor" href="#user-authentication-methods">#</a></h1>
+<p>As noted in the main body of this document, AFP version 1.1 provides three standard user authentication methods. These correspond to UAM strings &ldquo;NoUserAuthent&rdquo;, &ldquo;Cleartxt passwd&rdquo; and &ldquo;Randnum exchange&rdquo;. [Note: these strings should be used in a case-insensitive fashion].</p>
+<h2 id="no-user-authentication">No User Authentication<a class="anchor" href="#no-user-authentication">#</a></h2>
+<p>The first of these in fact corresponds to no user authentication (UAM = &ldquo;NoUserAuthent&rdquo;) and as such needs no specification. Thus, no user name or password information is required in the FPLogin command which therefore has no UserAuthInfo field.</p>
+<p>Any server can accept a user login using this method. If the server handles the user-authentication-based directory-level access control mechanism, then it must assign the user a special User ID and Group ID for that session, such that the user only obtains world&rsquo;s access rights for every directory in every server volume.</p>
+<h2 id="user-authentication-with-clear-text-password-transmission">User Authentication with Clear Text Password Transmission<a class="anchor" href="#user-authentication-with-clear-text-password-transmission">#</a></h2>
+<p>The second standard method employs the transmission of the user&rsquo;s password in clear text (in addition to the user&rsquo;s name) in the FPLogin command packet. The UserAuthInfo part of the FPLogin command consists of the user&rsquo;s name (a string of up to 31 characters which follows the UAM field in the packet without padding) followed by a possible null byte and then the user&rsquo;s password. The user&rsquo;s password is an 8-byte quantity. If the user provides a shorter password then it must be padded (suffixed) with null ($00) bytes to make its length equal to 8 bytes. The permissible set of characters in passwords consists of all 8-bit characters with the most significant bit equal to 0.</p>
+<p>User name comparison in servers must be case insensitive, but password comparison is to be case sensitive in this UserAuthenticationMethod. Of course, one could create a new UserAuthenticationMethod that performed case-insensitive password comparison.</p>
+<p>It should be noted that this method should be used by workstations only if it is known that the intervening network is secure against &ldquo;wire tapping&rdquo;, otherwise the password information can be picked up out of FPLogin command packets by anyone tapping the network.</p>
+<h2 id="user-authentication-based-on-random-number-exchange">User Authentication Based on Random Number Exchange<a class="anchor" href="#user-authentication-based-on-random-number-exchange">#</a></h2>
+<hr>
+<table>
+  <thead>
+      <tr>
+          <th>Function</th>
+          <th>Code</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>GetIconInfo</td>
+          <td>52</td>
+      </tr>
+      <tr>
+          <td>AddAPPL</td>
+          <td>53</td>
+      </tr>
+      <tr>
+          <td>RmvAPPL</td>
+          <td>54</td>
+      </tr>
+      <tr>
+          <td>GetAPPL</td>
+          <td>55</td>
+      </tr>
+      <tr>
+          <td>AddComment</td>
+          <td>56</td>
+      </tr>
+      <tr>
+          <td>RmvComment</td>
+          <td>57</td>
+      </tr>
+      <tr>
+          <td>GetComment</td>
+          <td>58</td>
+      </tr>
+      <tr>
+          <td>AddIcon</td>
+          <td>192</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="appendix-a-1">Appendix A<a class="anchor" href="#appendix-a-1">#</a></h1>
+<h2 id="user-authentication-methods-1">User Authentication Methods<a class="anchor" href="#user-authentication-methods-1">#</a></h2>
+<p>As noted in the main body of this document, AFP version 1.1 provides three standard user authentication methods. These correspond to UAM strings &ldquo;NoUserAuthent&rdquo;, &ldquo;Cleartxt passwrd&rdquo; and &ldquo;Randnum exchange&rdquo;. [Note: these strings should be used in a case-insensitive fashion].</p>
+<h3 id="no-user-authentication-1">No User Authentication<a class="anchor" href="#no-user-authentication-1">#</a></h3>
+<p>The first of these in fact corresponds to no user authentication (UAM = &ldquo;No User Authent&rdquo;) and as such needs no specification. Thus, no user name or password information is required in the <em>FPLogin</em> command which therefore has no <em>UserAuthInfo</em> field.</p>
+<p>Any server can accept a user login using this method. If the server handles the user-authentication-based directory-level access control mechanism, then it must assign the user a special User ID and Group ID for that session, such that the user only obtains world&rsquo;s access rights for every directory in every server volume.</p>
+<h3 id="user-authentication-with-clear-text-password-transmission-1">User Authentication with Clear Text Password Transmission<a class="anchor" href="#user-authentication-with-clear-text-password-transmission-1">#</a></h3>
+<p>The second standard method employs the transmission of the user&rsquo;s password in clear text (in addition to the user&rsquo;s name) in the <em>FPLogin</em> command packet. The <em>UserAuthInfo</em> part of the <em>FPLogin</em> command consists of the user&rsquo;s name (a string of up to 31 characters which follows the UAM field in the packet without padding) followed by a possible null byte and then the user&rsquo;s password. The user&rsquo;s password is an 8-byte quantity. If the user provides a shorter password then it must be padded (suffixed) with null ($00) bytes to make its length equal to 8 bytes. The permissible set of characters in passwords consists of all 8-bit characters with the most significant bit equal to 0.</p>
+<p>User name comparison in servers must be case insensitive, but password comparison is to be case sensitive in this UserAuthenticationMethod. Of course, one could create a new UserAuthenticationMethod that performed case-insensitive password comparison.</p>
+<p>It should be noted that this method should be used by workstations only if it is known that the intervening network is secure against &ldquo;wire tapping&rdquo;, otherwise the password information can be picked up out of <em>FPLogin</em> command packets by anyone tapping the network.</p>
+<h3 id="user-authentication-based-on-random-number-exchange-1">User Authentication Based on Random Number Exchange<a class="anchor" href="#user-authentication-based-on-random-number-exchange-1">#</a></h3>
+<hr>
+<p>In environments where the network is not secure against tapping, a more secure method based on a random number exchange between the server and the workstation can be used. In this method, the user&rsquo;s password is never sent over the network and hence cannot be picked up by tapping. In fact, it is essentially impossible (as secure as the basic encryption method) to derive the password from the information that is sent over the network.</p>
+<h3 id="new-open-attempt-deny-mode-and-access-mode">New Open Attempt Deny Mode and Access Mode<a class="anchor" href="#new-open-attempt-deny-mode-and-access-mode">#</a></h3>
+<p><img src="images/p110-access-matrix.png" alt="Matrix showing the compatibility of New Open Attempt Deny Mode and Access Mode settings." /></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+          <th style="text-align: center">Deny R/W</th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center">Deny Write</th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center">Deny Read</th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center">Deny None</th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center"></th>
+          <th style="text-align: center"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: center">-</td>
+          <td style="text-align: center">R</td>
+          <td style="text-align: center">RW</td>
+          <td style="text-align: center">W</td>
+          <td style="text-align: center">-</td>
+          <td style="text-align: center">R</td>
+          <td style="text-align: center">RW</td>
+          <td style="text-align: center">W</td>
+          <td style="text-align: center">-</td>
+          <td style="text-align: center">R</td>
+          <td style="text-align: center">RW</td>
+          <td style="text-align: center">W</td>
+          <td style="text-align: center">-</td>
+          <td style="text-align: center">R</td>
+          <td style="text-align: center">RW</td>
+          <td style="text-align: center">W</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Deny R/W</strong></td>
+          <td style="text-align: left"><strong>-</strong></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><strong>R</strong></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">√</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><strong>RW</strong></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+  </tbody>
+</table>
+<pre tabindex="0"><code>GetIconInfo      52
+AddAPPL          53
+RmvAPPL          54
+GetAPPL          55
+AddComment       56
+RmvComment       57
+GetComment       58
+AddIcon         192</code></pre><hr>
+<h1 id="error-codes">Error Codes<a class="anchor" href="#error-codes">#</a></h1>
+<p>Each call returns an Error code which is a 4-byte integer. The various error values are listed below together with their mnemonic names (these are the names used in Chapter 7). The values given below are in hexadecimal and decimal (base-10) form.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Error Mnemonic</th>
+          <th>Hex Value</th>
+          <th>Decimal Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>NoErr</td>
+          <td>$0</td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td>AccessDenied</td>
+          <td>$FFFFEC78</td>
+          <td>-5000</td>
+      </tr>
+      <tr>
+          <td>AuthContinue</td>
+          <td>$FFFFEC77</td>
+          <td>-5001</td>
+      </tr>
+      <tr>
+          <td>BadUAM</td>
+          <td>$FFFFEC76</td>
+          <td>-5002</td>
+      </tr>
+      <tr>
+          <td>BadVersNum</td>
+          <td>$FFFFEC75</td>
+          <td>-5003</td>
+      </tr>
+      <tr>
+          <td>BitmapErr</td>
+          <td>$FFFFEC74</td>
+          <td>-5004</td>
+      </tr>
+      <tr>
+          <td>CantMove</td>
+          <td>$FFFFEC73</td>
+          <td>-5005</td>
+      </tr>
+      <tr>
+          <td>DenyConflict</td>
+          <td>$FFFFEC72</td>
+          <td>-5006</td>
+      </tr>
+      <tr>
+          <td>DirNotEmpty</td>
+          <td>$FFFFEC71</td>
+          <td>-5007</td>
+      </tr>
+      <tr>
+          <td>DiskFull</td>
+          <td>$FFFFEC70</td>
+          <td>-5008</td>
+      </tr>
+      <tr>
+          <td>EOFErr</td>
+          <td>$FFFFEC6F</td>
+          <td>-5009</td>
+      </tr>
+      <tr>
+          <td>FileBusy</td>
+          <td>$FFFFEC6E</td>
+          <td>-5010</td>
+      </tr>
+      <tr>
+          <td>FlatVol</td>
+          <td>$FFFFEC6D</td>
+          <td>-5011</td>
+      </tr>
+      <tr>
+          <td>ItemNotFound</td>
+          <td>$FFFFEC6C</td>
+          <td>-5012</td>
+      </tr>
+      <tr>
+          <td>LockErr</td>
+          <td>$FFFFEC6B</td>
+          <td>-5013</td>
+      </tr>
+      <tr>
+          <td>MiscErr</td>
+          <td>$FFFFEC6A</td>
+          <td>-5014</td>
+      </tr>
+      <tr>
+          <td>NoMoreLocks</td>
+          <td>$FFFFEC69</td>
+          <td>-5015</td>
+      </tr>
+      <tr>
+          <td>NoServer</td>
+          <td>$FFFFEC68</td>
+          <td>-5016</td>
+      </tr>
+      <tr>
+          <td>ObjectExists</td>
+          <td>$FFFFEC67</td>
+          <td>-5017</td>
+      </tr>
+      <tr>
+          <td>ObjectNotFound</td>
+          <td>$FFFFEC66</td>
+          <td>-5018</td>
+      </tr>
+      <tr>
+          <td>ParamErr</td>
+          <td>$FFFFEC65</td>
+          <td>-5019</td>
+      </tr>
+      <tr>
+          <td>RangeNotLocked</td>
+          <td>$FFFFEC64</td>
+          <td>-5020</td>
+      </tr>
+      <tr>
+          <td>RangeOverlap</td>
+          <td>$FFFFEC63</td>
+          <td>-5021</td>
+      </tr>
+      <tr>
+          <td>SessClosed</td>
+          <td>$FFFFEC62</td>
+          <td>-5022</td>
+      </tr>
+      <tr>
+          <td>UserNotAuth</td>
+          <td>$FFFFEC61</td>
+          <td>-5023</td>
+      </tr>
+      <tr>
+          <td>CallNotSupported</td>
+          <td>$FFFFEC60</td>
+          <td>-5024</td>
+      </tr>
+      <tr>
+          <td>ObjectTypeErr</td>
+          <td>$FFFFEC5F</td>
+          <td>-5025</td>
+      </tr>
+      <tr>
+          <td>TooManyFilesOpen</td>
+          <td>$FFFFEC5E</td>
+          <td>-5026</td>
+      </tr>
+      <tr>
+          <td>ServerGoingDown</td>
+          <td>$FFFFEC5D</td>
+          <td>-5027</td>
+      </tr>
+      <tr>
+          <td>CantRename</td>
+          <td>$FFFFEC5C</td>
+          <td>-5028</td>
+      </tr>
+      <tr>
+          <td>DirNotFound</td>
+          <td>$FFFFEC5B</td>
+          <td>-5029</td>
+      </tr>
+      <tr>
+          <td>IconTypeError</td>
+          <td>$FFFFEC5A</td>
+          <td>-5030</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="appendix-e">Appendix E<a class="anchor" href="#appendix-e">#</a></h1>
+<h1 id="list-of-abbreviations">List of Abbreviations<a class="anchor" href="#list-of-abbreviations">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>AFI</td>
+          <td>AppleTalk filing interface</td>
+      </tr>
+      <tr>
+          <td>AFP</td>
+          <td>AppleTalk Filing Protocol</td>
+      </tr>
+      <tr>
+          <td>ALAP</td>
+          <td>AppleTalk Link Access Protocol</td>
+      </tr>
+      <tr>
+          <td>ASP</td>
+          <td>AppleTalk Session Protocol</td>
+      </tr>
+      <tr>
+          <td>ATP</td>
+          <td>AppleTalk Transaction Protocol</td>
+      </tr>
+      <tr>
+          <td>CAM</td>
+          <td>Current Access Mode</td>
+      </tr>
+      <tr>
+          <td>CDM</td>
+          <td>Current Deny Mode</td>
+      </tr>
+      <tr>
+          <td>DDP</td>
+          <td>Datagram Delivery Protocol</td>
+      </tr>
+      <tr>
+          <td>GMT</td>
+          <td>Greenwich Mean Time</td>
+      </tr>
+      <tr>
+          <td>HFS</td>
+          <td>Macintosh&rsquo;s hierarchical file system</td>
+      </tr>
+      <tr>
+          <td>MFS</td>
+          <td>the earlier Macintosh (flat) file system</td>
+      </tr>
+      <tr>
+          <td>NBP</td>
+          <td>Name Binding Protocol</td>
+      </tr>
+      <tr>
+          <td>NFI</td>
+          <td>Native filing interface</td>
+      </tr>
+      <tr>
+          <td>SLS</td>
+          <td>Session listening socket</td>
+      </tr>
+      <tr>
+          <td>UAM</td>
+          <td>User authentication method</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cappletalk-filingprotocol-engineering-technotes%5C08-afps-use-of-asp.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#afps-use-of-asp">AFP&rsquo;s Use of ASP</a>
+      <ul>
+        <li><a href="#finding-a-server">Finding a Server</a></li>
+        <li><a href="#getting-server-information">Getting Server Information</a></li>
+        <li><a href="#login-on-the-file-server">Login On the File Server</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#other-afp-calls">Other AFP Calls</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#no-user-authentication">No User Authentication</a></li>
+    <li><a href="#user-authentication-with-clear-text-password-transmission">User Authentication with Clear Text Password Transmission</a></li>
+    <li><a href="#user-authentication-based-on-random-number-exchange">User Authentication Based on Random Number Exchange</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#user-authentication-methods-1">User Authentication Methods</a>
+      <ul>
+        <li><a href="#no-user-authentication-1">No User Authentication</a></li>
+        <li><a href="#user-authentication-with-clear-text-password-transmission-1">User Authentication with Clear Text Password Transmission</a></li>
+        <li><a href="#user-authentication-based-on-random-number-exchange-1">User Authentication Based on Random Number Exchange</a></li>
+        <li><a href="#new-open-attempt-deny-mode-and-access-mode">New Open Attempt Deny Mode and Access Mode</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

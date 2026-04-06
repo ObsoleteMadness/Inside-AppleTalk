@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LLAP Access Control Algorithms#Field Value Source Inside AppleTalk Second Edition (1990) Part Part V - End-User Services Chapter B Pages 524–545 Converted 2026-03-31 Engine gemini-flash Appendix B LLAP Access Control Algorithms#CONTENTS#Assumptions / B-2
+Global constants, types, and variables / B-2
+Hardware interface declarations / B-4
+Interface procedures and functions / B-5
+InitializeLLAP procedure / B-6
+AcquireAddress procedure / B-7
+TransmitPacket function / B-8
+TransmitLinkMgmt function / B-8
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/inside-appletalk-second-edition/b-llap-access-control-algorithms/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="LLAP Access Control Algorithms">
+  <meta property="og:description" content="LLAP Access Control Algorithms#Field Value Source Inside AppleTalk Second Edition (1990) Part Part V - End-User Services Chapter B Pages 524–545 Converted 2026-03-31 Engine gemini-flash Appendix B LLAP Access Control Algorithms#CONTENTS#Assumptions / B-2
+Global constants, types, and variables / B-2
+Hardware interface declarations / B-4
+Interface procedures and functions / B-5
+InitializeLLAP procedure / B-6
+AcquireAddress procedure / B-7
+TransmitPacket function / B-8
+TransmitLinkMgmt function / B-8">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="LLAP Access Control Algorithms">
+  <meta itemprop="description" content="LLAP Access Control Algorithms#Field Value Source Inside AppleTalk Second Edition (1990) Part Part V - End-User Services Chapter B Pages 524–545 Converted 2026-03-31 Engine gemini-flash Appendix B LLAP Access Control Algorithms#CONTENTS#Assumptions / B-2
+Global constants, types, and variables / B-2
+Hardware interface declarations / B-4
+Interface procedures and functions / B-5
+InitializeLLAP procedure / B-6
+AcquireAddress procedure / B-7
+TransmitPacket function / B-8
+TransmitLinkMgmt function / B-8">
+  <meta itemprop="wordCount" content="4578">
+
+<title>LLAP Access Control Algorithms | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/inside-appletalk-second-edition/b-llap-access-control-algorithms/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>LLAP Access Control Algorithms</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#contents">CONTENTS</a></li>
+      </ul>
+    </li>
+    <li><a href="#assumptions">Assumptions</a></li>
+    <li><a href="#global-constants-types-and-variables">Global constants, types, and variables</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#hardware-interface-declarations">Hardware interface declarations</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#receivepacket-procedure">ReceivePacket procedure</a></li>
+    <li><a href="#receivelinkmgmt-function">ReceiveLinkMgmt function</a></li>
+    <li><a href="#receiveframe-function">ReceiveFrame function</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#crc-ccitt-calculation">CRC-CCITT calculation</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="llap-access-control-algorithms">LLAP Access Control Algorithms<a class="anchor" href="#llap-access-control-algorithms">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td><a href="https://vintageapple.org/macbooks/pdf/Inside_AppleTalk_Second_Edition_1990.pdf">Inside AppleTalk Second Edition (1990)</a></td>
+      </tr>
+      <tr>
+          <td><strong>Part</strong></td>
+          <td>Part V - End-User Services</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>B</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>524–545</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-03-31</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="appendix-b-llap-access-control-algorithms">Appendix B LLAP Access Control Algorithms<a class="anchor" href="#appendix-b-llap-access-control-algorithms">#</a></h1>
+<h3 id="contents">CONTENTS<a class="anchor" href="#contents">#</a></h3>
+<p>Assumptions / B-2</p>
+<p>Global constants, types, and variables / B-2</p>
+<p>Hardware interface declarations / B-4</p>
+<p>Interface procedures and functions / B-5</p>
+<p>InitializeLLAP procedure / B-6</p>
+<p>AcquireAddress procedure / B-7</p>
+<p>TransmitPacket function / B-8</p>
+<p>TransmitLinkMgmt function / B-8</p>
+<p>TransmitFrame procedure / B-14</p>
+<p>ReceivePacket procedure / B-15</p>
+<p>ReceiveLinkMgmt function / B-15</p>
+<p>ReceiveFrame function / B-17</p>
+<p>Miscellaneous functions / B-19</p>
+<p>SCC implementation / B-20</p>
+<p>CRC-CCITT calculation / B-22</p>
+<p>■</p>
+<hr>
+<p>The following procedural model is written in a Pascal-like language (pseudo-code) and provided as a specification of the LocalTalk Link Access Protocol (LLAP). Any particular implementation of LLAP must follow this specification.</p>
+<p>An equivalent specification is to be found in the following U.S. patents:</p>
+<ul>
+<li>G. Sidhu, A. Oppenheimer, L. Kenyon, R. Hochsprung: &ldquo;Local Area Network with Self-Assigned Address Method,&rdquo; <em>United States Patent No. 4,689,786</em>, August 25, 1987.</li>
+<li>R. Hochsprung, L. Kenyon, A. Oppenheimer, G. Sidhu: &ldquo;Local Area Network with Carrier Sense Collision Avoidance,&rdquo; <em>United States Patent No. 4,661,902</em>, April 28, 1987.</li>
+</ul>
+<hr>
+<h2 id="assumptions">Assumptions<a class="anchor" href="#assumptions">#</a></h2>
+<p>The model assumes that the program executes fast enough so as not to introduce any execution delay into the timing of events. Where LLAP specifies a timing delay, it is assumed to be performed by means of references to a global real function, RealTime, which returns the current time in microseconds. All timing constraints are specified as real constants.</p>
+<p>The model assumes sequential, single-process execution of the code, especially the TransmitPacket function and the ReceivePacket procedure (and the procedures they call).</p>
+<p>In a typical implementation, packet reception is triggered by means of a hardware interrupt. The interrupt routine then executes the ReceiveLinkMgmt function. The interrupt routine must provide a mechanism for saving valid data packets and for informing higher-level protocols of this event. However, such details are implementation-dependent and are outside the scope of <em>Inside AppleTalk</em>.</p>
+<p>The model assumes that a transmitter continuously listens to the link while waiting for its access to the line.</p>
+<hr>
+<h2 id="global-constants-types-and-variables">Global constants, types, and variables<a class="anchor" href="#global-constants-types-and-variables">#</a></h2>
+<p>The following global constants, types, and variables are used throughout the model.</p>
+<hr>
+<h1 id="const">CONST<a class="anchor" href="#const">#</a></h1>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">minFrameSize = 3;           { smallest (LAP header only) frame }
+maxFrameSize = 605;         { size of largest LAP frame including FCS }
+maxDataSize = 600;          { size of largest (encapsulated) LLAP data field }
+bitTime = 4.34;             { bit time (μsec) }
+byteTime = 39.0;            { worst case single byte time (μsec) }
+minIDGtime = 400.0;         { minimum interdialog gap (μsec) }
+IDGslottime = 100.0;        { slot time of transmit backoff algorithm (μsec) }
+maxIFGtime = 200.0;         { maximum interframe gap (μsec) }
+maxDefers = 32;             { maximum defers for a single packet }
+maxCollsns = 32;            { maximum collisions for a single packet }
+lapENQ = $81;               { LAP type field value of ENQuiry frame }
+lapACK = $82;               {         ... ACKnowledgment frame }
+lapRTS = $84;               {         ... RequestToSend frame }
+lapCTS = $85;               {         ... ClearToSend frame }
+hdlcFLAG = $7E;             { value of an HDLC FLAG }
+wksTries = 20;              { Number of ENQ sets for a workstation to try }</code></pre><h1 id="type">TYPE<a class="anchor" href="#type">#</a></h1>
+<p>{ global result types from LAP functions }</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">TransmitStatus = (transmitOK, excessDefers, excessCollsns, dupAddress);
+ReceiveStatus = (receiveOK, Receiving, nullReceive, frameError);
+FrameStatus = (noFrame, lapDATAframe, lapENQframe, lapACKframe,
+               lapRTSframe, lapCTSframe, badframeCRC, badframeSize,
+               badframeType, overrunError, underrunError);</code></pre><p>{ Data link types and structures }</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">bit = 0..1;
+bitVector = packed array [0..7] of bit;
+octet = $00..$FF;
+anAddress = octet;
+aLAPtype = octet;
+aDataField = PACKED ARRAY [1..maxDataSize] of octet;</code></pre><p>{ Basic structure of an LLAP frame, not including FLAGs, FCS }</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">frameInterpretation = (raw, structured);
+aFrame = PACKED RECORD
+  CASE frameInterpretation OF
+    raw: rawData : PACKED ARRAY [1..maxFrameSize] of octet;
+    structured: (
+      dstAddr : anAddress;
+      srcAddr : anAddress;
+      lapType : aLAPtype;
+      dataField : aDataField)
+END;</code></pre><p>(continued) ➡</p>
+<hr>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">VAR
+    MyAddress : octet;                 { set during InitializeLAP }
+    Backoff : INTEGER;                  { current backoff range }
+    fAdrValid,                          { MyAddress has been validated}
+    FAdrInUse,                          { Another node has same MyAddress }
+    fCTSexpected : BOOLEAN;             { RTS has been sent, CTS is valid }
+    deferCount, collsnCount : INTEGER;  { optional, for statistics only }
+    deferHistory, collsnHistory : bitVector;
+    outgoingLength, incomingLength : INTEGER;
+    outgoingPacket, incomingPacket : aFrame;</code></pre><h2 id="hardware-interface-declarations">Hardware interface declarations<a class="anchor" href="#hardware-interface-declarations">#</a></h2>
+<p>The following declarations refer to hardware-specific interfaces that are assumed to be available to the LLAP procedures. The functions are typically bits and/or bytes contained in the relevant hardware interface chip(s). Similarly, the procedures are expected to be represented in actual hardware by means of control bits.</p>
+<p>A brief description of the assumed attributes of each of these declarations follows:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Declaration</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>CarrierSense</td>
+          <td>indicates that the hardware is sensing a frame on the link</td>
+      </tr>
+      <tr>
+          <td>RcvDataAvail</td>
+          <td>indicates that a data byte is available</td>
+      </tr>
+      <tr>
+          <td>rxDATA</td>
+          <td>identifies the next data byte available (when indicated by RcvDataAvail)</td>
+      </tr>
+      <tr>
+          <td>EndOfFrame</td>
+          <td>indicates that a valid closing flag has been detected</td>
+      </tr>
+      <tr>
+          <td>CRCok</td>
+          <td>indicates that the received frame check sequence (FCS) is correct (when EndOfFrame)</td>
+      </tr>
+      <tr>
+          <td>OverRun</td>
+          <td>indicates that the code did not keep up with data reception</td>
+      </tr>
+      <tr>
+          <td>MissingClock</td>
+          <td>indicates that a missing clock has been detected</td>
+      </tr>
+      <tr>
+          <td>setAddress</td>
+          <td>sets the hardware to receive frames directed to MyAddress</td>
+      </tr>
+      <tr>
+          <td>enableTxDrivers<br>disableTxDrivers</td>
+          <td>control the operation of the RS-422 drivers</td>
+      </tr>
+      <tr>
+          <td>enableTx<br>disableTx</td>
+          <td>control the operation of the data transmitter</td>
+      </tr>
+      <tr>
+          <td>txFLAG</td>
+          <td>causes the transmission of a flag</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Declaration</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">txDATA</td>
+          <td style="text-align: left">causes the transmission of a data byte</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">txFCS</td>
+          <td style="text-align: left">causes the transmission of the FCS</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">txONEs</td>
+          <td style="text-align: left">causes 12-18 one-bits (1&rsquo;s) to be transmitted</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">resetRx</td>
+          <td style="text-align: left">control the receiver</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">enableRx</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">disableRx</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">resetMissingClock</td>
+          <td style="text-align: left">causes the MissingClock indication to be cleared</td>
+      </tr>
+  </tbody>
+</table>
+<p>The hardware interface functions/procedures are as follows:</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">FUNCTION CarrierSense : BOOLEAN;        EXTERNAL;
+FUNCTION RxDataAvail : BOOLEAN;         EXTERNAL;
+FUNCTION rxDATA : octet;                EXTERNAL;
+FUNCTION EndOfFrame : BOOLEAN;          EXTERNAL;
+FUNCTION CRCok : BOOLEAN;               EXTERNAL;
+FUNCTION OverRun : BOOLEAN;             EXTERNAL;
+FUNCTION MissingClock : BOOLEAN;        EXTERNAL;
+PROCEDURE setAddress (addr : octet);    EXTERNAL;
+PROCEDURE enableTxDrivers;              EXTERNAL;
+PROCEDURE disableTxDrivers;             EXTERNAL;
+PROCEDURE enableTx;                     EXTERNAL;
+PROCEDURE txFLAG;                       EXTERNAL;
+PROCEDURE txDATA (data : octet);        EXTERNAL;
+PROCEDURE txFCS;                        EXTERNAL;
+PROCEDURE txONEs;                       EXTERNAL;
+PROCEDURE disableTx;                    EXTERNAL;
+PROCEDURE resetRx;                      EXTERNAL;
+PROCEDURE enableRx;                     EXTERNAL;
+PROCEDURE disableRx;                    EXTERNAL;
+PROCEDURE resetMissingClock;            EXTERNAL;</code></pre><h1 id="interface-procedures-and-functions">Interface procedures and functions<a class="anchor" href="#interface-procedures-and-functions">#</a></h1>
+<p>The LLAP model&rsquo;s interface to the next higher layer (its client) is specified in terms of the following three calls:</p>
+<p><code>PROCEDURE InitializeLLAP (hint : octet; server : boolean) ;</code></p>
+<hr>
+<p>This call initializes LLAP; it is expected to be called exactly once. The <code>hint</code> parameter is a suggested starting value for the node&rsquo;s LocalTalk physical-link address; a value of 0 indicates that LLAP should generate a starting value. Upon return from the call, the station&rsquo;s actual address is available in the global variable <code>MyAddress</code>. If <code>server</code> is true, then the internal procedure <code>AcquireAddress</code> will spend extra time to determine if another node is using the selected node address.</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">FUNCTION TransmitPacket (dstParam : anAddress; typeParam : aLAPtype;
+        dataField : aDataField; dataLength : INTEGER) : TransmitStatus;</code></pre><p>This call is provided to transmit a packet. The internal function <code>TransmitLinkMgmt</code> performs the transmission link-access algorithms.</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">Procedure ReceivePacket (var dstParam : anAddress;
+        var srcParam : anAddress; var typeParam : aLAPtype;
+        var dataField : aDataField; var dataLength : integer);</code></pre><p>This call is provided to receive a packet. The internal function <code>ReceiveLinkMgmt</code> implements the reception link-access algorithms.</p>
+<hr>
+<h1 id="initializellap-procedure">InitializeLLAP procedure<a class="anchor" href="#initializellap-procedure">#</a></h1>
+<p>The <code>InitializeLLAP</code> procedure is called to reset LLAP&rsquo;s global variables to known states; it calls <code>AcquireAddress</code> to initialize <code>MyAddress</code>. The following is a procedural model for the <code>InitializeLLAP</code> procedure:</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">PROCEDURE InitializeLLAP (hint : octet; server : BOOLEAN);
+
+VAR
+    i : INTEGER;
+
+BEGIN
+    Backoff := 0;
+    { initialize history data for Backoff calculations }
+    FOR i := 0 TO 7 DO BEGIN
+        deferHistory[i] := 0;
+        collsnHistory[i] := 0;
+    END;
+    deferCount := 0;  collsnCount := 0;    { optional }
+    AcquireAddress (hint, server);
+END;    { InitializeLAP }</code></pre><hr>
+<h1 id="acquireaddress-procedure">AcquireAddress procedure<a class="anchor" href="#acquireaddress-procedure">#</a></h1>
+<p>The AcquireAddress procedure specifies the dynamic node ID assignment algorithm. AcquireAddress creates and sends a control packet (of type lapENQ). When no node responds after repeated attempts, the current value of MyAddress is assumed to be safe for use by this node; the state of fAdrValid reflects this fact. If the global fAdrInUse ever becomes true after a call to AcquireAddress, another node that is using the same MyAddress has been detected. The following is a procedural model for the AcquireAddress procedure:</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">PROCEDURE AcquireAddress (hint : octet; server : BOOLEAN);
+
+VAR
+    maxTrys, trys : INTEGER;
+    ENQframe : aFrame;
+
+BEGIN
+    IF hint &gt; 0
+    THEN myAddress := hint
+    ELSE IF server
+        THEN MyAddress := Random (127) + 128
+        ELSE MyAddress := Random (127) + 1;
+
+    setAddress (MyAddress);
+    fAdrValid := FALSE;
+    IF server
+    THEN maxTrys := wksTries * 6    { servers try 6 times as much as workstations }
+    ELSE maxTrys := wksTries;
+
+    trys := 0;  fAdrInUse := FALSE;
+
+    { the main loop of AcquireAddress -- repeatedly check for response to ENQ }
+
+    WHILE trys &lt; maxTrys DO BEGIN
+        IF (TransmitPacket (MyAddress, lapENQ, ENQframe.dataField,0)
+            = transmitOK) OR fAdrInUse
+        THEN BEGIN
+            IF server
+            THEN MyAddress := Random (127) + 128
+            ELSE MyAddress := Random (127) + 1;
+            setAddress (MyAddress);
+            trys := 0;
+        END { IF }
+        ELSE trys := trys + 1;
+    END; { WHILE }
+
+    fAdrValid := TRUE;
+END;    { AcquireAddress }</code></pre><hr>
+<h1 id="transmitpacket-function">TransmitPacket function<a class="anchor" href="#transmitpacket-function">#</a></h1>
+<p>The TransmitPacket function is called by the LLAP client to send a data packet. After constructing (encapsulating) the caller&rsquo;s dataParam, the function calls upon TransmitLinkMgmt to perform the actual link access. A procedural model for the TransmitPacket function follows:</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">FUNCTION TransmitPacket (dstParam : anAddress; typeParam : aLAPType;
+                        dataParam : aDataField; dataLength : INTEGER) : TransmitStatus;
+
+BEGIN
+    IF fAdrInUse
+    THEN TransmitPacket := dupAddress
+    ELSE BEGIN
+
+        { copy interface data into frame for TransmitLinkMgmt }
+        WITH outgoingPkt DO BEGIN
+            dstAddr := dstParam;
+            srcAddr := MyAddress;
+            lapType := typeParam;
+            dataField := dataParam;
+        END; { WITH }
+
+        outgoingLength := dataLength + 3;
+        TransmitPacket := TransmitLinkMgmt;
+    END; { ELSE }
+END; { TransmitPacket }</code></pre><h1 id="transmitlinkmgmt-function">TransmitLinkMgmt function<a class="anchor" href="#transmitlinkmgmt-function">#</a></h1>
+<p>The TransmitLinkMgmt function implements the Carrier Sense Multiple Access with Collision Avoidance (CSMA/CA) algorithm. LLAP attempts to minimize collisions by requiring transmitters to wait for the duration of the interdialog gap (IDG) plus a random period of time before sending their request-to-send (RTS) packets. Any transmitter that detects that another transmission is in progress while it is waiting must defer.</p>
+<hr>
+<p>In order to minimize delays under light loading yet still minimize the probability of collisions under moderate to heavy loading, the random delay or backoff is picked in a range that is constantly adjusted based on the recently observed history of the node&rsquo;s attempts to access the link. Two history bytes or vectors (called deferHistory and collsnHistory in the pseudo-code below) are used to keep track of the number of deferrals and presumed collisions in the last eight link-access attempts. These 2 bytes are used to adjust a <strong>global backoff mask</strong> that can take on particular values between $0 and $F (specifically, binary 0, 01, 011, 0111, and 01111). These values determine the range of the random period to be picked.</p>
+<p>The global backoff mask is adjusted at the beginning of a particular request to transmit a data packet, and it is used only the first time a node tries to transmit that data packet. Additionally, a <strong>local backoff mask</strong> is used during the retry attempts of a given data packet. The use of the local backoff mask has the effect of spreading out attempts to a nonlistening node, thus increasing the node&rsquo;s chances of receiving the packet.</p>
+<p>The global backoff mask is adjusted as follows:</p>
+<ol>
+<li>The mask starts with value 0.</li>
+<li>If the node had to back off more than twice in the last eight attempts, the mask is extended by 1 bit up to a maximum of 4 bits (logical shift left and set the low-order bit). The backoff history byte is then set to all 0s so that further adjustments are inhibited until more history data has accumulated.</li>
+<li>Else, if the node had to defer less than twice in the last eight attempts, the mask is reduced by 1 bit (logical shift right). The defer history byte is set to all 1s so that further adjustments are inhibited until more history data has accumulated.</li>
+<li>Else, if neither of these apply, the mask is left unchanged.</li>
+</ol>
+<p>Due to collisions and deferrals, LLAP may have to make many attempts to send a packet. The following sequence of operations is performed before making the first attempt:</p>
+<ol>
+<li>The global backoff mask is adjusted as specified above.</li>
+<li>The 2 history bytes are shifted left 1 bit, and the low-order bit of each is set to 0.</li>
+<li>The global backoff mask is copied into a local backoff mask.</li>
+</ol>
+<p>During each attempt to send a directed packet, the following sequence of operations is performed:</p>
+<ol>
+<li>If the line is busy, the node waits until the end of the dialog. The low-order bit of the deferral history byte and the low-order bit of the local backoff mask are set to 1.</li>
+<li>If the line is not busy, the node waits 400 microseconds. If the line becomes busy during this time, the node defers as previously described in step 1.</li>
+</ol>
+<hr>
+<ol start="3">
+<li>The random wait period is generated: A random number is picked and masked by (ANDed with) the local backoff mask. The node waits for 100 microseconds (the IDG slot time) multiplied by this random number. If the line becomes busy during this time, the node defers.</li>
+<li>The node sends a lapRTS. If a lapCTS is received within the maximum interframe gap (IFG) or if the packet is to be broadcast, the data is sent. Otherwise, a collision is presumed; the low-order bit of the collision history byte is set to 1; the local backoff mask is shifted left 1 bit, and its low-order bit is set. The node then tries again.</li>
+<li>If, during an attempt to send a packet, 32 collisions occur or the node has to defer 32 times, the attempt is aborted, and an error is returned to the LLAP client.</li>
+</ol>
+<p>A procedural model for the TransmitLinkMgmt function follows.</p>
+<p>◆ Note: Although the section above refers to the use of local and global backoff masks, the pseudo-code below achieves the same result by treating the local and global backoff variables as numbers, not masks, in the range 0 to 16. In either case, Backoff represents an upper limit of the random number to be picked.</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">FUNCTION TransmitLinkMgmt : TransmitStatus;
+
+    VAR
+        LclBackOff, i : INTEGER;
+        fBroadcast, fENQ : BOOLEAN;
+        xmttimer : REAL;
+        rcvdframe : FrameStatus;
+        RTSframe : aFrame;
+
+    BEGIN
+
+        WITH RTSframe DO BEGIN
+            dstAddr := outgoingPacket.dstAddr;
+            srcAddr := MyAddress;
+            lapType := lapRTS
+        END;</code></pre><hr>
+<pre tabindex="0"><code>fBroadcast := (outgoingPacket.dstAddr = $FF);
+fENQ := (outgoingPacket.lapType = lapENQ);
+
+{ Adjust Backoff, based upon recent history }
+{ Increase Backoff if we&#39;ve seen a lot of collisions }
+IF bitCount (collsnHistory) &gt; 2
+THEN BEGIN
+    Backoff := min (max (Backoff * 2, 2), 16);
+    FOR i := 0 TO 7 DO collsnHistory[i] := 0;
+END { IF }
+
+{ Decrease Backoff if we haven&#39;t had to defer very much }
+ELSE IF bitCount (deferHistory) &lt; 2
+    THEN BEGIN
+        Backoff := Backoff DIV 2;
+        FOR i := 0 TO 7 DO deferHistory[i] := 1
+    END; { ELSE IF }
+
+{ Shift history data }
+FOR i := 7 DOWNTO 1 DO BEGIN
+    collsnHistory[i] := collsnHistory[i-1];
+    deferHistory[i] := deferHistory[i-1];
+END; { FOR }
+collsnHistory[0] := 0; deferHistory[0] := 0;
+
+{ Initialize main loop }
+deferTries := 0;         collsnTries := 0;
+LclBackoff := Backoff;   transmitdone := FALSE;
+
+{ Begin main loop }
+REPEAT
+
+    { Wait for minimum Inter-Dialog Gap time }
+    REPEAT
+
+        { Wait for any packet in progress to pass }
+        IF CarrierSense
+        THEN BEGIN
+            { We&#39;re not really deferring, just waiting,
+              but ensure minimum backoff anyway }
+            LclBackoff := max (LclBackoff, 2);
+            deferHistory[0] := 1;</code></pre><hr>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">    { Perform watchdog reset of Rx for &#34;stuck&#34; CarrierSense }
+    xmttimer := RealTime + 1.5 * maxFrameSize * byteTime;
+    REPEAT
+    UNTIL ( NOT CarrierSense) OR (RealTime &gt; xmttimer);
+    IF CarrierSense THEN ResetRx;{ something&#39;s wrong, clear it }
+END; { IF }
+
+{ We could ResetMissingClock anytime, as long as it&#39;s not within IDG
+slottime of sending our packet }
+ResetMissingClock;
+
+    { Wait for minimum IDG after packet (or idle line) }
+    xmttimer := RealTime + minIDGtime;
+    REPEAT
+    UNTIL (RealTime &gt; xmttimer) OR CarrierSense;
+
+UNTIL NOT CarrierSense;
+
+{ Wait our additional backoff time, deferring to others }
+{ (LclBackoff - 1) is the upper bound of the random number we pick }
+xmttimer := RealTime + Random (LclBackoff) * IDGslottime;
+REPEAT
+UNTIL (RealTime &gt; xmttimer) OR CarrierSense;
+
+IF CarrierSense OR MissingClock
+THEN BEGIN   { defer }
+    DeferCount := DeferCount + 1;  { optional }
+    LclBackoff := max (LclBackoff, 2);
+    deferHistory[0] := 1;
+    IF deferTries &lt; maxDefers THEN deferTries := deferTries + 1
+    ELSE BEGIN
+        TransmitLinkMgmt := excessDefers;
+        transmitdone := TRUE;
+    END { ELSE }
+END { IF }
+
+ELSE BEGIN   { NOT (CarrierSense OR MissingClock) }
+    IF fENQ
+    THEN transmitFrame (outgoingPacket, 3)
+    ELSE transmitFrame (RTSFrame, 3);
+
+    { use common code to detect line state }
+    fCTSexpected := TRUE;
+    rcvdframe := receiveFrame;
+    fCTSexpected := FALSE;</code></pre><hr>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">IF fAdrInUse
+THEN BEGIN
+    TransmitLinkMgmt := dupAddress;
+    transmitDone := TRUE;
+END { IF }
+
+ELSE CASE rcvdFrame OF
+    noFrame:
+    IF fBroadcast
+    THEN BEGIN
+        transmitFrame (outgoingPacket, outgoingLength);
+        TransmitLinkMgmt := transmitOK;
+        transmitdone := TRUE;
+    END;
+
+    lapCTSframe :
+    IF (NOT fENQ) AND (NOT fBroadCast)
+    THEN BEGIN
+        transmitFrame (outgoingPacket, outgoingLength);
+        TransmitLinkMgmt := transmitOK;
+        transmitdone := TRUE;
+    END;
+END; { CASE }
+
+{ Assume collision if we don&#39;t receive the expected CTS }
+IF NOT transmitdone
+THEN BEGIN
+    CollsnCount := CollsnCount + 1;      { optional }
+    collsnHistory[0] := 1;               { update history data }
+    IF collsnTries &lt; maxCollsns
+    THEN BEGIN
+        LclBackoff := min (max (LclBackoff*2,2),16);
+        collsnTries := collsnTries + 1;
+    END { IF }
+    ELSE BEGIN
+        TransmitLinkMgmt := excessCollsns;
+        transmitdone := TRUE;
+    END { ELSE }
+END { IF NOT ... }
+END { ELSE NOT ... }
+
+UNTIL transmitdone;
+
+END;   { TransmitLinkMgmt }</code></pre><hr>
+<h1 id="transmitframe-procedure">TransmitFrame procedure<a class="anchor" href="#transmitframe-procedure">#</a></h1>
+<p>The TransmitFrame procedure is responsible for putting data on the link. Certain details, such as how a flag is sent and a packet terminated, which includes sending the frame check sequence (FCS), are not explicitly stated here since they are hardware-dependent.</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">PROCEDURE TransmitFrame (VAR frame : aFrame; framesize : INTEGER);
+
+VAR
+    i : INTEGER;
+    bittimer : REAL;
+
+BEGIN
+    disableRx;
+
+    { Generate the synchronizing pulse -- really required only before RTS frames}
+    bittimer := RealTimer + 1.5 * bitTime;
+    enableTxDrivers;
+    WHILE RealTime &lt; bittimer DO BEGIN
+    END;
+    disableTxDrivers;
+    bittimer := RealTimer + 1.5 * bitTimer;
+    WHILE RealTime &lt; bittimer DO BEGIN
+    END;
+
+    { Start the actual frame transmission }
+    enableTxDrivers;
+    enableTx;
+    txFLAG;  txFLAG;     { Output 2 opening FLAG&#39;s }
+    FOR i := 1 TO framesize DO
+        TxData (frame.rawData[i]);
+    txFCS;               { Send the FCS }
+    txFLAG;              { Send the trailing FLAG }
+    txONES;              { Send 12 1&#39;s for extra clocks }
+    disableTxDrivers;
+
+    { reestablish default listening mode }
+    resetMissingClock;
+    enableRx;
+
+END;  { TransmitFrame }</code></pre><hr>
+<h2 id="receivepacket-procedure">ReceivePacket procedure<a class="anchor" href="#receivepacket-procedure">#</a></h2>
+<p>The ReceivePacket procedure given below is the primary interface routine to higher levels. This procedure is described as if synchronously called by the user. In many implementations, the lower-level ReceiveLinkMgmt function would be invoked by an interrupt routine.</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">PROCEDURE ReceivePacket ( VAR dstParam : anAddress; VAR srcParam : anAddress;
+                         VAR typeParam : aLAPType; VAR dataParam : aDataField;
+                         VAR dataLength : INTEGER);
+
+VAR
+    status : ReceiveStatus;
+
+BEGIN
+
+    REPEAT
+        status := ReceiveLinkMgmt;
+        IF status = receiveOK
+        THEN BEGIN
+            WITH incomingPacket DO BEGIN
+                dstParam := dstAddr;
+                srcParam := srcAddr;
+                typeParam := lapType;
+                dataParam := dataField;
+            END; { WITH }
+            dataLength := incomingLength;
+        END; { IF }
+    UNTIL status = receiveOK
+
+END;    { ReceivePacket }</code></pre><h2 id="receivelinkmgmt-function">ReceiveLinkMgmt function<a class="anchor" href="#receivelinkmgmt-function">#</a></h2>
+<p>The ReceiveLinkMgmt function implements the receiver side of LLAP; it would typically be called from an interrupt routine rather than from ReceivePacket.</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">FUNCTION ReceiveLinkMgmt : ReceiveStatus;
+
+VAR
+    status : ReceiveStatus;
+    CTSframe, ACKframe : aFrame;</code></pre><hr>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">BEGIN
+  status := Receiving;
+  WHILE status = Receiving DO
+    CASE ReceiveFrame OF
+      badframeCRC, badframeSize, badframeType, underrunError, overrunError:
+        status := frameError;
+
+      lapENQframe :
+        IF fAdrValid
+        THEN BEGIN
+          ACKframe.dstAddr := incomingPacket.srcAddr;
+          ACKframe.srcAddr := MyAddress;
+          ACKframe.lapType := lapACK;
+          TransmitFrame (ACKframe, 3);
+          status := nullReceive;
+        END { IF }
+        ELSE BEGIN
+          fAdrInUse := TRUE;
+          status := nullReceive;
+        END; { ELSE }
+
+      lapRTSframe :
+        IF fAdrValid
+        THEN BEGIN
+          CTSframe.dstAddr := incomingPacket.srcAddr;
+          CTSframe.srcAddr := MyAddress;
+          CTSframe.lapType := lapCTS;
+          TransmitFrame (CTSframe, 3);
+        END { IF }
+        ELSE BEGIN
+          fAdrInUse := TRUE;
+          status := nullReceive;
+        END; { ELSE }
+
+      lapDATAframe :
+        IF fAdrValid
+        THEN status := receiveOK
+        ELSE BEGIN
+          fAdrInUse := TRUE;
+          status := nullReceive;
+        END; { ELSE }
+
+      noFrame:
+        status := nullReceive;</code></pre><hr>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">END; { CASE }
+ReceiveLinkMgmt := status;
+
+END; { ReceiveLinkMgmt }</code></pre><h2 id="receiveframe-function">ReceiveFrame function<a class="anchor" href="#receiveframe-function">#</a></h2>
+<p>The ReceiveFrame function is responsible for interacting with the hardware.</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">FUNCTION ReceiveFrame : FrameStatus;
+
+VAR
+    rcvtimer : REAL;
+
+BEGIN
+
+    { Provide timeout for idle line }
+    rcvtimer := RealTime + maxIDGtime;
+    REPEAT
+    UNTIL CarrierSense OR (RealTime &gt; rcvtimer);
+    IF NOT CarrierSense
+    THEN BEGIN
+        ReceiveFrame := noFrame;
+        EXIT (ReceiveFrame);
+    END; { IF }
+
+    { Line is not idle, check if frame is for us }
+    rcvtimer := RealTime + maxIFGtime;     {maxIFGtime is a good timeout value}
+    REPEAT
+    UNTIL RxCharAvail OR (RealTime &gt; rcvtimer);
+    IF RxCharAvail
+    THEN BEGIN               { receive frame }
+        error := FALSE;   framedone := FALSE;   incomingLength := 0;
+        REPEAT
+            rcvtimer := RealTime + 1.5 * byteTime;
+            REPEAT
+            UNTIL RxCharAvail OR (RealTime &gt; rcvtimer);
+            IF RxCharAvail
+            THEN BEGIN
+                IF OverRun
+                THEN BEGIN
+                    ReceiveFrame := overrunError;
+                    error := TRUE;
+                END { IF OverRun }</code></pre><p>(continued) ➡</p>
+<hr>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">ELSE IF incomingLength &lt; maxFrameSize
+    THEN BEGIN
+        incomingLength := incomingLength + 1;
+        incomingPacket.rawData[incomingLength] := rxDATA;
+    END { ELSE IF }
+    ELSE BEGIN
+        ReceiveFrame := badframeSize;
+        error := TRUE;
+    END; { ELSE }
+
+IF EndOfFrame THEN
+    IF CRCok
+    THEN BEGIN
+        incomingLength := incomingLength - 2;   { account for CRC }
+        IF incomingLength &lt; minFrameSize
+        THEN BEGIN
+            ReceiveFrame := badframeSize;
+            error := TRUE;
+        END { IF incomingLength ... }
+        ELSE framedone := TRUE;
+    END { IF CRCok }
+    ELSE BEGIN    { bad CRC }
+        ReceiveFrame := badframeCRC;
+        error := TRUE;
+    END;
+END { IF RxCharAvail }
+
+ELSE BEGIN    { RealTime &gt; rcvtimer }
+    ReceiveFrame := underrunError;
+    error := TRUE;
+END { ELSE }
+
+UNTIL framedone OR error;
+
+{ Check on validity of the frame }
+IF framedone THEN
+    IF fAdrValid THEN    { if our address if valid, check on actual type }
+        IF incomingPacket.lapType &lt; $80
+        THEN ReceiveFrame := lapDATAframe;
+        ELSE CASE incomingPacket.lapType OF
+            lapENQ :
+                ReceiveFrame := lapENQframe;
+
+            lapACK :
+            BEGIN
+                ReceiveFrame := lapACKframe;
+                fAdrInUse := TRUE;
+            END; { lapACK }</code></pre><hr>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">        lapRTS :
+        ReceiveFrame := lapRTSframe;
+
+        lapCTS :
+        IF fCTSexpected
+        THEN ReceiveFrame := lapCTSframe
+        ELSE BEGIN
+            fAdrInUse := TRUE;
+            ReceiveFrame := badframeType
+        END; { ELSE }
+
+        OTHERWISE
+        ReceiveFrame := badframeType;
+    END { CASE }
+
+    ELSE IF incomingPacket.rawData[1] &lt;&gt; $FF
+    THEN BEGIN
+        fAdrInUse := TRUE;  { we received something we didn&#39;t expect }
+        ReceiveFrame := noFrame;
+    END { ELSE IF }
+END { IF RxCharAvail }
+ELSE ReceiveFrame := noFrame;  { no CharAvail }
+
+resetRx;
+resetMissingClock;
+
+END;  { ReceiveFrame }</code></pre><h1 id="miscellaneous-functions">Miscellaneous functions<a class="anchor" href="#miscellaneous-functions">#</a></h1>
+<p>The following low-level routines are referenced by the foregoing procedural specification.</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">FUNCTION bitCount (bits : bitVector) : INTEGER;
+VAR
+    i, sum : INTEGER;
+
+BEGIN
+    sum := 0;
+    FOR i := 0 TO 7 DO
+        sum := sum + bits[i];
+    bitCount := sum
+END;  { bitCount }</code></pre><hr>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">FUNCTION min (val1, val2 : INTEGER) : INTEGER;
+BEGIN
+    IF val1 &lt; val2
+    THEN min := val1
+    ELSE min := val2
+END;    { min }
+
+FUNCTION max (val1, val2 : INTEGER) : INTEGER;
+BEGIN
+    IF val1 &gt; val2
+    THEN max:= val1
+    ELSE max:= val2
+END;    { max }
+
+FUNCTION Random (maxval : INTEGER) : INTEGER;
+BEGIN
+    { this function is implemented as any &#34;good&#34; pseudorandom number generator
+      that produces a result in the range 0..maxval-1 }
+END;</code></pre><h1 id="scc-implementation">SCC implementation<a class="anchor" href="#scc-implementation">#</a></h1>
+<p>One of the integrated circuits used in the implementation of LocalTalk is the Zilog 8530 Serial Communications Controller (SCC). This section explains how the hardware interface routines declared in the foregoing sections could be implemented with that device. This explanation does not imply that the SCC must be used in the implementation of LLAP. Many other devices can be employed effectively to implement LLAP. All of the following registers and bit names are used by Zilog in its SCC documentation.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Declaration</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">CarrierSense</td>
+          <td style="text-align: left">indicates that the hardware is sensing a frame on the link; corresponds to the complement of the SYNC/HUNT bit in RR0</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">RcvDataAvail</td>
+          <td style="text-align: left">indicates that a data byte is available; corresponds to the Rx Character Available bit in RR0</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">rxDATA</td>
+          <td style="text-align: left">identifies the next data byte available (RR8)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">EndOfFrame</td>
+          <td style="text-align: left">indicates that a valid closing flag has been detected; the EndOfFrame bit in RR1</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Declaration</th>
+          <th style="text-align: left">Description <em>(continued)</em></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>CRCok</strong></td>
+          <td style="text-align: left">indicates that the received frame&rsquo;s FCS is correct (when EndOfFrame is true); the complement of the CRC/Framing Error bit in RR1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>OverRun</strong></td>
+          <td style="text-align: left">indicates that the code did not keep up with data reception; the Rx Overrun Error bit in RR1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>MissingClock</strong></td>
+          <td style="text-align: left">indicates that the hardware has detected a missing transition on the link; the One Clock Missing bit in RR10</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>setAddress</strong></td>
+          <td style="text-align: left">sets the hardware to receive frames whose destination address matches MyAddress; sets WR6 in the SCC</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>enableTxDrivers</strong><br><strong>disableTxDrivers</strong></td>
+          <td style="text-align: left">control the operation of the RS-422 drivers; the drivers would generally be controlled by one of the SCC&rsquo;s output bits (on the Macintosh computer, it&rsquo;s the RTS bit in WR5)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>enableTx</strong><br><strong>disable Tx</strong></td>
+          <td style="text-align: left">control the operation of the data transmitter by means of the Tx Enable bit in WR5</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>txFLAG</strong></td>
+          <td style="text-align: left">causes the automatic transmission of a flag at frame opening when Tx Enable is set; however, code must delay long enough to cause the extra flag; the trailing flag is generated automatically at frame end as part of the Tx Underrun processing</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>txDATA</strong></td>
+          <td style="text-align: left">causes the transmission of a data byte (WR8)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>txFCS</strong></td>
+          <td style="text-align: left">causes the automatic transmission of the FCS by letting Tx Underrun occur</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>txONEs</strong></td>
+          <td style="text-align: left">causes 12-18 one-bits (1&rsquo;s) to be sent by disabling the SCC transmitter (setting TX Enable to 0) while leaving the RS-422 drivers on and delaying</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>resetRx</strong><br><strong>enableRx</strong><br><strong>disableRx</strong></td>
+          <td style="text-align: left">control the receiver by means of the Rx Enable bit in WR3; resetRx should also flush the receive FIFO</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>resetMissingClock</strong></td>
+          <td style="text-align: left">causes the MissingClock indication to be cleared by a Reset Missing Clock command via WR14</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="crc-ccitt-calculation">CRC-CCITT calculation<a class="anchor" href="#crc-ccitt-calculation">#</a></h2>
+<p>The CRC-CCITT (cyclic-redundancy check Consultative Committee on International Telephone &amp; Telegraph) algorithm, used to determine the FCS, uses the standard CRC-CCITT polynomial:</p>
+<p>$G(x) = x^{16} + x^{12} + x^5 + 1$</p>
+<p>The CRC-CCITT FCS value corresponding to a given packet is calculated based on the following polynomial division identity:</p>
+<p>$$\frac{M(x)}{G(x)} = Q(x) + \frac{R(x)}{G(x)}$$</p>
+<p>where:</p>
+<p>$M(x)$ = binary polynomial (corresponding to the packet after complementing its first 16 bits)</p>
+<p>$R(x)$ = remainder after dividing $M(x)$ by the generating polynomial (its coefficients are the bits of the CRC)</p>
+<p>$Q(x)$ = quotient after dividing $M(x)$ by the generating polynomial (its coefficients are ignored when calculating the CRC)</p>
+<p>At the transmitter, the implementation of the CRC for the FCS field computes the CRC starting with the first bit of the destination node ID following the opening flag and stopping at the end of the data field. The FCS field is equal to the 1&rsquo;s complement of the transmitter&rsquo;s remainder. The same calculation is performed at the receiver; however, the FCS bytes themselves are included in the computation. The result of a correctly received transmission is then the binary constant 0001110100001111 ($x^{15}&hellip;x^0$). This constant is a characteristic of the divisor.</p>
+<p>In addition to the division of the data&rsquo;s binary value by the generating polynomial to yield the remainder for checking, the following manipulations occur:</p>
+<ul>
+<li>The dividend is initially preset to all 1&rsquo;s before the computation begins, which has the effect of complementing the first 16 bits of the data.</li>
+<li>The transmitter&rsquo;s remainder is inverted bit-by-bit (FCS field) as it is sent to the receiver. The high-order bit of the FCS field is transmitted first ($x^{15}&hellip;x^0$).</li>
+</ul>
+<p>If the receiver computation does not yield the binary constant 0001110100001111, the packet is discarded.</p>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cinside-appletalk-second-edition%5CB-llap-access-control-algorithms.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#contents">CONTENTS</a></li>
+      </ul>
+    </li>
+    <li><a href="#assumptions">Assumptions</a></li>
+    <li><a href="#global-constants-types-and-variables">Global constants, types, and variables</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#hardware-interface-declarations">Hardware interface declarations</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#receivepacket-procedure">ReceivePacket procedure</a></li>
+    <li><a href="#receivelinkmgmt-function">ReceiveLinkMgmt function</a></li>
+    <li><a href="#receiveframe-function">ReceiveFrame function</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#crc-ccitt-calculation">CRC-CCITT calculation</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

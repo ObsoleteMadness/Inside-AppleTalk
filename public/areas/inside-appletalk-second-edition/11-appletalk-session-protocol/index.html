@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AppleTalk Session Protocol#Field Value Source Inside AppleTalk Second Edition (1990) Part Part IV - Reliable Data Delivery Chapter 11 Pages 247–285 Converted 2026-03-31 Engine gemini-flash Chapter 11 AppleTalk Session Protocol#CONTENTS#What ASP does / 11-4
+What ASP does not do / 11-4
+ASP services and features / 11-5
+Opening and closing sessions / 11-6 Session maintenance / 11-9 Commands on an open session / 11-10 SPCommands / 11-10 SPWrites / 11-11 SPAttentions / 11-13 Sequencing and duplicate filtration / 11-14 Getting service status information / 11-15 ASP client interface / 11-16
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/inside-appletalk-second-edition/11-appletalk-session-protocol/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="AppleTalk Session Protocol">
+  <meta property="og:description" content="AppleTalk Session Protocol#Field Value Source Inside AppleTalk Second Edition (1990) Part Part IV - Reliable Data Delivery Chapter 11 Pages 247–285 Converted 2026-03-31 Engine gemini-flash Chapter 11 AppleTalk Session Protocol#CONTENTS#What ASP does / 11-4
+What ASP does not do / 11-4
+ASP services and features / 11-5
+Opening and closing sessions / 11-6 Session maintenance / 11-9 Commands on an open session / 11-10 SPCommands / 11-10 SPWrites / 11-11 SPAttentions / 11-13 Sequencing and duplicate filtration / 11-14 Getting service status information / 11-15 ASP client interface / 11-16">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="AppleTalk Session Protocol">
+  <meta itemprop="description" content="AppleTalk Session Protocol#Field Value Source Inside AppleTalk Second Edition (1990) Part Part IV - Reliable Data Delivery Chapter 11 Pages 247–285 Converted 2026-03-31 Engine gemini-flash Chapter 11 AppleTalk Session Protocol#CONTENTS#What ASP does / 11-4
+What ASP does not do / 11-4
+ASP services and features / 11-5
+Opening and closing sessions / 11-6 Session maintenance / 11-9 Commands on an open session / 11-10 SPCommands / 11-10 SPWrites / 11-11 SPAttentions / 11-13 Sequencing and duplicate filtration / 11-14 Getting service status information / 11-15 ASP client interface / 11-16">
+  <meta itemprop="wordCount" content="9220">
+
+<title>AppleTalk Session Protocol | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/inside-appletalk-second-edition/11-appletalk-session-protocol/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>AppleTalk Session Protocol</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#contents">CONTENTS</a></li>
+      </ul>
+    </li>
+    <li><a href="#workstation-end-calls--11-23">Workstation-end calls / 11-23</a></li>
+    <li><a href="#packet-formats-and-algorithms--11-27">Packet formats and algorithms / 11-27</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#asp-services-and-features">ASP services and features</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-figure-11-2-session-closing-dialog-initiated-by-the-workstation">■ Figure 11-2 Session-closing dialog initiated by the workstation</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#spcommands">SPCommands</a></li>
+        <li><a href="#figure-11-5-spcommand-dialog">Figure 11-5 SPCommand dialog</a></li>
+      </ul>
+    </li>
+    <li><a href="#spwrites">SPWrites</a>
+      <ul>
+        <li></li>
+        <li><a href="#figure-11-7-spwrite-dialog-no-error-condition">Figure 11-7 SPWrite dialog (no error condition)</a></li>
+      </ul>
+    </li>
+    <li><a href="#spattentions">SPAttentions</a></li>
+    <li><a href="#figure-11-8-spattention-dialog">Figure 11-8 SPAttention dialog</a></li>
+    <li><a href="#sequencing-and-duplicate-filtration">Sequencing and duplicate filtration</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#server-end-calls">Server-end calls</a>
+      <ul>
+        <li><a href="#spgetparms-call">SPGetParms call</a></li>
+        <li><a href="#spinit-call">SPInit call</a></li>
+        <li><a href="#spgetsession-call">SPGetSession call</a></li>
+        <li><a href="#spclosesession-call">SPCloseSession call</a></li>
+        <li><a href="#spgetrequest-call">SPGetRequest call</a></li>
+        <li><a href="#spcmdreply-call">SPCmdReply call</a></li>
+      </ul>
+    </li>
+    <li><a href="#spwrtcontinue-call">SPWrtContinue call</a>
+      <ul>
+        <li><a href="#spwrtreply-call">SPWrtReply call</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#spgetparms-call-1">SPGetParms call</a></li>
+    <li><a href="#spgetstatus-call">SPGetStatus call</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#spcommand-call">SPCommand call</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#opening-a-session">Opening a session</a>
+      <ul>
+        <li><a href="#figure-11-10-asp-packet-formats-for-opensess-and-closesess">Figure 11-10 ASP packet formats for OpenSess and CloseSess</a></li>
+      </ul>
+    </li>
+    <li><a href="#getting-server-status">Getting server status</a>
+      <ul>
+        <li><a href="#getstatus-packet-layout">GetStatus Packet Layout</a></li>
+        <li><a href="#getstatusreply-packet-layout">GetStatusReply Packet Layout</a></li>
+      </ul>
+    </li>
+    <li><a href="#sending-a-command-request">Sending a command request</a></li>
+    <li><a href="#-figure-11-12-asp-packet-formats-for-command">■ Figure 11-12 ASP packet formats for Command</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#sending-a-write-request">Sending a write request</a>
+      <ul>
+        <li><a href="#write-packet-structure">Write Packet Structure</a></li>
+        <li><a href="#writereply-packet-structure">WriteReply Packet Structure</a></li>
+        <li><a href="#writecontinue-packet-structure">WriteContinue Packet Structure</a></li>
+        <li><a href="#writecontinuereply-packet-structure">WriteContinueReply Packet Structure</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#sending-an-attention-request">Sending an attention request</a></li>
+    <li><a href="#closing-a-session">Closing a session</a></li>
+    <li><a href="#checking-for-reply-size-errors">Checking for reply size errors</a></li>
+    <li><a href="#timeouts-and-retry-counts">Timeouts and retry counts</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="appletalk-session-protocol">AppleTalk Session Protocol<a class="anchor" href="#appletalk-session-protocol">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td><a href="https://vintageapple.org/macbooks/pdf/Inside_AppleTalk_Second_Edition_1990.pdf">Inside AppleTalk Second Edition (1990)</a></td>
+      </tr>
+      <tr>
+          <td><strong>Part</strong></td>
+          <td>Part IV - Reliable Data Delivery</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>11</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>247–285</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-03-31</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="chapter-11-appletalk-session-protocol">Chapter 11 AppleTalk Session Protocol<a class="anchor" href="#chapter-11-appletalk-session-protocol">#</a></h1>
+<h3 id="contents">CONTENTS<a class="anchor" href="#contents">#</a></h3>
+<p><strong>What ASP does / 11-4</strong></p>
+<p><strong>What ASP does not do / 11-4</strong></p>
+<p><strong>ASP services and features / 11-5</strong></p>
+<ul>
+<li>Opening and closing sessions / 11-6</li>
+<li>Session maintenance / 11-9</li>
+<li>Commands on an open session / 11-10
+<ul>
+<li>SPCommands / 11-10</li>
+<li>SPWrites / 11-11</li>
+<li>SPAttentions / 11-13</li>
+</ul>
+</li>
+<li>Sequencing and duplicate filtration / 11-14</li>
+<li>Getting service status information / 11-15</li>
+</ul>
+<p><strong>ASP client interface / 11-16</strong></p>
+<ul>
+<li>Server-end calls / 11-16
+<ul>
+<li>SPGetParms call / 11-16</li>
+<li>SPInit call / 11-17</li>
+<li>SPGetSession call / 11-17</li>
+<li>SPCloseSession call / 11-18</li>
+<li>SPGetRequest call / 11-18</li>
+<li>SPCmdReply call / 11-19</li>
+<li>SPWrtContinue call / 11-20</li>
+<li>SPWrtReply call / 11-21</li>
+<li>SPNewStatus call / 11-22</li>
+<li>SPAttention call / 11-22</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="workstation-end-calls--11-23">Workstation-end calls / 11-23<a class="anchor" href="#workstation-end-calls--11-23">#</a></h2>
+<ul>
+<li>SPGetParms call / 11-23</li>
+<li>SPGetStatus call / 11-23</li>
+<li>SPOpenSession call / 11-24</li>
+<li>SPCloseSession call / 11-24</li>
+<li>SPCommand call / 11-25</li>
+<li>SPWrite call / 11-26</li>
+</ul>
+<h2 id="packet-formats-and-algorithms--11-27">Packet formats and algorithms / 11-27<a class="anchor" href="#packet-formats-and-algorithms--11-27">#</a></h2>
+<ul>
+<li>Opening a session / 11-27</li>
+<li>Getting server status 11-29</li>
+<li>Sending a command request / 11-30</li>
+<li>Sending a write request / 11-32</li>
+<li>Maintaining the session / 11-35</li>
+<li>Sending an attention request / 11-36</li>
+<li>Closing a session / 11-36</li>
+<li>Checking for reply size errors / 11-37</li>
+<li>Timeouts and retry counts / 11-38</li>
+<li>SPFunction values / 11-39</li>
+</ul>
+<hr>
+<p>A WIDE VARIETY of higher-level network services are built using the model of a workstation issuing a sequence of commands to a server. The server then carries out these commands and reports the results to the workstation. For example, in a filing service, file system commands are transported to a file server and are executed there; the results are then returned to the workstation.</p>
+<p>At the transport layer, the AppleTalk protocol architecture provides a reliable transaction service, via the AppleTalk Transaction Protocol (ATP), that can be used for transporting workstation commands to servers. However, ATP does not provide the full range of transport functions needed by many higher-level network services. This chapter describes the AppleTalk Session Protocol (ASP) designed specifically for the use of these higher-level services.</p>
+<p>ASP is a client of ATP; it adds value to ATP to provide the level of transport service needed for higher-level workstation-to-server interaction.</p>
+<hr>
+<h1 id="what-asp-does">What ASP does<a class="anchor" href="#what-asp-does">#</a></h1>
+<p>The concept of a session is central to ASP. Two network entities, one in a workstation and the other in a server, can set up an ASP session between themselves. A <strong>session</strong> is a logical relationship (connection) between two network entities; it is identified by a unique session identifier. For the duration of the session, the workstation entity can (through ASP) send a sequence of commands to the server entity. ASP ensures that the commands are delivered without duplication in the same order as they were sent and conveys the results of these commands (known as a command reply or reply) back to the workstation entity.</p>
+<p>ASP sessions are inherently asymmetrical. The process of setting up a session is always initiated by the workstation entity (when it wishes to use the server entity&rsquo;s advertised service). Once the session is established, the workstation client of ASP sends commands, and the server client of ASP replies to the commands. ASP does not allow its server client to send commands to the workstation client. However, ASP provides an attention mechanism by which the server can inform the workstation of a need for attention.</p>
+<p>More than one workstation can establish a session with the same server at the same time. ASP uses the <strong>session identifier</strong> (session ID) to distinguish between commands received during these various sessions. The session ID is unique among all the sessions established with the same server.</p>
+<h1 id="what-asp-does-not-do">What ASP does not do<a class="anchor" href="#what-asp-does-not-do">#</a></h1>
+<p>ASP does not enforce the syntax or interpret the semantics of the commands sent by its workstation clients. Commands are conveyed as blocks of bytes to be interpreted by the server-end client of ASP. Similarly, command replies are sent back over the session to the workstation client without any syntactic or semantic interpretation by ASP.</p>
+<p>Although ASP guarantees that commands issued by the workstation end of a session are delivered to its server end in the same order as they were issued, ASP does not ensure that the commands are executed and completed in the specified order by the server end. This proper execution and completion of commands is the responsibility of the ASP client at the server end.</p>
+<hr>
+<p>An important goal in the design of ASP was to make its client interface independent of the lower-level transport protocols. Therefore, the higher-level clients of ASP can be moved from one network to another with a minimum of modification. To achieve this, it is necessary to separate from ASP both the mechanism by which a server advertises its service and the manner in which a workstation looks for this advertised service. The way these procedures are accomplished depends primarily upon the transport and naming mechanisms of a particular network; these procedures are the responsibility of the ASP clients, not of ASP itself.</p>
+<p>For example, a server entity that needs to make its service known on the AppleTalk network calls ATP to open an ATP responding socket and then calls the Name Binding Protocol (NBP) to register a unique name on this socket. Once that is done, the server entity calls ASP to give to it the address of the ATP responding socket. ASP then starts listening on the socket for session-opening commands coming over the network. A workstation wishing to utilize this advertised service uses NBP to identify the service&rsquo;s socket address. Then the workstation client calls ASP to open a session.</p>
+<p>Setting up a responding socket and looking for the socket&rsquo;s address through NBP are done outside the scope of ASP. The participation of ASP starts with the process of setting up a session.</p>
+<p>ASP does not provide a user authentication mechanism. If needed, this mechanism must be supplied by a higher-level protocol than ASP. In addition, ASP does not provide any mechanism to allow the use of a particular session by more than one server entity. Such multiplexing of a session can be done by the ASP clients if higher-level protocols divide the function codes into ranges and manage them completely outside the scope of ASP. The use of a single session to gain access to various services on the same node is not recommended.</p>
+<h2 id="asp-services-and-features">ASP services and features<a class="anchor" href="#asp-services-and-features">#</a></h2>
+<p>ASP provides the following services to its clients:</p>
+<ul>
+<li>setting up (opening) and tearing down (closing) sessions</li>
+<li>sending commands on an open session to the server and returning command replies (which might include a block of data)</li>
+<li>writing blocks of data from the workstation to the server end of the session</li>
+<li>sending an attention from the server to the workstation</li>
+<li>retrieving service status information from the server without opening a session</li>
+</ul>
+<hr>
+<h1 id="opening-and-closing-sessions">Opening and closing sessions<a class="anchor" href="#opening-and-closing-sessions">#</a></h1>
+<p>Before any sessions are opened, both the workstation ASP client and the server ASP client should interrogate ASP to identify the maximum sizes of commands and replies allowed by the underlying transport mechanism. Both ends of the session can use these sizes to determine whether the underlying transport services are adequate to their needs and to optimize the size of their commands and replies.</p>
+<p>The server entity makes itself known on the network by calling ATP to open an ATP responding socket, known as the session listening socket (SLS), and by registering its name on this socket. Then ASP begins listening on the SLS for session-opening requests coming in over the network.</p>
+<p>After identifying the internet address (the <strong>entity identifier</strong>) of the intended service&rsquo;s SLS, the workstation client calls ASP to open a session to this service. ASP sends a special OpenSess packet (an ATP request) to the SLS; this packet carries the address of a workstation socket to which session maintenance packets (discussed later in this chapter) are to be sent (see Figure 11-1).</p>
+<p>■ <strong>Figure 11-1</strong> ASP session-opening dialog</p>
+<p><img src="images/p252-asp-session-opening-dialog.png" alt="ASP session-opening dialog" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant Workstation
+    participant Server as Server (SLS)
+    
+    Note over Workstation: ASP workstation client issues an SPOpenSess call.
+    Workstation-&gt;&gt;Server: OpenSess TReq(TID = t1)
+    Note right of Server: OpenSessReply is sent back by the server ASP without its client&#39;s intervention.
+    Server-&gt;&gt;Workstation: OpenSessReply TResp(TID = t1)
+    Note over Workstation: SPOpenSess results are returned to ASP workstation client.</pre><hr>
+<p>This socket is referred to as the <strong>workstation session socket</strong> (WSS). If the server is able to establish a session, it returns a session acceptance indication, a session ID, and the number of the session&rsquo;s server-end socket, referred to as the <strong>server session socket</strong> (SSS). In all further communication over this session, all packets sent from the workstation must carry this session ID and must be sent to the SSS.</p>
+<p>ASP allows protocol version verification in this session-opening dialog. ASP in the workstation sends an ASP protocol version number in the OpenSess packet (to identify the version of ASP that the workstation is using). If the server&rsquo;s ASP is unable to handle this version, it returns an error, and the session is not opened.</p>
+<p>A session can be closed by the ASP client at either end by issuing the appropriate command to the client&rsquo;s ASP. That node&rsquo;s ASP notifies the other end and then immediately closes the session. If the session termination was initiated by the workstation client, then a session termination notification is sent to the SSS. If the session termination was initiated by the server client, then the notification is sent to the WSS. See <em>Figure 11-2</em> and <em>Figure 11-3</em>.</p>
+<h3 id="-figure-11-2-session-closing-dialog-initiated-by-the-workstation">■ Figure 11-2 Session-closing dialog initiated by the workstation<a class="anchor" href="#-figure-11-2-session-closing-dialog-initiated-by-the-workstation">#</a></h3>
+<p><img src="images/p253-session-closing-dialog.png" alt="Session-closing dialog initiated by the workstation" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant W as Workstation
+    participant S as Server
+    Note over W: ASP workstation client
+    Note over W: issues an SPCloseSession call.
+    W-&gt;&gt;S: CloseSess TReq(TID = t2)
+    Note over S: SSS
+    Note over S: SPCloseSession is delivered to ASP client.
+    Note over S: Session is closed at server end.
+    Note over S: ASP generates CloseSessReply without the ASP client&#39;s intervention.
+    S-&gt;&gt;W: CloseSessReply TResp(TID = t2)
+    Note over W: Session is closed at the workstation as soon as CloseSessReply is received or the retries expire, whichever occurs first.</pre><hr>
+<p>■ <strong>Figure 11-3</strong> Session-closing dialog initiated by the server</p>
+<p><img src="images/p254-session-closing-dialog.png" alt="Session-closing dialog initiated by the server" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant Server
+    participant Workstation
+    Note over Server: ASP server client issues&lt;br/&gt;an SPCloseSession call.
+    Server-&gt;&gt;Workstation: CloseSess TReq(TID = t3)
+    Note over Workstation: WSS
+    Note over Workstation: ASP generates CloseSessReply&lt;br/&gt;without the ASP client&#39;s intervention.
+    Workstation-&gt;&gt;Server: CloseSessReply TResp(TID = t3)
+    Note over Workstation: Session is closed at&lt;br/&gt;workstation end.
+    Note over Server: Session is closed at the server end&lt;br/&gt;as soon as CloseSessReply is&lt;br/&gt;received or the retries expire,&lt;br/&gt;whichever occurs first.</pre><p>Whenever a session is terminated, the ASP clients at both ends must be notified so that appropriate higher-level action can be taken. This notification is easily done at the server end since it is generally listening for incoming commands on the session. But at the workstation end (if the server end closed the session), the workstation ASP client may not be notified until the next time it tries to issue a command on that session. The actions taken by an ASP client, upon being informed of the closing of a session, vary depending on the higher-level function. For example, the server end might choose to free resources allocated for that session; or, if the higher-level service is a filing service, it might decide to <strong>flush</strong> and close all files opened during that session.</p>
+<hr>
+<h1 id="session-maintenance">Session maintenance<a class="anchor" href="#session-maintenance">#</a></h1>
+<p>A session remains open until it is explicitly terminated by the ASP client at either end or until one end of the session goes down or becomes unreachable. ASP provides a mechanism known as session tickling that is initiated as soon as a session is opened. In session tickling, each end of the session periodically sends a packet to the WSS or SLS to inform the other end that it is functioning properly (see Figure 11-4). The packet sent by either end of the session is known as a tickle packet. If either end fails to receive any packets (tickles, requests, or replies) on a session for a certain predefined <strong>session maintenance timeout</strong>, it assumes that the other end has gone down or has become unreachable. When the session maintenance timeout occurs, the session times out and closes. Tickle packets are no longer sent out.</p>
+<p>■ <strong>Figure 11-4</strong> Tickle packet dialog</p>
+<p><img src="images/p255-tickle-packet-dialog.png" alt="Tickle packet dialog" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant Server as Server (SLS)
+    participant Workstation as Workstation (WSS)
+    Note over Server: Upon opening the session, ASP starts this ATP transaction with retry count equal to &#34;infinite.&#34;
+    Note over Workstation: Upon opening the session, ASP starts this ATP transaction with retry count equal to &#34;infinite.&#34;
+    Workstation-&gt;&gt;Server: Tickle TReq(TID = t4)
+    Server-&gt;&gt;Workstation: Tickle TReq(TID = t5)</pre><hr>
+<h1 id="commands-on-an-open-session">Commands on an open session<a class="anchor" href="#commands-on-an-open-session">#</a></h1>
+<p>Once a session has been opened, the workstation client of ASP can send a sequence of commands to the server end. These commands are delivered in the same order as they were issued at the workstation end, and replies to the commands are returned to the workstation end by ASP. The two types of commands, SPCommands and SPWrites, differ in the direction of the primary flow of data. In addition, the server end can send an SPAttention call to the workstation end to inform the workstation of some server need. The following sections describe how ASP uses ATP to perform these commands.</p>
+<h3 id="spcommands">SPCommands<a class="anchor" href="#spcommands">#</a></h3>
+<p>SPCommands are very similar to ATP requests. The ASP workstation client sends a command (encoded in a variable-length command block) to the server-end client requesting the server to perform a particular function and to send back a variable-length command reply. Examples of such commands are requests to open a particular file on a file server or to read a certain range of bytes from an already opened file. In the first case, a small amount of reply data is returned; in the second case, a multipacket reply might be generated. Each SPCommand translates into an ATP request sent to the SSS, and the command reply is received as one or more ATP response packets, as shown in <em>Figure 11-5</em>.</p>
+<p>In any case, ASP does not interpret the command block or in any way participate in the command&rsquo;s function. ASP simply conveys the command block to the server end of the session and returns the command reply to the workstation-end client. The command reply consists of a 4-byte command result (CmdResult) and a variable-length command reply data block (CmdBlock).</p>
+<hr>
+<h3 id="figure-11-5-spcommand-dialog">Figure 11-5 SPCommand dialog<a class="anchor" href="#figure-11-5-spcommand-dialog">#</a></h3>
+<p><img src="images/p257-spcommand-dialog.png" alt="Diagram showing the SPCommand dialog between a Workstation and a Server" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant Workstation
+    participant Server
+    Note over Workstation: ASP workstation client
+    Note over Workstation: issues an SPCommand call.
+    Workstation-&gt;&gt;Server: Command TReq(TID = t6)
+    Note over Server: SPCommand is
+    Note over Server: delivered to ASP client.
+    Note over Server: ASP server client issues
+    Note over Server: an SPCmdReply call.
+    Server-&gt;&gt;Workstation: CommandReplies
+    Server-&gt;&gt;Workstation: TResp(TID = t6)
+    Note over Workstation: SPCommand results are
+    Note over Workstation: returned to ASP client.</pre><h2 id="spwrites">SPWrites<a class="anchor" href="#spwrites">#</a></h2>
+<p>When using an SPWrite call, the ASP client in the workstation intends to convey a variable-length block of data to the server end of a session and expects a reply. Since ASP uses ATP as its underlying transport protocol and since ATP is a protocol in which a requesting end essentially <em>reads</em> a multipacket block of data from the responding end, for efficiency it is necessary to translate the SPWrite into two transactions. Essentially, a write to the server end is accomplished by having the server initiate a transaction request to read the data from the workstation end.</p>
+<p>In the first transaction, ASP sends an ATP request to the SSS carrying the SPWrite&rsquo;s control information, known as the write command block. The server end examines this information to determine whether to proceed with reading the data from the workstation end. If it does not wish to proceed, the server returns an error in the ATP response packet. (This error is conveyed to the workstation client as the 4-byte command result.) Along with the error, up to eight ATP response packets can be sent back to the workstation. This transaction is illustrated in <em>Figure 11-6</em>.</p>
+<hr>
+<h4 id="figure-11-6-spwrite-dialog-error-condition">Figure 11-6 SPWrite dialog (error condition)<a class="anchor" href="#figure-11-6-spwrite-dialog-error-condition">#</a></h4>
+<p><img src="images/p258-figure-11-6.png" alt="SPWrite dialog (error condition)" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant Workstation
+    participant Server
+    Note over Workstation: ASP workstation client issues an SPWrite call.
+    Workstation-&gt;&gt;Server: Write TReq(TID = t7)
+    Note over Server: SPWrite is delivered to ASP client.
+    Note over Server: ASP client error occurs.
+    Note over Server: ASP server client issues an SPWrtReply call.
+    Server-&gt;&gt;Workstation: WriteReplies
+    Note over Server, Workstation: ...
+    Server-&gt;&gt;Workstation: TResp(TID = t7)
+    Note over Workstation: SPWrite results are returned to ASP client.</pre><p>If the server decides to read the data, then the server&rsquo;s ASP sends an SPWrtContinue command, which is an ATP request to the WSS to read the data from the workstation end (see Figure 11-7). This ATP request could generate a multipacket ATP response carrying the write data to the server. Upon receiving the write data and performing the particular function requested in the SPWrite call, the server end then responds to the first ATP request (the Write command block) with the appropriate error message (this error message is conveyed to the workstation client as the 4-byte CmdResult) and up to eight WriteReply packets.</p>
+<hr>
+<h3 id="figure-11-7-spwrite-dialog-no-error-condition">Figure 11-7 SPWrite dialog (no error condition)<a class="anchor" href="#figure-11-7-spwrite-dialog-no-error-condition">#</a></h3>
+<p><img src="images/p259-spwrite-dialog.png" alt="SPWrite dialog (no error condition)" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant Workstation
+    participant Server
+    Note over Workstation: ASP workstation client issues an SPWrite call.
+    Workstation-&gt;&gt;Server: Write TReq(TID = t8)
+    Note over Server: SPWrite is delivered to ASP client.
+    Note over Server: ASP client issues SPWriteContinue call.
+    Server-&gt;&gt;Workstation: WriteContinue TReq(TID = t9)
+    Workstation-&gt;&gt;Server: WriteContinue Replies
+    Workstation-&gt;&gt;Server: TResp(TID = t9)
+    Note over Server: Write data is delivered to ASP client.
+    Note over Server: ASP client issues SPWrtReply call.
+    Server-&gt;&gt;Workstation: WriteReplies
+    Server-&gt;&gt;Workstation: TResp(TID = t8)
+    Note over Workstation: SPWrite results are returned to ASP client.</pre><h2 id="spattentions">SPAttentions<a class="anchor" href="#spattentions">#</a></h2>
+<p>When a session is open, the server client can send an attention command to the workstation client (see <em>Figure 11-8</em>). The sole purpose of this command is to alert the workstation client of the server&rsquo;s need for attention. ASP delivers 2 bytes of attention data (from the command ATP user bytes) to the workstation client and acknowledges the attention command (with an ATP response), but the workstation client has the responsibility to act on the command. An example of the use of the attention mechanism might be for a server to notify a workstation of a change in the server&rsquo;s status. Upon receiving the attention command, the workstation could then issue an SPCommand to the server to find out the details of the status change.</p>
+<hr>
+<h2 id="figure-11-8-spattention-dialog">Figure 11-8 SPAttention dialog<a class="anchor" href="#figure-11-8-spattention-dialog">#</a></h2>
+<p><img src="images/p260-spattention-dialog.png" alt="SPAttention dialog" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant Server
+    participant Workstation
+    Note over Server: ASP server client issues&lt;br/&gt;an SPAttention call.
+    Server-&gt;&gt;Workstation: Attention TReq(TID = t10)
+    Note over Workstation: WSS
+    Workstation-&gt;&gt;Server: AttentionReply TResp(TID = t10)
+    Note over Server: SPAttention&lt;br/&gt;call completes.
+    Note over Workstation: ASP generates the AttentionReply&lt;br/&gt;without the client s intervention and&lt;br/&gt;informs the client of the attention request.</pre><h2 id="sequencing-and-duplicate-filtration">Sequencing and duplicate filtration<a class="anchor" href="#sequencing-and-duplicate-filtration">#</a></h2>
+<p>By including a sequence number in the appropriate packets exchanged by ASP, ASP ensures that commands are delivered to the server end in the same order as they were issued at the workstation end.</p>
+<p>The use of sequence numbers also allows ASP to make the ATP exactly-once (ATP-XO) service more robust. ATP-XO service guarantees that a request is delivered to the ATP client exactly once if the source and destination nodes are on the same AppleTalk network. Over an AppleTalk internet, however, a copy of the ATP request could be delayed in a router node and then delivered as a duplicate after the original transaction has been completed. As a result, a duplicate transaction would be delivered by ATP. This inherent problem of transaction protocols can be eliminated by giving sequence numbers to the transactions belonging to a session in order to filter delayed duplicates.</p>
+<hr>
+<h1 id="asp-client-interface">ASP client interface<a class="anchor" href="#asp-client-interface">#</a></h1>
+<p>ASP&rsquo;s service interface is designed to be as independent as possible of the underlying AppleTalk transport mechanisms to allow easy porting of the higher-level protocols (ASP clients) to networks other than AppleTalk and to simplify some of the problems in the design of internet gateways. Regardless of the design, the internal specifications of ASP are very closely related to ATP, and so ASP itself may not be directly portable to other networks.</p>
+<hr>
+<h2 id="server-end-calls">Server-end calls<a class="anchor" href="#server-end-calls">#</a></h2>
+<p>This section describes the calls that can be issued by the server-end ASP client.</p>
+<h3 id="spgetparms-call">SPGetParms call<a class="anchor" href="#spgetparms-call">#</a></h3>
+<p>Before any sessions are allowed to be opened, the server&rsquo;s ASP client should first issue an SPGetParms call to retrieve the maximum values of command block size and quantum size. The MaxCmdSize is the maximum size command block that can be sent to the server. The QuantumSize returned by this call is the maximum size reply block that can be sent to an SPCommand or SPGetStatus call, and the maximum size of data that can be transferred in an SPWrtContinue transaction. On an AppleTalk network, since ASP is built on top of ATP, the value of MaxCmdSize returned will be 578 bytes and QuantumSize will be 4624 bytes (eight ATP response packets with 578 data bytes each). For client-compatible session protocols implemented on other networks, these values may be different.</p>
+<p><strong>Call parameters</strong>      none</p>
+<p><strong>Returned parameters</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><em>MaxCmdSize</em></td>
+          <td>maximum size of a command block</td>
+      </tr>
+      <tr>
+          <td><em>QuantumSize</em></td>
+          <td>maximum size of a reply block or SPWrtContinue write data</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="spinit-call">SPInit call<a class="anchor" href="#spinit-call">#</a></h3>
+<p>Once it has opened a socket (SLS) and registered its name, the ASP client in the server must issue an SPInit call, passing the network-dependent SLSEntityIdentifier as well as a ServiceStatusBlock to ASP. This block is used to hold the service status information to be returned in reply to SPGetStatus commands received at the SLS. The SLSEntityIdentifier is the complete internet address of the SLS.</p>
+<p>SPInit returns the SLSRefNum (unique among all SLSs on the same server node), which is used in the SPGetSession call to refer to the SLS passed in the SPInit call.</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Call parameters</strong></td>
+          <td><em>SLSEntityIdentifier</em></td>
+          <td>SLS internet address (network-dependent)</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><em>ServiceStatusBlock</em></td>
+          <td>block with status information</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><em>ServiceStatusBlockSize</em></td>
+          <td>size of status information block</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><strong>Returned parameters</strong></td>
+          <td><em>SLSRefNum</em></td>
+          <td>reference number for the SLS</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><em>SPError</em></td>
+          <td>error code returned by ASP</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td><em>TooManyClients</em>: Server implementation cannot support another client.</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td><em>SizeErr</em>: ServiceStatusBlockSize is greater than QuantumSize.</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="spgetsession-call">SPGetSession call<a class="anchor" href="#spgetsession-call">#</a></h3>
+<p>The SPGetSession call is issued by the ASP server-end client to allow ASP to accept an SPOpenSession command received on the SLS identified by the SLSRefNum. Each SPGetSession call authorizes ASP to accept one more SPOpenSession command. The SPGetSession call completes when the SPOpenSession command is received on the SLS and a corresponding session has been opened. The SessRefNum is returned to the server ASP client and must be used in all further calls to ASP that refer to that session. This number must be unique among all sessions managed by ASP in the server end.</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Call parameters</strong></td>
+          <td><em>SLSRefNum</em></td>
+          <td>reference number for the SLS</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><strong>Returned parameters</strong></td>
+          <td><em>SessRefNum</em></td>
+          <td>session reference number</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><em>SPError</em></td>
+          <td>error code returned by ASP</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td><em>ParamErr</em>: SLSRefNum is unknown.</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td><em>NoMoreSessions</em>: Server implementation cannot support another session.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="spclosesession-call">SPCloseSession call<a class="anchor" href="#spclosesession-call">#</a></h3>
+<p>The SPCloseSession call is issued by the ASP client to close the session identified by SessRefNum. As a result of the SPCloseSession call, the value of SessRefNum is invalidated and cannot be used in any further calls. In addition, all pending activity on the session is immediately canceled.</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Call parameters</strong></td>
+          <td>SessRefNum</td>
+          <td>session reference number</td>
+      </tr>
+      <tr>
+          <td><strong>Returned parameters</strong></td>
+          <td>SPError</td>
+          <td>error code returned by ASP</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>ParamErr: SessRefNum is unknown.</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="spgetrequest-call">SPGetRequest call<a class="anchor" href="#spgetrequest-call">#</a></h3>
+<p>After a session has been opened, the ASP client in the server end must issue SPGetRequest calls to provide buffer space (ReqBuff) for the receipt of requests (workstation commands) on that session. The size (ReqBuffSize) of the buffer for receiving the command block sent with the request depends on the higher-level protocol but need not be greater than QuantumSize.</p>
+<p>When a request has been received, the SPGetRequest call completes and returns a unique request identifier (ReqRefNum) and a 1-byte quantity (SPReqType) that identifies the type of ASP request. The permissible values of SPReqType are Command, Write, and CloseSession. If the received command block does not fit in the ReqBuff, ASP returns as much of the command block as will fit, along with a BufTooSmall error.</p>
+<p>When the SPGetRequest call completes, the server-end client is given the size of the received command block in the parameter ActRcvdReqLen.</p>
+<p>If the session times out and an SPGetRequest call is pending, the call will complete with an SPError value of SessClosed. If no SPGetRequest call is pending, the next SPGetRequest call issued on the session will complete immediately with an error.</p>
+<hr>
+<p><strong>Call parameters</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><em>SessRefNum</em></td>
+          <td style="text-align: left">session reference number</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><em>ReqBuff</em></td>
+          <td style="text-align: left">buffer for receiving the command block</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><em>ReqBuffSize</em></td>
+          <td style="text-align: left">buffer size</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returned parameters</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><em>ReqRefNum</em></td>
+          <td style="text-align: left">request identifier</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><em>SPReqType</em></td>
+          <td style="text-align: left">ASP-level request type</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><em>ActRcvdReqLen</em></td>
+          <td style="text-align: left">actual size of the received request</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><em>SPError</em></td>
+          <td style="text-align: left">error code returned by ASP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ParamErr</em>: <em>SessRefNum</em> is unknown.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>BufTooSmall</em>: <em>ReqBuff</em> cannot hold the entire command block.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>SessClosed</em>: Session has been closed.</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="spcmdreply-call">SPCmdReply call<a class="anchor" href="#spcmdreply-call">#</a></h3>
+<p>If the request returned by the SPGetRequest call has SPReqType equal to Command, then the server-end client must respond to the request with an SPCmdReply call to ASP. The value of ReqRefNum passed with this call must be the same as that returned by the corresponding SPGetRequest call. The following two items must be conveyed to the workstation end of the session:</p>
+<ul>
+<li>a 4-byte command result (CmdResult)</li>
+<li>a variable-length command reply data block (CmdReplyData)</li>
+</ul>
+<p>The actual values, format, and meaning of the CmdResult and of the CmdReplyData are not interpreted by ASP.</p>
+<p>♦ <strong>Note:</strong> CmdReplyDataSize must be no greater than QuantumSize; otherwise, a SizeErr will be returned and no CmdReplyData will be sent to the workstation.</p>
+<hr>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Call parameters</strong></td>
+          <td style="text-align: left">SessRefNum</td>
+          <td style="text-align: left">session reference number</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">ReqRefNum</td>
+          <td style="text-align: left">request identifier</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">CmdResult</td>
+          <td style="text-align: left">4-byte command result</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">CmdReplyData</td>
+          <td style="text-align: left">command reply data block</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">CmdReplyDataSize</td>
+          <td style="text-align: left">size of command reply data block</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Returned parameters</strong></td>
+          <td style="text-align: left">SPError</td>
+          <td style="text-align: left">error code returned by ASP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ParamErr</em>: SessRefNum or ReqRefNum is unknown. CmdReplyDataSize is bad (negative value).</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>SizeErr</em>: CmdReplyDataSize is greater than QuantumSize.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>SessClosed</em>: Session has been closed.</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="spwrtcontinue-call">SPWrtContinue call<a class="anchor" href="#spwrtcontinue-call">#</a></h2>
+<p>If the request returned by the SPGetRequest call has SPReqType equal to Write, then the server-end client must respond to the request with either an SPWrtContinue or an SPWrtReply call to ASP. The value of ReqRefNum passed with these calls must be the same as that returned by the corresponding SPGetRequest call.</p>
+<p>The ASP client decides which of these calls to make, depending on the higher-level protocol; however, the following general description is provided. Upon receiving a request that has SPReqType equal to Write, the ASP client examines the command block received with the request. This block should contain, in the format appropriate to the higher-level protocol, a description of the type and parameters of the higher-level write operation being requested. The ASP client should use this command block information to decide if the requested operation can be carried out successfully. If the operation cannot be carried out, the ASP client should issue the SPWrtReply call with the appropriate higher-level protocol result code value in CmdResult indicating the failure and the reason for it. If the operation can be carried out, however, then the ASP client in the server should initiate the process of transferring the data to be written from the workstation end of the session by issuing the SPWrtContinue call. An SPWrtReply call should also be issued upon completion of the SPWrtContinue call and the ensuing write.</p>
+<p>For example, the higher-level client could be a filing protocol requesting the server-end client to write a certain number of bytes to a particular file. If no such file exists, the server end should send back a <em>no such file</em> indication by issuing an SPWrtReply call. Otherwise, the server end issues an SPWrtContinue call with a buffer into which the write data can be brought from the workstation, followed by an SPWrtReply once it has finished the write request.</p>
+<hr>
+<p>The maximum size of the write data that will be transferred is equal to QuantumSize.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Call parameters</strong></td>
+          <td style="text-align: left"><em>SessRefNum</em></td>
+          <td style="text-align: left">session reference number</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ReqRefNum</em></td>
+          <td style="text-align: left">request identifier</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>Buffer</em></td>
+          <td style="text-align: left">buffer for receiving the data to be written</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>BufferSize</em></td>
+          <td style="text-align: left">size of the buffer</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Returned parameters</strong></td>
+          <td style="text-align: left"><em>ActLenRcvd</em></td>
+          <td style="text-align: left">actual amount of data received into buffer</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>SPError</em></td>
+          <td style="text-align: left">error code returned by ASP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ParamErr</em>: <em>SessRefNum</em> or <em>ReqRefNum</em> is unknown. <em>BufferSize</em> is bad (negative value).</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>SessClosed</em>: Session has been closed.</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="spwrtreply-call">SPWrtReply call<a class="anchor" href="#spwrtreply-call">#</a></h3>
+<p>The SPWrtReply call is issued by the ASP client in the server in order to terminate, either successfully or unsuccessfully, an SPWrite call received through SPGetRequest. With this SPWrtReply call, the ASP client provides ASP with the 4-byte command result and the variable-length command reply data block (maximum size equal to QuantumSize) to be conveyed to the workstation-end client. If a <em>SizeErr</em> is returned, no <em>CmdReplyData</em> will be sent to the workstation.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Call parameters</strong></td>
+          <td style="text-align: left"><em>SessRefNum</em></td>
+          <td style="text-align: left">session reference number</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ReqRefNum</em></td>
+          <td style="text-align: left">request identifier</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>CmdResult</em></td>
+          <td style="text-align: left">4-byte command result</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>CmdReplyData</em></td>
+          <td style="text-align: left">command reply data block</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>CmdReplyDataSize</em></td>
+          <td style="text-align: left">size of command reply data block</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Returned parameters</strong></td>
+          <td style="text-align: left"><em>SPError</em></td>
+          <td style="text-align: left">error code returned by ASP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ParamErr</em>: <em>SessRefNum</em> or <em>ReqRefNum</em> is unknown. <em>CmdReplyDataSize</em> is bad (negative value).</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>SizeErr</em>: <em>CmdReplyDataSize</em> is greater than QuantumSize.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>SessClosed</em>: Session has been closed.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="spnewstatus-call">SPNewStatus call<a class="anchor" href="#spnewstatus-call">#</a></h1>
+<p>The SPNewStatus call is used by the ASP client to update the ServiceStatusBlock first supplied in the SPInit call. The previous status information is lost. All subsequent SPGetStatus calls issued by workstations will retrieve the new status block.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Call parameters</strong></td>
+          <td style="text-align: left"><em>SLSRefNum</em></td>
+          <td style="text-align: left">reference number for the SLS</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ServiceStatusBlock</em></td>
+          <td style="text-align: left">block with status information</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ServiceStatusBlockSize</em></td>
+          <td style="text-align: left">size of status information block</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Returned parameters</strong></td>
+          <td style="text-align: left"><em>SPError</em></td>
+          <td style="text-align: left">error code returned by ASP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ParamErr</em>: SLSRefNum is unknown</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>SizeErr</em>: ServiceStatusBlockSize is greater than QuantumSize.</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="spattention-call">SPAttention call<a class="anchor" href="#spattention-call">#</a></h1>
+<p>The SPAttention call sends the attention code to the workstation and waits for an acknowledgment. The only restriction placed on the value of the attention code is that it must not be 0.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Call parameters</strong></td>
+          <td style="text-align: left"><em>SessRefNum</em></td>
+          <td style="text-align: left">session reference number</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>AttentionCode</em></td>
+          <td style="text-align: left">2-byte attention code (must be a number other than 0)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Returned parameters</strong></td>
+          <td style="text-align: left"><em>SPError</em></td>
+          <td style="text-align: left">error code returned by ASP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ParamErr</em>: SessRefNum is unknown; AttentionCode cannot be 0.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>NoAck</em>: No acknowledgment received from workstation end.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="workstation-end-calls">Workstation-end calls<a class="anchor" href="#workstation-end-calls">#</a></h1>
+<p>This section describes the calls that can be issued to the server end by the workstation-end ASP client.</p>
+<h2 id="spgetparms-call-1">SPGetParms call<a class="anchor" href="#spgetparms-call-1">#</a></h2>
+<p>The SPGetParms call retrieves the maximum value of the command block size and the quantum size. This call is the same as the SPGetParms call for the server end.</p>
+<p><strong>Call parameters</strong>    none</p>
+<p><strong>Returned parameters</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Field</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><em>MaxCmdSize</em></td>
+          <td style="text-align: left">maximum size of a command block</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><em>QuantumSize</em></td>
+          <td style="text-align: left">maximum data size for a command reply or a write</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="spgetstatus-call">SPGetStatus call<a class="anchor" href="#spgetstatus-call">#</a></h2>
+<p>The SPGetStatus call is used by a workstation ASP client to obtain status information for a particular server. If the status information received is too large to fit into the StatusBuffer provided with the call, then ASP returns a BufTooSmall error and as much of the status information as will fit in the StatusBuffer.</p>
+<p><strong>Call parameters</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Field</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><em>SLSEntityIdentifier</em></td>
+          <td style="text-align: left">SLS internet address (network-dependent)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><em>StatusBuffer</em></td>
+          <td style="text-align: left">buffer for receiving the status information</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><em>StatusBufferSize</em></td>
+          <td style="text-align: left">size of status information buffer</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returned parameters</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Field</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><em>ActRcvdStatusLen</em></td>
+          <td style="text-align: left">size of status information received</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><em>SPError</em></td>
+          <td style="text-align: left">error code returned by ASP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>NoServer</em>: Server is not responding.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>BufTooSmall</em>: StatusBuffer cannot hold entire status.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="spopensession-call">SPOpenSession call<a class="anchor" href="#spopensession-call">#</a></h1>
+<p>The SPOpenSession call is issued by an ASP client after obtaining the internet address of the SLS through an NBP Lookup call. If a session is successfully opened, then a SessRefNum is returned to the caller and should be used on all subsequent calls referring to this session. If a session cannot be opened, an appropriate SPError value is returned. AttnRoutine specifies a routine (part of the workstation-end ASP client) to be invoked upon receipt of an attention request from the server. The exact form that this parameter takes is implementation-dependent.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Parameter</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Call parameters</strong></td>
+          <td style="text-align: left"><em>SLSEntityIdentifier</em></td>
+          <td style="text-align: left">SLS internet address (network-dependent)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>AttnRoutine</em></td>
+          <td style="text-align: left">attention routine indicator</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Returned parameters</strong></td>
+          <td style="text-align: left"><em>SessRefNum</em></td>
+          <td style="text-align: left">session reference number</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>SPError</em></td>
+          <td style="text-align: left">error code returned by ASP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>NoServer</em>: Server is not responding.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ServerBusy</em>: Server cannot open another session.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>BadVersNum</em>: Server cannot support the offered version number.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>NoMoreSessions</em>: Workstation implementation cannot support another session.</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="spclosesession-call-1">SPCloseSession call<a class="anchor" href="#spclosesession-call-1">#</a></h1>
+<p>The SPCloseSession call can be issued at any time by the ASP client to close a session previously opened through an SPOpenSession call. As a result of this call, the SessRefNum is invalidated and cannot be used in any further calls. In addition, all pending activity on the session is immediately canceled.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Parameter</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Call parameters</strong></td>
+          <td style="text-align: left"><em>SessRefNum</em></td>
+          <td style="text-align: left">session reference number</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Returned parameters</strong></td>
+          <td style="text-align: left"><em>SPError</em></td>
+          <td style="text-align: left">error code returned by ASP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ParamErr</em>: SessRefNum is unknown.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="spcommand-call">SPCommand call<a class="anchor" href="#spcommand-call">#</a></h3>
+<p>Once a session has been opened, the workstation-end client can send a command to the server end by issuing an <em>SPCommand</em> call to ASP. A command block of maximum size (<em>MaxCmdSize</em>) can be sent with the command. If <em>CmdBlockSize</em> is larger than this maximum allowable size, the call completes with <em>SPError</em> equal to <em>SizeErr</em>; in this case, no effort is made to send anything to the server end.</p>
+<p>In response to an <em>SPCommand</em>, the server end returns the following two quantities:</p>
+<ul>
+<li>a 4-byte command result</li>
+<li>a variable-length command reply that is returned in the <em>ReplyBuffer</em>. The size of the command reply received is returned in <em>ActRcvdReplyLen</em>. Since this size can be no larger than <em>QuantumSize</em>, it is possible that only part of the reply will be returned in this call. If this happens, an <em>SPError</em> code of <em>no error</em> will be returned; the ASP workstation-end client is responsible for generating another command to retrieve the rest of the reply.</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Call parameters</strong></td>
+          <td style="text-align: left"><em>SessRefNum</em></td>
+          <td style="text-align: left">session reference number</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>CmdBlock</em></td>
+          <td style="text-align: left">command block to be sent</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>CmdBlockSize</em></td>
+          <td style="text-align: left">size of command block</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ReplyBuffer</em></td>
+          <td style="text-align: left">buffer for receiving the command reply data</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ReplyBufferSize</em></td>
+          <td style="text-align: left">size of the reply buffer</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Returned parameters</strong></td>
+          <td style="text-align: left"><em>CmdResult</em></td>
+          <td style="text-align: left">4-byte command result</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ActRcvdReplyLen</em></td>
+          <td style="text-align: left">actual length of command reply data received</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>SPError</em></td>
+          <td style="text-align: left">error code returned by ASP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ParamErr</em>: <em>SessRefNum</em> is unknown.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>SizeErr</em>: <em>CmdBlockSize</em> is larger than <em>MaxCmdSize</em>.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>SessClosed</em>: Session has been closed.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>BufTooSmall</em>: <em>ReplyBuffer</em> cannot hold the whole reply.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="spwrite-call">SPWrite call<a class="anchor" href="#spwrite-call">#</a></h1>
+<p>The <code>SPWrite</code> call is made by the ASP client in order to write a block of data to the server end of the session. The call first delivers the <code>CmdBlock</code> (no larger than <code>MaxCmdSize</code>) to the server-end client of ASP and, as previously described, the server end can then transfer the write data or return an error (delivered in the <code>CmdResult</code>).</p>
+<p>The actual amount of data sent will be less than or equal to <code>WriteDataSize</code> and will never be larger than <code>QuantumSize</code>. The amount of write data actually transferred is returned in <code>ActLenWritten</code>.</p>
+<p>In response to an <code>SPWrite</code>, the server end returns two quantities: a 4-byte command result and a variable-length command reply that is returned in the <code>ReplyBuffer</code>. The size of the command reply actually received is returned in <code>ActRcvdReplyLen</code>. Note that this size can be no larger than <code>QuantumSize</code>.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Call parameters</strong></td>
+          <td style="text-align: left"><em>SessRefNum</em></td>
+          <td style="text-align: left">session reference number</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>CmdBlock</em></td>
+          <td style="text-align: left">command block to be sent</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>CmdBlockSize</em></td>
+          <td style="text-align: left">size of command block</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>WriteData</em></td>
+          <td style="text-align: left">data block to be written</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>WriteDataSize</em></td>
+          <td style="text-align: left">size of data block to be written</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ReplyBuffer</em></td>
+          <td style="text-align: left">buffer for receiving the command reply data</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ReplyBufferSize</em></td>
+          <td style="text-align: left">size of the reply buffer</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Returned</strong></td>
+          <td style="text-align: left"><em>CmdResult</em></td>
+          <td style="text-align: left">4-byte command result</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>parameters</strong></td>
+          <td style="text-align: left"><em>ActLenWritten</em></td>
+          <td style="text-align: left">actual number of bytes of data written</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ActRcvdReplyLen</em></td>
+          <td style="text-align: left">actual length of command reply data received</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>SPError</em></td>
+          <td style="text-align: left">error code returned by ASP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>ParamErr</em>: <em>SessRefNum</em> is unknown.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>SizeErr</em>: <em>CmdBlockSize</em> is larger than <em>MaxCmdSize</em>.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>SessClosed</em>: Session has been closed.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><em>BufTooSmall</em>: <em>ReplyBuffer</em> cannot hold the whole reply.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="packet-formats-and-algorithms">Packet formats and algorithms<a class="anchor" href="#packet-formats-and-algorithms">#</a></h1>
+<p>This section describes the internal details of ASP, including packet formats. For simplicity, the DDP and data-link headers are omitted from the packets shown in the figures.</p>
+<h2 id="opening-a-session">Opening a session<a class="anchor" href="#opening-a-session">#</a></h2>
+<p>When the workstation client issues an SPOpenSession call, ASP issues an ATP-XO transaction request addressed to the SLS, as shown in Figure 11-1. This ATP transaction request packet is known as an ASP OpenSess packet. The server&rsquo;s ASP returns an ATP transaction response packet known as an OpenSessReply packet.</p>
+<p>The OpenSess packet is shown in Figure 11-10 and carries the following in its ASP header (the ASP header is contained entirely in the ATP user bytes):</p>
+<ul>
+<li>a 1-byte SPFunction field equal to OpenSess</li>
+<li>a 1-byte field containing the WSS socket number</li>
+<li>a 2-byte ASP version number field</li>
+</ul>
+<p>Upon receiving an OpenSess packet, the server&rsquo;s ASP checks to see if an SPGetSession is pending on that SLS. If no such call is pending, then the server&rsquo;s ASP returns a ServerBusy error in the OpenSessReply packet, and the session is not opened. If an SPGetSession is pending, then ASP checks the ASP version number in the OpenSess packet. If the version number is unacceptable, a BadVersNum error is returned. Otherwise, ASP opens an ATP responding socket (SSS) and generates a unique (per SLS) 1-byte session ID. ASP then creates its internal session management data structures in which the WSS is saved together with the session ID, the SLS, and related items. The OpenSessReply packet is then sent back to the workstation. This packet contains, in its ASP header (contained entirely in the ATP user bytes), a 2-byte error code (returned to the client as SPError), the 1-byte session ID, and the SSS. The server end of the session is now active. The tickling process at this time is initiated from the server end.</p>
+<p>Upon receiving the OpenSessReply, the workstation-end ASP examines the packet&rsquo;s error code field. If this field indicates no error, then the session ID and the SSS are taken from the packet and, together with other control information, are saved in a session management data structure. At this point, the workstation end of the session is active, and the tickling process is initiated from the workstation end.</p>
+<hr>
+<h3 id="figure-11-10-asp-packet-formats-for-opensess-and-closesess">Figure 11-10 ASP packet formats for OpenSess and CloseSess<a class="anchor" href="#figure-11-10-asp-packet-formats-for-opensess-and-closesess">#</a></h3>
+<p><img src="images/p274-asp-packet-formats.png" alt="ASP packet formats for OpenSess and CloseSess" /></p>
+<h4 id="opensess">OpenSess<a class="anchor" href="#opensess">#</a></h4>
+<pre class="mermaid">packet-beta
+0-7: &#34;SPFunction = OpenSess&#34;
+8-15: &#34;WSS&#34;
+16-31: &#34;ASP version number&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>SPFunction = OpenSess</td>
+          <td>0</td>
+          <td>8</td>
+          <td>ASP function code for OpenSess command</td>
+      </tr>
+      <tr>
+          <td>WSS</td>
+          <td>8</td>
+          <td>8</td>
+          <td>Workstation service socket</td>
+      </tr>
+      <tr>
+          <td>ASP version number</td>
+          <td>16</td>
+          <td>16</td>
+          <td>ASP version number</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="opensessreply">OpenSessReply<a class="anchor" href="#opensessreply">#</a></h4>
+<pre class="mermaid">packet-beta
+0-7: &#34;SSS&#34;
+8-15: &#34;Session ID&#34;
+16-31: &#34;Error code&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>SSS</td>
+          <td>0</td>
+          <td>8</td>
+          <td>Server service socket</td>
+      </tr>
+      <tr>
+          <td>Session ID</td>
+          <td>8</td>
+          <td>8</td>
+          <td>Session identifier</td>
+      </tr>
+      <tr>
+          <td>Error code</td>
+          <td>16</td>
+          <td>16</td>
+          <td>Error code</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="closesess">CloseSess<a class="anchor" href="#closesess">#</a></h4>
+<pre class="mermaid">packet-beta
+0-7: &#34;SPFunction = CloseSess&#34;
+8-15: &#34;Session ID&#34;
+16-31: &#34;0&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>SPFunction = CloseSess</td>
+          <td>0</td>
+          <td>8</td>
+          <td>ASP function code for CloseSess command</td>
+      </tr>
+      <tr>
+          <td>Session ID</td>
+          <td>8</td>
+          <td>8</td>
+          <td>Session identifier</td>
+      </tr>
+      <tr>
+          <td>0</td>
+          <td>16</td>
+          <td>16</td>
+          <td>Reserved (set to zero)</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="closesessreply">CloseSessReply<a class="anchor" href="#closesessreply">#</a></h4>
+<pre class="mermaid">packet-beta
+0-7: &#34;0&#34;
+8-15: &#34;0&#34;
+16-31: &#34;0&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>0</td>
+          <td>0</td>
+          <td>8</td>
+          <td>Reserved (set to zero)</td>
+      </tr>
+      <tr>
+          <td>0</td>
+          <td>8</td>
+          <td>8</td>
+          <td>Reserved (set to zero)</td>
+      </tr>
+      <tr>
+          <td>0</td>
+          <td>16</td>
+          <td>16</td>
+          <td>Reserved (set to zero)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p>The session management data structure must contain the session ID, the socket number of the other end of the session (the WSS or the SSS), and a 2-byte sequence number (LastReqNum). When the session is opened, the LastReqNum is initialized to 0.</p>
+<hr>
+<h2 id="getting-server-status">Getting server status<a class="anchor" href="#getting-server-status">#</a></h2>
+<p>Because an SPGetStatus call can be made and serviced without opening a session, the corresponding packets do not carry a session ID and do not have a sequence number field. The workstation-end ASP issues an ATP at-least-once transaction request addressed to the SLS. This request, known as a GetStatus packet, is sent to the SLS, as shown in <em>Figure 11-9</em>.</p>
+<p>The GetStatus packet has SPFunction equal to GetStatus, with the rest of the 3 ATP user bytes being unused and therefore set to 0, as shown in <em>Figure 11-11</em>.</p>
+<p>Upon receiving a GetStatus packet, the ASP at the server end returns up to eight GetStatusReply packets as the multipacket ATP response. Each of these packets has its 4 ATP user bytes equal to 0.</p>
+<p>The status information block provided in the SPInit or SPNewStatus call is sent as the ATP data of the GetStatusReply packets. The status information is packed into the reply packets with as many bytes as will fit (in other words, each GetStatusReply packet will contain 578 bytes of status information except for the last packet, which may contain less).</p>
+<hr>
+<p>■ <strong>Figure 11-11</strong> ASP packet formats for GetStatus</p>
+<p><img src="images/p276-figure-11-11.png" alt="ASP packet formats for GetStatus" /></p>
+<h3 id="getstatus-packet-layout">GetStatus Packet Layout<a class="anchor" href="#getstatus-packet-layout">#</a></h3>
+<pre class="mermaid">packet-beta
+0-7: &#34;SPFunction = GetStatus&#34;
+8-15: &#34;0&#34;
+16-23: &#34;0&#34;</pre><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Field</th>
+          <th style="text-align: left">Bit offset</th>
+          <th style="text-align: left">Width (bits)</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">SPFunction</td>
+          <td style="text-align: left">0</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">ASP function code; for GetStatus, this value is 3.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Reserved</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">Reserved; must be 0.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Reserved</td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">Reserved; must be 0.</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="getstatusreply-packet-layout">GetStatusReply Packet Layout<a class="anchor" href="#getstatusreply-packet-layout">#</a></h3>
+<pre class="mermaid">packet-beta
+0-23: &#34;ATP User Bytes (0)&#34;
+24-55: &#34;Status block (0 to 578 bytes)&#34;</pre><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Field</th>
+          <th style="text-align: left">Bit offset</th>
+          <th style="text-align: left">Width (bits)</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">ATP User Bytes</td>
+          <td style="text-align: left">0</td>
+          <td style="text-align: left">24</td>
+          <td style="text-align: left">ATP user bytes; set to 0.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Status block</td>
+          <td style="text-align: left">24</td>
+          <td style="text-align: left">Variable</td>
+          <td style="text-align: left">ASP status information, ranging from 0 to 578 bytes.</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="sending-a-command-request">Sending a command request<a class="anchor" href="#sending-a-command-request">#</a></h2>
+<p>When the ASP client in the workstation makes an SPCommand call, ASP sends an ATP-XO request to the SSS of the indicated session, as shown in <em>Figure 11-5</em>. This packet has SPFunction equal to Command. The packet contains the session ID and a 2-byte sequence number, as shown in <em>Figure 11-12</em>. The sequence number must be generated using the following algorithm:</p>
+<pre tabindex="0"><code>If LastReqNum = 65536 then LastReqNum := 0
+    else LastReqNum := LastReqNum+1;
+Sequence Number := LastReqNum;</code></pre><hr>
+<h2 id="-figure-11-12-asp-packet-formats-for-command">■ Figure 11-12 ASP packet formats for Command<a class="anchor" href="#-figure-11-12-asp-packet-formats-for-command">#</a></h2>
+<p><img src="images/p277-asp-command-formats.png" alt="ASP packet formats for Command" /></p>
+<h4 id="command-packet-structure">Command Packet Structure<a class="anchor" href="#command-packet-structure">#</a></h4>
+<pre class="mermaid">packet-beta
+0-7: &#34;SPFunction = Command&#34;
+8-15: &#34;Session ID&#34;
+16-31: &#34;Sequence number&#34;
+32-63: &#34;Command block (0 to 578 bytes)&#34;</pre><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Field</th>
+          <th style="text-align: left">Bit offset</th>
+          <th style="text-align: left">Width (bits)</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">SPFunction</td>
+          <td style="text-align: left">0</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">Always set to &ldquo;Command&rdquo; for this packet type.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Session ID</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">The ID of the session.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Sequence number</td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left">The sequence number of the command.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Command block</td>
+          <td style="text-align: left">32</td>
+          <td style="text-align: left">0 to 4624</td>
+          <td style="text-align: left">The actual command data (0 to 578 bytes).</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="cmdreply-packet-structure">CmdReply Packet Structure<a class="anchor" href="#cmdreply-packet-structure">#</a></h4>
+<pre class="mermaid">packet-beta
+0-31: &#34;CmdResult*&#34;
+32-63: &#34;Command reply data (0 to 578 bytes)&#34;</pre><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Field</th>
+          <th style="text-align: left">Bit offset</th>
+          <th style="text-align: left">Width (bits)</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">CmdResult*</td>
+          <td style="text-align: left">0</td>
+          <td style="text-align: left">32</td>
+          <td style="text-align: left">In the first packet of a multipacket ATP transaction response, this field holds the CmdResult. In all subsequent packets, this field must be 0.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Command reply data</td>
+          <td style="text-align: left">32</td>
+          <td style="text-align: left">0 to 4624</td>
+          <td style="text-align: left">The reply data (0 to 578 bytes).</td>
+      </tr>
+  </tbody>
+</table>
+<ul>
+<li>In the first packet of a multipacket ATP transaction response, this field holds the CmdResult. In all subsequent packets of a multipacket ATP transaction response, this field must be equal to 0.</li>
+</ul>
+<p>In effect, the sequence number will be 1 greater than the sequence number of the last command sent on the session. LastReqNum is initially set to 0 when the session is opened.</p>
+<p>The CmdBlock provided in the SPCommand call is sent in the ATP data part of the packet. Therefore, CmdBlock cannot be larger than 578 bytes.</p>
+<hr>
+<p>At the server end, ASP delivers the CmdBlock to the ASP client (if an SPGetRequest was pending; otherwise the packet is ignored). The ASP client in the server then makes an SPCmdReply call that is used to pass a 4-byte command result and a variable-length command reply data block to ASP. ASP generates from one to eight ATP response packets, which ASP sends back to the source of the Command packet. These CmdReply packets have the 4 ATP user bytes set to 0 except for the first CmdReply, which carries the command result in its user bytes. The command reply data block is broken up into eight or fewer pieces and sent in the ATP data part of these packets, as shown in Figure 11-12.</p>
+<h2 id="sending-a-write-request">Sending a write request<a class="anchor" href="#sending-a-write-request">#</a></h2>
+<p>When the ASP client in the workstation makes an SPWrite call, ASP sends an ATP-XO request to the SSS of the indicated session (shown in Figure 11-7). This packet has SPFunction equal to Write, and it contains the session ID of the session and a 2-byte sequence number, as shown in Figure 11-13. The sequence number must be generated using the algorithm described previously in &ldquo;Sending a Command Request.&rdquo;</p>
+<p>The command block provided in the SPWrite call is sent in the ATP data part of the Write packet. Therefore, CmdBlock cannot be larger than 578 bytes.</p>
+<p>At the server end, ASP delivers the Write packet to the ASP client (if an SPGetRequest was pending; otherwise, the packet is ignored). The ASP client in the server determines if it can process the request, presumably by examining the contents of the command block.</p>
+<p>If the ASP client in the server cannot process the request, it encodes an appropriate higher-level protocol error message in the 4-byte command result or in the command reply data block or in both and makes an SPWrtReply call to ASP. An ATP response packet known as a WriteReply is then sent back to the source of the SPWrite, as shown in Figure 11-6.</p>
+<hr>
+<p>■ Figure 11-13 ASP packet formats for Write</p>
+<p><img src="images/p279-asp-packet-formats-for-write.png" alt="ASP packet formats for Write" /></p>
+<h3 id="write-packet-structure">Write Packet Structure<a class="anchor" href="#write-packet-structure">#</a></h3>
+<pre class="mermaid">packet-beta
+0-7: &#34;SPFunction = Write&#34;
+8-15: &#34;Session ID&#34;
+16-23: &#34;Sequence number&#34;
+24-31: &#34;Command block&#34;</pre><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Field</th>
+          <th style="text-align: left">Bit offset</th>
+          <th style="text-align: left">Width (bits)</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">SPFunction</td>
+          <td style="text-align: left">0</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">Write function code (set to Write)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Session ID</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">Session identifier</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Sequence number</td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">Sequence number</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Command block</td>
+          <td style="text-align: left">24</td>
+          <td style="text-align: left">variable</td>
+          <td style="text-align: left">ATP data (0 to 578 bytes)</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="writereply-packet-structure">WriteReply Packet Structure<a class="anchor" href="#writereply-packet-structure">#</a></h3>
+<pre class="mermaid">packet-beta
+0-23: &#34;CmdResult*&#34;
+24-31: &#34;Command reply data&#34;</pre><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Field</th>
+          <th style="text-align: left">Bit offset</th>
+          <th style="text-align: left">Width (bits)</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">CmdResult*</td>
+          <td style="text-align: left">0</td>
+          <td style="text-align: left">24</td>
+          <td style="text-align: left">Command result (see note below)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Command reply data</td>
+          <td style="text-align: left">24</td>
+          <td style="text-align: left">variable</td>
+          <td style="text-align: left">ATP data (0 to 578 bytes)</td>
+      </tr>
+  </tbody>
+</table>
+<p>* In the first packet of a multipacket ATP transaction response, this field holds the CmdResult. In all subsequent packets of a multipacket ATP transaction response, this field must be equal to 0.</p>
+<p>If, however, the ASP client in the server can process the request, it reserves a buffer for the data and makes an SPWrtContinue call to ASP. The SPWrtContinue call causes ASP in the server to send an ATP-XO transaction request to the WSS. This call carries the session ID and the sequence number taken from the SPWrite packet (used by ASP to match the WriteContinue with the corresponding Write), as shown in Figure 11-14.</p>
+<hr>
+<p>■ <strong>Figure 11-14</strong> ASP packet formats for WriteContinue</p>
+<p><img src="images/p280-asp-packet-formats-writecontinue.png" alt="ASP packet formats for WriteContinue" /></p>
+<h3 id="writecontinue-packet-structure">WriteContinue Packet Structure<a class="anchor" href="#writecontinue-packet-structure">#</a></h3>
+<pre class="mermaid">packet-beta
+0-7: &#34;SPFunction = WriteContinue&#34;
+8-15: &#34;Session ID&#34;
+16-31: &#34;Sequence number&#34;
+32-47: &#34;Available buffer size&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>SPFunction</td>
+          <td>0</td>
+          <td>8</td>
+          <td>ASP function code set to WriteContinue</td>
+      </tr>
+      <tr>
+          <td>Session ID</td>
+          <td>8</td>
+          <td>8</td>
+          <td>Session identifier</td>
+      </tr>
+      <tr>
+          <td>Sequence number</td>
+          <td>16</td>
+          <td>16</td>
+          <td>Sequence number for the write transaction</td>
+      </tr>
+      <tr>
+          <td>Available buffer size</td>
+          <td>32</td>
+          <td>16</td>
+          <td>The size in bytes of the buffer reserved by the server client</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="writecontinuereply-packet-structure">WriteContinueReply Packet Structure<a class="anchor" href="#writecontinuereply-packet-structure">#</a></h3>
+<pre class="mermaid">packet-beta
+0-31: &#34;0&#34;
+32-63: &#34;Write data (0 to 578 bytes)&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>0</td>
+          <td>0</td>
+          <td>32</td>
+          <td>ATP user bytes, set to zero</td>
+      </tr>
+      <tr>
+          <td>Write data</td>
+          <td>32</td>
+          <td>0-4624</td>
+          <td>Data to be written (0 to 578 bytes)</td>
+      </tr>
+  </tbody>
+</table>
+<p>The WriteContinue packet contains a 2-byte ATP data field that contains the size in bytes of the buffer reserved by the server client for the write data. The workstation then returns the write data in the transaction response packets (WriteContinueReply packets). The data is then delivered to the server-end ASP client. The server-end ASP client then issues an SPWrtReply call to ASP that causes ASP to send one to eight WriteReply packets (the ATP response to the original Write packet). The format of the WriteReply packet is shown in <em>Figure 11-13</em>.</p>
+<hr>
+<h1 id="maintaining-the-session">Maintaining the session<a class="anchor" href="#maintaining-the-session">#</a></h1>
+<p>Tickle packets (ATP transaction request packets with SPFunction equal to Tickle) must be sent by each end while a session is open, as shown in <em>Figure 11-4</em>.</p>
+<p>Tickle packets are sent by the workstation to the SLS and by the server to the WSS. These packets contain the following information in their ASP header (the ATP user bytes), as shown in <em>Figure 11-15</em>:</p>
+<ul>
+<li>1-byte SPFunction equal to Tickle</li>
+<li>SessionID</li>
+<li>two unused bytes</li>
+</ul>
+<p>Tickle packets are sent by starting an ATP-ALO transaction with retry count equal to infinite and timeout equal to 30 seconds.</p>
+<p>Session maintenance at each end is done by starting a session maintenance timeout of 2 minutes. Whenever any packet (tickle or otherwise) is received on the session, this timer is restarted. If the timer expires (in other words, if no packet is received for 2 minutes), then the other end of the session is assumed to have gone down or become unreachable, and the session is closed.</p>
+<p>■ <strong>Figure 11-15</strong> ASP packet formats for Attention and Tickle</p>
+<p><img src="images/p281-asp-packet-formats.png" alt="ASP packet formats for Tickle, Attention, and AttentionReply" /></p>
+<h4 id="tickle-packet-atp-user-bytes">Tickle Packet (ATP user bytes)<a class="anchor" href="#tickle-packet-atp-user-bytes">#</a></h4>
+<pre class="mermaid">packet-beta
+0-7: &#34;SPFunction = Tickle&#34;
+8-15: &#34;Session ID&#34;
+16-31: &#34;0&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>SPFunction</td>
+          <td>0</td>
+          <td>8</td>
+          <td>Set to Tickle</td>
+      </tr>
+      <tr>
+          <td>Session ID</td>
+          <td>8</td>
+          <td>8</td>
+          <td>Session identifier</td>
+      </tr>
+      <tr>
+          <td>Unused</td>
+          <td>16</td>
+          <td>16</td>
+          <td>Set to 0</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="attention-packet-atp-user-bytes">Attention Packet (ATP user bytes)<a class="anchor" href="#attention-packet-atp-user-bytes">#</a></h4>
+<pre class="mermaid">packet-beta
+0-7: &#34;SPFunction = Attention&#34;
+8-15: &#34;Session ID&#34;
+16-31: &#34;Attention code&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>SPFunction</td>
+          <td>0</td>
+          <td>8</td>
+          <td>Set to Attention</td>
+      </tr>
+      <tr>
+          <td>Session ID</td>
+          <td>8</td>
+          <td>8</td>
+          <td>Session identifier</td>
+      </tr>
+      <tr>
+          <td>Attention code</td>
+          <td>16</td>
+          <td>16</td>
+          <td>The specific attention code</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="attentionreply-packet-atp-user-bytes">AttentionReply Packet (ATP user bytes)<a class="anchor" href="#attentionreply-packet-atp-user-bytes">#</a></h4>
+<pre class="mermaid">packet-beta
+0-31: &#34;0&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Unused</td>
+          <td>0</td>
+          <td>32</td>
+          <td>Set to 0</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="sending-an-attention-request">Sending an attention request<a class="anchor" href="#sending-an-attention-request">#</a></h2>
+<p>When the ASP client in the server makes an SPAttention call, ASP sends an ATP-ALO request to the WSS of the indicated session, as shown in <em>Figure 11-8</em>.</p>
+<p>This Attention packet requests one response and has SPFunction equal to Attention. It contains the session ID and a 2-byte attention code, as shown in <em>Figure 11-15</em>. This attention code is passed by the server client to ASP to be delivered to the workstation client along with the attention request. The attention code is not interpreted by ASP, except that ASP requires the code to be a number other than 0.</p>
+<p>Upon receiving an Attention packet, the workstation-end ASP should immediately respond with an AttentionReply. The AttentionReply serves as an acknowledgment of the request, and it completes the SPAttention call on the server end. The workstation ASP should then, in an implementation-dependent manner, alert its client as to the attention request and pass the attention code to the client.</p>
+<h2 id="closing-a-session">Closing a session<a class="anchor" href="#closing-a-session">#</a></h2>
+<p>When the ASP client at either end makes an SPCloseSession call, a session-closing ATP-ALO transaction is initiated, as shown in <em>Figure 11-2</em> and <em>Figure 11-3</em>.</p>
+<p>If the session closing was initiated by the workstation client, then a CloseSess packet (an ATP transaction request) is sent to the SSS in the server. The CloseSess packet is then delivered to the ASP client as part of the SPGetRequest mechanism. The server&rsquo;s ASP generates a transaction response (a CloseSessReply packet) without the ASP client&rsquo;s intervention. Immediately upon sending the CloseSessReply packet, the server end of the session is closed, all pending activity (including tickles) is canceled at that end, and no further server-end calls to this session are accepted. Immediately upon receiving the SPCloseSession command reply, the workstation end of ASP cancels all pending activity (including tickles) on the session and does not accept any more calls from its client. Although implementation-dependent, the workstation end can choose to retransmit the CloseSess packet several times; the workstation will close its end of the session either as soon as the CloseSessReply is received or the retries are exhausted.</p>
+<p>On the server end, the possibility exists that no SPGetRequest call was pending when the close request was received. In this case, no further calls on the server end should be accepted from the server-end ASP client, and the session should be marked as closed. When the server client issues the next SPGetRequest call for that session, ASP should return a SessClosed result code or other error.</p>
+<hr>
+<p>If the session closing was initiated by the server end, then a CloseSess packet is sent to the WSS. The workstation&rsquo;s ASP closes the session immediately upon receipt of the CloseSess packet, and it generates the CloseSessReply packet without client intervention. The ASP client in the workstation can be informed of the session being closed in some implementation-dependent manner or can be informed the next time it makes a call to ASP and refers to that session. The server can choose to retransmit the CloseSess packet several times; the server end will close its end of the session when the CloseSessReply is received or the retries are exhausted. The formats of the CloseSess and CloseSessReply packets are shown in <em>Figure 11-10</em>.</p>
+<p>◆ Note: The CloseSess packet does not include a sequence number and therefore must be accepted by the receiving end without sequence number verification. Also, the receipt of the CloseSess packet by the receiving end should immediately lead to the cancellation of all pending activity (including tickles) on the session.</p>
+<p>CloseSess packets are sent as a courtesy to the other end of the session and are used to speed up the process of closing a session at both ends.</p>
+<p>The possibility exists that the CloseSess packet or the CloseSessReply sent by either end can get lost; then the end initiating the session-closing activity may not receive an acknowledgment to its request and will close the session and stop tickles when its retries are exhausted. If the other end did not receive the CloseSess packet at all, however, that end will not know the session has been closed. This half-open session will be detected when the session maintenance timer at the still active end expires, at which time the active end will close its own end of the half-open session.</p>
+<hr>
+<h2 id="checking-for-reply-size-errors">Checking for reply size errors<a class="anchor" href="#checking-for-reply-size-errors">#</a></h2>
+<p>In the SPGetStatus, SPCommand, and SPWrite requests, the ASP workstation client presents ASP with a buffer that will hold the server&rsquo;s reply. When the reply is received, ASP must check that the reply was not too large to fit into the buffer. Since the server does not directly return the aggregate size of the reply as a parameter, ASP must infer from information returned by ATP whether or not the server&rsquo;s reply fits into the client&rsquo;s buffer.</p>
+<p>ASP will try to fill this buffer by requesting from ATP as many 578-byte response packets as needed to fill the buffer. If the server returns fewer than the expected number of response packets, then the reply will clearly fit into the client&rsquo;s buffer. In general, if the server returns the expected number of response packets, then the workstation ASP need only check if the last expected packet fit into the end of the buffer. ATP will indicate to ASP if this packet did not fit.</p>
+<hr>
+<p>A difficulty arises if the client’s buffer size was an exact multiple of 578 bytes. If the last expected packet is returned completely filled (contains 578 bytes of data), that might indicate that the buffer was just large enough. However, it could also mean that the reply was larger, yet the workstation ASP did not ask for (and hence could not receive) more response packets. ATP does not indicate to ASP that the server wanted to send additional packets.</p>
+<p>To resolve this problem, the workstation ASP must ask ATP for one more response packet than expected if the client’s buffer size is a multiple of 578. If the reply size is larger than the client’s buffer size, this extra response packet will be returned. ASP can infer from the reception of this extra packet that the reply was too large.</p>
+<p>This problem will not occur if the size of the client’s buffer is greater than or equal to QuantumSize (a multiple of 578), since this reply is the largest that can be sent. The server’s reply can not overflow this buffer.</p>
+<h2 id="timeouts-and-retry-counts">Timeouts and retry counts<a class="anchor" href="#timeouts-and-retry-counts">#</a></h2>
+<p>ASP uses ATP transactions as its basic building blocks. For each of these transactions, a retransmission timeout value and maximum retry count need to be provided.</p>
+<p>Most transactions used by ASP use a retry count of infinite (exceptions: opening a session, getting service status, requesting attention, and closing a session). The retry count of infinite involves no danger of leading to a deadlock, since half-open connections (in other words, the other end is unreachable) are easily detected through the tickling mechanism and the session maintenance timer.</p>
+<p>The ASP client should be able to specify the maximum number of retries used by the session opening, get service status information, and get attention and session-closing transactions, although the exact mechanism for doing so is implementation-dependent.</p>
+<p>The timeout value to be used in any of the transactions (with the exception of tickles) and how this value is specified by the client or built into ASP are implementation issues; they are not specified here.</p>
+<p>The session maintenance timer is of 2-minute duration. Tickles are retransmitted by each end every 30 seconds.</p>
+<hr>
+<h1 id="spfunction-values">SPFunction values<a class="anchor" href="#spfunction-values">#</a></h1>
+<p>The permissible SPFunction values are as follows:</p>
+<table>
+  <thead>
+      <tr>
+          <th>SPFunction</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>CloseSess</td>
+          <td>1</td>
+      </tr>
+  </tbody>
+</table>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cinside-appletalk-second-edition%5C11-appletalk-session-protocol.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#contents">CONTENTS</a></li>
+      </ul>
+    </li>
+    <li><a href="#workstation-end-calls--11-23">Workstation-end calls / 11-23</a></li>
+    <li><a href="#packet-formats-and-algorithms--11-27">Packet formats and algorithms / 11-27</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#asp-services-and-features">ASP services and features</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-figure-11-2-session-closing-dialog-initiated-by-the-workstation">■ Figure 11-2 Session-closing dialog initiated by the workstation</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#spcommands">SPCommands</a></li>
+        <li><a href="#figure-11-5-spcommand-dialog">Figure 11-5 SPCommand dialog</a></li>
+      </ul>
+    </li>
+    <li><a href="#spwrites">SPWrites</a>
+      <ul>
+        <li></li>
+        <li><a href="#figure-11-7-spwrite-dialog-no-error-condition">Figure 11-7 SPWrite dialog (no error condition)</a></li>
+      </ul>
+    </li>
+    <li><a href="#spattentions">SPAttentions</a></li>
+    <li><a href="#figure-11-8-spattention-dialog">Figure 11-8 SPAttention dialog</a></li>
+    <li><a href="#sequencing-and-duplicate-filtration">Sequencing and duplicate filtration</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#server-end-calls">Server-end calls</a>
+      <ul>
+        <li><a href="#spgetparms-call">SPGetParms call</a></li>
+        <li><a href="#spinit-call">SPInit call</a></li>
+        <li><a href="#spgetsession-call">SPGetSession call</a></li>
+        <li><a href="#spclosesession-call">SPCloseSession call</a></li>
+        <li><a href="#spgetrequest-call">SPGetRequest call</a></li>
+        <li><a href="#spcmdreply-call">SPCmdReply call</a></li>
+      </ul>
+    </li>
+    <li><a href="#spwrtcontinue-call">SPWrtContinue call</a>
+      <ul>
+        <li><a href="#spwrtreply-call">SPWrtReply call</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#spgetparms-call-1">SPGetParms call</a></li>
+    <li><a href="#spgetstatus-call">SPGetStatus call</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#spcommand-call">SPCommand call</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#opening-a-session">Opening a session</a>
+      <ul>
+        <li><a href="#figure-11-10-asp-packet-formats-for-opensess-and-closesess">Figure 11-10 ASP packet formats for OpenSess and CloseSess</a></li>
+      </ul>
+    </li>
+    <li><a href="#getting-server-status">Getting server status</a>
+      <ul>
+        <li><a href="#getstatus-packet-layout">GetStatus Packet Layout</a></li>
+        <li><a href="#getstatusreply-packet-layout">GetStatusReply Packet Layout</a></li>
+      </ul>
+    </li>
+    <li><a href="#sending-a-command-request">Sending a command request</a></li>
+    <li><a href="#-figure-11-12-asp-packet-formats-for-command">■ Figure 11-12 ASP packet formats for Command</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#sending-a-write-request">Sending a write request</a>
+      <ul>
+        <li><a href="#write-packet-structure">Write Packet Structure</a></li>
+        <li><a href="#writereply-packet-structure">WriteReply Packet Structure</a></li>
+        <li><a href="#writecontinue-packet-structure">WriteContinue Packet Structure</a></li>
+        <li><a href="#writecontinuereply-packet-structure">WriteContinueReply Packet Structure</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#sending-an-attention-request">Sending an attention request</a></li>
+    <li><a href="#closing-a-session">Closing a session</a></li>
+    <li><a href="#checking-for-reply-size-errors">Checking for reply size errors</a></li>
+    <li><a href="#timeouts-and-retry-counts">Timeouts and retry counts</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

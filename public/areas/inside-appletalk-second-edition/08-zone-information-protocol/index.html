@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Zone Information Protocol#Field Value Source Inside AppleTalk Second Edition (1990) Part Part III - Named Entities Chapter 8 Pages 173–197 Converted 2026-03-31 Engine gemini-flash Chapter 8 Zone Information Protocol#CONTENTS
+ZIP services / 8-4
+Network-to-zone-name mapping / 8-4 Zone information table / 8-4 Zone information socket: ZIP Queries and Replies / 8-5 ZIT maintenance / 8-5
+Zone name listing / 8-7
+Zone name acquisition / 8-9 Verifying a saved zone name / 8-9 Choosing a new zone name / 8-10 Zone multicasting / 8-10 Aging the zone name / 8-10
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/inside-appletalk-second-edition/08-zone-information-protocol/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="Zone Information Protocol">
+  <meta property="og:description" content="Zone Information Protocol#Field Value Source Inside AppleTalk Second Edition (1990) Part Part III - Named Entities Chapter 8 Pages 173–197 Converted 2026-03-31 Engine gemini-flash Chapter 8 Zone Information Protocol#CONTENTS
+ZIP services / 8-4
+Network-to-zone-name mapping / 8-4 Zone information table / 8-4 Zone information socket: ZIP Queries and Replies / 8-5 ZIT maintenance / 8-5
+Zone name listing / 8-7
+Zone name acquisition / 8-9 Verifying a saved zone name / 8-9 Choosing a new zone name / 8-10 Zone multicasting / 8-10 Aging the zone name / 8-10">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="Zone Information Protocol">
+  <meta itemprop="description" content="Zone Information Protocol#Field Value Source Inside AppleTalk Second Edition (1990) Part Part III - Named Entities Chapter 8 Pages 173–197 Converted 2026-03-31 Engine gemini-flash Chapter 8 Zone Information Protocol#CONTENTS
+ZIP services / 8-4
+Network-to-zone-name mapping / 8-4 Zone information table / 8-4 Zone information socket: ZIP Queries and Replies / 8-5 ZIT maintenance / 8-5
+Zone name listing / 8-7
+Zone name acquisition / 8-9 Verifying a saved zone name / 8-9 Choosing a new zone name / 8-10 Zone multicasting / 8-10 Aging the zone name / 8-10">
+  <meta itemprop="wordCount" content="6195">
+
+<title>Zone Information Protocol | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/inside-appletalk-second-edition/08-zone-information-protocol/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Zone Information Protocol</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#zones-list-changing--8-21">Zones list changing / 8-21</a></li>
+        <li><a href="#timer-values--8-24">Timer values / 8-24</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#network-to-zone-name-mapping">Network-to-zone-name mapping</a></li>
+    <li><a href="#zone-information-table">Zone information table</a></li>
+    <li><a href="#zone-information-socket-zip-queries-and-replies">Zone information socket: ZIP Queries and Replies</a></li>
+    <li><a href="#zit-maintenance">ZIT maintenance</a></li>
+    <li><a href="#choosing-a-new-zone-name">Choosing a new zone name</a></li>
+    <li><a href="#zone-multicasting">Zone multicasting</a></li>
+    <li><a href="#aging-the-zone-name">Aging the zone name</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#zip-query-and-reply">ZIP Query and Reply</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#zip-query">ZIP Query</a></li>
+        <li><a href="#zip-reply">ZIP Reply</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#figure-8-2-getzonelist-and-getlocalzones-request-and-reply-packets">Figure 8-2 GetZoneList and GetLocalZones request and reply packets</a>
+      <ul>
+        <li><a href="#getzonelist--getlocalzones-request-packet">GetZoneList / GetLocalZones Request Packet</a></li>
+        <li><a href="#getzonelistreply--getlocalzonesreply-packet">GetZoneListReply / GetLocalZonesReply Packet</a></li>
+      </ul>
+    </li>
+    <li><a href="#figure-8-4-getnetinfo-request-and-reply-packets">Figure 8-4 GetNetInfo request and reply packets</a>
+      <ul>
+        <li><a href="#zip-getnetinfo-request">ZIP GetNetInfo Request</a></li>
+        <li><a href="#zip-getnetinfo-reply">ZIP GetNetInfo Reply</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#generating-fwdreq-packets">Generating FwdReq packets</a></li>
+    <li><a href="#converting-fwdreqs-to-lkups">Converting FwdReqs to LkUps</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#zones-list-changing">Zones list changing</a>
+      <ul>
+        <li><a href="#changing-zones-lists-in-routers">Changing zones lists in routers</a></li>
+      </ul>
+    </li>
+    <li><a href="#changing-zone-names-in-nodes">Changing zone names in nodes</a>
+      <ul>
+        <li><a href="#figure-8-5-zip-notify-packet">Figure 8-5 ZIP Notify packet</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="zone-information-protocol">Zone Information Protocol<a class="anchor" href="#zone-information-protocol">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td><a href="https://vintageapple.org/macbooks/pdf/Inside_AppleTalk_Second_Edition_1990.pdf">Inside AppleTalk Second Edition (1990)</a></td>
+      </tr>
+      <tr>
+          <td><strong>Part</strong></td>
+          <td>Part III - Named Entities</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>8</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>173–197</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-03-31</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="chapter-8-zone-information-protocol">Chapter 8 Zone Information Protocol<a class="anchor" href="#chapter-8-zone-information-protocol">#</a></h1>
+<p>CONTENTS</p>
+<p><strong>ZIP services / 8-4</strong></p>
+<p><strong>Network-to-zone-name mapping / 8-4</strong>
+Zone information table / 8-4
+Zone information socket: ZIP Queries and Replies / 8-5
+ZIT maintenance / 8-5</p>
+<p><strong>Zone name listing / 8-7</strong></p>
+<p><strong>Zone name acquisition / 8-9</strong>
+Verifying a saved zone name / 8-9
+Choosing a new zone name / 8-10
+Zone multicasting / 8-10
+Aging the zone name / 8-10</p>
+<p><strong>Packet formats / 8-11</strong>
+ZIP Query and Reply / 8-11
+ZIP ATP Requests / 8-13
+ZIP GetNetInfo Request and Reply / 8-16</p>
+<p><strong>Zone multicast address computation / 8-18</strong></p>
+<p><strong>NBP routing in IRs / 8-18</strong>
+Generating FwdReq packets / 8-19
+Converting FwdReqs to LkUps / 8-19</p>
+<p><strong>Zones list assignment / 8-20</strong></p>
+<hr>
+<p><img src="images/p174-blue-banner.png" alt="blue header graphic" /></p>
+<h3 id="zones-list-changing--8-21">Zones list changing / 8-21<a class="anchor" href="#zones-list-changing--8-21">#</a></h3>
+<p>Changing zones lists in routers / 8-21
+Changing zone names in nodes / 8-22</p>
+<h3 id="timer-values--8-24">Timer values / 8-24<a class="anchor" href="#timer-values--8-24">#</a></h3>
+<p><img src="images/p174-blue-square-bullet.png" alt="blue square bullet" /></p>
+<hr>
+<p>ONE OF THE FUNCTIONS of routers is to maintain a mapping between networks and zone names, as mentioned in Chapter 7, &ldquo;Name Binding Protocol.&rdquo; This network-to-zone-name mapping is maintained by the Zone Information Protocol (ZIP).</p>
+<p>This chapter describes ZIP and provides information about</p>
+<ul>
+<li>network-to-zone-name mapping</li>
+<li>acquisition of a zone name by a node</li>
+<li>the structure of a ZIP packet</li>
+</ul>
+<hr>
+<h1 id="zip-services">ZIP services<a class="anchor" href="#zip-services">#</a></h1>
+<p>An important feature of ZIP is that most of its services are transparent to nonrouter nodes. Nonrouter nodes use a small subset of ZIP during the startup process to choose their zone and also to obtain information about the zone structure of the internet. But ZIP is implemented primarily by routers. ZIP provides three major services as follows:</p>
+<ul>
+<li>maintenance of the network-to-zone-name mapping of the internet</li>
+<li>support for the selection of a zone name by a node at startup</li>
+<li>support for various commands that may be needed by nonrouter nodes for obtaining this mapping</li>
+</ul>
+<p>The first of these services applies only to routers; the second and third applies to both router and nonrouter nodes.</p>
+<h2 id="network-to-zone-name-mapping">Network-to-zone-name mapping<a class="anchor" href="#network-to-zone-name-mapping">#</a></h2>
+<p>Each AppleTalk network has associated with it a <strong>zones list</strong>. This list specifies the zone names that can be chosen by nodes on that network during the startup process and is used by the NBP process in routers to construct a zone-wide broadcast. An extended network can be set up with from 1 to 255 zone names in its zones list; a nonextended network can only contain 1 zone name in its zones list.</p>
+<p>The network-to-zone-name mapping service of ZIP is provided by routers. These nodes have a ZIP process that opens the zone information socket and maintains a zone information table (see Figure 5-2).</p>
+<h2 id="zone-information-table">Zone information table<a class="anchor" href="#zone-information-table">#</a></h2>
+<p>Under stable conditions, each router maintains a complete network-to-zone-name mapping of the internet, known as the <strong>zone information table (ZIT)</strong>. This table consists of one entry for each network in the internet. The entry is a tuple of the form &lt;network range, zones list&gt;. The zones list field can be NIL, indicating that the zones list for that network is unknown (this condition is temporary); otherwise, the zones list field consists of a number of a case-insensitive strings specifying the zone names for that network.</p>
+<hr>
+<p>◆ Note: See Appendix D for a precise definition of case-insensitivity.</p>
+<p>The ZIP process in a router recognizes new networks on the internet by monitoring the routing table of the Routing Table Maintenance Protocol (RTMP). (For more information on the routing table, refer to Chapter 5.) When the ZIP process identifies an entry in the routing table that is not in the ZIT, the ZIP process creates a new ZIT entry for that network with a zones list of NIL and initiates an attempt to determine the network&rsquo;s zone list. Likewise, if the ZIP process discovers that the ZIT contains an entry whose network number range is not in the routing table, the ZIP process then concludes that the network is no longer on the internet and removes the network&rsquo;s entry from the ZIT.</p>
+<hr>
+<h2 id="zone-information-socket-zip-queries-and-replies">Zone information socket: ZIP Queries and Replies<a class="anchor" href="#zone-information-socket-zip-queries-and-replies">#</a></h2>
+<p>Associated with the ZIP process in routers is a statically assigned socket known as the <strong>zone information socket (ZIS)</strong>. During its initialization, the ZIP process opens the ZIS (socket number 6). Requests for zone information must be addressed to this socket. Routers also respond to those requests through this socket. The requests, known as ZIP Queries, contain a list of network numbers whose corresponding zones lists the requesting node wishes to determine. A router receiving such a request responds with a ZIP Reply listing the requested zones lists known to it. (The router does not respond if it does not know any of the requested zones lists.)</p>
+<hr>
+<h2 id="zit-maintenance">ZIT maintenance<a class="anchor" href="#zit-maintenance">#</a></h2>
+<p>In addition to the port descriptor fields used by a router&rsquo;s RTMP (as described in Chapter 5), ZIP requires a field to hold the zones list of the port&rsquo;s network. The zones list field is necessary only for ports connected to AppleTalk networks and only for those ports for which the router contains seed information. One of the zone names in each list in the port descriptors is chosen as the <strong>default zone</strong>. Its use is described later in the section &ldquo;Zone Name Acquisition.&rdquo; The zones list field can be NIL, indicating unknown, as long as the restrictions specified in &ldquo;Zone Name Assignment,&rdquo; later in this chapter, are adhered to.</p>
+<hr>
+<p>At the time the router is initialized, its ZIT consists of one entry for each directly connected AppleTalk network for which it is a seed router. Both the network number ranges and the zones list fields are taken from the port descriptor for those networks. Additionally, ZIP monitors the routing table for the addition of networks that the router has just discovered. When the router first recognizes such a network, it creates a new ZIT entry with a zones list field of NIL. Whenever a ZIT entry is created with a zones list of NIL (either as just described or at initialization when a ZIT entry is taken from a port descriptor), the router&rsquo;s ZIP process sends a ZIP Query in an attempt to discover the zone list for that network.</p>
+<p>This query is sent to the ZIS of the destination node whose address is determined as follows. If the network is directly connected to the router, then the query is broadcast on that network. Otherwise, the query is sent to the router indicated in the next-router field of the network&rsquo;s routing table entry.</p>
+<p>A router that receives a ZIP Query should respond to the requesting socket with a series of ZIP Replies indicating the requested zones lists. Routers that are unaware of the requested zones lists or do not yet have complete zones lists should ignore the ZIP Query and need not respond. Upon receiving a ZIP Reply, a router enters the zones lists provided by the reply into the appropriate ZIT entries. For some queries, no reply or an incomplete reply may be received; the query may have been lost, or the queried routers may not have the requested information. For this case, ZIP maintains a background timer for the purpose of retransmitting these queries. Whenever this timer expires, ZIP retransmits one query for each entry in its ZIT whose zones list is still NIL or incomplete.</p>
+<p>There are two forms of ZIP Replies. The first form is used when the zones list for a given network (or networks) can fit in one reply packet. This will generally be the case. However if this is not the case, the router replies with a series of <strong>extended ZIP reply</strong> packets. Each packet indicates the total number of zone names for the requested network, and contains as many zone names as will fit. The router receiving the extended ZIP replies adds the zone names to the list for the requested network, and then checks to see if that list contains the indicated total number of zone names. This being the case, the list is said to be complete, and can be used to answer other routers&rsquo; ZIP queries and for purposes of NBP lookups. If the list is not complete, it should not be used for these purposes until it is completed.</p>
+<p>If ZIP&rsquo;s background timer expires and a list is still incomplete (a packet may have been lost), ZIP should retransmit the ZIP Query. It will then receive the entire reply sequence over again, and should be able to complete its list. In this case it will have to filter out names that are already in its list so as to not add them to the list twice.</p>
+<hr>
+<p>The response to the GetZoneList or GetLocalZones request provides a list of all the zones on the internet or the requestor’s network. Since this list may not fit in one ATP response packet, each request contains an index value from which to start including names in the corresponding response (zone names in the router are assumed to be numbered starting with 1). To obtain the complete zones list, a node sends a series of GetZoneList or GetLocalZones requests. The first of these requests specifies an index of 1. The user bytes field of the corresponding response contains the number of zone names in that response packet; these bytes also specify whether more zone names exist that did not fit in the response. In that instance, the requesting node sends out another request, with the index equal to the index sent in the previous request plus the number of names in the last response. By repeating this process, the node can obtain the complete zones list from the router.</p>
+<p>Additionally, if more than one request is necessary to obtain the complete zones list, then all requests must be sent to the same router because different routers may have their zones lists arranged in a different order. Furthermore, a particular zone name cannot be partitioned between two response packets.</p>
+<ul>
+<li><em>Note:</em> A 0-byte response will be returned by a router if the index specified in the request is greater than the index of the last zone in the list (and the user bytes field will indicate <em>no more zones</em>). Routers should make every attempt to send a particular zone&rsquo;s name only once in response to a GetZoneList request. A node may receive a particular zone&rsquo;s name more than once, especially during periods when zone names are being changed.</li>
+</ul>
+<p>GetLocalZones on a nonextended network should be treated exactly as a GetMyZone—that is the router should return the zone name associated with the requestor&rsquo;s network.</p>
+<p>A GetMyZone request is used to obtain the name of the zone in which the requesting node is located. A GetMyZone request asks a router to provide the zone name of the network through which the request was received by the router. This request is essentially a simplified version of the GetZoneList request, in which only one zone name is returned. A 0-byte response is returned if the router does not know the name of the zone (this condition is temporary). This request should only be made by nodes on nonextended networks; nodes on extended networks obtain this information as part of the startup process.</p>
+<hr>
+<h2 id="choosing-a-new-zone-name">Choosing a new zone name<a class="anchor" href="#choosing-a-new-zone-name">#</a></h2>
+<p>In many cases a node may wish to choose a new zone name, for example when the node has no saved zone name at startup or when that saved zone name is invalid. The node can obtain the list of valid zone names for its network through the GetLocalZones request and choose one from that list. At that time, it must also register on a new zone multicast address (see the following section).</p>
+<p>It is recommended that changing a node&rsquo;s zone name be done with care if it is performed at any time other than startup, since changing a node&rsquo;s zone name while it has NBP names registered could result in duplicate NBP names in the node&rsquo;s new zone. The node may wish to reregister these names to be safe.</p>
+<h2 id="zone-multicasting">Zone multicasting<a class="anchor" href="#zone-multicasting">#</a></h2>
+<p>A response to the GetNetInfo request also provides the requesting node with the node&rsquo;s zone multicast address. This address, computed in the routers, is a data-link level multicast address used by the node for receiving NBP lookups. NBP lookups are multicasted by routers to the zone multicast address associated with the lookup&rsquo;s destination zone name. The details of this process are described later in the section, &ldquo;NBP Routing in IRs&rdquo;; details of the computation of zone multicast addresses are described later in the section &ldquo;Zone Multicast Address Computation.&rdquo;</p>
+<p>Zone multicasting is intended to prevent nodes not in the lookup&rsquo;s destination zone from being interrupted by lookup packets. However, certain data links may not support multicasting or may provide only a limited number of multicast addresses. For this reason, even though registered on a zone multicast address, nodes may receive lookup packets for other zones. Nodes must respond only to NBP lookups for their zone name.</p>
+<h2 id="aging-the-zone-name">Aging the zone name<a class="anchor" href="#aging-the-zone-name">#</a></h2>
+<p>Zones lists are defined in routers. If the last router on an extended network goes down, the situation should revert to that in which no routers exist on the network. Details of aging A-ROUTER and THIS-NET-RANGE are specified in Chapter 5, &ldquo;Routing Table Maintenence Protocol.&rdquo; At the same time as these two quantities are aged, the node&rsquo;s zone name also becomes invalid. Until a router reappears on the network, the node should only respond to NBP lookups with a zone name of asterisk (*). If a router becomes available later, the node&rsquo;s saved zone name should be verified as if a router had never been active before on the network.</p>
+<hr>
+<h1 id="packet-formats">Packet formats<a class="anchor" href="#packet-formats">#</a></h1>
+<p>Some ZIP packets are identified by a DDP type field of 6. Other ZIP packets use ATP. ZIP packets (described in the following sections) are of three types:</p>
+<ul>
+<li>Query and Reply</li>
+<li>ATP Requests</li>
+<li>GetNetInfo request and reply</li>
+</ul>
+<h2 id="zip-query-and-reply">ZIP Query and Reply<a class="anchor" href="#zip-query-and-reply">#</a></h2>
+<p>Figure 8-1 summarizes the formats for ZIP Query and Reply packets. ZIP Queries are always sent to the ZIS of a router (or broadcast to the ZIS); ZIP Replies are always sent from the router to the source socket of the corresponding ZIP Query. The DDP type field in these packets is set to 6 to indicate ZIP. These packets contain a ZIP header that includes a ZIP function byte indicating the following:</p>
+<ul>
+<li>1 = Query</li>
+<li>2 = Reply</li>
+<li>8 = Extended Reply</li>
+</ul>
+<p>The ZIP header also contains a network count (<em>n</em>). Queries contain <em>n</em> network numbers for which zone lists are being sought. These network numbers indicate the start of the range associated with the desired networks. Replies contain the number of zones lists indicated in the Reply header. Replies (but not Extended Replies) can contain any number of zones lists, as long as the zones list for each network is entirely contained in the Reply packet. Replies consist of a series of network-number/zone-name pairs, with zone names preceded by a length byte. The zones list for a given network must be contiguous in the packet, with each zone name in that list preceded by the first network number in the range of the requested network.</p>
+<p>Extended Replies can contain only one zones list. The Extended Reply packet consists of a series of network-number/zone-name pairs, with the network number indicating the start of the requested range (the network numbers in each pair will all be the same in an Extended Reply). The network count in the header indicates, not the number of zones names in the packet, but the number of zone names in the entire zones list for the requested network, which may span more than one packet.</p>
+<ul>
+<li><strong>Note:</strong> Extended ZIP Replies may also be used for responding to ZIP queries with zones lists that all fit in one Reply packet. In this case, the network count will be equal to the number of zone names in the packet.</li>
+</ul>
+<hr>
+<h1 id="figure-8-1-zip-query-and-reply-packet-formats">Figure 8-1 ZIP Query and Reply packet formats<a class="anchor" href="#figure-8-1-zip-query-and-reply-packet-formats">#</a></h1>
+<p><img src="images/p184-zip-packet-formats.png" alt="ZIP Query and Reply packet formats" /></p>
+<h3 id="zip-query">ZIP Query<a class="anchor" href="#zip-query">#</a></h3>
+<pre class="mermaid">packet-beta
+0-7: &#34;Data-link header (variable)&#34;
+8-15: &#34;DDP header (variable)&#34;
+16-31: &#34;Destination socket = 6&#34;
+32-39: &#34;DDP type = 6&#34;
+40-47: &#34;ZIP function = 1&#34;
+48-55: &#34;Network count&#34;
+56-71: &#34;Network 1&#34;
+72-87: &#34;Network 2&#34;</pre><script src="/appletalk-docs/mermaid.min.js"></script><script>mermaid.initialize({"flowchart":{"useMaxWidth":true},"theme":"default"})</script><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Data-link header</td>
+          <td>0</td>
+          <td>Variable</td>
+          <td>Standard data-link layer header.</td>
+      </tr>
+      <tr>
+          <td>DDP header</td>
+          <td>Variable</td>
+          <td>Variable</td>
+          <td>Datagram Delivery Protocol header.</td>
+      </tr>
+      <tr>
+          <td>Destination socket</td>
+          <td>Variable</td>
+          <td>16</td>
+          <td>The destination socket number, set to 6 for ZIP.</td>
+      </tr>
+      <tr>
+          <td>DDP type</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>DDP protocol type, set to 6 for ZIP.</td>
+      </tr>
+      <tr>
+          <td>ZIP function</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>ZIP function code, set to 1 for a Query.</td>
+      </tr>
+      <tr>
+          <td>Network count</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>Number of network entries in the query.</td>
+      </tr>
+      <tr>
+          <td>Network 1</td>
+          <td>Variable</td>
+          <td>16</td>
+          <td>The first network number being queried.</td>
+      </tr>
+      <tr>
+          <td>Network 2</td>
+          <td>Variable</td>
+          <td>16</td>
+          <td>The second network number being queried.</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="zip-reply">ZIP Reply<a class="anchor" href="#zip-reply">#</a></h3>
+<pre class="mermaid">packet-beta
+0-7: &#34;Data-link header (variable)&#34;
+8-15: &#34;DDP header (variable)&#34;
+16-31: &#34;Source socket = 6&#34;
+32-39: &#34;DDP type = 6&#34;
+40-47: &#34;ZIP function = 2 or 8&#34;
+48-55: &#34;Network count&#34;
+56-71: &#34;Network 1&#34;
+72-79: &#34;Length of zone name 1&#34;
+80-95: &#34;Zone 1 name&#34;
+96-111: &#34;Network 1&#34;
+112-119: &#34;Length of zone name 2&#34;
+120-135: &#34;Zone 2 name&#34;
+136-151: &#34;Network 2&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Data-link header</td>
+          <td>0</td>
+          <td>Variable</td>
+          <td>Standard data-link layer header.</td>
+      </tr>
+      <tr>
+          <td>DDP header</td>
+          <td>Variable</td>
+          <td>Variable</td>
+          <td>Datagram Delivery Protocol header.</td>
+      </tr>
+      <tr>
+          <td>Source socket</td>
+          <td>Variable</td>
+          <td>16</td>
+          <td>The source socket number, set to 6 for ZIP.</td>
+      </tr>
+      <tr>
+          <td>DDP type</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>DDP protocol type, set to 6 for ZIP.</td>
+      </tr>
+      <tr>
+          <td>ZIP function</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>ZIP function code, set to 2 or 8 for a Reply.</td>
+      </tr>
+      <tr>
+          <td>Network count</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>Number of network entries in the reply.</td>
+      </tr>
+      <tr>
+          <td>Network 1</td>
+          <td>Variable</td>
+          <td>16</td>
+          <td>Part of the Zones list for network 1.</td>
+      </tr>
+      <tr>
+          <td>Length of zone name 1</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>Length of the first zone name for network 1.</td>
+      </tr>
+      <tr>
+          <td>Zone 1 name</td>
+          <td>Variable</td>
+          <td>Variable</td>
+          <td>The name of the first zone.</td>
+      </tr>
+      <tr>
+          <td>Network 1</td>
+          <td>Variable</td>
+          <td>16</td>
+          <td>Repeated network number for the next zone entry.</td>
+      </tr>
+      <tr>
+          <td>Length of zone name 2</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>Length of the second zone name for network 1.</td>
+      </tr>
+      <tr>
+          <td>Zone 2 name</td>
+          <td>Variable</td>
+          <td>Variable</td>
+          <td>The name of the second zone.</td>
+      </tr>
+      <tr>
+          <td>Network 2</td>
+          <td>Variable</td>
+          <td>16</td>
+          <td>Start of Zones list for network 2 (nonextended ZIP reply only).</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="zip-atp-requests">ZIP ATP Requests<a class="anchor" href="#zip-atp-requests">#</a></h1>
+<p>Figure 8-2 summarizes the format of the GetZoneList and GetLocalZones request and reply packets. The GetZoneList request contains a function code of 8, indicating GetZoneList, and the desired start index, both in the ATP user bytes field. The GetZoneListReply contains in the ATP user bytes field a LastFlag that is not 0 if the response contains the last zone name in the zone list. A field indicating the number of zones contained in the ATP data part is also in the user bytes field. The GetLocalZones request contains a function code of 9 and is otherwise similar to the GetZoneList request.</p>
+<hr>
+<h2 id="figure-8-2-getzonelist-and-getlocalzones-request-and-reply-packets">Figure 8-2 GetZoneList and GetLocalZones request and reply packets<a class="anchor" href="#figure-8-2-getzonelist-and-getlocalzones-request-and-reply-packets">#</a></h2>
+<p><img src="images/p186-zip-packets.png" alt="GetZoneList and GetLocalZones request and reply packets" /></p>
+<h3 id="getzonelist--getlocalzones-request-packet">GetZoneList / GetLocalZones Request Packet<a class="anchor" href="#getzonelist--getlocalzones-request-packet">#</a></h3>
+<pre class="mermaid">packet-beta
+0-7: &#34;Destination Socket = 6&#34;
+8-15: &#34;DDP type = 3&#34;
+16-23: &#34;TReq = 01000000&#34;
+24-31: &#34;Bitmap = 00000001&#34;
+32-47: &#34;TID&#34;
+48-55: &#34;Function = 8 or 9&#34;
+56-63: &#34;0&#34;
+64-79: &#34;Start Index&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Destination Socket</td>
+          <td>0</td>
+          <td>8</td>
+          <td>DDP destination socket, ZIP uses socket 6</td>
+      </tr>
+      <tr>
+          <td>DDP type</td>
+          <td>8</td>
+          <td>8</td>
+          <td>DDP protocol type, 3 for ATP</td>
+      </tr>
+      <tr>
+          <td>TReq</td>
+          <td>16</td>
+          <td>8</td>
+          <td>ATP transaction request control (01000000)</td>
+      </tr>
+      <tr>
+          <td>Bitmap</td>
+          <td>24</td>
+          <td>8</td>
+          <td>ATP bitmap (00000001)</td>
+      </tr>
+      <tr>
+          <td>TID</td>
+          <td>32</td>
+          <td>16</td>
+          <td>ATP Transaction ID</td>
+      </tr>
+      <tr>
+          <td>Function</td>
+          <td>48</td>
+          <td>8</td>
+          <td>ZIP function: 8 (GetZoneList) or 9 (GetLocalZones)</td>
+      </tr>
+      <tr>
+          <td>0</td>
+          <td>56</td>
+          <td>8</td>
+          <td>Reserved, set to 0</td>
+      </tr>
+      <tr>
+          <td>Start Index</td>
+          <td>64</td>
+          <td>16</td>
+          <td>The index of the first zone name to be returned</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="getzonelistreply--getlocalzonesreply-packet">GetZoneListReply / GetLocalZonesReply Packet<a class="anchor" href="#getzonelistreply--getlocalzonesreply-packet">#</a></h3>
+<pre class="mermaid">packet-beta
+0-7: &#34;Source Socket = 6&#34;
+8-15: &#34;DDP type = 3&#34;
+16-23: &#34;TResp = 10010000&#34;
+24-31: &#34;Sequence number = 0&#34;
+32-47: &#34;TID&#34;
+48-55: &#34;LastFlag&#34;
+56-63: &#34;0&#34;
+64-79: &#34;Number of zones in packet&#34;
+80-87: &#34;Length of zone name 1&#34;
+88-103: &#34;Zone name 1 (variable)&#34;
+104-111: &#34;Length of zone name 2&#34;
+112-127: &#34;Zone name 2 (variable)&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Source Socket</td>
+          <td>0</td>
+          <td>8</td>
+          <td>DDP source socket, ZIP uses socket 6</td>
+      </tr>
+      <tr>
+          <td>DDP type</td>
+          <td>8</td>
+          <td>8</td>
+          <td>DDP protocol type, 3 for ATP</td>
+      </tr>
+      <tr>
+          <td>TResp</td>
+          <td>16</td>
+          <td>8</td>
+          <td>ATP transaction response control (10010000)</td>
+      </tr>
+      <tr>
+          <td>Sequence number</td>
+          <td>24</td>
+          <td>8</td>
+          <td>ATP sequence number (always 0 for this reply type)</td>
+      </tr>
+      <tr>
+          <td>TID</td>
+          <td>32</td>
+          <td>16</td>
+          <td>ATP Transaction ID</td>
+      </tr>
+      <tr>
+          <td>LastFlag</td>
+          <td>48</td>
+          <td>8</td>
+          <td>Indicates if this is the last packet of the transaction</td>
+      </tr>
+      <tr>
+          <td>0</td>
+          <td>56</td>
+          <td>8</td>
+          <td>Reserved, set to 0</td>
+      </tr>
+      <tr>
+          <td>Number of zones in packet</td>
+          <td>64</td>
+          <td>16</td>
+          <td>Count of zone names included in this packet</td>
+      </tr>
+      <tr>
+          <td>Length of zone name 1</td>
+          <td>80</td>
+          <td>8</td>
+          <td>Length in bytes of the following zone name string</td>
+      </tr>
+      <tr>
+          <td>Zone name 1</td>
+          <td>88</td>
+          <td>Variable</td>
+          <td>The first zone name string</td>
+      </tr>
+      <tr>
+          <td>Length of zone name 2</td>
+          <td>variable</td>
+          <td>8</td>
+          <td>Length in bytes of the second zone name string</td>
+      </tr>
+      <tr>
+          <td>Zone name 2</td>
+          <td>variable</td>
+          <td>Variable</td>
+          <td>The second zone name string</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="figure-8-4-getnetinfo-request-and-reply-packets">Figure 8-4 GetNetInfo request and reply packets<a class="anchor" href="#figure-8-4-getnetinfo-request-and-reply-packets">#</a></h2>
+<p><img src="images/p189-getnetinfo-packets.png" alt="ZIP GetNetInfo request and reply packets" /></p>
+<h3 id="zip-getnetinfo-request">ZIP GetNetInfo Request<a class="anchor" href="#zip-getnetinfo-request">#</a></h3>
+<pre class="mermaid">packet-beta
+0-7: &#34;Destination socket = 6&#34;
+8-15: &#34;DDP type = 6&#34;
+16-23: &#34;ZIP command = 5&#34;
+24-31: &#34;0 (Reserved)&#34;
+32-63: &#34;0 (Reserved)&#34;
+64-71: &#34;Zone name length&#34;
+72-103: &#34;Zone name&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Destination socket</td>
+          <td>0</td>
+          <td>8</td>
+          <td>The destination socket for the request, set to 6.</td>
+      </tr>
+      <tr>
+          <td>DDP type</td>
+          <td>8</td>
+          <td>8</td>
+          <td>The DDP protocol type, set to 6 for ZIP.</td>
+      </tr>
+      <tr>
+          <td>ZIP command</td>
+          <td>16</td>
+          <td>8</td>
+          <td>The ZIP command code, set to 5 for a GetNetInfo request.</td>
+      </tr>
+      <tr>
+          <td>Reserved (0)</td>
+          <td>24</td>
+          <td>8</td>
+          <td>A reserved byte, set to 0.</td>
+      </tr>
+      <tr>
+          <td>Reserved (0)</td>
+          <td>32</td>
+          <td>32</td>
+          <td>Reserved bytes, set to 0.</td>
+      </tr>
+      <tr>
+          <td>Zone name length</td>
+          <td>64</td>
+          <td>8</td>
+          <td>The length of the zone name in bytes.</td>
+      </tr>
+      <tr>
+          <td>Zone name</td>
+          <td>72</td>
+          <td>Variable</td>
+          <td>The name of the zone.</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="zip-getnetinfo-reply">ZIP GetNetInfo Reply<a class="anchor" href="#zip-getnetinfo-reply">#</a></h3>
+<pre class="mermaid">packet-beta
+0-7: &#34;Source socket = 6&#34;
+8-15: &#34;DDP type = 6&#34;
+16-23: &#34;ZIP command = 6&#34;
+24: &#34;7: zone invalid&#34;
+25: &#34;6: use broadcast&#34;
+26: &#34;5: only one zone&#34;
+27-31: &#34;Reserved flags&#34;
+32-47: &#34;Network number range start&#34;
+48-63: &#34;Network number range end&#34;
+64-71: &#34;Zone name length&#34;
+72-103: &#34;Zone name&#34;
+104-111: &#34;Multicast address length&#34;
+112-143: &#34;Multicast address&#34;
+144-151: &#34;Default zone length&#34;
+152-183: &#34;Default zone name&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Source socket</td>
+          <td>0</td>
+          <td>8</td>
+          <td>The source socket for the reply, set to 6.</td>
+      </tr>
+      <tr>
+          <td>DDP type</td>
+          <td>8</td>
+          <td>8</td>
+          <td>The DDP protocol type, set to 6 for ZIP.</td>
+      </tr>
+      <tr>
+          <td>ZIP command</td>
+          <td>16</td>
+          <td>8</td>
+          <td>The ZIP command code, set to 6 for a GetNetInfo reply.</td>
+      </tr>
+      <tr>
+          <td>Flags</td>
+          <td>24</td>
+          <td>8</td>
+          <td>Flag bits for the reply (Bits 7, 6, and 5 are defined).</td>
+      </tr>
+      <tr>
+          <td>Network number range start</td>
+          <td>32</td>
+          <td>16</td>
+          <td>The beginning of the network number range.</td>
+      </tr>
+      <tr>
+          <td>Network number range end</td>
+          <td>48</td>
+          <td>16</td>
+          <td>The end of the network number range.</td>
+      </tr>
+      <tr>
+          <td>Zone name length</td>
+          <td>64</td>
+          <td>8</td>
+          <td>The length of the zone name in bytes.</td>
+      </tr>
+      <tr>
+          <td>Zone name</td>
+          <td>72</td>
+          <td>Variable</td>
+          <td>The name of the zone.</td>
+      </tr>
+      <tr>
+          <td>Multicast address length</td>
+          <td>104</td>
+          <td>8</td>
+          <td>The length of the multicast address in bytes.</td>
+      </tr>
+      <tr>
+          <td>Multicast address</td>
+          <td>112</td>
+          <td>Variable</td>
+          <td>The multicast address.</td>
+      </tr>
+      <tr>
+          <td>Default zone length</td>
+          <td>144</td>
+          <td>8</td>
+          <td>The length of the default zone name. Included only if the zone-invalid flag (bit 7) is set.</td>
+      </tr>
+      <tr>
+          <td>Default zone name</td>
+          <td>152</td>
+          <td>Variable</td>
+          <td>The name of the default zone. Included only if the zone-invalid flag is set.</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Flag bits:</strong></p>
+<ul>
+<li>7 - zone invalid</li>
+<li>6 - use broadcast</li>
+<li>5 - only one zone</li>
+</ul>
+<hr>
+<h1 id="zone-multicast-address-computation">Zone multicast address computation<a class="anchor" href="#zone-multicast-address-computation">#</a></h1>
+<p>The zone multicast address associated with a given zone name, on a given data link, is computed by the ZIP process in routers. It is then returned to requesting nodes through a GetNetInfo reply packet. The zone multicast address is based on the bytes in the zone name and the specific data link on which the address is to be used.</p>
+<p>To compute the zone multicast address, the ZIP process first converts the zone name to all uppercase characters (since zone names are case insensitive). The details of this conversion are documented in Appendix D. ZIP then converts this string into a number in the range 1-$FFFF by performing the DDP checksum algorithm on each byte of the zone name (not including the length byte). This algorithm, documented in Chapter 4, &ldquo;Datagram Delivery Protocol,&rdquo; is repeated here:</p>
+<pre tabindex="0"><code>CkSum := 0 ;
+FOR each byte in the zone name
+REPEAT the following algorithm:
+    CkSum := CkSum + byte; (unsigned addition)
+    Rotate CkSum left one bit, rotating the most significant bit into the 
+        least significant bit;
+IF, at the end, CkSum = 0 THEN
+    CkSum := $FFFF (all ones).</code></pre><p>This hashed value, <em>h</em>, is then used as an index into an ordered list of zone multicast addresses associated with the underlying data link. If the data link provides <em>n</em> zone multicast addresses, a[0] through a[n-1], then the zone multicast address associated with index h is a[h mod n]. <em>mod</em> is the modulo function, in other words, the remainder when h is divided by n.</p>
+<h1 id="nbp-routing-in-irs">NBP routing in IRs<a class="anchor" href="#nbp-routing-in-irs">#</a></h1>
+<p>As indicated in Chapter 7, &ldquo;Name Binding Protocol,&rdquo; routers contain an NBP process that is responsible for the conversion of an NBP Broadcast Request (BrRq) to a zone-wide broadcast of NBP Lookup (LkUp) requests.</p>
+<p>The process consists of two stages. In the first stage, the router converts the BrRq packet into a series of FwdReq packets, one for each network which has been set up to include the specified zone. These FwdReq&rsquo;s are sent to the first router directly connected to each of these networks. The second stage of the process consists of the router receiving the FwdReq converting it to a LkUp and sending that LkUp to the correct zone multicast address.</p>
+<hr>
+<h2 id="generating-fwdreq-packets">Generating FwdReq packets<a class="anchor" href="#generating-fwdreq-packets">#</a></h2>
+<p>The process of converting a BrRq into a series of FwdReqs is straightforward. The router obtains from its ZIT a list of all networks that include the specified zone. The router then uses DDP to send a FwdReq to the NIS of the first router directly connected to each of these networks. To do this, the router sends a FwdReq to node ID 0 of each network. Specifically, each FwdReq is sent to AppleTalk network number nnnn, node ID 0, where nnnn is the start of the range associated with each network.</p>
+<p>The DDP data part of a FwdReq packet is the same as that from the NBP Broadcast Request, except that the NBP function field must be equal to FwdReq. If, however, the BrRq originated on a nonextended network, the destination target zone name could be equal to asterisk (*). In this case, the router must substitute the zone name associated with that nonextended network before sending out the FwdReqs. (The router receiving the FwdReq would have no way of knowing this information.) If the router does not know the zone name yet, it should broadcast a LkUp packet on the requesting network, but not send out any FwdReqs.</p>
+<p>If the router receiving the BrRq is directly connected to one or more networks that include the specified zone name, these networks will be included in the list obtained from the ZIT. In this case, the router should send out LkUp packets on these directly connected networks as specified in the next section.</p>
+<h2 id="converting-fwdreqs-to-lkups">Converting FwdReqs to LkUps<a class="anchor" href="#converting-fwdreqs-to-lkups">#</a></h2>
+<p>A BrRq packet is converted into a series of FwdReq packets, one for each network containing the zone specified in the BrRq packet. The destination of each of these FwdReq packets is the first router directly connected to the destination network. Along the way, routers that are not directly connected to the destination network will forward the packet towards the destination network in the usual manner. When a FwdReq packet is received by the router directly connected to the target network, that router is responsible for converting that packet to a LkUp request and broadcasting it on the appropriate zone multicast address. The DDP data part of a LkUp packet is exactly the same as that from the NBP FwdReq, except that the NBP function field must be equal to LkUp.</p>
+<hr>
+<p>If the destination network of the LkUp packet is a nonextended network, the router simply changes the destination node ID to $FF and broadcasts the packet on that network (since a nonextended network has only one zone). If the destination network is extended, however, the router must also change the destination network number to $0000, so that the packet is received by all nodes on the network (within the correct zone multicast address). The router must compute the zone multicast address for the packet, based on the zone name in the packet and the data link on which the packet is to be sent. The router then calls DDP to broadcast the packet to the indicated multicast address. DDP in routers must provide the ability to send a packet directly to a data-link level multicast address.</p>
+<ul>
+<li>Note: NBP is defined so that the router&rsquo;s NBP process does not participate in the NBP response process; the response is sent directly to the original requester through DDP. It is important that the original requester&rsquo;s field be obtained from the address field of the NBP tuple.</li>
+</ul>
+<h1 id="zones-list-assignment">Zones list assignment<a class="anchor" href="#zones-list-assignment">#</a></h1>
+<p>The structure of a router&rsquo;s port descriptor is defined in Chapter 5, &ldquo;Routing Table Maintenance Protocol.&rdquo; ZIP requires an additional zones list field in port descriptors. Zones lists are included in the port descriptors of router ports and are then propagated dynamically through ZIP to all internet routers. Zones lists in port descriptors include an indicator as to which zone name is the default zone.</p>
+<p>Only router ports connected to AppleTalk networks need to be associated with zones lists. For each AppleTalk network, at least one router on that network must be configured with the network&rsquo;s zones list; all other routers could have a zones list of NIL in their port descriptor for that network. If, for a given network, more than one router is configured with a non-NIL zone list, these lists must be the same (including the same default zone). In addition, only seed routers used for the purpose of specifying the network number range should contain zones lists that are not NIL. (In other words, if a router is not a seed router for routing information, it should not be a seed router for zone information.) Seed routers should confirm that their zone information does not conflict with that from another router on the same network, for instance through ZIP queries or GetLocalZones requests.</p>
+<hr>
+<p>A router having a NIL zone list discovers the names in that list by broadcasting a ZIP query on the network of interest, as described previously. To determine which zone name in the list is the default zone, the router broadcasts a ZIP GetNetInfo request with a NIL zone name on that network (this packet can be sent directly to a router on that network if the address of one is known).</p>
+<p>◆ Note: The default zone name for a given network is of interest only to routers (and nodes) on that network. Unlike the network&rsquo;s zone list, this information is not propagated to other routers on the internet.</p>
+<h2 id="zones-list-changing">Zones list changing<a class="anchor" href="#zones-list-changing">#</a></h2>
+<p>Under stable conditions, each network&rsquo;s zones list appears in the ZIT of every internet router. Changing a particular network&rsquo;s zones list requires changing that list in every internet router. Indeed, although routers on the stable internet are no longer sending ZIP Queries, each router must still be notified of the change in the zones list. One possible method of notifying all routers of the zones list change would be to send an internet-wide broadcast of the change request. Internet-wide broadcasting, however, is not supported by DDP and is both complicated and expensive in terms of network traffic.</p>
+<h3 id="changing-zones-lists-in-routers">Changing zones lists in routers<a class="anchor" href="#changing-zones-lists-in-routers">#</a></h3>
+<p>ZIP does not specify a way for changing the zones list of a network while that network is active as a part of the internet. It is envisioned that future network management protocols, to be defined by Apple, will provide this functionality. A network management system needs to be aware of all the routers on the internet, and with this knowledge it can implement an all-routers broadcast that notifies all routers on the internet as to the change in a zones list.</p>
+<hr>
+<p>Until such network management protocols are defined, the zones list associated with a network can only be changed by temporarily isolating that network from the internet. All the routers directly connected to the network should be brought down and the zones list changed in each of the seed routers. All the routers can then be brought back up. The routers, however, can not be brought back up until the old zones list from that network has disappeared from all the ZITs in the internet. It takes a certain amount of time for the network number range and zone name information about a network to age out of all routers in the internet once that network is no longer connected. Although this parameter is a function of the internet topology, ZIP defines it as a constant known as the <strong>ZIP bringback time</strong>. The exact value of the ZIP bringback time is defined in &ldquo;Timer Values&rdquo; later in this chapter.</p>
+<hr>
+<h2 id="changing-zone-names-in-nodes">Changing zone names in nodes<a class="anchor" href="#changing-zone-names-in-nodes">#</a></h2>
+<p>Nodes on an extended network will need to be told if their zone name has been changed. This is so they can register on a new zone multicast address, and so they can perform correct NBP filtering. ZIP specifies a packet, referred to as a ZIP Notify, which accomplishes this function. The format of a ZIP Notify packet is essentially the same as a ZIP GetNetInfo Reply, except the function byte is 7 to indicate Notify (see <em>Figure 8-5</em>). The packet specifies the old and new zone names, and the new zone multicast address. It is sent as part of a zones list change operation to the ZIS of nodes on the affected network. It should be sent to the old zone multicast address. Nodes on extended networks should maintain a <em>ZIP stub</em> on the ZIS for purposes of receiving ZIP Notifies. Upon receipt of a ZIP Notify (for the zone in which the node resides), the node should register on the new zone multicast address and change its zone name to that specified in the packet. This zone name should also be changed in long term storage.</p>
+<ul>
+<li><em><strong>Note:</strong></em> It is not currently a requirement that nodes implement processing of ZIP Notifies. ZIP Notify processing will be required once the network management protocols for changing zones lists are specified.</li>
+</ul>
+<hr>
+<h3 id="figure-8-5-zip-notify-packet">Figure 8-5 ZIP Notify packet<a class="anchor" href="#figure-8-5-zip-notify-packet">#</a></h3>
+<p>ZIP Notify</p>
+<p>Flag bits:</p>
+<ul>
+<li>7 - zone invalid</li>
+<li>6 - use broadcast</li>
+<li>5 - only one zone</li>
+</ul>
+<p><img src="images/p195-zip-notify-packet.png" alt="ZIP Notify packet diagram showing the layout of command, flags, and zone name fields." /></p>
+<pre class="mermaid">packet-beta
+0-7: &#34;ZIP command = 7&#34;
+8: &#34;7 - zone invalid&#34;
+9: &#34;6 - use broadcast&#34;
+10: &#34;5 - only one zone&#34;
+11-15: &#34;Flags&#34;
+16-31: &#34;0&#34;
+32-39: &#34;Old zone name length&#34;
+40-47: &#34;Old zone name&#34;
+48-55: &#34;New multicast address length&#34;
+56-63: &#34;New multicast address&#34;
+64-71: &#34;New zone name length&#34;
+72-79: &#34;New zone name&#34;</pre><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Field</th>
+          <th style="text-align: left">Bit offset</th>
+          <th style="text-align: left">Width (bits)</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">ZIP command</td>
+          <td style="text-align: left">0</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">The ZIP command code, fixed at 7 for Notify packets.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">zone invalid</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">Flag bit 7. Indicates if the zone is no longer valid.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">use broadcast</td>
+          <td style="text-align: left">9</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">Flag bit 6. Indicates that a broadcast should be used.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">only one zone</td>
+          <td style="text-align: left">10</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">Flag bit 5. Indicates if there is only one zone involved.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Flags (4-0)</td>
+          <td style="text-align: left">11</td>
+          <td style="text-align: left">5</td>
+          <td style="text-align: left">Reserved flag bits.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Reserved</td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left">Fixed value of 0.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Old zone name length</td>
+          <td style="text-align: left">32</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">Length in bytes of the following Old zone name.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Old zone name</td>
+          <td style="text-align: left">40</td>
+          <td style="text-align: left">Variable</td>
+          <td style="text-align: left">String containing the old zone name.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">New multicast address length</td>
+          <td style="text-align: left">Variable</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">Length in bytes of the following New multicast address.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">New multicast address</td>
+          <td style="text-align: left">Variable</td>
+          <td style="text-align: left">Variable</td>
+          <td style="text-align: left">The new multicast address.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">New zone name length</td>
+          <td style="text-align: left">Variable</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">Length in bytes of the following New zone name.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">New zone name</td>
+          <td style="text-align: left">Variable</td>
+          <td style="text-align: left">Variable</td>
+          <td style="text-align: left">String containing the new zone name.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="timer-values">Timer values<a class="anchor" href="#timer-values">#</a></h1>
+<p>Two parameter values associated with ZIP must be specified. The first is the value for the ZIP Query retransmission time. This value is equal to the send-RTMP timer, or 10 seconds. The second is the ZIP bringback time. The ZIP bringback time is defined as the minimum time required between bringing a network down and bringing it back up with a new zones list. Since it is desired that this value be a constant, independent of internet topology, the worst-case internet must be used in determining it. Since a network&rsquo;s zone name rarely changes, this value has been conservatively defined as 10 minutes.</p>
+<hr>
+<h1 id="part-iv-reliable-data-delivery">Part IV Reliable Data Delivery<a class="anchor" href="#part-iv-reliable-data-delivery">#</a></h1>
+<p>PART IV DISCUSSES the protocols that add reliability to AppleTalk end-to-end data delivery. Part II described the protocols used to provide end-to-end data flow across an AppleTalk internet. Those protocols do not guarantee the delivery of the data; they merely provide a best-effort service. Two groups of protocols, corresponding to two different models of end-to-end interaction, are discussed in this part.</p>
+<p>The first group is based on a data transaction model. The key protocol of this group is the AppleTalk Transaction Protocol (ATP). ATP provides the request-response transaction paradigm on which the session-oriented services of the AppleTalk Session Protocol (ASP) and the Printer Access Protocol (PAP) are based. While ATP is concerned with independent transactions, ASP provides a sequence of transactions guaranteed to be delivered and executed in the order in which the transaction requests are sent. PAP provides a data read/write type of service built with underlying ATP transactions. PAP is the transport/session protocol used by printers of the ImageWriter and LaserWriter families working in an AppleTalk environment.</p>
+<p>The second group is based on a more conventional model of reliable data flow—the data stream. This model provides a bidirectional reliable flow of data bytes between any two sockets of the internet. The AppleTalk Data Stre</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cinside-appletalk-second-edition%5C08-zone-information-protocol.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#zones-list-changing--8-21">Zones list changing / 8-21</a></li>
+        <li><a href="#timer-values--8-24">Timer values / 8-24</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#network-to-zone-name-mapping">Network-to-zone-name mapping</a></li>
+    <li><a href="#zone-information-table">Zone information table</a></li>
+    <li><a href="#zone-information-socket-zip-queries-and-replies">Zone information socket: ZIP Queries and Replies</a></li>
+    <li><a href="#zit-maintenance">ZIT maintenance</a></li>
+    <li><a href="#choosing-a-new-zone-name">Choosing a new zone name</a></li>
+    <li><a href="#zone-multicasting">Zone multicasting</a></li>
+    <li><a href="#aging-the-zone-name">Aging the zone name</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#zip-query-and-reply">ZIP Query and Reply</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#zip-query">ZIP Query</a></li>
+        <li><a href="#zip-reply">ZIP Reply</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#figure-8-2-getzonelist-and-getlocalzones-request-and-reply-packets">Figure 8-2 GetZoneList and GetLocalZones request and reply packets</a>
+      <ul>
+        <li><a href="#getzonelist--getlocalzones-request-packet">GetZoneList / GetLocalZones Request Packet</a></li>
+        <li><a href="#getzonelistreply--getlocalzonesreply-packet">GetZoneListReply / GetLocalZonesReply Packet</a></li>
+      </ul>
+    </li>
+    <li><a href="#figure-8-4-getnetinfo-request-and-reply-packets">Figure 8-4 GetNetInfo request and reply packets</a>
+      <ul>
+        <li><a href="#zip-getnetinfo-request">ZIP GetNetInfo Request</a></li>
+        <li><a href="#zip-getnetinfo-reply">ZIP GetNetInfo Reply</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#generating-fwdreq-packets">Generating FwdReq packets</a></li>
+    <li><a href="#converting-fwdreqs-to-lkups">Converting FwdReqs to LkUps</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#zones-list-changing">Zones list changing</a>
+      <ul>
+        <li><a href="#changing-zones-lists-in-routers">Changing zones lists in routers</a></li>
+      </ul>
+    </li>
+    <li><a href="#changing-zone-names-in-nodes">Changing zone names in nodes</a>
+      <ul>
+        <li><a href="#figure-8-5-zip-notify-packet">Figure 8-5 ZIP Notify packet</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

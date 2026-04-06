@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="# AppleTalk Filing Protocol System Description#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 2 Pages 14–24 Converted 2026-04-01 Engine gemini-flash Chapter 2#AppleTalk Filing Protocol System Description#This chapter contains a fairly detailed discussion of all the major concepts involved in AFP: the AFP file system structure, the login process, access control mechanisms provided by AFP, and a global discussion of the AFP calls.
+Chapter 7 contains the detailed specification of the AFP calls. This forms the bulk of this document.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/02-appletalk-filing-protocol-system-description/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="# AppleTalk Filing Protocol System Description">
+  <meta property="og:description" content="# AppleTalk Filing Protocol System Description#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 2 Pages 14–24 Converted 2026-04-01 Engine gemini-flash Chapter 2#AppleTalk Filing Protocol System Description#This chapter contains a fairly detailed discussion of all the major concepts involved in AFP: the AFP file system structure, the login process, access control mechanisms provided by AFP, and a global discussion of the AFP calls.
+Chapter 7 contains the detailed specification of the AFP calls. This forms the bulk of this document.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="# AppleTalk Filing Protocol System Description">
+  <meta itemprop="description" content="# AppleTalk Filing Protocol System Description#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 2 Pages 14–24 Converted 2026-04-01 Engine gemini-flash Chapter 2#AppleTalk Filing Protocol System Description#This chapter contains a fairly detailed discussion of all the major concepts involved in AFP: the AFP file system structure, the login process, access control mechanisms provided by AFP, and a global discussion of the AFP calls.
+Chapter 7 contains the detailed specification of the AFP calls. This forms the bulk of this document.">
+  <meta itemprop="wordCount" content="4156">
+
+<title># AppleTalk Filing Protocol System Description | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/02-appletalk-filing-protocol-system-description/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3># AppleTalk Filing Protocol System Description</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#afp-file-system-structure">AFP File System Structure</a></li>
+    <li><a href="#file-servers">File Servers</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#catalog-node-cnode-names-long-and-short-names">Catalog Node (CNode) Names: Long and Short Names</a></li>
+    <li><a href="#directory-ids">Directory IDs</a></li>
+    <li><a href="#volume-signature">Volume Signature</a></li>
+    <li><a href="#directory-and-file-parameters">Directory and File Parameters</a></li>
+    <li><a href="#date-time-values">Date-Time Values</a></li>
+    <li><a href="#pathnames">Pathnames</a></li>
+    <li><a href="#access-paths-and-open-file-forks">Access Paths and Open File Forks</a></li>
+    <li><a href="#complete-specification-of-a-catalog-node-cnode">Complete Specification of a Catalog Node (CNode)</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="-appletalk-filing-protocol-system-description"># AppleTalk Filing Protocol System Description<a class="anchor" href="#-appletalk-filing-protocol-system-description">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td>022_AppleTalkFilingProtocolEngineeringTechnicalNotes</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>14–24</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-04-01</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="chapter-2">Chapter 2<a class="anchor" href="#chapter-2">#</a></h1>
+<h1 id="appletalk-filing-protocol-system-description">AppleTalk Filing Protocol System Description<a class="anchor" href="#appletalk-filing-protocol-system-description">#</a></h1>
+<p>This chapter contains a fairly detailed discussion of all the major concepts involved in AFP: the AFP file system structure, the login process, access control mechanisms provided by AFP, and a global discussion of the AFP calls.</p>
+<p>Chapter 7 contains the detailed specification of the AFP calls. This forms the bulk of this document.</p>
+<p>Although AFP has been designed to be used with various underlying transport mechanisms, on AppleTalk it is implemented as a client of the AppleTalk Session Protocol (ASP). In Chapter 8 we include a discussion of how AFP uses the services provided by ASP.</p>
+<h2 id="afp-file-system-structure">AFP File System Structure<a class="anchor" href="#afp-file-system-structure">#</a></h2>
+<p>Once the workstation client of AFP has logged into the server, it can issue any of a set of AFP calls described below. Through these calls the client can obtain descriptive information (collectively referred to below as parameters) about any of a set of entities that comprise the <em>AFP file system structure</em>, modify this descriptive information, create or delete entities, read and write to such entities, etc. Before discussing the calls for manipulating the AFP file system structure let us discuss this structure, its entities as seen through the AFI, and the relationship among these entities. [Note that this discussion does not describe how this structure might be implemeted on a server; it just describes the final result of such an implementation.]</p>
+<p>The entities comprising the AFP file system structure are: [file] servers, volumes, directories, files, and forks. We now examine each of these and the relationship among them.</p>
+<h2 id="file-servers">File Servers<a class="anchor" href="#file-servers">#</a></h2>
+<p>The most global entity encompassed by the AFP file system structure and visible through the AFI is a <em>file server</em> (server for short). File servers possess names and can be discovered by a workstation as discussed below in connection with the login process. Servers manage one or more volumes which can be accessed through the AFP. (See Figure AFP3.)</p>
+<p>There are several parameters associated with a server that are visible through the AFI:</p>
+<ul>
+<li>server name [string: max 32 characters]</li>
+<li>server machine-type identification [string: max 16 characters]</li>
+</ul>
+<hr>
+<p><img src="images/p15-file-servers-and-volumes.png" alt="Conceptual diagram showing a File Server connected to a Network, containing three cylindrical storage Volumes." /></p>
+<p><em>Figure AFP3: File Servers and Volumes</em></p>
+<ul>
+<li><em>number of volumes on the server</em> [2-byte integer]</li>
+<li><em>AFP version strings</em> [strings: maximum 16 characters per string]</li>
+<li><em>UAM strings</em> [strings: maximum 16 characters per string]</li>
+</ul>
+<p>In addition, a server can maintain the following optional parameter, which can be used to customize the appearance of a server&rsquo;s volumes on a Macintosh workstation&rsquo;s desktop:</p>
+<ul>
+<li><em>server icon</em> [256 bytes].</li>
+</ul>
+<p>The server icon consists of a 32-by-32 bit (128 bytes) icon bitmap followed by a 32-by-32 bit (128 bytes) icon mask. The mask usually consists of the icon&rsquo;s outline filled with black (a bit that is set). This format is exactly that required for the specification of icons for a Macintosh (see the <em>Structure of a Macintosh Application</em> chapter of <em>Inside Macintosh</em>).</p>
+<p>The <em>server machine-type identification</em> is provided through a string of at most 16 characters. This string is purely informative, providing a textual description of the type of hardware and/or software system on which the file server has been implemented; it has no significance as far as the AFP is concerned.</p>
+<p>The <em>AFP version strings</em> and the <em>UAM strings</em> will be discussed below in connection with the login process.</p>
+<hr>
+<h1 id="volumes">Volumes<a class="anchor" href="#volumes">#</a></h1>
+<p>As noted a server manages one or more <em>volumes</em> that are visible to workstations through the AFI. For each volume the server must maintain and make visible through the AFI the following parameters:</p>
+<ul>
+<li><em>volume name</em> [string: max 27 characters]</li>
+<li><em>volume signature</em> [2 bytes]</li>
+<li><em>volume identifier (VolID)</em> [2 bytes]</li>
+<li><em>volume creation date-time</em> [4 bytes]</li>
+<li><em>volume modification date-time</em> [4 bytes]</li>
+<li><em>volume backup date-time</em> [4 bytes]</li>
+<li><em>volume size in bytes</em> [4-byte unsigned integer]</li>
+<li><em>number of free bytes on volume</em> [4-byte unsigned integer]</li>
+</ul>
+<p>In addition a server can maintain the following optional volume parameter which can be used to provide a simple kind of security at the volume level:</p>
+<ul>
+<li><em>volume password</em> [8 bytes].</li>
+</ul>
+<p>The <em>volume name</em> is a string of up to 27 characters which identifies a server volume. The permissible characters in a volume name are all 8-bit characters not including null ($00) or colon ($3A). A given server&rsquo;s volumes must all have different names. The volume name is used only to identify the volume to the workstation&rsquo;s user. It is not used directly as part of the specification of objects on the volume (see the discussion of pathnames below). Instead, the workstation client makes an AFP call to obtain a particular volume&rsquo;s VolID, which is then used as the volume&rsquo;s identifier in all subsequent AFP calls.</p>
+<p>The <em>volume signature</em> is a 2-byte quantity used to provide a volume-type identifier. In version 1.1 of AFP only three values of the volume signature are permitted (see the discussion below of volume signatures).</p>
+<p>Within each filing session the server assigns a <em>volume identifier (VolID)</em> to each of its volumes. This value is unique (within a particular filing session) among the volumes of a given server and can be used in the AFP calls sent over a filing session to uniquely identify the volume to which the calls applies.</p>
+<p>The <em>volume creation, modification, and backup date-time</em> quantities are maintained in terms of GMT values (see the discussion below). A volume&rsquo;s creation date-time is set by the server when the volume is created. Likewise, the modification date-time is changed by the server every time the volume is modified (see the <em>FPFlush</em> call). These two date-time values are managed solely by the server and they cannot be modified by the AFP client. However, the backup date-time is meant to be appropriately set by a backup program each time the volume&rsquo;s contents have been successfully backed up. When a volume is first created, its backup date-time is set to $80000000 (the earliest representable date-time value).</p>
+<p>Directories and files are stored in volumes and constitute the next level of entities visible through the AFI.</p>
+<h1 id="the-volume-catalog-directories-files-and-forks">The Volume Catalog: Directories, Files and Forks<a class="anchor" href="#the-volume-catalog-directories-files-and-forks">#</a></h1>
+<hr>
+<p>A volume consists of directories and files arranged in a hierarchical structure known as the <em>volume catalog</em> (see Figure AFP4).</p>
+<p>The <em>volume catalog</em> (also referred to as the <em>catalog</em>) is a description of the contents of the volume organized as a tree. The nodes of this tree, known as <em>catalog nodes</em> (<em>CNode</em> for short) are either files or directories. The <em>internal</em> (non-terminal) nodes of the tree are always directories, while the <em>leaf</em> (terminal) nodes are files or empty directories. At the base of each catalog is a special CNode (a directory) called the <em>root</em>.</p>
+<p>A catalog does not span multiple volumes; the AFP client will see a separate catalog for each server volume visible through the AFI.</p>
+<p>Directories should be looked upon as &ldquo;logical containers&rdquo; which contain other directories and/or files. Thus directories are equivalent to the concept of folders in the Macintosh user interface.</p>
+<p>As in the Macintosh file system, a file consists of two <em>forks</em>: one, the <em>data fork</em>, is an unstructured finite sequence of bytes; the other, the <em>resource fork</em>, is typically used to hold Macintosh OS resources and a data structure for mapping them within the fork. As far as AFP is concerned both forks are simply finite-length byte sequences; specification of the resource structure of the resource fork is outside the scope of this protocol. Note that the bytes in a file fork are numbered starting with zero (the first byte in the fork is numbered 0).</p>
+<p>A given file can have either or both forks empty. In fact, files created by an MS-DOS machine will most likely have an empty resource fork since this construct is outside the conceptual structure of an MS-DOS file and hence unintelligible to such a system. Likewise an MS-DOS machine accessing a server file created by a Macintosh will, in all likelihood, not access the resource fork of the file, and will in fact be unaware of its existence and significance. However, if applications are written for MS-DOS machines which understand and manipulate resource forks, they may do so; AFP does nothing to prevent this.</p>
+<p>Non-Macintosh-based AFP clients that need only one file fork must use the data fork. It is important that the internal structure of the resource fork in terms of resources be maintained correctly. This is essential, since that is what a Macintosh workstation expects to see in the resource fork of any file. For this reason, workstations that do not know how to manage the internal structure of the resource fork should never alter its contents.</p>
+<p>The tree structure of a catalog leads naturally to the idea of a CNode&rsquo;s <em>parent</em>, i.e., the node containing the given CNode. In terms of the pictorial representation of Figure AFP4, a given CNode&rsquo;s parent is the CNode immediately above it in the catalog tree. A CNode&rsquo;s parent will often also be referred to as its <em>parent directory</em>.</p>
+<p>The set of CNodes contained in a given directory will be referred to as its <em>offspring</em>. This possibly empty set (for an empty directory) is exactly the set of CNodes for which the given directory is the parent. The <em>valence</em> of a directory indicates the number of offspring it contains.</p>
+<p>Note that the root of the catalog is special in that it has no parent. For a given CNode X there is one path from the root to that CNode. Any CNode on that path is known as an <em>ancestor</em> of X. X is said to be a <em>descendant</em> of any of its ancestors.</p>
+<hr>
+<p><img src="images/p18-volume-catalog.png" alt="Volume Catalog" /></p>
+<p><em>Figure AFP4: Volume Catalog</em></p>
+<h2 id="catalog-node-cnode-names-long-and-short-names">Catalog Node (CNode) Names: Long and Short Names<a class="anchor" href="#catalog-node-cnode-names-long-and-short-names">#</a></h2>
+<p>Every CNode (including the root) has two names: a <em>long name</em> and a <em>short name</em>.</p>
+<p>Long names are strings of up to 31 characters. All 8-bit characters except for null ($00) and colon ($3A) are permissible characters for long names. With the exception of the null byte restriction, long names correspond exactly in syntax and significance to CNode names in the Macintosh&rsquo;s hierarchical file system (HFS). The mapping of character code to character is the same in AFP as in Macintosh.</p>
+<p>Short names are strings of up to 12 characters that follow the well-known 8.3 format (&lt;8 characters&gt;.&lt;3 character extension&gt;) of file/directory names used by the MS-DOS operating system, and consist of a sequence of up to 8 characters followed by an optional</p>
+<hr>
+<p>extension field consisting of a period ($2E) and up to 3 characters. All characters must be alpha-numeric or from the set ! # $ % &amp; ) ( , - @ _ { } ~ (period is not included).</p>
+<p>It should be clear why AFP attaches two names to each CNode, one each for the two native file systems supported by version 1.1 of AFP. Macintosh workstations expect to refer to files and directories by long names, while MS-DOS machines will use the 8.3 format short names. By using appropriate algorithms for creating the &ldquo;other&rdquo; name (long or short) when creating or renaming files and directories, a consistent sharing of these objects is possible from these dissimilar workstations.</p>
+<p>The rules of uniqueness of long and short names are quite simple. No two offspring of a given directory can have the same short name or the same long name. A short name may match a long name if they both belong to the same object. Thus either name (long or short) uniquely identifies CNodes within the context of a given parent. To ensure that this uniqueness is maintained at all times, a file server must implement carefully-designed file/directory creation and renaming algorithms discussed in the specification section of this document and in Appendix B.</p>
+<p>The root of the catalog is in fact a &ldquo;container&rdquo; representation of the volume. The root&rsquo;s long name is exactly the same as the volume name, so is therefore restricted to a maximum size of 27 bytes. The root of a volume can neither be deleted nor renamed through AFP. Hence a volume cannot be renamed through AFP.</p>
+<h2 id="directory-ids">Directory IDs<a class="anchor" href="#directory-ids">#</a></h2>
+<p>Each directory in the catalog has in addition to its names a numerical (4-byte) identifier known as its <em>directory ID</em> (<em>DirID</em> for short). The DirID of the root is always equal to 2.</p>
+<p>Two directories on a given volume cannot have the same DirID. Thus the DirID uniquely identifies a directory on a given volume.</p>
+<p>The DirID of a given CNode&rsquo;s parent is said to be the CNode&rsquo;s <em>ParentID</em>. This is a special case of the more general term <em>AncestorID</em>, which is the DirID of a CNode&rsquo;s ancestor. Although a given CNode has a unique ParentID (there is only one parent), it may have several AncestorIDs (one for each ancestor). The root&rsquo;s Parent DirID is always equal to 1. Zero is not a valid DirID.</p>
+<h2 id="volume-signature">Volume Signature<a class="anchor" href="#volume-signature">#</a></h2>
+<p>AFP allows three types of volumes. To determine what type a particular volume is, we associate a volume signature with each volume. This is a 2-byte quantity that can, for AFP version 1.1, take one of three permissible values:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Value</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>01</td>
+          <td>Flat volume</td>
+      </tr>
+      <tr>
+          <td>02</td>
+          <td>Fixed DirID volume</td>
+      </tr>
+      <tr>
+          <td>03</td>
+          <td>Variable DirID volume.</td>
+      </tr>
+  </tbody>
+</table>
+<p>Any value other than these should be taken as referring to a volume unintelligible to AFP version 1.1 and is hence an error condition.</p>
+<p>A <em>flat volume</em> is one whose catalog tree consists of only one directory, the root, containing files. As an example consider the flat Macintosh file system&rsquo;s flat volumes. Attempting to</p>
+<hr>
+<p>create a directory on a flat volume results in an error. The specification of files on such a volume consists of the VolID, a DirID having a value of 2, and the file name.</p>
+<p>A <em>fixed DirID volume</em> is one that has a hierarchical catalog in which the directory IDs of the various directories in the catalog are fixed and determined at the time of creation of a directory. The DirID of a directory never changes during the lifetime of the directory. Furthermore, this DirID will not be used for any other directory during the lifetime of the volume (i.e., it is not used again even if the corresponding directory is deleted from the volume).</p>
+<p>A <em>variable DirID volume</em> differs from a fixed DirID volume in that, although it maintains the uniqueness of DirIDs, it does not associate a fixed DirID with a directory over the entire lifetime of the directory. In fact, for such volumes the file server creates a unique DirID for a directory when the workstation client issues an FPOpenDir call (discussed in Chapter 7) and maintains this DirID value of a directory either until an FPCloseDir call is issued by the client or until the AFP session is terminated. Using a DirID obtained through an FPOpenDir call outside of this range of time will lead to unpredictable results.</p>
+<p>Clearly, MS-DOS machines can access any of the three types of server volumes since the concept of DirIDs is foreign to their file system. However, it should be noted that the Macintosh using either MFS or HFS cannot directly use <em>variable DirID server volumes</em> (volume signature = 03). Macintosh HFS volumes are <em>fixed DirID volumes</em> and Macintosh applications such as the Finder save the DirIDs of various directories and expect these to remain invariant; hierarchical catalog volumes can be handled by this file system (HFS) only if they are <em>fixed DirID volumes</em> (volume signature = 02).</p>
+<p>It should be noted that particular directories of a <em>variable DirID volume</em> can be mounted as flat MFS &ldquo;volumes&rdquo; and used by a Macintosh workstation. In this case, the corresponding &ldquo;virtual&rdquo; volume will be seen as flat in structure and any directories contained in that &ldquo;volume&rdquo;/directory will not be accessible through AFP. This is not a recommended way of implementing file servers for the Macintosh and its use is discouraged. In fact <em>variable DirID volumes</em> are included in our definition of AFP only to allow non-Macintosh machines (whose file systems are unable to implement, in an easy way, the <em>fixed DirID</em> feature) to function as simple servers offering files within particular directories for access over AppleTalk.</p>
+<h2 id="directory-and-file-parameters">Directory and File Parameters<a class="anchor" href="#directory-and-file-parameters">#</a></h2>
+<p>A server must maintain the following parameters for each directory:</p>
+<ul>
+<li><em>long name</em> [string: max 31 characters]</li>
+<li><em>short name</em> [string: max 12 characters]</li>
+<li><em>DirID</em> [4 bytes]</li>
+<li><em>ParentID</em> [4 bytes]</li>
+<li><em>attributes</em> [2 bytes]</li>
+<li><em>Finder Information</em> [32 bytes]</li>
+<li><em>number of files and directories contained in the directory</em> [2-byte integer]</li>
+<li><em>creation date-time</em> [4 bytes]</li>
+<li><em>modification date-time</em> [4 bytes]</li>
+<li><em>backup date-time</em> [4 bytes]</li>
+<li><em>owner ID</em> [4 bytes]</li>
+</ul>
+<hr>
+<ul>
+<li>group ID [4 bytes]</li>
+<li>owner&rsquo;s Access Rights [1 byte]</li>
+<li>group&rsquo;s Access Rights [1 byte]</li>
+<li>world&rsquo;s Access Rights [1 byte].</li>
+</ul>
+<p>The <em>Finder Information</em> is exactly the Finder information for directories that must be saved for HFS directories. This field is not examined by AFP. It is written (set) by the client of AFP. The last five fields in this list are related to access controls in AFP and will be discussed later in this document.</p>
+<p>The <em>attributes</em> parameter is a bitmap indicating various attributes of the directory. For AFP version 1.1, one directory attribute is defined: <em>Invisible</em> (this directory should not be made visible to the workstation&rsquo;s user).</p>
+<p>A server must maintain the following parameters for each file:</p>
+<ul>
+<li>long name [string: max 31 characters]</li>
+<li>short name [string: max 12 characters]</li>
+<li>ParentID [4 bytes]</li>
+<li>file number [4 bytes]</li>
+<li>attributes [2 bytes]</li>
+<li>Finder Information [32 bytes]</li>
+<li>data fork length [4-byte unsigned integer]</li>
+<li>resource fork length [4-byte unsigned integer]</li>
+<li>creation date-time [4-byte signed integer]</li>
+<li>modification date-time [4-byte signed integer]</li>
+<li>backup date-time [4-byte signed integer].</li>
+</ul>
+<p>The <em>file number</em> is a 32 bit number associated with a given file, unique among all files on the volume. This is purely informative, since AFP does not allow the specification of a file by its file number.</p>
+<p>The <em>attributes</em> parameter is a bitmap indicating various attributes of the file. For AFP version 1.1, five file attributes are defined. The rest of the eleven bits must be equal to zero. The five attributes are: <em>Read-Only</em> (cannot write to the file&rsquo;s forks), <em>DAlreadyOpen</em> (the file&rsquo;s data fork is currently open by some user), <em>RAlreadyOpen</em> (the file&rsquo;s resource fork is currently open by some user), <em>Multi-User</em> (the file is an application that has been written for simultaneous use by more than one user) and <em>Invisible</em> (this file should not be made visible to the workstation&rsquo;s user).</p>
+<p>The <em>resource</em> and <em>data fork lengths</em> are equal to the number of bytes in the corresponding fork.</p>
+<p>The <em>creation date-time</em> of a directory or a file is set to the value corresponding to the server&rsquo;s system clock when the file or directory is created. An AFP client with the appropriate access rights can set this date-time to any desired value. The <em>backup date-time</em> values are for the use of backup programs. When a file or directory is created the server sets the backup date-time to $80000000.</p>
+<p>The <em>modification date-time</em> of a file is changed by the server every time either of the file&rsquo;s forks is closed or flushed, if this fork has been written to in that filing session (see the <em>FPClose</em> call). Furthermore, an AFP client with the appropriate access rights can set this date-time to any desired value.</p>
+<hr>
+<p>The <em>modification date-time</em> of a directory is changed by the server every time the directory&rsquo;s contents are modified: this includes renaming the directory, creating or deleting a CNode in the directory, moving the directory, or changing its access privileges. Furthermore, an AFP client with the appropriate access rights can set this date-time to any desired value.</p>
+<h2 id="date-time-values">Date-Time Values<a class="anchor" href="#date-time-values">#</a></h2>
+<p>All date-time quantities used by AFP are Greenwich Mean Time (GMT) values. They are 32-bit signed integers corresponding to the number of seconds measured from 12:00 am on January 1, 2000 (the start of the next century corresponds to date-time=0).</p>
+<p>The use of GMT makes these AFP date-time quantities independent of the geographical location of the servers and workstations using AFP. The Translator in a given workstation must, if it wishes to present local time-date values, carry out the appropriate conversion based on the geographical time zone and date (to allow for the changes related to Daylight Savings Time, etc.) applicable to the workstation.</p>
+<p>Simple implementations of AFP workstations may wish to just obtain the server&rsquo;s time at login (using the FPGetSrvrParms call), calculate the offset between it and the workstation&rsquo;s clock, and then add or subtract this offset to all date-times sent to or received from the server.</p>
+<h2 id="pathnames">Pathnames<a class="anchor" href="#pathnames">#</a></h2>
+<p>As noted above, CNodes (files and directories) have long and short names, either of which can be used to uniquely identify a CNode within the context of its parent directory.</p>
+<p>CNode names can be concatenated with intervening null-byte separators to form <em>pathnames</em>. Each element of a pathname must be the name of a directory, except for the last one which can be the name of a directory or a file.</p>
+<p>The elements of a pathname can be long or short names; yet a given pathname cannot contain a mix of long and short CNode names. With a given pathname it is necessary to associate a <em>pathname type</em> which indicates one of two situations: the elements of the pathname are all short names (<em>pathname type</em> = 1), or all long names (<em>pathname type</em> = 2).</p>
+<p>As the term signifies, a pathname can be used to traverse the catalog tree. The starting point of this path must be a directory which is separately defined (by its DirID). The pathname must be parsed from left to right to obtain each element which is used as the next node on the path. A valid pathname must proceed step by step from parent to offspring. The first element of the pathname is interpreted as an offspring of the starting point directory. A single null-byte separator preceding this first element is ignored.</p>
+<p>Provision is made in the pathname syntax for ascending from a particular CNode on the path up to its parent. This is indicated by two consecutive null-bytes in the separator. Three consecutive null-bytes in a separator mean move up two levels in the catalog tree, and so on.</p>
+<p>The syntax of an AFP pathname can be summed up in the following BNF-like form:</p>
+<hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bnf" data-lang="bnf"><span style="display:flex;"><span>&lt;<span style="color:#a6e22e">Sep</span>&gt; <span style="color:#f92672">::=</span> &lt;<span style="color:#a6e22e">null-byte</span>&gt;+
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#a6e22e">Pathname</span>&gt; <span style="color:#f92672">::=</span> empty-string |
+</span></span><span style="display:flex;"><span>               &lt;<span style="color:#a6e22e">Sep</span>&gt;*&lt;<span style="color:#a6e22e">CNode name</span>&gt;(&lt;<span style="color:#a6e22e">Sep</span>&gt;&lt;<span style="color:#a6e22e">Pathname</span>&gt;)*</span></span></code></pre></div><p>where we use the notation (a*) to mean a sequence of zero or more (a)&rsquo;s, while (a+) stands for a sequence of one or more (a)&rsquo;s. From this BNF-like specification of pathnames it should be clear that it is a concatenation of CNode names delineated by separators consisting of one or more null bytes. Pathnames may also start or end with a string of null bytes.</p>
+<p>AFP does <em>not</em> allow the inclusion of the root directory in pathnames, i.e., in the commonly used terminology of pathnames, AFP does not allow the use of full pathnames. The equivalent of a full pathname is achieved in AFP by specifying the starting point of the pathname as the root (DirID = 2) and presenting the pathname as descending down from the root (but not including the root).</p>
+<p>Pathnames sent in AFP packets are formatted as Pascal strings starting with a length byte followed by up to 255 characters of the pathname (each pathname element does not include a length byte). In addition the pathname type must be provided. A single null byte is used to indicate that no pathname is supplied; note that even in this case, a valid pathname type must be provided.</p>
+<h2 id="access-paths-and-open-file-forks">Access Paths and Open File Forks<a class="anchor" href="#access-paths-and-open-file-forks">#</a></h2>
+<p>To read or write the contents of the data or resource fork of a particular file, the AFP client in the workstation must issue a special call to open the particular fork of the specified file. This leads to the creation of an access path to that file fork, and subsequent read and write calls will be processed by reference to that access path. To allow for this the server must generate an access path identifier known as the <em>Open Fork Refnum</em>, unique among all open forks on a given session. Also associated with a particular access path is an <em>Access Mode Descriptor</em>, which indicates whether this access path (open file fork) was opened for (and allows) reading and/or writing through that path.</p>
+<p>For each access path (open file fork) the server must maintain the following parameters:</p>
+<ul>
+<li><em>Open Fork Refnum</em> [2-byte integer] (zero is invalid)</li>
+<li><em>Access Mode Descriptor</em> [2-byte bitmap]</li>
+<li><em>Which-fork identifier</em> [1 significant bit in a byte].</li>
+</ul>
+<p>In addition, the server must provide a way of accessing the file parameters of the file to which this open fork belongs.</p>
+<p>The <em>Access Mode Descriptor</em> is maintained by the server and is inaccessible to workstation clients of AFP. It is used by the server to indicate the access mode with which that access path is open.</p>
+<h2 id="complete-specification-of-a-catalog-node-cnode">Complete Specification of a Catalog Node (CNode)<a class="anchor" href="#complete-specification-of-a-catalog-node-cnode">#</a></h2>
+<hr>
+<p>In AFP a particular CNode (file or directory) can be unambiguously specified to the server by providing the following: VolID, AncestorID, pathname. This specification subsumes special cases such as the specification of a particular directory just by VolID, AncestorID = DirID of the directory, and a null pathname (length byte of the pathname string equal to 0).</p>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cappletalk-filingprotocol-engineering-technotes%5C02-appletalk-filing-protocol-system-description.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#afp-file-system-structure">AFP File System Structure</a></li>
+    <li><a href="#file-servers">File Servers</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#catalog-node-cnode-names-long-and-short-names">Catalog Node (CNode) Names: Long and Short Names</a></li>
+    <li><a href="#directory-ids">Directory IDs</a></li>
+    <li><a href="#volume-signature">Volume Signature</a></li>
+    <li><a href="#directory-and-file-parameters">Directory and File Parameters</a></li>
+    <li><a href="#date-time-values">Date-Time Values</a></li>
+    <li><a href="#pathnames">Pathnames</a></li>
+    <li><a href="#access-paths-and-open-file-forks">Access Paths and Open File Forks</a></li>
+    <li><a href="#complete-specification-of-a-catalog-node-cnode">Complete Specification of a Catalog Node (CNode)</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

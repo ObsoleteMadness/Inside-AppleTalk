@@ -1,0 +1,2685 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Character Codes#Field Value Source Inside AppleTalk Second Edition (1990) Part Part V - End-User Services Chapter D Pages 562–597 Converted 2026-03-31 Engine gemini-flash Appendix D Character Codes#Several AppleTalk protocols utilize character string entity names, which can be composed of any 8-bit characters. Their representations are exactly the same as those used by the Macintosh and are shown in Table D-1 below.
+■ Table D-1 Character set mapping used in AppleTalk#">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/inside-appletalk-second-edition/d-character-codes/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="Character Codes">
+  <meta property="og:description" content="Character Codes#Field Value Source Inside AppleTalk Second Edition (1990) Part Part V - End-User Services Chapter D Pages 562–597 Converted 2026-03-31 Engine gemini-flash Appendix D Character Codes#Several AppleTalk protocols utilize character string entity names, which can be composed of any 8-bit characters. Their representations are exactly the same as those used by the Macintosh and are shown in Table D-1 below.
+■ Table D-1 Character set mapping used in AppleTalk#">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="Character Codes">
+  <meta itemprop="description" content="Character Codes#Field Value Source Inside AppleTalk Second Edition (1990) Part Part V - End-User Services Chapter D Pages 562–597 Converted 2026-03-31 Engine gemini-flash Appendix D Character Codes#Several AppleTalk protocols utilize character string entity names, which can be composed of any 8-bit characters. Their representations are exactly the same as those used by the Macintosh and are shown in Table D-1 below.
+■ Table D-1 Character set mapping used in AppleTalk#">
+  <meta itemprop="wordCount" content="14065">
+
+<title>Character Codes | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/inside-appletalk-second-edition/d-character-codes/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Character Codes</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-table-d-1-character-set-mapping-used-in-appletalk">■ Table D-1 Character set mapping used in AppleTalk</a></li>
+        <li><a href="#-table-d-2-lowercase-to-uppercase-mapping-in-appletalk">■ Table D-2 Lowercase-to-uppercase mapping in AppleTalk</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#a">A</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#e">E</a></li>
+    <li><a href="#f">F</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#the-apple-publishing-system">The Apple Publishing System</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#second-edition">Second Edition</a>
+      <ul>
+        <li><a href="#for-more-information">For more information</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="character-codes">Character Codes<a class="anchor" href="#character-codes">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td><a href="https://vintageapple.org/macbooks/pdf/Inside_AppleTalk_Second_Edition_1990.pdf">Inside AppleTalk Second Edition (1990)</a></td>
+      </tr>
+      <tr>
+          <td><strong>Part</strong></td>
+          <td>Part V - End-User Services</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>D</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>562–597</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-03-31</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="appendix-d-character-codes">Appendix D Character Codes<a class="anchor" href="#appendix-d-character-codes">#</a></h1>
+<hr>
+<p>Several AppleTalk protocols utilize character string entity names, which can be composed of any 8-bit characters. Their representations are exactly the same as those used by the Macintosh and are shown in <em>Table D-1</em> below.</p>
+<h3 id="-table-d-1-character-set-mapping-used-in-appletalk">■ Table D-1 Character set mapping used in AppleTalk<a class="anchor" href="#-table-d-1-character-set-mapping-used-in-appletalk">#</a></h3>
+<p><img src="images/p563-character-set-table.png" alt="Character set mapping used in AppleTalk" /></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Second digit</th>
+          <th style="text-align: left">0</th>
+          <th style="text-align: left">1</th>
+          <th style="text-align: left">2</th>
+          <th style="text-align: left">3</th>
+          <th style="text-align: left">4</th>
+          <th style="text-align: left">5</th>
+          <th style="text-align: left">6</th>
+          <th style="text-align: left">7</th>
+          <th style="text-align: left">8</th>
+          <th style="text-align: left">9</th>
+          <th style="text-align: left">A</th>
+          <th style="text-align: left">B</th>
+          <th style="text-align: left">C</th>
+          <th style="text-align: left">D</th>
+          <th style="text-align: left">E</th>
+          <th style="text-align: left">F</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>0</strong></td>
+          <td style="text-align: left">NUL</td>
+          <td style="text-align: left">DLE</td>
+          <td style="text-align: left">SPACE</td>
+          <td style="text-align: left">0</td>
+          <td style="text-align: left">@</td>
+          <td style="text-align: left">P</td>
+          <td style="text-align: left">`</td>
+          <td style="text-align: left">p</td>
+          <td style="text-align: left">Ä</td>
+          <td style="text-align: left">ê</td>
+          <td style="text-align: left">†</td>
+          <td style="text-align: left">∞</td>
+          <td style="text-align: left">¿</td>
+          <td style="text-align: left">—</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>1</strong></td>
+          <td style="text-align: left">SOH</td>
+          <td style="text-align: left">DC1</td>
+          <td style="text-align: left">!</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">A</td>
+          <td style="text-align: left">Q</td>
+          <td style="text-align: left">a</td>
+          <td style="text-align: left">q</td>
+          <td style="text-align: left">Å</td>
+          <td style="text-align: left">ë</td>
+          <td style="text-align: left">°</td>
+          <td style="text-align: left">±</td>
+          <td style="text-align: left">¡</td>
+          <td style="text-align: left">–</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>2</strong></td>
+          <td style="text-align: left">STX</td>
+          <td style="text-align: left">DC2</td>
+          <td style="text-align: left">&quot;</td>
+          <td style="text-align: left">2</td>
+          <td style="text-align: left">B</td>
+          <td style="text-align: left">R</td>
+          <td style="text-align: left">b</td>
+          <td style="text-align: left">r</td>
+          <td style="text-align: left">Ç</td>
+          <td style="text-align: left">í</td>
+          <td style="text-align: left">¢</td>
+          <td style="text-align: left">≤</td>
+          <td style="text-align: left">¬</td>
+          <td style="text-align: left">“</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>3</strong></td>
+          <td style="text-align: left">ETX</td>
+          <td style="text-align: left">DC3</td>
+          <td style="text-align: left">#</td>
+          <td style="text-align: left">3</td>
+          <td style="text-align: left">C</td>
+          <td style="text-align: left">S</td>
+          <td style="text-align: left">c</td>
+          <td style="text-align: left">s</td>
+          <td style="text-align: left">É</td>
+          <td style="text-align: left">ì</td>
+          <td style="text-align: left">£</td>
+          <td style="text-align: left">≥</td>
+          <td style="text-align: left">√</td>
+          <td style="text-align: left">”</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>4</strong></td>
+          <td style="text-align: left">EOT</td>
+          <td style="text-align: left">DC4</td>
+          <td style="text-align: left">$</td>
+          <td style="text-align: left">4</td>
+          <td style="text-align: left">D</td>
+          <td style="text-align: left">T</td>
+          <td style="text-align: left">d</td>
+          <td style="text-align: left">t</td>
+          <td style="text-align: left">Ñ</td>
+          <td style="text-align: left">î</td>
+          <td style="text-align: left">§</td>
+          <td style="text-align: left">¥</td>
+          <td style="text-align: left">ƒ</td>
+          <td style="text-align: left">‘</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>5</strong></td>
+          <td style="text-align: left">ENQ</td>
+          <td style="text-align: left">NAK</td>
+          <td style="text-align: left">%</td>
+          <td style="text-align: left">5</td>
+          <td style="text-align: left">E</td>
+          <td style="text-align: left">U</td>
+          <td style="text-align: left">e</td>
+          <td style="text-align: left">u</td>
+          <td style="text-align: left">Ö</td>
+          <td style="text-align: left">ï</td>
+          <td style="text-align: left">•</td>
+          <td style="text-align: left">µ</td>
+          <td style="text-align: left">≈</td>
+          <td style="text-align: left">’</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>6</strong></td>
+          <td style="text-align: left">ACK</td>
+          <td style="text-align: left">SYN</td>
+          <td style="text-align: left">&amp;</td>
+          <td style="text-align: left">6</td>
+          <td style="text-align: left">F</td>
+          <td style="text-align: left">V</td>
+          <td style="text-align: left">f</td>
+          <td style="text-align: left">v</td>
+          <td style="text-align: left">Ü</td>
+          <td style="text-align: left">ñ</td>
+          <td style="text-align: left">¶</td>
+          <td style="text-align: left">∂</td>
+          <td style="text-align: left">Δ</td>
+          <td style="text-align: left">÷</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>7</strong></td>
+          <td style="text-align: left">BEL</td>
+          <td style="text-align: left">ETB</td>
+          <td style="text-align: left">'</td>
+          <td style="text-align: left">7</td>
+          <td style="text-align: left">G</td>
+          <td style="text-align: left">W</td>
+          <td style="text-align: left">g</td>
+          <td style="text-align: left">w</td>
+          <td style="text-align: left">á</td>
+          <td style="text-align: left">ó</td>
+          <td style="text-align: left">ß</td>
+          <td style="text-align: left">Σ</td>
+          <td style="text-align: left">«</td>
+          <td style="text-align: left">◊</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>8</strong></td>
+          <td style="text-align: left">BS</td>
+          <td style="text-align: left">CAN</td>
+          <td style="text-align: left">(</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">H</td>
+          <td style="text-align: left">X</td>
+          <td style="text-align: left">h</td>
+          <td style="text-align: left">x</td>
+          <td style="text-align: left">à</td>
+          <td style="text-align: left">ò</td>
+          <td style="text-align: left">®</td>
+          <td style="text-align: left">Π</td>
+          <td style="text-align: left">»</td>
+          <td style="text-align: left">ÿ</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>9</strong></td>
+          <td style="text-align: left">HT</td>
+          <td style="text-align: left">EM</td>
+          <td style="text-align: left">)</td>
+          <td style="text-align: left">9</td>
+          <td style="text-align: left">I</td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left">i</td>
+          <td style="text-align: left">y</td>
+          <td style="text-align: left">â</td>
+          <td style="text-align: left">ô</td>
+          <td style="text-align: left">©</td>
+          <td style="text-align: left">π</td>
+          <td style="text-align: left">&hellip;</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>A</strong></td>
+          <td style="text-align: left">LF</td>
+          <td style="text-align: left">SUB</td>
+          <td style="text-align: left">*</td>
+          <td style="text-align: left">:</td>
+          <td style="text-align: left">J</td>
+          <td style="text-align: left">Z</td>
+          <td style="text-align: left">j</td>
+          <td style="text-align: left">z</td>
+          <td style="text-align: left">ä</td>
+          <td style="text-align: left">ö</td>
+          <td style="text-align: left">™</td>
+          <td style="text-align: left">∫</td>
+          <td style="text-align: left">—</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>B</strong></td>
+          <td style="text-align: left">VT</td>
+          <td style="text-align: left">ESC</td>
+          <td style="text-align: left">+</td>
+          <td style="text-align: left">;</td>
+          <td style="text-align: left">K</td>
+          <td style="text-align: left">[</td>
+          <td style="text-align: left">k</td>
+          <td style="text-align: left">{</td>
+          <td style="text-align: left">ã</td>
+          <td style="text-align: left">õ</td>
+          <td style="text-align: left">´</td>
+          <td style="text-align: left">ª</td>
+          <td style="text-align: left">À</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>C</strong></td>
+          <td style="text-align: left">FF</td>
+          <td style="text-align: left">FS</td>
+          <td style="text-align: left">,</td>
+          <td style="text-align: left">&lt;</td>
+          <td style="text-align: left">L</td>
+          <td style="text-align: left">\</td>
+          <td style="text-align: left">l</td>
+          <td style="text-align: left">|</td>
+          <td style="text-align: left">å</td>
+          <td style="text-align: left">ú</td>
+          <td style="text-align: left">¨</td>
+          <td style="text-align: left">º</td>
+          <td style="text-align: left">Ã</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>D</strong></td>
+          <td style="text-align: left">CR</td>
+          <td style="text-align: left">GS</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">=</td>
+          <td style="text-align: left">M</td>
+          <td style="text-align: left">]</td>
+          <td style="text-align: left">m</td>
+          <td style="text-align: left">}</td>
+          <td style="text-align: left">ç</td>
+          <td style="text-align: left">ù</td>
+          <td style="text-align: left">≠</td>
+          <td style="text-align: left">Ω</td>
+          <td style="text-align: left">Õ</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>E</strong></td>
+          <td style="text-align: left">SO</td>
+          <td style="text-align: left">RS</td>
+          <td style="text-align: left">.</td>
+          <td style="text-align: left">&gt;</td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left">^</td>
+          <td style="text-align: left">n</td>
+          <td style="text-align: left">~</td>
+          <td style="text-align: left">é</td>
+          <td style="text-align: left">û</td>
+          <td style="text-align: left">Æ</td>
+          <td style="text-align: left">æ</td>
+          <td style="text-align: left">Œ</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>F</strong></td>
+          <td style="text-align: left">SI</td>
+          <td style="text-align: left">US</td>
+          <td style="text-align: left">/</td>
+          <td style="text-align: left">?</td>
+          <td style="text-align: left">O</td>
+          <td style="text-align: left">_</td>
+          <td style="text-align: left">o</td>
+          <td style="text-align: left">DEL</td>
+          <td style="text-align: left">è</td>
+          <td style="text-align: left">ü</td>
+          <td style="text-align: left">Ø</td>
+          <td style="text-align: left">ø</td>
+          <td style="text-align: left">œ</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+  </tbody>
+</table>
+<p>— Stands for a nonbreaking space, the same width as a digit.</p>
+<hr>
+<p>An implementation of the AppleTalk protocols such as NBP and ZIP that use character string names must often perform string comparison. Throughout AppleTalk, this comparison is done in a case-insensitive manner (that is, K = k), and it must also be done in a diacritical-sensitive manner (that is, e ≠ é ≠ è). The mapping in Table D-2 shows the rules for uppercase equivalence of characters in AppleTalk. For example, lowercase ç matches uppercase Ç in a string comparison. Any character that does not appear in this table has no uppercase equivalent in AppleTalk and therefore can only match itself. Note that this mapping does not exactly conform to the standards used in all human languages. In certain languages, the uppercase equivalent of é is E; in other languages (and in AppleTalk), it is É.</p>
+<h3 id="-table-d-2-lowercase-to-uppercase-mapping-in-appletalk">■ Table D-2 Lowercase-to-uppercase mapping in AppleTalk<a class="anchor" href="#-table-d-2-lowercase-to-uppercase-mapping-in-appletalk">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Lowercase Value</th>
+          <th style="text-align: left">Lowercase Character</th>
+          <th style="text-align: left">Uppercase equivalent Value</th>
+          <th style="text-align: left">Uppercase equivalent Character</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">$61</td>
+          <td style="text-align: left">a</td>
+          <td style="text-align: left">$41</td>
+          <td style="text-align: left">A</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$62</td>
+          <td style="text-align: left">b</td>
+          <td style="text-align: left">$42</td>
+          <td style="text-align: left">B</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">⋮</td>
+          <td style="text-align: left">⋮</td>
+          <td style="text-align: left">⋮</td>
+          <td style="text-align: left">⋮</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$7A</td>
+          <td style="text-align: left">z</td>
+          <td style="text-align: left">$5A</td>
+          <td style="text-align: left">Z</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$88</td>
+          <td style="text-align: left">à</td>
+          <td style="text-align: left">$CB</td>
+          <td style="text-align: left">À</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$8A</td>
+          <td style="text-align: left">ä</td>
+          <td style="text-align: left">$80</td>
+          <td style="text-align: left">Ä</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$8B</td>
+          <td style="text-align: left">ã</td>
+          <td style="text-align: left">$CC</td>
+          <td style="text-align: left">Ã</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$8C</td>
+          <td style="text-align: left">å</td>
+          <td style="text-align: left">$81</td>
+          <td style="text-align: left">Å</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$8D</td>
+          <td style="text-align: left">ç</td>
+          <td style="text-align: left">$82</td>
+          <td style="text-align: left">Ç</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$8E</td>
+          <td style="text-align: left">é</td>
+          <td style="text-align: left">$83</td>
+          <td style="text-align: left">É</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$96</td>
+          <td style="text-align: left">ñ</td>
+          <td style="text-align: left">$84</td>
+          <td style="text-align: left">Ñ</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$9A</td>
+          <td style="text-align: left">ö</td>
+          <td style="text-align: left">$85</td>
+          <td style="text-align: left">Ö</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$9B</td>
+          <td style="text-align: left">õ</td>
+          <td style="text-align: left">$CD</td>
+          <td style="text-align: left">Õ</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$9F</td>
+          <td style="text-align: left">ü</td>
+          <td style="text-align: left">$86</td>
+          <td style="text-align: left">Ü</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$BE</td>
+          <td style="text-align: left">æ</td>
+          <td style="text-align: left">$AE</td>
+          <td style="text-align: left">Æ</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$BF</td>
+          <td style="text-align: left">ø</td>
+          <td style="text-align: left">$AF</td>
+          <td style="text-align: left">Ø</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$CF</td>
+          <td style="text-align: left">œ</td>
+          <td style="text-align: left">$CE</td>
+          <td style="text-align: left">Œ</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="glossary">Glossary<a class="anchor" href="#glossary">#</a></h1>
+<p><strong>AARP</strong>: see AppleTalk Address Resolution Protocol.</p>
+<p><strong>abort sequence</strong>: 12-18 1&rsquo;s (one bits) at the end of an LLAP frame.</p>
+<p><strong>access modes</strong>: a set of permissions used by AFP to regulate access to a file; AFP supports four access modes: read, write, read-write, and none.</p>
+<p><strong>access privileges</strong>: the privileges given to or withheld from users to open and make changes to a directory and its contents. Through the setting of access privileges, you control access to the information that is stored on a file server.</p>
+<p><strong>Acknowledge control packet</strong>: an LLAP packet sent in response to an Enquiry control packet, indicating that the requested LLAP node number is already in use.</p>
+<p><strong>Address Mapping Table (AMT)</strong>: a collection of protocol-to-hardware address mappings for each protocol stack that a node supports. The AMT is updated by AARP to ensure that current addressing information is available.</p>
+<p><strong>address resolution</strong>: the translation of node addresses between different node-numbering schemes.</p>
+<p><strong>ADSP</strong>: see AppleTalk Data Stream Protocol.</p>
+<p><strong>AEP</strong>: see AppleTalk Echo Protocol.</p>
+<p><strong>AFI</strong>: see AppleTalk Filing Interface.</p>
+<p><strong>AFP</strong>: see AppleTalk Filing Protocol.</p>
+<p><strong>AFP-file-system-visible entity</strong>: a network-visible entity accessible through the AFI.</p>
+<p><strong>AFP translator</strong>: workstation software that translates native file system commands to AFP calls; the AFP translator obtains the commands from the NFI and translates them to the AFI for transmission over the network to a file server.</p>
+<p><strong>ALO transaction</strong>: see at-least-once transaction.</p>
+<p><strong>AMT</strong>: see Address Mapping Table.</p>
+<p><strong>ancestor</strong>: a directory that is along the path to a destination CNode (file or directory), known as the descendent.</p>
+<p><strong>AppleTalk Address Resolution Protocol (AARP)</strong>: the protocol that reconciles addressing discrepancies in networks that support more than one set of protocols. For example, by resolving the differences between an Ethernet addressing scheme and the AppleTalk addressing scheme, AARP facilitates the transport of DDP packets over a high-speed EtherTalk connection.</p>
+<p><strong>AppleTalk Data Stream Protocol (ADSP)</strong>: a connection-oriented protocol that provides a reliable, full-duplex, byte-stream service between any two sockets in an AppleTalk internet. ADSP ensures in-sequence, duplicate-free delivery of data over its connections.</p>
+<p><strong>AppleTalk Echo Protocol (AEP)</strong>: a simple protocol that allows a node to send a packet to any</p>
+<hr>
+<p>other node in an AppleTalk internet and to receive an echoed copy of that packet in return.</p>
+<p><strong>AppleTalk Filing Interface (AFI):</strong> the interface to an AFP file server through which workstations can gain access to server volumes, files, directories, and forks.</p>
+<p><strong>AppleTalk Filing Protocol (AFP):</strong> the presentation-layer protocol that allows users to share data files and application programs that reside in a shared resource, known as a file server.</p>
+<p><strong>AppleTalk Session Protocol (ASP):</strong> a general-purpose protocol that uses the services of ATP to provide session establishment, maintenance, and teardown, along with request sequencing.</p>
+<p><strong>AppleTalk Transaction Protocol (ATP):</strong> a transport protocol that provides a loss-free transaction service between sockets. This service allows exchanges between two socket clients in which one client requests the other to perform a particular task and to report the results; ATP binds the request and response together to ensure the reliable exchange of request-response pairs.</p>
+<p><strong>ASP:</strong> see AppleTalk Session Protocol.</p>
+<p><strong>at-least-once (ALO) transaction:</strong> an ATP transaction in which the request is repeated until a response is received by the requester or until a maximum retry count is reached. This recovery mechanism ensures that the transaction request is executed at least one time.</p>
+<p><strong>ATP:</strong> see AppleTalk Transaction Protocol.</p>
+<p><strong>backbone network:</strong> a central network to which a number of other smaller, usually lower-speed, networks connect; the backbone (or spine) network is usually constructed with a high-speed communication medium.</p>
+<p><strong>backbone router:</strong> one in a series of internet routers that are used to interconnect several AppleTalk networks through a backbone network.</p>
+<p><strong>background spooler:</strong> a print-spooling process that runs in the background on an originating computer.</p>
+<p><strong>bitmap order:</strong> when data is packed in bitmap order, the parameter corresponding to the least-significant set bit in the bitmap is packed first, followed by the parameter corresponding to the next most-significant set bit; packing continues in this manner, and the packet ends with the parameter corresponding to the most-significant set bit.</p>
+<p><strong>bit stuffing:</strong> a technique used to ensure that the unique bit pattern used to designate a flag byte (01111110) does not occur within the data packet. When bit stuffing is used, the link-level protocol (such as LLAP) inserts a 0 bit after every string of five consecutive 1 bits detected in the data stream being transmitted (the receiving LAP performs the inverse operation, stripping out each 0 bit that follows five consecutive 1 bits, in order to restore the data to its original state).</p>
+<p><strong>broadcast hardware address (broadcast ID):</strong> a hardware address common to all nodes on a data link; packets sent to this address will be delivered to every node on the data link. Broadcast hardware addresses facilitate broadcast transmissions.</p>
+<p><strong>broadcasting:</strong> delivery of a transmission to all active stations at the same time, such as over a bus-type local network.</p>
+<p><strong>broadcast packet:</strong> a packet intended to be received by all nodes in a network. In a LocalTalk implementation, broadcast packets are assigned a destination node identification number of 255 ($FF).</p>
+<hr>
+<p><strong>broadcast protocol address</strong>: an address that is accepted by all nodes that support a particular protocol stack; the broadcast protocol address facilitates the directed broadcast of packets to this subset of nodes.</p>
+<p><strong>broadcast transmission dialog</strong>: in a LocalTalk environment, the transmission of packets intended to be received by all nodes in the network. The source sends a lapRTS packet to the broadcast hardware address and then sends the data packet.</p>
+<p><strong>bus</strong>: a single, shared communication link. Messages are broadcast along the whole bus, and each network device listens for and receives messages directed to its unique address. The physical medium of a LocalTalk network is a twisted-pair bus.</p>
+<p><strong>Carrier Sense Multiple Access with Collision Avoidance (CSMA/CA)</strong>: a technique that allows multiple stations to gain access to a transmission medium (multiple access) by listening until no signals are detected (carrier sense), and then signaling their intent to transmit before transmitting. When contention occurs, transmission is based on a randomly selected order (collision avoidance). LLAP, used for node-to-node delivery in a LocalTalk environment, uses the CSMA/CA technique.</p>
+<p><strong>catalog node (CNode)</strong>: an entry (either a directory or a file) in a volume catalog of a disk. AFP recognizes two types of CNodes: internal CNodes, which are always directories, and leaf CNodes, which are located at the end of a limb in the tree-structured catalog and which can be either files or empty directories.</p>
+<p><strong>CCITT</strong>: see Consultative Committee on International Telephone &amp; Telegraph.</p>
+<p><strong>clear-to-send (CTS) control packet</strong>: an LLAP packet sent in response to an RTS control packet, indicating the sending node&rsquo;s receipt of the RTS and its readiness to receive the data packet.</p>
+<p><strong>client</strong>: a software process that makes use of the services of another software process. See socket client.</p>
+<p><strong>closed connection</strong>: a connection that has been torn down. In a closed connection, neither end of the connection is established, so data transmission over the connection is no longer possible.</p>
+<p><strong>CNode</strong>: see catalog node.</p>
+<p><strong>connection</strong>: an association between two sockets that facilitates the establishment and maintenance of an exclusive dialog between two entities. See session.</p>
+<p><strong>connection end</strong>: in a connection, the communicating socket and the connection information associated with it.</p>
+<p><strong>connection identifier (ConnID)</strong>: an identification number associated with each connection; a connection provides a unique identifier by using the socket address and the ConnID of the two connection ends.</p>
+<p><strong>connection-listening socket</strong>: a socket that accepts open-connection requests and passes them along to its ADSP client for further processing.</p>
+<p><strong>connection state</strong>: the term used to refer collectively to control and state information that is maintained by the two ends of a connection.</p>
+<p><strong>connection timer</strong>: a timer that is started when a connection opens. When an end receives a packet from the other end, the timer is reset; the timer</p>
+<hr>
+<p>expires if the end does not receive any packets within a specified time period (if no data is being transmitted, tickling packets can be sent to keep the connection open). Connection timers are used by the AppleTalk session-layer protocols, such as PAP, ASP, and ADSP.</p>
+<p><strong>ConnID</strong>: see connection identifier.</p>
+<p><strong>Consultative Committee on International Telephone &amp; Telegraph (CCITT)</strong>: a committee formed in 1938 that sets the international standards for the hardware and communications protocols for data and voice transmissions.</p>
+<p><strong>control information (CI)</strong>: the field in an ATP packet indicating the packet type and various control information, such as the end-of-message flag.</p>
+<p><strong>control packets</strong>: messages that do not contain data, but that are used for administrative purposes, such as enquiry, acknowledgment, and notification; control packets are also used to open and close connections.</p>
+<p><strong>CRC</strong>: see cyclic-redundancy check.</p>
+<p><strong>CSMA/CA</strong>: see Carrier Sense Multiple Access with Collision Avoidance.</p>
+<p><strong>CTS</strong>: see clear-to-send control packet.</p>
+<p><strong>cyclic-redundancy check (CRC)</strong>: an error-checking control technique that uses a polynomial algorithm to generate a 16-bit FCS based on the content of the frame. The FCS is appended to the end of each frame and is matched by the receiver to determine whether an error has occurred. LLAP uses the standard CRC-CCITT algorithm: G(x) = x^16 + x^{12} + x^5 + 1.</p>
+<p><strong>DAS</strong>: see dynamically assigned socket.</p>
+<p><strong>datagram</strong>: a self-contained packet, independent of other packets in a data stream. Since a datagram carries its own routing information, its reliable delivery does not depend on earlier exchanges between the source and destination devices. DDP is responsible for delivering AppleTalk transmissions as datagrams.</p>
+<p><strong>Datagram Delivery Protocol (DDP)</strong>: the network-layer protocol that is responsible for the socket-to-socket delivery of datagrams over an AppleTalk internet.</p>
+<p><strong>data packets</strong>: messages that contain client data.</p>
+<p><strong>data transparency</strong>: a technique of data transmission that allows data characters to be sent or received in any form, without regard to their possible interpretation as control characters. For example, to ensure that data containing six consecutive 1 bits is not interpreted as a flag byte, LLAP uses a data transparency mechanism known as bit stuffing. See bit stuffing.</p>
+<p><strong>DDP</strong>: see Datagram Delivery Protocol.</p>
+<p><strong>default zone</strong>: the zone to which any node on an extended network will automatically belong until a different zone is explicitly selected for that node.</p>
+<p><strong>deny modes</strong>: a set of AFP permissions that establishes what rights should be denied to users attempting to open a file fork that has already been opened by another user.</p>
+<p><strong>DES</strong>: data encryption standard published by the National Bureau of Standards (FIPS publication #46).</p>
+<p><strong>descendent</strong>: a destination CNode (an entry in a volume catalog of a disk); the directories along the path to the descendent are considered its ancestors.</p>
+<p><strong>Desktop database</strong>: a database used by a file server to hold information for use by the Macintosh Finder.</p>
+<hr>
+<p><strong>Desktop file:</strong> an invisible resource file that holds information for use by the Macintosh Finder.</p>
+<p><strong>directed broadcast:</strong> the transmission of a packet that is intended to be received by all nodes on a network other than the sender&rsquo;s network.</p>
+<p><strong>directed packet:</strong> a packet intended to be received by a single node.</p>
+<p><strong>directed transmission dialog:</strong> in a LocalTalk environment, the transmission of packets intended to be received by a single node. The source sends a lapRTS packet to the destination; the destination responds with a lapCTS packet; then the source sends the data packet.</p>
+<p><strong>directory:</strong> a construct for organizing information stored on a disk; disk directories can contain files and other directories. Each directory for a disk volume has an identifier, through which it and the files and other directories that it contains can be addressed. Sometimes called &ldquo;folder.&rdquo;</p>
+<p><strong>Directory ID:</strong> a unique value that is assigned to each directory when it is created.</p>
+<p><strong>duplicate transaction-request filtering:</strong> an ATP process used to implement XO transaction service; in this process, the responder searches through a transactions list to determine whether the request has already been received. Duplicates are not delivered to ATP&rsquo;s client.</p>
+<p><strong>dynamically assigned socket (DAS):</strong> a socket assigned dynamically by DDP upon request from clients in the node. In an AppleTalk network, the sockets numbered 128–254 ($80–$FE) are allocated as DASs.</p>
+<p><strong>dynamic node address assignment:</strong> an addressing scheme that assigns node addresses dynamically, rather than associating a permanent address with each node. Dynamic node address assignment facilitates adding and removing nodes from the network by preventing conflicts between old node addresses and new node addresses.</p>
+<p><strong>ELAP:</strong> see EtherTalk Link Access Protocol.</p>
+<p><strong>end of message (EOM):</strong> a signal that indicates the end of a message. When the EOM bit is set in the header of a packet, it indicates that this packet is the last in a multipacket message, such as a multipacket ATP response or an ADSP data stream.</p>
+<p><strong>Enquiry control packet:</strong> an LLAP packet sent as part of the dynamic node number assignment algorithm, asking if any node on the link is currently using the specified LLAP node number.</p>
+<p><strong>entity identifier:</strong> the unique address of a network-visible entity&rsquo;s socket in a node within an internet. The specific format of an entity identifier is network-dependent.</p>
+<p><strong>entity name:</strong> a name that an NVE may assign itself. Although not all NVEs have names, NVEs can possess several names (or aliases). An entity name is made up of three character strings: object, type, and zone.</p>
+<p><strong>entity type:</strong> the part of an entity name that describes to what class the entity belongs; for example, &ldquo;LaserWriter&rdquo; or &ldquo;AFPServer.&rdquo;</p>
+<p><strong>entry state:</strong> a variable associated with each entry in a routing table; three possible values for this variable are good, suspect, and bad.</p>
+<p><strong>enumerate:</strong> to list the offspring (files and directories) of a directory and selected parameters for those offspring.</p>
+<hr>
+<p><strong>enumerator value:</strong> a number used to distinguish among several entity names that are registered on the same socket. On a given socket, each entity name will have a unique enumerator value.</p>
+<p><strong>EOM:</strong> see end of message.</p>
+<p><strong>EtherTalk:</strong> Apple&rsquo;s data-link product that allows an AppleTalk network to be connected by Ethernet cables.</p>
+<p><strong>EtherTalk Link Access Protocol (ELAP):</strong> the link-access protocol used in an EtherTalk network. ELAP is built on top of the standard Ethernet data-link layer.</p>
+<p><strong>exactly-once (XO) transaction:</strong> an ATP transaction in which the request is delivered only one time, thus protecting against damage that could result from a duplicate transaction.</p>
+<p><strong>extended AppleTalk network:</strong> an AppleTalk network that allows addressing of more than 254 nodes and can support multiple zones.</p>
+<p><strong>extended DDP header:</strong> the DDP header type used for packets that are transmitted from one network to another network within an AppleTalk internet.</p>
+<p><strong>FCS:</strong> see frame check sequence.</p>
+<p><strong>file:</strong> a collection of related information that is stored on a disk. A file on a disk has a name through which it is accessible. Related files may be grouped together in a common directory. In the Macintosh file system and the AFI, a file is divided into two forks: a data fork and a resource fork.</p>
+<p><strong>file server:</strong> a computer running a specialized program that provides network users with access to shared disks or other mass storage devices. Through the implementation of access controls, a file server facilitates controlled access to common files and applications.</p>
+<p><strong>Finder:</strong> a Macintosh application that allows access to documents and other applications; the Finder uses icons to represent objects on a disk or volume. You use it to manage documents and applications and to get information to and from disks.</p>
+<p><strong>flag byte:</strong> a special bit pattern that is used in bit-oriented protocols to mark the beginning (and often the end) of a frame. The flag byte used as a frame delimiter in LLAP is the bit sequence 01111110 ($7E).</p>
+<p><strong>flow quantum:</strong> the maximum amount of data that can be transferred in a PAP transaction based on the buffer space available at the end that is issuing the read request.</p>
+<p><strong>flush:</strong> to write data from a cache in memory to a disk.</p>
+<p><strong>FM-0:</strong> a bit-encoding technique that provides self-clocking. LocalTalk implementations use FM-0 encoding.</p>
+<p><strong>folder:</strong> see directory.</p>
+<p><strong>fork:</strong> Macintosh files are divided into two parts, known as forks; the data fork is an unstructured finite sequence of data bytes. The resource fork is the part of a file that is accessible through the Macintosh Resource Manager and that contains specialized data used by an application, such as menus, fonts, and icons (as well as the application code for an application file).</p>
+<p><strong>frame:</strong> a group of bits forming a distinct transmission unit that is sent between data-link-layer entities. Each frame contains its own control information for addressing and error checking. The first several bits in a frame form a header that contains address and other control information, followed by the data (or message) being sent, and ending with a check sequence for error detection.</p>
+<hr>
+<p><strong>frame check sequence (FCS):</strong> a 16-bit sequence used for error checking that occurs at the end of each frame. In a LocalTalk implementation, the standard CRC-CCITT algorithm is used to compute the FCS. It is computed as a function of the contents of the destination node ID, source node ID, LLAP type, and data fields.</p>
+<p><strong>frame preamble:</strong> the part of an LLAP frame preceding the LLAP packet; specifically, 2 or more flag bytes.</p>
+<p><strong>frame trailer:</strong> the part of an LLAP frame following the LLAP packet; specifically, the FCS, trailing flag byte, and an abort sequence.</p>
+<p><strong>gateways:</strong> nodes that separate and manage communication between different types of networks; for example, a gateway is used to connect an AppleTalk protocol-based network to a non-AppleTalk protocol-based system. The gateway serves as a translator between the protocols of the two connected networks.</p>
+<p><strong>global backoff mask:</strong> a mask used by LLAP that takes on particular values to adjust the amount of time a node waits before transmitting in order to avoid collisions. The possible values in binary are: 0, 01, 011, 0111, 01111.</p>
+<p><strong>guest:</strong> a user who is logged on to a file server without a registered user name and password. A guest cannot own a directory. Guests receive whatever access privileges are assigned to &ldquo;world.&rdquo;</p>
+<p><strong>half-open connection:</strong> a connection in which one end is established and the other end is closed, unreachable, or not yet open.</p>
+<p><strong>half router:</strong> an internet router used primarily to connect two remote AppleTalk networks. Each remote network contains an internet router that interconnects to the router attached to the other network through a long-distance communication link. This combination of two half-routers serves, in effect, as a single routing unit.</p>
+<p><strong>hardware address:</strong> the unique node address that is determined by the physical and data-link layers of the network.</p>
+<p><strong>header:</strong> the portion of a message, usually at the beginning of a packet, that contains control information, such as the source and destination addresses, packet-type identifiers, sequence numbers, and priority-level indicators.</p>
+<p><strong>HFS:</strong> see hierarchical file system.</p>
+<p><strong>hierarchical file system (HFS):</strong> the file system used on Macintosh hard disks and 800K floppy disks.</p>
+<p><strong>history bytes:</strong> two 8-bit bytes that are maintained by LLAP and that contain the number of times a node has deferred and the number of times it has sensed a collision in the last eight attempts to gain access to the link. These history bytes are used to determine the value of the random wait period.</p>
+<p><strong>hop count:</strong> the number of internet routers that a datagram passes through en route to its destination; each internet router is counted as 1 hop.</p>
+<p><strong>IDG:</strong> see interdialogue gap.</p>
+<p><strong>IEEE 802.2:</strong> The Institute of Electrical and Electronics Engineers standard defining service interfaces and packet formats for data-link service.</p>
+<p><strong>IFG:</strong> see interframe gap.</p>
+<p><strong>interdialogue gap (IDG):</strong> the minimum separation time between dialogues; for LLAP, 400 microseconds.</p>
+<p><strong>interframe gap (IFG):</strong> the maximum separation time between frames of a single dialogue; for LLAP, 200 microseconds.</p>
+<hr>
+<p><strong>International Standards Organization-Open System Interconnection (ISO-OSI) reference model</strong>: a seven-layer network architecture reference model established by the ISO and adhered to by the CCITT. The OSI model is intended to provide a common basis for coordinating the development of standards aimed at systems interconnection, while allowing existing standards to be placed in perspective within a common framework. The model represents a network as a hierarchical structure of layers of function; it segments the data communication concept into seven layers and defines the functionality of each layer. Each layer provides a set of functions accessible to the layer above it. In the &ldquo;open&rdquo; philosophy, the services provided by one layer to another are strictly defined, but the manner used to provide the services is left open to interpretation.</p>
+<p><strong>internet</strong>: one or more AppleTalk networks connected by intelligent nodes referred to as internet routers.</p>
+<p><strong>internet router (IR)</strong>: an intelligent node that connects AppleTalk networks and serves as the key component in extending the datagram delivery mechanism to an internet setting. An IR functions as a packet-forwarding agent to allow datagrams to be sent between any two nodes of an internet by using a store-and-forward process. AppleTalk internet routers fall into three categories: local routers, half routers, and backbone routers.</p>
+<p><strong>internet socket address</strong>: the address of a socket in an AppleTalk internet. This address is made up of the socket number and the node ID and network number of the node in which the socket is located; the internet address provides a unique identifier for any socket in an AppleTalk internet.</p>
+<p><strong>IR</strong>: see internet router.</p>
+<p><strong>ISO-OSI reference model</strong>: see International Standards Organization-Open System Interconnection reference model.</p>
+<p><strong>LAP</strong>: see Link Access Protocol.</p>
+<p><strong>link</strong>: any data transmission medium shared by a set of nodes and used for communication among these nodes.</p>
+<p><strong>Link Access Protocol (LAP)</strong>: a link-level protocol that is responsible for the transmission of data across the physical link and ensures data integrity on this link. Sometimes called &ldquo;data-link access protocol.&rdquo; The LocalTalk Link Access Protocol (LLAP) is the LAP protocol used in a LocalTalk environment.</p>
+<p><strong>LLAP</strong>: see LocalTalk Link Access Protocol.</p>
+<p><strong>LLAP type field</strong>: a 1-byte LLAP field that indicates packet type. Values in the range 1-127 ($01-$7F) indicate that the packet is a data packet; the type field specifies the LLAP type of the client to whom the packet&rsquo;s data must be delivered. Values in the range 128-255 ($80-$FF) are reserved for control packets.</p>
+<p><strong>local backoff mask</strong>: similar to the global backoff mask; the local backoff mask is used by LLAP to extend the time period between delivery attempts to a nonlistening node, thereby increasing that node&rsquo;s chances of receiving the packet.</p>
+<p><strong>local router</strong>: an internet router used to connect AppleTalk networks that are in close proximity to each other; the local router is directly connected to each of the AppleTalk networks that it links.</p>
+<p><strong>LocalTalk Link Access Protocol (LLAP)</strong>: the link-level protocol that manages node-to-node delivery of data in a LocalTalk environment. LLAP manages bus access, provides a node-addressing</p>
+<hr>
+<p>mechanism, and controls data transmission and reception, ensuring packet length and integrity.</p>
+<p><strong>long name</strong>: the name used in AFP for a CNode (file or directory on a volume attached to a file server) so that the CNode can be recognized by a Macintosh workstation.</p>
+<p><strong>LSB</strong>: least-significant bit.</p>
+<p><strong>maximum packet lifetime (MPL)</strong>: the length of time that a packet is allowed to exist in the internet (for AppleTalk, approximately 30 seconds).</p>
+<p><strong>missing clock</strong>: the detection and then absence of clocking information. Used by LLAP transmitters to synchronize their access to the bus.</p>
+<p><strong>mount</strong>: the process of making a disk volume that is attached to a file server available to a workstation.</p>
+<p><strong>MSB</strong>: most-significant bit.</p>
+<p><strong>multicast hardware address</strong>: a destination hardware address common to a designated subset of nodes in a network; a packet with a multicast address as a destination is sent to all network nodes that can be identified by the multicast address. Multicast addresses facilitate directed broadcasts to a group of nodes.</p>
+<p><strong>Name Binding Protocol (NBP)</strong>: the AppleTalk transport-level protocol that translates a character string name into the internet address of the corresponding socket client; NBP enables AppleTalk protocols to understand user-defined zones and device names by providing and maintaining translation tables that map these names to corresponding socket addresses.</p>
+<p><strong>name-lookup process</strong>: the NBP process that binds the entity&rsquo;s name to its internet address.</p>
+<p><strong>names directory (ND)</strong>: a distributed database of entity-name to entity-internet-address mappings; the ND is the union of the individual names tables in all the nodes of an internet.</p>
+<p><strong>names information socket (NIS)</strong>: the NBP socket through which name lookup requests are received.</p>
+<p><strong>names table</strong>: a table in each node that contains entity-name to entity-internet-address mappings (known as NBP tuples) of all named NVEs in the node.</p>
+<p><strong>native file system commands</strong>: commands used to manipulate files on a diskette or other memory resource that is physically connected to a workstation.</p>
+<p><strong>Native Filing Interface (NFI)</strong>: the interface through which native file system commands are made; the NFI defines the nature and format of parameters passed in and returned by the command.</p>
+<p><strong>NBP</strong>: see Name Binding Protocol.</p>
+<p><strong>ND</strong>: see names directory.</p>
+<p><strong>network number</strong>: a 16-bit number used to indicate the AppleTalk network a node is connected to. Nodes choose their network number from within the network number range assigned to their network.</p>
+<p><strong>network number range</strong>: the range of network numbers that are valid for use by nodes on a given AppleTalk network.</p>
+<p><strong>network-specific broadcast</strong>: a broadcast intended only for those nodes with the indicated network number.</p>
+<hr>
+<p><strong>network-visible entity (NVE):</strong> resources that are addressable through a network. Typically, the NVE is a socket client for a service available in a node.</p>
+<p><strong>network-wide broadcast:</strong> a broadcast intended for all nodes on a given network.</p>
+<p><strong>NFI:</strong> see Native Filing Interface.</p>
+<p><strong>NIS:</strong> see names information socket.</p>
+<p><strong>node:</strong> a data-link addressable entity on a network.</p>
+<p><strong>node ID:</strong> see node identifier.</p>
+<p><strong>node identifier (node ID):</strong> an 8-bit number that, when combined with the AppleTalk network number of a node, is used to uniquely identify each node on a network.</p>
+<p><strong>nonextended network:</strong> an AppleTalk network that supports addressing of up to 254 nodes and supports only one zone.</p>
+<p><strong>nonrouter node:</strong> a network node that does not function as an internet router.</p>
+<p><strong>NVE:</strong> see network-visible entity.</p>
+<p><strong>offspring:</strong> each CNode (file or directory in a volume catalog) is considered the offspring of the CNode directly above it in the catalog tree; the higher CNode is called the parent (or parent directory).</p>
+<p><strong>open connection:</strong> an association that is set up between two sockets in which both ends have been established so that data can flow over the connection.</p>
+<p><strong>open systems architecture:</strong> a hardware or software architecture that is well defined and whose specifications are publicly available, allowing others to substitute component parts or form interconnections to other architectures.</p>
+<p><strong>packet:</strong> a group of bits, including data and control elements, that is transmitted together as a unit within a frame; the control elements include a source address, a destination address, and possibly error-control information.</p>
+<p><strong>PAP:</strong> see Printer Access Protocol.</p>
+<p><strong>parent (or parent directory):</strong> a directory is considered a parent to the CNode (file or directory) directly below it in the catalog tree; the lower CNode is called an offspring. The Parent ID is the Directory ID of the parent directory.</p>
+<p><strong>password:</strong> a unique string of characters that a user (or program) must supply in order to gain access to a network (or to a specific resource within the network); passwords are frequently encrypted prior to transmission to ensure network security.</p>
+<p><strong>pathname:</strong> the name of a CNode (file or directory) that specifies where the CNode belongs in the catalog tree. The pathname is formed by concatenating the directory names of all ancestor directories that make up the path.</p>
+<p><strong>path type:</strong> indicates whether the elements of the associated AFP pathname are all short names or all long names.</p>
+<p><strong>permissions:</strong> AFP access and deny modes that are used to regulate access to files. The AFP permission modes contribute to the synchronization rules that can prevent applications from damaging files through simultaneous access attempts.</p>
+<p><strong>port descriptor:</strong> information fields used to describe a router port; these fields include a flag that indicates whether the port is connected to an AppleTalk network, the port number, the router&rsquo;s address corresponding to the port, and the network number range for the network to which the port is connected.</p>
+<hr>
+<p><strong>Printer Access Protocol (PAP)</strong>: the AppleTalk protocol that manages interaction between workstations and print servers; PAP handles connection setup, maintenance, and termination, as well as data transfer.</p>
+<p><strong>print spooler</strong>: a hardware application or a software application (or both) that intercepts printable document files and that interacts with a printer to print the document, freeing the originating computer of this responsibility.</p>
+<p><strong>probe</strong>: a packet sent requesting acknowledgment from the remote end of a connection; the probe itself serves as an acknowledgment to the remote end.</p>
+<p><strong>protocol</strong>: a set of procedural rules for information exchange over a communication medium; these rules govern the content, format, timing, sequencing, and error control of messages exchanged in a network.</p>
+<p><strong>protocol address</strong>: the unique address that a node assigns to identify the protocol client that is to receive a packet for a particular protocol stack. An example of a protocol address is the 16-bit AppleTalk network number and 8-bit node ID protocol address that DDP and AARP use to verify that an incoming packet is intended for the particular DDP node.</p>
+<p><strong>protocol family</strong>: a collection of related protocols that correspond to the layers of the ISO-OSI reference model and that together enable transmission and reception of packets over a network. The combination of all AppleTalk protocols is an example of a protocol family.</p>
+<p><strong>protocol stack</strong>: a particular implementation of a protocol family within a node.</p>
+<p><strong>provisional node address</strong>: the address used by a node in the process of selecting its network number.</p>
+<p><strong>pseudorandom numbers</strong>: numbers picked via a mathematical process that approximates a truly random process.</p>
+<p><strong>reception window size</strong>: the amount of buffer space that a connection end has available for receiving incoming data.</p>
+<p><strong>reply block</strong>: the format of an AFP call that is sent from the file server to an AFP workstation client; the response to a command block.</p>
+<p><strong>request block</strong>: the format of an AFP call that is sent from the AFP workstation client to the file server.</p>
+<p><strong>request control block (RqCB)</strong>: an information block that an ATP responder maintains for each call for a request issued by its client; the RqCB contains information provided by the call, including all data pertinent to the buffers and to the client delivery mechanism.</p>
+<p><strong>request-to-send (RTS) control packet</strong>: an LLAP packet sent to inform all nodes on the link of a node&rsquo;s desire to transmit a data packet and to request the destination node to send back a CTS control packet.</p>
+<p><strong>response control block (RspCB)</strong>: an information block that an ATP responder maintains in nodes implementing the exactly-once mode of operation; the RspCB holds the information required to filter duplicate requests and to retransmit response packets.</p>
+<p><strong>root</strong>: the base or topmost directory in a volume catalog.</p>
+<p><strong>router</strong>: see internet router.</p>
+<p><strong>routing seed</strong>: the initial routing table set up by an internet router after it is first switched on.</p>
+<hr>
+<p><strong>routing table:</strong> a table, resident in each AppleTalk internet router, that serves as a mapping of the internet, specifying the path and distance (in hops) between the internet router and other networks. Routing tables are used to determine whether and where a router will forward a data packet. RTMP is used to update the routing tables.</p>
+<p><strong>Routing Table Maintenance Protocol (RTMP):</strong> the AppleTalk protocol used to establish and maintain the routing information that is required by internet routers in order to route datagrams from any source socket to any destination socket in the internet. Using RTMP, internet routers dynamically maintain routing tables to reflect changes in internet topology.</p>
+<p><strong>routing tuple:</strong> the last part of an RTMP Data packet; routing tuples consist of two values: the destination network number or range and the distance, in hop counts, from the sending internet router to the destination network.</p>
+<p><strong>RqCB:</strong> see request control block.</p>
+<p><strong>RspCB:</strong> see response control block.</p>
+<p><strong>RTMP:</strong> see Routing Table Maintenance Protocol.</p>
+<p><strong>RTMP Stub:</strong> a process that listens on the RTMP socket in nonrouter nodes and that, upon receiving an RTMP Data packet, copies the packet&rsquo;s origination network number range and node address into two variables associated with the nonrouter node; the network number range is copied to THIS-NET-RANGE, and the node address (network number and node ID) is copied to A-ROUTER.</p>
+<p><strong>RTS:</strong> see request-to-send.</p>
+<p><strong>SAS:</strong> see statically assigned socket.</p>
+<p><strong>SCC:</strong> see Zilog 8530 Serial Communications Controller.</p>
+<p><strong>SDLC:</strong> see Synchronous Data Link Control.</p>
+<p><strong>seed router:</strong> an internet router in an AppleTalk network that has the network number range built into its port descriptor. Each AppleTalk network must have at least one seed router. This router will define the network number range for the other routers in that network.</p>
+<p><strong>send transaction status (STS) bit:</strong> a bit in the header of an ATP TResp packet, requesting the receiver of that packet to resend the ATP TReq with the current bitmap.</p>
+<p><strong>Serial Communications Controller (SCC):</strong> see Zilog 8530 Serial Communications Controller.</p>
+<p><strong>server node IDs:</strong> one of two classes of node ID numbers; server node IDs fall within the range 128–254 ($80–$FE) and are used by network servers (such as printers, spoolers, and file servers).</p>
+<p><strong>servers:</strong> network nodes that provide a service to the other nodes in the network, such as shared access to a file system (a file server), control of a printer (a printer server), or storage of messages in a mail system (a mail server).</p>
+<p><strong>server session socket (SSS):</strong> a socket in a server to which all session-related packets are sent.</p>
+<p><strong>session:</strong> a logical connection between two network entities (typically, a workstation and a server) that facilitates establishment and maintenance of an exclusive dialog between the two entities. In an AppleTalk network, ASP can be used to establish, maintain, and tear down sessions; ASP also ensures that the commands transmitted during a session are delivered in the same order as they were sent and that the results of the commands are conveyed back to the originating entity. See connection.</p>
+<hr>
+<p><strong>session identifier (session ID):</strong> an identification number associated with each session; the session ID is unique among all the sessions to the same server; since multiple workstations can have sessions to the same server simultaneously, ASP uses session IDs to distinguish between commands received in these various sessions.</p>
+<p><strong>session listening socket (SLS):</strong> a socket in a server on which the server registers its name and listens for requests to open a session.</p>
+<p><strong>session maintenance timeout:</strong> a timeout period that occurs when one end of a session determines that the other end is unreachable because it has been unresponsive; when the session maintenance timeout occurs, ASP closes the session.</p>
+<p><strong>short DDP header:</strong> the DDP header type often used for packets whose source and destination sockets are within the boundaries of a single AppleTalk network. (An extended header is required for packets that are transmitted across network boundaries within an internet.)</p>
+<p><strong>short name:</strong> the name used in AFP for a CNode (file or directory on a volume attached to a file server) so that the CNode can be recognized by an MS-DOS workstation.</p>
+<p><strong>SLS:</strong> see session listening socket.</p>
+<p><strong>SNAP:</strong> Sub-Network Access Protocol; used to distinguish between different protocol families using IEEE 802.2 packets.</p>
+<p><strong>socket:</strong> an addressable entity within a node connected to an AppleTalk network; sockets are owned by software processes known as socket clients. AppleTalk sockets are divided into two groups, statically assigned sockets (SASs), which are reserved for clients such as AppleTalk core protocols, and dynamically assigned sockets (DASs), which are assigned dynamically by DDP upon request from clients in the node.</p>
+<p><strong>socket client:</strong> a software process or function implemented in a network node.</p>
+<p><strong>socket listener:</strong> code provided by a socket client to receive datagrams addressed to the socket.</p>
+<p><strong>socket number:</strong> an 8-bit number that identifies a socket. A maximum of 254 different socket numbers can be assigned in a node.</p>
+<p><strong>sockets table:</strong> a table that maintains an appropriate descriptor of each active socket listener in a node; the data structure for the sockets table is built and maintained by the code that implements DDP in the node.</p>
+<p><strong>spooler/server:</strong> a combination of hardware and software that stores documents sent to it over a network and manages the printing of those documents on a printer.</p>
+<p><strong>SSS:</strong> see server session socket.</p>
+<p><strong>startup range:</strong> the range from which a node selects the network number part of its provisional address if it has no other network number saved.</p>
+<p><strong>statically assigned socket (SAS):</strong> a socket that is permanently reserved for use by a designated process. In an AppleTalk network, SASs are the sockets numbered 1-127 ($01-$7F); they are reserved for use by specific socket clients and for low-level built-in network services.</p>
+<p><strong>STS:</strong> see send transaction status bit.</p>
+<p><strong>synchronization pulse:</strong> in LLAP, a transition period on the link that is followed by an idle period greater than 2 bit-times, resulting in a missing clock</p>
+<hr>
+<p>indication in all receiving nodes. Used to synchronize access to the link.</p>
+<p><strong>synchronization rules</strong>: rules used by file servers to control simultaneous file access. The synchronization rules used by AFP are based on a set of file-opening permissions: an access mode and a deny mode.</p>
+<p><strong>Synchronous Data Link Control (SDLC)</strong>: a data-link layer protocol for managing synchronous, code-transparent, serial-by-bit information transfer. SDLC transmission exchanges may be full duplex or half duplex over either a switched or nonswitched link. The configuration of the link may be point-to-point, multipoint, or loop. SDLC frame format is used in LocalTalk implementations.</p>
+<p><strong>TCB</strong>: see transaction control block.</p>
+<p><strong>TID</strong>: see transaction identifier.</p>
+<p><strong>TokenTalk</strong>: Apple&rsquo;s data-link product that allows an AppleTalk network to be connected by token ring cables.</p>
+<p><strong>TokenTalk Link Access Protocol (TLAP)</strong>: the link-access protocol used in a TokenTalk network. TLAP is built on top of the standard token ring data-link layer.</p>
+<p><strong>transaction</strong>: an exchange of information between a source and a destination client that accomplishes a particular action or result. In an AppleTalk environment, ATP provides a transaction service that enables a source client&rsquo;s request to be bound to the destination client&rsquo;s response.</p>
+<p><strong>transaction bitmap</strong>: the field in an ATP TReq packet indicating which ATP TResp packets are being requested.</p>
+<p><strong>transaction control block (TCB)</strong>: an information block that the ATP requester must maintain for retransmitting an ATP request and for receiving its responses.</p>
+<p><strong>transaction identifier (TID)</strong>: an identification number provided by ATP to bind together the request and response portions of a transaction.</p>
+<p><strong>Transaction Release (TRel)</strong>: an ATP packet sent in response to XO TResp, specifying that the entire response message was received; upon receiving the TRel, the transaction responder removes the RspCB.</p>
+<p><strong>Transaction Request (TReq)</strong>: an ATP packet sent to ask an ATP client to perform an action and to return a response.</p>
+<p><strong>Transaction Response (TResp)</strong>: an ATP packet sent in response to a TReq, specifying the results of the requested operation.</p>
+<p><strong>transactions list</strong>: a list that the ATP responder maintains of all the recently received transactions; this list is used to implement XO transaction service.</p>
+<p><strong>TRel</strong>: see Transaction Release.</p>
+<p><strong>TReq</strong>: see Transaction Request.</p>
+<p><strong>TResp</strong>: see Transaction Response.</p>
+<p><strong>UAM</strong>: see user authentication method.</p>
+<p><strong>user authentication method (UAM)</strong>: any procedure used by a server and workstation by which the server is convinced of the user&rsquo;s identity.</p>
+<p><strong>user name</strong>: a string of characters that uniquely identifies a user for login purposes; the user name is entered by the user and confirmed in a user-authentication database before the user is permitted to gain access to the network resource.</p>
+<p><strong>user node IDs</strong>: one of two classes of node ID numbers; user node IDs fall within the range 1-127 ($01-$7F) and are generally used by workstations.</p>
+<hr>
+<p><strong>volume</strong>: a file storage unit. Each disk attached to an AppleTalk file server is considered a volume, although some disks may contain multiple volumes.</p>
+<p><strong>volume catalog</strong>: a tree-structured catalog of the files and directories on a volume.</p>
+<p><strong>Volume ID</strong>: a session-unique value assigned by a file server to each of its volumes; AFP calls use the Volume ID to specify the desired volume.</p>
+<p><strong>volume signature</strong>: a 2-byte field in AFP calls that identifies the volume type; volumes are of three possible types: flat, fixed Directory ID, or variable Directory ID.</p>
+<p><strong>workstation session socket (WSS)</strong>: a socket in a workstation to which all session-related packets are sent.</p>
+<p><strong>WSS</strong>: workstation session socket.</p>
+<p><strong>XO transaction</strong>: see exactly-once transaction.</p>
+<p><strong>Zilog 8530 Serial Communications Controller (SCC)</strong>: an integrated circuit commonly used to provide controller services in an LLAP implementation.</p>
+<p><strong>ZIP</strong>: see Zone Information Protocol.</p>
+<p><strong>ZIP bringback time</strong>: a specified amount of time after a network is brought down in which the network can be brought up again with a new zone name.</p>
+<p><strong>ZIS</strong>: see zone information socket.</p>
+<p><strong>ZIT</strong>: see zone information table.</p>
+<p><strong>zone</strong>: an arbitrary subset of the nodes within an internet.</p>
+<p><strong>Zone Information Protocol (ZIP)</strong>: the AppleTalk session-layer protocol that is used to maintain and discover the internet-wide mapping of network number ranges to zone names; ZIP is used by NBP to determine which networks contain nodes which belong to a zone.</p>
+<p><strong>zone information socket (ZIS)</strong>: the statically assigned socket (SAS) in each internet router to which nodes address requests for zone information and through which the internet router responds to those requests.</p>
+<p><strong>zone information table (ZIT)</strong>: a complete network-range-to-zones-list mapping of the internet maintained by each internet router in an AppleTalk internet.</p>
+<p><strong>zone multicast address</strong>: a data-link-dependent multicast address at which a node receives the NBP broadcasts directed to its zone.</p>
+<p><strong>zones list</strong>: specifies the zone names that can be chosen by nodes on the network.</p>
+<hr>
+<h1 id="index">Index<a class="anchor" href="#index">#</a></h1>
+<h2 id="a">A<a class="anchor" href="#a">#</a></h2>
+<ul>
+<li>AARP. <em>See</em> AppleTalk Address Resolution Protocol (AARP)</li>
+<li>abort sequence LLAP 1-9</li>
+<li>access modes AFP 13-35</li>
+<li>access privileges I-18</li>
+<li>Acknowledge control packet (LLAP) 1-4, 1-5</li>
+<li>AckRequest bit 12-12</li>
+<li>AcquireAddress procedure B-7</li>
+<li>ActLenWritten 11-26</li>
+<li>ActRcvdReqLen 11-18</li>
+<li>addresses I-13. <em>See also</em> address mapping; Name Binding Protocol (NBP)
+<ul>
+<li>filter of 12-37</li>
+<li>hardware address 2-4</li>
+<li>protocol address 2-3</li>
+<li>resolution of 2-3</li>
+</ul>
+</li>
+<li>address mapping. <em>See also</em> Address Mapping Table (AMT)
+<ul>
+<li>in EtherTalk Link Access Protocol (ELAP) 3-7 to 3-10</li>
+<li>in TokenTalk Link Access Protocol (TLAP) 3-7 to 3-10</li>
+</ul>
+</li>
+<li>Address Mapping Table (AMT) 2-7
+<ul>
+<li>entry aging 2-10 to 2-11</li>
+<li>gleaning with 2-10</li>
+</ul>
+</li>
+<li>Adobe PostScript Document Structuring Conventions 14-22</li>
+<li>Adobe Systems 14-18</li>
+<li>ADSP. <em>See</em> AppleTalk Data Stream Protocol (ADSP)</li>
+<li>AEP. <em>See</em> AppleTalk Echo Protocol (AEP)</li>
+<li>AFP. <em>See</em> AppleTalk Filing Protocol (AFP)</li>
+<li>AFP-file-system-visible entities 13-6</li>
+<li>AFP translator 13-5</li>
+<li>AFPVersion strings 13-28</li>
+<li>aging entries
+<ul>
+<li>of A-ROUTER 5-19</li>
+<li>on AMT 2-10 to 2-11</li>
+<li>for DDP routing algorithm 4-20</li>
+<li>routing table entries 5-12 to 5-13</li>
+<li>zone names 8-10</li>
+</ul>
+</li>
+<li>aliases of entity 7-4, 7-6</li>
+<li>AlisaShare I-15</li>
+<li>ALO transactions 9-5</li>
+<li>alternate spooling environments 14-10 to 14-11</li>
+<li>AMT. <em>See</em> Address Mapping Table (AMT)</li>
+<li>ancestors of CNodes 13-12
+<ul>
+<li>pathnames for 13-24</li>
+</ul>
+</li>
+<li>Apple II, AFP supporting 13-6</li>
+<li>AppleIIGS, LocalTalk and I-10</li>
+<li>AppleShare I-15, I-17 to I-20, I-26</li>
+<li>AppleTalk
+<ul>
+<li>connectivity I-9 to I-15</li>
+<li>file service I-17 to I-20</li>
+<li>goals of I-6 to I-7</li>
+<li>Phase 2 of I-24</li>
+<li>printing services I-15 to I-17</li>
+</ul>
+</li>
+<li>AppleTalk Address Resolution Protocol (AARP) I-11. <em>See also</em> protocol address; protocol stack
+<ul>
+<li>broadcast defined 2-7</li>
+<li>Ethernet and 3-11 to 3-12</li>
+<li>EtherTalk Link Access Protocol (ELAP) and 3-2, 3-8 to 3-9</li>
+<li>filtering incoming packets 2-9</li>
+<li>formats for packets 2-11 to 2-12</li>
+<li>gleaning 2-10</li>
+<li>mapping addresses by 2-7 to 2-8</li>
+<li>operation of 2-6 to 2-9</li>
+<li>parameters for C-4</li>
+<li>queries for mapping 2-6</li>
+<li>request packets 2-7</li>
+<li>response packets 2-7 to 2-8</li>
+<li>retransmission of packets 2-9 to 2-10</li>
+<li>services 2-5 to 2-6</li>
+<li>token ring and 3-11 to 3-12</li>
+<li>TokenTalk Link Access Protocol (TLAP) and 3-2, 3-8 to 3-9</li>
+<li>verifying packet address 2-10</li>
+</ul>
+</li>
+<li>AppleTalk Data Stream Protocol (ADSP) I-14 to I-15. <em>See also</em> opening connections
+<ul>
+<li>attention packets 12-19 to 12-22</li>
+<li>closing connections 12-38 to 12-39</li>
+<li>connections with 12-4 to 12-6</li>
+<li>control packets 12-14 to 12-15</li>
+<li>data flow for 12-6 to 12-11</li>
+<li>error recovery for 12-7 to 12-8</li>
+<li>examples of data-flow 12-15 to 12-19</li>
+<li>flow control with 12-8 to 12-9</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>AppleTalk Data Stream Protocol (<em>continued</em>)</p>
+<ul>
+<li>forward reset mechanism 12-9 to 12-10</li>
+<li>idle connection state, example of 12-18</li>
+<li>lost packets, recovery of 12-16 to 12-17, 12-19</li>
+<li>messages on 12-9</li>
+<li>packet formats 12-12 to 12-13</li>
+<li>parameters for C-13</li>
+<li>probe packets 12-14</li>
+<li>sequence numbers with 12-7</li>
+<li>services 12-4</li>
+<li>summary of sequencing variables 12-10 to 12-11</li>
+<li>torn down connection due to lost packets 12-19</li>
+</ul>
+<p>AppleTalk Echo Protocol (AEP) 6-1 to 6-4</p>
+<ul>
+<li>packet format 6-3</li>
+<li>parameters for C-9</li>
+</ul>
+<p>AppleTalk Filing Interface (AFI) 13-5 to 13-6</p>
+<p>AppleTalk Filing Protocol (AFP) I-19 to I-20, 13-1 to 13-146</p>
+<ul>
+<li>abbreviations for call descriptions 13-47</li>
+<li>access modes 13-35</li>
+<li>algorithms with 13-6</li>
+<li>AppleTalk Session Protocol (ASP)
+<ul>
+<li>with 13-38 to 13-39</li>
+</ul>
+</li>
+<li>calls 13-46 to 13-146</li>
+<li>descriptions of calls 13-47</li>
+<li>Desktop database 13-37 to 13-38</li>
+<li>directories 13-15 to 13-22</li>
+<li>file access model 13-5</li>
+<li>file calls 13-43</li>
+<li>file servers and 13-8 to 13-9, 13-28 to 13-34</li>
+<li>file sharing modes 13-35</li>
+<li>file system structure 13-7 to 13-23</li>
+<li>fork calls 13-44</li>
+<li>login 13-27 to 13-28</li>
+<li>names, syntax for forming 13-13 to 13-14</li>
+<li>overview of calls 13-39 to 13-46</li>
+<li>parameters for C-13 to C-16</li>
+<li>pathnames 13-24</li>
+<li>permissions 13-35</li>
+<li>protocol architecture and 13-7</li>
+<li>server calls 13-40 to 13-41</li>
+<li>system component parts 13-6</li>
+<li>Version 1.0 13-7</li>
+<li>versions of 13-7</li>
+<li>volume calls 13-41</li>
+<li>volumes for 13-9 to 13-13</li>
+<li>workstation program 13-5</li>
+</ul>
+<p>AppleTalk Internet Router in AppleTalk Phase 2 I-24</p>
+<p>AppleTalk node ID 4-6</p>
+<p>AppleTalk Session Protocol (ASP) I-14, 11-1 to 11-35</p>
+<ul>
+<li>AppleTalk Echo Protocol (AEP) and 6-4</li>
+<li>AppleTalk Filing Protocol (AFP) using 13-27, 13-38 to 13-39</li>
+<li>attention packet formats 11-35</li>
+<li>client interface 11-16 to 11-26</li>
+<li>description of 11-4</li>
+<li>duplicate filtration in 11-14</li>
+<li>features of 11-5</li>
+<li>getting server status 11-29 to 11-30</li>
+<li>limits of 11-4 to 11-5</li>
+<li>maintaining sessions in 11-9, 11-35</li>
+<li>opening a session 11-27 to 11-29</li>
+<li>open session commands 11-10 to 11-14</li>
+<li>packet formats 11-27 to 11-35</li>
+<li>parameters for C-12 to C-13</li>
+<li>sending command request 11-30 to 11-32</li>
+<li>sequencing in 11-14</li>
+<li>server, session-closing dialog initiated by 11-8</li>
+<li>server-end calls, client interface for 11-16 to 11-22</li>
+<li>services of 11-5</li>
+<li>service status information 11-15</li>
+<li>tickle packets 11-9 11-35</li>
+<li>workstation, session-closing dialog initiated by 11-7</li>
+<li>workstation-end calls 11-23 to 11-26</li>
+<li>write request, sending a 11-32 to 11-34</li>
+</ul>
+<p>AppleTalk Transaction Protocol (ATP) I-14, 9-1 to 9-28. <em>See also</em> TIDs</p>
+<ul>
+<li>AppleTalk Echo Protocol (AEP) and 6-4</li>
+<li>at-least-once (ALO) transactions 9-5</li>
+<li>ATP requester 9-22 to 9-23</li>
+<li>ATP responder 9-24 to 9-25</li>
+<li>bitmap 9-10 to 9-12</li>
+<li>calls in ATP interface 9-16 to 9-20</li>
+<li>closing responding socket call 9-19</li>
+<li>control information (CI) byte 9-13</li>
+<li>duplicate transaction-request filtering 9-6</li>
+<li>exactly-once (XO) transactions 9-6 to 9-9</li>
+<li>idempotent transactions 9-5</li>
+<li>interface 9-16 to 9-20</li>
+<li>limited buffer space 9-12 to 9-13</li>
+<li>multipacket responses 9-9</li>
+<li>nonspooler printing with 14-8</li>
+<li>opening responding socket call 9-18</li>
+<li>optional interface calls 9-26 to 9-27</li>
+<li>packet format 9-13 to 9-15</li>
+<li>parameters for C-10</li>
+<li>receiving request call 9-19</li>
+<li>request control block (RqCB) 9-21</li>
+</ul>
+<hr>
+<p>response control block (RspCB) 9-21
+send transaction status (STS) bit 9-12 to 9-13
+sending response call 9-20
+sequence number 9-10 to 9-12
+state model 9-21 to 9-25
+terminology of transactions 9-4
+transaction control block (TCB) 9-21
+transactions 9-3 to 9-9
+wraparound of TIDs 9-27 to 9-28
+ZIP ATP requests 8-13 to 8-15
+arbitration (ARB), PAP server in 10-7
+architecture, open I-7
+A-ROUTER 4-19</p>
+<ul>
+<li>aging of 5-19</li>
+<li>name lookup and 7-10
+ASCII definitions 7-5
+ASP. <em>See</em> AppleTalk Session Protocol (ASP)
+at-least-once (ALO) transactions 9-5
+AtnSendSeq 12-21
+ATP. <em>See</em> AppleTalk Transaction Protocol (ATP)
+ATP requester 9-22 to 9-23
+ATP responder 9-24 to 9-25
+attention messages 12-12, 12-19 to 12-22
+AttnRecvSeq field 12-27
+automatic retry mechanism 9-5
+Aux Type 13-18 to 13-20</li>
+</ul>
+<h1 id="b">B<a class="anchor" href="#b">#</a></h1>
+<p>backbone routers 5-4
+background spoolers I-16, 14-6
+BackupNeeded bits 13-21
+best router forwarding algorithm 4-20
+binding procedure 7-8
+bit encoding and decoding A-2
+bitmaps</p>
+<ul>
+<li>in ATP 9-10 to 9-12</li>
+<li>order 13-47
+bit stuffing 1-9
+Body comments 14-29
+broadcast address 1-5, C-5</li>
+<li>protocol address 2-4
+broadcast ID 2-4
+broadcast packets 1-5, 1-10</li>
+<li>transmission of 1-15
+broadcast transmission dialog 1-10
+BrRq packet 7-14 to 7-17
+buffers, ASPGetRequest call to provide 11-18
+BufTooSmall error 11-18, 11-23</li>
+</ul>
+<h1 id="c">C<a class="anchor" href="#c">#</a></h1>
+<p>cable connection for LocalTalk A-5
+cabling methods I-9
+carrier sense A-3</p>
+<ul>
+<li>sense defined 1-3</li>
+<li>in LocalTalk Link Access Protocol (LLAP) 1-10
+Carrier Sense Multiple Access with Collision Avoidance (CSMA/CA) 1-3
+character codes D-1 to D-3
+checksums for Datagram Delivery Protocol (DDP) 4-17
+cleartext password (Cleartxt Passwrd) 13-29</li>
+<li>for spoolers 14-13
+Close Connection Advice Control packet 12-38 to 12-39
+CloseConn packet format 10-14
+CloseConnReply 10-11</li>
+<li>packet format 10-14
+closed connection 12-5
+CloseSess packet format 11-28 to 11-29
+CmdBlock, in SPCommand call 11-10, 11-31 to 11-32
+CmdBlockSize 11-25, 11-26
+CmdReplyDataSize 11-19
+CmdResult field 11-10, 13-38
+CNodes 13-12</li>
+<li>designating path to 13-23 to 13-26</li>
+<li>Directory IDs and 13-16</li>
+<li>examples of paths 13-26</li>
+<li>names 13-13 to 13-15
+coding, bit A-2
+collisions</li>
+<li>avoidance defined 1-3</li>
+<li>RTS-CTS handshake 1-13
+command reply data block (CmdBlock) 11-10, 11-31 to 11-32
+command result (CmdResult) 11-10, 13-38
+comments. <em>See also</em> query comments</li>
+<li>Body comments 14-29</li>
+<li>Creation Date comment 14-26</li>
+<li>Creator comment 14-26</li>
+<li>documents, comments in 14-22 to 14-23</li>
+<li>End-Of-File comment 14-33</li>
+<li>Exit Server comments 14-29</li>
+<li>Feature Query comments 14-37</li>
+<li>File Query comments 14-37</li>
+<li>Font Query comments 14-38</li>
+<li>For comment 14-27</li>
+<li>format of 14-20</li>
+<li>Global Query comments 14-39</li>
+<li>Include Procedure Set comment 14-33 to 14-34</li>
+<li>Job Identification comment 14-27</li>
+<li>Page Marker comment 14-30</li>
+<li>Printer Query comments 14-39</li>
+<li>Procedure Set comments 14-30 to 14-31</li>
+<li>Procedure Set Query comments 14-40</li>
+<li>resource comments 14-32 to 14-34</li>
+<li>structure comments 14-23 to 14-25</li>
+</ul>
+<hr>
+<p>comments (<em>continued</em>)
+syntax for 14-21
+Title comment 14-28
+Trailer comment 14-31 to 14-32
+Virtual Memory Status Query comments 14-40 to 14-41
+computing components I-4
+confirmation of names 7-8
+call for 7-13
+connection identifier (ConnID) 10-7
+ADSP and 12-6
+connection-listening sockets 12-35 to 12-36
+connection-opening filters with 12-37 to 12-38
+connection-opening filters 12-36 to 12-38
+connections. <em>See also</em> half-open connections; opening connections
+ADSP connections 12-4 to 12-6
+closed connection 12-5
+closing of 12-38 to 12-39
+connection-opening filters 12-36 to 12-38
+defined 10-7
+end 12-4
+LocalTalk connection module A-4
+connectivity
+of AppleTalk I-9 to I-15
+components I-4
+ConnIDMax 12-6
+Consultative Committee on International Telephone and Telegraph (CCITT) 1-9
+control information (CI) byte 9-13
+control packets
+ADSP control packets 12-14 to 12-15
+Open Connection Request Control packet format 12-27 to 12-29
+Copy-in-Tuples routine 5-24
+CopyProtect bits 13-21
+CRC-CCITT 1-9, B-22
+Create-New-Entry routine for RTMP 5-23
+Creation Date comment 14-26
+Creator comment 14-26
+cyclic-redundancy check (CRC) algorithm 1-9</p>
+<h1 id="d">D<a class="anchor" href="#d">#</a></h1>
+<p>Datagram Delivery Protocol (DDP) 4-1 to 4-21. <em>See also</em> AppleTalk Echo Protocol (AEP); internet routers; Routing Table Maintenance Protocol (RTMP)
+AppleTalk node address acquisition 4-7 to 4-9
+best router forwarding algorithm 4-20
+checksum computation 4-17
+comparing two networks 4-21
+extended DDP header 4-9 to 4-11, 4-14 to 4-15, 4-16
+hop counts 4-17
+interface 4-10 to 4-11
+internal algorithm 4-13
+LocalTalk Link Access Protocol (LLAP) and 1-8
+and network-visible entities (NVE) 7-4
+node IDs for 4-6 to 4-7
+packet format 4-14 to 4-17
+parameters for C-6 to C-8
+router internals and 5-7
+routing algorithm 4-18 to 4-20
+short DDP header 4-14, 4-15
+socket listeners 4-10
+sockets 4-5
+socket values for C-7 to C-8
+type field 4-9
+data-link methods I-9
+data packets
+LocalTalk Link Access Protocol (LLAP) using 1-8
+transmission of 1-10 to 1-15
+data stream for ADSP 12-6 to 12-11
+data transparency 1-9
+date time values 13-21 to 13-22
+DDP. <em>See</em> Datagram Delivery Protocol (DDP)
+decoding bit A-2
+default zones 8-5
+deferring nodes 1-11
+DeleteInhibit bit 13-21
+deletion of names 7-8
+call for 7-12
+deny modes 13-35
+descendents of CNodes 13-12
+Desktop database 13-37 to 13-38
+overview of calls 13-45 to 13-46
+destination sockets 9-2
+directed data packets 1-11
+transmission of 1-14
+directed transmission dialog 1-11
+director access control 13-31 to 13-34
+directories 13-10
+access control 13-31 to 13-34
+AFP directories 13-15 to 13-22
+attributes of 13-17
+combined directory-file calls 13-43
+enumerating 13-33
+overview of calls 13-42
+parameters of 13-16 to 13-17
+directory access control, parameters of 13-32
+Directory IDs 13-10 to 13-12
+AFP 13-15 to 13-16
+overview of calls 13-42
+direct passthrough connections 14-14 to 14-15
+direct printing I-16
+document structuring conventions 14-18 to 14-19</p>
+<hr>
+<p>duplicate transaction-request filtering 9-6
+* of exactly-once (XO) transactions 9-8
+* PAP transactions 10-11</p>
+<ul>
+<li>dynamically assigned sockets (DASs) 4-5
+<ul>
+<li>opening of 4-12</li>
+</ul>
+</li>
+<li>dynamic node ID assignment 1-3 to 1-6</li>
+<li>dynamic protocol address assignment 2-8 to 2-9</li>
+</ul>
+<h2 id="e">E<a class="anchor" href="#e">#</a></h2>
+<ul>
+<li>Echoer socket. See AppleTalk Echo Protocol (AEP)</li>
+<li>Echo Request packet 6-4</li>
+<li>EIA RS-422 signaling standard A-3</li>
+<li>802.2 standard 3-3</li>
+<li>electromagnetic interference (EMI) A-3</li>
+<li>End-Of-File comment 14-33</li>
+<li>end of message (EOM)
+<ul>
+<li>in ADSP 12-9, 12-12</li>
+<li>in ATP 9-10 to 9-12</li>
+<li>in PAP 10-10</li>
+</ul>
+</li>
+<li>end-user services I-15 to I-20</li>
+<li>Enquiry control packet (LLAP) 1-4, 1-5</li>
+<li>entity identifier for ASP 11-6</li>
+<li>entity names 7-4 to 7-5</li>
+<li>entity not found error 7-8</li>
+<li>entity types 7-4</li>
+<li>entry state 5-8</li>
+<li>enumerating directories 13-33</li>
+<li>enumerator value 7-6</li>
+<li>error recovery
+<ul>
+<li>for ADSP 12-7 to 12-8</li>
+<li>in connection opening dialog 12-30 to 12-34</li>
+</ul>
+</li>
+<li>errors
+<ul>
+<li>BufTooSmall error 11-18, 11-23</li>
+<li>LocalTalk Link Access Protocol (LLAP) transmission 1-16</li>
+<li>SizeErr 11-25 11-19</li>
+<li>SPError values 11-18, 11-24</li>
+</ul>
+</li>
+<li>Ethernet. See also EtherTalk Link Access Protocol (ELAP)
+<ul>
+<li>AARP packets on 3-11 to 3-12</li>
+<li>ELAP packet formats 3-5 to 3-6</li>
+</ul>
+</li>
+<li>EtherTalk I-11. See also EtherTalk Link Access Protocol (ELAP)
+<ul>
+<li>AARP values used for C-4</li>
+<li>AppleTalk Internet Router I-24</li>
+<li>as extended network 4-7</li>
+<li>installation of I-9</li>
+<li>parameters for C-4 to C-5</li>
+</ul>
+</li>
+<li>EtherTalk Link Access Protocol (ELAP) I-11, 3-1 to 3-12
+<ul>
+<li>address mapping in 3-7 to 3-10</li>
+<li>802.2 standard and 3-3</li>
+<li>node IDs for 3-9</li>
+<li>packet format 3-5 to 3-6</li>
+<li>zone multicast addresses used by 3-10</li>
+</ul>
+</li>
+<li>exactly-once (XO) transactions 9-6 to 9-9
+<ul>
+<li>ASP and 11-14</li>
+<li>duplicate delivery of 9-8</li>
+<li>limited buffer space and 9-12 to 9-13</li>
+<li>PAP transactions and 10-10</li>
+</ul>
+</li>
+<li>Exit Server comments 14-29
+<ul>
+<li>jobs 14-20</li>
+<li>sample print streams for 14-43</li>
+</ul>
+</li>
+<li>extended DDP header 4-9 to 4-11, 4-14 to 4-15, 4-16</li>
+<li>extended networks 4-7
+<ul>
+<li>node address acquisition on 4-8 to 4-9</li>
+<li>nodes on 5-19 to 5-20</li>
+<li>routing tuples for 5-16</li>
+</ul>
+</li>
+<li>extended ZIP reply packets 8-6</li>
+</ul>
+<h2 id="f">F<a class="anchor" href="#f">#</a></h2>
+<ul>
+<li>Feature Query comments 14-37</li>
+<li>file calls 13-43
+<ul>
+<li>combined directory-file calls 13-43</li>
+</ul>
+</li>
+<li>File Query comments 14-37</li>
+<li>files
+<ul>
+<li>AFP files 13-15 to 13-22</li>
+<li>forks 13-22 to 13-23</li>
+<li>parameters 13-17 to 13-18</li>
+</ul>
+</li>
+<li>file servers
+<ul>
+<li>AFP and 13-7, 13-8 to 13-9</li>
+<li>security 13-28 to 13-34</li>
+<li>file sharing modes 13-35</li>
+</ul>
+</li>
+<li>Finder, Desktop database with 13-38</li>
+<li>FirstRtmtSeq 12-8
+<ul>
+<li>resetting value of 12-10</li>
+<li>summary of 12-11</li>
+</ul>
+</li>
+<li>fixed Directory ID volume 13-11</li>
+<li>flag byte 1-9
+<ul>
+<li>in frame preambles 1-11</li>
+<li>LocalTalk detecting 1-10</li>
+</ul>
+</li>
+<li>flow control with ADSP 12-8 to 12-9</li>
+<li>flow quantum 10-7</li>
+<li>flushing files in ASP 11-8</li>
+<li>FM-0 A-2</li>
+<li>folders I-18</li>
+<li>Font List Query comments 14-38</li>
+<li>For comment 14-27</li>
+<li>fork calls 13-44</li>
+<li>forks file 13-22 to 13-23</li>
+<li>Forward Reset Acknowledgment Control packet 12-10, 12-15</li>
+<li>Forward Reset Control packet 12-10, 12-15</li>
+<li>forward reset mechanism of ADSP 12-9 to 12-10, 12-15</li>
+<li>FPAddAPPL call 13-49 to 13-50</li>
+<li>FPAddComment call 13-51 to 13-52</li>
+<li>FPAddIcon call 13-53 to 13-54</li>
+<li>FPByteRangeLock call 13-55 to 13-57</li>
+<li>FPCall 13-48</li>
+</ul>
+<hr>
+<ul>
+<li>FPChangePassword call 13-58 to 13-59</li>
+<li>FPCloseDir call 13-60</li>
+<li>FPCloseDT call 13-61</li>
+<li>FPCloseFork call 13-62</li>
+<li>FPCloseVol call 13-63</li>
+<li>FPCopyFile call 13-64 to 13-66</li>
+<li>FPCreateDir call 13-67 to 13-68</li>
+<li>FPCreateFile call 13-69 to 13-70</li>
+<li>FPDelete call 13-71 to 13-72</li>
+<li>FPEnumerate call 13-39, 13-73 to 13-76</li>
+<li>FPError 13-38</li>
+<li>FPFlush call 13-77</li>
+<li>FPFlushFork call 13-78</li>
+<li>FPGetAPPL call 13-79 to 13-80</li>
+<li>FPGetComment call 13-81 to 13-82</li>
+<li>FPGetFileDirParms call 13-83 to 13-88</li>
+<li>FPGetForkParms call 13-89 to 13-90</li>
+<li>FPGetIcon call 13-91 to 13-92</li>
+<li>FPGetIconInfo call 13-93 to 13-94</li>
+<li>FPGetSrvrInfo call 13-28, 13-38, 13-40, 13-95 to 13-97</li>
+<li>FPGetSrvrParms call 13-30, 13-40, 13-98 to 13-99</li>
+<li>FPGetUserInfo call 13-100 to 13-101</li>
+<li>FPGetVolParms call 13-102 to 13-103</li>
+<li>FPLogin call 13-104 to 13-105</li>
+<li>FPLoginCont call 13-3, 13-40, 13-106 to 13-107</li>
+<li>FPLogout 13-39</li>
+<li>FPLogout call 13-108</li>
+<li>FPMapID call 13-109</li>
+<li>FPMapName call 13-110</li>
+<li>FPMoveAndRename call 13-111 to 13-113</li>
+<li>FPOpenDir call 13-11, 13-114 to 13-115</li>
+<li>FPOpenDT call 13-116</li>
+<li>FPOpenFork call 13-35, 13-117 to 13-120</li>
+<li>FPOpenVol call 13-31, 13-121 to 13-122</li>
+<li>FPRead call 13-39, 13-123 to 13-125</li>
+<li>FPRemoveAPPL call 13-126 to 13-127</li>
+<li>FPRemoveComment call 13-128 to 13-129</li>
+<li>FPRename call 13-130 to 13-131</li>
+<li>FPSetDirParms call 13-132 to 13-134</li>
+<li>FPSetFileDirParms call 13-135 to 13-137</li>
+<li>FPSetFileParms call 13-138 to 13-140</li>
+<li>FPSetForkParms call 13-141 to 13-142</li>
+<li>FPSetVolParms call 13-143 to 13-144</li>
+<li>FPWrite call 13-39, 13-145 to 13-146</li>
+<li>frame check sequence 1-9</li>
+<li>frame preamble 1-9
+<ul>
+<li>flag bytes in 1-11</li>
+<li>in LLAP 1-9</li>
+</ul>
+</li>
+<li>frame trailer 1-9</li>
+<li>fully specified names 7-5</li>
+<li>FwdReq packet 7-10, 7-14 to 7-17
+<ul>
+<li>in ZIP 8-19</li>
+</ul>
+</li>
+</ul>
+<h1 id="g">G<a class="anchor" href="#g">#</a></h1>
+<ul>
+<li>gateways I-26</li>
+<li>generation of TIDs 9-27 to 9-28</li>
+<li>GetLocalZones 8-7 to 8-8
+<ul>
+<li>packet formats 8-13 to 8-15</li>
+</ul>
+</li>
+<li>GetMyZone 8-7 to 8-8
+<ul>
+<li>packet formats 8-15</li>
+</ul>
+</li>
+<li>GetNetInfo request 4-9, 8-9
+<ul>
+<li>ZIP packet formats 8-16 to 8-17</li>
+</ul>
+</li>
+<li>GetNextJob call 10-4, 10-5
+<ul>
+<li>description of 10-20</li>
+<li>queuing of calls for 10-11</li>
+<li>WaitTime for 10-8</li>
+</ul>
+</li>
+<li>GetStatus packet 11-29 to 11-30</li>
+<li>GetStatus Reply packet 11-29</li>
+<li>GetZoneList 8-7 to 8-8
+<ul>
+<li>packet formats 8-13 to 8-15</li>
+</ul>
+</li>
+<li>GetZoneListReply 8-13</li>
+<li>gleaning with AARP 2-10</li>
+<li>global backoff mask B-9 to B-10</li>
+<li>global constants for LLAP B-2 to B-4</li>
+<li>Global Query comments 14-39</li>
+<li>guests I-17</li>
+</ul>
+<h1 id="h">H<a class="anchor" href="#h">#</a></h1>
+<ul>
+<li>half-open connections
+<ul>
+<li>with ADSP 12-5</li>
+<li>data transfer phase detecting 10-9 to 10-10</li>
+<li>opening connection error recovery with 12-31 to 12-33</li>
+<li>PAP handling cases of 10-5</li>
+</ul>
+</li>
+<li>half routers 5-4</li>
+<li>hardware. See also hardware address
+<ul>
+<li>interface declarations B-4 to B-5</li>
+<li>specifications A-1 to A-8</li>
+</ul>
+</li>
+<li>hardware address 2-4
+<ul>
+<li>broadcast hardware address 1-5</li>
+<li>protocol address translated to 2-6</li>
+<li>request packets and 2-7</li>
+<li>response packets and 2-7 to 2-8</li>
+</ul>
+</li>
+<li>header comments 14-25 to 14-26</li>
+<li>HeresStatus call 10-12</li>
+<li>hierarchical file system (HFS) I-20</li>
+<li>history bytes 1-13</li>
+<li>hop counts 4-17</li>
+<li>hops 5-8</li>
+</ul>
+<h1 id="i">I<a class="anchor" href="#i">#</a></h1>
+<ul>
+<li>idempotent transactions 9-5</li>
+<li>idle-connection state example 12-18</li>
+<li>ImageWriters
+<ul>
+<li>end-user services with I-15</li>
+<li>MS-DOS computers and I-19</li>
+</ul>
+</li>
+<li>Include Procedure Set comment 14-33 to 14-34</li>
+<li>initialization of RTMP tables 5-21</li>
+<li>InitializeLLAP procedure B-6</li>
+</ul>
+<hr>
+<ul>
+<li>Institute of Electrical and Electronics Engineers (IEEE) 3-3</li>
+<li>interdialog gaps (IDG) 1-11</li>
+<li>interface I-22
+<ul>
+<li>AFI interface 13-5 to 13-6</li>
+<li>ASP client interface 11-16 to 11-26</li>
+<li>LLAP interface B-5 to B-6</li>
+<li>PAP client interface 10-16 to 10-20</li>
+</ul>
+</li>
+<li>interframe gaps (IFG) 1-11</li>
+<li>internet routers (IRs) 4-3, 5-4 to 5-5
+<ul>
+<li>backbone routers 5-4</li>
+<li>defined 4-5</li>
+<li>diagram of 4-4</li>
+<li>half routers 5-4</li>
+<li>local routers 5-4</li>
+<li>router model 5-6 to 5-7</li>
+<li>Zone Information Protocol (ZIP) and 8-18 to 8-20</li>
+</ul>
+</li>
+<li>internets I-9. <em>See also</em> internet routers (IRs)
+<ul>
+<li>ASP and 11-14</li>
+<li>Name Binding Protocol (NBP) on 7-10 to 7-11</li>
+<li>name lookup on 7-10 to 7-11</li>
+<li>routers and I-12 to I-13</li>
+<li>Routing Table Maintenance Protocol (RTMP) and 5-7</li>
+<li>routing tuple for 5-16</li>
+<li>socket address 4-6</li>
+<li>zones lists and 8-22</li>
+</ul>
+</li>
+<li>interpersonal computing I-5</li>
+<li>IRs. <em>See</em> internet routers</li>
+<li>ISO-OSI reference model I-20 to I-23
+<ul>
+<li>protocol family 2-3</li>
+<li>protocol stack 2-3</li>
+</ul>
+</li>
+</ul>
+<h1 id="j">J<a class="anchor" href="#j">#</a></h1>
+<ul>
+<li>Job Identification comment 14-20, 14-22, 14-27</li>
+</ul>
+<h1 id="l">L<a class="anchor" href="#l">#</a></h1>
+<ul>
+<li>LANSTAR AppleTalk I-9</li>
+<li>LaserShare print spooler 14-36</li>
+<li>LaserWriters
+<ul>
+<li>end-user services with I-15</li>
+<li>LocalTalk and I-10</li>
+<li>MS-DOS computers and I-19</li>
+<li>PostScript to 14-7</li>
+<li>spooler/servers and I-17</li>
+</ul>
+</li>
+<li>LastConnID 12-6</li>
+<li>LastFlag 8-15</li>
+<li>late-arriving duplicates, connection opening dialog with 12-33 to 12-34</li>
+<li>Line Length comment 14-23</li>
+<li>link independence I-7</li>
+<li>LkUp packet 7-9, 7-14 to 7-17
+<ul>
+<li>ZIP converting FwdReq to 8-19 to 8-20</li>
+</ul>
+</li>
+<li>LkUp-Reply packet 7-14 to 7-17, 7-9</li>
+<li>LLAP. <em>See</em> LocalTalk Link Access Protocol (LLAP)</li>
+<li>local backoff mask B-9 to B-10</li>
+<li>local routers 5-4
+<ul>
+<li>AppleTalk node address of 5-7</li>
+</ul>
+</li>
+<li>LocalTalk. <em>See also</em> LocalTalk Link Access Protocol (LLAP)
+<ul>
+<li>access through I-19</li>
+<li>AppleTalk Internet Router I-24</li>
+<li>cable connection A-5</li>
+<li>carrier sense A-3</li>
+<li>connection module A-4</li>
+<li>connectivity with I-10 to I-11</li>
+<li>connectors A-5</li>
+<li>electrical characteristics A-2 to A-3</li>
+<li>electrical/mechanical specifications A-3 to A-5</li>
+<li>environmental conditions A-8</li>
+<li>hardware specifications for A-1 to A-8</li>
+<li>installation of I-9</li>
+<li>mechanical strength of transformer A-8</li>
+<li>signal transmission A-3</li>
+<li>transformer specifications A-5 to A-8</li>
+</ul>
+</li>
+<li>LocalTalk Link Access Protocol (LLAP) 1-1 to 1-16
+<ul>
+<li>access control algorithms, appendix of B-1 to B-22</li>
+<li>acknowledge control packet 1-4, 1-5</li>
+<li>AcquireAddress procedure B-7</li>
+<li>appendix for access control algorithms B-1 to B-22</li>
+<li>assumptions concerning B-2</li>
+<li>CRC-CCITT calculation B-22</li>
+<li>data packets 1-8</li>
+<li>data transparency with 1-9</li>
+<li>dynamic node ID assignment 1-3 to 1-6</li>
+<li>Enquiry control packet 1-4, 1-5</li>
+<li>frame 1-9</li>
+<li>frame parameter for C-3</li>
+<li>global backoff mask B-9 to B-10</li>
+<li>global constants for B-2 to B-4</li>
+<li>goals of I-10 to I-11</li>
+<li>hardware interface declarations B-4 to B-5</li>
+<li>InitializeLLAP procedure B-6</li>
+<li>interface procedures and functions B-5 to B-6</li>
+<li>LLAP packets 1-6 to 1-8</li>
+<li>local backoff mask B-9 to B-10</li>
+<li>miscellaneous functions B-19 to B-20</li>
+<li>node addressing with 1-3 to 1-6</li>
+<li>parameters for C-2 to C-3</li>
+<li>ReceiveFrame function B-17 to B-19</li>
+<li>ReceiveLinkMgmt function B-15 to B-17</li>
+<li>ReceivePacket procedure B-15</li>
+<li>reception of packets 1-15 to 1-16</li>
+<li>RTS-CTS handshake 1-13</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>LocalTalk Link Access Protocol
+(continued)</p>
+<ul>
+<li>synchronization pulse 1-10</li>
+<li>timing constant for C-3</li>
+<li>transmission dialogs 1-10 to 1-15</li>
+<li>transmission of data packets 1-10 to 1-15</li>
+<li>TransmitFrame procedure B-14</li>
+<li>TransmitLinkMgmt function B-8 to B-13</li>
+<li>TransmitPacket function B-8</li>
+<li>type fields 1-6 to 1-8
+Logical Link Control (LLC) 3-3
+login process, AFP login 13-27 to 13-28
+long name of catalog 13-13 to 13-14
+lookup of names. <em>See</em> name lookup
+lost packets</li>
+<li>ADSP recovery of 12-16 to 12-17, 12-19</li>
+<li>open connection procedures for 12-24, 12-30 to 12-31
+lowercase-to-uppercase mapping D-3</li>
+</ul>
+<h1 id="m">M<a class="anchor" href="#m">#</a></h1>
+<p>Macintosh</p>
+<ul>
+<li>AFP supporting 13-6</li>
+<li>Desktop database for 13-38</li>
+<li>interpersonal computing with I-5</li>
+<li>printing, impact on 14-6 to 14-7</li>
+<li>variable Directory ID volumes use of 13-11
+mapping</li>
+<li>of characters D-1 to D-3</li>
+<li>for Desktop database 13-38
+MaxCmdSize 11-16, 11-25, 11-26
+maximum packet lifetime (MPL) 9-9 to 9-10</li>
+<li>ADSP and 12-6
+modulo function 8-18
+mounting volumes 13-12
+MS-DOS</li>
+<li>file forks with 13-22</li>
+<li>LocalTalk PC Card access to I-10, I-19
+multicast addresses 2-4</li>
+<li>ELAP using 3-10</li>
+<li>TLAP using 3-10
+multicasting. <em>See</em> zone multicasting
+multipacket responses 9-9
+multiple access defined 1-3</li>
+</ul>
+<h1 id="n">N<a class="anchor" href="#n">#</a></h1>
+<p>name already taken error 7-9
+name binding, of CNodes 13-13 to 13-15
+Name Binding Protocol (NBP) I-14, 7-1 to 7-17. <em>See also</em> confirmation of names; deletion of names; name lookup; registration of names</p>
+<ul>
+<li>AFP login and 13-27</li>
+<li>aliases 7-4, 7-6</li>
+<li>and statically assigned sockets (SASs) 4-5</li>
+<li>AppleTalk Echo Protocol (AEP) and 6-4</li>
+<li>ASP and 11-5</li>
+<li>calls used with 7-11 to 7-13</li>
+<li>confirmation of names 7-8</li>
+<li>deletion of names 7-8</li>
+<li>entity names 7-4 to 7-5</li>
+<li>entity not found error 7-8</li>
+<li>enumerator value 7-6</li>
+<li>function of packets 7-15</li>
+<li>ID in packets 7-15</li>
+<li>interface 7-11 to 7-13</li>
+<li>on internet 7-10 to 7-11</li>
+<li>multicast addresses and 3-10</li>
+<li>name binding 7-5 to 7-7</li>
+<li>names directory (ND) 7-6</li>
+<li>names information socket (NIS) 7-7</li>
+<li>network-visible entities (NVE) 7-4</li>
+<li>opening connection dialogs using 12-24</li>
+<li>packet formats 7-14 to 7-17</li>
+<li>parameters for C-9</li>
+<li>registration of name 7-7</li>
+<li>routers including 5-7</li>
+<li>services 7-7 to 7-8</li>
+<li>on single network 7-9</li>
+<li>tuples in packets 7-15 to 7-17</li>
+<li>zones, use of 7-10
+name lookup I-14, 7-8</li>
+<li>call for 7-13</li>
+<li>on internet 7-10 to 7-11
+names I-13. <em>See also</em> Name Binding Protocol (NBP)</li>
+<li>user names I-17
+names directory (ND) 7-6
+name servers I-14
+names information socket (NIS) 7-7
+names table 7-6
+National Bureau of Standards Data Encryption Standard (NBS DES) 13-30
+native file system commands 13-5
+Native Filing Interface (NFI) 13-5
+NBP. <em>See</em> Name Binding Protocol (NBP)
+NBP name-address tuples 7-6
+network system I-8 to I-20
+network addresses, filter of 12-37
+network numbers I-13, 4-6</li>
+<li>assignment of ranges 5-16 to 5-17</li>
+<li>equivalences 4-21</li>
+<li>on extended network 4-7</li>
+<li>RTMP Data packet including 5-15
+network-specific broadcast 4-6
+network-visible entities (NVE) 7-4
+network-wide broadcast 4-6
+NFS, Sun Microsystem I-19
+NIL field 8-6</li>
+<li>zones lists and 8-20 to 8-21</li>
+</ul>
+<hr>
+<p>node address</p>
+<ul>
+<li>Datagram Delivery Protocol (DDP) acquiring 4-7 to 4-9</li>
+<li>extended networks and 4-8 to 4-9</li>
+<li>LocalTalk Link Access Protocol (LLAP) and 1-3 to 1-6</li>
+<li>protocol address as 2-3
+node IDs</li>
+<li>AppleTalk node ID 4-6</li>
+<li>for Datagram Delivery Protocol (DDP) 4-6 to 4-7</li>
+<li>for ELAP 3-9</li>
+<li>for LLAP 1-4</li>
+<li>for TLAP 3-9</li>
+<li>RTMP Data packet including 5-15
+nodes</li>
+<li>defined I-9</li>
+<li>protocol address of 2-4</li>
+<li>protocol stacks with 2-3</li>
+<li>zone name changes in 8-22</li>
+<li>no more zones message 8-8
+nonextended networks 4-7</li>
+<li>DDP routing algorithm for 4-18</li>
+<li>node address acquisition on 4-8</li>
+<li>routing tuples for 5-16
+nonrouter nodes 5-17 to 5-20
+no such entity result 7-9
+notify neighbor technique 5-12
+NoUserAuthent 14-13
+no user authentication (No User Authent) 13-29
+NoUserLogin 14-13</li>
+</ul>
+<h1 id="o">O<a class="anchor" href="#o">#</a></h1>
+<p>offspring of CNodes 13-12
+OForkRefNum 13-23
+open architecture I-7
+OpenConn 10-7, 10-8</p>
+<ul>
+<li>packet format 10-13
+Open Connection Acknowledgment 12-18, 12-27
+Open Connection Denial Control packet 12-27 to 12-28
+Open Connection Request Control packet 12-23 to 12-27
+OpenConnReply 10-7, 10-9</li>
+<li>packet format 10-13
+opening connection 12-5, 12-22 to 12-24</li>
+<li>both-end initiated connection opening dialog 12-26</li>
+<li>connection-opening filters 12-36 to 12-38</li>
+<li>control packets 12-27 to 12-29</li>
+<li>denial of request to open connection 12-27</li>
+<li>dialogs for 12-24 to 12-27</li>
+<li>error recovery in 12-30 to 12-34</li>
+<li>half-open connections, error recovery with 12-31 to 12-33</li>
+<li>late-arriving duplicates 12-33 to 12-34</li>
+<li>lost packets, recovery of 12-30 to 12-31</li>
+<li>one-end initiated connection opening dialog 12-25</li>
+<li>outside ADSP 12-34 to 12-35</li>
+<li>packet formats for 12-27 to 12-29</li>
+<li>parameters for 12-22</li>
+<li>simultaneous connection opening dialog with lost packet 12-30 to 12-31</li>
+<li>transmission of data on half-open connection 12-32 to 12-33
+OpenSess packet 11-6 to 11-7, 11-27 to 11-29
+OpenSessReply packet 11-27
+open systems architecture 1-8</li>
+</ul>
+<h1 id="p">P<a class="anchor" href="#p">#</a></h1>
+<p>PacerShare I-15
+packet formats</p>
+<ul>
+<li>AARP packet formats 2-11 to 2-12</li>
+<li>ADSP packet format 12-12 to 12-13</li>
+<li>ASP packet format 11-27 to 11-35</li>
+<li>Open Connection Request Control packet format 12-27 to 12-29</li>
+<li>PAP packet formats 10-12 to 10-15
+Page Marker comment 14-30
+pages</li>
+<li>comment for making 14-23 in PostScript 14-19
+PAP. See Printer Access Protocol (PAP)
+PAPClose call 10-4, 10-11 to 10-12</li>
+<li>description of 10-17
+PAPOpen call 10-4, 10-7</li>
+<li>description of 10-17
+PAPRead call 10-4, 10-10</li>
+<li>description of 10-18
+PAPRegName call 10-4</li>
+<li>description of 10-20
+PAPRemName call 10-4
+PAPStatus call 10-4, 10-12</li>
+<li>description of 10-19</li>
+<li>packet format for 10-15
+PAPWrite call 10-4, 10-10</li>
+<li>description of 10-18
+parent directory 13-12
+Parent ID 13-16
+parent of CNodes 13-12
+passthrough connections 14-14 to 14-15
+passwords I-17</li>
+<li>volume passwords 13-30 to 13-31
+pathnames 13-24</li>
+<li>examples of 13-26
+path types 13-24
+PC-net, SMB I-19
+peer-to-peer architecture I-6
+permissions 13-35
+Phase 2, AppleTalk I-24
+PktAttnRecvSeq 12-21</li>
+</ul>
+<hr>
+<p>PktAttnRecvWdw field 12-21
+PktAttnSendSeq 12-21
+PktFirstByteSeq 12-7</p>
+<ul>
+<li>resetting value of 12-10</li>
+<li>summary of 12-10
+PktNextRecvSeq 12-8</li>
+<li>summary of 12-10
+PktRecvWdw 12-10
+PktRecvWdw-1 12-9
+plug-and-play capability I-6
+port descriptor 5-6
+port network number range 5-7
+PostScript 10-3, 14-7. See also comments; spooler/servers; spooling</li>
+<li>comments 14-20 to 14-23</li>
+<li>document files in 14-18 to 14-19</li>
+<li>exit server jobs 14-20</li>
+<li>pages in 14-19</li>
+<li>print jobs distinguished from
+<ul>
+<li>document files 14-19 to 14-20</li>
+</ul>
+</li>
+<li>prologue in 14-19, 14-22 to 14-23</li>
+<li>queue management and 14-15 to 14-17</li>
+<li>script in 14-19, 14-22 to 14-23</li>
+<li>structure comments 14-23 to 14-25</li>
+<li>syntax conventions 14-21</li>
+<li>Title comment 14-28
+Printer Access Protocol (PAP) I-16, 10-1 to 10-20</li>
+<li>arbitration, server in 10-7</li>
+<li>client interface 10-16 to 10-20</li>
+<li>connection establishment phase 10-7 to 10-9</li>
+<li>connection termination phase 10-11 to 10-12</li>
+<li>data transfer phase 10-9 to 10-10</li>
+<li>duplicate filtration 10-11</li>
+<li>end-of-file message 10-10</li>
+<li>function and result values 10-16</li>
+<li>half-open connections and 10-5</li>
+<li>model of server 10-5 to 10-6</li>
+<li>nonspooler printing through 14-8</li>
+<li>packet formats 10-12 to 10-15</li>
+<li>parameters for C-11</li>
+<li>result values 10-16</li>
+<li>services 10-4 to 10-5</li>
+<li>tickle transaction 10-9</li>
+<li>WaitTime for 10-8 to 10-9
+Printer Query comments 14-39
+printer-queue protocol (PQP) 14-16 to 14-17
+printing I-15 to I-17. See also comments; ImageWriters; LaserWriters</li>
+<li>access to printer, control of 14-10 to 14-12</li>
+<li>architecture 10-3</li>
+<li>comments 14-20 to 14-23</li>
+<li>direct printing I-16</li>
+<li>header comments 14-25 to 14-26</li>
+<li>Macintosh impact on 14-6 to 14-7</li>
+<li>nonspooler printing 14-4 to 14-5, 14-7 to 14-8</li>
+<li>Query comments 14-39</li>
+<li>sample print streams 14-41 to 14-43</li>
+<li>structure comments 14-23 to 14-25
+Print Manager, nonspooler printing with 14-4 to 14-5
+PrintMonitor I-15
+print spoolers I-16
+print streams 14-41 to 14-43
+probe with ADSP 12-5, 12-14
+Procedure Set comments 14-30 to 14-31
+Procedure Set Query comments 14-40
+ProDOS information parameter 13-18 to 13-20
+prologue 14-19, 14-22 to 14-23
+protocol address 2-3. See also dynamic protocol address assignment</li>
+<li>of node 2-4</li>
+<li>request packets and 2-7</li>
+<li>translated to hardware address 2-6</li>
+<li>verifying packet address 2-10
+protocol architecture</li>
+<li>AFP and 13-7</li>
+<li>alternate spooling environments 14-11</li>
+<li>diagram of I-21</li>
+<li>and ISO-OSI reference model I-20 to I-23</li>
+<li>nonspooler printing 14-8</li>
+<li>printer-queue protocol 14-17</li>
+<li>spooler/servers, printing with 14-9 to 14-10
+protocol family 2-3
+protocols</li>
+<li>defined I-4</li>
+<li>ISO-OSI reference model I-20 to I-23</li>
+<li>simplicity of I-7
+protocol stack 2-3</li>
+<li>address resolution 2-3</li>
+<li>broadcast protocol address 2-4</li>
+<li>dynamic protocol address assignment 2-8 to 2-9</li>
+<li>filtering incoming packets with 2-9</li>
+<li>single link protocol stack 2-4
+provisional node address 4-8 to 4-9
+pseudorandom numbers 1-13</li>
+</ul>
+<h1 id="q">Q<a class="anchor" href="#q">#</a></h1>
+<p>QuantumSize 11-16
+queries</p>
+<ul>
+<li>PostScript 14-19 to 14-20</li>
+<li>sample print streams for 14-42
+query comments 14-34 to 14-41</li>
+<li>conventions for using 14-35</li>
+</ul>
+<hr>
+<ul>
+<li>definitions of 14-36
+Feature Query comments 14-37
+File Query comments 14-37
+Font Query comments 14-38
+Global Query comments 14-39
+Printer Query comments 14-39
+Procedure Set Query comments 14-40
+Virtual Memory Status Query comments 14-40 to 14-41
+queue management by</li>
+<li>spooler/servers 14-15 to 14-17</li>
+</ul>
+<h1 id="r">R<a class="anchor" href="#r">#</a></h1>
+<p>random number exchange (Randnum Exchange) 13-29 to 13-30</p>
+<ul>
+<li>for spoolers 14-13, 14-14
+read access 13-31
+ReadOnly bits 13-21
+ReceiveFrame function B-17 to B-19
+ReceiveLinkMgmt function B-15 to B-17
+ReceivePacket procedure B-15
+reception window size 12-8 to 12-9
+RecvSeq 12-7, 12-8</li>
+<li>summary of 12-11
+RecvWdw 12-11
+registration of name 7-7</li>
+<li>call for 7-12
+release timer 9-6, 9-21
+removing a name. <em>See</em> Deletion of names
+RenameInhibit bit 13-21
+Replace-Entry routine for RTMP 5-23
+reply block 13-46 to 13-47
+ReqBuffSize 11-18
+request block 13-46 to 13-47
+request control block (RqCB) 9-21
+request packets 2-7</li>
+<li>Echo Request packet 6-4</li>
+<li>formats for 2-11</li>
+<li>gleaning and 2-10</li>
+<li>Routing Table Maintenance Protocol (RTMP) 5-17 to 5-19, 5-23
+request-to-send (RTS) frame 1-10
+required access rights 13-33 to 13-34
+resistors for LocalTalk A-4
+resource comments 14-32 to 14-34</li>
+<li>conventions for using 14-32 to 14-33</li>
+<li>definitions of 14-33 to 14-34
+response control block (RspCB) 9-21
+response packets 2-7 to 2-8</li>
+<li>formats for 2-11</li>
+<li>Routing Table Maintenance Protocol (RTMP) 5-17 to 5-19
+Retransmit Advice Control packet 12-15
+root 13-11
+router model 5-6 to 5-7
+routes I-13
+routing algorithm 5-25 to 5-26</li>
+<li>for DDP 4-18 to 4-20
+routing seed 5-10
+Routing Table Maintenance Protocol (RTMP) I-12 to I-13, 5-1 to 5-26. <em>See also</em> internet routers (IRs); routing tuples</li>
+<li>aging of entries 5-12 to 5-13</li>
+<li>assignment of network number ranges 5-16 to 5-17</li>
+<li>bad entry identification 5-12 to 5-13</li>
+<li>changing zones lists in 8-21 to 8-22</li>
+<li>Create-New-Entry routine 5-23</li>
+<li>Datagram Delivery Protocol (DDP) and 4-18 to 4-20</li>
+<li>initialization of tables 5-21</li>
+<li>internet topologies and 5-7</li>
+<li>maintenance algorithms 5-21 to 5-25</li>
+<li>model of router 5-6 to 5-7</li>
+<li>nonrouter nodes 5-17 to 5-20</li>
+<li>notify neighbor technique 5-12</li>
+<li>packet format 5-13 to 5-16</li>
+<li>parameters for C-8</li>
+<li>reducing packet size 5-11</li>
+<li>Replace-Entry routine 5-23</li>
+<li>request and response packet formats 5-17 to 5-19</li>
+<li>request packet routine 5-23</li>
+<li>route data requests 5-20</li>
+<li>router model 5-6 to 5-7</li>
+<li>routing algorithm 5-25 to 5-26</li>
+<li>routing seed 5-10</li>
+<li>send-RTMP timers 5-13, 5-24</li>
+<li>sockets 5-7</li>
+<li>split horizon technique 5-11</li>
+<li>and statically assigned sockets (SASs) 4-5</li>
+<li>Update-the-Entry routines 5-22</li>
+<li>validity and 5-13, 5-23</li>
+<li>version number indicator 5-15</li>
+<li>ZIP process and 8-5
+routing tables 5-8 to 5-9</li>
+<li>aging of entries 5-12 to 5-13</li>
+<li>entry state 5-8</li>
+<li>example of 5-9</li>
+<li>initialization of 5-21
+routing tuples 5-10, 5-16</li>
+<li>Copy-in-Tuples routine 5-24</li>
+<li>matching definitions 5-25
+RspCB, releasing of 9-26
+RTMP. <em>See</em> Routing Table Maintenance Protocol (RTMP)
+RTMP data packets, maintenance algorithm for 5-22
+RTMP Route Data Request (RDR) packets 5-20
+RTMP sockets 5-7
+RTMP Stub 4-19, 5-18</li>
+<li>for nodes on extended network 5-19 to 5-20
+RTS-CTS handshake 1-13 to 1-14</li>
+</ul>
+<hr>
+<h1 id="s">S<a class="anchor" href="#s">#</a></h1>
+<p>sample print streams 14-41 to 14-43
+saved zone names 8-9
+script 14-19, 14-22 to 14-23
+search access users 13-31
+seed routers 5-16
+SendData, packet format 10-14</p>
+<ul>
+<li>PAP transactions 10-10, 10-11
+send-RTMP timers 5-13
+SendSeq 12-7</li>
+<li>resetting value to 12-10</li>
+<li>summary of 12-11
+SendStatus 10-12</li>
+<li>packet format 10-15
+send transaction status (STS) bit 9-12 to 9-13
+SendWdwSeq 12-9</li>
+<li>summary of 12-11
+sequence numbers 12-7
+server calls 13-40 to 13-41
+server node IDs 1-5
+server session socket (SSS) 11-7
+servers 10-2, 10-3. <em>See also</em> AppleTalk Session Protocol (ASP); Printer Access Protocol (PAP)</li>
+<li>and connection-listening sockets 12-35 to 12-36</li>
+<li>name servers 1-14
+Service Access Point (SAP) 3-3
+ServiceStatusBlock 11-22
+session identifier (session ID) 11-4
+session listening socket (SLS) 10-2, 10-4</li>
+<li>AFP login and 13-27
+sessions</li>
+<li>on ASP 11-4</li>
+<li>maintenance timeout 11-9</li>
+<li>opening and closing 11-6 to 11-8
+SessRefNum 11-17, 11-24
+set mapping of characters D-2
+short DDP header 4-14, 4-15
+short name of catalog 13-13 to 13-14</li>
+<li>simplicity of protocols I-7
+SizeErr 11-19, 11-25
+SLClose call 10-12</li>
+<li>description of 10-20
+SLInit call 10-4, 10-5</li>
+<li>description of 10-19</li>
+<li>status gathering with 10-12
+SMB, PC-net I-19
+socket clients 4-5
+socket listeners 4-10. <em>See also</em> session listening socket (SLS)</li>
+<li>datagram reception by 4-13
+socket numbers 4-5</li>
+<li>internet socket address 4-6
+sockets 4-5. <em>See also</em> AppleTalk Echo Protocol (AEP); connections; zone information socket (ZIS)</li>
+<li>closing of 4-12</li>
+<li>connection-listening sockets 12-35 to 12-36</li>
+<li>destination sockets 9-2</li>
+<li>internet socket address 4-6</li>
+<li>names information socket (NIS) 7-7</li>
+<li>source sockets 9-2</li>
+<li>terminology table 4-11
+sockets table 4-10
+source sockets 9-2
+SPAttention call 11-13 to 11-14, 11-22
+SPCloseSession call 11-18, 11-24
+SPCmdReply call 11-19 to 11-20, 11-32
+SPCommand call 11-10 to 11-11, 11-25, 11-30 to 11-32
+SPError value 11-18, 11-24
+SPGetParms call 11-16, 11-23
+SPGetRequest call 11-18 to 11-19, 11-20
+SPGetSession call 11-17
+SPGetStatus call 11-15, 11-23
+SPInit calls 11-17
+split horizon technique 5-11
+SPNewStatus call 11-22
+spooler/servers I-16, 14-6, 14-7. <em>See also</em> print spoolers</li>
+<li>access to printer, control of 14-10 to 14-12</li>
+<li>direct passthrough connection 14-14 to 14-15</li>
+<li>protocol architecture for printing with 14-9 to 14-10</li>
+<li>queue management 14-15 to 14-17</li>
+<li>user authentication dialog 14-12 to 14-14
+SpoolerQuery 14-12 to 14-13
+spooling I-15, 14-1 to 14-43 <em>See also</em> PostScript; print spoolers</li>
+<li>background spoolers 14-6</li>
+<li>benefits of 14-5</li>
+<li>bypass 14-15</li>
+<li>comments 14-20 to 14-23</li>
+<li>direct passthrough connection 14-14 to 14-15</li>
+<li>document structuring conventions 14-18 to 14-19</li>
+<li>exit server jobs 14-20</li>
+<li>nonspooler printing 14-4 to 14-5, 14-7 to 14-8</li>
+<li>queries 14-19 to 14-20</li>
+<li>query comment, spoolers and 14-35 to 14-36</li>
+<li>resource comments 14-32 to 14-34</li>
+<li>sample print streams 14-41 to 14-43</li>
+<li>standard print jobs 14-19</li>
+<li>syntax conventions 14-21
+SPOpenSession call 11-17, 11-24
+SPReqType call 11-19
+SPWrite call 11-11 to 11-13, 11-26, 11-32</li>
+<li>with error condition 11-12
+SPWrtContinue call 11-12, 11-20 to 11-21, 11-33 to 11-34
+SPWrtReply call 11-20, 11-21, 11-32
+standard print jobs 14-19</li>
+</ul>
+<hr>
+<p>startup range 4-9
+statically assigned sockets (SASs) 4-5
+    AppleTalk Echo Protocol (AEP)
+        and 6-1 to 6-4
+    opening of 4-11
+    RTMP sockets and 5-7
+    use of 4-21
+Status, in PAP 10-12
+stream protocols I-14 to I-15
+structure comments 14-23 to 14-25
+    sample print streams for 14-41 to 14-42
+Sub-Network Access Protocol (SNAP) 3-3
+    EtherTalk Link Access Protocol (ELAP) and 3-6
+    TokenTalk Link Access Protocol (TLAP) and 3-6
+Sun Microsystem I-19
+synchronization pulse 1-10
+synchronization rules 13-35, 13-36
+Synchronous Data Link Control (SDLC) frame format A-2
+syntax conventions, PostScript 14-21</p>
+<h1 id="t">T<a class="anchor" href="#t">#</a></h1>
+<p>THIS-NET 4-19
+THIS-NET-RANGE 4-19
+    extended networks, nodes on 5-19 to 5-20
+throughput of half routers 5-4
+tickle transaction 10-5, 10-9
+    ASP, tickle packet in 11-9, 11-35
+    connection termination phase 10-11
+    packet format 10-14
+TIDs 9-3, 9-9 to 9-10
+    generation of 9-27 to 9-28
+    in packet format 9-15
+    sending response call 9-20
+    wraparound of 9-27 to 9-28
+timers
+    in Forward Reset Control packet 12-10
+    ZIP timer values 8-24
+Title comment 14-28
+TLAP. <em>See</em> TokenTalk Link Access Protocol (TLAP)
+token ring network. <em>See also</em> TokenTalk Link Access Protocol (TLAP)
+    AARP packets on 3-11 to 3-12
+    connectivity I-9
+    TLAP packets and 3-6 to 3-7
+TokenTalk I-9, I-11. <em>See also</em> TokenTalk Link Access Protocol (TLAP)
+    AppleTalk Internet Router I-24
+    as extended network 4-7
+    parameters for C-4 to C-5
+TokenTalk Link Access Protocol (TLAP) I-11, 3-1 to 3-12
+    address mapping in 3-7 to 3-10
+    802.2 standard and 3-3
+    node IDs for 3-9
+    packet formats 3-6 to 3-7
+    zone multicast addresses used by 3-10
+topology of network I-8
+Trailer comment 14-31 to 14-32
+transaction control block (TCB) 9-21
+    releasing of 9-26 to 9-27
+transaction identifiers. <em>See</em> TIDs
+Transaction Release packet. <em>See</em> TRel packet
+Transaction Request packet. <em>See</em> TReq packet
+Transaction Response packet. <em>See</em> TResp packet
+transactions list 9-6
+transformer specifications for LocalTalk A-5 to A-8
+TransmitFrame procedure B-14
+TransmitLinkMgmt function B-8 to B-13
+TransmitPacket function B-8
+TRel packet 9-6
+    ATP responder 9-24 to 9-25
+    timer I-24
+TReq packet 9-3, 9-6
+    ATP responder 9-24 to 9-25
+    bitmap for 9-10 to 9-12
+    call for 9-17 to 9-18
+    closing responding socket call 9-19
+    generation of TIDs and 9-28
+    multipacket responses 9-9
+    opening responding socket call 9-18
+    PAP receiving 10-7
+    receiving request call 9-19
+TResp packet 9-3
+    ATP requester 9-22 to 9-23
+    bitmap for 9-10 to 9-12
+    multipacket responses 9-9
+tuples. <em>See also</em> routing tuples
+    NBP tuples in packets 7-15 to 7-17
+type fields, LLAP 1-6 to 1-8</p>
+<h1 id="u">U<a class="anchor" href="#u">#</a></h1>
+<p>UARights 13-31, 13-32 to 13-33
+UNIX file system I-19
+Update-the-Entry routines for RTMP 5-22
+user access rights 13-31, 13-32 to 13-33
+user authentication methods (UAMs) 13-8, 13-28 to 13-30
+    for spooler/servers 14-12 to 14-14
+user names I-17
+user node IDs 1-5</p>
+<h1 id="v">V<a class="anchor" href="#v">#</a></h1>
+<p>variable Directory ID volume 13-11 to 13-12
+VAX-resident file services I-15</p>
+<hr>
+<p>verifying saved zone names 8-9
+versatility of system I-6
+Virtual Memory Status Query</p>
+<ul>
+<li>comments 14-40 to 14-41
+virtual volumes 13-12
+volume calls 13-41
+volume catalog 13-7 to 13-8. <em>See also</em> CNodes</li>
+<li>examples of 13-25
+Volume ID 13-10, 10-41
+volumes I-17</li>
+<li>AFP and 13-9 to 13-13</li>
+<li>mounting of 13-12</li>
+<li>passwords 13-30 to 13-31</li>
+<li>types of 13-10 to 13-12
+volume signature 13-10</li>
+</ul>
+<h1 id="w">W<a class="anchor" href="#w">#</a></h1>
+<p>WaitTime for PAP 10-8 to 10-9
+wildcards in entity name 7-4
+workstation session socket (WSS) 11-7
+world access rights 13-32
+wraparound of TIDs 9-27 to 9-28
+write access users 13-31
+WriteDataSize 11-26
+WriteInhibit bit 13-21</p>
+<h1 id="x">X<a class="anchor" href="#x">#</a></h1>
+<p>XO transactions. <em>See</em> exactly-once (XO) transactions</p>
+<h1 id="z">Z<a class="anchor" href="#z">#</a></h1>
+<p>Zilog 8530 Serial Communications Controller (SCC) A-3</p>
+<ul>
+<li>implementation of B-20 to B-22
+ZIP. <em>See</em> Zone Information Protocol (ZIP)
+ZIP bringback time 8-22, 8-24
+ZIP Notify packet 8-22 to 8-23
+ZIP Queries 8-5 to 8-7</li>
+<li>packet formats 8-11 to 8-12
+zone name listing 8-7 to 8-8
+ZIP Reply 8-5 to 8-7</li>
+<li>extended replies 8-11 to 8-12</li>
+<li>packet formats 8-11 to 8-12
+ZIP stub 8-22
+Zone Information Protocol (ZIP)</li>
+<li>I-14, 8-1 to 8-24</li>
+<li>acquisition of names 8-9 to 8-10</li>
+<li>aging zone names 8-10</li>
+<li>assignment of zones lists 8-20 to 8-21</li>
+<li>ATP requests 8-13 to 8-15</li>
+<li>changing zones lists 8-21 to 8-24</li>
+<li>default zones 8-5</li>
+<li>for ELAP 3-10</li>
+<li>FwdReq packets 8-19</li>
+<li>GetNetInfo packet formats 8-16 to 8-17</li>
+<li>internet routers and 8-18 to 8-20</li>
+<li>LkUps, converting FwdReqs to 8-19 to 8-20</li>
+<li>multicasting zones 8-10</li>
+<li>network-to-zone name mapping 8-4</li>
+<li>new zone names 8-10</li>
+<li>nodes, changing zone names in 8-22</li>
+<li>packet formats 8-11 to 8-17</li>
+<li>parameters for C-10</li>
+<li>routers including 5-7</li>
+<li>services of 8-4</li>
+<li>timer values 8-24</li>
+<li>for TLAP 3-10</li>
+<li>zone information socket (ZIS) 8-5</li>
+<li>zone information table (ZIT) 8-4 to 8-5</li>
+<li>zones list 8-4
+zone information socket (ZIS) 8-5</li>
+<li>GetNetInfo packet formats 8-16 to 8-17
+zone information table (ZIT) 8-4 to 8-5</li>
+<li>maintenance of 8-5 to 8-7
+zone multicasting 8-10</li>
+<li>addresses C-5</li>
+<li>computation of address 8-18</li>
+<li>GetNetInfo packet formats 8-16 to 8-17
+zones. <em>See also</em> Zone Information Protocol (ZIP)</li>
+<li>Name Binding Protocol (NBP) and 7-10
+zones lists 8-4</li>
+<li>assignment of 8-20 to 8-21</li>
+<li>changing of 8-21 to 8-24</li>
+<li>NIL zones lists 8-20 to 8-21
+zone-specific broadcast 4-6</li>
+</ul>
+<hr>
+<h2 id="the-apple-publishing-system">The Apple Publishing System<a class="anchor" href="#the-apple-publishing-system">#</a></h2>
+<p>Inside <em>AppleTalk</em>, Second Edition, was written, edited, and composed on a desktop publishing system using Apple® Macintosh® computers and Microsoft® Word. Proof pages were created on the Apple LaserWriter® printers; final pages were printed on a Varityper® VT600™. Line art was created using Adobe Illustrator™ and typeset on a Linotronic® 300. PostScript®, the LaserWriter page-description language, was developed by Adobe Systems Incorporated.</p>
+<p>Text type and display type are Apple&rsquo;s corporate font, a condensed version of ITC Garamond®. Bullets are ITC Zapf Dingbats®. Some elements, such as program listings, are set in Apple Courier, a fixed-width font.</p>
+<hr>
+<p><img src="images/p595-apple-logo.png" alt="Apple logo" /></p>
+<h1 id="inside-appletalk-second-edition">Inside AppleTalk, Second Edition<a class="anchor" href="#inside-appletalk-second-edition">#</a></h1>
+<p>by Gursharan S. Sidhu, Richard F. Andrews, Alan B. Oppenheimer
+Apple Computer, Inc.</p>
+<hr>
+<p><img src="images/p596-apple-logo.png" alt="Apple logo" /></p>
+<h1 id="inside-appletalk-second-edition-1">Inside AppleTalk, Second Edition<a class="anchor" href="#inside-appletalk-second-edition-1">#</a></h1>
+<p><em>The Official Publication from Apple Computer, Inc.</em></p>
+<p>Written by Gursharan S. Sidhu, technical director of Network Systems Development at Apple Computer, and two of Apple&rsquo;s senior staff engineers — Richard F. Andrews and Alan B. Oppenheimer — <em>Inside AppleTalk</em> provides an in-depth discussion of the protocol architecture of the AppleTalk network system. This Second Edition features completely updated, detailed descriptions of the AppleTalk protocols, including the enhancements of AppleTalk Phase 2, as well as a fundamental overview by Mr. Sidhu.</p>
+<p>Key topics covered include:</p>
+<ul>
+<li>Physical and data-link alternatives</li>
+<li>Transmission between nodes via the LocalTalk® Link Access Protocol (LLAP), EtherTalk® Link Access Protocol (ELAP), and TokenTalk® Link Access Protocol (TLAP)</li>
+<li>Handling addressing differences with the AppleTalk Address Resolution Protocol (AARP)</li>
+<li>Facilitating end-to-end transmission of data via the Datagram Delivery Protocol (DDP), Routing Table Maintenance Protocol (RTMP), and AppleTalk Echo Protocol (AEP)</li>
+<li>Handling naming and data flow with the AppleTalk Transaction Protocol (ATP), Name Binding Protocol (NBP), and Zone Information Protocol (ZIP)</li>
+<li>Guaranteeing reliable, sequenced data delivery over the network via the Printer Access Protocol (PAP), AppleTalk Data Stream Protocol (ADSP), and AppleTalk Protocol (ASP) <img src="images/p596-barcode-label.png" alt="Barcode label" /></li>
+<li>End-user services with the AppleTalk Filing Protocol (AFP) and</li>
+<li>Appendixes that cover LocalTalk specifications, the LLAP procedural model, and AppleTalk parameters</li>
+</ul>
+<p><em>Inside AppleTalk, Second Edition</em> is the essential developer tool and programmer&rsquo;s compendium of AppleTalk protocols. With this reference volume, Apple Computer provides developers with the information they need to create applications for the AppleTalk network system.</p>
+<p>Part of the Apple® Communications Library</p>
+<p>Printed in U.S.A.</p>
+<p>Apple Computer, Inc.
+20525 Mariani Avenue
+Cupertino, CA 95014
+(408) 996-1010
+TLX 171-576</p>
+<p>Addison-Wesley Publishing Company</p>
+<p><img src="images/p596-barcodes.png" alt="Book barcodes and price" /></p>
+<hr>
+<h1 id="inside-appletalk">Inside AppleTalk,<a class="anchor" href="#inside-appletalk">#</a></h1>
+<h2 id="second-edition">Second Edition<a class="anchor" href="#second-edition">#</a></h2>
+<p><em>The Official Publication from Apple Computer, Inc.</em></p>
+<p><strong>About the authors: Gursharan S. Sidhu</strong> is technical director of Network Systems Development at Apple Computer where he has been architect of the AppleTalk network system and a variety of other products, including AppleShare® and the Macintosh® Hierarchical File System. He received his B.S. from the Indian Institute of Technology and his M.S. and Ph.D. from Stanford University. He has been at Apple since 1982. <strong>Richard F. Andrews</strong> and <strong>Alan B. Oppenheimer</strong>, both staff engineers in Apple&rsquo;s Network System Development department since 1983, have played lead roles in the design of the AppleTalk network system. Mr. Andrews, with a B.S.E.E. from The Cooper Union and an M.S.C.S. from U.C.L.A., was project leader for the AppleShare file server and led development of the AppleTalk Filing Protocol. Mr. Oppenheimer, who received his B.S. and M.S. from M.I.T., played a leading role in implementing the AppleTalk core protocols for the Macintosh and worked on the design and implementation of EtherTalk®.</p>
+<p>Part of the Apple® Communications Library</p>
+<h3 id="for-more-information">For more information<a class="anchor" href="#for-more-information">#</a></h3>
+<p>APDA™ provides a wide range of development products and documentation, from Apple and other suppliers, for programmers and developers who work on Apple equipment. For information about APDA, contact</p>
+<p>APDA
+Apple Computer, Inc.
+20525 Mariani Avenue, Mailstop 33-G
+Cupertino, California 95014 USA
+(800) 282-APDA or (800) 282-2732</p>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cinside-appletalk-second-edition%5CD-character-codes.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-table-d-1-character-set-mapping-used-in-appletalk">■ Table D-1 Character set mapping used in AppleTalk</a></li>
+        <li><a href="#-table-d-2-lowercase-to-uppercase-mapping-in-appletalk">■ Table D-2 Lowercase-to-uppercase mapping in AppleTalk</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#a">A</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#e">E</a></li>
+    <li><a href="#f">F</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#the-apple-publishing-system">The Apple Publishing System</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#second-edition">Second Edition</a>
+      <ul>
+        <li><a href="#for-more-information">For more information</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

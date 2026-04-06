@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Protocol Details#Field Value Source C0144LLA_AppleTalk_Phase_2_Protocol_Specification_Addendum_1989 Chapter 4 Pages 19–42 Converted 2026-04-01 Engine gemini-flash Chapter 4 Protocol Details#THE FOLLOWING SECTIONS DESCRIBE new aspects of AppleTalk protocols and changes in protocol packet formats brought about by the architectural changes of AppleTalk Phase 2. ■
+AppleTalk data links#AppleTalk data links must support some form of broadcast mechanism, a method of sending packets to all nodes connected to the data link.
+It is desirable that the link support multicast addressing. In particular, one of these multicast addresses would be used as a means to send a packet to all AppleTalk nodes on a network. The use of this multicast address, known as the AppleTalk broadcast data-link address, will ensure that the packet is received by AppleTalk nodes only, without disruption of non-AppleTalk nodes.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/appletalk-phase-2-addendum-c0144lla/04-protocol-details/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="Protocol Details">
+  <meta property="og:description" content="Protocol Details#Field Value Source C0144LLA_AppleTalk_Phase_2_Protocol_Specification_Addendum_1989 Chapter 4 Pages 19–42 Converted 2026-04-01 Engine gemini-flash Chapter 4 Protocol Details#THE FOLLOWING SECTIONS DESCRIBE new aspects of AppleTalk protocols and changes in protocol packet formats brought about by the architectural changes of AppleTalk Phase 2. ■
+AppleTalk data links#AppleTalk data links must support some form of broadcast mechanism, a method of sending packets to all nodes connected to the data link.
+It is desirable that the link support multicast addressing. In particular, one of these multicast addresses would be used as a means to send a packet to all AppleTalk nodes on a network. The use of this multicast address, known as the AppleTalk broadcast data-link address, will ensure that the packet is received by AppleTalk nodes only, without disruption of non-AppleTalk nodes.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="Protocol Details">
+  <meta itemprop="description" content="Protocol Details#Field Value Source C0144LLA_AppleTalk_Phase_2_Protocol_Specification_Addendum_1989 Chapter 4 Pages 19–42 Converted 2026-04-01 Engine gemini-flash Chapter 4 Protocol Details#THE FOLLOWING SECTIONS DESCRIBE new aspects of AppleTalk protocols and changes in protocol packet formats brought about by the architectural changes of AppleTalk Phase 2. ■
+AppleTalk data links#AppleTalk data links must support some form of broadcast mechanism, a method of sending packets to all nodes connected to the data link.
+It is desirable that the link support multicast addressing. In particular, one of these multicast addresses would be used as a means to send a packet to all AppleTalk nodes on a network. The use of this multicast address, known as the AppleTalk broadcast data-link address, will ensure that the packet is received by AppleTalk nodes only, without disruption of non-AppleTalk nodes.">
+  <meta itemprop="wordCount" content="6554">
+
+<title>Protocol Details | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/appletalk-phase-2-addendum-c0144lla/04-protocol-details/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Protocol Details</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#elap-and-tlap">ELAP and TLAP</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#ddp">DDP</a>
+      <ul>
+        <li><a href="#sending-packets-to-a-router">Sending packets to a router</a></li>
+      </ul>
+    </li>
+    <li><a href="#support-for-zone-multicasts">Support for zone multicasts</a></li>
+    <li><a href="#packet-filtering">Packet filtering</a></li>
+    <li><a href="#figure-4-3-the-ddpread-algorithm">Figure 4-3 The DDPRead algorithm</a></li>
+    <li><a href="#ddp-routing-details">DDP routing details</a></li>
+    <li><a href="#selecting-the-best-router">Selecting the best router</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#aging-router-information">Aging router information</a></li>
+    <li><a href="#processing-incoming-rtmp-packets">Processing incoming RTMP packets</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#packet-formats">Packet formats</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#maintaining-routing-tables">Maintaining routing tables</a></li>
+    <li><a href="#split-horizon">Split horizon</a></li>
+    <li><a href="#notify-neighbor">Notify neighbor</a></li>
+    <li><a href="#rtmp-requests">RTMP requests</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#the-this-zone-variable">The THIS-ZONE variable</a></li>
+    <li><a href="#broadcast-requests-and-forward-requests">Broadcast requests and forward requests</a></li>
+    <li><a href="#special-characters">Special characters</a></li>
+    <li><a href="#atp">ATP</a></li>
+    <li><a href="#zip">ZIP</a>
+      <ul>
+        <li><a href="#zip-getnetinfo-and-netinforeply">ZIP GetNetInfo and NetInfoReply</a></li>
+        <li><a href="#figure-4-7-zip-getnetinfo-and-netinforeply-packet-formats">Figure 4-7 ZIP GetNetInfo and NetInfoReply packet formats</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#zip-atp-requests">ZIP ATP requests</a></li>
+    <li><a href="#changing-zone-names">Changing zone names</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#the-apple-publishing-system">The Apple Publishing System</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="protocol-details">Protocol Details<a class="anchor" href="#protocol-details">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td>C0144LLA_AppleTalk_Phase_2_Protocol_Specification_Addendum_1989</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>4</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>19–42</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-04-01</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="chapter-4-protocol-details">Chapter 4 Protocol Details<a class="anchor" href="#chapter-4-protocol-details">#</a></h1>
+<p>THE FOLLOWING SECTIONS DESCRIBE new aspects of AppleTalk protocols and changes in protocol packet formats brought about by the architectural changes of AppleTalk Phase 2. ■</p>
+<hr>
+<h1 id="appletalk-data-links">AppleTalk data links<a class="anchor" href="#appletalk-data-links">#</a></h1>
+<p>AppleTalk data links must support some form of broadcast mechanism, a method of sending packets to <em>all</em> nodes connected to the data link.</p>
+<p>It is desirable that the link support multicast addressing. In particular, one of these multicast addresses would be used as a means to send a packet to all AppleTalk nodes on a network. The use of this multicast address, known as the <strong>AppleTalk broadcast data-link address</strong>, will ensure that the packet is received by AppleTalk nodes only, without disruption of non-AppleTalk nodes.</p>
+<p>Data links that support multicast addresses should also define a number of these to be used as zone multicast addresses. Each AppleTalk zone on the data link must be mapped to one of these addresses, as specified in the description of ZIP later in this chapter.</p>
+<p>An AppleTalk node should be able to receive packets sent to</p>
+<ul>
+<li>the node&rsquo;s data-link address</li>
+<li>the AppleTalk broadcast address</li>
+<li>the multicast address for the node&rsquo;s zone</li>
+</ul>
+<hr>
+<h2 id="elap-and-tlap">ELAP and TLAP<a class="anchor" href="#elap-and-tlap">#</a></h2>
+<p>The EtherTalk and TokenTalk link access protocols (ELAP and TLAP) provide connectionless service using IEEE 802.2 Type 1 packet formats. Packets are sent to SAP $AA. The SNAP protocol discriminator for AppleTalk is $080007809B (Apple&rsquo;s company code followed by the EtherTalk protocol type).</p>
+<p>Figure 4-1 shows AppleTalk packet formats for ELAP and TLAP. The data portion of the packet begins with the long format DDP header. There is no LLAP-style header.</p>
+<hr>
+<p>■ <strong>Figure 4-1</strong> AppleTalk packet formats</p>
+<p><img src="images/p21-appletalk-packet-formats.png" alt="AppleTalk packet formats" /></p>
+<pre class="mermaid">packet-beta
+0-15: &#34;Data-link header&#34;
+16-23: &#34;Destination SAP = $AA&#34;
+24-31: &#34;Source SAP = $AA&#34;
+32-39: &#34;Control = $03&#34;
+40-79: &#34;Protocol = $080007809B&#34;
+80-95: &#34;DDP header (long format)&#34;
+96-111: &#34;DDP data&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Data-link header</td>
+          <td>0</td>
+          <td>Variable</td>
+          <td>Specific header for the underlying data-link protocol.</td>
+      </tr>
+      <tr>
+          <td>Destination SAP</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>Destination Service Access Point, fixed value $AA for AppleTalk.</td>
+      </tr>
+      <tr>
+          <td>Source SAP</td>
+          <td>Variable + 8</td>
+          <td>8</td>
+          <td>Source Service Access Point, fixed value $AA for AppleTalk.</td>
+      </tr>
+      <tr>
+          <td>Control</td>
+          <td>Variable + 16</td>
+          <td>8</td>
+          <td>LLC Control field, fixed value $03.</td>
+      </tr>
+      <tr>
+          <td>Protocol</td>
+          <td>Variable + 24</td>
+          <td>40</td>
+          <td>SNAP Protocol Identifier for AppleTalk, fixed value $080007809B.</td>
+      </tr>
+      <tr>
+          <td>DDP header (long format)</td>
+          <td>Variable + 64</td>
+          <td>Variable</td>
+          <td>Long format Datagram Delivery Protocol header.</td>
+      </tr>
+      <tr>
+          <td>DDP data</td>
+          <td>Variable</td>
+          <td>Variable</td>
+          <td>The data payload of the AppleTalk DDP packet.</td>
+      </tr>
+  </tbody>
+</table>
+<p>Table 4-1 specifies the AppleTalk broadcast and zone multicast addresses used by ELAP and TLAP.</p>
+<hr>
+<p>■ <strong>Table 4-1</strong> Broadcast and zone multicast addresses for ELAP and TLAP</p>
+<p><img src="images/p22-table-4-1.png" alt="Broadcast and zone multicast addresses for ELAP and TLAP" /></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left">ELAP</th>
+          <th style="text-align: left">TLAP</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><em>AppleTalk broadcast address</em></td>
+          <td style="text-align: left">$090007FFFFFF</td>
+          <td style="text-align: left">$C00040000000</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><em>Zone multicast addresses</em><br>When used with the address assignment algorithm described in this chapter, the first address in each list represents a<sub>0</sub>.</td>
+          <td style="text-align: left">$090007000000<br>|<br>|<br>253 addresses<br>|<br>|<br>V<br>$0900070000FC</td>
+          <td style="text-align: left">$C00000000800<br>$C00000001000<br>$C00000002000<br>$C00000004000<br>$C00000008000<br>$C00000010000<br>$C00000020000<br>$C00000040000<br>$C00000080000<br>$C00000100000<br>$C00000200000<br>$C00000400000<br>$C00000800000<br>$C00001000000<br>$C00002000000<br>$C00004000000<br>$C00008000000<br>$C00010000000<br>$C00020000000</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="aarp">AARP<a class="anchor" href="#aarp">#</a></h1>
+<p>AARP packets are also encapsulated in the IEEE 802.2 format on data links that support this standard. The SNAP protocol discriminator for AARP packets is $00000080F3. The AARP packet format is shown in Figure 4-2.</p>
+<p>AARP cannot use the following reserved addresses when probing for an AppleTalk address:</p>
+<ul>
+<li>$nnnn00</li>
+<li>$nnnnFE</li>
+<li>$nnnnFF</li>
+<li>any address using $0000 or $FFFF as the network number (nnnn)</li>
+</ul>
+<p>When probing, AARP should send ten probes, at one-fifth second intervals. AARP probes and requests should be sent to the AppleTalk broadcast address.</p>
+<hr>
+<ul>
+<li>Figure 4-2 AARP packet format</li>
+</ul>
+<p><img src="images/p23-aarp-packet-format.png" alt="AARP packet format including 802.2 and SNAP headers" /></p>
+<pre class="mermaid">packet-beta
+0-7: &#34;Destination SAP = $AA&#34;
+8-15: &#34;Source SAP = $AA&#34;
+16-23: &#34;Control = $03&#34;
+24-63: &#34;Protocol = $00000080F3&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Data-link header</td>
+          <td>-</td>
+          <td>Variable</td>
+          <td>Link-layer specific header preceding the SNAP header</td>
+      </tr>
+      <tr>
+          <td>Destination SAP</td>
+          <td>0</td>
+          <td>8</td>
+          <td>Destination Service Access Point, fixed at $AA</td>
+      </tr>
+      <tr>
+          <td>Source SAP</td>
+          <td>8</td>
+          <td>8</td>
+          <td>Source Service Access Point, fixed at $AA</td>
+      </tr>
+      <tr>
+          <td>Control</td>
+          <td>16</td>
+          <td>8</td>
+          <td>Unnumbered information control field, fixed at $03</td>
+      </tr>
+      <tr>
+          <td>Protocol</td>
+          <td>24</td>
+          <td>40</td>
+          <td>SNAP protocol ID, fixed at $00000080F3 (AppleTalk ARP)</td>
+      </tr>
+      <tr>
+          <td>AARP information</td>
+          <td>64</td>
+          <td>Variable</td>
+          <td>AARP protocol-specific packet data</td>
+      </tr>
+  </tbody>
+</table>
+<p>The exact sequence in which AARP tries 24-bit addresses while probing is not specified here. Subject to the constraints of the range within which AARP is choosing the address, it is free to choose addresses in any order.</p>
+<h2 id="ddp">DDP<a class="anchor" href="#ddp">#</a></h2>
+<p>The DDP packet format remains unchanged from AppleTalk Phase 1; however, only the long DDP header format is used. A destination network number of $0000 is accepted by all nodes on the network (see &ldquo;Packet Filtering&rdquo; in this section).</p>
+<h3 id="sending-packets-to-a-router">Sending packets to a router<a class="anchor" href="#sending-packets-to-a-router">#</a></h3>
+<p>DDP provides an added service in routing nodes on extended networks, for use primarily by the NBP routing algorithm. A DDP destination address of the form $nnnn00 is allowed, meaning &ldquo;any router connected to a network whose network number range includes nnnn (or whose network number is nnnn).&rdquo; A packet with such an address is forwarded through an internet via the normal DDP forwarding mechanism until it reaches such a router. This router accepts the packet as if it were sent to the packet&rsquo;s destination address.</p>
+<hr>
+<h2 id="support-for-zone-multicasts">Support for zone multicasts<a class="anchor" href="#support-for-zone-multicasts">#</a></h2>
+<p>DDP in a routing node must provide the node&rsquo;s router with the ability to send a packet to a specific zone multicast address. This ability is used by NBP. Such an ability should <em>not</em> be provided in nonrouting nodes.</p>
+<h2 id="packet-filtering">Packet filtering<a class="anchor" href="#packet-filtering">#</a></h2>
+<p>DDP in nonrouting nodes on extended networks should always accept datagrams addressed to destination network number zero, node ID $FF (these are network-wide or zone-specific broadcasts). However, DDP on extended networks should <em>not</em> accept datagrams destined for network zero and any node ID other than $FF (even the node&rsquo;s own). DDP on nonextended networks should accept both. The DDPRead algorithm shown in <em>Figure 4-3</em> illustrates this process.</p>
+<hr>
+<h2 id="figure-4-3-the-ddpread-algorithm">Figure 4-3 The DDPRead algorithm<a class="anchor" href="#figure-4-3-the-ddpread-algorithm">#</a></h2>
+<p><img src="images/p25-ddpread-algorithm.png" alt="Flowchart of the DDPRead algorithm" /></p>
+<pre class="mermaid">graph TD
+    Start(( )) --&gt; D1{&#34;Reception port = nonextended&lt;br/&gt;and packet&#39;s data-link type = 1?&lt;br/&gt;(short DDP header)&#34;}
+    D1 -- &#34;no&#34; --&gt; D2{&#34;Packet&#39;s DDP destination network = 0?&#34;}
+    D1 -- &#34;yes&#34; ----&gt; Deliver[&#34;Deliver packet to reception&lt;br/&gt;port&#39;s destination socket&#34;]
+
+    D2 -- &#34;yes&#34; --&gt; D3{&#34;Reception port = extended?&#34;}
+    D2 -- &#34;no&#34; --&gt; D4{&#34;Reception port = nonextended&lt;br/&gt;and reception port&#39;s network = 0?&#34;}
+
+    D3 -- &#34;no&#34; --&gt; D5{&#34;DDP destination node =&lt;br/&gt;reception port&#39;s node?&#34;}
+    D3 -- &#34;yes&#34; --&gt; D5
+
+    D4 -- &#34;yes&#34; --&gt; D5
+    D4 -- &#34;no&#34; --&gt; D6{&#34;DDP destination network =&lt;br/&gt;reception port&#39;s network?&#34;}
+
+    D6 -- &#34;yes&#34; --&gt; D5
+    D6 -- &#34;no&#34; ----&gt; D7{&#34;Is this a routing node?&#34;}
+
+    D5 -- &#34;yes&#34; --&gt; SetRouter[&#34;Set best router entry&#34;]
+    SetRouter --&gt; Deliver
+
+    D5 -- &#34;no&#34; --&gt; D8{&#34;DDP destination node = broadcast?&#34;}
+
+    D8 -- &#34;yes&#34; --&gt; Deliver
+    D8 -- &#34;no&#34; --&gt; D7
+
+    Deliver --&gt; D7
+
+    D7 -- &#34;no&#34; --&gt; Discard[&#34;Discard the packet&#34;]
+    D7 -- &#34;yes&#34; --&gt; Route((R))
+    Route --&gt; RoutePacket[&#34;Route packet&#34;]
+    style RoutePacket fill:none,stroke:none</pre><hr>
+<h2 id="ddp-routing-details">DDP routing details<a class="anchor" href="#ddp-routing-details">#</a></h2>
+<p>The routing algorithm for all routers has changed (particularly on extended networks). Figure 4-4 illustrates these changes.</p>
+<p>As stated above, all routers must accept datagrams received for a node ID of zero if they are connected to the network indicated in the datagram. In addition, a router on an extended network should discard any broadcast packet that would otherwise be forwarded out through the same port that it was received. This can be done by examining the destination network number of datagrams whose destination node ID is $FF. If the destination network is within the network number range of the network on which the datagram was received, the datagram should be discarded; otherwise it should be forwarded. (If the destination network is zero or equal to THIS-NET, the packet is delivered internally and not forwarded.)</p>
+<hr>
+<ul>
+<li><strong>Figure 4-4</strong> Datagram routing algorithm for a router</li>
+</ul>
+<p><img src="images/p21-datagram-routing-algorithm.png" alt="Datagram routing algorithm for a router flowchart" /></p>
+<pre class="mermaid">graph TD
+    Start((R)) -- &#34;Route packet&#34; --&gt; Dec1{&#34;DDP destination network = reception port&#39;s network and DDP destination node ID = broadcast or reception port&#39;s node ID?&#34;}
+    Dec1 -- &#34;yes&#34; --&gt; BoxFinal[&#34;Deliver to appropriate socket (Packet addressed to socket in router)&#34;]
+    Dec1 -- &#34;no&#34; --&gt; Dec2{&#34;DDP destination network within reception port&#39;s range and DDP destination node ID = broadcast?&#34;}
+    Dec2 -- &#34;yes&#34; --&gt; BoxDiscard1[&#34;Discard packet (Network-specific broadcast not for this router)&#34;]
+    Dec2 -- &#34;no&#34; --&gt; BoxSearch[&#34;Search for routing table entry containing packet&#39;s DDP destination network number&#34;]
+    BoxSearch -- &#34;not found&#34; --&gt; BoxDiscardFinal[&#34;Discard the packet&#34;]
+    BoxSearch -- &#34;found&#34; --&gt; DecDist{&#34;Entry&#39;s distance = 0?&#34;}
+    DecDist -- &#34;no&#34; --&gt; DecHop{&#34;Packet&#39;s hop count &lt; 15?&#34;}
+    DecHop -- &#34;no&#34; --&gt; BoxDiscardFinal
+    DecHop -- &#34;yes&#34; --&gt; BoxForward[&#34;Increment packet&#39;s hop count; send to table entry&#39;s next IR through routing table entry&#39;s port&#34;]
+    DecDist -- &#34;yes&#34; --&gt; DecNode0{&#34;DDP destination node ID = 0?&#34;}
+    DecNode0 -- &#34;yes&#34; --&gt; BoxFinal
+    DecNode0 -- &#34;no&#34; --&gt; DecNodeMatch{&#34;DDP destination network number and node ID = network number and node ID of entry&#39;s port&#34;}
+    DecNodeMatch -- &#34;yes&#34; --&gt; BoxFinal
+    DecNodeMatch -- &#34;no&#34; --&gt; DecNetBC{&#34;DDP destination network = entry&#39;s port network number and DDP destination node ID = broadcast?&#34;}
+    DecNetBC -- &#34;yes&#34; --&gt; BoxDeliverCopy[&#34;Deliver a copy to destination socket in this router&#34;]
+    BoxDeliverCopy -- &#34;yes&#34; --&gt; BoxSendNode[&#34;Send to destination node through routing table entry&#39;s port&#34;]
+    DecNetBC -- &#34;no&#34; --&gt; BoxSendNode</pre><hr>
+<h2 id="selecting-the-best-router">Selecting the best router<a class="anchor" href="#selecting-the-best-router">#</a></h2>
+<p>It is desirable for nonrouting nodes to send each datagram to the router yielding the shortest route to the datagram&rsquo;s destination network—the &ldquo;best&rdquo; router. Although the current specification does not require this, an optional strategy follows for implementing a &ldquo;best routing&rdquo; DDP algorithm in nonrouting nodes. This strategy requires a capability in nonrouting nodes to send a packet to a specific data-link level address.</p>
+<p>When a packet arrives from an off-network node, DDP reads the data-link-level source address. This is the data-link address of the last router on the route from the datagram&rsquo;s originating network. This router should generally be the optimal &ldquo;next router&rdquo;—in terms of hops—in the route back to that network. DDP maintains a cache of &ldquo;best routers&rdquo; for networks that have recently been heard from and sends datagrams to those routers for forwarding to those networks. If there is no cache entry for a network, DDP sends the datagram to A-ROUTER, expecting that a response packet will provide the information necessary to make an entry in the cache.</p>
+<p>Note that a node&rsquo;s best-router cache entries need to be aged fairly quickly so that when a router goes down, an alternate route can be adopted (if one is available) before connections are broken.</p>
+<h1 id="the-rtmp-stub">The RTMP stub<a class="anchor" href="#the-rtmp-stub">#</a></h1>
+<p>The following changes are specified for the RTMP stub in nodes on an extended network.</p>
+<h2 id="aging-router-information">Aging router information<a class="anchor" href="#aging-router-information">#</a></h2>
+<p>The router aging time is reduced to 50 seconds. When a router is aged out, the RTMP stub must expand THIS-NETWORK-RANGE back to 1-$FFFE and set the node&rsquo;s zone name back to &ldquo;*&rdquo;. It should also delete the node&rsquo;s zone multicast address, if one has been set.</p>
+<h2 id="processing-incoming-rtmp-packets">Processing incoming RTMP packets<a class="anchor" href="#processing-incoming-rtmp-packets">#</a></h2>
+<p>If the node&rsquo;s A-ROUTER parameter is nonzero (that is, the node knows about a router), the RTMP stub should accept an RTMP packet only if the network range indicated by the packet exactly matches the node&rsquo;s values for THIS-NETWORK-RANGE. Thus, if a node&rsquo;s network range were 3-4, it would not process a packet indicating a network range of 3-6.</p>
+<hr>
+<p>If, however, A-ROUTER is zero (the node is <em>not</em> aware of any router), the RTMP stub should accept an RTMP packet if the packet indicates a range within which the node&rsquo;s network number is valid. If the node&rsquo;s network number is not within the range indicated by this tuple, the RTMP packet is rejected (see &ldquo;When a Router First Comes Up&rdquo; in Chapter 3). When an RTMP packet is accepted, THIS-NETWORK-RANGE is set to the value indicated by the packet and A-ROUTER is set to the sender&rsquo;s 24-bit AppleTalk address.</p>
+<p>Note that this scheme allows a network range to be expanded without restarting all the nodes on that network. If a range is originally 3-4, but the routers are reconfigured to set it to 3-6, nodes will first age out the 3-4 value of THIS-NETWORK-RANGE (since none of the routers would be sending it) and then replace it with the range 3-6 obtained from subsequent RTMP packets.</p>
+<h1 id="rtmp">RTMP<a class="anchor" href="#rtmp">#</a></h1>
+<p>The following changes are specified for implementing RTMP.</p>
+<h2 id="packet-formats">Packet formats<a class="anchor" href="#packet-formats">#</a></h2>
+<p>RTMP data packets on both extended and nonextended AppleTalk networks can now contain tuples in two forms: a network number or a network range. The first tuple in a packet sent on an <em>extended</em> network is the range for that network, allowing nodes that receive this packet to determine their network range. This tuple may be repeated later in the packet. Figure 4-5 illustrates RTMP packet formats for extended and nonextended networks.</p>
+<p>RTMP data packets on extended networks are sent to destination address $0000FF using a network-wide broadcast. The &ldquo;sender&rsquo;s network number&rdquo; field always indicates the high 16 bits of the sender&rsquo;s address. The &ldquo;sender&rsquo;s node ID&rdquo; field indicates the low 8 bits of that address. <em>On both extended and nonextended networks</em>, each tuple has a flag indicating whether it is a 6-byte tuple (range start, distance, range end, and a version number byte) or a 3-byte tuple (network number, distance). A tuple for an extended network with a range of one (for example, 3-3) should still be sent as a network range tuple.</p>
+<p>The RTMP header of packets on both extended and nonextended networks has been expanded to include additional information:</p>
+<ul>
+<li>On an extended network, the header includes a tuple that indicates the network range of this network. This tuple contains a distance of zero and the version number of RTMP being used, which for AppleTalk Phase 2 is $82.</li>
+<li>On a nonextended network, the header includes 2 bytes of zero (to keep tuple alignment the same as AppleTalk Phase 1 RTMP packets), followed by the version number of $82.</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Figure 4-5</strong> RTMP packet formats</li>
+</ul>
+<p><img src="images/p30-rtmp-packet-formats.png" alt="Diagram showing RTMP packet formats for nonextended and extended networks, including tuple structures." /></p>
+<h4 id="rtmp-packet-nonextended-network">RTMP packet (nonextended network)<a class="anchor" href="#rtmp-packet-nonextended-network">#</a></h4>
+<pre class="mermaid">packet-beta
+0-15: &#34;Router&#39;s network number&#34;
+16-23: &#34;ID length = 8&#34;
+24-31: &#34;Router&#39;s node ID&#34;
+32-39: &#34;0&#34;
+40-47: &#34;$82&#34;
+48-71: &#34;First tuple&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Router&rsquo;s network number</td>
+          <td>0</td>
+          <td>16</td>
+          <td>The network number of the router.</td>
+      </tr>
+      <tr>
+          <td>ID length</td>
+          <td>16</td>
+          <td>8</td>
+          <td>The length of the router&rsquo;s node ID (fixed at 8 bits).</td>
+      </tr>
+      <tr>
+          <td>Router&rsquo;s node ID</td>
+          <td>24</td>
+          <td>8</td>
+          <td>The node ID of the router.</td>
+      </tr>
+      <tr>
+          <td>0</td>
+          <td>32</td>
+          <td>8</td>
+          <td>A zero byte.</td>
+      </tr>
+      <tr>
+          <td>$82</td>
+          <td>40</td>
+          <td>8</td>
+          <td>The RTMP version identifier ($82 for AppleTalk Phase 2).</td>
+      </tr>
+      <tr>
+          <td>First tuple</td>
+          <td>48</td>
+          <td>24</td>
+          <td>The first routing table entry tuple (3 bytes).</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="rtmp-packet-extended-network">RTMP packet (extended network)<a class="anchor" href="#rtmp-packet-extended-network">#</a></h4>
+<pre class="mermaid">packet-beta
+0-15: &#34;Router&#39;s network number&#34;
+16-23: &#34;ID length = 8&#34;
+24-31: &#34;Router&#39;s node ID&#34;
+32-79: &#34;First tuple (network range and version number)&#34;
+80-127: &#34;Second tuple&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Router&rsquo;s network number</td>
+          <td>0</td>
+          <td>16</td>
+          <td>The network number of the router.</td>
+      </tr>
+      <tr>
+          <td>ID length</td>
+          <td>16</td>
+          <td>8</td>
+          <td>The length of the router&rsquo;s node ID (fixed at 8 bits).</td>
+      </tr>
+      <tr>
+          <td>Router&rsquo;s node ID</td>
+          <td>24</td>
+          <td>8</td>
+          <td>The node ID of the router.</td>
+      </tr>
+      <tr>
+          <td>First tuple</td>
+          <td>32</td>
+          <td>48</td>
+          <td>The first routing table entry tuple (6 bytes), containing network range and version number.</td>
+      </tr>
+      <tr>
+          <td>Second tuple</td>
+          <td>80</td>
+          <td>48</td>
+          <td>The second routing table entry tuple.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="nonextended-network-tuple">Nonextended network tuple<a class="anchor" href="#nonextended-network-tuple">#</a></h4>
+<pre class="mermaid">packet-beta
+0-15: &#34;Network number&#34;
+16: &#34;Range flag (0)&#34;
+17-23: &#34;Distance&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Network number</td>
+          <td>0</td>
+          <td>16</td>
+          <td>The network number of the destination network.</td>
+      </tr>
+      <tr>
+          <td>Range flag</td>
+          <td>16</td>
+          <td>1</td>
+          <td>Set to 0 to indicate a nonextended network tuple.</td>
+      </tr>
+      <tr>
+          <td>Distance</td>
+          <td>17</td>
+          <td>7</td>
+          <td>The hop count to the destination network.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="extended-network-tuple">Extended network tuple<a class="anchor" href="#extended-network-tuple">#</a></h4>
+<pre class="mermaid">packet-beta
+0-15: &#34;Range start&#34;
+16: &#34;Range flag (1)&#34;
+17-23: &#34;Distance&#34;
+24-39: &#34;Range end&#34;
+40-47: &#34;$82&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Range start</td>
+          <td>0</td>
+          <td>16</td>
+          <td>The start of the network number range.</td>
+      </tr>
+      <tr>
+          <td>Range flag</td>
+          <td>16</td>
+          <td>1</td>
+          <td>Set to 1 to indicate an extended network tuple.</td>
+      </tr>
+      <tr>
+          <td>Distance</td>
+          <td>17</td>
+          <td>7</td>
+          <td>The hop count to the destination network.</td>
+      </tr>
+      <tr>
+          <td>Range end</td>
+          <td>24</td>
+          <td>16</td>
+          <td>The end of the network number range.</td>
+      </tr>
+      <tr>
+          <td>RTMP version</td>
+          <td>40</td>
+          <td>8</td>
+          <td>The RTMP version number ($82).</td>
+      </tr>
+  </tbody>
+</table>
+<p>RTMP request packets remain the same as in AppleTalk Phase 1 (however, they can now be used to request three types of responses, as described later in this chapter). RTMP responses on extended networks should include the initial network range tuple.</p>
+<h2 id="maintaining-routing-tables">Maintaining routing tables<a class="anchor" href="#maintaining-routing-tables">#</a></h2>
+<p>Routers must maintain their routing table on a range-by-range basis for extended networks. Each range has a list of zone names associated with it (the order of zone names in this list is unspecified). Entries for nonextended networks should contain only a single network number, so that 3-byte tuples can be sent out for these entries.</p>
+<hr>
+<p>The routing table update process must be extended to handle network range mismatches. For example, an incoming RTMP packet might contain a tuple indicating network range 3-57, while the router&rsquo;s current routing table might contain an entry for range 2-58 (or 2-3, or 22-33). Such overlapping network ranges clearly indicate an internet configuration error.</p>
+<p>In order to minimize the effect on the internet of a misconfigured router being brought on-line, the following is specified: If an incoming RTMP packet contains a tuple for which there is no exact match in the routing table (that is, if there is no entry with the same starting and ending network numbers), but that tuple does overlap with part of some entry&rsquo;s range, that tuple should be disregarded. (In evaluating network range matches, a nonextended network number should be considered as a range of one, for example, 3-3.)</p>
+<h2 id="split-horizon">Split horizon<a class="anchor" href="#split-horizon">#</a></h2>
+<p>AppleTalk Phase 2 specifies a technique known as <strong>split horizon</strong> for use in sending routing tables on both extended and nonextended networks. This technique significantly reduces internet traffic caused by large numbers of routers exchanging their routing tables.</p>
+<p>Split horizon reduces the number of redundant routing table entries exchanged by routers. As illustrated in <em>Figure 4-6</em>, router B need not transmit the tuple for network n to router A, since router A itself is on the path to that network. Similarly, it is unnecessary for router B to transmit this information to other neighboring routers (C, D), as they will acquire it from router A. In such a case, particularly on a backbone, most of the routing table need not be sent out at all.</p>
+<p>To implement split horizon, a simple modification is made to the RTMP routing table sending algorithm: In a routing table sent out a given port,</p>
+<ul>
+<li>omit all entries for which the next router is on the network connected to that port</li>
+<li>include information for directly connected networks (for example, router A must transmit the tuple for network n out both its ports)</li>
+</ul>
+<p>■ <strong>Figure 4-6</strong> A scenario for split-horizon processing</p>
+<p><img src="images/p31-split-horizon-scenario.png" alt="A scenario for split-horizon processing" /></p>
+<hr>
+<h2 id="notify-neighbor">Notify neighbor<a class="anchor" href="#notify-neighbor">#</a></h2>
+<p>RTMP now includes a new aging procedure called <strong>notify neighbor</strong>. Under notify neighbor, whenever a routing table&rsquo;s entry state is &ldquo;Bad,&rdquo; instead of omitting that entry from the broadcasted routing table, the entry is sent <em>with a distance of 31</em>. This entry indicates to receiving routers that the entry&rsquo;s network is no longer reachable through the sending router, and that an alternate route, if available, should be adopted. This entry is sent only if it would not otherwise be eliminated by split-horizon processing.</p>
+<p>Upon receiving a tuple with an entry of distance 31, <em>if the router sending that tuple is the forwarding router for the associated network</em>, a router should immediately set the state of that entry to &ldquo;Bad.&rdquo; In this way, the fact that a network is unreachable will propagate at the RTMP table sending rate. Note that, to minimize the effect of lost packets, the time for the &ldquo;Bad&rdquo; state is extended from one Validity timer to two Validity timers (from 20 to 40 seconds).</p>
+<p>Routers that are knowingly going down or deactivating a port should, as a courtesy, use &ldquo;notify neighbor&rdquo; to inform other routers of this fact.</p>
+<h2 id="rtmp-requests">RTMP requests<a class="anchor" href="#rtmp-requests">#</a></h2>
+<p>The RTMP request has been extended to allow for a variation called the <strong>RTMP Route Data Request</strong> or <strong>RDR</strong>. The RDR is useful for routing and network management purposes to obtain routing information from any router <em>on demand</em>.</p>
+<p>The different types of RTMP request packets are distinguished by the value of the Command field, which is 1, 2, or 3:</p>
+<ul>
+<li>A Command field of 1 indicates a Network Information Request. (This is equivalent to the former RTMP Request.)</li>
+<li>A Command field of 2 indicates a Route Data Request using normal split-horizon processing.</li>
+<li>A Command field of 3 indicates a Route Data Request <em>without</em> using split horizon, causing the entire table to be returned.</li>
+</ul>
+<p>Upon receiving an RDR, a router responds by sending its routing data <em>directly to the source socket</em> of the requesting node. (Normally, broadcasted RTMP data packets are sent to the well-known RTMP socket, 1—not to the requester&rsquo;s source socket.) An interested node can therefore obtain routing information by opening a socket and sending an RDR to a router through this socket. Note that a full response can consist of a number of packets, and that a tuple can never span two packets.</p>
+<hr>
+<h1 id="nbp">NBP<a class="anchor" href="#nbp">#</a></h1>
+<p>NBP packet formats remain unchanged from AppleTalk Phase 1. However, several protocol changes are specified. NBP in a routing node must change <em>even if the router is connected only to nonextended networks</em>.</p>
+<hr>
+<h2 id="the-this-zone-variable">The THIS-ZONE variable<a class="anchor" href="#the-this-zone-variable">#</a></h2>
+<p>NBP in nodes on extended networks must maintain a variable known as THIS-ZONE. In nonrouting nodes on extended AppleTalk networks, NBP must now verify that a LkUp packet is intended either for the zone to which the node belongs or for zone &ldquo;*&rdquo;; that is, NBP must match object, type, and zone. This is because more than one zone may correspond to the same zone multicast address (in fact, if the data link does not support multicast, all zones will correspond to the same zone multicast address, the AppleTalk broadcast address).</p>
+<hr>
+<h2 id="broadcast-requests-and-forward-requests">Broadcast requests and forward requests<a class="anchor" href="#broadcast-requests-and-forward-requests">#</a></h2>
+<p>NBP on an <em>extended</em> network should never send out a BrRq for zone &ldquo;<em>&rdquo; (the router has no way of determining the node&rsquo;s zone, since there is no correspondence between network number and zone name). However, in the absence of a router, NBP should always broadcast LkUps to zone &ldquo;</em>&rdquo;.</p>
+<p>A router receiving a BrRq must first change any zone name of &ldquo;*&rdquo; (received from a nonextended network) to the node&rsquo;s actual zone name, and then change the packet type from BrRq to a new type, FwdReq (forward request). The value in the control field for a FwdReq packet is 4.</p>
+<p>The router then uses DDP to send a FwdReq packet to each network whose zone list contains the desired zone. These request packets are sent to the NIS at address $nnnn00, where nnnn is the first network in each range.</p>
+<p>The packet proceeds through the internet until it reaches a router directly connected to the intended destination network, where it is passed to the NBP process. The NBP process then changes the packet type to LkUp and sends this packet as a zone-specific multicast on the intended network. Specifically,</p>
+<ul>
+<li>If the packet is intended for an extended network, NBP changes the destination address to $0000FF, determines the multicast address associated with the intended zone, and calls DDP to send the packet to that zone multicast address through the appropriate port.</li>
+<li>If the packet is intended for a nonextended network, NBP simply changes the destination address to $nnnnFF and broadcasts the packet on that network.</li>
+</ul>
+<hr>
+<p>A router on <em>nonextended</em> networks that receives a BrRq for zone &ldquo;<em>&rdquo; and has not yet discovered the zone name associated with the sender&rsquo;s network should broadcast a LkUp packet on that network with a zone name of &ldquo;</em>&rdquo;. It should not, however, send out any FwdReq packets.</p>
+<p>◆ <em>Note: A router receiving a BrRq for a zone that is in the zone list for one or more of the networks to which the router is directly connected should not send out FwdReq&rsquo;s for these networks. It should instead send out LkUp&rsquo;s to the appropriate zone multicast addresses.</em></p>
+<hr>
+<h2 id="special-characters">Special characters<a class="anchor" href="#special-characters">#</a></h2>
+<p>AppleTalk Phase 2 disallows the use of a character with value $FF as the first byte in an NBP object, type, or zone string. This value is reserved for future flexibility.</p>
+<p>NBP has also been enhanced to provide additional wildcard support. The character ≈ ($C5) is now reserved in the object name and type strings and is used in a lookup to mean &ldquo;a match of zero or more characters.&rdquo; Thus</p>
+<ul>
+<li>≈abc matches abc, xabc, xxxabc, and so on</li>
+<li>abc≈ matches abc, abcx, and so on</li>
+<li>abc≈def matches abcdef, abcxdef, and so on</li>
+</ul>
+<p>At most one ≈ is allowed in any one string. As a single, standalone character, ≈ has the same meaning as a single =, which must also continue to be accepted. The ≈ character has no special meaning in zone names.</p>
+<hr>
+<h2 id="atp">ATP<a class="anchor" href="#atp">#</a></h2>
+<p>No changes in ATP are necessary to support the architectural changes in AppleTalk Phase 2. Clients using and implementing ATP will continue to work under AppleTalk Phase 2 as they did under AppleTalk Phase 1. However, the following change has been made to provide additional flexibility in ATP Exactly Once (XO) service.</p>
+<p>There are 3 unused bits in the Command field of the ATP header. For XO request packets only, these 3 bits are used as an indicator of the length of the TRel timer that the transaction responder should use. In this way, the requester can indicate to the responder an approximate measure of how long to wait for the TRel. The values in the following list are specified.</p>
+<hr>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Value</th>
+          <th style="text-align: left">Timer</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">000</td>
+          <td style="text-align: left">30 seconds</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">001</td>
+          <td style="text-align: left">1 minute</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">010</td>
+          <td style="text-align: left">2 minutes</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">011</td>
+          <td style="text-align: left">4 minutes</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">100</td>
+          <td style="text-align: left">8 minutes</td>
+      </tr>
+  </tbody>
+</table>
+<p>Other values for the XO request command field are reserved.</p>
+<p>An ATP requesting client could use the echo protocol or other means to estimate the time for a TRel to be received and set this timer value accordingly. This value also depends, however, on the client&rsquo;s retransmission rate: If retransmitting slowly, the TRel timer should be set higher, in case a retransmitted request is lost. Certain session level protocols, such as PAP and ASP may wish to set this timer value to the value of their connection timer. Clients of ATP must be aware that nodes running AppleTalk Phase 1 may not process this new timer feature correctly.</p>
+<h2 id="zip">ZIP<a class="anchor" href="#zip">#</a></h2>
+<p>ZIP includes several additional functions as well as new packet formats. Two new ZIP requests are used on extended networks in AppleTalk Phase 2:</p>
+<ul>
+<li>ZIP GetNetInfo is sent out by a node upon starting up to determine its network range and zone multicast address.</li>
+<li>ZIP GetLocalZones is used by a node to acquire the list of zone names that are valid for the node&rsquo;s network.</li>
+</ul>
+<h3 id="zip-getnetinfo-and-netinforeply">ZIP GetNetInfo and NetInfoReply<a class="anchor" href="#zip-getnetinfo-and-netinforeply">#</a></h3>
+<p>ZIP GetNetInfo is an example of a <em>port-dependent</em> request. Like the RTMP request packet, such a packet requests information associated with a specific port—the port through which a packet is received.</p>
+<p>ZIP GetNetInfo is generally sent as a network-wide broadcast to the ZIS when a node is first started up. If the node has a saved A-ROUTER value, the GetNetInfo request can be sent to this router. The response, ZIP NetInfoReply, is generally directed to the requesting node and socket.</p>
+<p>If, however, the request was broadcasted network-wide and its source network number is invalid for the port through which it is received (and it is not in the startup range), the response is broadcasted back network-wide through the requesting port. This allows the router to communicate with a node that has started up with an invalid network number saved in pRAM.</p>
+<hr>
+<p>In either case, the response contains the network range followed by a copy of the zone name from the request (so that the response can be matched with the request). This is followed by the zone multicast address for the node. If the request contained a valid zone name, this address is the zone multicast address for that zone. If the zone name was either invalid or NIL, this address is the zone multicast address of the default zone for that network, followed by the default zone name. (The default zone name for an extended network is set as part of the seed information in a router&rsquo;s port descriptor for the network. It must be one of the zones in that network&rsquo;s zone list. Nonseed routers discover this information as part of their startup process through a GetNetInfo request.)</p>
+<p>As shown in Figure 4-7, the NetInfoReply also contains a number of flags, which can indicate that the requested zone name is invalid, that there is only one zone name for the network (in which case a GetLocalZones request is not needed), and that the data link does not support multicast (in which case the multicast address length in the packet will be set to zero).</p>
+<h3 id="figure-4-7-zip-getnetinfo-and-netinforeply-packet-formats">Figure 4-7 ZIP GetNetInfo and NetInfoReply packet formats<a class="anchor" href="#figure-4-7-zip-getnetinfo-and-netinforeply-packet-formats">#</a></h3>
+<p><img src="images/p36-zip-packet-formats.png" alt="ZIP GetNetInfo and NetInfoReply packet formats" /></p>
+<h4 id="zip-getnetinfo">ZIP GetNetInfo<a class="anchor" href="#zip-getnetinfo">#</a></h4>
+<pre class="mermaid">packet-beta
+0-7: &#34;ZIP command = 5&#34;
+8-15: &#34;0&#34;
+16-31: &#34;0&#34;
+32-39: &#34;Zone name length&#34;
+40-47: &#34;Zone name&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ZIP command</td>
+          <td>0</td>
+          <td>8</td>
+          <td>ZIP command = 5</td>
+      </tr>
+      <tr>
+          <td>Reserved</td>
+          <td>8</td>
+          <td>8</td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td>Reserved</td>
+          <td>16</td>
+          <td>16</td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td>Zone name length</td>
+          <td>32</td>
+          <td>8</td>
+          <td>Length of the zone name field</td>
+      </tr>
+      <tr>
+          <td>Zone name</td>
+          <td>40</td>
+          <td>Variable</td>
+          <td>Name of the zone</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="zip-netinforeply">ZIP NetInfoReply<a class="anchor" href="#zip-netinforeply">#</a></h4>
+<pre class="mermaid">packet-beta
+0-7: &#34;ZIP command = 6&#34;
+8: &#34;Zone invalid&#34;
+9: &#34;Use broadcast&#34;
+10: &#34;Only one zone&#34;
+11-15: &#34;Flags (reserved)&#34;
+16-31: &#34;Network range start&#34;
+32-47: &#34;Network range end&#34;
+48-55: &#34;Zone name length&#34;
+56-63: &#34;Zone name&#34;
+64-71: &#34;Multicast address length&#34;
+72-79: &#34;Multicast address&#34;
+80-87: &#34;Default zone length&#34;
+88-95: &#34;Default zone name&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ZIP command</td>
+          <td>0</td>
+          <td>8</td>
+          <td>ZIP command = 6</td>
+      </tr>
+      <tr>
+          <td>Flag: zone invalid</td>
+          <td>8</td>
+          <td>1</td>
+          <td>Bit 7: 1 if requested zone name was invalid</td>
+      </tr>
+      <tr>
+          <td>Flag: use broadcast</td>
+          <td>9</td>
+          <td>1</td>
+          <td>Bit 6: 1 if node should use broadcast</td>
+      </tr>
+      <tr>
+          <td>Flag: only one zone</td>
+          <td>10</td>
+          <td>1</td>
+          <td>Bit 5: 1 if only one zone for the network</td>
+      </tr>
+      <tr>
+          <td>Flags (reserved)</td>
+          <td>11</td>
+          <td>5</td>
+          <td>Bits 4-0</td>
+      </tr>
+      <tr>
+          <td>Network range start</td>
+          <td>16</td>
+          <td>16</td>
+          <td>Start of network range</td>
+      </tr>
+      <tr>
+          <td>Network range end</td>
+          <td>32</td>
+          <td>16</td>
+          <td>End of network range</td>
+      </tr>
+      <tr>
+          <td>Zone name length</td>
+          <td>48</td>
+          <td>8</td>
+          <td>Length of the zone name field</td>
+      </tr>
+      <tr>
+          <td>Zone name</td>
+          <td>56</td>
+          <td>Variable</td>
+          <td>Name of the zone</td>
+      </tr>
+      <tr>
+          <td>Multicast address length</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>Length of the multicast address field</td>
+      </tr>
+      <tr>
+          <td>Multicast address</td>
+          <td>Variable</td>
+          <td>Variable</td>
+          <td>Zone multicast address</td>
+      </tr>
+      <tr>
+          <td>Default zone length</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>Included only if zone-invalid flag set: length of default zone name</td>
+      </tr>
+      <tr>
+          <td>Default zone name</td>
+          <td>Variable</td>
+          <td>Variable</td>
+          <td>Included only if zone-invalid flag set: name of default zone</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="assignment-of-zone-multicast-addresses">Assignment of zone multicast addresses<a class="anchor" href="#assignment-of-zone-multicast-addresses">#</a></h1>
+<p>Upon receiving a ZIP GetNetInfo request, the ZIP process in a router verifies that the specified zone name is valid for the network. If it is, ZIP obtains the associated multicast address and returns it in the reply.</p>
+<p>To obtain the zone multicast address, ZIP first converts the zone name to uppercase (since zone names are case-insensitive). This conversion function is specified in <em>Inside Macintosh</em> and also <em>Inside AppleTalk</em> (Appendix D). The router then obtains a number, <em>h</em>, in the range 1–$FFFF, associated with this zone name by performing the DDP checksum algorithm (as documented in <em>Inside AppleTalk</em>) on each byte of the zone name (excluding the length byte). This number <em>h</em> is passed to the data link, which is assumed to provide <em>n</em> multicast addresses: a₀ through aₙ₋₁. (Addresses for EtherTalk and TokenTalk are specified in Table 4-1.) The multicast address for that zone, returned by the data link, is a_{(h mod n)}.</p>
+<hr>
+<h1 id="zip-query-and-reply">ZIP Query and Reply<a class="anchor" href="#zip-query-and-reply">#</a></h1>
+<p>ZIP Query packets remain unchanged from AppleTalk Phase 1. The Network Number field for an extended network is set to the first network number in that network’s range. Multiple networks can still be included in one packet (both extended and nonextended networks can be mixed).</p>
+<p>ZIP Reply packets remain exactly the same as previously—in cases where a network’s zone list will fit in one packet (17 maximum size zone names, or 36 zone names with an average length of 16 bytes). However, an extended network can now have more zones than can fit in a single packet. An extended network’s zone list is indicated by multiple entries. In each entry, the Network Number field is set to the first network number of the range for that network. Response packets again can contain multiple network entries, provided that an entry is completely contained within the packet. Figure 4-8 shows the Zip Reply packet format.</p>
+<p>If a network’s zone list cannot fit in one ZIP response packet, a series of new packets are returned. These packets, called Extended ZIP Reply packets, have a new ZIP command byte (with a value of 8). Their format is the same as a ZIP Reply packet, except that the Network Count field has a new meaning. Instead of indicating the number of network/zone tuples in the packet (which can be determined by reading entries until the packet ends), this field indicates the total number of zones for the extended network. It will be the same for each Extended ZIP Reply packet for a given network and has a maximum value of 255. The queried router sends as many of these packets as is necessary. The querying router collects all the responses and can determine whether any have been lost. If any are lost, all the information must be requested again (the router must send another ZIP Query for that network). A router may use an Extended ZIP Reply packet even for a network whose zone list does fit in one packet; in this case, only one network’s zone list can be sent in the packet.</p>
+<p>Note that until a router has all the zone information for a given network, it must respond to other routers’ ZIP Queries for that network as if it had <em>none</em> of the information.</p>
+<hr>
+<p>■ Figure 4-8 ZIP Reply packet format</p>
+<p><img src="images/p38-zip-reply-format.png" alt="ZIP Reply packet format" /></p>
+<pre class="mermaid">packet-beta
+0-7: &#34;Data-link header&#34;
+8-15: &#34;DDP header&#34;
+16-23: &#34;Source socket = 6&#34;
+24-31: &#34;DDP type = 6&#34;
+32-39: &#34;ZIP function = 2&#34;
+40-47: &#34;Network count&#34;
+48-63: &#34;Network 1&#34;
+64-71: &#34;Zone name length&#34;
+72-79: &#34;Zone list entry 1&#34;
+80-95: &#34;Network 1&#34;
+96-103: &#34;Zone name length&#34;
+104-111: &#34;Zone list entry 2&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Data-link header</td>
+          <td>0</td>
+          <td>Variable</td>
+          <td>Header for the specific data link protocol (e.g., Ethernet, LocalTalk).</td>
+      </tr>
+      <tr>
+          <td>DDP header</td>
+          <td>Variable</td>
+          <td>Variable</td>
+          <td>Datagram Delivery Protocol header fields.</td>
+      </tr>
+      <tr>
+          <td>Source socket</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>The socket number of the source of the ZIP packet (must be 6).</td>
+      </tr>
+      <tr>
+          <td>DDP type</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>The DDP protocol type (must be 6 for ZIP).</td>
+      </tr>
+      <tr>
+          <td>ZIP function</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>ZIP function code (2 for ZIP Reply).</td>
+      </tr>
+      <tr>
+          <td>Network count</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>The number of network/zone pairs contained in the packet.</td>
+      </tr>
+      <tr>
+          <td>Network 1</td>
+          <td>Variable</td>
+          <td>16</td>
+          <td>The first network number in the range (2 bytes).</td>
+      </tr>
+      <tr>
+          <td>Zone name length</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>The length of the first zone name string in bytes.</td>
+      </tr>
+      <tr>
+          <td>Zone list entry 1</td>
+          <td>Variable</td>
+          <td>Variable</td>
+          <td>The first zone name string.</td>
+      </tr>
+      <tr>
+          <td>Network 1</td>
+          <td>Variable</td>
+          <td>16</td>
+          <td>The second network number (diagram label repeats &lsquo;Network 1&rsquo;).</td>
+      </tr>
+      <tr>
+          <td>Zone name length</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>The length of the second zone name string.</td>
+      </tr>
+      <tr>
+          <td>Zone list entry 2</td>
+          <td>Variable</td>
+          <td>Variable</td>
+          <td>The second zone name string.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="zip-atp-requests">ZIP ATP requests<a class="anchor" href="#zip-atp-requests">#</a></h2>
+<p>ZIP GetZoneList, which uses ATP, remains unchanged from AppleTalk Phase 1, but must be sent to the full 24-bit A-ROUTER address on extended networks. (GetZoneList requests that require multiple ATP transmissions should all be sent to the same A-ROUTER address.)</p>
+<p>ZIP GetMyZone should not be sent on an extended network, since the node already knows its zone name (and the router could not determine it from the node&rsquo;s address). ZIP GetLocalZones is used by nodes on an extended network to acquire the network&rsquo;s zone list. The ZIP GetLocalZones packet is nearly identical to ZIP GetZoneList; however, this packet contains a command byte of 9 in the ATP header. The same algorithms used in GetZoneList apply for obtaining the network zone list. A router on a nonextended network will respond with a single-zone reply.</p>
+<h2 id="changing-zone-names">Changing zone names<a class="anchor" href="#changing-zone-names">#</a></h2>
+<p>On an extended network, nodes must be made aware of changes to the name of the zone in which they reside. Nodes may also need to be given a new zone multicast address.</p>
+<p>A node on an extended network maintains a ZIP stub on the ZIS. A node&rsquo;s ZIP stub listens for a new ZIP Notify packet, which indicates a change of zone name. The ZIP Notify packet is shown in Figure 4-9.</p>
+<p>The ZIP Notify packet, which is sent to the ZIS using a zone-specific broadcast, contains the old zone name, the new zone name, and the new zone multicast address. This packet is very similar to a ZIP GetNetInfo reply; however, the ZIP command code is 7, the &ldquo;zone invalid&rdquo; flag is never set, and the network number fields are unused.</p>
+<p>A node receiving such a packet must check to see whether it is in the zone being changed. If so, the node must change THIS-ZONE and its copy in long-term storage accordingly, delete the old zone multicast address, and register on the new zone multicast address.</p>
+<p>The implementation of the ZIP stub and the processing of ZIP Notify packets are optional. However, following a zone name change, NBP names on nodes not implementing ZIP Notify will not appear in the new zone until the node&rsquo;s AppleTalk implementation is reestablished.</p>
+<hr>
+<p>■ Figure 4-9 ZIP notify packet format</p>
+<p><img src="images/p40-zip-notify-packet-format.png" alt="ZIP notify packet format" /></p>
+<pre class="mermaid">packet-beta
+0-7: &#34;ZIP command = 7&#34;
+8: &#34;7: zone invalid&#34;
+9: &#34;6: use broadcast&#34;
+10: &#34;5: only one zone&#34;
+11-15: &#34;Flags&#34;
+16-23: &#34;0&#34;
+24-31: &#34;Old zone name length&#34;
+32-47: &#34;Old zone name (variable)&#34;
+48-55: &#34;New multicast address length&#34;
+56-71: &#34;New multicast address (variable)&#34;
+72-79: &#34;New zone name length&#34;
+80-95: &#34;New zone name (variable)&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ZIP command</td>
+          <td>0</td>
+          <td>8</td>
+          <td>ZIP command value (set to 7 for ZIP notify)</td>
+      </tr>
+      <tr>
+          <td>zone invalid</td>
+          <td>8</td>
+          <td>1</td>
+          <td>Flag bit 7: indicates the zone is invalid</td>
+      </tr>
+      <tr>
+          <td>use broadcast</td>
+          <td>9</td>
+          <td>1</td>
+          <td>Flag bit 6: indicates use of broadcast</td>
+      </tr>
+      <tr>
+          <td>only one zone</td>
+          <td>10</td>
+          <td>1</td>
+          <td>Flag bit 5: indicates only one zone</td>
+      </tr>
+      <tr>
+          <td>Flags</td>
+          <td>11</td>
+          <td>5</td>
+          <td>Remaining bits of the flags byte</td>
+      </tr>
+      <tr>
+          <td>0</td>
+          <td>16</td>
+          <td>8</td>
+          <td>Reserved; set to 0</td>
+      </tr>
+      <tr>
+          <td>Old zone name length</td>
+          <td>24</td>
+          <td>8</td>
+          <td>Length of the old zone name in bytes</td>
+      </tr>
+      <tr>
+          <td>Old zone name</td>
+          <td>32</td>
+          <td>Variable</td>
+          <td>The old zone name string</td>
+      </tr>
+      <tr>
+          <td>New multicast address length</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>Length of the new multicast address</td>
+      </tr>
+      <tr>
+          <td>New multicast address</td>
+          <td>Variable</td>
+          <td>Variable</td>
+          <td>The new multicast address</td>
+      </tr>
+      <tr>
+          <td>New zone name length</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>Length of the new zone name in bytes</td>
+      </tr>
+      <tr>
+          <td>New zone name</td>
+          <td>Variable</td>
+          <td>Variable</td>
+          <td>The new zone name string</td>
+      </tr>
+  </tbody>
+</table>
+<p>◆ <em>ZIP takedown and bringup:</em> This document does not specify the method by which zone names associated with active networks are actually changed. ZIP takedown and bringup are not a part of AppleTalk Phase 2, and such packets should be ignored by all AppleTalk Phase 2 routers.</p>
+<p>Changing a zone name for a given network involves not only informing the routers (and other nodes) connected to that network, but also informing every router on the internet of that change. AppleTalk Phase 2 removes this function from ZIP and delegates it to network management protocols, to be documented elsewhere. (This process can also be performed by shutting down all routers connected to a network, reconfiguring the seed routers, and then restarting all routers.)</p>
+<hr>
+<h1 id="appendix-changes-in-localtalk-nodes">Appendix Changes in LocalTalk Nodes<a class="anchor" href="#appendix-changes-in-localtalk-nodes">#</a></h1>
+<p>THIS APPENDIX LISTS changes that can be made to nonrouting implementations on LocalTalk to fully conform to AppleTalk Phase 2. While they are not currently required in LocalTalk nodes, future products may require these changes to provide full functionality to LocalTalk nodes.</p>
+<p>Each of these changes is described in prior sections of this document.</p>
+<ul>
+<li>Additional NBP wildcard character ≈</li>
+<li>ATP TRel timer</li>
+<li>A-ROUTER aging time of 50 seconds</li>
+<li>&ldquo;Best router&rdquo; address cache in nodes ■</li>
+</ul>
+<hr>
+<h3 id="the-apple-publishing-system">The Apple Publishing System<a class="anchor" href="#the-apple-publishing-system">#</a></h3>
+<p>This Apple® manual was written, edited, and composed on a desktop publishing system using Apple Macintosh® computers and Microsoft® Word. Proof pages were created on the Apple LaserWriter® printers; final pages were printed on a Varityper® VT600™. Line art was created using Adobe Illustrator™. PostScript®, the LaserWriter page-description language, was developed by Adobe Systems Incorporated.</p>
+<p>Text type and display type are Apple&rsquo;s corp</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cappletalk-phase-2-addendum-c0144lla%5C04-protocol-details.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#elap-and-tlap">ELAP and TLAP</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#ddp">DDP</a>
+      <ul>
+        <li><a href="#sending-packets-to-a-router">Sending packets to a router</a></li>
+      </ul>
+    </li>
+    <li><a href="#support-for-zone-multicasts">Support for zone multicasts</a></li>
+    <li><a href="#packet-filtering">Packet filtering</a></li>
+    <li><a href="#figure-4-3-the-ddpread-algorithm">Figure 4-3 The DDPRead algorithm</a></li>
+    <li><a href="#ddp-routing-details">DDP routing details</a></li>
+    <li><a href="#selecting-the-best-router">Selecting the best router</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#aging-router-information">Aging router information</a></li>
+    <li><a href="#processing-incoming-rtmp-packets">Processing incoming RTMP packets</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#packet-formats">Packet formats</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#maintaining-routing-tables">Maintaining routing tables</a></li>
+    <li><a href="#split-horizon">Split horizon</a></li>
+    <li><a href="#notify-neighbor">Notify neighbor</a></li>
+    <li><a href="#rtmp-requests">RTMP requests</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#the-this-zone-variable">The THIS-ZONE variable</a></li>
+    <li><a href="#broadcast-requests-and-forward-requests">Broadcast requests and forward requests</a></li>
+    <li><a href="#special-characters">Special characters</a></li>
+    <li><a href="#atp">ATP</a></li>
+    <li><a href="#zip">ZIP</a>
+      <ul>
+        <li><a href="#zip-getnetinfo-and-netinforeply">ZIP GetNetInfo and NetInfoReply</a></li>
+        <li><a href="#figure-4-7-zip-getnetinfo-and-netinforeply-packet-formats">Figure 4-7 ZIP GetNetInfo and NetInfoReply packet formats</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#zip-atp-requests">ZIP ATP requests</a></li>
+    <li><a href="#changing-zone-names">Changing zone names</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#the-apple-publishing-system">The Apple Publishing System</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

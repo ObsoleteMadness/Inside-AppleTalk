@@ -1,0 +1,51 @@
+title: AppleTalk Documentation
+description: >-
+  Community-maintained AppleTalk protocol documentation, converted from
+  original Apple technical documents.
+baseurl: "/appletalk-docs"
+url: "https://obsoletemadness.github.io"
+
+theme: just-the-docs
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+    block:
+      line_numbers: false
+
+# Just the Docs settings
+search_enabled: true
+heading_anchors: true
+
+aux_links:
+  "GitHub":
+    - "https://github.com/ObsoleteMadness/appletalk-docs"
+aux_links_new_tab: true
+
+nav_external_links:
+  - title: Contributing
+    url: /appletalk-docs/contributing/
+
+mermaid:
+  version: "11.13.0"
+
+math:
+  engine: katex
+
+# Build settings
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - "*.gemspec"
+  - vendor/
+  - content/
+  - public/
+  - hugo.toml
+  - themes/
+  - resources/
+  - migrate.ps1
+  - README.md

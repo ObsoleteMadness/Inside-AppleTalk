@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Full Document#Field Value Source 011_AAPDAAppleTalkDataStreamPreliminaryNote Chapter 0 Pages 1–38 Converted 2026-04-01 Engine gemini-flash AppleTalk#Data Stream Protocol#Preliminary Note#CAT NO: M028
+AppleTalk® Data Stream Protocol#Preliminary Note#Final Draft: 10/9/87
+Gursharan S. Sidhu Timothy C. Warden Alan B. Oppenheimer
+Communications &amp; Networking Apple Technical Publications
+APPLE COMPUTER, INC.
+This manual is copyrighted, with all rights reserved. Under the copyright laws, this manual may not be copied, in whole or part, without written consent of Apple. Under the law, copying includes translating into another language or format.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/appletalk-datastream-prelim-notes/00-full-document/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="Full Document">
+  <meta property="og:description" content="Full Document#Field Value Source 011_AAPDAAppleTalkDataStreamPreliminaryNote Chapter 0 Pages 1–38 Converted 2026-04-01 Engine gemini-flash AppleTalk#Data Stream Protocol#Preliminary Note#CAT NO: M028
+AppleTalk® Data Stream Protocol#Preliminary Note#Final Draft: 10/9/87
+Gursharan S. Sidhu Timothy C. Warden Alan B. Oppenheimer
+Communications &amp; Networking Apple Technical Publications
+APPLE COMPUTER, INC.
+This manual is copyrighted, with all rights reserved. Under the copyright laws, this manual may not be copied, in whole or part, without written consent of Apple. Under the law, copying includes translating into another language or format.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="Full Document">
+  <meta itemprop="description" content="Full Document#Field Value Source 011_AAPDAAppleTalkDataStreamPreliminaryNote Chapter 0 Pages 1–38 Converted 2026-04-01 Engine gemini-flash AppleTalk#Data Stream Protocol#Preliminary Note#CAT NO: M028
+AppleTalk® Data Stream Protocol#Preliminary Note#Final Draft: 10/9/87
+Gursharan S. Sidhu Timothy C. Warden Alan B. Oppenheimer
+Communications &amp; Networking Apple Technical Publications
+APPLE COMPUTER, INC.
+This manual is copyrighted, with all rights reserved. Under the copyright laws, this manual may not be copied, in whole or part, without written consent of Apple. Under the law, copying includes translating into another language or format.">
+  <meta itemprop="wordCount" content="8713">
+
+<title>Full Document | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/appletalk-datastream-prelim-notes/00-full-document/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Full Document</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#preliminary-note-1">Preliminary Note</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#connection-states">Connection States</a></li>
+    <li><a href="#half-open-connections-and-the-connection-timer">Half-Open Connections and the Connection Timer</a></li>
+    <li><a href="#connection-identifiers">Connection Identifiers</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#sequence-numbers">Sequence Numbers</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#adsp-messages">ADSP Messages</a></li>
+    <li><a href="#forward-resets">Forward Resets</a></li>
+    <li><a href="#summary-of-sequencing-variables">Summary of Sequencing Variables</a>
+      <ul>
+        <li><a href="#send-queue">Send Queue</a></li>
+        <li><a href="#receive-queue">Receive Queue</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#data-flow-examples">Data-Flow Examples</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#connection-opening-dialog">Connection-Opening Dialog</a></li>
+    <li><a href="#apple-talk-data-stream-protocol">Apple Talk Data Stream Protocol</a></li>
+    <li><a href="#open-connection-control-packet-format">Open-Connection Control Packet Format</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#open-connection-packet-parameters">Open-Connection Packet Parameters</a></li>
+      </ul>
+    </li>
+    <li><a href="#error-recovery-in-the-connection-opening-dialog">Error Recovery in the Connection-Opening Dialog</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="full-document">Full Document<a class="anchor" href="#full-document">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td>011_AAPDAAppleTalkDataStreamPreliminaryNote</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>1–38</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-04-01</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><img src="images/p1-aapda-logo.png" alt="AAPDA logo" /></p>
+<h1 id="appletalk">AppleTalk<a class="anchor" href="#appletalk">#</a></h1>
+<h1 id="data-stream-protocol">Data Stream Protocol<a class="anchor" href="#data-stream-protocol">#</a></h1>
+<h1 id="preliminary-note">Preliminary Note<a class="anchor" href="#preliminary-note">#</a></h1>
+<p>CAT NO: M028</p>
+<hr>
+<hr>
+<h1 id="appletalk-data-stream-protocol">AppleTalk® Data Stream Protocol<a class="anchor" href="#appletalk-data-stream-protocol">#</a></h1>
+<h2 id="preliminary-note-1">Preliminary Note<a class="anchor" href="#preliminary-note-1">#</a></h2>
+<p>Final Draft: 10/9/87</p>
+<p>Gursharan S. Sidhu
+Timothy C. Warden
+Alan B. Oppenheimer</p>
+<p>Communications &amp; Networking
+Apple Technical Publications</p>
+<hr>
+<p><img src="images/p4-apple-logo.png" alt="Apple logo" /> <strong>APPLE COMPUTER, INC.</strong></p>
+<p>This manual is copyrighted, with all rights reserved. Under the copyright laws, this manual may not be copied, in whole or part, without written consent of Apple. Under the law, copying includes translating into another language or format.</p>
+<p>© Apple Computer, Inc., 1987
+20525 Mariani Ave.
+Cupertino, California 95014
+(408) 996-1010</p>
+<p>Apple, the Apple logo, and AppleTalk are registered trademarks of Apple Computer, Inc.</p>
+<hr>
+<h1 id="contents">Contents<a class="anchor" href="#contents">#</a></h1>
+<p>iii List of Figures</p>
+<p>1 <strong>About AppleTalk Data Stream Protocol</strong>
+1 ADSP Services</p>
+<p>2 <strong>Connections</strong>
+2 Connection States
+2 Half-Open Connections and the Connection Timer
+3 Connection Identifiers</p>
+<p>4 <strong>Data Flow</strong>
+4 Sequence Numbers
+5 Error Recovery and Acknowledgements
+5 Flow Control and Windows
+6 ADSP Messages
+6 Forward Resets
+7 Summary of Sequencing Variables</p>
+<p>9 <strong>Packet Format</strong></p>
+<p>11 <strong>Control Packets</strong></p>
+<p>12 <strong>Data-Flow Examples</strong></p>
+<p>17 <strong>Attention Messages</strong></p>
+<p>19 <strong>Opening a Connection</strong>
+20 Connection-Opening Dialog
+23 Open-Connection Control Packet Format
+25 Error Recovery in the Connection-Opening Dialog
+30 Connection Opening Outside of ADSP
+31 Connection-Listening Sockets and Servers
+32 Connection-Opening Filters</p>
+<p>33 <strong>Closing a Connection</strong></p>
+<hr>
+<h1 id="list-of-figures">List of Figures<a class="anchor" href="#list-of-figures">#</a></h1>
+<p>8        Figure 1.    Send and receive queues
+9        Figure 2.    ADSP packet format
+13      Figure 3.    ADSP data flow
+14      Figure 4.    Recovery from a lost packet
+15      Figure 5.    Idle connection state
+16      Figure 6.    Connection torn down due to lost packets
+17      Figure 7.    ADSP attention-packet format
+21      Figure 8.    Connection-opening dialog initiated by one end
+22      Figure 9.    Connection-opening dialog initiated by both ends
+22      Figure 10. Open-connection request denied
+24      Figure 11. Open-connection packet format
+26..    Figure 12. Connection-opening dialog: packet lost
+27      Figure 13. Simultaneous connection-opening dialog: packet lost
+28      Figure 14. Connection-opening dialog: half-open connection
+29      Figure 15. Connection-opening dialog: data transmitted on half-open connection
+30      Figure 16. Connection-opening dialog: late-arriving duplicate
+31      Figure 17. Open-connection request made to connection-listening socket; alternate socket chosen for connection
+32      Figure 18. Connection-opening filters: open connection denied
+33      Figure 19. Connection-opening filters with a connection-listening socket</p>
+<hr>
+<hr>
+<h1 id="connections">Connections<a class="anchor" href="#connections">#</a></h1>
+<p>This section defines connections, connection ends, and Connection Identifiers (CIDs) and
+explains the roles that they play in ADSP.</p>
+<p>A <em>connection</em> is an association between two sockets that allows reliable, full-duplex flow of
+data bytes between the sockets. With ADSP, the data bytes are delivered in the same order
+as they are inserted into the connection. In addition, a flow-control mechanism is built into
+the protocol, which regulates data transmission based on the availability of reception
+buffers at the destination.</p>
+<p>At any time, a connection can be set up by either, or both, of the communicating parties.
+The connection is torn down when it is no longer required or if either connection end <em>dies</em>
+(or otherwise becomes unreachable). In order for the protocol to function correctly, a
+certain amount of control and state information must be maintained at each end of a
+connection. Opening a connection involves setting up this information at each end and
+bringing the two ends of the connection to a synchronized condition. The information at
+each end is referred to as the state of that connection end; the term <em>connection state</em> refers
+collectively to the information at both ends. <em>Connection end</em> is a general term that covers
+both the communicating socket and the connection information associated with it.</p>
+<h2 id="connection-states">Connection States<a class="anchor" href="#connection-states">#</a></h2>
+<p>A connection between two sockets can either be open or closed. When an association is set
+up between two sockets, the connection is considered <em>open</em>; when the association is torn
+down, the connection is considered <em>closed</em>. A connection end can be in one of two states:
+<em>established</em> or <em>closed</em>. For a connection to be open, both its ends must be established. If
+one end of a connection is established but the other is closed (or unreachable), the
+connection is said to be <em>half-open</em>. Data can flow only on an open connection.</p>
+<p>ADSP specifies that only one connection at a time can be open between a pair of sockets.
+However, a socket can be a connection end for several different connections. (That is,
+several connections can be open on the same socket, but the other ends of these various
+connections must be on different sockets.)</p>
+<p>A connection end can be closed at any time by the connection end&rsquo;s client. The connection
+end should inform the remote end that it is going to close. At this time, the connection
+could become temporarily half-open until the remote end also closes down. Once both
+ends have closed, the connection is closed. Refer to the sections titled &ldquo;Opening a
+Connection&rdquo; and &ldquo;Closing a Connection&rdquo; for details on the mechanisms used to open and
+close connections.</p>
+<h2 id="half-open-connections-and-the-connection-timer">Half-Open Connections and the Connection Timer<a class="anchor" href="#half-open-connections-and-the-connection-timer">#</a></h2>
+<p>A connection is half-open when one of its ends dies or becomes unreachable from the
+other. In a half-open connection, the end that is still established could needlessly consume
+network bandwidth. Even in the absence of traffic, resources (such as timers and buffers)
+would be tied up at the established end. Therefore, it is important that ADSP detect half-
+open connections. After detecting a half-open connection, ADSP closes the established end
+and informs its client that the connection has been closed.</p>
+<hr>
+<p>To detect half-open connections, each end maintains a <em>connection timer</em>, which is started when the connection opens. Whenever an end receives a packet from the remote end, the timer is reset. The timer expires if the end does not receive any packets within a period of 30 seconds. At that time, the end sends a probe and restarts the connection timer. A <em>probe</em> is a request for the remote end to acknowledge; the probe itself serves as an acknowledgement to the remote end. Failure to receive any packet from the other end before the timer has expired for the fourth time (that is, after 2 minutes) indicates that the connection is half-open. At that time, ADSP immediately closes the connection end, freeing up all associated resources.</p>
+<h2 id="connection-identifiers">Connection Identifiers<a class="anchor" href="#connection-identifiers">#</a></h2>
+<p>A connection end is identified by its internet socket address, which consists of a socket number, node ID, and network number. In addition, when a connection is set up, each connection end generates a connection identifier, known as a <em>CID</em>. A connection can be uniquely identified by using both the socket address and the CID of the two connection ends.</p>
+<p>A sender must include its CID in all packets, so that it is clear exactly which connection the packet belongs to. For example, if a connection were set up, closed, and then set up again between the same two sockets, it is possible that undelivered packets from the first connection that remained in internet routers could arrive after the second connection was open. Without the CID, the receiving end could mistakenly accept these packets because they would be indistinguishable from packets belonging to the second connection.</p>
+<p>An ADSP implementation maintains a variable, <em>LastCID</em>, that contains the last CID used. <em>LastCID</em> is initially set to some random number. When establishing a new connection end on a particular socket, ADSP generates a new identifier by incrementing <em>LastCID</em> until it reaches a value that is not being used by a currently open connection on the socket. This value becomes the new connection end’s CID. CIDs are treated as unsigned integers in the range of 1 through <em>CIDMax</em>. After reaching the value <em>CIDMax</em>, CIDs wrap around to 1. A valid CID is never equal to 0; in fact, a CID of 0 must be interpreted as unknown.</p>
+<p>The value of <em>CIDMax</em>, and therefore the range of the CIDs, is a function of the rate at which connections are expected to be set up and broken down (that is, on how quickly the CID number wraps around) and of the Maximum Packet Lifetime (MPL) for the internet. If connections are set up and broken down more rapidly, then a higher value of <em>CIDMax</em> is required. Likewise, the longer the MPL, the higher the value required for <em>CIDMax</em>. ADSP uses 16-bit CIDs (that is, <em>CIDMax</em> equals $FFFF).</p>
+<hr>
+<h1 id="data-flow">Data Flow<a class="anchor" href="#data-flow">#</a></h1>
+<p>Either end of an open connection accepts data from its client for delivery to the other end&rsquo;s client. This data is handled as a stream of bytes; the smallest unit of data that can be conveyed over a connection is 1 byte (8 bits). You can view the flow of data between connection ends A and B as two unidirectional streams of bytes—one stream from end A to end B and the other stream from end B to end A. Although the following discussion focuses on the data stream from end A to end B, you can apply it equally well to the stream from end B to end A by interchanging A and B in the discussion.</p>
+<h2 id="sequence-numbers">Sequence Numbers<a class="anchor" href="#sequence-numbers">#</a></h2>
+<p>ADSP associates a sequence number with each byte that flows over a stream. End B maintains a variable, <em>RecvSeq</em>, which is the sequence number of the next byte that end B expects to receive from end A. End A maintains a corresponding variable, <em>SendSeq</em>, which is the sequence number of the next new byte that end A will send to end B.</p>
+<p>End B initially sets the value of its <em>RecvSeq</em> to 0. Upon first establishing itself, end A synchronizes its <em>SendSeq</em> to the initial value of end B&rsquo;s <em>RecvSeq</em>, which is 0. The first byte that is sent by end A over the connection is treated as byte number 0, with subsequent bytes being numbered 1, 2, 3, and so on. Sequence numbers are treated as unsigned 32-bit integers that wrap around to 0 when incremented by 1 beyond the maximum value $FFFFFFFF.</p>
+<p>Since AppleTalk is a packet network, bytes are actually sent over the connection in packets. Each packet carries a field known as <em>PktFirstByteSeq</em> in its ADSP header. <em>PktFirstByteSeq</em> is the sequence number of the first data byte in the packet. Upon receiving a packet from end A, end B compares the value of <em>PktFirstByteSeq</em> in the packet with its own <em>RecvSeq</em>. If these values are equal, end B accepts and delivers the data to its client. End B then updates the value of <em>RecvSeq</em> by adding the number of data bytes in the packet just received to its current value of <em>RecvSeq</em>. Using this process, end B ensures that data bytes are received in the same order as end A accepted them from its client and that no duplicates are received.</p>
+<p>When end B receives a packet with a <em>PktFirstByteSeq</em> value that does not equal end B&rsquo;s <em>RecvSeq</em>, end B discards the data as out-of-sequence. Acceptance of data in only those packets with <em>PktFirstByteSeq</em> values that equal the receiver&rsquo;s <em>RecvSeq</em> values is referred to as <em>in-order data acceptance</em>.</p>
+<p>Some ADSP implementations accept and buffer data from early-arriving, out-of-sequence packets, processing the data for client delivery when the intervening data arrives. Such an implementation may also accept packets that contain both duplicate and new data bytes; in this case, the receiving end discards duplicate data and accepts the new data. This approach, which is referred to as <em>in-window data acceptance</em>, can reduce data retransmission and improve throughput. However, because in-window data acceptance adds complexity to implementation, it is an option, rather than a requirement, of ADSP.</p>
+<hr>
+<h1 id="error-recovery-and-acknowledgements">Error Recovery and Acknowledgements<a class="anchor" href="#error-recovery-and-acknowledgements">#</a></h1>
+<p>The sequence-number mechanism provides the framework for</p>
+<ul>
+<li>acknowledging the receipt of data</li>
+<li>recovering when data packets are lost in the network</li>
+<li>filtering duplicate and out-of-sequence packets</li>
+</ul>
+<p>End A maintains a send queue that holds all data sent by it to end B. A variable, <em>FirstRtmtSeq</em>, contains the sequence number of the oldest byte in the send queue.</p>
+<p>End B acknowledges receipt of data from end A by sending a sequence number, <em>PktNextRecvSeq</em>, in the ADSP header of any packet going from end B to end A over the connection. This number is equal to end B&rsquo;s <em>RecvSeq</em> at the time that end B sent the packet. When end A receives this packet, the value of <em>PktNextRecvSeq</em> informs end A that end B has already received all data sent by end A up to, but not including, the byte numbered <em>PktNextRecvSeq</em>. End A uses this information to remove all bytes up to, but not including, number <em>PktNextRecvSeq</em> from its send queue. End A must then change its <em>FirstRtmtSeq</em> value to equal the value of <em>PktNextRecvSeq</em>.</p>
+<p>Note that the value of <em>PktNextRecvSeq</em> must fall between <em>FirstRtmtSeq</em> and <em>SendSeq</em> (that is, <em>FirstRtmtSeq</em> ≤ <em>PktNextRecvSeq</em> ≤ <em>SendSeq</em>). If this is not the case, end A should not update <em>FirstRtmtSeq</em>. In addition, even if an incoming packet&rsquo;s data is rejected as out-of-sequence, the value of <em>PktNextRecvSeq</em>, if in the correct range, is still acceptable and should be used by end A to update <em>FirstRtmtSeq</em> (since end B has received all bytes up to that point).</p>
+<p>At times, end A may determine that some data within the stream that it already sent may not have been delivered to end B. In such a case, end A retransmits all data bytes in the send queue whose delivery has not been acknowledged by end B; these are those data bytes with sequence numbers <em>FirstRtmtSeq</em> through <em>SendSeq</em>–1.</p>
+<p>One of the advantages of using byte-oriented sequence numbers is that it offers flexibility to data retransmission. Previously sent data can be regrouped and retransmitted more efficiently. For example, if end A has sent several small data packets to end B over some period of time, and end A determines that it must retransmit all the data bytes in its send queue, it is possible that all of the data bytes in the previous small packets could fit within one ADSP packet for retransmission. It is also possible for end A to append some new data to the bytes being retransmitted in the packet.</p>
+<h1 id="flow-control-and-windows">Flow Control and Windows<a class="anchor" href="#flow-control-and-windows">#</a></h1>
+<p>ADSP implements flow control to ensure that one end does not send data that the other end does not have enough buffer space to receive. This can be called <em>choking data flow at its source</em>. In order for this mechanism to work, end B must periodically inform end A of the amount of receive buffer space it has available. This process is referred to as informing end A of end B&rsquo;s reception window size.</p>
+<p>End B maintains a variable, <em>RecvWdw</em>, which is the number of bytes end B currently has space to receive. When sending a packet to end A, end B always includes the current value</p>
+<hr>
+<p>of its <em>RecvWdw</em> in a field of its ADSP header known as <em>PktRecvWdw</em>. End A maintains a variable, <em>SendWdwSeq</em>, which represents the sequence number of the last byte that end B currently has space for. End A obtains this value from any packet that it receives from end B by adding the value of <em>PktRecvWdw</em>-1 to the value of <em>PktNextRecvSeq</em>. End A does not send bytes numbered beyond <em>SendWdwSeq</em> because end B does not have enough buffer space to receive them. However, if end B receives a packet whose data would exceed the available buffer space, end B discards the data.</p>
+<p>As ADSP does not support the ability for a client to revoke buffer space, the value of <em>SendWdwSeq</em> should never decrease. If a connection end receives a packet that would cause this to happen, the value of <em>SendWdwSeq</em> is not updated.</p>
+<p>Note that <em>RecvWdw</em> is a 16-bit field; the window size at either end is limited to 64 Kbytes ($FFFF).</p>
+<h2 id="adsp-messages">ADSP Messages<a class="anchor" href="#adsp-messages">#</a></h2>
+<p>ADSP allows its clients to break the data stream into client-intelligible messages. A bit can be set in the ADSP packet header to indicate that the last data byte in the packet constitutes the end of a client message. The receiving end must inform its client after delivering the last byte of a message.</p>
+<p>An ADSP packet can have its end-of-message bit set and can contain no client data. This situation would indicate that the last data byte received in the previous packet was the last in a message. In order to handle this case properly, the end-of-message indicator is treated as if it is a byte appended to the end of the message in the data stream. Therefore, an end-of-message always consumes one sequence number in the data stream, just beyond the last byte of the client message. Since no data byte actually corresponds to this end-of-message sequence number, it is possible that an end-of-message packet may contain no data.</p>
+<h2 id="forward-resets">Forward Resets<a class="anchor" href="#forward-resets">#</a></h2>
+<p>The forward-reset mechanism allows an ADSP client to abort the delivery of any outstanding data to the remote end’s client. A forward reset causes all bytes in the sending end’s send queue, all bytes in transit on the network, and all bytes in the remote end’s receive queue that have not yet been delivered to the client to be discarded, and the two ends to be resynchronized.</p>
+<p>When a client requests a forward reset, its ADSP connection end first removes any unsent bytes from its send queue and then resets the value of its <em>FirstRtmtSeq</em> to that of its <em>SendSeq</em>. This process effectively flushes all data that has been sent but not yet acknowledged by the remote end. The client’s connection end then sends the remote connection end a Forward Reset control packet with <em>PktFirstByteSeq</em> equal <em>SendSeq</em>.</p>
+<p>Upon receiving a Forward Reset control packet, ADSP validates that the value of <em>PktFirstByteSeq</em> falls within the range (<em>RecvSeq</em> ≤ <em>PktFirstByteSeq</em> ≤ <em>RecvSeq</em>+<em>RecvWdw</em>). If the value does not fall within this range, the forward reset is disregarded. If the forward reset is accepted, <em>RecvSeq</em> is synchronized to the value of <em>PktFirstByteSeq</em>, all data in the receive queue up to <em>RecvSeq</em> is removed, and the client is informed that a forward reset was received and processed. The receiver then sends back a Forward Reset Acknowledge control packet with <em>PktNextRecvSeq</em> set to the newly</p>
+<hr>
+<p>synchronized value of <em>RecvSeq</em>. The Forward Reset Acknowledge control packet is sent even if the Forward Reset control packet was disregarded as out-of-range.</p>
+<p>When sending a Forward Reset control packet, the connection end starts a timer. The timer is removed upon receipt of a valid Forward Reset Acknowledge control packet. To be valid, a Forward Reset Acknowledge control packet&rsquo;s <em>PktNextRecvSeq</em> must fall within the range (<em>SendSeq</em> ≤ <em>PktNextRecvSeq</em> ≤ <em>SendWdwSeq</em>+1). If the timer expires, the end retransmits the Forward Reset control packet and restarts the timer. This action continues until either a valid Forward Reset Acknowledge control packet is received or until the connection is torn down.</p>
+<p>The forward-reset mechanism is nondeterministic from the client&rsquo;s perspective because any or all of the outstanding data could have already been delivered to the remote client. However, the forward-reset mechanism does provide a means for resetting the connection.</p>
+<h2 id="summary-of-sequencing-variables">Summary of Sequencing Variables<a class="anchor" href="#summary-of-sequencing-variables">#</a></h2>
+<p>To summarize, the ADSP header of all ADSP packets includes the following three sequencing variables:</p>
+<ul>
+<li><em>PktFirstByteSeq</em>: The sequence number of the packet&rsquo;s first data byte</li>
+<li><em>PktNextRecvSeq</em>: The sequence number of the next byte that the packet&rsquo;s sender expects to receive</li>
+<li><em>PktRecvWdw</em>: The number of bytes that the packet&rsquo;s sender currently has buffer space to receive</li>
+</ul>
+<p>Each connection end must maintain the following variables as part of its connection state descriptor:</p>
+<ul>
+<li><em>SendSeq</em>: The sequence number to be assigned to the next new byte that the local end will transmit over the connection</li>
+<li><em>FirstRtmtSeq</em>: The sequence number of the oldest byte in the local end&rsquo;s send queue (initially, the queue is empty so this number equals <em>SendSeq</em>)</li>
+<li><em>SendWdwSeq</em>: The sequence number of the last byte that the remote end has buffer space to receive</li>
+<li><em>RecvSeq</em>: The sequence number of the next byte that the local end expects to receive</li>
+<li><em>RecvWdw</em>: The number of bytes that the local end currently has buffer space to receive (initially, the entire buffer is available)</li>
+</ul>
+<p>Figure 1 illustrates how these variables would relate to a connection end&rsquo;s send and receive queues and sequence-number space.</p>
+<hr>
+<h3 id="send-queue">Send Queue<a class="anchor" href="#send-queue">#</a></h3>
+<ul>
+<li>Bytes sent; have not received Ack yet</li>
+<li>Remaining free space within the send window</li>
+<li>Marks a logical end of message</li>
+</ul>
+<h3 id="receive-queue">Receive Queue<a class="anchor" href="#receive-queue">#</a></h3>
+<ul>
+<li>Bytes received; client has not read yet</li>
+<li>Free buffer space in the receive queue</li>
+<li>Marks a logical end of message</li>
+</ul>
+<p><img src="images/p14-send-receive-queues.png" alt="Diagram showing Send Queue and Receive Queue circular buffers for AppleTalk Data Stream Protocol. The Send Queue includes pointers for FirstRtmtSeq, SendWdwSeq, and SendSeq. The Receive Queue includes pointers for RecvWdw and RecvSeq. Legends identify the various shaded regions representing different states of the data in the queues." /></p>
+<p><strong>Figure 1. Send and receive queues</strong></p>
+<hr>
+<p>Apple Talk Data Stream Protocol</p>
+<h1 id="packet-format">Packet Format<a class="anchor" href="#packet-format">#</a></h1>
+<p>Figure 2 illustrates an ADSP packet. The packet consists of the Link Access Protocol (LAP) and Datagram Delivery Protocol (DDP) headers, followed by a 13-byte ADSP header and up to 572 bytes of ADSP data. To identify an ADSP packet, the DDP header&rsquo;s protocol-type field must equal 7.</p>
+<p><img src="images/p15-adsp-packet-format.png" alt="ADSP packet format" /></p>
+<pre class="mermaid">packet-beta
+0-15: &#34;Source CID&#34;
+16-47: &#34;PktFirstByteSeq&#34;
+48-79: &#34;PktNextRecvSeq&#34;
+80-95: &#34;PktRecvWdw&#34;
+96-96: &#34;Control bit&#34;
+97-97: &#34;Ack Request bit&#34;
+98-98: &#34;EOM bit&#34;
+99-99: &#34;Attention bit&#34;
+100-103: &#34;Control code&#34;</pre><script src="/appletalk-docs/mermaid.min.js"></script><script>mermaid.initialize({"flowchart":{"useMaxWidth":true},"theme":"default"})</script><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Field</th>
+          <th style="text-align: left">Bit offset</th>
+          <th style="text-align: left">Width (bits)</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Source CID</td>
+          <td style="text-align: left">0</td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left">Source Connection Identifier</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">PktFirstByteSeq</td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left">32</td>
+          <td style="text-align: left">Sequence number of the first byte of data in this packet</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">PktNextRecvSeq</td>
+          <td style="text-align: left">48</td>
+          <td style="text-align: left">32</td>
+          <td style="text-align: left">Sequence number of the next byte the source expects to receive</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">PktRecvWdw</td>
+          <td style="text-align: left">80</td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left">Available receive window size in bytes</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Control bit</td>
+          <td style="text-align: left">96</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">ADSP descriptor bit 7: set if this is a control packet</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Ack Request bit</td>
+          <td style="text-align: left">97</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">ADSP descriptor bit 6: set to request an acknowledgment</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">EOM bit</td>
+          <td style="text-align: left">98</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">ADSP descriptor bit 5: set if this is the end of a message</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Attention bit</td>
+          <td style="text-align: left">99</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">ADSP descriptor bit 4: set if this is an attention packet</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Control code</td>
+          <td style="text-align: left">100</td>
+          <td style="text-align: left">4</td>
+          <td style="text-align: left">ADSP descriptor bits 3-0: code specifying the type of control packet</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p>The ADSP header contains the following sequence of fields:</p>
+<ul>
+<li>a 16-bit <em>Source CID</em></li>
+<li>a 32-bit <em>PktFirstByteSeq</em></li>
+<li>a 32-bit <em>PktNextRecvSeq</em></li>
+<li>a 16-bit <em>PktRecvWdw</em></li>
+<li>an 8-bit <em>Descriptor</em></li>
+</ul>
+<p>If the <em>Control</em> bit in the descriptor field is set, the packet is an ADSP control packet. Control packets are sent for internal ADSP purposes, and they do not carry any ADSP-client data bytes. Control packets do not consume sequence numbers.</p>
+<p>In sending either a data packet or a control packet, the ADSP client can set the <em>Ack Request</em> bit in the descriptor field to indicate that it wants the remote end’s ADSP to immediately send back an ADSP packet, with <em>PktNextRecvSeq</em> and <em>PktRecvWdw</em> equal to the current values of its <em>RecvSeq</em> and <em>RecvWdw</em>. Upon receiving a packet whose <em>Ack Request</em> bit is set, an ADSP connection end must respond to the acknowledgement request, even if the packet is to be discarded as out-of-sequence; the <em>Ack Request</em> bit forces the receiving end’s ADSP to send an immediate acknowledgement.</p>
+<p>Setting the <em>Attention</em> bit in the descriptor field designates the packet as an ADSP attention packet. Attention packets are used to send and acknowledge attention messages. Any attention packet that contains a client-attention message will have its <em>Control</em> bit clear and its <em>Ack Request</em> bit set. Setting the <em>Ack Request</em> bit forces the receiver to immediately send an acknowledgement of the attention data. An attention packet with its <em>Control</em> bit set is an attention-control packet for internal ADSP purposes. Attention-control packets are used to acknowledge attention messages and should not have the <em>Ack Request</em> bit set. The control code in the descriptor field of an ADSP attention packet must always be set to 0. An attention packet received with a nonzero control code should be discarded as invalid. Attention packets are described in detail in the section titled “Attention Messages.”</p>
+<p>Setting the <em>Logical EOM</em> bit in the descriptor field indicates a logical end-of-message in the data stream. This bit applies only to client data packets, and so neither the <em>Control</em> bit nor <em>Attention</em> bit can be set in a packet whose <em>Logical EOM</em> bit is set.</p>
+<hr>
+<h1 id="control-packets">Control Packets<a class="anchor" href="#control-packets">#</a></h1>
+<p>There are two broad classes of ADSP packets: <em>data packets</em> and <em>control packets</em>. Control packets can be distinguished from data packets by examining the <em>Control bit</em> in the packet&rsquo;s descriptor field; when set, this bit identifies a control packet. Such packets are sent for ADSP&rsquo;s internal operation and do not contain any client-deliverable data.</p>
+<p>Control packets are used to open or to close connections, to act as probes, and to send acknowledgement information. The least-significant 4 bits of a control packet&rsquo;s descriptor contain a <em>control code</em>, which identifies the type of the ADSP control packet. The following list shows the control codes and their corresponding types:</p>
+<ul>
+<li>$0 Probe or Acknowledgement</li>
+<li>$1 Open Connection Request</li>
+<li>$2 Open Connection Acknowledgement</li>
+<li>$3 Open Connection Request and Acknowledgement</li>
+<li>$4 Open Connection Denial</li>
+<li>$5 Close Connection Advice</li>
+<li>$6 Forward Reset</li>
+<li>$7 Forward Reset Acknowledgement</li>
+<li>$8 Retransmit Advice</li>
+</ul>
+<p>Apple Computer reserves values $9 through $F for potential future use, so, for now, you must treat them as invalid control codes. Control packets with these invalid control codes are rejected by the receiving end.</p>
+<p>A control code of 0 can have two different meanings depending on the state of the <em>Ack Request bit</em>. If the <em>Ack Request bit</em> is set, the packet is a probe packet, so the receiving end should send an acknowledgement immediately. If the <em>Ack Request bit</em> is not set, then the control packet is an acknowledgement packet. (Note that an acknowledgement is implicit in any valid ADSP packet; also, the <em>Ack Request bit</em> can be set in either a data packet or a control packet. Therefore, a control packet with a control code of 0 is used only when the sending end has no client data to accompany the acknowledgement or acknowledgement request.)</p>
+<p>Open-connection control codes are sent as part of the open-connection dialog. This dialog is explained in detail in the section titled &ldquo;Opening a Connection.&rdquo; Before being closed by ADSP, a connection end sends a Close Connection Advice control packet. This packet is purely advisory and requires no reply. Upon receiving such a packet, ADSP closes down the connection. For additional details, see the section titled &ldquo;Closing a Connection.&rdquo;</p>
+<p>The Forward Reset control packet provides a mechanism for a client to abort the delivery of all outstanding data that it has sent to the remote client. Upon receiving this packet, the remote end synchronizes its <em>RecvSeq</em> to the value of <em>PktFirstByteSeq</em> in the packet and removes all undelivered bytes from its receive queue. The remote end then returns a</p>
+<hr>
+<p>Forward Reset Acknowledgement control packet to the other end and informs its client that it has received and processed a forward reset request.</p>
+<p>A connection end may send the Retransmit Advice control packet in response to receiving several consecutive out-of-sequence data packets from the remote end. The packet is sent to inform the remote end that it should retransmit the bytes in its send queue beginning with the byte whose sequence number is PktNextRecvSeq.</p>
+<h2 id="data-flow-examples">Data-Flow Examples<a class="anchor" href="#data-flow-examples">#</a></h2>
+<p>The following figures give examples of data flow on an ADSP connection. In these examples, end A sends data and control packets to end B, and end B receives data and sends acknowledgements to end A. However, the examples apply equally well for the opposite situation in which end B sends the data and control packets to end A, and end A receives the data and sends acknowledgements to end B.</p>
+<p>In the figures, the packets are indicated by lines that run diagonally between the two connection ends. The bracketed ranges (for example, [0:5]) indicate the range of sequence numbers assigned to data bytes transmitted in the packet. The first number in the range corresponds to PktFirstByteSeq. Ctl indicates control packets. Events involving a change to any of connection end A&rsquo;s variables are indicated by a grey arrow along end A&rsquo;s time axis. The variable affected is listed with its new value. The packet variables of all packets sent by connection end B are listed along end B&rsquo;s time axis.</p>
+<hr>
+<p>Figure 3 illustrates how the ADSP variables relate to the flow of data. In this example, end A sends an acknowledgement request when it exhausts its known send window. Acknowledgements are implicit in all packets sent from end B, regardless of whether they are data packets or control packets.</p>
+<p><img src="images/p19-adsp-data-flow.png" alt="ADSP data flow" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant A as Connection End A
+    participant B as Connection End B
+    Note left of A: FirstRtmtSeq = 0&lt;br/&gt;SendSeq = 0&lt;br/&gt;SendWdwSeq = 20&lt;br/&gt;RecvSeq = 0
+    A-&gt;&gt;B: [0:5] (SendSeq = 6)
+    A-&gt;&gt;B: [6:10] (SendSeq = 11)
+    B-&gt;&gt;A: [0:12] (PktFirstByteSeq = 0, PktNextRecvSeq = 11, PktRecvWdw = 20)
+    Note left of A: FirstRtmtSeq = 11&lt;br/&gt;SendWdwSeq = 30&lt;br/&gt;RecvSeq = 13
+    A-&gt;&gt;B: [11:15] (SendSeq = 16)
+    A-&gt;&gt;B: [16:19] (SendSeq = 20)
+    A-&gt;&gt;B: [20:23] (SendSeq = 24)
+    A-&gt;&gt;B: [24:30] + Ack Request (SendSeq = 31)
+    B-&gt;&gt;A: Ctl (PktFirstByteSeq = 13, PktNextRecvSeq = 31, PktRecvWdw = 20)
+    Note left of A: FirstRtmtSeq = 31&lt;br/&gt;SendWdwSeq = 50&lt;br/&gt;RecvSeq = 13
+    A-&gt;&gt;B: [31:45] (SendSeq = 46)</pre><p>Figure 3. ADSP data flow</p>
+<hr>
+<p>Figure 4 shows an example of recovery from a lost packet. In this example, the first packet sent by end A is lost. The receiver discards subsequent packets because they are out-of-sequence. Some event (a retransmit timer goes off, or perhaps the send window is exhausted) causes end A to send an acknowledgement request. End B acknowledges, and end A retransmits all of the lost data.</p>
+<p><img src="images/p20-recovery-lost-packet.png" alt="Recovery from a lost packet" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant A as Connection End A
+    participant B as Connection End B
+
+    Note left of A: FirstRtmtSeq = 0&lt;br/&gt;SendSeq = 0&lt;br/&gt;SendWdwSeq = 24&lt;br/&gt;RecvSeq = 0
+    
+    A--xB: [0:5]
+    Note left of A: SendSeq = 6
+    
+    A-&gt;&gt;B: [6:14]
+    Note right of B: Out-of-sequence
+    Note left of A: SendSeq = 15
+    
+    A-&gt;&gt;B: [15:24] + Ack Request
+    Note right of B: Out-of-sequence
+    Note left of A: SendSeq = 25
+
+    Note right of B: PktFirstByteSeq = 0&lt;br/&gt;PktNextRecvSeq = 0&lt;br/&gt;PktRecvWdw = 25
+    B-&gt;&gt;A: Ctl
+
+    Note left of A: FirstRtmtSeq = 0&lt;br/&gt;SendWdwSeq = 24&lt;br/&gt;RecvSeq = 0
+    A-&gt;&gt;B: [0:24] + Ack Request
+
+    Note right of B: PktFirstByteSeq = 0&lt;br/&gt;PktNextRecvSeq = 25&lt;br/&gt;PktRecvWdw = 25
+    B-&gt;&gt;A: Ctl
+
+    Note left of A: FirstRtmtSeq = 25&lt;br/&gt;SendWdwSeq = 49&lt;br/&gt;RecvSeq = 0</pre><p><strong>Figure 4. Recovery from a lost packet</strong></p>
+<hr>
+<p>Figure 5 gives an example of an idle connection state. Neither client is sending data, so both connection ends periodically send a probe to determine if the connection is still open.</p>
+<p><img src="images/p21-idle-connection-state.png" alt="Sequence diagram of an idle connection state" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant A as Connection End A
+    participant B as Connection End B
+
+    Note left of A: FirstRtmtSeq = 0&lt;br/&gt;SendSeq = 0&lt;br/&gt;SendWdwSeq = 511&lt;br/&gt;RecvSeq = 0&lt;br/&gt;SendSeq = 256
+    A-&gt;&gt;B: &#34;[0:255] + Ack Request&#34;
+    Note right of B: PktFirstByteSeq = 0&lt;br/&gt;PktNextRecvSeq = 256&lt;br/&gt;PktRecvWdw = 256
+    B-&gt;&gt;A: Ctl
+    Note left of A: FirstRtmtSeq = 256&lt;br/&gt;SendWdwSeq = 511&lt;br/&gt;RecvSeq = 0
+
+    Note over A: Probe timer expires
+    A-&gt;&gt;B: &#34;Ctl + Ack Request&#34;
+    Note right of B: PktFirstByteSeq = 0&lt;br/&gt;PktNextRecvSeq = 256&lt;br/&gt;PktRecvWdw = 256
+    B-&gt;&gt;A: Ctl
+
+    Note over A: Probe timer expires
+    A-&gt;&gt;B: &#34;Ctl + Ack Request&#34;
+    Note right of B: PktFirstByteSeq = 0&lt;br/&gt;PktNextRecvSeq = 256&lt;br/&gt;PktRecvWdw = 256
+    B-&gt;&gt;A: Ctl
+
+    Note over A: Probe timer expires
+    A-&gt;&gt;B: &#34;Ctl + Ack Request&#34;
+    Note right of B: PktFirstByteSeq = 0&lt;br/&gt;PktNextRecvSeq = 256&lt;br/&gt;PktRecvWdw = 256
+    B-&gt;&gt;A: Ctl</pre><p>Figure 5. Idle connection state</p>
+<hr>
+<p>In Figure 6, packets from end B are lost, and so ADSP eventually tears down the connection, as indicated by the X.</p>
+<p><img src="images/p22-connection-teardown.png" alt="Connection torn down due to lost packets" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant A as Connection End A
+    participant B as Connection End B
+    
+    Note left of A: FirstRtmtSeq = 0&lt;br/&gt;SendSeq = 0&lt;br/&gt;SendWdwSeq = 511&lt;br/&gt;RecvSeq = 0
+    A-&gt;&gt;B: &#34;[0:255] + Ack Request&#34;
+    Note left of A: SendSeq = 256
+    
+    Note right of B: PktFirstByteSeq = 0&lt;br/&gt;PktNextRecvSeq = 256&lt;br/&gt;PktRecvWdw = 256
+    B-&gt;&gt;A: &#34;Ctl&#34;
+    
+    Note left of A: FirstRtmtSeq = 256&lt;br/&gt;SendWdwSeq = 511&lt;br/&gt;RecvSeq = 0
+    
+    Note over A: Probe timer expires
+    A-&gt;&gt;B: &#34;Ctl + Ack Request&#34;
+    Note right of B: PktFirstByteSeq = 0&lt;br/&gt;PktNextRecvSeq = 256&lt;br/&gt;PktRecvWdw = 256
+    B-xA: &#34;Ctl&#34;
+    
+    Note over A: Probe timer expires
+    A-&gt;&gt;B: &#34;Ctl + Ack Request&#34;
+    Note right of B: PktFirstByteSeq = 0&lt;br/&gt;PktNextRecvSeq = 256&lt;br/&gt;PktRecvWdw = 256
+    B-xA: &#34;Ctl&#34;
+    
+    Note over A: Probe timer expires
+    A-&gt;&gt;B: &#34;Ctl + Ack Request&#34;
+    Note right of B: PktFirstByteSeq = 0&lt;br/&gt;PktNextRecvSeq = 256&lt;br/&gt;PktRecvWdw = 256
+    B-xA: &#34;Ctl&#34;
+    
+    Note over A: Probe timer expires;&lt;br/&gt;connection closed
+    A-&gt;&gt;B: &#34;Ctl + Close Advice&#34;
+    Note right of B: Connection closed</pre><p><strong>Figure 6. Connection torn down due to lost packets</strong></p>
+<hr>
+<hr>
+<p>The <em>Attention</em> bit is set in the packet&rsquo;s descriptor field to designate an attention packet. The data part of an attention packet contains a 2-byte (16-bit) attention code and from 0 to 570 bytes of client-attention data.</p>
+<p>The 16-bit attention-code field accommodates a range of values from $0000 through $FFFF. Values in the range $0000 through $EFFF are for the client&rsquo;s use. Values in the range $F000 through $FFFF are reserved for potential future expansion of ADSP.</p>
+<p>Attention messages use a packet-oriented sequence-number space that is independent of data-stream sequence numbers. The first attention packet is assigned a sequence number of 0, the second packet is assigned 1, the third packet 2, and so on. Attention sequence numbers are treated as 32-bit unsigned integers that wrap around to 0 when incremented beyond the maximum value $FFFFFFFF.</p>
+<p>End B maintains a variable, <em>AttnRecvSeq</em>, which contains the sequence number of the next attention message that end B expects to receive from end A. <em>AttnRecvSeq</em> is initially set to 0 and is incremented by 1 with each attention message that end B accepts from end A.</p>
+<p>End A maintains a corresponding variable, <em>AttnSendSeq</em>, which contains the sequence number of the next attention message it will send across the connection. When end A is first established, <em>AttnSendSeq</em> is synchronized to the value of end B&rsquo;s <em>AttnRecvSeq</em>.</p>
+<p>In any attention packet sent from end A to end B, the <em>PktAttnSendSeq</em> field of the ADSP packet header contains the current value of end A&rsquo;s <em>AttnSendSeq</em>. In any attention packet sent from end B to end A, the <em>PktAttnRecvSeq</em> field contains the current value of end B&rsquo;s <em>AttnRecvSeq</em>. Upon receiving an attention packet, end A uses the value of <em>PktAttnRecvSeq</em> to update its own <em>AttnSendSeq</em>. Before updating <em>AttnSendSeq</em>, end A must ensure that the value of <em>PktAttnRecvSeq</em> equals <em>AttnSendSeq</em>+1. If these values are equal, end A increments <em>AttnSendSeq</em> to equal <em>PktAttnRecvSeq</em>.</p>
+<p>Attention data is received into buffer space other than the receive queue in an implementation-dependent manner. End A can send an attention message even if end B&rsquo;s receive window in the regular data stream is closed. However, only one attention message can be outstanding at a time. Once end A sends an attention message to end B, end A cannot send another attention message until it receives acknowledgement from end B. End B accepts and acknowledges receipt of an attention message if the attention message is properly sequenced and if buffer space is available. If buffer space is not available, end B discards the attention message. Because only one attention message can be sent at a time, the <em>PktAttnRecvWdw</em> field of ADSP attention-packet headers is not used and must always be set to 0.</p>
+<p>When sending an attention message, the end starts a timer. If the timer expires, the end retransmits the attention message and restarts the timer. The sending end continues to retransmit the attention message until it receives the appropriate attention message acknowledgement or until the connection is torn down.</p>
+<p>When end A sends an attention message to end B, end A&rsquo;s <em>PktAttnSendSeq</em> field is set to the value of end A&rsquo;s <em>AttnSendSeq</em>. When end B receives the attention packet, it compares the value of <em>PktAttnSendSeq</em> with its own <em>AttnRecvSeq</em>. If the values are not equal, end B discards the attention message. If the values are equal and buffer space is available, end B accepts the data and increments <em>AttnRecvSeq</em>. Then end B sends end A an attention acknowledgement with the <em>PktAttnRecvSeq</em> field set to the current value of end B&rsquo;s <em>AttnRecvSeq</em>.</p>
+<hr>
+<p>An acknowledgement is implicit in any attention packet sent; that is, acknowledgements are piggybacked on attention messages. The attention acknowledgement itself may be an attention message that end B&rsquo;s client has just asked end B to send, or the acknowledgement may be an ADSP control packet whose sole purpose is to acknowledge the attention message.</p>
+<h1 id="opening-a-connection">Opening a Connection<a class="anchor" href="#opening-a-connection">#</a></h1>
+<p>This section describes how connections are opened and explains some of the facilities that ADSP provides for opening connections.</p>
+<p>A connection is open when both ends of the connection are established. A connection end is established when it knows the values of all of the following:</p>
+<ul>
+<li><em>LocAddr</em>: The internet address of the local end&rsquo;s socket.</li>
+<li><em>RemAddr</em>: The internet address of the remote end&rsquo;s socket</li>
+<li><em>LocCID</em>: The local end&rsquo;s CID</li>
+<li><em>RemCID</em>: The remote end&rsquo;s CID</li>
+<li><em>SendSeq</em>: The sequence number to be assigned to the next byte that the local end&rsquo;s ADSP will send over the connection to the remote end</li>
+<li><em>FirstRtmtSeq</em>: The sequence number of the oldest byte in the local end&rsquo;s send queue (initially, the queue is empty so this number equals <em>SendSeq</em>)</li>
+<li><em>SendWdwSeq</em>: The sequence number of the last byte that the remote end has buffer space to receive from the local end</li>
+<li><em>RecvSeq</em>: The sequence number of the next byte that the local end expects to receive from the remote end (initially set to 0)</li>
+<li><em>RecvWdw</em>: The number of bytes that the local end currently has buffer space to receive from the remote end (initially, the local end&rsquo;s entire receive buffer is available)</li>
+<li><em>AttnSendSeq</em>: The sequence number to be assigned to the next attention packet that the local end will transmit over the connection</li>
+<li><em>AttnRecvSeq</em>: The sequence number of the next attention packet that the local end expects to receive from the remote end (initially set to 0)</li>
+</ul>
+<p>When attempting to become established, the local end knows the values of <em>LocAddr</em>, <em>LocCID</em>, <em>RecvSeq</em>, <em>RecvWdw</em>, and <em>AttnRecvSeq</em>. (When a connection is first opened, the values of <em>RecvSeq</em> and <em>AttnRecvSeq</em> will be 0.) The local end must somehow discover the values of <em>RemAddr</em>, <em>RemCID</em>, <em>SendSeq</em>, <em>SendWdwSeq</em>, and <em>AttnSendSeq</em>. The objective of the connection-opening dialog is for each end to discover these values.</p>
+<hr>
+<p>AppleTalk Data Stream Protocol</p>
+<p>Note: A connection can be opened in a variety of ways. ADSP provides one set of machinery, but a client can use its own separate, parallel mechanisms to discover and to provide the required information to ADSP in order to establish either or both connection ends.</p>
+<p>In order to open a connection, ADSP provides a type of control packet known as an Open Connection Request control packet. Since the control packet is an ADSP packet, its header contains the sending end&rsquo;s network address and CID. In addition, the packet includes the sending end&rsquo;s <em>RecvSeq</em> (<em>PktNextRecvSeq</em> in the packet header) and <em>RecvWdw</em> (<em>PktRecvWdw</em> in the packet header). The end obtains the value of <em>AttnRecvSeq</em> from one of a set of fields in the packet, collectively known as the <em>open-connection parameters</em>.</p>
+<p>The end initiating the connection-opening dialog sends an Open Connection Request control packet to the intended remote end. This packet provides the remote end with the connection parameters it needs to become established. Upon receiving such a packet, the remote end sets its connection parameters as follows:</p>
+<ul>
+<li><em>RemAddr</em>: Equal to the packet&rsquo;s source network address</li>
+<li><em>RemCID</em>: Equal to the packet&rsquo;s <em>SourceCID</em></li>
+<li><em>SendSeq</em>: Equal to <em>PktNextRecvSeq</em></li>
+<li><em>SendWdwSeq</em>: Equal to <em>PktNextRecvSeq</em> + <em>PktRecvWdw</em> - 1</li>
+<li><em>AttnSendSeq</em>: Equal to <em>PktAttnRecvSeq</em></li>
+</ul>
+<p>Once the remote end has set these parameters (based on the information in the Open Connection Request control packet), the end is considered to be established.</p>
+<p>In order for a connection to become open, both ends of the connection must be established. Therefore, in the connection-opening dialog, each end must send an Open Connection Request control packet to the other end (as well as receive an Open Connection Request control packet from the other end).</p>
+<p>Since these packets can be lost during transmission, ADSP provides a mechanism for ensuring that the packets are delivered. When a connection end receives an Open Connection Request control packet, the receiving end returns an Open Connection Acknowledgement control packet to the sending end. Upon receiving an Open Connection Acknowledgement control packet, the receiving end is assured that the other end has become established.</p>
+<p>After the two connection ends have exchanged both open-connection requests and acknowledgements, the connection is open and data can safely be sent on it.</p>
+<h2 id="connection-opening-dialog">Connection-Opening Dialog<a class="anchor" href="#connection-opening-dialog">#</a></h2>
+<p>The connection-opening mechanism provided by ADSP requires that a connection end must know the internet socket address of the destination socket to which the end is making a connection request. The client must provide this address to ADSP for the purpose of initiating the connection-opening dialog. How this address is determined is up to the client; generally, the AppleTalk Name Binding Protocol (NBP) is used.</p>
+<hr>
+<h2 id="apple-talk-data-stream-protocol">Apple Talk Data Stream Protocol<a class="anchor" href="#apple-talk-data-stream-protocol">#</a></h2>
+<p>ADSP connection-opening is a symmetric operation. Either of two peer clients can initiate the connection-opening dialog. In fact, both peers can attempt to open the connection at the same time; however, only one connection between the two peers should be opened. The following discussion focuses on how end A opens a connection with end B.</p>
+<p>When attempting to open a connection with a remote end B, end A first chooses a locally unique CID. End A then sends an Open Connection Request control packet to end B&rsquo;s socket address. This request contains end A&rsquo;s initial connection-state information (its <em>LocCID</em>, <em>RecvSeq</em>, <em>RecvWdw</em>, and <em>AttnRecvSeq</em>). End B needs this information in order to become established.</p>
+<p>Upon receiving the Open Connection Request control packet, end B extracts the sender&rsquo;s internet socket address and <em>Source CID</em> and saves them in its <em>RemAddr</em> and <em>RemCID</em> fields, respectively. The value of the <em>PktNextRecvSeq</em> field is saved as end B&rsquo;s <em>SendSeq</em>. End B then adds the value of <em>PktRecvWdw</em>-1 to <em>PktNextRecvSeq</em> to produce its <em>SendWdwSeq</em>. Finally, the value of <em>PktAttnRecvSeq</em> is saved as end B&rsquo;s <em>AttnSendSeq</em>. Connection end B is now established.</p>
+<p>At this point, end A is not established and does not know the state of connection end B. End B responds to end A&rsquo;s Open Connection Request control packet by sending back an Open Connection Request and Acknowledgement control packet. End A determines the values of its <em>RemAddr</em>, <em>RemCID</em>, <em>SendSeq</em>, and <em>SendWdwSeq</em> from the open connection request, as previously described; then, end A becomes established. The open connection acknowledgement informs end A that end B has accepted end A&rsquo;s Open Connection Request control packet and has become established. End A assumes the connection is now open.</p>
+<p>End A informs end B of its state by sending an Open Connection Acknowledgement control packet. Upon receiving the acknowledgement, end B assumes the connection is open. See Figure 8.</p>
+<p><img src="images/p27-connection-opening-dialog.png" alt="Connection-opening dialog initiated by one end" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant A as Connection End A
+    participant B as Connection End B
+    Note left of A: This end initiates&lt;br/&gt;connection-opening dialog
+    A-&gt;&gt;B: [request]
+    B-&gt;&gt;A: [request+ack]
+    Note left of A: This end established
+    A-&gt;&gt;B: [ack]
+    Note right of B: This end established</pre><p>Figure 8. Connection-opening dialog initiated by one end</p>
+<hr>
+<p>Both ends can attempt to open the connection simultaneously. In this case, each ADSP socket receives an Open Connection Request control packet from the socket to which it has sent an Open Connection Request control packet. The ADSP implementation identifies end A by matching its <em>RemAddr</em> to the source address of the Open Connection Request control packet received from end B. End A extracts the required information from the packet and becomes established. End A then sends back an Open Connection Acknowledgement control packet to inform the remote end that it has become established. This ensures that ADSP establishes only one connection between the two sockets. See Figure 9.</p>
+<p><img src="images/p28-simultaneous-open.png" alt="Connection-opening dialog initiated by both ends" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant A as Connection End A
+    participant B as Connection End B
+    Note left of A: This end initiates&lt;br/&gt;connection-opening dialog
+    Note right of B: This end initiates&lt;br/&gt;connection-opening dialog
+    A-&gt;&gt;B: [request]
+    B-&gt;&gt;A: [request]
+    A-&gt;&gt;B: [ack]
+    B-&gt;&gt;A: [ack]
+    Note left of A: This end established
+    Note right of B: This end established</pre><p>Figure 9. Connection-opening dialog initiated by both ends</p>
+<p>If for any reason an ADSP implementation is unable to fulfill the open-connection request, an open-connection denial is sent back to the requestor. In this case, the <em>Source CID</em> field of the ADSP packet header is 0, while the <em>Destination CID</em> field of the connection-opening parameters is set to the requestor&rsquo;s CID. See Figure 10.</p>
+<p><img src="images/p28-open-denied.png" alt="Open-connection request denied" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant A as Connection End A
+    participant R as Remote ADSP
+    Note left of A: This end initiates&lt;br/&gt;connection-opening dialog
+    A-&gt;&gt;R: [request]
+    Note right of R: This ADSP does not&lt;br/&gt;accept the request
+    R-&gt;&gt;A: [denial]
+    Note left of A: This end returns&lt;br/&gt;status to client</pre><p>Figure 10. Open-connection request denied</p>
+<hr>
+<h2 id="open-connection-control-packet-format">Open-Connection Control Packet Format<a class="anchor" href="#open-connection-control-packet-format">#</a></h2>
+<p>An open-connection request is sent as an ADSP control packet. As such, the request contains all the information required to establish the receiving end. ADSP is a client of the network layer, AppleTalk Datagram Delivery Protocol (DDP), which contains the internet address of the sender. (Note that the packet must be sent through the socket on which the connection is to be established.) The ADSP header contains the <em>Source CID</em>, <em>RecvSeq</em>, and <em>RecvWdw</em>, which are used to determine the receiving end&rsquo;s <em>RemCID</em>, <em>SendSeq</em>, and <em>SendWdwSeq</em>, respectively. The <em>AttnRecvSeq</em> field of the open-connection parameters following the header is used to set the value of the receiving end&rsquo;s <em>AttnSendSeq</em>.</p>
+<p>An ADSP Open Connection Acknowledgement, which is also a control packet, serves to acknowledge the receipt of an Open Connection Request control packet. An end can send both an Open Connection Request control packet and an Open Connection Acknowledgement control packet at the same time by combining these two into one ADSP control packet. ADSP also provides an Open Connection Denial control packet for use when a connection request cannot be honored. In the Open Connection Denial control packet, the <em>Source CID</em> should be set to 0 in the packet header.</p>
+<p>Figure 11 shows the format of ADSP packets used in the connection-opening dialog. Note the special open-connection parameters that follow the ADSP packet header. These parameters are described in detail after the figure.</p>
+<hr>
+<h1 id="appletalk-data-stream-protocol-1">AppleTalk Data Stream Protocol<a class="anchor" href="#appletalk-data-stream-protocol-1">#</a></h1>
+<p><img src="images/p24-open-connection-packet.png" alt="Open-connection packet format" /></p>
+<pre class="mermaid">packet-beta
+0-31: &#34;LAP and DDP header (partial)&#34;
+32-47: &#34;DDP protocol type = 7&#34;
+48-63: &#34;Source CID&#34;
+64-95: &#34;PktFirstByteSeq&#34;
+96-127: &#34;PktNextRecvSeq&#34;
+128-143: &#34;PktRecvWdw&#34;
+144-159: &#34;ADSP descriptor&#34;
+160-175: &#34;ADSP Version = $0100&#34;
+176-191: &#34;Destination CID&#34;
+192-223: &#34;PktAttnRecvSeq&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>LAP and DDP header</td>
+          <td>0</td>
+          <td>32*</td>
+          <td>Includes source/destination network addresses and other DDP/LAP fields.</td>
+      </tr>
+      <tr>
+          <td>DDP protocol type</td>
+          <td>32</td>
+          <td>16</td>
+          <td>Set to 7 for ADSP.</td>
+      </tr>
+      <tr>
+          <td>Source CID</td>
+          <td>48</td>
+          <td>16</td>
+          <td>Source Connection ID.</td>
+      </tr>
+      <tr>
+          <td>PktFirstByteSeq</td>
+          <td>64</td>
+          <td>32</td>
+          <td>Sequence number of the first byte in the packet&rsquo;s data field.</td>
+      </tr>
+      <tr>
+          <td>PktNextRecvSeq</td>
+          <td>96</td>
+          <td>32</td>
+          <td>Sequence number of the next byte the sender expects to receive.</td>
+      </tr>
+      <tr>
+          <td>PktRecvWdw</td>
+          <td>128</td>
+          <td>16</td>
+          <td>Size of the receive window in bytes.</td>
+      </tr>
+      <tr>
+          <td>ADSP descriptor</td>
+          <td>144</td>
+          <td>16</td>
+          <td>ADSP flags and control code.</td>
+      </tr>
+      <tr>
+          <td>ADSP Version</td>
+          <td>160</td>
+          <td>16</td>
+          <td>Protocol version (currently $0100).</td>
+      </tr>
+      <tr>
+          <td>Destination CID</td>
+          <td>176</td>
+          <td>16</td>
+          <td>Connection ID of the remote socket.</td>
+      </tr>
+      <tr>
+          <td>PktAttnRecvSeq</td>
+          <td>192</td>
+          <td>32</td>
+          <td>Sequence number of the next attention byte the sender expects to receive.</td>
+      </tr>
+  </tbody>
+</table>
+<p>* <em>Note: LAP and DDP header size varies; bit offsets shown from an arbitrary start point in the diagram for relative mapping.</em></p>
+<p><strong>Figure 11. Open-connection packet format</strong></p>
+<p>The first field of the open-connection parameters is the 16-bit <em>ADSP Version</em> field. In any open-connection packet, <em>ADSP Version</em> should be set to the protocol version of the ADSP implementation that sent the packet. An ADSP implementation must deny any open-connection request that has an incompatible <em>ADSP Version</em>. This preliminary note documents ADSP version $0100; all other values are reserved by Apple for potential future expansion of the protocol.</p>
+<p>The 16-bit <em>Destination CID</em> field of the open-connection parameters is used to uniquely associate an open-connection acknowledgement or denial with the appropriate open connection request. The <em>Destination CID</em> field of any Open Connection Acknowledgement control packet or Open Connection Denial control packet should be set to the <em>Source CID</em> of</p>
+<hr>
+<p>the corresponding open-connection request. When an end sending an Open Connection Request control packet does not know the CID of the remote end, the <em>Destination CID</em> field in the packet must be set to 0.</p>
+<p>The 32-bit <em>AttnRecvSeq</em> field of the open-connection parameters contains the sequence number of the first attention packet that the sending end is willing to accept. This value is equal to the sending end&rsquo;s <em>AttnRecvSeq</em> variable.</p>
+<p>The following table summarizes the packet-descriptor values and CIDs that should be used with each of the open-connection control messages.</p>
+<h3 id="open-connection-packet-parameters">Open-Connection Packet Parameters<a class="anchor" href="#open-connection-packet-parameters">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Control packet</th>
+          <th>ADSP packet descriptor</th>
+          <th>Source CID</th>
+          <th>Destination CID</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Open Connection Request</td>
+          <td>$81</td>
+          <td>LocCID</td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td>Open Connection Request + Ack</td>
+          <td>$82</td>
+          <td>LocCID</td>
+          <td>RemCID</td>
+      </tr>
+      <tr>
+          <td>Open Connection Ack</td>
+          <td>$83</td>
+          <td>LocCID</td>
+          <td>RemCID</td>
+      </tr>
+      <tr>
+          <td>Open Connection Denial</td>
+          <td>$84</td>
+          <td>0</td>
+          <td>RemCID</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="error-recovery-in-the-connection-opening-dialog">Error Recovery in the Connection-Opening Dialog<a class="anchor" href="#error-recovery-in-the-connection-opening-dialog">#</a></h2>
+<p>Since delivery of packets sent by the network layer is not guaranteed, connection-opening packets can be lost or delayed. Therefore, ADSP open-connection requests should be retransmitted at client-specified intervals (for a client-specified maximum number of retries). An end receiving an open-connection request must ensure that it is not a duplicate by comparing the request&rsquo;s source CID and address with that of all open or opening connections for the receiving socket. If the request is a duplicate, the appropriate acknowledgement is still sent back. See Figures 12 and 13.</p>
+<hr>
+<h1 id="appletalk-data-stream-protocol-2">AppleTalk Data Stream Protocol<a class="anchor" href="#appletalk-data-stream-protocol-2">#</a></h1>
+<p><img src="images/p32-connection-opening-dialog.png" alt="Connection-opening dialog: packet lost" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant A as Connection End A
+    participant B as Connection End B
+
+    Note left of A: This end initiates&lt;br/&gt;connection-opening&lt;br/&gt;dialog; open timer starts
+    A-x B: [request]
+    Note left of A: Open timer expires
+    A-&gt;&gt;B: [request]
+    Note right of B: Open timer starts
+    B-x A: [request+ack]
+    Note left of A: Open timer expires
+    A-&gt;&gt;B: [request]
+    Note right of B: Open timer restarts
+    B-&gt;&gt;A: [request+ack]
+    Note left of A: This end established
+    A-x B: [ack]
+    Note right of B: Open timer expires
+    B-&gt;&gt;A: [request+ack]
+    A-&gt;&gt;B: [ack]
+    Note right of B: This end established</pre><p>Figure 12. Connection-opening dialog: packet lost</p>
+<hr>
+<p><img src="images/p33-simultaneous-connection-packet-lost.png" alt="Simultaneous connection-opening dialog: packet lost" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant A as Connection End A
+    participant B as Connection End B
+    Note left of A: This end initiates&lt;br/&gt;connection-opening&lt;br/&gt;dialog; open timer starts
+    A-x B: [request]
+    Note right of B: This end initiates&lt;br/&gt;connection-opening&lt;br/&gt;dialog; open timer start
+    B-&gt;&gt;A: [request]
+    A-&gt;&gt;B: [ack]
+    Note left of A: Open timer expires
+    A-&gt;&gt;B: [request+ack]
+    B-&gt;&gt;A: [ack]
+    Note right of B: This end established
+    Note left of A: This end established</pre><p>Figure 13. Simultaneous connection-opening dialog: packet lost</p>
+<hr>
+<p>If either end dies or becomes unreachable during the connection-opening dialog, one end can become established while the other end does not. This results in a half-open connection. When this situation occurs, the open end is closed down through normal ADSP mechanisms, as shown in Figure 14.</p>
+<p><img src="images/p34-half-open-connection.png" alt="Connection-opening dialog: half-open connection" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant A as Connection End A
+    participant B as Connection End B
+    Note left of A: This end initiates connection-opening dialog; open timer starts
+    A-&gt;&gt;B: [request]
+    Note right of B: [request+ack]&lt;br/&gt;Open timer starts
+    B-&gt;&gt;A: [request+ack]
+    Note left of A: This end established; probe timer starts
+    A-x B: [ack]
+    Note right of B: Open timer expires
+    B-x A: [request+ack]
+    Note left of A: Probe timer expires
+    A-x B: [probe]
+    Note right of B: Open timer expires
+    B-x A: [request+ack]
+    Note left of A: Probe timer expires
+    A-x B: [probe]
+    Note right of B: Open timer expires; retries exhausted; connection closed
+    Note left of A: Probe timer expires
+    A-x B: [probe]
+    Note left of A: Probe timer expires; connection closed
+    A-x B: [close advice]</pre><p>Figure 14. Connection-opening dialog: half-open connection</p>
+<hr>
+<p>Figure 15 shows that it is possible for one end to become established, while the other is still opening. In this case, the connection is half-open: End A can begin to send data packets, but End B will discard the packets because the connection is not yet open (end B has not yet received acknowledgement that end A has become established).</p>
+<p>End B will retransmit its open-connection request, and upon receiving the request, end A will compare the value of <code>PktFirstByteSeq</code> to its own <code>RecvSeq</code>. If the values are equal, end A has not yet received any data from end B; end A assumes the connection is not yet open, sends back an open-connection acknowledgement with <code>PktFirstByteSeq</code> equal to its <code>FirstRtmtSeq</code>, and then retransmits the data. See Figure 15.</p>
+<p>If <code>PktFirstByteSeq</code> does not equal <code>RecvSeq</code>, end A can assume that the connection is open because end A has received data from end B; therefore, the open connection request must be a late-arriving duplicate and is discarded. See Figure 16.</p>
+<p><img src="images/p35-connection-opening-dialog.png" alt="Connection-opening dialog: data transmitted on half-open connection" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant A as Connection End A
+    participant B as Connection End B
+
+    Note left of A: This end initiates&lt;br/&gt;connection-opening&lt;br/&gt;dialog; open timer starts
+    A-&gt;&gt;B: [request]
+    B-&gt;&gt;A: [request+ack]
+    Note right of B: Open timer starts
+    Note left of A: This end established
+    A-&gt;&gt;B: [ack]
+    Note left of A: This end sends data
+    A-xB: [0..5]
+    Note right of B: Packet discarded
+    A-xB: [6..10]
+    Note right of B: Packet discarded
+    B-&gt;&gt;A: [request+ack]
+    Note right of B: Open timer restarts
+    A-&gt;&gt;B: [ack]
+    Note left of A: Data retransmitted
+    A-&gt;&gt;B: [0..10]
+    Note right of B: This end established</pre><p>Figure 15. Connection-opening dialog: data transmitted on half-open connection</p>
+<hr>
+<hr>
+<p><img src="images/p37-apple-logo.png" alt="Apple logo" /></p>
+<p><img src="images/p37-note-graphic.png" alt="Note graphic" /></p>
+<h1 id="adsp-development-kit-version-10">ADSP Development Kit Version 1.0<a class="anchor" href="#adsp-development-kit-version-10">#</a></h1>
+<p>In order to ship the AppleTalk Data Stream Protocol with your products, you must first obtain a license from:</p>
+<p>Apple Computer Software Licensing
+20525 Mariani Avenue, MS: 38-I
+Cupertino, CA 95014</p>
+<hr>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cappletalk-datastream-prelim-notes%5C00-full-document.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#preliminary-note-1">Preliminary Note</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#connection-states">Connection States</a></li>
+    <li><a href="#half-open-connections-and-the-connection-timer">Half-Open Connections and the Connection Timer</a></li>
+    <li><a href="#connection-identifiers">Connection Identifiers</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#sequence-numbers">Sequence Numbers</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#adsp-messages">ADSP Messages</a></li>
+    <li><a href="#forward-resets">Forward Resets</a></li>
+    <li><a href="#summary-of-sequencing-variables">Summary of Sequencing Variables</a>
+      <ul>
+        <li><a href="#send-queue">Send Queue</a></li>
+        <li><a href="#receive-queue">Receive Queue</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#data-flow-examples">Data-Flow Examples</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#connection-opening-dialog">Connection-Opening Dialog</a></li>
+    <li><a href="#apple-talk-data-stream-protocol">Apple Talk Data Stream Protocol</a></li>
+    <li><a href="#open-connection-control-packet-format">Open-Connection Control Packet Format</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#open-connection-packet-parameters">Open-Connection Packet Parameters</a></li>
+      </ul>
+    </li>
+    <li><a href="#error-recovery-in-the-connection-opening-dialog">Error Recovery in the Connection-Opening Dialog</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

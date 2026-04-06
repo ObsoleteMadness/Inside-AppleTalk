@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LocalTalk Link Access Protocol#Field Value Source Inside AppleTalk Second Edition (1990) Part Part I - Physical and Data Links Chapter 1 Pages 62–77 Converted 2026-03-31 Engine gemini-flash Chapter 1 LocalTalk Link Access Protocol#CONTENTS#Link access control / 1-3
+Node addressing / 1-3 Node IDs / 1-4 Dynamic node ID assignment / 1-4
+Data transmission and reception / 1-6 LLAP packet / 1-6 LLAP frame / 1-9
+Data packet transmission / 1-10 Carrier sensing and synchronization / 1-10 Transmission dialogs / 1-11 Directed data packet transmission / 1-14 Broadcast data packet transmission / 1-15
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/inside-appletalk-second-edition/01-localtalk-link-access-protocol/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="LocalTalk Link Access Protocol">
+  <meta property="og:description" content="LocalTalk Link Access Protocol#Field Value Source Inside AppleTalk Second Edition (1990) Part Part I - Physical and Data Links Chapter 1 Pages 62–77 Converted 2026-03-31 Engine gemini-flash Chapter 1 LocalTalk Link Access Protocol#CONTENTS#Link access control / 1-3
+Node addressing / 1-3 Node IDs / 1-4 Dynamic node ID assignment / 1-4
+Data transmission and reception / 1-6 LLAP packet / 1-6 LLAP frame / 1-9
+Data packet transmission / 1-10 Carrier sensing and synchronization / 1-10 Transmission dialogs / 1-11 Directed data packet transmission / 1-14 Broadcast data packet transmission / 1-15">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="LocalTalk Link Access Protocol">
+  <meta itemprop="description" content="LocalTalk Link Access Protocol#Field Value Source Inside AppleTalk Second Edition (1990) Part Part I - Physical and Data Links Chapter 1 Pages 62–77 Converted 2026-03-31 Engine gemini-flash Chapter 1 LocalTalk Link Access Protocol#CONTENTS#Link access control / 1-3
+Node addressing / 1-3 Node IDs / 1-4 Dynamic node ID assignment / 1-4
+Data transmission and reception / 1-6 LLAP packet / 1-6 LLAP frame / 1-9
+Data packet transmission / 1-10 Carrier sensing and synchronization / 1-10 Transmission dialogs / 1-11 Directed data packet transmission / 1-14 Broadcast data packet transmission / 1-15">
+  <meta itemprop="wordCount" content="4584">
+
+<title>LocalTalk Link Access Protocol | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/inside-appletalk-second-edition/01-localtalk-link-access-protocol/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>LocalTalk Link Access Protocol</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#contents">CONTENTS</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#figure-1-1-under-dynamic-node-id-assignment-a-new-node-tests-its-randomly-assigned-id">Figure 1-1 Under dynamic node ID assignment, a new node tests its randomly assigned ID</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#llap-packet">LLAP packet</a></li>
+    <li><a href="#figure-1-2-llap-frame-and-packet-format">Figure 1-2 LLAP frame and packet format</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#carrier-sensing-and-synchronization">Carrier sensing and synchronization</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#figure-1-3-llap-transmission-dialogs">Figure 1-3 LLAP transmission dialogs</a>
+      <ul>
+        <li><a href="#a-directed-transmission-dialog">(a) Directed transmission dialog</a></li>
+        <li><a href="#b-collision">(b) Collision</a></li>
+        <li><a href="#c-broadcast-transmission-dialog">(c) Broadcast transmission dialog</a></li>
+        <li><a href="#d-node-address-assignment-dialog">(d) Node address assignment dialog</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#figure-1-4-rts-cts-handshake-during-a-directed-data-transmission">Figure 1-4 RTS-CTS handshake during a directed data transmission</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="localtalk-link-access-protocol">LocalTalk Link Access Protocol<a class="anchor" href="#localtalk-link-access-protocol">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td><a href="https://vintageapple.org/macbooks/pdf/Inside_AppleTalk_Second_Edition_1990.pdf">Inside AppleTalk Second Edition (1990)</a></td>
+      </tr>
+      <tr>
+          <td><strong>Part</strong></td>
+          <td>Part I - Physical and Data Links</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>62–77</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-03-31</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="chapter-1-localtalk-link-access-protocol">Chapter 1 LocalTalk Link Access Protocol<a class="anchor" href="#chapter-1-localtalk-link-access-protocol">#</a></h1>
+<h3 id="contents">CONTENTS<a class="anchor" href="#contents">#</a></h3>
+<p><strong>Link access control / 1-3</strong></p>
+<p><strong>Node addressing / 1-3</strong>
+Node IDs / 1-4
+Dynamic node ID assignment / 1-4</p>
+<p><strong>Data transmission and reception / 1-6</strong>
+LLAP packet / 1-6
+LLAP frame / 1-9</p>
+<p><strong>Data packet transmission / 1-10</strong>
+Carrier sensing and synchronization / 1-10
+Transmission dialogs / 1-11
+Directed data packet transmission / 1-14
+Broadcast data packet transmission / 1-15</p>
+<p><strong>Packet reception / 1-15</strong></p>
+<p><img src="images/p62-section-marker.png" alt="Section marker" /></p>
+<hr>
+<h1 id="the-localtalk-link-access-protocol-llap">THE LOCALTALK LINK ACCESS PROTOCOL (LLAP)<a class="anchor" href="#the-localtalk-link-access-protocol-llap">#</a></h1>
+<p>corresponds to the data-link layer of the ISO-OSI reference model and allows network devices to share the communication medium. This protocol provides the basic service of packet transmission between the nodes of a single LocalTalk or compatible network.</p>
+<p>The physical hardware offers the connected nodes a shared data transmission medium, referred to as the <strong>link</strong>. LLAP is responsible for regulating the access to this shared link by the nodes of the network.</p>
+<p>LLAP accepts data from its clients in the node and then encapsulates it in an LLAP data packet. The encapsulation adds a destination node address to the packet, allowing LLAP to deliver the data packet to its destination node. The packet also contains the sending node&rsquo;s address, which is delivered by LLAP to the data&rsquo;s recipient.</p>
+<p>Furthermore, LLAP ensures that any packets damaged in transit are discarded and not delivered to their destination node. In that situation, however, LLAP itself makes no effort to ensure delivery of the packet. It provides a best-effort delivery of the packet.</p>
+<p>The main responsibilities of LLAP are to</p>
+<ul>
+<li>provide link access control</li>
+<li>provide a way to address nodes</li>
+<li>perform data transmission and reception</li>
+</ul>
+<hr>
+<h1 id="link-access-control">Link access control<a class="anchor" href="#link-access-control">#</a></h1>
+<p>The nodes on a given link compete for access to the link. Without a way of controlling their access, data could not be transferred reliably over the link. The different nodes would in a sense &ldquo;stumble&rdquo; over each other&rsquo;s transmissions. LLAP provides appropriate link-access management to ensure fair access to all nodes.</p>
+<p>LLAP manages access to the shared link by using an access discipline known as <strong>Carrier Sense Multiple Access with Collision Avoidance</strong> (CSMA/CA). There are three parts to the CSMA/CA technique.</p>
+<p><em>Carrier sense</em> means that a node wishing to send a data frame first checks the transmission medium before sending any data. The node is said to &ldquo;sense&rdquo; the activity on the link. If the link is in use, then the node defers to the ongoing transmission.</p>
+<p><em>Multiple access</em> refers to the fact that more than one node can obtain access to the link.</p>
+<p><em>Collision avoidance</em> means that the protocol attempts to minimize the occurrence of collisions on the link. A collision occurs when two or more nodes transmit data at the same time. In the LLAP CSMA/CA technique, all transmitters wait until the line has been idle for a specified minimum amount of time plus an additional random period before attempting to transmit.</p>
+<p>The use of random wait periods has the effect of spreading the data transmissions over time. This dispersion is greater when traffic is higher and when more collisions are expected to occur.</p>
+<p>It is important to note that LLAP does not require suitable hardware to detect the occurrence of collisions. Instead it has to infer that a collision might have occurred. LLAP uses a &ldquo;handshake&rdquo; mechanism to allow it to make this inference. Furthermore, the handshake mechanism reduces the loss of channel bandwidth when a collision occurs because the collision normally occurs in the handshake phase. Since the handshake messages are short in length, only a small amount of the link&rsquo;s time is wasted by a collision.</p>
+<h1 id="node-addressing">Node addressing<a class="anchor" href="#node-addressing">#</a></h1>
+<p>Node addressing provides a means of uniquely identifying each node connected to the link. LLAP uses a technique called <strong>dynamic node ID assignment</strong>, a method that eliminates a configuration step and also allows easy movement of nodes between networks.</p>
+<hr>
+<h1 id="node-ids">Node IDs<a class="anchor" href="#node-ids">#</a></h1>
+<p>LLAP&rsquo;s node-addressing mechanism consists of assigning an identification number to each node and including that number in all packets destined for that node.
+LLAP uses an 8-bit <strong>node identifier number (node ID)</strong> to identify each node on a link. A node&rsquo;s ID is its data-link address.
+Each LLAP packet includes the node IDs of its sender and its intended destination. These addresses are used by the network hardware to ensure that the packet is delivered only to the correct destination node.</p>
+<h1 id="dynamic-node-id-assignment">Dynamic node ID assignment<a class="anchor" href="#dynamic-node-id-assignment">#</a></h1>
+<p>Unlike other network data links, LLAP uses a dynamic node-ID-assignment scheme. With dynamic node ID assignment, a node does not have a fixed, unique address. Instead, a node assigns itself a node ID upon activation.
+A key goal of dynamic node ID assignment is to prevent a conflict that otherwise might occur when a node is moved between networks and when the old node ID of the device is already in use on the new network. Other solutions to this problem have relied on building universally unique node addresses into each device when it is manufactured.
+LLAP&rsquo;s dynamic address-assignment scheme eliminates what has been a typical part of network configuration. It does so without the need to build a universally unique number into each node or to administer the assignment of such numbers to different vendors.
+When a node is activated on the network, the node makes a &ldquo;guess&rdquo; at its own node ID, either by extracting this number from some form of long-term memory (for example, nonvolatile RAM or disk) or by generating a random number. The node then verifies that this guessed number is not already in use on that network.
+The node verifies the uniqueness of its node ID number by sending out an LLAP <strong>Enquiry control packet</strong>, as shown in <em>Figure 1-1</em>, to the guessed node address and by waiting for acknowledgment. If the guessed node ID is in use, then the node using it will receive the LLAP Enquiry control packet and will respond with an LLAP <strong>Acknowledge control packet</strong>. The reception of the Acknowledge control packet notifies the new node that its guessed node ID is already in use. The node must then repeat the process with a different guess. Each Enquiry control packet is transmitted repeatedly to account for cases in which a packet is lost or a node already using the guessed node ID is busy and therefore might miss an Enquiry packet.</p>
+<hr>
+<h3 id="figure-1-1-under-dynamic-node-id-assignment-a-new-node-tests-its-randomly-assigned-id">Figure 1-1 Under dynamic node ID assignment, a new node tests its randomly assigned ID<a class="anchor" href="#figure-1-1-under-dynamic-node-id-assignment-a-new-node-tests-its-randomly-assigned-id">#</a></h3>
+<p><img src="images/p66-node-id-assignment.png" alt="Under dynamic node ID assignment, a new node tests its randomly assigned ID" /></p>
+<pre class="mermaid">sequenceDiagram
+    participant N12Q as &#34;Node 12?&#34;
+    participant N2 as Node 2
+    participant N12 as Node 12
+    participant N36 as Node 36
+    participant N85 as Node 85
+
+    Note over N12Q, N85: Enquiry control packet
+    N12Q-&gt;&gt;N2: 
+    N12Q-&gt;&gt;N12: 
+    N12Q-&gt;&gt;N36: 
+    N12Q-&gt;&gt;N85: 
+    
+    Note left of N12Q: Acknowledge control packet
+    N12--&gt;&gt;N12Q: 
+
+    participant N74Q as &#34;Node 74?&#34;
+    Note over N74Q, N85: Enquiry control packet
+    N74Q-&gt;&gt;N2: 
+    N74Q-&gt;&gt;N12: 
+    N74Q-&gt;&gt;N36: 
+    N74Q-&gt;&gt;N85: 
+    Note left of N74Q: No Acknowledge control packet</pre><script src="/appletalk-docs/mermaid.min.js"></script><script>mermaid.initialize({"flowchart":{"useMaxWidth":true},"theme":"default"})</script><p>LLAP node IDs are divided into two classes: user node IDs and server node IDs. <strong>User node IDs</strong> are in the range 1–127 ($01–$7F); <strong>server node IDs</strong> are in the range 128–254 ($80–$FE). A destination node ID of 255 ($FF) is called the <strong>broadcast hardware address</strong> (broadcast ID) and has a special meaning. Packets sent with the destination node ID equal to 255 are accepted by all nodes, permitting the <strong>broadcasting</strong> of packets to all nodes on the network. A destination node ID equal to 0 ($00) is not allowed and is treated as unknown.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Node ID range</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>0 ($00)</td>
+          <td>not allowed (unknown)</td>
+      </tr>
+      <tr>
+          <td>1–127 ($01–$7F)</td>
+          <td>user node IDs</td>
+      </tr>
+      <tr>
+          <td>128–254 ($80–$FE)</td>
+          <td>server node IDs</td>
+      </tr>
+      <tr>
+          <td>255 ($FF)</td>
+          <td>broadcast ID</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p>The division of node IDs into two groups minimizes the negative impact of a node acquiring another node&rsquo;s ID when the latter is busy and fails to respond to the entire series of Enquiry packets. This situation can occur because some nodes may be unable to receive packets for extended periods of time (for example, if they are engaged in a device-intensive operation such as gaining access to a disk or transferring a bitmap document to a directly connected laser printer). Such a node would not respond to another node&rsquo;s Enquiry packets, which could result in two nodes acquiring the same node ID.</p>
+<p>Excluding user (nonserver) node IDs from the server node ID range eliminates the possibility that user nodes (which are switched on and off with greater frequency) will conflict with server nodes. It is imperative that no node ever acquire the number of a node functioning as a server; this would disrupt service not only between the two conflicting nodes but also for users trying to communicate with either of those nodes.</p>
+<p>Within the user node ID range, verification can be performed quickly (that is, with fewer retransmissions of the Enquiry control packet), thus decreasing the LLAP initialization time for user nodes. A more thorough node ID verification is performed by servers (in other words, additional time is taken to ensure that they acquire unique node IDs on the link). This scheme increases the initialization time for server nodes but is not detrimental to the server&rsquo;s operation since such nodes are rarely switched on and off.</p>
+<h1 id="data-transmission-and-reception">Data transmission and reception<a class="anchor" href="#data-transmission-and-reception">#</a></h1>
+<p>LLAP uses two kinds of packets: control packets, which are used for internal protocol control purposes, and data packets, which include data provided by LLAP&rsquo;s client.</p>
+<h2 id="llap-packet">LLAP packet<a class="anchor" href="#llap-packet">#</a></h2>
+<p>An LLAP packet consists of a 3-byte LLAP header followed by a variable-length data field (0-600 bytes). (See <em>Figure 1-2</em>.) The LLAP header contains the packet&rsquo;s destination node ID, the source node ID, and a 1-byte LLAP type field. The <strong>LLAP type field</strong> specifies the type of packet. Values in the range 128–255 ($80–$FF) are reserved to identify <strong>LLAP control packets</strong>. LLAP control packets do not contain a data field.</p>
+<hr>
+<h2 id="figure-1-2-llap-frame-and-packet-format">Figure 1-2 LLAP frame and packet format<a class="anchor" href="#figure-1-2-llap-frame-and-packet-format">#</a></h2>
+<p><img src="images/p68-llap-frame-format.png" alt="Diagram showing the detailed structure of an LLAP frame, including the preamble, packet (header and data field), and trailer." /></p>
+<pre class="mermaid">packet-beta
+0-7: &#34;Flag&#34;
+8-15: &#34;Flag&#34;
+16-23: &#34;Destination node ID&#34;
+24-31: &#34;Source node ID&#34;
+32-39: &#34;LLAP type&#34;
+40-47: &#34;Data length&#34;
+48-55: &#34;Data field payload&#34;
+56-71: &#34;Frame check sequence&#34;
+72-79: &#34;Flag&#34;
+80-87: &#34;Abort sequence&#34;</pre><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Field</th>
+          <th style="text-align: left">Bit offset</th>
+          <th style="text-align: left">Width (bits)</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Frame preamble</strong></td>
+          <td style="text-align: left">0</td>
+          <td style="text-align: left">16+</td>
+          <td style="text-align: left">Two or more flag bytes (0x7E) used for receiver synchronization.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>LLAP packet</strong></td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left">Variable</td>
+          <td style="text-align: left">The core data unit, consisting of the header and data field.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">    <strong>LLAP header</strong></td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left">24</td>
+          <td style="text-align: left">Contains addressing and protocol information.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">    Destination node ID</td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">The address of the destination node.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">    Source node ID</td>
+          <td style="text-align: left">24</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">The address of the source node.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">    LLAP type</td>
+          <td style="text-align: left">32</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">The protocol type of the packet.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">    <strong>Data field</strong></td>
+          <td style="text-align: left">40</td>
+          <td style="text-align: left">8 to 4808</td>
+          <td style="text-align: left">Contains the length indicator and the actual payload.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">    Data length</td>
+          <td style="text-align: left">40</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">Indicates the size of the following data in bytes.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">    Data</td>
+          <td style="text-align: left">48</td>
+          <td style="text-align: left">0 to 4800</td>
+          <td style="text-align: left">The payload data, ranging from 0 to 600 bytes.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Frame trailer</strong></td>
+          <td style="text-align: left">Variable</td>
+          <td style="text-align: left">Variable</td>
+          <td style="text-align: left">Marks the end of the frame and provides error detection.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">    Frame check sequence</td>
+          <td style="text-align: left">Variable</td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left">A 16-bit CRC for error checking.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">    Flag</td>
+          <td style="text-align: left">Variable</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">A closing flag byte (0x7E).</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">    Abort sequence</td>
+          <td style="text-align: left">Variable</td>
+          <td style="text-align: left">Variable</td>
+          <td style="text-align: left">A sequence used to signal that a frame transmission has been aborted.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p>Four types of control packets are currently in use. All other LLAP type field values in the range 128–255 ($80–$FF) are reserved by Apple for future use.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Name</th>
+          <th style="text-align: left">LLAP type field value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">lapENQ</td>
+          <td style="text-align: left">$81</td>
+          <td style="text-align: left">Enquiry packet used for dynamic node ID assignment</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">lapACK</td>
+          <td style="text-align: left">$82</td>
+          <td style="text-align: left">Acknowledgment packet responding to a lapENQ</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">lapRTS</td>
+          <td style="text-align: left">$84</td>
+          <td style="text-align: left">request-to-send (RTS) packet notifying the destination node that a data packet awaits transmission</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">lapCTS</td>
+          <td style="text-align: left">$85</td>
+          <td style="text-align: left">clear-to-send (CTS) packet response to lapRTS, indicating readiness to accept a data packet</td>
+      </tr>
+  </tbody>
+</table>
+<p>◆ <strong>Note:</strong> LLAP control packets received with values in the LLAP type field other than those previously listed are currently invalid and must be discarded.</p>
+<p>LLAP type fields with values in the range 1–127 ($01–$7F) are used for LLAP <strong>data packets</strong>; these packets carry client data in the data field. In such packets, the type field specifies the LLAP type of the client to whom the data must be delivered. This specification allows the concurrent use of LLAP by several network layer protocols and is crucial to maintaining an <strong>open systems architecture</strong>. The LLAP implementation in the receiving node uses the LLAP type field to determine the client for whom the data is intended. The client, in turn, uses this field to decide how to interpret the LLAP data for use by a higher-level protocol. As an example, Datagram Delivery Protocol (DDP) packets correspond to the values 1 and 2 in the LLAP type field.</p>
+<p>LLAP transmits and receives data packets on behalf of its clients. The format and interpretation of the data field are defined by higher-level protocols.</p>
+<p>The low-order 10 bits of the first 2 bytes of the data field must contain the length in bytes (most-significant bits first) of the LLAP data field itself. The data length includes the length field itself. The high-order 6 bits of the length field are reserved for use by higher-level protocols.</p>
+<p>The LLAP header is 3 bytes long, and the data field can contain from 2 to 600 bytes. Therefore, the smallest valid LLAP data packet is 5 bytes long; the largest is 603 bytes.</p>
+<hr>
+<h1 id="llap-frame">LLAP frame<a class="anchor" href="#llap-frame">#</a></h1>
+<p>An LLAP frame encapsulates an LLAP packet with a frame preamble and a frame trailer, as shown in <em>Figure 1-2</em>.</p>
+<p>On the link itself, LLAP uses a bit-oriented link protocol for transmitting and receiving packets. The <strong>frame preamble</strong> precedes the packet and is used to identify the start of the frame. The <strong>frame trailer</strong> has two objectives. First, it includes a 2-byte quantity called the <strong>frame check sequence (FCS)</strong> that is used to detect and discard packets received with errors. Second, the last portion of the trailer, consisting of a flag byte and an <strong>abort sequence</strong> (12-18 1&rsquo;s), serves to demarcate the end of the frame.</p>
+<p>The use of a bit-oriented protocol allows the presence of all possible bit patterns between the frame&rsquo;s leading and trailing flags. The frame delimiter for LLAP, known as a <strong>flag byte</strong>, is the distinctive bit sequence 01111110 ($7E). Typically, flags are generated by hardware transmitters at the beginning and end of frames and are used by hardware receivers to detect frame boundaries.</p>
+<p>In order for a data-link protocol to transmit all possible bit patterns within a frame, the protocol must ensure <strong>data transparency</strong>. LLAP accomplishes data transparency through a technique known as <strong>bit stuffing</strong>. When transmitting a frame, LLAP inserts a 0 after each string of 5 consecutive 1&rsquo;s detected in the client data; this process guarantees that the data transmitted on the link contains no sequences of more than 5 consecutive 1&rsquo;s. A receiving LLAP performs the inverse operation, <em>stripping</em> a 0 that follows 5 consecutive 1&rsquo;s.</p>
+<p>The 16-bit FCS is computed as a function of the contents of the packet itself (that is, the flags and the abort bits of the frame are not included): the destination node ID, source node ID, LLAP type, and the data field, using the standard cyclic-redundancy check (CRC) algorithm of the Consultative Committee on International Telephone and Telegraph (CCITT). This algorithm, known as CRC-CCITT, is described in detail in Appendix B.</p>
+<p>Prior to transmitting a packet, LLAP sends out a synchronization pulse, a transition period on the link that is followed by an idle period (see &ldquo;Carrier Sensing and Synchronization&rdquo; later in this chapter). A frame preamble, consisting of 2 or more flag bytes, follows the synchronization pulse. The frame terminates with a frame trailer, which consists of the FCS, 1 flag byte, and the abort sequence. The abort sequence indicates the end of the frame.</p>
+<hr>
+<h1 id="data-packet-transmission">Data packet transmission<a class="anchor" href="#data-packet-transmission">#</a></h1>
+<p>The transmission of a data packet by LLAP involves a special dialog consisting of one or more LLAP control frames followed by the data frame. This dialog is based on a CSMA/CA access protocol, some aspects of which were outlined in &ldquo;Link Access Control&rdquo; earlier in this chapter.</p>
+<h2 id="carrier-sensing-and-synchronization">Carrier sensing and synchronization<a class="anchor" href="#carrier-sensing-and-synchronization">#</a></h2>
+<p>LLAP packet transmission dialogs require each node to sense the use of the transmission medium. Two techniques are used by LLAP for this purpose.</p>
+<p>First, LocalTalk hardware can detect a flag byte, the distinctive bit sequence 01111110 ($7E). This hardware capability is provided to allow the receiving node to achieve byte synchronization with the sender. LLAP can thus provide a certain measure of link-use sensing capability. The flag byte in the trailer is also detected by LocalTalk hardware and provides an indication of the end of the packet. The abort sequence at the end of the frame also forces every node&rsquo;s hardware to lose byte synchronization, thus confirming the end-of-line use by the current sender.</p>
+<p>A drawback of the flag-byte synchronization approach is that synchronization can take 2 or more flag bytes to be achieved; during that time the node could determine the line to be idle when it is, in fact, being used by another node.</p>
+<p>LLAP supplements this byte synchronization for carrier sensing with a variant of the hardware&rsquo;s bit-clock synchronization capability. For this purpose, prior to sending a request-to-send (RTS) frame, LLAP transmits a synchronization pulse. A <strong>synchronization pulse</strong> is a transition on the link, followed by an idle period greater than 2 bit-times. The synchronization pulse is obtained by momentarily enabling the hardware line driver for at least 1 bit-time before disabling it, causing a transition on the line that will be detected as a clock by all receivers on the network. However, since the transition is followed by an idle period of sufficient length, all receivers conclude that they have lost the clock. They are said to have detected a missing clock. The hardware can detect this missing clock much more rapidly than it can achieve byte synchronization. With the synchronization pulse at the leading edge of an RTS frame, the detection of a missing clock provides a very quick way to detect use of the line by a sender.</p>
+<p>The missing clock allows transmitters to synchronize their access to the line (transmitters become immediately aware if a transmission is about to take place). Synchronization pulses can also be sent at the beginning of other LLAP frames.</p>
+<p>Further details of carrier-sensing aspects of LocalTalk hardware are discussed in Appendix A.</p>
+<hr>
+<h1 id="transmission-dialogs">Transmission dialogs<a class="anchor" href="#transmission-dialogs">#</a></h1>
+<p>For the purpose of transmitting information, LLAP distinguishes between two kinds of data packets and, consequently, two kinds of transmission dialogs. A <strong>directed packet</strong> is sent to a single node and hence is transmitted via a <strong>directed transmission dialog</strong>. Similarly, a <strong>broadcast packet</strong> (destination node ID equals 255 ($FF)) goes to all nodes on the link via a <strong>broadcast transmission dialog</strong>.</p>
+<p>Dialogs must be separated by a minimum <strong>interdialog gap (IDG)</strong> of 400 microseconds. The different frames of a single dialog must follow one another with a maximum <strong>interframe gap (IFG)</strong> of 200 microseconds.</p>
+<ul>
+<li><strong>Note:</strong> A frame preamble contains 2 or more flag bytes. If more than 2 flag bytes are transmitted, the source must ensure that the destination will receive the flag bytes and the destination address byte within the interframe gap (IFG). In other words, the IFG is defined as the time from the end of the abort sequence of the previous frame&rsquo;s trailer to the end of the current frame&rsquo;s destination address byte.</li>
+</ul>
+<p>The transmission dialog is described separately for directed and broadcast packets. <em>Figure 1-3</em> illustrates the frames and the timing used in the dialogs. LLAP transmission dialogs are best understood in the case of directed data packets.</p>
+<p>The transmitting node uses the ability of the physical layer to sense if the line is in use. If the line is busy, the node waits until the line becomes idle. While the node is waiting, it is said to <em>defer</em>. Upon sensing an idle line, the transmitter waits for a time equal to the minimum IDG (400 microseconds) plus a randomly generated period. During this wait, the transmitter continues to monitor the line. If the line becomes busy at any time during this wait period, the node must again defer. If the line remains idle throughout this wait period, then the node sends an RTS packet to the intended receiver of the data packet. The receiver must return a clear-to-send (CTS) packet to the transmitting node within the maximum IFG (200 microseconds). Upon receiving this packet, the transmitter must start sending the data packet within the maximum IFG.</p>
+<hr>
+<h2 id="figure-1-3-llap-transmission-dialogs">Figure 1-3 LLAP transmission dialogs<a class="anchor" href="#figure-1-3-llap-transmission-dialogs">#</a></h2>
+<p>End of previous frame. Line becomes idle.</p>
+<p><img src="images/p73-llap-transmission-dialogs.png" alt="LLAP transmission dialogs" /></p>
+<h3 id="a-directed-transmission-dialog">(a) Directed transmission dialog<a class="anchor" href="#a-directed-transmission-dialog">#</a></h3>
+<pre class="mermaid">sequenceDiagram
+    participant Node A
+    participant Node B
+    Note over Node A, Node B: Line becomes idle (TD + TR)
+    Node A-&gt;&gt;Node B: RTS packet
+    Note over Node A, Node B: gap t
+    Node B-&gt;&gt;Node A: CTS packet
+    Note over Node A, Node B: gap t
+    Node A-&gt;&gt;Node B: Data packet</pre><h3 id="b-collision">(b) Collision<a class="anchor" href="#b-collision">#</a></h3>
+<p>Line is sensed idle. Retry initiated.</p>
+<pre class="mermaid">sequenceDiagram
+    participant Node A
+    participant Node B
+    Note over Node A, Node B: Line becomes idle (TD + TR)
+    Note right of Node A: RTS packet
+    Note left of Node B: RTS packet
+    Note over Node A, Node B: Collision
+    Note over Node A, Node B: 200 microseconds</pre><h3 id="c-broadcast-transmission-dialog">(c) Broadcast transmission dialog<a class="anchor" href="#c-broadcast-transmission-dialog">#</a></h3>
+<pre class="mermaid">sequenceDiagram
+    participant Node
+    participant Network
+    Note over Node, Network: Line becomes idle (TD + TR)
+    Node-&gt;&gt;Network: RTS packet
+    Note over Node, Network: 200 microseconds
+    Node-&gt;&gt;Network: Data packet</pre><h3 id="d-node-address-assignment-dialog">(d) Node address assignment dialog<a class="anchor" href="#d-node-address-assignment-dialog">#</a></h3>
+<p>Generated if another node with same node ID is present</p>
+<pre class="mermaid">sequenceDiagram
+    participant Node A
+    participant Other Node
+    Note over Node A, Other Node: Line becomes idle (TD + TR)
+    Node A-&gt;&gt;Other Node: ENQ packet
+    Note over Node A, Other Node: gap t
+    Other Node-&gt;&gt;Node A: ACK packet</pre><ul>
+<li><strong>t</strong> = interframe gap (IFG) (less than 200 microseconds)</li>
+<li><strong>T<sub>D</sub></strong> = interdialog gap (IDG) (greater than 400 microseconds)</li>
+<li><strong>T<sub>R</sub></strong> = randomly generated time period</li>
+</ul>
+<hr>
+<p>The purpose of this algorithm is to</p>
+<ul>
+<li>restrict the situations in which collisions are more likely to occur (the RTS-CTS handshake); in these situations, a minimum amount of line time is wasted by the collision</li>
+<li>spread out the use of line time among transmitters that are waiting for the line to become idle</li>
+</ul>
+<p>The RTS-CTS handshake is said to be successful if a valid CTS packet is received by the transmitter after it has sent out an RTS packet. A successful RTS-CTS handshake signifies that a collision did not occur and that all intending transmitters have heard of the coming data packet transmission and are deferring.</p>
+<p>If a collision does occur during the RTS-CTS handshake, then the corresponding LLAP control packet will be corrupted by the collision. This corruption will be detected by using the FCS, and the corresponding packet will be discarded by its receiving node. The net result is that a CTS packet will not be received by the sender of the RTS packet within the maximum permissible time of 200 microseconds, and the sending node will then <em>back off</em> and retry. In this situation, the sending node is said to <em>assume</em> a collision has occurred.</p>
+<p>Two factors are used for adjusting the range of the randomly generated period:</p>
+<ul>
+<li>the number of times the node has to defer</li>
+<li>the number of times it assumes a collision has occurred</li>
+</ul>
+<p>This history is maintained in two <strong>8-bit history bytes</strong>, one each for deferrals and collisions. At each attempt to send a packet, these bytes are shifted left 1 bit. The lowest bit of each byte is then set if the node had to defer or had to assume a collision has occurred, respectively. Otherwise, this bit is cleared. In effect, the history bytes retain the deferral and collision history for the last eight attempts.</p>
+<p>The random wait time is generated as a <strong>pseudorandom number</strong>. These numbers (produced through an arithmetic process) are close to a true random sequence. The range of numbers is adjusted according to the current link traffic and collision history. If collisions have been assumed for recently sent packets, it is reasonable to expect heavy traffic and higher contention for the link. In this case, the random wait period should be generated over a larger range, thus spreading out (in time) the different contenders for use of the line. Conversely, if the node has not had to defer on recent transmissions, a lighter offered traffic is inferred, and the random wait period should be generated over a smaller range, therefore reducing dispersion of transmission.</p>
+<p>The exact use of the history bytes for determining random wait periods is described in &ldquo;Algorithms&rdquo; in Appendix B.</p>
+<hr>
+<h1 id="directed-data-packet-transmission">Directed data packet transmission<a class="anchor" href="#directed-data-packet-transmission">#</a></h1>
+<p>Directed packets are sent according to the following procedure, as shown in Figure 1-4:</p>
+<ol>
+<li>The transmitter senses the link until the link has been idle for the minimum IDG (400 microseconds).</li>
+<li>The transmitter then waits an additional random time period.</li>
+<li>If the link is still free, the transmitter sends an RTS frame to the intended destination node.</li>
+<li>The destination node responds with a CTS frame.</li>
+<li>The transmitter, upon successful reception of the CTS frame, sends the data frame (in which it encapsulates the client&rsquo;s data).</li>
+</ol>
+<p>The destination node must start sending the CTS frame within the maximum IFG of 200 microseconds. Otherwise, the transmitter will assume that a collision has occurred and will return to step 1. For each attempt, a new random number must be generated in step 2. If the transmitter is unable to send the data packet after 32 attempts, it reports failure to its client.</p>
+<h3 id="figure-1-4-rts-cts-handshake-during-a-directed-data-transmission">Figure 1-4 RTS-CTS handshake during a directed data transmission<a class="anchor" href="#figure-1-4-rts-cts-handshake-during-a-directed-data-transmission">#</a></h3>
+<p><img src="images/p75-rts-cts-handshake.png" alt="RTS-CTS handshake during a directed data transmission showing the sequence of RTS packet, CTS packet, and Data packet between source and destination nodes over time." /></p>
+<pre class="mermaid">sequenceDiagram
+    participant Source as Data packet&#39;s source node
+    participant Destination as Data packet&#39;s destination node
+    Source-&gt;&gt;Destination: RTS packet
+    Destination-&gt;&gt;Source: CTS packet
+    Source-&gt;&gt;Destination: Data packet</pre><hr>
+<h1 id="broadcast-data-packet-transmission">Broadcast data packet transmission<a class="anchor" href="#broadcast-data-packet-transmission">#</a></h1>
+<p>Broadcast packets, which go to all nodes on the link, have a destination node ID of 255 ($FF). Broadcast packets are sent without collision except if another transmitter attempts to broadcast at the same time.</p>
+<p>Broadcast frames are sent according to the following procedure:</p>
+<ol>
+<li>The transmitter senses the link until the link has been idle continuously for the minimum IDG (400 microseconds).</li>
+<li>The transmitter then waits an additional random time period.</li>
+<li>If the link is still free, the transmitter sends an RTS frame with destination address of 255 ($FF).</li>
+<li>The transmitter checks the line for the maximum IFG (200 microseconds).</li>
+<li>If the line stays idle throughout step 4, the transmitter sends the data frame.</li>
+</ol>
+<p>Although it does not expect to receive a response, the transmitting node sends an RTS frame to notify all other transmitters of its intent to broadcast. Furthermore, the RTS frame forces a collision if another transmitter happens to start a directed transmission at the same time, causing that node to back off.</p>
+<p>If the transmitter detects link activity during step 4, it returns to step 1 to try again. The node will make 32 attempts, beginning with step 1, before reporting failure to its client.</p>
+<h1 id="packet-reception">Packet reception<a class="anchor" href="#packet-reception">#</a></h1>
+<p>A node will accept an incoming packet if</p>
+<ul>
+<li>its destination address is the same as the node&rsquo;s ID (or is the broadcast address)</li>
+<li>the frame&rsquo;s FCS is verified to be correct</li>
+</ul>
+<p>A receiving node will reject bad frames resulting from one of several error conditions. LLAP handles these situations internally, without referring them to its client.</p>
+<hr>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Error conditions</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">packet size</td>
+          <td style="text-align: left">packet length is less than 5 bytes or more than 603 bytes</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">overrun/underrun</td>
+          <td style="text-align: left">LLAP could not stay synchronized with the incoming data</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">frame type</td>
+          <td style="text-align: left">the type field does not match a valid LLAP value</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">frame check sequence</td>
+          <td style="text-align: left">CRC-CCITT has detected an FCS error</td>
+      </tr>
+  </tbody>
+</table>
+<p>The above discussion describes in general terms LLAP&rsquo;s transmission and reception mechanisms. A more detailed specification of these packet transmission and reception disciplines is given in Appendix B.</p>
+<p>Also included in Appendix B are detailed algorithms of LLAP&rsquo;s dynamic node ID assignment as well as the CRC-CCITT computation of the FCS.</p>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cinside-appletalk-second-edition%5C01-localtalk-link-access-protocol.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#contents">CONTENTS</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#figure-1-1-under-dynamic-node-id-assignment-a-new-node-tests-its-randomly-assigned-id">Figure 1-1 Under dynamic node ID assignment, a new node tests its randomly assigned ID</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#llap-packet">LLAP packet</a></li>
+    <li><a href="#figure-1-2-llap-frame-and-packet-format">Figure 1-2 LLAP frame and packet format</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#carrier-sensing-and-synchronization">Carrier sensing and synchronization</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#figure-1-3-llap-transmission-dialogs">Figure 1-3 LLAP transmission dialogs</a>
+      <ul>
+        <li><a href="#a-directed-transmission-dialog">(a) Directed transmission dialog</a></li>
+        <li><a href="#b-collision">(b) Collision</a></li>
+        <li><a href="#c-broadcast-transmission-dialog">(c) Broadcast transmission dialog</a></li>
+        <li><a href="#d-node-address-assignment-dialog">(d) Node address assignment dialog</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#figure-1-4-rts-cts-handshake-during-a-directed-data-transmission">Figure 1-4 RTS-CTS handshake during a directed data transmission</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

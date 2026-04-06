@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="# A Design for The Finder’s Desktop Management In a Network Environment#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 6 Pages 35–38 Converted 2026-04-01 Engine gemini-flash Chapter 6#A Design for The Finder’s Desktop Management In a Network Environment#The Finder presents Macintosh user with a unique user interface centered around the use of icons to represent objects on a disk volume. To present this interface to the user the Finder makes use of a number of data structures separate from the File System’s volume catalog, all of which are maintained as resources of various types in an invisible resource file called ‘Desktop’.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/06-a-design-for-the-finders-desktop-management-in-a-n/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="# A Design for The Finder&#39;s Desktop Management In a Network Environment">
+  <meta property="og:description" content="# A Design for The Finder’s Desktop Management In a Network Environment#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 6 Pages 35–38 Converted 2026-04-01 Engine gemini-flash Chapter 6#A Design for The Finder’s Desktop Management In a Network Environment#The Finder presents Macintosh user with a unique user interface centered around the use of icons to represent objects on a disk volume. To present this interface to the user the Finder makes use of a number of data structures separate from the File System’s volume catalog, all of which are maintained as resources of various types in an invisible resource file called ‘Desktop’.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="# A Design for The Finder&#39;s Desktop Management In a Network Environment">
+  <meta itemprop="description" content="# A Design for The Finder’s Desktop Management In a Network Environment#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 6 Pages 35–38 Converted 2026-04-01 Engine gemini-flash Chapter 6#A Design for The Finder’s Desktop Management In a Network Environment#The Finder presents Macintosh user with a unique user interface centered around the use of icons to represent objects on a disk volume. To present this interface to the user the Finder makes use of a number of data structures separate from the File System’s volume catalog, all of which are maintained as resources of various types in an invisible resource file called ‘Desktop’.">
+  <meta itemprop="wordCount" content="1532">
+
+<title># A Design for The Finder&#39;s Desktop Management In a Network Environment | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/06-a-design-for-the-finders-desktop-management-in-a-n/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3># A Design for The Finder&#39;s Desktop Management In a Network Environment</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#icon-related-calls">Icon Related Calls</a></li>
+    <li><a href="#application-related-calls">Application Related Calls</a></li>
+    <li><a href="#comment-related-calls">Comment Related Calls</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="-a-design-for-the-finders-desktop-management-in-a-network-environment"># A Design for The Finder&rsquo;s Desktop Management In a Network Environment<a class="anchor" href="#-a-design-for-the-finders-desktop-management-in-a-network-environment">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td>022_AppleTalkFilingProtocolEngineeringTechnicalNotes</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>6</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>35–38</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-04-01</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="chapter-6">Chapter 6<a class="anchor" href="#chapter-6">#</a></h1>
+<h1 id="a-design-for-the-finders-desktop-management-in-a-network-environment">A Design for The Finder&rsquo;s Desktop Management In a Network Environment<a class="anchor" href="#a-design-for-the-finders-desktop-management-in-a-network-environment">#</a></h1>
+<p>The Finder presents Macintosh user with a unique user interface centered around the use of icons to represent objects on a disk volume. To present this interface to the user the Finder makes use of a number of data structures separate from the File System&rsquo;s volume catalog, all of which are maintained as resources of various types in an invisible resource file called &lsquo;Desktop&rsquo;.</p>
+<p>The Desktop file is currently used to perform three separate functions:</p>
+<ol>
+<li>To associate documents and applications with particular icons through its &lsquo;bundle&rsquo; mechanism, as well as storing the actual icon bitmaps,</li>
+<li>To locate the corresponding application when a user opens a document, and</li>
+<li>To store the text of comments associated with files and directories as part of the information displayed by &lsquo;Get Info&rsquo;.</li>
+</ol>
+<p>The management of icons centers around the concept of a <em>bundle</em>, stored as a resource of type BNDL in an application&rsquo;s resource fork. The BNDL resource, which is identified with a particular FileCreator type can, among other things, refer to a number of FREF resources, which can in turn indicate that a file of a particular type should be displayed using a particular icon. Together, BNDLs and FREFs can be used to determine the icon to be displayed for a given file from the Creator and Type information stored as part of its Finder Info in the catalog.</p>
+<p>In addition, the Desktop file is used on HFS volumes to hold a list of applications stored in subdirectories on the volume. The desktop contains an APPL resource which is used by the Finder to find an application to launch when a document is selected, given the document&rsquo;s FileCreator information. The APPL resource basically maps a particular Creator type to a list of applications that can open documents of the specified type.</p>
+<p>Finally, the Desktop file is used as a repository for the text of comments associated with files and directories on the volume. Comments are retrieved when the user selects &lsquo;Get Info&rsquo; for a file or directory, at which time the comment text can also be changed.</p>
+<p>The use of the current Finder in a Network Environment (i.e. on File Server volumes) has proven unsatisfactory: resource files, such as the Finder&rsquo;s Desktop file, are ill-suited for sharing among multiple users on a single File Server.</p>
+<p>A new mechanism has been designed to replace the Finder&rsquo;s direct use of the Desktop resource file on File Server volumes completely. Eventually, this mechanism could be used transparently for both local and remote volumes. The interface to this new Desktop mechanism is presented below.</p>
+<hr>
+<h1 id="call-interface">Call Interface<a class="anchor" href="#call-interface">#</a></h1>
+<p>The interface includes three groups of calls:</p>
+<ol>
+<li>Icon calls (AddIcon, GetIcon, and GetIconInfo),</li>
+<li>APPL calls (AddAPPL, DeleteAPPL, and GetAPPL),</li>
+<li>Comment calls (AddComment, DeleteComment, GetComment).</li>
+</ol>
+<p>Each call is mapped into a corresponding AFP command. The semantics of the AFP calls exactly parallel the semantics of the interface routines. Like FPWrite, FPAddIcon is special in that it requires a special intermediate exchange of packets to transfer the data block representing the icon bitmap.</p>
+<p>In the descriptions of the individual calls in the following sections, the data type ResType refers to the 4-byte signatures that are part of every file&rsquo;s Finder Information. Each file is assigned a &lsquo;File Type&rsquo; meant to be representative of the nature of the contents of the file (PNTG, TEXT, etc.) and a &lsquo;File Creator&rsquo;, which is a unique signature indicating the application which created the file (such as MPNT, MACA, etc.).</p>
+<p>Before any Desktop calls can be made, the user must make an OpenDT call, as follows:</p>
+<ul>
+<li><strong>Function OpenDT( VolID: Integer; Var DTRefNum: Integer): OSErr;</strong></li>
+</ul>
+<p>The file RefNum returned for the Desktop Database must be used on future calls to indicate the Desktop Database being referred to. If an error occurred on the call, the refNum returned will be zero.</p>
+<p>When all Desktop operations have been completed, the user should make a CloseDT call (which takes a single argument, the DTRefNum) and returns an OSErr. This will free all resources allocated as part of the OpenDT call.</p>
+<h2 id="icon-related-calls">Icon Related Calls<a class="anchor" href="#icon-related-calls">#</a></h2>
+<ul>
+<li><strong>Function AddIcon( DTRefNum: Integer; FileCreator, FileType: ResType; IconType: Byte; IconTag: LongInt; BitmapSize: Integer; Bitmap: Ptr): OSErr;</strong></li>
+</ul>
+<p>AddIcon adds a new icon bitmap to the Desktop database. The FileType and FileCreator arguments (4 bytes each) specify the set of files this icon is associated with, while the IconType argument may indicate a specific kind of icon. Note that for a given FileCreator/FileType, there may be a number of icons available, each with a different IconType. The IconTag argument indicates a LongInt value to be associated with the icon which will be returned along with the icon bitmap when it is retrieved. This could be used as a timestamp, for instance, to associate the creation date of the application with the icons it exports. Finally, the Size and Bitmap arguments provide the actual bitmap in question.</p>
+<p>If an icon of the specified IconType already exists for the indicated FileCreator and FileType, AddIcon will replace the bitmap stored with the new Bitmap. An error will be returned if the size of the new bitmap is different from the size of the old bitmap.</p>
+<ul>
+<li><strong>Function GetIcon( DTRefNum: Integer; FileCreator: ResType; FileType: ResType; IconType: Byte; Var Length: Integer; BitMap: Ptr): OSErr;</strong></li>
+</ul>
+<hr>
+<p>GetIcon retrieves the bitmap for a given icon, given its FileCreator, FileType and IconType. If an icon of type IconType of the specified FileCreator and FileType is available, it is returned. Otherwise, an ItemNotFound error is returned. The length argument used on input to indicate the size of the buffer pointed to by the BitMap pointer. When the call is completed it is overwritten with the actual size of the bitmap returned.</p>
+<ul>
+<li>Function GetIconInfo( DTRefNum: Integer; FileCreator: ResType; IconIndex: Integer; Var IconTag: LongInt; Var FileType: ResType; Var IconType: Byte; Var Size: Integer): OSErr;</li>
+</ul>
+<p>GetIconInfo retrieves a description of an icon, given its FileCreator type and a numerical index. It can be used to determine the set of icons associated with a given application without knowing the FileTypes in advance. Successive calls with increasing values of IconIndex will return information on all icons associated with a given Creator type.</p>
+<h2 id="application-related-calls">Application Related Calls<a class="anchor" href="#application-related-calls">#</a></h2>
+<ul>
+<li>Function AddAPPL( DTRefNum: Integer; FileCreator: ResType; DirID: LongInt; CName: String[31]; APPLTag: LongInt): OSErr;</li>
+</ul>
+<p>AddAPPL adds an entry for the application specified by the DirID/CName under the indicated ResType. The APPLTag argument is an additional LongInt stored with the mapping information. There may be more than one application with same FileCreator ResType, although the DirID/CName should uniquely identify the file. The Tag information might be used to decide among many possible applications which one to launch for a particular document (if the tag of the creator were stored in the Finder information of the document, for instance).</p>
+<ul>
+<li>Function RemoveAPPL( DTRefNum: Integer; FileCreator: ResType; DirID: LongInt; CName: String[31]): OSErr;</li>
+</ul>
+<p>RemoveAPPL removes the mapping information for a given application indicated by its DirID/CName. Note that while the FileCreator type must be specified to locate the entry, the application tag is not required to remove an application entry.</p>
+<p>Note that it is the Finder&rsquo;s responsibility to add and remove entries for applications which are copied to the volume or deleted, respectively. For entries which are moved or renamed, the Finder should remove the entry before the operation and add a new entry with the updated information after the operation has been completed successfully.</p>
+<ul>
+<li>Function GetAPPL( DTRefNum: Integer; FileCreator: ResType; Index: Integer; Var APPLTag: LongInt; Var DirID: LongInt; Var CName: StringPtr): OSErr;</li>
+</ul>
+<p>GetAPPL looks up an application given its Creator ResType. The index argument is used to enumerate all application mappings stored. Indices 1 through n will retrieve the 1st through nth application mapping stored which are accessible by the caller (i.e. to which the user has Search and Read access). Unless the caller wishes to implement a special selection algorithm over all available applications, a single call to get the first mapping should suffice to find an application which can be launched to open the selected document.</p>
+<h2 id="comment-related-calls">Comment Related Calls<a class="anchor" href="#comment-related-calls">#</a></h2>
+<hr>
+<ul>
+<li><strong>Procedure AddComment( DTRefNum: Integer; DirID: LongInt; CName: String[31];</strong>
+<strong>CommentText: String[199]);</strong></li>
+</ul>
+<p>AddComment stores a comment string associated with a particular file or directory on the volume. Unlike icons, there can be no more than one comment associated with any file or directory. If AddComment is called for a file or directory which already has an associated comment, the existing comment is replaced.</p>
+<ul>
+<li><strong>Function RemoveComment( DTRefNum: Integer; DirID: LongInt;</strong>
+<strong>CName: String[31]): OSErr;</strong></li>
+</ul>
+<p>RemoveComment removes the comment associated with a particular file or directory. An error is returned if no comment was stored for the file or directory.</p>
+<p>Note that while the Finder will call RemoveComment to remove comments for files or directories when they are deleted, it does <u>not</u> call GetComment, RemoveComment and AddComment whenever a file or directory is renamed or moved.</p>
+<ul>
+<li><strong>Function GetComment( DTRefNum: Integer; DirID: LongInt; CName: String[31];</strong>
+<strong>Var CommentText: String[199]): OSErr;</strong></li>
+</ul>
+<p>GetComment retrieves the comment associated with a particular file or directory. If a comment is stored, the comment text is returned. If no comment exists, an error is returned.</p>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cappletalk-filingprotocol-engineering-technotes%5C06-a-design-for-the-finders-desktop-management-in-a-n.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#icon-related-calls">Icon Related Calls</a></li>
+    <li><a href="#application-related-calls">Application Related Calls</a></li>
+    <li><a href="#comment-related-calls">Comment Related Calls</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="EtherTalk and TokenTalk Link Access Protocols#Field Value Source Inside AppleTalk Second Edition (1990) Part Part I - Physical and Data Links Chapter 3 Pages 90–103 Converted 2026-03-31 Engine gemini-flash Chapter 3 EtherTalk and TokenTalk Link Access Protocols#CONTENTS#802.2 / 3-3 ELAP packet format / 3-5 TLAP packet format / 3-6 Address mapping in ELAP and TLAP / 3-7 Use of AARP by ELAP and TLAP / 3-8 AARP specifics for ELAP and TLAP / 3-9 Zone multicast addresses used by ELAP and TLAP / 3-10 AppleTalk AARP packet formats on Ethernet and token ring / 3-11 ">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/inside-appletalk-second-edition/03-ethertalk-and-tokentalk-link-access-protocols/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="EtherTalk and TokenTalk Link Access Protocols">
+  <meta property="og:description" content="EtherTalk and TokenTalk Link Access Protocols#Field Value Source Inside AppleTalk Second Edition (1990) Part Part I - Physical and Data Links Chapter 3 Pages 90–103 Converted 2026-03-31 Engine gemini-flash Chapter 3 EtherTalk and TokenTalk Link Access Protocols#CONTENTS#802.2 / 3-3 ELAP packet format / 3-5 TLAP packet format / 3-6 Address mapping in ELAP and TLAP / 3-7 Use of AARP by ELAP and TLAP / 3-8 AARP specifics for ELAP and TLAP / 3-9 Zone multicast addresses used by ELAP and TLAP / 3-10 AppleTalk AARP packet formats on Ethernet and token ring / 3-11">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="EtherTalk and TokenTalk Link Access Protocols">
+  <meta itemprop="description" content="EtherTalk and TokenTalk Link Access Protocols#Field Value Source Inside AppleTalk Second Edition (1990) Part Part I - Physical and Data Links Chapter 3 Pages 90–103 Converted 2026-03-31 Engine gemini-flash Chapter 3 EtherTalk and TokenTalk Link Access Protocols#CONTENTS#802.2 / 3-3 ELAP packet format / 3-5 TLAP packet format / 3-6 Address mapping in ELAP and TLAP / 3-7 Use of AARP by ELAP and TLAP / 3-8 AARP specifics for ELAP and TLAP / 3-9 Zone multicast addresses used by ELAP and TLAP / 3-10 AppleTalk AARP packet formats on Ethernet and token ring / 3-11">
+  <meta itemprop="wordCount" content="3586">
+
+<title>EtherTalk and TokenTalk Link Access Protocols | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/inside-appletalk-second-edition/03-ethertalk-and-tokentalk-link-access-protocols/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>EtherTalk and TokenTalk Link Access Protocols</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#contents">CONTENTS</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#tlap-packet-format">TLAP packet format</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#use-of-aarp-by-elap-and-tlap">Use of AARP by ELAP and TLAP</a></li>
+    <li><a href="#aarp-specifics-for-elap-and-tlap">AARP specifics for ELAP and TLAP</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#figure-3-5-appletalk-ethernet-or-appletalk-token-ring-aarp-packet-formats">Figure 3-5 AppleTalk-Ethernet or AppleTalk-token ring AARP packet formats</a>
+      <ul>
+        <li><a href="#aarp-request">AARP Request</a></li>
+        <li><a href="#aarp-response">AARP Response</a></li>
+        <li><a href="#aarp-probe">AARP Probe</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="ethertalk-and-tokentalk-link-access-protocols">EtherTalk and TokenTalk Link Access Protocols<a class="anchor" href="#ethertalk-and-tokentalk-link-access-protocols">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td><a href="https://vintageapple.org/macbooks/pdf/Inside_AppleTalk_Second_Edition_1990.pdf">Inside AppleTalk Second Edition (1990)</a></td>
+      </tr>
+      <tr>
+          <td><strong>Part</strong></td>
+          <td>Part I - Physical and Data Links</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>90–103</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-03-31</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><img src="images/p90-header-banner.png" alt="Header banner" /></p>
+<h1 id="chapter-3-ethertalk-and-tokentalk-link-access-protocols">Chapter 3 EtherTalk and TokenTalk Link Access Protocols<a class="anchor" href="#chapter-3-ethertalk-and-tokentalk-link-access-protocols">#</a></h1>
+<h2 id="contents">CONTENTS<a class="anchor" href="#contents">#</a></h2>
+<ul>
+<li>802.2 / 3-3</li>
+<li>ELAP packet format / 3-5</li>
+<li>TLAP packet format / 3-6</li>
+<li><strong>Address mapping in ELAP and TLAP / 3-7</strong></li>
+<li>Use of AARP by ELAP and TLAP / 3-8</li>
+<li>AARP specifics for ELAP and TLAP / 3-9</li>
+<li>Zone multicast addresses used by ELAP and TLAP / 3-10</li>
+<li><strong>AppleTalk AARP packet formats on Ethernet and token ring / 3-11</strong></li>
+</ul>
+<p><img src="images/p90-blue-square.png" alt="Small blue square icon" /></p>
+<hr>
+<p>WHEN AN APPLETALK PROTOCOL STACK asks the data link to transmit an AppleTalk packet, its objective is to send the packet to the destination node&rsquo;s AppleTalk protocol stack. Consequently, it will provide the data link with the destination&rsquo;s AppleTalk protocol address, a 16-bit network number and an 8-bit node ID. On LocalTalk, which supports no more than 254 nodes, the lower 8 bits of this address can be used directly as the data-link address. Except when AppleTalk uses the LocalTalk data link, the data link will be unable to understand and use the destination&rsquo;s protocol address directly.</p>
+<p>In the cases of EtherTalk and TokenTalk, the AppleTalk network system uses industry standards as the underlying data link. Both these data links use 48-bit hardware addresses to identify the network nodes. Thus, EtherTalk and TokenTalk products must translate the AppleTalk protocol address to the 48-bit hardware address before the packet can be transmitted to its destination node.</p>
+<p>EtherTalk and TokenTalk were developed by Apple as extensions of these industry-standard data links to allow the use of industry-standard data links and cabling in the AppleTalk network. The extended data-link protocol used by EtherTalk is referred to as the EtherTalk Link Access Protocol (ELAP). The extended data-link protocol used by TokenTalk is referred to as the TokenTalk Link Access Protocol (TLAP). This chapter specifies ELAP and TLAP and also gives an example of the use of the address resolution protocol described in Chapter 2.</p>
+<p>ELAP and TLAP use the AppleTalk Address Resolution Protocol (AARP) to map AppleTalk protocol addresses into 48-bit data-link addresses. They then encapsulate the AppleTalk datagram before using the data-link to send the packet. When the AppleTalk protocol stack is initialized, ELAP and TLAP, in combination with DDP, use AARP to acquire the stack&rsquo;s AppleTalk protocol address (node address). ■</p>
+<hr>
+<h1 id="8022">802.2<a class="anchor" href="#8022">#</a></h1>
+<p>The Institute of Electrical and Electronics Engineers (IEEE) has specified a standard for Logical Link Control (LLC) for use on Ethernet, token ring, and other data links. This standard, 802.2, involves a set of interfaces, packet formats, and procedures for use on these data links. 802.2 Type 1 specifies a connectionless or datagram service; 802.2 Type 2 is connection-based. ELAP and TLAP use 802.2 Type 1 packet formats. Details of the interfaces and procedures for 802.2 Type 1 are beyond the scope of this book, however it is necessary to understand 802.2 Type 1 packet formats to be able to understand packets as sent by AppleTalk on Ethernet and token ring.</p>
+<p>802.2 defines the concept of a Service Access Point or SAP. SAPs are used to differentiate between the different protocol stacks using 802.2 in a given node. A SAP is a 1-byte quantity, and most SAPs are reserved for use by IEEE-standard protocols. One SAP, however, has been reserved by the IEEE for use by all non-IEEE-standard protocols. This SAP, with value $AA, is the SAP to which all AppleTalk packets are sent. However, it is also used by other protocol families. Therefore a way of differentiating the various protocols using the $AA SAP was necessary. For this reason, all packets sent to the $AA SAP begin with a 5-byte protocol discriminator. This protocol discriminator identifies the protocol family to which the packet belongs. Use of the $AA SAP in this way is known as the Sub-Network Access Protocol or SNAP.</p>
+<p>Figure 3-1 shows the packet format for an 802.2 Type 1 SNAP packet. The packet consists of four parts. First is the data-link header for the data link on which the packet is sent. Second is the 3-byte 802.2 Type 1 header. This header consists of the destination and source SAPs (both $AA for SNAP) and a control byte indicating that Type 1 service is being used. The 802.2 header is followed by the five-byte SNAP protocol discriminator. Finally, the SNAP protocol discriminator is followed by the data part of the packet.</p>
+<p>SNAP protocol discriminators used by AppleTalk include $080007809B for AppleTalk data packets and $00000080F3 for AARP packets.</p>
+<hr>
+<p>■ Figure 3-1 SNAP packet format</p>
+<p><img src="images/p93-snap-packet-format.png" alt="SNAP packet format" /></p>
+<pre class="mermaid">packet-beta
+  0-15: &#34;Data-link header&#34;
+  16-23: &#34;Destination SAP ($AA)&#34;
+  24-31: &#34;Source SAP ($AA)&#34;
+  32-39: &#34;Control byte ($03)&#34;
+  40-79: &#34;SNAP protocol discriminator&#34;
+  80-95: &#34;Data&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Data-link header</td>
+          <td>0</td>
+          <td>Variable</td>
+          <td>Underlying network frame header (e.g., Ethernet or Token Ring).</td>
+      </tr>
+      <tr>
+          <td>Destination SAP (DSAP)</td>
+          <td>Variable</td>
+          <td>8</td>
+          <td>Destination Service Access Point, fixed at $AA for SNAP.</td>
+      </tr>
+      <tr>
+          <td>Source SAP (SSAP)</td>
+          <td>Variable + 8</td>
+          <td>8</td>
+          <td>Source Service Access Point, fixed at $AA for SNAP.</td>
+      </tr>
+      <tr>
+          <td>Control byte</td>
+          <td>Variable + 16</td>
+          <td>8</td>
+          <td>Unnumbered Information control byte, fixed at $03.</td>
+      </tr>
+      <tr>
+          <td>SNAP protocol discriminator</td>
+          <td>Variable + 24</td>
+          <td>40</td>
+          <td>5-byte identifier consisting of a 3-byte Organizationally Unique Identifier (OUI) and a 2-byte Protocol ID.</td>
+      </tr>
+      <tr>
+          <td>Data</td>
+          <td>Variable + 64</td>
+          <td>Variable</td>
+          <td>The encapsulated protocol data unit.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p>The SNAP protocol discriminator used by AppleTalk is $080007809B. The AppleTalk packet continues, following the ELAP header, with the start of the DDP header.</p>
+<h2 id="tlap-packet-format">TLAP packet format<a class="anchor" href="#tlap-packet-format">#</a></h2>
+<p>Figure 3-3 shows the data packet format for AppleTalk packets on a token ring network. The TLAP header consists of a 14-byte token ring header followed by optional source routing information and then by the 802.2 and SNAP headers. The token ring header begins with two bytes that are used by the token ring data link. These bytes are followed by the packet&rsquo;s 48-bit destination and source hardware addresses.</p>
+<p>The token ring header is followed by variable length source routing information. Source routing is a method used on token ring to surpass the limits on length and number of devices that exist on a single token ring network. Through use of source routing bridges, token ring networks may be combined so as to appear to the upper protocol layers as a single token ring network. The source routing information is used to specify (or in some cases to collect) the route followed by the packet through the source routing bridges. An implementation of TLAP that supports source routing must take into account acquisition and maintenance of source routing information, as this is not performed by the token ring data link.</p>
+<p>When source routing information is sent, the high-order bit of the source hardware address is set. (This bit is available because it is never part of a hardware address.) A set bit indicates that between 2 and 18 bytes of source routing information immediately follow the token ring header.</p>
+<p>As in ELAP, the SNAP protocol discriminator used by AppleTalk is $080007809B. The AppleTalk packet continues, following the TLAP header, with the start of the DDP header.</p>
+<hr>
+<p>■ Figure 3-3 TLAP packet format</p>
+<p><img src="images/p96-tlap-packet-format.png" alt="Diagram showing the TLAP packet format, including the TLAP header (internal data, destination/source addresses, source routing, 802.2 header, and SNAP header) followed by the AppleTalk packet." /></p>
+<pre class="mermaid">packet-beta
+0-15: &#34;Used internally by token ring data link&#34;
+16-63: &#34;Token ring destination&#34;
+64-111: &#34;Token ring source&#34;
+112-143: &#34;0 - 18 bytes of source routing information&#34;
+144-151: &#34;Destination SAP ($AA)&#34;
+152-159: &#34;Source SAP ($AA)&#34;
+160-167: &#34;Control byte ($03)&#34;
+168-207: &#34;SNAP protocol discriminator ($080007809B)&#34;
+208-239: &#34;AppleTalk packet&#34;</pre><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Field</th>
+          <th style="text-align: left">Bit offset</th>
+          <th style="text-align: left">Width (bits)</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Used internally by token ring data link</td>
+          <td style="text-align: left">0</td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left">Access Control and Frame Control bytes used internally by the token ring data link.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Token ring destination</td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left">48</td>
+          <td style="text-align: left">The 6-byte destination address.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Token ring source</td>
+          <td style="text-align: left">64</td>
+          <td style="text-align: left">48</td>
+          <td style="text-align: left">The 6-byte source address.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Source routing information</td>
+          <td style="text-align: left">112</td>
+          <td style="text-align: left">0 - 144</td>
+          <td style="text-align: left">Optional source routing information (up to 18 bytes).</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Destination SAP ($AA)</td>
+          <td style="text-align: left">112 + SR</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">The Destination Service Access Point, always set to $AA.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Source SAP ($AA)</td>
+          <td style="text-align: left">120 + SR</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">The Source Service Access Point, always set to $AA.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Control byte ($03)</td>
+          <td style="text-align: left">128 + SR</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">The LLC control byte, always set to $03.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">SNAP protocol discriminator</td>
+          <td style="text-align: left">136 + SR</td>
+          <td style="text-align: left">40</td>
+          <td style="text-align: left">The SNAP protocol discriminator, set to $080007809B for AppleTalk.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">AppleTalk packet</td>
+          <td style="text-align: left">176 + SR</td>
+          <td style="text-align: left">Variable</td>
+          <td style="text-align: left">The encapsulated AppleTalk packet.</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="address-mapping-in-elap-and-tlap">Address mapping in ELAP and TLAP<a class="anchor" href="#address-mapping-in-elap-and-tlap">#</a></h1>
+<p>Ethernet and token ring provide addressing schemes structurally similar to that of LLAP. Nodes on Ethernet and token ring links are identified by unique addresses, and a broadcast capability is provided. These links also provide a multicasting capability, which is used by ELAP and TLAP to minimize the interference of AppleTalk broadcast packets on non-AppleTalk nodes.</p>
+<hr>
+<p>However, Ethernet and token ring addresses are different from those expected by the AppleTalk protocol family. Instead of using a dynamically assigned 8-bit node ID, they use a statically assigned 48-bit hardware address. Their broadcast hardware address is also different than AppleTalk’s broadcast protocol address of 255 ($FF).</p>
+<p>There are conditions under which the AppleTalk protocol family will ask ELAP or TLAP to send a packet directly to a hardware address. If this is the case, no address mapping is performed and the packet is sent directly to the desired address.</p>
+<hr>
+<h2 id="use-of-aarp-by-elap-and-tlap">Use of AARP by ELAP and TLAP<a class="anchor" href="#use-of-aarp-by-elap-and-tlap">#</a></h2>
+<p>When the AppleTalk stack is initialized, ELAP or TLAP use AARP’s dynamic protocol address assignment to pick an AppleTalk node address unique to the data link on which the node is operating. The network number part of this node address is chosen from within the network number range assigned to the network. The actual use of AARP to choose this address is described in Chapter 4, “Datagram Delivery Protocol.”</p>
+<p>Unlike the LocalTalk Link Access Protocol (LLAP), ELAP and TLAP make no distinction between server and workstation nodes when they perform this dynamic address assignment. The hardware for those data links provides enough buffering to reduce the chance of an AARP Probe packet being lost by busy nodes. Consequently, the probability of two nodes acquiring the same address is low.</p>
+<p>Once an AppleTalk node address has been obtained, AppleTalk operation proceeds in the normal fashion. When ELAP or TLAP is asked to send a packet, it looks at the requested destination address to determine how to proceed. There are three possibilities.</p>
+<ol>
+<li>If ELAP or TLAP is asked to send the packet directly to a 48-bit hardware address, it calls the underlying data link to perform this operation. Certain operations in DDP require the ability to send a packet directly to a specified hardware address.</li>
+<li>If ELAP or TLAP is asked to send the packet to an AppleTalk address that is not a broadcast AppleTalk address, it uses AARP to map the packet’s destination address into the corresponding hardware address and uses the underlying data link to send the packet to this hardware address. A broadcast AppleTalk address (detailed in Chapter 4), is any address whose node ID (low-order eight bits) is $FF.</li>
+</ol>
+<hr>
+<ol start="3">
+<li>If ELAP or TLAP is asked to send the packet to a broadcast AppleTalk address, it must send that packet in such a way that all AppleTalk nodes on that data link receive the packet. It is also desirable, however, that non-AppleTalk nodes on the same data link not be interrupted by these packets. The multicasting capability of the Ethernet and token ring data links is utilized to accomplish this goal. A specific multicast hardware address is assigned for AppleTalk broadcasts. ELAP or TLAP, in each AppleTalk node, registers itself with the underlying data link to receive all packets addressed to that multicast hardware address. Packets addressed to a broadcast AppleTalk address are then sent by ELAP or TLAP to this multicast address and received by all AppleTalk nodes on the data link. Since non-AppleTalk nodes will not have registered on this multicast address, they will not be interrupted by the packet.</li>
+</ol>
+<p>The multicast address used by ELAP for AppleTalk broadcasts is $090007FFFFFF. The multicast hardware address used by TLAP for AppleTalk broadcasts is $C00040000000. ELAP and TLAP also use these multicast addresses for AARP broadcasts.</p>
+<hr>
+<h2 id="aarp-specifics-for-elap-and-tlap">AARP specifics for ELAP and TLAP<a class="anchor" href="#aarp-specifics-for-elap-and-tlap">#</a></h2>
+<p>ELAP and TLAP impose restrictions on the tentative AppleTalk node address that AARP picks when attempting to dynamically choose a unique AppleTalk node address. These node IDs must not be chosen by AARP: Node ID 0 (invalid as an AppleTalk node ID), $FF (AppleTalk broadcast node ID), and $FE (reserved as an AppleTalk node ID on Ethernet and token ring).</p>
+<p>In addition, during the address acquisition process, ELAP and TLAP are asked by the AppleTalk stack to choose the network number part of the node address in a specific range. Thus, when picking tentative node addresses, AARP must be sure to pick them in this requested range.</p>
+<p>Incoming data packets contain the source data-link address and the source AppleTalk address. Source address gleaning can be performed easily by AARP by obtaining the source&rsquo;s AppleTalk and data-link addresses from the packet and then updating the AMT. This gleaning is not a required part of ELAP or TLAP. For example, some developers might consider the computational overhead of gleaning to be excessive and therefore not include the capability in their implementation.</p>
+<p>The AARP probe-retransmission interval and count for ELAP and TLAP is specified as 1/5 second and 10 retransmissions, respectively. For AARP requests, the corresponding parameters are left to the discretion of the specific implementer. AARP request and probe packets are sent to the same multicast hardware address used for AppleTalk broadcasts and thus interrupt only AppleTalk nodes. This address is $090007FFFFFF for ELAP and $C00040000000 for TLAP.</p>
+<hr>
+<h1 id="zone-multicast-addresses-used-by-elap-and-tlap">Zone multicast addresses used by ELAP and TLAP<a class="anchor" href="#zone-multicast-addresses-used-by-elap-and-tlap">#</a></h1>
+<p>AppleTalk data links should allocate a number of multicast addresses for use in the name lookup process, as indicated in Chapter 8, &ldquo;Zone Information Protocol.&rdquo; ZIP and NBP use these addresses to minimize the effect of the name lookup process on nodes not in the desired zone. The specific zone multicast addresses defined for use by ELAP and TLAP are illustrated in Figure 3-4.</p>
+<p>■ <strong>Figure 3-4</strong> ELAP and TLAP multicast addresses</p>
+<p><img src="images/p99-elap-tlap-multicast-addresses.png" alt="ELAP and TLAP multicast addresses" /></p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>ELAP</th>
+          <th>TLAP</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><em>AppleTalk broadcast address</em></td>
+          <td>$090007FFFFFF</td>
+          <td>$C00040000000</td>
+      </tr>
+      <tr>
+          <td><em>Zone multicast addresses</em><br>When used with the address assignment algorithm described in Chapter 8, the first address in each list represents a[0].</td>
+          <td>$090007000000<br>⋮<br><em>253 addresses</em><br>⋮<br>$0900070000FC</td>
+          <td>$C00000000800<br>$C00000001000<br>$C00000002000<br>$C00000004000<br>$C00000008000<br>$C00000010000<br>$C00000020000<br>$C00000040000<br>$C00000080000<br>$C00000100000<br>$C00000200000<br>$C00000400000<br>$C00000800000<br>$C00001000000<br>$C00002000000<br>$C00004000000<br>$C00008000000<br>$C00010000000<br>$C00020000000</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="appletalk-aarp-packet-formats-on-ethernet-and-token-ring">AppleTalk AARP packet formats on Ethernet and token ring<a class="anchor" href="#appletalk-aarp-packet-formats-on-ethernet-and-token-ring">#</a></h1>
+<p>Each AARP packet on Ethernet and token ring begins with the same set of headers used by ELAP or TLAP. The SNAP protocol discriminator defined for AARP is $00000080F3. Following these headers, 6 bytes of AARP information identify the packet as requesting an AppleTalk-to-Ethernet or AppleTalk-to-token-ring address mapping:</p>
+<ul>
+<li>a 2-byte hardware type, with value of 1, indicating Ethernet, or value of 2, indicating token ring as the data link</li>
+<li>a 2-byte protocol type, with value of $809B, indicating the AppleTalk protocol family</li>
+<li>a 1-byte hardware address length, with value of 6, indicating the length in bytes of the field containing the Ethernet or token ring address</li>
+<li>a 1-byte protocol address length, with value of 4, indicating the length in bytes of the field containing the AppleTalk protocol address (The high byte of the address field must be set to 0, followed by the 2-byte network number, and then the 1-byte node ID.)</li>
+</ul>
+<p>The rest of the AARP packet contains the source and destination hardware and AppleTalk addresses, the latter always in 4-byte fields with the upper byte set to 0. Figure 3-5 shows the AARP packet formats for Ethernet or token ring.</p>
+<hr>
+<h2 id="figure-3-5-appletalk-ethernet-or-appletalk-token-ring-aarp-packet-formats">Figure 3-5 AppleTalk-Ethernet or AppleTalk-token ring AARP packet formats<a class="anchor" href="#figure-3-5-appletalk-ethernet-or-appletalk-token-ring-aarp-packet-formats">#</a></h2>
+<p><img src="images/p101-aarp-packet-formats.png" alt="AppleTalk-Ethernet or AppleTalk-token ring AARP packet formats" /></p>
+<h3 id="aarp-request">AARP Request<a class="anchor" href="#aarp-request">#</a></h3>
+<pre class="mermaid">packet-beta
+0-39: &#34;SNAP protocol discriminator ($00000080F3)&#34;
+40-55: &#34;Hardware type (Ethernet = 1, Token ring = 2)&#34;
+56-71: &#34;Protocol type (AppleTalk = $809B)&#34;
+72-79: &#34;Hardware address length = 6&#34;
+80-87: &#34;Protocol address length = 4&#34;
+88-103: &#34;Function (Request = 1)&#34;
+104-151: &#34;Source hardware address (6 bytes)&#34;
+152-183: &#34;Source AppleTalk address (4 bytes)&#34;
+184-231: &#34;0 (6 bytes)&#34;
+232-263: &#34;Desired AppleTalk address (4 bytes)&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>SNAP protocol discriminator</td>
+          <td>0</td>
+          <td>40</td>
+          <td>Protocol discriminator value: $00000080F3</td>
+      </tr>
+      <tr>
+          <td>Hardware type</td>
+          <td>40</td>
+          <td>16</td>
+          <td>Hardware type: Ethernet = 1, Token ring = 2</td>
+      </tr>
+      <tr>
+          <td>Protocol type</td>
+          <td>56</td>
+          <td>16</td>
+          <td>Protocol type: AppleTalk = $809B</td>
+      </tr>
+      <tr>
+          <td>Hardware address length</td>
+          <td>72</td>
+          <td>8</td>
+          <td>Length of hardware address: 6 bytes</td>
+      </tr>
+      <tr>
+          <td>Protocol address length</td>
+          <td>80</td>
+          <td>8</td>
+          <td>Length of protocol address: 4 bytes</td>
+      </tr>
+      <tr>
+          <td>Function</td>
+          <td>88</td>
+          <td>16</td>
+          <td>Packet function: Request = 1</td>
+      </tr>
+      <tr>
+          <td>Source hardware address</td>
+          <td>104</td>
+          <td>48</td>
+          <td>Hardware address of the sender (6 bytes)</td>
+      </tr>
+      <tr>
+          <td>Source AppleTalk address</td>
+          <td>152</td>
+          <td>32</td>
+          <td>AppleTalk address of the sender (4 bytes)</td>
+      </tr>
+      <tr>
+          <td>0</td>
+          <td>184</td>
+          <td>48</td>
+          <td>Reserved field, set to 0 (6 bytes)</td>
+      </tr>
+      <tr>
+          <td>Desired AppleTalk address</td>
+          <td>232</td>
+          <td>32</td>
+          <td>The AppleTalk address being requested (4 bytes)</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="aarp-response">AARP Response<a class="anchor" href="#aarp-response">#</a></h3>
+<pre class="mermaid">packet-beta
+0-39: &#34;SNAP protocol discriminator ($00000080F3)&#34;
+40-55: &#34;Hardware type (Ethernet = 1, Token ring = 2)&#34;
+56-71: &#34;Protocol type (AppleTalk = $809B)&#34;
+72-79: &#34;Hardware address length = 6&#34;
+80-87: &#34;Protocol address length = 4&#34;
+88-103: &#34;Function (Response = 2)&#34;
+104-151: &#34;Source hardware address (6 bytes)&#34;
+152-183: &#34;Source AppleTalk address (4 bytes)&#34;
+184-231: &#34;Destination hardware address (6 bytes)&#34;
+232-263: &#34;Destination AppleTalk address (4 bytes)&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>SNAP protocol discriminator</td>
+          <td>0</td>
+          <td>40</td>
+          <td>Protocol discriminator value: $00000080F3</td>
+      </tr>
+      <tr>
+          <td>Hardware type</td>
+          <td>40</td>
+          <td>16</td>
+          <td>Hardware type: Ethernet = 1, Token ring = 2</td>
+      </tr>
+      <tr>
+          <td>Protocol type</td>
+          <td>56</td>
+          <td>16</td>
+          <td>Protocol type: AppleTalk = $809B</td>
+      </tr>
+      <tr>
+          <td>Hardware address length</td>
+          <td>72</td>
+          <td>8</td>
+          <td>Length of hardware address: 6 bytes</td>
+      </tr>
+      <tr>
+          <td>Protocol address length</td>
+          <td>80</td>
+          <td>8</td>
+          <td>Length of protocol address: 4 bytes</td>
+      </tr>
+      <tr>
+          <td>Function</td>
+          <td>88</td>
+          <td>16</td>
+          <td>Packet function: Response = 2</td>
+      </tr>
+      <tr>
+          <td>Source hardware address</td>
+          <td>104</td>
+          <td>48</td>
+          <td>Hardware address of the responder (6 bytes)</td>
+      </tr>
+      <tr>
+          <td>Source AppleTalk address</td>
+          <td>152</td>
+          <td>32</td>
+          <td>AppleTalk address of the responder (4 bytes)</td>
+      </tr>
+      <tr>
+          <td>Destination hardware address</td>
+          <td>184</td>
+          <td>48</td>
+          <td>Hardware address of the requester (6 bytes)</td>
+      </tr>
+      <tr>
+          <td>Destination AppleTalk address</td>
+          <td>232</td>
+          <td>32</td>
+          <td>AppleTalk address of the requester (4 bytes)</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="aarp-probe">AARP Probe<a class="anchor" href="#aarp-probe">#</a></h3>
+<pre class="mermaid">packet-beta
+0-39: &#34;SNAP protocol discriminator ($00000080F3)&#34;
+40-55: &#34;Hardware type (Ethernet = 1, Token ring = 2)&#34;
+56-71: &#34;Protocol type (AppleTalk = $809B)&#34;
+72-79: &#34;Hardware address length = 6&#34;
+80-87: &#34;Protocol address length = 4&#34;
+88-103: &#34;Function (Probe = 3)&#34;
+104-151: &#34;Source hardware address (6 bytes)&#34;
+152-183: &#34;Source AppleTalk address (4 bytes)&#34;
+184-231: &#34;0 (6 bytes)&#34;
+232-263: &#34;Destination AppleTalk address (4 bytes)&#34;</pre><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Bit offset</th>
+          <th>Width (bits)</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>SNAP protocol discriminator</td>
+          <td>0</td>
+          <td>40</td>
+          <td>Protocol discriminator value: $00000080F3</td>
+      </tr>
+      <tr>
+          <td>Hardware type</td>
+          <td>40</td>
+          <td>16</td>
+          <td>Hardware type: Ethernet = 1, Token ring = 2</td>
+      </tr>
+      <tr>
+          <td>Protocol type</td>
+          <td>56</td>
+          <td>16</td>
+          <td>Protocol type: AppleTalk = $809B</td>
+      </tr>
+      <tr>
+          <td>Hardware address length</td>
+          <td>72</td>
+          <td>8</td>
+          <td>Length of hardware address: 6 bytes</td>
+      </tr>
+      <tr>
+          <td>Protocol address length</td>
+          <td>80</td>
+          <td>8</td>
+          <td>Length of protocol address: 4 bytes</td>
+      </tr>
+      <tr>
+          <td>Function</td>
+          <td>88</td>
+          <td>16</td>
+          <td>Packet function: Probe = 3</td>
+      </tr>
+      <tr>
+          <td>Source hardware address</td>
+          <td>104</td>
+          <td>48</td>
+          <td>Hardware address of the sender (6 bytes)</td>
+      </tr>
+      <tr>
+          <td>Source AppleTalk address</td>
+          <td>152</td>
+          <td>32</td>
+          <td>AppleTalk address of the sender (4 bytes)</td>
+      </tr>
+      <tr>
+          <td>0</td>
+          <td>184</td>
+          <td>48</td>
+          <td>Reserved field, set to 0 (6 bytes)</td>
+      </tr>
+      <tr>
+          <td>Destination AppleTalk address</td>
+          <td>232</td>
+          <td>32</td>
+          <td>The AppleTalk address being probed (4 bytes)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="part-ii-end-to-end-data-flow">Part II End-to-End Data Flow<a class="anchor" href="#part-ii-end-to-end-data-flow">#</a></h1>
+<p>PART I of <em>Inside AppleTalk</em> specifies the LocalTalk, EtherTalk, and TokenTalk link access protocols. These protocols govern the operation of local-area data links that can be used to connect network nodes in a geographically restricted area.</p>
+<p>In particular, LocalTalk can be used to connect up to 32 network nodes with a maximum cumulative link span of 300 meters. EtherTalk and TokenTalk use standard networking technology to build a local area network (LAN) with a large number of nodes and a cable length of up to several kilometers.</p>
+<p>Larger networks than those permitted by these local-area data links can also be set up. This extension can be achieved in two ways:</p>
+<ul>
+<li>by using bridges to extend a single LAN or data link</li>
+<li>by interconnecting several LANs through routers to build an internet</li>
+</ul>
+<p>Bridges and routers are intelligent devices that extend network systems by storing and forwarding packets on a path from the packet&rsquo;s source node to its destination node.</p>
+<p>A <em>bridge</em> operates at the data-link layer (level 2 of the ISO-OSI reference model in <em>Figure I-9</em>). It examines the data-link level destination addressing information of packets received by it on the link segments to which the bridge is connected. It then retransmits each packet on the appropriate segment toward the packet&rsquo;s destination node. In effect, bridges extend the effective length and maximum number of nodes limit of a single data link or local area network (LAN). Bridges are widely used in Ethernet-based systems such as DECnet™, and source-routing bridges are widely used in token ring based systems. Since bridges simply extend a particular LAN, their use is transparent to the various protocols of the network system.</p>
+<hr>
+<p>Routers are used to interconnect several different LANs or data links situated over a widely distributed geographical area. Routers forward packets by using an address extension defined at the network layer (level 3 of the ISO-OSI reference model).</p>
+<p>This address extension, known as a network number, is provided by the Datagram Delivery Protocol (DDP), which is described in Chapter 4, &ldquo;Datagram Delivery Protocol.&rdquo;</p>
+<p>While bridges allow extension of a single data link or LAN, routers can be used to interconnect dissimilar data links into a single internet. In particular, as shown in Figure 4-1, routers can be used to enable communication between nodes on LocalTalk, EtherTalk, and TokenTalk data links, thus forming an AppleTalk internet incorporating dissimilar link technologies.</p>
+<p>Routers forward packets by consulting routing tables. The Routing Table Maintenance Protocol (RTMP), specified in Chapter 5, governs this table maintenance operation in all AppleTalk routers.</p>
+<p>The AppleTalk Echo Protocol (AEP) of Chapter 6 provides the ability to measure round-trip travel times between any two nodes of an AppleTalk internet. This information is useful in a variety of network management functions and for setting retry timers in various transport-level and s</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cinside-appletalk-second-edition%5C03-ethertalk-and-tokentalk-link-access-protocols.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#contents">CONTENTS</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#tlap-packet-format">TLAP packet format</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#use-of-aarp-by-elap-and-tlap">Use of AARP by ELAP and TLAP</a></li>
+    <li><a href="#aarp-specifics-for-elap-and-tlap">AARP specifics for ELAP and TLAP</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#figure-3-5-appletalk-ethernet-or-appletalk-token-ring-aarp-packet-formats">Figure 3-5 AppleTalk-Ethernet or AppleTalk-token ring AARP packet formats</a>
+      <ul>
+        <li><a href="#aarp-request">AARP Request</a></li>
+        <li><a href="#aarp-response">AARP Response</a></li>
+        <li><a href="#aarp-probe">AARP Probe</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

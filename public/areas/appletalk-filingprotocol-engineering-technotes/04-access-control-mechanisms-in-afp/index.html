@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/appletalk-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=appletalk-docs/livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="# Access Control Mechanisms in AFP#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 4 Pages 27–30 Converted 2026-04-01 Engine gemini-flash Chapter 4#Access Control Mechanisms in AFP#Access controls are built into AFP in three ways: user authentication at server login, an optional volume level password when first accessing (“opening”) a volume, and directory-level access controls based on user authentication at login.
+User Authentication at Server Login#User authentication at server login time has already been discussed above. This is the first “line of defense” as far as access controls are concerned. A file server can be set up to turn away an unauthorized user at this level and thus maintain the privacy and security of the file server’s volumes and their contents. It is important to note that the user authentication step is vital to the directory-level access controls discussed below.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/04-access-control-mechanisms-in-afp/">
+  <meta property="og:site_name" content="AppleTalk Documentation">
+  <meta property="og:title" content="# Access Control Mechanisms in AFP">
+  <meta property="og:description" content="# Access Control Mechanisms in AFP#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 4 Pages 27–30 Converted 2026-04-01 Engine gemini-flash Chapter 4#Access Control Mechanisms in AFP#Access controls are built into AFP in three ways: user authentication at server login, an optional volume level password when first accessing (“opening”) a volume, and directory-level access controls based on user authentication at login.
+User Authentication at Server Login#User authentication at server login time has already been discussed above. This is the first “line of defense” as far as access controls are concerned. A file server can be set up to turn away an unauthorized user at this level and thus maintain the privacy and security of the file server’s volumes and their contents. It is important to note that the user authentication step is vital to the directory-level access controls discussed below.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="areas">
+
+
+  <meta itemprop="name" content="# Access Control Mechanisms in AFP">
+  <meta itemprop="description" content="# Access Control Mechanisms in AFP#Field Value Source 022_AppleTalkFilingProtocolEngineeringTechnicalNotes Chapter 4 Pages 27–30 Converted 2026-04-01 Engine gemini-flash Chapter 4#Access Control Mechanisms in AFP#Access controls are built into AFP in three ways: user authentication at server login, an optional volume level password when first accessing (“opening”) a volume, and directory-level access controls based on user authentication at login.
+User Authentication at Server Login#User authentication at server login time has already been discussed above. This is the first “line of defense” as far as access controls are concerned. A file server can be set up to turn away an unauthorized user at this level and thus maintain the privacy and security of the file server’s volumes and their contents. It is important to note that the user authentication step is vital to the directory-level access controls discussed below.">
+  <meta itemprop="wordCount" content="1696">
+
+<title># Access Control Mechanisms in AFP | AppleTalk Documentation</title>
+<link rel="icon" href="/appletalk-docs/favicon.png" >
+<link rel="manifest" href="/appletalk-docs/manifest.json">
+<link rel="canonical" href="http://localhost:1313/appletalk-docs/areas/appletalk-filingprotocol-engineering-technotes/04-access-control-mechanisms-in-afp/">
+<link rel="stylesheet" href="/appletalk-docs/book.min.4d6d5ad3b0ae85d2a15b20ab217863f70db543e46314629e239ced759e674898.css" integrity="sha256-TW1a07CuhdKhWyCrIXhj9w21Q&#43;RjFGKeI5ztdZ5nSJg=" crossorigin="anonymous">
+
+
+  <script defer src="/appletalk-docs/fuse.min.js"></script>
+  <script defer src="/appletalk-docs/en.search.min.5b8bbf41f7e211d344ca84a78fc32f8286e94f4b09c31efa44d980d517bca4eb.js" integrity="sha256-W4u/QffiEdNEyoSnj8MvgobpT0sJwx76RNmA1Re8pOs=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-areas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/appletalk-docs/"><span>AppleTalk Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/">Home</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/appletalk-docs/contributing/">Contributing</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/appletalk-docs/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3># Access Control Mechanisms in AFP</h3>
+
+  <label for="toc-control">
+    
+    <img src="/appletalk-docs/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#user-authentication-at-server-login">User Authentication at Server Login</a></li>
+    <li><a href="#volume-passwords">Volume Passwords</a></li>
+    <li><a href="#directory-level-access-controls">Directory-Level Access Controls</a></li>
+    <li><a href="#special-cases">Special Cases</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="-access-control-mechanisms-in-afp"># Access Control Mechanisms in AFP<a class="anchor" href="#-access-control-mechanisms-in-afp">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Source</strong></td>
+          <td>022_AppleTalkFilingProtocolEngineeringTechnicalNotes</td>
+      </tr>
+      <tr>
+          <td><strong>Chapter</strong></td>
+          <td>4</td>
+      </tr>
+      <tr>
+          <td><strong>Pages</strong></td>
+          <td>27–30</td>
+      </tr>
+      <tr>
+          <td><strong>Converted</strong></td>
+          <td>2026-04-01</td>
+      </tr>
+      <tr>
+          <td><strong>Engine</strong></td>
+          <td>gemini-flash</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="chapter-4">Chapter 4<a class="anchor" href="#chapter-4">#</a></h1>
+<h1 id="access-control-mechanisms-in-afp">Access Control Mechanisms in AFP<a class="anchor" href="#access-control-mechanisms-in-afp">#</a></h1>
+<p>Access controls are built into AFP in three ways: user authentication at server login, an optional volume level password when first accessing (&ldquo;opening&rdquo;) a volume, and directory-level access controls based on user authentication at login.</p>
+<h2 id="user-authentication-at-server-login">User Authentication at Server Login<a class="anchor" href="#user-authentication-at-server-login">#</a></h2>
+<p>User authentication at server login time has already been discussed above. This is the first &ldquo;line of defense&rdquo; as far as access controls are concerned. A file server can be set up to turn away an unauthorized user at this level and thus maintain the privacy and security of the file server&rsquo;s volumes and their contents. It is important to note that the user authentication step is vital to the directory-level access controls discussed below.</p>
+<h2 id="volume-passwords">Volume Passwords<a class="anchor" href="#volume-passwords">#</a></h2>
+<p>A second level of access control is provided through volume passwords. A server can associate an optional fixed-length 8-character password with each volume it is making visible through AFP.</p>
+<p>As will become clear in the discussion of AFP calls, in order to make reference to a server volume the workstation must use a VolID. This VolID is obtained by the workstation through an FPOpenVol call in which the name of the volume is supplied as a call parameter. If the volume has a password associated with it, then the workstation must supply this password together with the FPOpenVol call in order to obtain the VolID (and hence the ability to issue AFP calls that make reference to that volume).</p>
+<p>Volume passwords constitute a very simple protection mechanism for simple servers that do not wish to implement the full-fledged directory-level access control mechanism. Of course it is not as secure a mechanism either.</p>
+<h2 id="directory-level-access-controls">Directory-Level Access Controls<a class="anchor" href="#directory-level-access-controls">#</a></h2>
+<p>AFP includes a directory-level access control mechanism that constitutes the most secure method provided in this protocol. Note that, as mentioned earlier, AFP does not support any file-level access controls.</p>
+<p>The basic idea is that directories are containers that contain objects: other containers (directories) and files. A user that has been authenticated at the server login step can try to make four classes of accesses to the directory&rsquo;s contents:</p>
+<ul>
+<li>see <em>directories</em> contained within that directory</li>
+<li>see <em>files</em> contained within that directory</li>
+</ul>
+<hr>
+<ul>
+<li><em>read the contents of an object</em> (or view its parameters) contained within that directory.</li>
+<li><em>write the contents of an object</em> (or change its parameters) contained within that directory.</li>
+</ul>
+<p>Permission to search a directory&rsquo;s contents allows the user to list the names and parameters of other files and/or directories contained in this directory. Access to the contents of an objects in a directory can be of two types: Read and/or Write. Setting (changing) the parameters of an object (file or directory) is considered as Writing to the object.</p>
+<p>AFP includes mechanisms for restricting these classes of access (Search, Read, and Write access) at the level of each directory in the catalog tree. This is done as follows:</p>
+<p>With each directory we associate an owner and a group of users. The owner is initially set to the ID of the user that created the directory; the group is initially set to the user&rsquo;s Primary group, if one exists. The Primary group is like any other group affiliation, except that it is the group that gets assigned to any new directories that the user creates.</p>
+<p>AFP recognizes three different access rights: Search, Read, and Write. The file server must save, with each directory, three <em>Access Rights bytes</em>, corresponding respectively to the directory&rsquo;s owner, the directory&rsquo;s group, and the world. Each access rights byte is used as a bit map whose three least significant bits are used to encode the three different access rights allowed by AFP for the corresponding user (i.e. owner, group, or world). More specifically, each directory has associated with it the following five parameters:</p>
+<ul>
+<li><em>owner ID</em> [4 bytes]</li>
+<li><em>group ID</em> [4 bytes]</li>
+<li><em>owner&rsquo;s Access Rights</em> [1 byte]</li>
+<li><em>group&rsquo;s Access Rights</em> [1 byte]</li>
+<li><em>world&rsquo;s Access Rights</em> [1 byte].</li>
+</ul>
+<p>In addition, the server must maintain a one-to-one mapping between owner ID (user ID) and user name (a string of maximum length 31 characters), and between group ID and group name (also a string of at most 31 characters). AFP includes calls to allow users to map IDs to names and visa-versa.</p>
+<p>The most significant 5 bits of each access rights byte must be zero (they are reserved for access rights extension in future versions of this protocol).</p>
+<p>When a user logs in on a server, as part of the user authentication mechanism, various identifiers are retrieved from a <em>user data base</em> maintained on the server. These include the user ID (a 32-bit number unique among all server users) and one or more (the exact number is implementation dependent) 32-bit group IDs which indicate the user&rsquo;s group affiliations. One of these group IDs is special in that it represents the user&rsquo;s Primary Group. This number is assigned as the group ID of each directory created by the user. Assignment of user IDs, group IDs, and Primary Groups is an administrative function and is outside the scope of this document.</p>
+<p>When this user tries to access a directory or its contents, the following algorithm is used by the server to extract the rights corresponding to that user (UARights) and that directory:</p>
+<pre tabindex="0"><code>UARights := Directory&#39;s world access rights;
+If (User&#39;s ID = Directory&#39;s owner ID) then</code></pre><hr>
+<pre tabindex="0"><code>UARights := UARights OR Directory&#39;s owner&#39;s access rights;
+If (any of User&#39;s group IDs = Directory&#39;s group ID) then
+    UARights := UARights OR Directory&#39;s group&#39;s access rights</code></pre><p>The OR operations in this algorithm are inclusive OR operations. Having given this algorithm for determining the UARights corresponding to a particular directory we can now examine in more detail what rights are required for various AFP operations. We use the following notation: SA = &ldquo;search access rights to all ancestors down to but not including the Parent directory&rdquo;, WA = &ldquo;search or write access to all ancestors down to but not including the Parent directory, Sp = &ldquo;search access rights to the Parent directory&rdquo;, Wp = &ldquo;write access rights to the Parent directory&rdquo;, Rp = &ldquo;read access rights to the Parent directory&rdquo;.</p>
+<p>Almost all operations require SA access, which means the user can only access the contents of an object in a given directory if he has permission to Search every directory in the path from the root to the parent&rsquo;s immediate parent directory. The exact access permitted to objects in the directory is then determined further by Sp, Rp and Wp rights for the Parent directory.</p>
+<p><em>Creating a File or a Directory:</em> The user must have WA plus Wp. Hard Create needs the same rights as deleting a file.</p>
+<p><em>Enumerate a Directory:</em> The user must have Search access rights to all directories down to but not necessarily including the directory being enumerated. To view its offspring that are directories, Search access to the directory being enumerated is required as well. To view its file offspring, Search access to the directory is not required, but the user must have Read access rights to the directory.</p>
+<p><em>Deleting a File.</em> The user must have SA, Rp, and Wp. Furthermore, a file can be deleted only if it is not open at that time.</p>
+<p><em>Delete a Directory:</em> The user must have SA, Sp, and Wp. Furthermore, a directory can be deleted only if it is empty.</p>
+<p><em>Rename a File:</em> The user must have SA, Rp, and Wp.</p>
+<p><em>Rename a Directory.</em> The user must have SA, Sp, and Wp.</p>
+<p><em>Get (Read) Directory Parameters:</em> All this requires are SA plus Sp access rights.</p>
+<p><em>Get (Read) File Parameters:</em> The user must have SA plus Rp.</p>
+<p><em>Open a File to Read its Contents:</em> A file&rsquo;s fork must be opened in read mode before its contents may be read. To open a file for read (and thus to be able to read from it) the user must have SA plus Rp.</p>
+<p><em>Open a File to Write its Contents:</em> A file&rsquo;s fork must be opened in write mode in order to write to the fork. To open a fork which is currently empty (both forks must be of zero-length) to write to it, the user must have WA plus Wp. To open an existing fork (either fork is of non-zero length) to write to it, SA, Rp, and Wp access is required.</p>
+<hr>
+<p><em><strong>Set (Write) File Parameters:</strong></em> The user must have WA plus Wp to set the parameters of an empty file (when both forks are zero-length). To set the File Parameters on a non-empty (either fork) file, SA, Rp, and Wp access is required.</p>
+<p><em><strong>Set (Write) Directory Parameters:</strong></em> The user must have SA, Sp, and Wp access to change a directory&rsquo;s parameters if the directory is non-empty. If the directory is empty, the user must have WA plus Wp to change its parameters.</p>
+<p><em><strong>Move a Directory or a File:</strong></em> Through AFP a directory or a file can be moved from a source parent directory to a destination parent directory on the same volume. The user must have SA rights to the source parent directory, WA access to destination parent directory, plus Write access rights to both source and destination parents. Furthermore to move a file, the user needs in addition Read access rights to the source parent directory. To move a folder, Search access to the source parent directory is required in addition instead of Rp.</p>
+<p><em><strong>Modify a Directory&rsquo;s Access Rights Information:</strong></em> A directory&rsquo;s Owner ID, Group ID, and three Access Rights bytes can be modified only if the user is the directory&rsquo;s owner and then only if the user has WA plus Wp or Sp access to the parent directory.</p>
+<p><em><strong>Copy a file (FPCopyFile):</strong></em> To copy a file, possibly across volumes managed by the server, the user must have SA plus Rp to the source parent directory and WA plus Wp to the destination parent directory.</p>
+<h2 id="special-cases">Special Cases<a class="anchor" href="#special-cases">#</a></h2>
+<p>OwnerID=0 means that the folder is &ldquo;unowned&rdquo; or owned by <any user>. The owner bit of the User Rights summary byte is always set for such a folder.</p>
+<p>GroupID=0 means that the folder has no group affiliation; hence the group&rsquo;s access privileges (R, W, S) are ignored for such a folder.</p>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+  <a class="flex align-center" href="https://github.com/ObsoleteMadness/appletalk-docs/edit/main%5Ccontent%5Careas%5Cappletalk-filingprotocol-engineering-technotes%5C04-access-control-mechanisms-in-afp.md" target="_blank" rel="noopener edit">
+    <img src="/appletalk-docs/icons/edit.svg" class="book-icon" alt="Edit" />
+    <span>Edit this page</span>
+  </a>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#user-authentication-at-server-login">User Authentication at Server Login</a></li>
+    <li><a href="#volume-passwords">Volume Passwords</a></li>
+    <li><a href="#directory-level-access-controls">Directory-Level Access Controls</a></li>
+    <li><a href="#special-cases">Special Cases</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

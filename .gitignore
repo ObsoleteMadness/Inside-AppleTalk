@@ -1,0 +1,7 @@
+# Jekyll build output
+_site/
+
+# Jekyll / Bundler dependencies (installed locally)
+.bundle/
+vendor/
+Gemfile.lock
